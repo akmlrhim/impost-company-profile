@@ -18,8 +18,8 @@
         <div
           class="border-2 border-impost-fourth bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-md overflow-hidden">
           <div class="relative h-48 overflow-hidden">
-            @if ($s->cover)
-              <img src="{{ asset('storage/' . $s->cover) }}" alt="{{ $s->services_name }}"
+            @if ($s->cover_path)
+              <img src="{{ asset('storage/' . $s->cover_path) }}" alt="{{ $s->service_name }}"
                 class="w-full h-full object-cover" />
             @else
               <div class="w-full h-full flex items-center justify-center">
@@ -39,6 +39,10 @@
           </div>
         </div>
       @endforeach
+    </div>
+
+    <div class="mt-8 flex justify-center">
+      {{ $services->links() }}
     </div>
 
   </div>

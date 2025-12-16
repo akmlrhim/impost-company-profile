@@ -1,1 +1,1 @@
-<p class="mt-2.5 text-sm text-fg-danger-strong">{{ ucfirst($slot) }}</p>
+<p class="mt-1 text-sm text-red-500">{{ ucfirst($slot) }}</p>

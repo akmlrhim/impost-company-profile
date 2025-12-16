@@ -10,7 +10,7 @@ class HomeController extends Controller
 	public function index()
 	{
 		$title = 'Home';
-		$services = Service::get();
+		$services = Service::simplePaginate(6)->fragment('services');
 
 		return view('public.home', compact('title', 'services'));
 	}

@@ -21,11 +21,14 @@ class ServiceRequest extends FormRequest
 	 */
 	public function rules(): array
 	{
+		$serviceId = $this->route('service')?->id;
+
 		return [
-			'service_name' => 'required|string|max:255|unique:services,service_name,' . $this->route('service'),
-			'slug' => 'required|string|max:255|unique:services,slug,' . $this->route('service'),
-			'description' => 'required|string',
-			'cover_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+			'service_name' => 'required|string|max:255|unique:services,service_name,' . $serviceId,
+			'description'  => 'required|string',
+			'cover_path'   => $this->isMethod('post')
+				? 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+				: 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 		];
 	}
 }

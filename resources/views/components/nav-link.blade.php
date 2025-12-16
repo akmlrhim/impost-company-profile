@@ -1,3 +1,3 @@
-<div>
-    <!-- Act only according to that maxim whereby you can, at the same time, will that it should become a universal law. - Immanuel Kant -->
-</div>
+@props(['active' => false])
+<a class="{{ $active ? 'bg-impost-fourth text-white' : 'text-white hover:bg-impost-fourth hover:text-white' }} flex items-center p-2 rounded-sm"
+  aria-current="{{ $active ? 'page' : 'false' }}" {{ $attributes }}>{{ $slot }}</a>

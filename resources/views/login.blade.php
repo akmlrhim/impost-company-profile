@@ -40,7 +40,8 @@
           Login
         </h1>
 
-        <form class="space-y-6" action="{{ route('login.store') }}" method="POST">
+        <form class="space-y-6" action="{{ route('login.store') }}" method="POST" x-data="{ loading: false }"
+          @submit="loading = true">
           @csrf
 
           <div>
@@ -50,7 +51,7 @@
             <input type="email" id="email" placeholder="name@company.com" autocomplete="off" name="email"
               class="text-sm bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2" />
             @error('email')
-              <span class="mt-2.5 text-sm text-red-500">{{ $message }}</span>
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
             @enderror
           </div>
 
@@ -61,13 +62,13 @@
             <input type="password" id="password" placeholder="••••••••" autocomplete="off" name="password"
               class="text-sm bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2" />
             @error('password')
-              <span class="mt-2.5 text-sm text-red-500">{{ $message }}</span>
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
             @enderror
           </div>
 
-          <button type="submit"
+          <button type="submit" :disable="loading"
             class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-sm text-sm px-5 py-2.5">
-            Login
+            <span x-text="loading ? 'Memproses...' : 'Login'"></span>
           </button>
 
           <p class="text-sm font-light text-gray-500 dark:text-gray-400">

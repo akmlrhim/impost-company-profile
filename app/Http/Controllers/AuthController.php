@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -21,7 +22,7 @@ class AuthController extends Controller
 		if (Auth::guard('web')->attempt($credentials)) {
 			$req->session()->regenerate();
 
-			return redirect()->intended('dashboard');
+			return redirect()->intended(route('dashboard'));
 		}
 
 		return back()->withErrors([
@@ -29,12 +30,12 @@ class AuthController extends Controller
 		])->onlyInput('email');
 	}
 
-	public function logout(AuthRequest $req)
+	public function logout(Request $req)
 	{
 		Auth::guard('web')->logout();
 		$req->session()->invalidate();
 		$req->session()->regenerateToken();
 
-		return redirect();
+		return redirect()->route('login');
 	}
 }

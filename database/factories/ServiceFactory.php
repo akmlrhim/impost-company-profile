@@ -23,7 +23,7 @@ class ServiceFactory extends Factory
 		return [
 			'service_name' => $serviceName,
 			'slug' => Str::slug($serviceName),
-			'description' => $this->faker->paragraphs(3, true),
+			'description' => $this->faker->paragraphs(1, true),
 			'cover_path' => NULL,
 		];
 	}

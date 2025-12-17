@@ -96,7 +96,7 @@ class ServiceController extends Controller
 			$service->description = $request->description;
 
 			if ($request->hasFile('cover_path')) {
-				if ($service->cover_path) {
+				if ($service->cover_path && Storage::disk('public')->exists($service->cover_path)) {
 					Storage::disk('public')->delete($service->cover_path);
 				}
 				$service->cover_path = $request->file('cover_path')->store('services', 'public');

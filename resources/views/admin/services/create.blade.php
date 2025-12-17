@@ -2,7 +2,8 @@
 @section('content')
   <div class="mx-auto py-4">
     <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data"
-      class="bg-white rounded-lg border border-gray-200 overflow-hidden" x-data="{ loading: false }" @submit="loading = true">
+      class="bg-white rounded-lg border border-gray-200 overflow-hidden" x-data="{ loading: false }"
+      @submit.prevent="loading = true; $el.submit()">
       @csrf
 
       <div class="p-6 space-y-6">
@@ -13,7 +14,7 @@
           </label>
           <input type="text" id="service_name" name="service_name"
             class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-            value="{{ old('service_name') }}" placeholder="Masukkan nama layanan" autocomplete="off">
+            value="{{ old('service_name') }}" placeholder="Masukkan nama layanan" autocomplete="off" />
           @error('service_name')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
           @enderror
@@ -55,8 +56,8 @@
             Deskripsi
           </label>
           <textarea id="description" name="description" rows="4" autocomplete="off" autocapitalize="sentence"
-            class="w-full h-60 px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow resize-none"
-            placeholder="Tambahkan deskripsi layanan">{{ old('description') }}</textarea>
+            class="w-full h-50 px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+            placeholder="Masukkan deskripsi layanan">{{ old('description') }}</textarea>
 
           @error('description')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
@@ -73,7 +74,7 @@
         </a>
 
         <button type="submit" :disabled="loading"
-          class="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          class="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
 
           <span x-text="loading ? 'Menyimpan...' : 'Simpan Layanan'"></span>
         </button>

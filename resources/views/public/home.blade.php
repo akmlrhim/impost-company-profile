@@ -4,5 +4,7 @@
 
   <x-home.about />
 
-  <x-home.service :services="$services" />
+  <x-home.services :services="$services" />
+
+  <x-home.articles :articles="$articles" />
 @endsection

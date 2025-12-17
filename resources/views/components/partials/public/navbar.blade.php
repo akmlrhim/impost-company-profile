@@ -30,8 +30,9 @@
         </li>
         <li>
           <a href="{{ url('/') }}#blog"
-            class="block py-2 px-3 text-white rounded md:border-0 md:hover:text-impost-primary md:p-0 transition-colors">Our
-            Blog</a>
+            class="block py-2 px-3 text-white rounded md:border-0 md:hover:text-impost-primary md:p-0 transition-colors">
+            Blog
+          </a>
         </li>
         <li>
           <a href="{{ url('/') }}#contact"

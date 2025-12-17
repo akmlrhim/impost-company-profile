@@ -15,7 +15,7 @@
         <p class="mt-6 text-md text-white leading-relaxed text-sm">
           Impost Media adalah Agensi Pemasaran Digital dan Branding All-in-One pertama di Banjarbaru dan Banjarmasin.
           Kami menawarkan solusi yang fleksibel, mengutamakan respons cepat, dan didukung keahlian mendalam di
-          berbagai industri (Retail, F&B, Properti) untuk memastikan strategi yang efektif mencapai tujuan bisnis Anda.
+          berbagai industri (Retail, F&B, Properti) untuk memastikan strategi yang efektif mencapai tujuan bisnis anda.
         </p>
       </div>
 
@@ -31,7 +31,7 @@
           Kami bukan hanya sekadar Agensi Media Sosial
         </p>
         <p class="mt-2 text-md font-medium text-white mx-auto">
-          Fokus utama kami adalah meningkatkan profit dan pendapatan bisnis Anda.
+          Fokus utama kami adalah meningkatkan profit dan pendapatan bisnis anda.
         </p>
       </div>
 
@@ -49,7 +49,7 @@
           </h3>
           <p class="text-white leading-relaxed text-sm">Solusi yang telah teruji berhasil, hemat biaya, dan mudah
             disesuaikan
-            dengan kebutuhan Anda.
+            dengan kebutuhan anda.
           </p>
         </div>
 
@@ -77,7 +77,7 @@
         <div class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-2xl p-4">
           <h3 class="text-md font-bold text-white mb-3">Hasil Dijamin Dibayar Berdasarkan Kinerja</h3>
           <p class="text-white leading-relaxed text-sm">
-            Pembayaran yang Anda lakukan dikaitkan langsung dengan capaian dan hasil nyata.
+            Pembayaran yang anda lakukan dikaitkan langsung dengan capaian dan hasil nyata.
           </p>
         </div>
 

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceRequest extends FormRequest
+class ArticleRequest extends FormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -21,12 +21,20 @@ class ServiceRequest extends FormRequest
 	 */
 	public function rules(): array
 	{
-		$serviceId = $this->route('service')?->id;
+		$articleId = $this->route('article')?->id;
 
 		return [
-			'service_name' => 'required|string|max:255|unique:services,service_name,' . $serviceId,
-			'description'  => 'required|string',
-			'cover_path'   => $this->isMethod('POST')
+			'title' => 'required|string|unique:articles,title,' . $articleId . '|max:255',
+			'content' => [
+				'required',
+				function ($attribute, $value, $fail) {
+					$cleanedContent = trim(strip_tags($value));
+					if (empty($cleanedContent)) {
+						$fail('The ' . $attribute . ' field must not be empty.');
+					}
+				}
+			],
+			'cover_path' => $this->isMethod('POST')
 				? 'required|image|mimes:jpeg,png,jpg|max:2048'
 				: 'nullable|image|mimes:jpeg,png,jpg|max:2048',
 		];

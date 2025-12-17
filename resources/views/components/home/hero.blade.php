@@ -10,8 +10,8 @@
     </h1>
 
     <p class="text-md text-white mb-8 max-w-2xl mx-auto mt-16">
-      Kami menyediakan solusi digital inovatif untuk membantu bisnis Anda tumbuh lebih cepat di era modern. Mulai
-      transformasi Anda hari ini.
+      Kami menyediakan solusi digital inovatif untuk membantu bisnis anda tumbuh lebih cepat di era modern. Mulai
+      transformasi anda hari ini.
     </p>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-16">

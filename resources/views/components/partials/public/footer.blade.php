@@ -7,7 +7,7 @@
             loading="lazy" />
         </a>
         <p class="text-sm text-white mb-6">
-          Membangun solusi digital terbaik untuk bisnis Anda dengan teknologi modern dan inovatif.
+          Membangun solusi digital terbaik untuk bisnis anda dengan teknologi modern dan inovatif.
         </p>
         <div class="text-sm text-white">
           <p class="font-semibold text-white mb-2">Alamat Kantor:</p>

@@ -22,7 +22,7 @@ class ArticleController extends Controller
 			$query->where('title', 'like', '%' . $search . '%');
 		})
 			->latest()
-			->paginate(6)
+			->simplePaginate(6)
 			->onEachSide(1)
 			->withQueryString();
 
@@ -131,5 +131,13 @@ class ArticleController extends Controller
 			DB::rollBack();
 			return back()->withInput()->with('error', 'Gagal menghapus artikel' . $e->getMessage());
 		}
+	}
+
+	public function comments(Article $article)
+	{
+		return view('admin.articles.comments', [
+			'title' => 'Komentar',
+			'article' => $article->comments()->simplePaginate(10)
+		]);
 	}
 }

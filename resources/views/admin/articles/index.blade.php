@@ -32,7 +32,7 @@
     </div>
 
     <div class="p-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         @forelse ($articles as $article)
           <div class="bg-white rounded-sm shadow-sm overflow-hidden flex flex-col h-full"> {{-- flex-col + h-full --}}
 
@@ -57,8 +57,12 @@
 
               <div class="mt-auto flex items-center gap-2">
                 <a href="{{ route('articles.edit', $article) }}"
-                  class="flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-impost-primary rounded-sm hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-impost-primary">
+                  class="flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-yellow-600 rounded-sm hover:bg-yellow-500 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600">
                   Edit
+                </a>
+                <a href="{{ route('articles.comments', $article) }}"
+                  class="flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-gray-700 rounded-sm hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
+                  Lihat Komentar
                 </a>
                 <x-confirm-delete :action="route('articles.destroy', $article)" label="Hapus" />
               </div>

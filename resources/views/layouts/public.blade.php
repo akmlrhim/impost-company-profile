@@ -26,9 +26,7 @@
   @stack('styles')
 </head>
 
-<body class="bg-impost-fifth" x-data="pageLoader()">
-
-  <x-loader />
+<body class="bg-impost-fifth">
 
   <x-partials.public.navbar />
 
@@ -39,6 +37,7 @@
   <x-partials.public.footer />
 
   @stack('scripts')
+
 </body>
 
 </html>

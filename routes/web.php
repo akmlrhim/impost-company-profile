@@ -28,6 +28,8 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		// article route 
 		Route::resource('articles', ArticleController::class)->except('show');
+		Route::get('articles/{comment}/comments', [ArticleController::class, 'comments'])->name('articles.comments');
+
 		Route::post('editor-upload', [EditorController::class, 'store'])->name('editor.upload');
 	});
 });

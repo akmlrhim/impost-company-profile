@@ -17,7 +17,7 @@ return new class extends Migration
 			$table->string('fullname')->index();
 			$table->string('position');
 			$table->integer('sort_order');
-			$table->string('photo');
+			$table->string('photo')->nullable();
 			$table->string('instagram_link')->nullable();
 			$table->string('linkedin_link')->nullable();
 			$table->timestamps();

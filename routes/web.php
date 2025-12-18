@@ -8,6 +8,7 @@ use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('throttle:30,1')->group(function () {
@@ -24,6 +25,7 @@ Route::middleware('throttle:30,1')->group(function () {
 	Route::prefix('admin')->middleware('auth')->group(function () {
 		Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 		Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+		Route::resource('users', UserController::class)->except('show');
 
 		// service route 
 		Route::resource('services', ServiceController::class)->except('show');

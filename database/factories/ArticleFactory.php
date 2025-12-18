@@ -22,7 +22,7 @@ class ArticleFactory extends Factory
 		return [
 			'title' => $title,
 			'slug' => Str::slug($title),
-			'content' => fake()->paragraphs(5, true),
+			'content' => '<p>' . fake()->paragraphs(5, true) . '</p>',
 			'cover_path' => null,
 			'excerpt' => fake()->sentence(12, true),
 			'meta_title' => fake()->sentence(6, true),

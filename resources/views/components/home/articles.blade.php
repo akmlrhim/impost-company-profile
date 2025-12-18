@@ -2,9 +2,9 @@
 
   <div class="text-center mb-12">
     <h2
-      class="text-4xl font-bold pb-1 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-3">
+      class="text-xl sm:text-2xl lg:text-4xl font-bold pb-1 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-3">
       Artikel</h2>
-    <p class="text-white text-sm max-w-2xl mx-auto">
+    <p class="text-white text-xs sm:text-sm lg:text-sm max-w-2xl mx-auto">
       Temukan artikel, tips, dan panduan terbaru untuk membantu Anda berkembang
     </p>
   </div>
@@ -34,15 +34,15 @@
               <div class="px-0.5 py-0.5 bg-white rounded-full"></div>
               <span class="text-white">{{ $article->created_at->diffForHumans() }}</span>
             </div>
-            <h3 class="text-lg font-semibold text-white mb-2">{{ $article->title }}</h3>
-            <p class="text-sm font-medium text-white mb-4 line-clamp-2">
+            <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-white mb-2">{{ $article->title }}</h3>
+            <p class="text-xs sm:text-sm lg:text-sm font-medium text-white mb-4 line-clamp-2">
               {{ Str::limit(strip_tags($article->content), 100, '...') }}
             </p>
           </div>
 
           <div class="flex items-center justify-between mt-auto">
             <a href="{{ route('article.detail', $article) }}"
-              class="text-impost-third bg-white font-medium leading-5 rounded-md text-sm px-4 py-2.5 hover:bg-impost-third/90 hover:text-white">
+              class="text-impost-third bg-white font-medium leading-5 rounded-md text-xs sm:text-sm px-3 sm:px-4 py-2 sm:py-2.5 hover:bg-impost-third/90 hover:text-white">
               Baca Selengkapnya
             </a>
           </div>
@@ -55,7 +55,7 @@
 
   <div class="text-center mt-12">
     <a href="#"
-      class="inline-flex items-center text-sm font-bold gap-2 px-6 py-3 bg-linear-to-r from-impost-primary via-impost-third to-impost-fourth text-white rounded-md">
+      class="inline-flex items-center text-xs sm:text-sm font-bold gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-linear-to-r from-impost-primary via-impost-third to-impost-fourth text-white rounded-md">
       Lihat Semua Artikel
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

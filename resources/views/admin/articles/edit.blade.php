@@ -45,7 +45,7 @@
             @change="
 						const file = $event.target.files[0];
 						if (file) preview = URL.createObjectURL(file);
-					">
+					" />
 
           @error('cover_path')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
@@ -101,7 +101,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // 1. Inisialisasi Quill
       var quill = new Quill('#editor', {
         theme: 'snow',
         placeholder: 'Tulis konten Anda di sini...',
@@ -149,7 +148,6 @@
       function uploadFile(file, range) {
         const csrfTokenElement = document.querySelector('meta[name="csrf-token"]');
         if (!csrfTokenElement) {
-          console.error('CSRF Token meta tag tidak ditemukan.');
           alert('Kesalahan: Konfigurasi CSRF Token hilang.');
           return;
         }
@@ -179,7 +177,6 @@
         };
 
         xhr.onerror = function() {
-          console.error('Kesalahan jaringan saat upload.');
           alert('Kesalahan jaringan.');
         };
 

@@ -1,11 +1,11 @@
 <section id="services">
   <div class="py-6 px-4 mx-auto max-w-7xl sm:py-12 lg:px-6">
-    <div class="max-w-3xl mb-8 lg:mb-12">
+    <div class="mb-8 lg:mb-12 text-center">
       <h2
-        class="mb-4 text-4xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent leading-tight pb-2">
+        class="mb-4 text-xl sm:text-2xl lg:text-3xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent leading-tight pb-1">
         Layanan Kami
       </h2>
-      <p class="text-white text-sm">
+      <p class="text-white text-xs sm:text-sm lg:text-base">
         Kami menyediakan layanan digital end-to-end yang berfokus pada peningkatan omset, visibilitas merek, dan
         efisiensi pemasaran. Setiap layanan dirancang dengan pendekatan strategis yang sesuai dengan kebutuhan bisnis
         anda.
@@ -108,14 +108,14 @@
                 @endif
               </div>
               <div class="p-6">
-                <h3 class="mb-3 text-md font-bold text-white">{{ $s->service_name }}</h3>
-                <p class="text-white font-medium text-sm">
+                <h3 class="mb-3 text-sm sm:text-base lg:text-md font-bold text-white">{{ $s->service_name }}</h3>
+                <p class="text-white font-medium text-xs sm:text-sm lg:text-sm">
                   {{ $s->description }}
                 </p>
               </div>
             </div>
           @empty
-            <div class="col-span-1 md:col-span-2 lg:col-span-3 text-center text-sm font-medium text-white">
+            <div class="col-span-1 md:col-span-2 lg:col-span-3 text-center text-xs sm:text-sm font-medium text-white">
               Belum ada layanan tersedia.
             </div>
           @endforelse

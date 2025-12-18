@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('throttle:30,1')->group(function () {
@@ -15,6 +16,7 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::get('/', [HomeController::class, 'index'])->name('home');
 		Route::get('login', [AuthController::class, 'index'])->name('login');
 		Route::post('login', [AuthController::class, 'login'])->name('login.store');
+		Route::get('about', [HomeController::class, 'about'])->name('about');
 		Route::get('articles/{article:slug}', [HomeController::class, 'article'])->name('article.detail');
 		Route::post('article/comment', [CommentController::class, 'store'])->name('article.comment');
 	});
@@ -29,7 +31,9 @@ Route::middleware('throttle:30,1')->group(function () {
 		// article route 
 		Route::resource('articles', ArticleController::class)->except('show');
 		Route::get('articles/{comment}/comments', [ArticleController::class, 'comments'])->name('articles.comments');
-
 		Route::post('editor-upload', [EditorController::class, 'store'])->name('editor.upload');
+
+		// team route 
+		Route::resource('teams', TeamController::class)->except('show');
 	});
 });

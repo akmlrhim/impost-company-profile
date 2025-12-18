@@ -16,28 +16,34 @@
     <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
       <ul
         class="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+
         <li>
           <a href="{{ url('/') }}"
             class="block py-2 px-3 text-white rounded md:bg-transparent md:p-0 md:hover:text-impost-primary transition-colors">Home</a>
         </li>
+
         <li>
           <a href="{{ url('/') }}#about"
             class="block py-2 px-3 text-white rounded md:bg-transparent md:p-0 md:hover:text-impost-primary transition-colors">About</a>
         </li>
+
         <li>
           <a href="{{ url('/') }}#services"
             class="block py-2 px-3 text-white rounded md:border-0 hover:text-impost-primary md:p-0 transition-colors">Services</a>
         </li>
+
         <li>
           <a href="{{ url('/') }}#blog"
             class="block py-2 px-3 text-white rounded md:border-0 md:hover:text-impost-primary md:p-0 transition-colors">
             Blog
           </a>
         </li>
+
         <li>
           <a href="{{ url('/') }}#contact"
             class="block py-2 px-3 text-white rounded md:border-0 md:hover:text-impost-primary md:p-0 transition-colors">Contact</a>
         </li>
+
       </ul>
     </div>
   </div>

@@ -1,6 +1,6 @@
 @extends('layouts.public')
 @section('content')
-  <main class="pt-28 pb-16 bg-gray-950 antialiased">
+  <main class="pt-28 pb-16 bg-impost-fifth antialiased">
     <div class="px-4 mx-auto max-w-7xl">
 
       {{-- Breadcrumb --}}

@@ -23,7 +23,6 @@ class ArticleController extends Controller
 		})
 			->latest()
 			->simplePaginate(6)
-			->onEachSide(1)
 			->withQueryString();
 
 		return view('admin.articles.index', [

@@ -32,7 +32,6 @@
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');
     
-                // Ambil grid baru
                 const newGrid = doc.querySelector('#services-grid .grid');
                 const oldGrid = document.querySelector('#services-grid .grid');
     
@@ -40,7 +39,6 @@
                     oldGrid.innerHTML = newGrid.innerHTML;
                 }
     
-                // Update URLs - ambil langsung dari container yang baru
                 const newContainer = doc.querySelector('[data-next-url]');
                 if (newContainer) {
                     const nextAttr = newContainer.getAttribute('data-next-url');
@@ -72,7 +70,6 @@
     }" data-next-url="{{ $services->nextPageUrl() }}"
       data-prev-url="{{ $services->previousPageUrl() }}">
 
-      <!-- Navigation Buttons -->
       <div class="flex justify-end gap-2 mb-4">
         <button @click="prevPage()" :disabled="!prevUrl || isLoading"
           :class="{ 'opacity-50 cursor-not-allowed': !prevUrl || isLoading }"

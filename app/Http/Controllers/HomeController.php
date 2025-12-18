@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Service;
+use App\Models\Team;
 
 class HomeController extends Controller
 {
@@ -20,5 +21,13 @@ class HomeController extends Controller
 	{
 		$title = 'Artikel';
 		return view('public.article', compact('title', 'article'));
+	}
+
+	public function about()
+	{
+		return view('public.about', [
+			'title' => 'About',
+			'team' => Team::get()
+		]);
 	}
 }

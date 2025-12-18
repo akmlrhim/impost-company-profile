@@ -1,6 +1,5 @@
 <section class="py-12 md:py-16 overflow-hidden" id="about">
 
-  {{-- About 1  --}}
 
   <div class="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
 
@@ -9,7 +8,7 @@
       <div class="relative text-center mx-auto">
         <h2
           class="text-4xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent leading-tight pb-2">
-          Tentang Kami
+          Sekilas tentang kami
         </h2>
 
         <p class="mt-6 text-md text-white leading-relaxed text-sm">
@@ -22,7 +21,6 @@
     </div>
 
 
-    {{-- About 2 --}}
     <div class="pt-12">
 
       <div class="text-center max-w-3xl mx-auto mb-8">
@@ -47,9 +45,8 @@
         <div class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-2xl p-4">
           <h3 class="text-md font-bold text-white mb-3">Terbukti, Terjangkau, & Fleksibel
           </h3>
-          <p class="text-white leading-relaxed text-sm">Solusi yang telah teruji berhasil, hemat biaya, dan mudah
-            disesuaikan
-            dengan kebutuhan anda.
+          <p class="text-white leading-relaxed text-sm">
+            Solusi yang telah teruji berhasil, hemat biaya, dan mudah disesuaikan dengan kebutuhan anda.
           </p>
         </div>
 
@@ -80,8 +77,18 @@
             Pembayaran yang anda lakukan dikaitkan langsung dengan capaian dan hasil nyata.
           </p>
         </div>
-
       </div>
     </div>
+
+    <div class="text-center mt-12">
+      <a href="{{ route('about') }}"
+        class="inline-flex items-center text-sm font-bold gap-2 px-6 py-3 bg-linear-to-r from-impost-primary via-impost-third to-impost-fourth text-white rounded-md">
+        Selengkapnya tentang kami
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
   </div>
 </section>

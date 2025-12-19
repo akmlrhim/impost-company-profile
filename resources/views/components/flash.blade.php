@@ -17,11 +17,16 @@
 @foreach ($messages as $type => $message)
   @if ($message)
     <div x-data="{ show: true }" x-show="show"
-      class="mb-3 p-3 rounded-sm font-medium text-sm flex justify-between items-center {{ $styles[$type] }}">
+      class="mb-3 p-2 sm:p-3 rounded-sm font-medium
+           text-xs sm:text-sm
+           flex justify-between items-center
+           {{ $styles[$type] }}">
 
       <span>{{ $message }}</span>
 
-      <button @click="show=false" class="font-bold ml-4 text-xl cursor-pointer">×</button>
+      <button @click="show=false" class="ml-3 text-lg sm:text-xl font-bold cursor-pointer leading-none">
+        ×
+      </button>
     </div>
   @endif
 @endforeach

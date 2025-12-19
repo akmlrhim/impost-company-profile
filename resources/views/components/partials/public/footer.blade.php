@@ -3,8 +3,8 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
       <div>
         <a href="#home" class="flex items-center mb-3 md:mb-4">
-          <img src="{{ asset('img/logo_impost_putih.png') }}" class="ml-4 md:ml-6 h-12 md:h-16 scale-200 w-auto"
-            alt="IMPOST Logo" loading="lazy" />
+          <img src="{{ asset('img/logo_impost_putih.png') }}" class="h-12 md:h-16 w-auto" alt="IMPOST Logo"
+            loading="lazy" />
         </a>
         <p class="text-xs sm:text-sm text-white mb-4 md:mb-6">
           Membangun solusi digital terbaik untuk bisnis anda dengan teknologi modern dan inovatif.

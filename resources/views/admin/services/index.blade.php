@@ -34,7 +34,7 @@
     <div class="p-4">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($services as $service)
-          <div class="bg-white rounded-sm shadow-sm overflow-hidden flex flex-col h-full"> {{-- flex-col + h-full --}}
+          <div class="bg-white rounded-sm shadow-sm overflow-hidden flex flex-col h-full">
 
             <div class="relative h-48 bg-gray-100">
               @if ($service->cover_path)

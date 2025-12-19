@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Client;
 use App\Models\Service;
 use App\Models\Team;
 
@@ -11,10 +12,16 @@ class HomeController extends Controller
 	public function index()
 	{
 		$title = 'Home';
-		$services = Service::simplePaginate(6)->fragment('services');
+		$services = Service::cursorPaginate(6)->fragment('services');
 		$articles = Article::latest()->take(3)->get();
+		$clients = Client::all();
 
-		return view('public.home', compact('title', 'services', 'articles'));
+		return view('public.home', compact(
+			'title',
+			'services',
+			'articles',
+			'clients'
+		));
 	}
 
 	public function article(Article $article)

@@ -1,6 +1,6 @@
 @extends('layouts.public')
 @section('content')
-  <x-home.hero />
+  <x-home.hero :clients="$clients" />
 
   <x-home.about />
 

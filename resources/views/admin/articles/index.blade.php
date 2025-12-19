@@ -2,7 +2,7 @@
 @section('content')
   <x-flash />
 
-  <div class="bg-neutral-primary-soft rounded-base border border-default mb-4">
+  <div class="bg-neutral-primary-soft rounded-base border border-default">
 
     <div class="p-4 flex items-center justify-between gap-4">
       <div class="relative flex-1 max-w-md">
@@ -34,7 +34,7 @@
     <div class="p-4">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         @forelse ($articles as $article)
-          <div class="bg-white rounded-sm shadow-sm overflow-hidden flex flex-col h-full"> {{-- flex-col + h-full --}}
+          <div class="bg-white rounded-sm shadow-sm overflow-hidden flex flex-col h-full">
 
             <div class="relative h-48 bg-gray-100">
               @if ($article->cover_path)

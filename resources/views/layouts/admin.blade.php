@@ -19,6 +19,13 @@
   @endif
 
   @stack('styles')
+
+  <style>
+    [x-cloak] {
+      display: none !important
+    }
+  </style>
+
 </head>
 
 <body class="bg-gray-100">

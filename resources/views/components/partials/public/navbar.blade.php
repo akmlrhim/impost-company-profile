@@ -1,7 +1,7 @@
 <nav class="bg-transparent/30 backdrop-blur-md fixed w-full z-20 top-0 start-0 border-b border-gray-400">
   <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto py-1.5 sm:py-2 px-3 sm:px-4">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="{{ asset('img/logo_impost_putih.png') }}" class="h-12 sm:h-14 md:h-16 ml-6 sm:ml-12 w-auto"
+      <img src="{{ asset('img/logo_impost_putih.png') }}" class="h-10 sm:h-12 md:h-14 ml-6 sm:ml-12 w-auto"
         loading="lazy" />
     </a>
     <button data-collapse-toggle="navbar-dropdown" type="button"

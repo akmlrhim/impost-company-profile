@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
@@ -37,5 +38,8 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		// team route 
 		Route::resource('teams', TeamController::class)->except('show');
+
+		// client route 
+		Route::resource('clients', ClientController::class);
 	});
 });

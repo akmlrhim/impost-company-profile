@@ -28,8 +28,8 @@ class TeamRequest extends FormRequest
 			'position' => 'required|string|max:255|unique:teams,position,' . $teamId,
 			'sort_order' => 'required|integer|unique:teams,sort_order,' . $teamId,
 			'photo' => 'nullable|image|mimes:jpeg,png,jpg',
-			'instagram_link' => 'required|active_url|string:255|unique:teams,instagram_link,' . $teamId,
-			'linkedin_link' => 'required|active_url|string:255|unique:teams,linkedin_link,' . $teamId,
+			'instagram_link' => 'nullable|active_url|string:255|unique:teams,instagram_link,' . $teamId,
+			'linkedin_link' => 'nullable|active_url|string:255|unique:teams,linkedin_link,' . $teamId,
 		];
 	}
 }

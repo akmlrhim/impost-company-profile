@@ -2,37 +2,12 @@
 @section('content')
   <x-flash />
 
+  <x-search-bar search-route="{{ route('articles.index') }}" add-route="{{ route('articles.create') }}"
+    add-label="Tambah Artikel" />
+
   <div class="bg-neutral-primary-soft rounded-base border border-default">
-
-    <div class="p-4 flex items-center justify-between gap-4">
-      <div class="relative flex-1 max-w-md">
-
-        <form action="{{ route('articles.index') }}" method="GET" class="flex items-center gap-2">
-
-          <div class="relative flex-1">
-            <input type="text" name="search" value="{{ request('search') }}"
-              class="block w-full pr-3 py-2 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
-              placeholder="Masukkan kata kunci, lalu tekan Enter" autocomplete="off" />
-          </div>
-
-          @if (request('search'))
-            <a href="{{ route('articles.index') }}"
-              class="px-4 py-2 text-sm rounded-sm bg-gray-100 text-gray-700 hover:bg-gray-200 transition">
-              Reset
-            </a>
-          @endif
-        </form>
-
-      </div>
-
-      <a href="{{ route('articles.create') }}"
-        class="px-4 py-2 bg-brand text-white rounded-sm shadow-xs text-sm font-medium hover:bg-brand-dark transition whitespace-nowrap">
-        Tambah Layanan
-      </a>
-    </div>
-
     <div class="p-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         @forelse ($articles as $article)
           <div class="bg-white rounded-sm shadow-sm overflow-hidden flex flex-col h-full">
 
@@ -62,14 +37,12 @@
                 </a>
                 <a href="{{ route('articles.comments', $article) }}"
                   class="flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-gray-700 rounded-sm hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
-                  Lihat Komentar
+                  Komentar
                 </a>
                 <x-confirm-delete :action="route('articles.destroy', $article)" label="Hapus" />
               </div>
             </div>
-
           </div>
-
         @empty
           <div class="col-span-1 md:col-span-2 lg:col-span-3 bg-white p-12">
             <div class="flex flex-col items-center justify-center text-center">

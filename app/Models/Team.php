@@ -19,4 +19,9 @@ class Team extends Model
 		'linkedin_link',
 		'sort_order'
 	];
+
+	public function getRouteKeyName()
+	{
+		return 'slug';
+	}
 }

@@ -22,7 +22,7 @@ class ArticleController extends Controller
 			$query->where('title', 'like', '%' . $search . '%');
 		})
 			->latest()
-			->simplePaginate(6)
+			->simplePaginate(8)
 			->withQueryString();
 
 		return view('admin.articles.index', [
@@ -50,16 +50,21 @@ class ArticleController extends Controller
 		try {
 			DB::beginTransaction();
 
-			Article::create([
+			$data = [
 				'title' => $request->title,
 				'slug' => Str::slug($request->title),
 				'content' => $request->content,
-				'cover_path' => $request->file('cover_path')->store('articles', 'public'),
 				'excerpt' => Str::limit(strip_tags($request->content), 150, '...'),
 				'meta_title' => $request->title,
 				'meta_description' => Str::limit(strip_tags($request->content), 160, '...'),
 				'status' => $request->status ?? 'draft',
-			]);
+			];
+
+			if ($request->hasFile('cover_path')) {
+				$data['cover_path'] = $request->file('cover_path')->store('articles', 'public');
+			}
+
+			Article::create($data);
 
 			DB::commit();
 			return redirect()->route('articles.index')->with('success', 'Artikel berhasil ditambahkan');
@@ -125,7 +130,7 @@ class ArticleController extends Controller
 			$article->delete();
 
 			DB::commit();
-			return redirect()->route('articles.index')->with('success', 'Artikel berhasil dihapus');
+			return back()->with('success', 'Artikel berhasil dihapus');
 		} catch (\Exception $e) {
 			DB::rollBack();
 			return back()->withInput()->with('error', 'Gagal menghapus artikel' . $e->getMessage());

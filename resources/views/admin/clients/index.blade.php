@@ -3,36 +3,14 @@
 @section('content')
   <x-flash />
 
-  <div x-data="{ open: {{ $errors->any() ? 'true' : 'false' }} }" class="bg-neutral-primary-soft rounded-base border border-default mb-4">
+  <x-search-bar search-route="{{ route('clients.index') }}" add-route="{{ route('clients.create') }}"
+    add-label="Tambah Klien" />
 
-    <div class="p-4 flex items-center justify-between gap-4">
-      <div class="relative flex-1 max-w-md">
-        <form action="{{ route('clients.index') }}" method="GET" class="flex items-center gap-2">
-          <div class="relative flex-1">
-            <input type="text" name="search" value="{{ request('search') }}"
-              class="block w-full pr-3 py-2 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
-              placeholder="Masukkan kata kunci, lalu tekan Enter" autocomplete="off">
-          </div>
 
-          @if (request('search'))
-            <a href="{{ route('clients.index') }}"
-              class="px-4 py-2 text-sm rounded-sm bg-gray-100 text-gray-700 hover:bg-gray-200 transition">
-              Reset
-            </a>
-          @endif
-        </form>
-      </div>
-
-      {{-- tombol buka modal --}}
-      <button type="button" @click="open = true"
-        class="cursor-pointer px-4 py-2 bg-brand text-white rounded-sm shadow-xs text-sm font-medium hover:bg-brand-dark transition whitespace-nowrap">
-        Tambah Klien
-      </button>
-    </div>
-
-    {{-- data view --}}
+  {{-- data view --}}
+  <div class="bg-neutral-primary-soft rounded-base border border-default mb-4">
     <div class="p-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         @forelse ($clients as $client)
           <div class="bg-white rounded-sm shadow-sm overflow-hidden flex flex-col h-full">
 
@@ -53,7 +31,7 @@
 
             <div class="p-5 flex flex-col flex-1">
               <h3 class="text-sm font-semibold text-gray-900 mb-2">
-                {{ $client->filename }}
+                {{ substr($client->filename, strpos($client->filename, '-') + 1) }}
               </h3>
 
               <div class="mt-auto flex items-center gap-2">
@@ -68,7 +46,12 @@
         @empty
           <div class="col-span-1 md:col-span-2 lg:col-span-3 bg-white p-12">
             <div class="flex flex-col items-center justify-center text-center">
+              <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
               <p class="text-gray-500 text-md font-medium">Tidak ada klien ditemukan</p>
+              <p class="text-gray-400 text-sm mt-1">Mulai dengan menambahkan klien baru</p>
             </div>
           </div>
         @endforelse
@@ -78,43 +61,5 @@
     <div class="p-4 border-t border-gray-200">
       {{ $clients->links() }}
     </div>
-
-    {{-- ================= MODAL ================= --}}
-    <div id="add-client" x-show="open" x-cloak tabindex="-1"
-      class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-
-      {{-- overlay --}}
-      <div x-show="open" @click="open = false" class="fixed inset-0 bg-black/40"></div>
-
-      <div class="relative p-4 w-full max-w-md max-h-full">
-        <div class="relative bg-neutral-primary-soft border border-default rounded-base shadow-sm p-4 md:p-6">
-          <div class="flex items-center justify-between border-b border-default pb-4 md:pb-5">
-            <h3 class="text-lg font-medium text-heading">Tambah Klien</h3>
-            <button type="button" @click="open = false"
-              class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 inline-flex justify-center items-center">
-              ✕
-            </button>
-          </div>
-
-          <form action="{{ route('clients.store') }}" method="POST" enctype="multipart/form-data" class="pt-4 md:pt-6">
-            @csrf
-            <div class="mb-4">
-              <label class="block mb-2.5 text-sm font-medium text-heading">Logo Klien</label>
-              <input type="file" name="client_logo[]" multiple
-                class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs">
-              @error('client_logo.*')
-                <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-              @enderror
-            </div>
-
-            <button type="submit"
-              class="text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium rounded-base text-sm px-4 py-2.5 w-full">
-              Simpan
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-
   </div>
 @endsection

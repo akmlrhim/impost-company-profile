@@ -6,6 +6,7 @@ use App\Http\Requests\TeamRequest;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class TeamController extends Controller
@@ -33,7 +34,7 @@ class TeamController extends Controller
 	{
 		return view(
 			'admin.teams.create',
-			['title' => 'Tambah Teams']
+			['title' => 'Tambah Team']
 		);
 	}
 
@@ -45,15 +46,20 @@ class TeamController extends Controller
 		try {
 			DB::beginTransaction();
 
-			Team::create([
+			$data = [
 				'fullname' => $request->fullname,
 				'slug' => Str::slug($request->fullname),
 				'position' => Str::title($request->position),
 				'instagram_link' => $request->instagram_link,
 				'linkedin_link' => $request->linkedin_link,
-				'photo' => $request->file('photo')->store('team_photos', 'public'),
 				'sort_order' => $request->sort_order
-			]);
+			];
+
+			if ($request->hasFile('photo')) {
+				$data['photo'] = $request->file('photo')->store('team_photos', 'public');
+			}
+
+			Team::create($data);
 
 			DB::commit();
 			return redirect()->route('teams.index')->with('success', 'Team berhasil ditambahkan.');
@@ -64,27 +70,45 @@ class TeamController extends Controller
 	}
 
 	/**
-	 * Display the specified resource.
-	 */
-	public function show(Team $team)
-	{
-		//
-	}
-
-	/**
 	 * Show the form for editing the specified resource.
 	 */
 	public function edit(Team $team)
 	{
-		//
+		return view('admin.teams.edit', [
+			'title' => 'Edit Team',
+			'team' => $team
+		]);
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 */
-	public function update(Request $request, Team $team)
+	public function update(TeamRequest $request, Team $team)
 	{
-		//
+		try {
+			DB::beginTransaction();
+
+			$team->fullname = $request->fullname;
+			$team->slug = Str::slug($request->fullname);
+			$team->position = $request->position;
+			$team->instagram_link = $request->instagram_link;
+			$team->linkedin_link = $request->linkedin_link;
+			$team->sort_order = $request->sort_order;
+
+			if ($request->hasFile('photo')) {
+				if ($team->photo && Storage::disk('public')->exists($team->photo)) {
+					Storage::disk('public')->delete($team->photo);
+				}
+				$team->photo = $request->file('photo')->store('team_photos', 'public');
+			}
+
+			$team->save();
+			DB::commit();
+			return redirect()->route('teams.index')->with('success', 'Teams berhasil diperbarui.');
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return back()->withInput();
+		}
 	}
 
 	/**
@@ -92,6 +116,18 @@ class TeamController extends Controller
 	 */
 	public function destroy(Team $team)
 	{
-		//
+		try {
+			DB::beginTransaction();
+
+			if ($team->photo) {
+				Storage::disk('public')->delete($team->photo);
+			}
+
+			$team->delete();
+			DB::commit();
+			return back()->with('success', 'Team berhasil dihapus.');
+		} catch (\Exception $e) {
+			return back()->with('error', 'Terjadi kesalahan.');
+		}
 	}
 }

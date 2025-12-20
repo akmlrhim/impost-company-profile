@@ -2,119 +2,69 @@
 @section('content')
   <x-flash></x-flash>
 
-  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-    <form method="GET" action="{{ route('teams.index') }}" class="w-full sm:max-w-sm">
-      <div class="relative">
-        <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama..." autocomplete="off"
-          class="w-full rounded-md border border-gray-300 bg-white  px-4 py-2.5 pr-10 text-sm text-gray-700 placeholder-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition">
-        <span class="absolute inset-y-0 right-3 flex items-center text-gray-400">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="m21 21-4.35-4.35m1.6-5.15a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
-          </svg>
-        </span>
-      </div>
-    </form>
+  <x-search-bar search-route="{{ route('teams.index') }}" add-route="{{ route('teams.create') }}" add-label="Tambah Team" />
 
-    <a href="{{ route('teams.create') }}"
-      class="inline-flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 transition">
-      Tambah Team
-    </a>
-  </div>
+  <div class="bg-neutral-primary-soft rounded-base border border-default mb-4">
+    <div class="p-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        @forelse ($teams as $team)
+          <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
 
-  <div class="overflow-x-auto bg-white border border-gray-200 rounded-md shadow-sm">
-    <table class="min-w-full text-sm text-gray-700">
-      <thead class="bg-gray-50 text-gray-500 uppercase text-xs">
-        <tr>
-          <th class="px-6 py-4 text-left">#</th>
-          <th class="px-6 py-4 text-left">Nama</th>
-          <th class="px-6 py-4 text-left">Posisi</th>
-          <th class="px-6 py-4 text-center">Urutan</th>
-          <th class="px-6 py-4 text-center">Sosial Media</th>
-          <th class="px-6 py-4 text-right">Aksi</th>
-        </tr>
-      </thead>
-
-      <tbody class="divide-y divide-gray-200">
-        @forelse ($teams as $index => $team)
-          <tr class="hover:bg-gray-50 transition">
-            <td class="px-6 py-4 font-medium">
-              {{ $index + 1 }}
-            </td>
-
-            <td class="px-6 py-4">
-              <div class="flex items-center gap-4">
+            <div class="bg-linear-to-br from-indigo-50 to-purple-50 p-6 pb-8">
+              <div class="flex flex-col items-center text-center">
                 <img src="{{ asset('storage/' . $team->photo) }}" alt="{{ $team->fullname }}"
-                  class="w-12 h-12 rounded-full object-cover border border-gray-300">
-                <div>
-                  <p class="font-semibold text-gray-900">
-                    {{ $team->fullname }}
-                  </p>
-                  <p class="text-xs text-gray-500">
-                    {{ $team->position }}
-                  </p>
-                </div>
+                  class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg mb-3">
+
+                <h3 class="font-bold text-gray-900 text-lg">
+                  {{ $team->fullname }}
+                </h3>
+                <span class="text-gray-700 font-medium text-sm">
+                  {{ $team->position }}
+                </span>
               </div>
-            </td>
+            </div>
 
-            <td class="px-6 py-4">
-              <span
-                class="inline-flex items-center px-3 py-1 rounded-full
-              bg-indigo-50 text-indigo-600 text-xs font-medium">
-                {{ $team->position }}
-              </span>
-            </td>
+            <div class="p-5 flex flex-col flex-1">
 
-            <td class="px-6 py-4 text-center font-medium text-gray-800">
-              {{ $team->sort_order }}
-            </td>
+              <ul class="list-none space-y-2 min-h-8 text-center">
+                <li class="px-3 py-1.5 rounded-md bg-red-300 text-red-800 text-xs font-medium shadow-sm">
+                  Instagram : {{ $team->instagram_link ?? '-' }}
+                </li>
 
-            <td class="px-6 py-4 text-center">
-              <div class="flex items-center justify-center gap-3">
-                @if ($team->instagram_link)
-                  <a href="{{ $team->instagram_link }}" target="_blank"
-                    class="text-gray-400 hover:text-pink-500 transition">
-                    Instagram
-                  </a>
-                @endif
+                <li>
+                <li class="px-3 py-1.5 rounded-md bg-blue-300 text-blue-800 text-xs font-medium shadow-sm">
+                  LinkedIn : {{ $team->linkedin_link ?? '-' }}
+                </li>
+                </li>
+              </ul>
 
-                @if ($team->linkedin_link)
-                  <a href="{{ $team->linkedin_link }}" target="_blank"
-                    class="text-gray-400 hover:text-blue-600 transition">
-                    LinkedIn
-                  </a>
-                @endif
-              </div>
-            </td>
 
-            <td class="px-6 py-4 text-right">
-              <div class="flex justify-end gap-2">
+              <div class="flex gap-2 pt-4 mt-auto">
                 <a href="{{ route('teams.edit', $team) }}"
-                  class="px-3 py-1.5 rounded-lg text-xs font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 transition">
+                  class="flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-yellow-600 rounded-sm hover:bg-yellow-700 transition">
                   Edit
                 </a>
 
-                <form action="{{ route('teams.destroy', $team) }}" method="POST"
-                  onsubmit="return confirm('Hapus data ini?')">
-                  @csrf
-                  @method('DELETE')
-                  <button
-                    class="px-3 py-1.5 rounded-lg text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 transition">
-                    Hapus
-                  </button>
-                </form>
+                <x-confirm-delete :action="route('teams.destroy', $team)" label="Hapus" class="flex-1" />
               </div>
-            </td>
-          </tr>
+            </div>
+          </div>
         @empty
-          <tr>
-            <td colspan="6" class="px-6 py-10 text-center text-gray-500">
-              Data team kosong
-            </td>
-          </tr>
+          <div class="col-span-1 md:col-span-2 lg:col-span-4 bg-white p-12">
+            <div class="flex flex-col items-center justify-center text-center">
+              <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <p class="text-gray-500 text-md font-medium">Tidak ada anggota team ditemukan</p>
+              <p class="text-gray-400 text-sm mt-1">Mulai dengan menambahkan anggota team baru</p>
+            </div>
+          </div>
         @endforelse
-      </tbody>
-    </table>
+      </div>
+    </div>
+    <div class="p-4 border-t border-gray-200">
+      {{ $teams->links() }}
+    </div>
   </div>
 @endsection

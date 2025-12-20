@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
 {
@@ -17,9 +18,16 @@ class ClientController extends Controller
 			'admin.clients.index',
 			[
 				'title' => 'Klien',
-				'clients' => Client::paginate(6)
+				'clients' => Client::simplePaginate(8)
 			]
 		);
+	}
+
+	public function create()
+	{
+		return view('admin.clients.create', [
+			'title' => 'Tambah Klien'
+		]);
 	}
 
 	/**
@@ -47,10 +55,10 @@ class ClientController extends Controller
 			}
 
 			DB::commit();
-			return redirect()->back()->with('success', 'Klien berhasil ditambahkan.');
+			return redirect()->route('clients.index')->with('success', 'Klien berhasil ditambahkan.');
 		} catch (\Exception $e) {
 			DB::rollBack();
-			return back()->withInput()->with('error:', $e->getMessage());
+			return back()->withInput();
 		}
 	}
 
@@ -67,6 +75,19 @@ class ClientController extends Controller
 	 */
 	public function destroy(Client $client)
 	{
-		//
+		try {
+			DB::beginTransaction();
+
+			if ($client->cover_path) {
+				Storage::disk('public')->delete($client->client_logo);
+			}
+
+			$client->delete();
+			DB::commit();
+			return back()->with('success', 'Klien berhasil dihapus.');
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return back();
+		}
 	}
 }

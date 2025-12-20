@@ -57,8 +57,8 @@
                 <span x-show="preview">Cover baru</span>
               </p>
 
-              <img :src="preview ?? oldCover"
-                class="w-40 h-auto rounded-md border border-gray-200 shadow-sm object-cover">
+              <img :src="preview ?? oldCover" class="w-40 h-auto rounded-md border border-gray-200 shadow-sm object-cover"
+                loading="lazy">
             </div>
           </template>
         </div>

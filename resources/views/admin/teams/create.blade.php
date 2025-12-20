@@ -7,7 +7,7 @@
       @csrf
 
       <div class="p-6 space-y-6">
-        {{-- nama layanan --}}
+        {{-- nama lengkap --}}
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <label for="fullname" class="block text-sm font-medium text-gray-900 mb-2">
@@ -49,7 +49,7 @@
         </div>
         {{-- end  --}}
 
-        {{-- cover  --}}
+        {{-- photo  --}}
         <div x-data="{ preview: null }">
           <label class="block text-sm font-medium mb-2" for="photo">
             Foto Profil

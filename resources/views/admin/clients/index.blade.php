@@ -6,10 +6,15 @@
   <x-search-bar search-route="{{ route('clients.index') }}" add-route="{{ route('clients.create') }}"
     add-label="Tambah Klien" />
 
-
   {{-- data view --}}
   <div class="bg-neutral-primary-soft rounded-base border border-default mb-4">
     <div class="p-4">
+
+      @if ($clients->isNotEmpty())
+        <x-confirm-delete class="mb-2 bg-red-600 rounded-md text-white text-sm font-medium px-3 py-1 cursor-pointer"
+          label="Hapus Semua Data" :action="route('truncate-clients')" message="Apakah anda yakin ingin menghapus semua data?" />
+      @endif
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         @forelse ($clients as $client)
           <div class="bg-white rounded-sm shadow-sm overflow-hidden flex flex-col h-full">
@@ -31,7 +36,7 @@
 
             <div class="p-5 flex flex-col flex-1">
               <h3 class="text-sm font-semibold text-gray-900 mb-2">
-                {{ substr($client->filename, strpos($client->filename, '-') + 1) }}
+                {{ pathinfo(substr($client->filename, strpos($client->filename, '-') + 1), PATHINFO_FILENAME) }}
               </h3>
 
               <div class="mt-auto flex items-center gap-2">
@@ -44,7 +49,7 @@
             </div>
           </div>
         @empty
-          <div class="col-span-1 md:col-span-2 lg:col-span-3 bg-white p-12">
+          <div class="col-span-1 md:col-span-2 lg:col-span-4 bg-white p-12">
             <div class="flex flex-col items-center justify-center text-center">
               <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

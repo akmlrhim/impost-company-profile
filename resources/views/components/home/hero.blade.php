@@ -85,14 +85,15 @@
           @foreach ($clients as $client)
             <img src="{{ asset('storage/' . $client->client_logo) }}"
               class="h-10 sm:h-12 md:h-14 lg:h-20 xl:h-24 w-auto transition" alt="{{ $client->filename }}"
-              loading="lazy" />
+              loading="lazy" decoding="async" />
           @endforeach
         </div>
         <div class="flex items-center gap-10 sm:gap-16 px-4 shrink-0 marquee-content">
           @foreach ($clients as $client)
             <img src="{{ asset('storage/' . $client->client_logo) }}"
               class="h-10 sm:h-12 md:h-14 lg:h-20 xl:h-24 w-auto transition" alt="{{ $client->filename }}"
-              loading="lazy" />
+              loading="lazy" decoding="async"
+              title=" {{ pathinfo(substr($client->filename, strpos($client->filename, '-') + 1), PATHINFO_FILENAME) }}" />
           @endforeach
         </div>
       </div>

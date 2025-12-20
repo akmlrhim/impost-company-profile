@@ -40,6 +40,7 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::resource('teams', TeamController::class)->except('show');
 
 		// client route 
-		Route::resource('clients', ClientController::class);
+		Route::resource('clients', ClientController::class)->except('show');
+		Route::delete('truncate-clients', [ClientController::class, 'truncate'])->name('truncate-clients');
 	});
 });

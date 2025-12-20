@@ -49,6 +49,7 @@ class ClientController extends Controller
 				$path = $logo->storeAs('client_logo', $filename, 'public');
 
 				Client::create([
+					'name' => '',
 					'filename' => $filename,
 					'client_logo' => $path
 				]);
@@ -62,12 +63,25 @@ class ClientController extends Controller
 		}
 	}
 
+	public function edit(Client $client)
+	{
+		return view(
+			'admin.clients.edit',
+			[
+				'title' => 'Edit Klien',
+				'client' => $client
+			]
+		);
+	}
+
 	/**
 	 * Update the specified resource in storage.
 	 */
 	public function update(Request $request, Client $client)
 	{
-		//
+		$request->validate([
+			'filename' => ''
+		]);
 	}
 
 	/**
@@ -85,6 +99,28 @@ class ClientController extends Controller
 			$client->delete();
 			DB::commit();
 			return back()->with('success', 'Klien berhasil dihapus.');
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return back();
+		}
+	}
+
+	public function truncate()
+	{
+		try {
+			DB::beginTransaction();
+
+			$clients = Client::whereNotNull('client_logo')->get();
+
+			foreach ($clients as $client) {
+				if (Storage::disk('public')->exists($client->client_logo)) {
+					Storage::disk('public')->delete($client->client_logo);
+				}
+			}
+
+			Client::query()->delete();
+			DB::commit();
+			return back()->with('success', 'Semua data klien berhasil dihapus.');
 		} catch (\Exception $e) {
 			DB::rollBack();
 			return back();

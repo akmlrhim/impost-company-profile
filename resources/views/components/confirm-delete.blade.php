@@ -1,12 +1,14 @@
 @props([
     'action' => '',
-    'label' => 'Delete',
+    'label' => 'Hapus',
     'modalId' => 'confirm-delete-modal',
+    'message' => 'Apakah anda yakin ingin menghapus data ini?',
+    'class' =>
+        'cursor-pointer flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-red-600 rounded-sm hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500',
 ])
 
 <button type="button" data-modal-target="{{ $modalId }}" data-modal-toggle="{{ $modalId }}"
-  data-action="{{ $action }}"
-  class="cursor-pointer flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-red-600 rounded-sm hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+  data-action="{{ $action }}" class="{{ $class }}">
   {{ $label }}
 </button>
 
@@ -26,7 +28,7 @@
       </h3>
 
       <p class="mb-6 text-body text-center">
-        Apakah anda yakin ingin menghapus data ini?
+        {{ $message }}
       </p>
 
       <div class="flex justify-center gap-4">

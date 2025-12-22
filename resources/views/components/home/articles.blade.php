@@ -5,7 +5,7 @@
       class="text-xl sm:text-2xl lg:text-4xl font-bold pb-1 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-3">
       Artikel
     </h2>
-    <p class="text-white text-xs sm:text-sm max-w-2xl mx-auto">
+    <p class="text-white text-xs sm:text-sm lg:text-base max-w-2xl mx-auto">
       Temukan artikel, tips, dan panduan terbaru untuk membantu Anda berkembang
     </p>
   </div>
@@ -110,7 +110,7 @@
   </div>
 
   <div class="text-center mt-6">
-    <a href="#"
+    <a href="{{ route('article.all') }}"
       class="inline-flex items-center text-xs sm:text-sm font-bold gap-2 px-4 sm:px-6 py-2.5 bg-linear-to-r from-impost-primary via-impost-third to-impost-fourth text-white rounded-md">
       Lihat Semua Artikel
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

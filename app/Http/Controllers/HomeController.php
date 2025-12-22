@@ -52,14 +52,33 @@ class HomeController extends Controller
 	{
 		$title = 'Artikel';
 		$latestArticle = $article->where('id', '!=', $article->id)->latest()->take(4)->get();
+
 		return view('public.article', compact('title', 'article', 'latestArticle'));
+	}
+
+	public function articleAll()
+	{
+		$title = 'Semua Artikel';
+		$page = request()->get('page', 1);
+
+		$articles = Cache::remember(
+			"articles_all_page_{$page}",
+			now()->addMinutes(15),
+			function () {
+				return Article::latest()->paginate(9);
+			}
+		);
+
+		return view('public.article-all', compact('title', 'articles'));
 	}
 
 	public function about()
 	{
-		return view('public.about', [
-			'title' => 'About',
-			'team' => Team::get()
-		]);
+		$title = 'About';
+		$team = Team::get();
+
+		return view('public.about', compact('title', 'team'));
 	}
+
+	public function contact() {}
 }

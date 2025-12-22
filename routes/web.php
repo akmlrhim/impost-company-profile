@@ -19,7 +19,8 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::get('login', [AuthController::class, 'index'])->name('login');
 		Route::post('login', [AuthController::class, 'login'])->name('login.store');
 		Route::get('about', [HomeController::class, 'about'])->name('about');
-		Route::get('articles/{article:slug}', [HomeController::class, 'article'])->name('article.detail');
+		Route::get('articles/view/{article:slug}', [HomeController::class, 'article'])->name('article.detail');
+		Route::get('article/view', [HomeController::class, 'articleAll'])->name('article.all');
 		Route::post('article/comment', [CommentController::class, 'store'])->name('article.comment');
 	});
 

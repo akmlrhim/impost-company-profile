@@ -68,7 +68,6 @@
         }
     }" class="pt-8 md:pt-12">
 
-      <!-- TITLE -->
       <div class="text-center max-w-3xl mx-auto mb-6 md:mb-8">
         <p
           class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
@@ -79,7 +78,6 @@
         </p>
       </div>
 
-      <!-- MOBILE SLIDER -->
       <div class="md:hidden overflow-hidden">
         <div class="flex transition-transform duration-300 ease-in-out select-none cursor-grab active:cursor-grabbing"
           :style="`transform: translateX(-${currentSlide * 100}%)`" @touchstart="handleTouchStart($event)"

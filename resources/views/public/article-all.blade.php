@@ -45,7 +45,7 @@
           Semua Artikel
         </h1>
         <p class="text-white text-sm md:text-base max-w-2xl mx-auto">
-          Jelajahi koleksi artikel kami tentang berbagai topik menarik
+          Jelajahi koleksi artikel kami tentang berbagai topik menarik dari kami
         </p>
       </div>
 

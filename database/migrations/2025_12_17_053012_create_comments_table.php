@@ -17,6 +17,7 @@ return new class extends Migration
 			$table->string('email', 120)->index();
 			$table->string('fullname', 120)->index();
 			$table->text('comment');
+			$table->string('status')->default('pending');
 			$table->timestamps();
 		});
 	}

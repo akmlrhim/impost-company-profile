@@ -13,7 +13,17 @@
   <div class="bg-gray-900 border border-gray-800 rounded-md p-4 sm:p-6 mb-8">
     <h3 class="text-base sm:text-lg font-semibold text-white mb-4">Tulis Komentar</h3>
 
-    <form class="space-y-4" action="{{ route('article.comment') }}" method="POST">
+    <form class="space-y-4" action="{{ route('article.comment') }}" method="POST" id="form-comment"
+      x-data="{
+          loading: false,
+          submitComment() {
+              this.loading = true;
+              getRecaptchaToken((token) => {
+                  document.getElementById('g-recaptcha-response').value = token;
+                  this.$el.submit();
+              })
+          }
+      }" @submit.prevent="submitComment">
       @csrf
 
       {{-- ambil id artikel  --}}
@@ -61,10 +71,12 @@
         </p>
       </div>
 
+      <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+
       <div class="flex items-center justify-between pt-2">
-        <button type="submit"
-          class="py-2 sm:py-2.5 px-4 sm:px-6 text-xs sm:text-sm font-semibold text-white bg-primary-600 rounded-md hover:bg-primary-700 focus:ring-2 focus:ring-primary-500">
-          Kirim Komentar
+        <button type="submit" :disabled="loading"
+          class="py-2 sm:py-2.5 px-4 sm:px-6 text-xs sm:text-sm font-semibold cursor-pointer text-white bg-primary-600 rounded-md hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed">
+          <span x-text="loading ? 'Mengirim..' : 'Kirim Komentar'"></span>
         </button>
 
         <button type="reset" class="text-xs sm:text-sm text-gray-500 hover:text-white">
@@ -117,3 +129,22 @@
     @endif
   </div>
 </section>
+
+@push('scripts')
+  <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}" async defer>
+  </script>
+
+  <script>
+    function getRecaptchaToken(callback) {
+      grecaptcha.ready(function() {
+        grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {
+          action: 'comment'
+        }).then(function(token) {
+          callback(token)
+        }).catch(function(error) {
+          alert('Gagal memuat keamanan Recaptcha, silakan refresh halaman.')
+        })
+      })
+    }
+  </script>
+@endpush

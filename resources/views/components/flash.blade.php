@@ -17,7 +17,7 @@
 @foreach ($messages as $type => $message)
   @if ($message)
     <div x-data="{ show: true }" x-show="show" x-transition
-      class="mb-3 p-3 rounded-sm font-medium text-sm flex justify-between items-center {{ $styles[$type] }}">
+      class="mb-3 p-3 rounded-sm font-medium text-xs sm:text-sm flex justify-between items-center {{ $styles[$type] }}">
       <span>{{ $message }}</span>
 
       <button type="button" @click="show = false"

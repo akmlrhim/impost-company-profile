@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-  <x-flash></x-flash>
+  <x-flash />
 
   <x-search-bar search-route="{{ route('teams.index') }}" add-route="{{ route('teams.create') }}" add-label="Tambah Team" />
 
@@ -45,7 +45,7 @@
                   Edit
                 </a>
 
-                <x-confirm-delete :action="route('teams.destroy', $team)" label="Hapus" class="flex-1" />
+                <x-confirm-delete :action="route('teams.destroy', $team)" label="Hapus" />
               </div>
             </div>
           </div>

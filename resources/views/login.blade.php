@@ -7,7 +7,6 @@
 
   <title>{{ $title ?? 'Login Pages' }}</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
@@ -18,12 +17,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon.png') }}">
 
-  <!-- Styles / Scripts -->
   @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   @endif
 
-  @stack('styles')
 </head>
 
 <body>
@@ -40,16 +37,29 @@
           Login
         </h1>
 
-        <form class="space-y-6" action="{{ route('login.store') }}" method="POST" x-data="{ loading: false }"
-          @submit.prevent="loading = true; $el.submit()">
+        <x-flash />
+
+        <form class="space-y-6" action="{{ route('login') }}" method="POST" x-data="{
+            loading: false,
+            submitLogin() {
+                this.loading = true;
+                getRecaptchaToken((token) => {
+                    document.getElementById('g-recaptcha-response').value = token;
+                    this.$el.submit();
+                });
+            }
+        }"
+          @submit.prevent="submitLogin">
           @csrf
 
           <div>
             <label for="email" class="block mb-2 text-sm font-medium text-gray-300">
-              Email
+              <span>Email</span>
+              <span class="text-red-500 ml-1">*</span>
             </label>
-            <input type="email" id="email" placeholder="name@company.com" autocomplete="off" name="email"
-              class="text-sm bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2" />
+            <input type="email" id="email" name="email"
+              class="text-sm bg-gray-700 border border-gray-600 text-white rounded-sm block w-full p-2"
+              placeholder="name@company.com" required value="{{ old('email') }}" autocomplete="off" />
             @error('email')
               <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
             @enderror
@@ -57,14 +67,18 @@
 
           <div>
             <label for="password" class="block mb-2 text-sm font-medium text-gray-300">
-              Password
+              <span>Password</span>
+              <span class="text-red-500 ml-1">*</span>
             </label>
-            <input type="password" id="password" placeholder="••••••••" autocomplete="off" name="password"
-              class="text-sm bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2" />
+            <input type="password" id="password" name="password"
+              class="text-sm bg-gray-700 border border-gray-600 text-white rounded-sm block w-full p-2"
+              placeholder="••••••••" required />
             @error('password')
               <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
             @enderror
           </div>
+
+          <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
           <button type="submit" :disabled="loading"
             class="cursor-pointer w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-sm text-sm px-5 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed">
@@ -72,17 +86,31 @@
           </button>
 
           <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-            <a href="{{ route('home') }}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">
-              Kembali ke Impost Media ?
-            </a>
+            <a href="{{ route('home') }}"
+              class="font-medium text-primary-600 hover:underline dark:text-primary-500">Kembali ke Impost Media ?</a>
           </p>
         </form>
       </div>
     </div>
   </div>
 
+  {{-- script  --}}
+  <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}" async defer>
+  </script>
 
-  @stack('scripts')
+  <script>
+    function getRecaptchaToken(callback) {
+      grecaptcha.ready(function() {
+        grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {
+          action: 'login'
+        }).then(function(token) {
+          callback(token);
+        }).catch(function(error) {
+          alert("Gagal memuat keamanan Recaptcha, silakan refresh halaman.");
+        });
+      });
+    }
+  </script>
 
 </body>
 

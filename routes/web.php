@@ -16,8 +16,8 @@ Route::middleware('throttle:30,1')->group(function () {
 
 	Route::middleware('guest')->group(function () {
 		Route::get('/', [HomeController::class, 'index'])->name('home');
-		Route::get('login', [AuthController::class, 'index'])->name('login');
-		Route::post('login', [AuthController::class, 'login'])->name('login.store');
+		Route::get('login', [AuthController::class, 'index'])->name('login.page');
+		Route::post('login', [AuthController::class, 'login'])->name('login');
 		Route::get('about', [HomeController::class, 'about'])->name('about');
 		Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 		Route::get('articles/view/{article:slug}', [HomeController::class, 'article'])->name('article.detail');

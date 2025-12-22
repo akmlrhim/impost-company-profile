@@ -6,6 +6,9 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class ClientController extends Controller
 {
@@ -40,28 +43,41 @@ class ClientController extends Controller
 			'client_logo.*' => 'image|mimes:jpg,jpeg,png|max:2048',
 		]);
 
+		DB::beginTransaction();
+
 		try {
-			DB::beginTransaction();
+			$manager = new ImageManager(new Driver());
 
 			foreach ($request->file('client_logo') as $logo) {
-				$filename = time() . '-' . $logo->getClientOriginalName();
 
-				$path = $logo->storeAs('client_logo', $filename, 'public');
+				$name = pathinfo($logo->getClientOriginalName(), PATHINFO_FILENAME);
+				$filename = time() . '-' . Str::slug($name) . '.webp';
+
+				$path = storage_path('app/public/client_logo/' . $filename);
+
+				$image = $manager->read($logo);
+				$image->scale(width: 200);
+				$image->toWebp(75)->save($path);
 
 				Client::create([
-					'name' => '',
+					'name' => '-',
 					'filename' => $filename,
-					'client_logo' => $path
+					'client_logo' => 'client_logo/' . $filename,
 				]);
 			}
 
 			DB::commit();
-			return redirect()->route('clients.index')->with('success', 'Klien berhasil ditambahkan.');
+			return redirect()
+				->route('clients.index')
+				->with('success', 'Klien berhasil ditambahkan.');
 		} catch (\Exception $e) {
 			DB::rollBack();
-			return back()->withInput();
+			return back()
+				->withInput()
+				->withErrors($e->getMessage());
 		}
 	}
+
 
 	public function edit(Client $client)
 	{

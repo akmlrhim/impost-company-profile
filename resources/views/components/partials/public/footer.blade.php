@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
       <div>
         <a href="#home" class="flex items-center mb-3 md:mb-4">
-          <img src="{{ asset('img/logo_impost_putih.png') }}" class="h-12 md:h-16 w-auto" alt="IMPOST Logo"
+          <img src="{{ asset('img/logo_impost_putih.webp') }}" class="h-12 md:h-16 w-auto" alt="IMPOST Logo"
             loading="lazy" />
         </a>
         <p class="text-xs sm:text-sm text-white mb-4 md:mb-6">
@@ -26,7 +26,7 @@
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.5835960488944!2d114.73993347453663!3d-3.4509423965234913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de68363c9fb16bd%3A0xd8491b1b5d57a49d!2sImpost%20Media!5e0!3m2!1sid!2sid!4v1765462496655!5m2!1sid!2sid"
             width="100%" height="100%" style="border:0; min-height: 250px;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade" class="w-full h-full md:min-h-[300px]">
+            referrerpolicy="no-referrer-when-downgrade" class="w-full h-full md:min-h-75">
           </iframe>
         </div>
       </div>

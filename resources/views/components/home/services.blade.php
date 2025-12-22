@@ -79,10 +79,10 @@
                 <div class="h-48 overflow-hidden">
                   @if ($s->cover_path)
                     <img src="{{ asset('storage/' . $s->cover_path) }}" class="w-full h-full object-cover"
-                      loading="lazy" />
+                      loading="lazy" decoding="async" />
                   @else
-                    <img src="{{ asset('img/service_default.jpg') }}" class="w-full h-full object-cover"
-                      loading="lazy" />
+                    <img src="{{ asset('img/service_default.webp') }}" width="400" height="250"
+                      class="w-full h-full object-cover" loading="lazy" decoding="async" />
                   @endif
                 </div>
                 <div class="p-4">
@@ -149,7 +149,7 @@
                 @if ($s->cover_path)
                   <img src="{{ asset('storage/' . $s->cover_path) }}" class="w-full h-full object-cover">
                 @else
-                  <img src="{{ asset('img/service_default.jpg') }}" class="w-full h-full object-cover">
+                  <img src="{{ asset('img/service_default.webp') }}" class="w-full h-full object-cover">
                 @endif
               </div>
               <div class="p-6">

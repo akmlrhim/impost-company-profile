@@ -4,7 +4,7 @@
   <div class="overflow-y-auto py-5 px-3 h-full bg-gray-900">
 
     <a href="{{ route('dashboard') }}" class="flex items-center mb-6 ps-2">
-      <img src="{{ asset('img/logo_impost_putih.png') }}" class="mr-3 h-16" alt="Logo" />
+      <img src="{{ asset('img/logo_impost_putih.webp') }}" class="mr-3 h-16" alt="Logo" />
     </a>
 
     <ul class="space-y-2 font-sans font-medium text-md text-gray-300">

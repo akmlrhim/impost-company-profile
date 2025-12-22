@@ -47,7 +47,7 @@
 
 <section id="home"
   class="relative min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 flex items-center bg-cover bg-top bg-no-repeat"
-  style="background-image:url('{{ asset('img/Front_Cover_IM.png') }}');">
+  style="background-image:url('{{ asset('img/Front_Cover_IM.webp') }}');">
   <div class="absolute inset-0 bg-linear-to-b from-black/70 via-black/60 to-black/80"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center w-full">
     <h1
@@ -93,7 +93,7 @@
             <img src="{{ asset('storage/' . $client->client_logo) }}"
               class="h-10 sm:h-12 md:h-14 lg:h-20 xl:h-24 w-auto transition" alt="{{ $client->filename }}"
               loading="lazy" decoding="async"
-              title=" {{ pathinfo(substr($client->filename, strpos($client->filename, '-') + 1), PATHINFO_FILENAME) }}" />
+              title="{{ pathinfo(substr($client->filename, strpos($client->filename, '-') + 1), PATHINFO_FILENAME) }}" />
           @endforeach
         </div>
       </div>

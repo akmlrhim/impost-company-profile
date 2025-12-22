@@ -26,7 +26,7 @@
             @if ($article->cover_path)
               <img src="{{ asset('storage/' . $article->cover_path) }}" class="w-full h-full object-cover">
             @else
-              <img src="{{ asset('img/article_default.jpg') }}" alt="default" class="w-full h-full object-cover">
+              <img src="{{ asset('img/article_default.webp') }}" alt="default" class="w-full h-full object-cover">
             @endif
           </div>
 
@@ -79,7 +79,7 @@
           @if ($article->cover_path)
             <img src="{{ asset('storage/' . $article->cover_path) }}" class="w-full h-full object-cover">
           @else
-            <img src="{{ asset('img/article_default.jpg') }}" alt="default" class="w-full h-full object-cover">
+            <img src="{{ asset('img/article_default.webp') }}" alt="default" class="w-full h-full object-cover">
           @endif
         </div>
 

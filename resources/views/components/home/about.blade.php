@@ -26,20 +26,52 @@
 
     {{-- konten  --}}
     <div x-data="{
-        active: 0,
-        cards: [
-            { title: 'Data-Driven Approach', desc: 'Strategi pemasaran yang sepenuhnya berbasis pada data terukur dan analisis mendalam.' },
-            { title: 'Terbukti, Terjangkau, & Fleksibel', desc: 'Solusi yang telah teruji berhasil, hemat biaya, dan mudah disesuaikan dengan kebutuhan anda.' },
-            { title: 'All-in-One Digital Marketing', desc: 'Semua layanan branding dan pemasaran digital terintegrasi di bawah satu atap.' },
-            { title: 'Team Ahli dan Berpengalaman', desc: 'Akses cepat ke tim profesional tanpa harus menanggung biaya rekrutmen internal.' },
-            { title: 'Solusi Hemat Biaya & Waktu', desc: 'Memangkas biaya operasional dan mempercepat waktu eksekusi kampanye.' },
-            { title: 'Hasil Dijamin Dibayar Berdasarkan Kinerja', desc: 'Pembayaran yang anda lakukan dikaitkan langsung dengan capaian dan hasil nyata.' }
-        ]
+        currentSlide: 0,
+        totalSlides: 6,
+        startX: 0,
+        isDragging: false,
+    
+        goToSlide(i) {
+            this.currentSlide = i
+        },
+    
+        nextSlide() {
+            this.currentSlide = (this.currentSlide + 1) % this.totalSlides
+        },
+    
+        prevSlide() {
+            this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides
+        },
+    
+        handleTouchStart(e) {
+            this.startX = e.touches[0].clientX
+            this.isDragging = true
+        },
+    
+        handleTouchEnd(e) {
+            if (!this.isDragging) return
+            const diff = this.startX - e.changedTouches[0].clientX
+            if (Math.abs(diff) > 50) diff > 0 ? this.nextSlide() : this.prevSlide()
+            this.isDragging = false
+        },
+    
+        handleMouseDown(e) {
+            this.startX = e.clientX
+            this.isDragging = true
+        },
+    
+        handleMouseUp(e) {
+            if (!this.isDragging) return
+            const diff = this.startX - e.clientX
+            if (Math.abs(diff) > 50) diff > 0 ? this.nextSlide() : this.prevSlide()
+            this.isDragging = false
+        }
     }" class="pt-8 md:pt-12">
 
+      <!-- TITLE -->
       <div class="text-center max-w-3xl mx-auto mb-6 md:mb-8">
         <p
-          class="mt-2 text-base sm:text-lg md:text-xl lg:text-2xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
+          class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
           Kami bukan hanya sekadar Agensi Media Sosial
         </p>
         <p class="mt-2 text-[11px] sm:text-xs md:text-sm lg:text-base font-medium text-white">
@@ -47,39 +79,55 @@
         </p>
       </div>
 
-      {{-- mobile sliders  --}}
-      <div class="md:hidden">
-        <div x-ref="slider" class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth pb-2"
-          @scroll.debounce.100ms="active = Math.round($el.scrollLeft / $el.offsetWidth)">
-          <template x-for="(card, index) in cards" :key="index">
-            <div class="w-full shrink-0 snap-center px-2">
-              <div class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-xl p-4">
-                <h3 class="text-sm sm:text-base font-bold text-white mb-2" x-text="card.title"></h3>
-                <p class="text-white text-xs sm:text-sm leading-relaxed" x-text="card.desc"></p>
+      <!-- MOBILE SLIDER -->
+      <div class="md:hidden overflow-hidden">
+        <div class="flex transition-transform duration-300 ease-in-out select-none cursor-grab active:cursor-grabbing"
+          :style="`transform: translateX(-${currentSlide * 100}%)`" @touchstart="handleTouchStart($event)"
+          @touchend="handleTouchEnd($event)" @mousedown="handleMouseDown($event)" @mouseup="handleMouseUp($event)"
+          @mouseleave="isDragging = false">
+
+          <template
+            x-for="(card, index) in [
+					{ title: 'Data-Driven Approach', desc: 'Strategi pemasaran yang sepenuhnya berbasis pada data terukur dan analisis mendalam.' },
+					{ title: 'Terbukti, Terjangkau, & Fleksibel', desc: 'Solusi yang telah teruji berhasil, hemat biaya, dan mudah disesuaikan.' },
+					{ title: 'All-in-One Digital Marketing', desc: 'Semua layanan branding dan pemasaran digital terintegrasi.' },
+					{ title: 'Team Ahli dan Berpengalaman', desc: 'Akses ke tim profesional tanpa biaya rekrutmen internal.' },
+					{ title: 'Solusi Hemat Biaya & Waktu', desc: 'Memangkas biaya operasional dan mempercepat eksekusi.' },
+					{ title: 'Hasil Dibayar Berdasarkan Kinerja', desc: 'Pembayaran dikaitkan langsung dengan hasil nyata.' }
+				]"
+            :key="index">
+
+            <div class="w-full shrink-0 px-3">
+              <div
+                class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-xl p-4 h-full">
+                <h3 class="text-sm font-bold text-white mb-2" x-text="card.title"></h3>
+                <p class="text-xs text-white leading-relaxed" x-text="card.desc"></p>
               </div>
             </div>
+
           </template>
         </div>
 
-        {{-- indicator --}}
+        <!-- INDICATOR -->
         <div class="flex justify-center gap-2 mt-4">
-          <template x-for="(card, index) in cards" :key="index">
-            <button
-              @click="
-                active = index;
-                $refs.slider.scrollTo({ left: index * $refs.slider.offsetWidth, behavior: 'smooth' });
-              "
-              class="h-2 rounded-full transition-all"
-              :class="active === index ? 'bg-impost-primary w-6' : 'bg-gray-400 w-2'">
+          <template x-for="i in totalSlides" :key="i">
+            <button @click="goToSlide(i - 1)" class="rounded-full transition-all duration-300"
+              :class="currentSlide === i - 1 ? 'bg-impost-primary w-6 h-2' : 'bg-gray-500 w-2 h-2'">
             </button>
           </template>
         </div>
-
       </div>
 
-      {{-- desktop grids --}}
-      <div class="hidden md:grid grid-cols-3 gap-4">
-        <template x-for="(card, index) in cards" :key="index">
+      <div class="hidden md:grid grid-cols-3 gap-4 mt-6">
+        <template
+          x-for="card in [
+						{ title: 'Data-Driven Approach', desc: 'Strategi pemasaran yang sepenuhnya berbasis pada data terukur dan analisis mendalam.' },
+						{ title: 'Terbukti, Terjangkau, & Fleksibel', desc: 'Solusi yang telah teruji berhasil, hemat biaya, dan mudah disesuaikan.' },
+						{ title: 'All-in-One Digital Marketing', desc: 'Semua layanan branding dan pemasaran digital terintegrasi.' },
+						{ title: 'Team Ahli dan Berpengalaman', desc: 'Akses ke tim profesional tanpa biaya rekrutmen internal.' },
+						{ title: 'Solusi Hemat Biaya & Waktu', desc: 'Memangkas biaya operasional dan mempercepat eksekusi.' },
+						{ title: 'Hasil Dibayar Berdasarkan Kinerja', desc: 'Pembayaran dikaitkan langsung dengan hasil nyata.' }
+			]">
           <div class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-2xl p-4">
             <h3 class="text-md font-bold text-white mb-3" x-text="card.title"></h3>
             <p class="text-white text-sm leading-relaxed" x-text="card.desc"></p>
@@ -87,6 +135,7 @@
         </template>
       </div>
     </div>
+
 
     <div class="text-center mt-8 md:mt-12">
       <a href="{{ route('about') }}"

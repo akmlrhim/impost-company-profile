@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
+use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
@@ -17,13 +20,18 @@ class ArticleController extends Controller
 	public function index()
 	{
 		$search = request()->query('search');
+		$page = request()->query('page', 1);
 
-		$articles = Article::when($search, function ($query, $search) {
-			$query->where('title', 'like', '%' . $search . '%');
-		})
-			->latest()
-			->simplePaginate(8)
-			->withQueryString();
+		$cache_key = 'articles:' . md5($search) . ':page:' . $page;
+
+		$articles = Cache::remember($cache_key, now()->addMinutes(10), function () use ($search) {
+			return Article::when($search, function ($query, $search) {
+				$query->where('title', 'like', '%' . $search . '%');
+			})
+				->latest()
+				->simplePaginate(8)
+				->withQueryString();
+		});
 
 		return view('admin.articles.index', [
 			'title' => 'Artikel',

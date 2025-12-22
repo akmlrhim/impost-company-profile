@@ -105,7 +105,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       var quill = new Quill('#editor', {
         theme: 'snow',
-        placeholder: 'Tulis konten Anda di sini...',
+        placeholder: 'Tulis konten anda di sini...',
         modules: {
           toolbar: {
             container: [

@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  @stack('head')
+
   <title>IMPOST MEDIA - {{ $title ?? 'Home Page' }}</title>
 
   <!-- Fonts -->
@@ -26,7 +28,7 @@
   @stack('styles')
 </head>
 
-<body class="bg-impost-fifth">
+<body class="bg-gray-950">
 
   <x-partials.public.navbar />
 

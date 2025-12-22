@@ -75,10 +75,22 @@ class HomeController extends Controller
 	public function about()
 	{
 		$title = 'About';
-		$team = Team::get();
+		$page = request()->get('page', 1);
+
+		$team = Cache::remember(
+			"team_pages_{$page}",
+			now()->addMinutes(15),
+			function () {
+				return Team::get();
+			}
+		);
 
 		return view('public.about', compact('title', 'team'));
 	}
 
-	public function contact() {}
+	public function contact()
+	{
+		$title = 'Kontak';
+		return view('public.contact', compact('title'));
+	}
 }

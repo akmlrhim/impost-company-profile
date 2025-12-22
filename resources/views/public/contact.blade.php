@@ -1,0 +1,62 @@
+@extends('layouts.public')
+@section('content')
+  <main class="sm:pt-28 pt-20 pb-16 bg-impost-fifth antialiased">
+    <div class="px-4 mx-auto max-w-7xl">
+
+      <nav class="flex mb-8" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+          <li class="inline-flex items-center">
+            <a href="{{ url('/') }}" class="inline-flex items-center text-xs sm:text-sm font-medium text-white">
+              <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                </path>
+              </svg>
+              Home
+            </a>
+          </li>
+          <li aria-current="page">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <span class="ml-1 text-xs sm:text-sm font-medium text-white md:ml-2">Kontak</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+
+      <div class="mb-12 text-center">
+        <h1
+          class="text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
+          Kontak Kami
+        </h1>
+        <p class="text-white text-sm md:text-base max-w-2xl mx-auto">
+          Hubungi kami untuk informasi lebih lanjut atau pertanyaan.
+        </p>
+      </div>
+
+      <section class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        {{-- desktop --}}
+        <x-public.contact.desktop />
+
+        {{-- mobile  --}}
+        <x-public.contact.mobile />
+
+        <div class="bg-linear-to-br from-red-50 to-rose-50 border border-red-200 rounded-lg p-4 shadow-sm">
+          <div class="text-center space-y-1.5">
+            <p class="text-sm font-bold text-red-600">Waktu Pelayanan</p>
+            <p class="text-2xl font-bold text-red-600">09.00 - 17.00</p>
+            <p class="text-xs text-gray-600 font-medium">Senin - Sabtu</p>
+          </div>
+        </div>
+      </section>
+
+
+
+    </div>
+  </main>
+@endsection

@@ -1,13 +1,12 @@
 @extends('layouts.public')
 @section('content')
-  <main class="pt-28 pb-16 bg-impost-fifth antialiased">
+  <main class="sm:pt-28 pt-20 pb-16 bg-impost-fifth antialiased">
     <div class="px-4 mx-auto max-w-7xl">
 
       <nav class="flex mb-8" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
           <li class="inline-flex items-center">
-            <a href="{{ url('/') }}"
-              class="inline-flex items-center text-xs sm:text-sm font-medium text-gray-400 hover:text-white transition-colors">
+            <a href="{{ url('/') }}" class="inline-flex items-center text-xs sm:text-sm font-medium text-white">
               <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
@@ -18,23 +17,23 @@
           </li>
           <li>
             <div class="flex items-center">
-              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd"
                   d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
               <a href="{{ url('/') }}#blog"
-                class="ml-1 text-xs sm:text-sm font-medium text-gray-400 hover:text-white transition-colors md:ml-2">Articles</a>
+                class="ml-1 text-xs sm:text-sm font-medium text-white md:ml-2">Articles</a>
             </div>
           </li>
           <li aria-current="page">
             <div class="flex items-center">
-              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd"
                   d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span class="ml-1 text-xs sm:text-sm font-medium text-gray-500 md:ml-2">Semua Artikel</span>
+              <span class="ml-1 text-xs sm:text-sm font-medium text-white md:ml-2">Semua Artikel</span>
             </div>
           </li>
         </ol>
@@ -56,9 +55,8 @@
 
           @forelse ($articles as $article)
             <article
-              class="bg-gradient-to-br from-impost-primary via-impost-secondary to-impost-fourth rounded-xl border-2 border-impost-fourth overflow-hidden flex flex-col">
+              class="bg-linear-to-br from-impost-primary via-impost-secondary to-impost-fourth rounded-xl border-2 border-impost-fourth overflow-hidden flex flex-col">
 
-              <!-- Image -->
               <div class="relative h-40 md:h-48 overflow-hidden">
                 @if ($article->cover_path)
                   <img src="{{ asset('storage/' . $article->cover_path) }}" alt="{{ $article->title }}"
@@ -66,29 +64,28 @@
                 @else
                   <img src="{{ asset('img/article_default.webp') }}" alt="default" class="w-full h-full object-cover">
                 @endif
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
               </div>
 
-              <!-- Content -->
               <div class="p-4 md:p-5 flex flex-col flex-1">
-                <div class="flex items-center gap-1.5 md:gap-2 text-xs text-gray-300 mb-2 md:mb-3">
+                <div class="flex items-center gap-1.5 md:gap-2 text-xs text-white mb-2 md:mb-3">
                   <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
                     </path>
                   </svg>
-                  <span class="font-semibold text-xs">
+                  <span class="font-semibold text-xs text-white">
                     {{ $article->created_at->translatedFormat('d F Y') }}
                   </span>
                   <span>•</span>
-                  <span class="text-xs">{{ $article->created_at->diffForHumans() }}</span>
+                  <span class="text-xs text-white">{{ $article->created_at->diffForHumans() }}</span>
                 </div>
 
                 <h3 class="text-base md:text-lg font-bold text-white mb-2 md:mb-3 line-clamp-2">
                   {{ $article->title }}
                 </h3>
 
-                <p class="text-xs md:text-sm text-gray-300 line-clamp-3 mb-3 md:mb-4 flex-1">
+                <p class="text-xs md:text-sm text-white line-clamp-3 mb-3 md:mb-4 flex-1">
                   {{ Str::limit(strip_tags($article->content), 120) }}
                 </p>
 

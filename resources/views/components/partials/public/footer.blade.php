@@ -13,31 +13,34 @@
           <p class="font-semibold text-white mb-2">Alamat Kantor:</p>
           <p class="mb-2 md:mb-3">Toko, Jl. Kawamara No.3, Landasan Ulin Tengah, Kec. Liang Anggang, Kota Banjar Baru,
             Kalimantan Selatan 70724</p>
-          <p class="mt-2">
-            <span class="font-semibold">Tel:</span> +62 811-2345-6789<br>
-            <span class="font-semibold">Email:</span> impost@gmail.com
-          </p>
         </div>
       </div>
 
       <div>
         <h2 class="mb-3 md:mb-4 text-xs sm:text-sm font-semibold text-white uppercase">Lokasi Kantor Kami</h2>
-        <div class="rounded-lg overflow-hidden shadow-lg h-full min-h-75">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.5835960488944!2d114.73993347453663!3d-3.4509423965234913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de68363c9fb16bd%3A0xd8491b1b5d57a49d!2sImpost%20Media!5e0!3m2!1sid!2sid!4v1765462496655!5m2!1sid!2sid"
-            width="100%" height="100%" style="border:0; min-height: 250px;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade" class="w-full h-full md:min-h-75">
-          </iframe>
+
+        <div class="relative rounded-lg overflow-hidden shadow-lg cursor-pointer w-full max-w-full"
+          onclick="loadMap(this)">
+          <div class="w-full aspect-video relative overflow-hidden rounded-lg">
+            <img src="{{ asset('img/map_placeholder.webp') }}" alt="Lokasi Impost Media"
+              class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
+          </div>
+
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 text-white font-semibold text-sm">
+            Klik untuk melihat peta
+          </div>
         </div>
+
       </div>
     </div>
 
-    <hr class="my-6 md:my-12 border-0" />
+    <hr class="my-2 md:my-6 border-0" />
 
     <div class="sm:flex sm:items-center sm:justify-between">
-      <span class="text-xs sm:text-sm text-white sm:text-center">© 2025 <a href="#" class="hover:underline">CV
-          Impost Media
-          Indonesia</a>
+      <span class="text-xs sm:text-sm text-white sm:text-center">© 2025
+        <a href="#" class="hover:underline">
+          CV Impost Media Indonesia
+        </a>
       </span>
       <div class="flex mt-3 sm:mt-0 space-x-4 sm:space-x-6 sm:justify-center">
         <a href="#" class="text-white" aria-label="Facebook">
@@ -78,3 +81,22 @@
     </div>
   </div>
 </footer>
+
+@push('scripts')
+  <script>
+    function loadMap(el) {
+      el.innerHTML = `
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.5835960488944!2d114.73993347453663!3d-3.4509423965234913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de68363c9fb16bd%3A0xd8491b1b5d57a49d!2sImpost%20Media!5e0!3m2!1sid!2sid!4v1765462496655!5m2!1sid!2sid"
+				width="100%"
+				height="100%"
+				style="border:0; min-height:250px;"
+				allowfullscreen
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+				class="w-full h-full md:min-h-75">
+			</iframe>
+		`;
+    }
+  </script>
+@endpush

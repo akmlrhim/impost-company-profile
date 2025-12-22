@@ -28,7 +28,7 @@
         <li><a href="{{ url('/') }}#blog"
             class="block py-1.5 md:py-0 px-2 md:px-0 text-white rounded hover:text-impost-primary transition-colors">Blog</a>
         </li>
-        <li><a href="{{ url('/') }}#contact"
+        <li><a href="{{ route('contact') }}"
             class="block py-1.5 md:py-0 px-2 md:px-0 text-white rounded hover:text-impost-primary transition-colors">Contact</a>
         </li>
       </ul>

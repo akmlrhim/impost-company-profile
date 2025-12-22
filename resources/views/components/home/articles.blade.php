@@ -6,7 +6,7 @@
       Artikel
     </h2>
     <p class="text-white text-xs sm:text-sm lg:text-base max-w-2xl mx-auto">
-      Temukan artikel, tips, dan panduan terbaru untuk membantu Anda berkembang
+      Temukan artikel, tips, dan panduan terbaru untuk membantu anda berkembang
     </p>
   </div>
 

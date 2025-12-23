@@ -20,7 +20,7 @@
 				active = Math.round($el.scrollLeft / $el.offsetWidth)
 			">
       @foreach ($articles as $article)
-        <div class="w-full shrink-0 snap-center px-12">
+        <div class="w-full shrink-0 snap-center px-6">
           <article
             class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-lg border-2 border-impost-fourth overflow-hidden">
             <div class="relative h-32">

@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\Client;
-use App\Models\Service;
-use App\Models\Team;
 use App\Services\ArticleService;
 use App\Services\ClientService;
 use App\Services\ServiceService;
@@ -16,15 +13,10 @@ class HomeController extends Controller
 	public function index()
 	{
 		$title = 'Home';
-
 		$page = request('page', 1);
-
 		$services = ServiceService::paginate(6);
-
 		$articles = ArticleService::paginate(6);
-
 		$clients = ClientService::all();
-
 
 		return view('public.home', compact(
 			'title',
@@ -47,6 +39,8 @@ class HomeController extends Controller
 		$title = 'Semua Artikel';
 		$articles = ArticleService::paginate(9);
 
+		$articles->setPath(request()->url());
+
 		return view('public.article-all', compact('title', 'articles'));
 	}
 
@@ -56,6 +50,7 @@ class HomeController extends Controller
 		$page = request()->get('page', 1);
 
 		$team = TeamService::paginate(4);
+		$team->setPath(request()->url());
 
 		return view('public.about', compact('title', 'team'));
 	}

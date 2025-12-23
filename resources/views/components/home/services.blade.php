@@ -1,14 +1,3 @@
-<style>
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-</style>
-
 <section id="services">
   <div class="py-6 px-4 mx-auto max-w-7xl sm:py-12 lg:px-6">
 
@@ -73,7 +62,7 @@
             active = Math.round($el.scrollLeft / $el.offsetWidth)
           ">
           @foreach ($services as $s)
-            <div class="w-full shrink-0 snap-center px-12">
+            <div class="w-full shrink-0 snap-center px-6">
               <div
                 class="border-2 border-impost-fourth bg-linear-to-b from-impost-primary via-impost-secondary to-impost-fourth rounded-lg overflow-hidden">
                 <div class="h-48 overflow-hidden">
@@ -81,8 +70,8 @@
                     <img src="{{ asset('storage/' . $s->cover_path) }}" class="w-full h-full object-cover"
                       loading="lazy" decoding="async" />
                   @else
-                    <img src="{{ asset('img/service_default.webp') }}" width="400" height="250"
-                      class="w-full h-full object-cover" loading="lazy" decoding="async" />
+                    <img src="{{ asset('img/service_default.webp') }}" class="w-full h-full object-cover" loading="lazy"
+                      decoding="async" />
                   @endif
                 </div>
                 <div class="p-4">

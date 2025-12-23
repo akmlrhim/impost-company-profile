@@ -3,33 +3,30 @@
 namespace App\Observers;
 
 use App\Models\Client;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 
 class ClientObserve
 {
-	private const PREFIX = 'client';
+	private const VERSION_KEY = 'clients_version';
 
-	private function clearCache()
+	private function updateVersion()
 	{
-		$path = storage_path('framework/cache/data');
-
-		collect(File::allFiles($path))
-			->filter(fn($file) => str_contains($file->getFilename(), self::PREFIX))
-			->each(fn($file) => File::delete($file));
+		Cache::forever(self::VERSION_KEY, now()->timestamp);
 	}
 
-	public function created()
+	public function created(Client $client)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 
-	public function updated()
+	public function updated(Client $client)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 
-	public function deleted()
+	public function deleted(Client $client)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TeamRequest;
 use App\Models\Team;
-use Illuminate\Http\Request;
+use App\Services\TeamService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -16,15 +16,12 @@ class TeamController extends Controller
 	 */
 	public function index()
 	{
-		return view(
-			'admin.teams.index',
-			[
-				'title' => 'Team',
-				'teams' => Team::orderBy('sort_order', 'ASC')
-					->latest()
-					->simplePaginate()
-			]
-		);
+		$title = 'Tim';
+		$search = request()->query('search');
+
+		$teams = TeamService::paginate(8, $search);
+
+		return view('admin.teams.index', compact('title', 'search', 'teams'));
 	}
 
 	/**

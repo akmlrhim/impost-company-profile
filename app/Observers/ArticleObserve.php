@@ -2,34 +2,31 @@
 
 namespace App\Observers;
 
+use App\Models\Article;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\File;
+
 
 class ArticleObserve
 {
-	private const PREFIX = 'articles';
+	private const VERSION_KEY = 'articles_version';
 
-	private function clearCache()
+	private function updateVersion()
 	{
-		$path = storage_path('framework/cache/data');
-
-		collect(File::allFiles($path))
-			->filter(fn($file) => str_contains($file->getFilename(), self::PREFIX))
-			->each(fn($file) => File::delete($file));
+		Cache::forever(self::VERSION_KEY, now()->timestamp);
 	}
 
-	public function created()
+	public function created(Article $article)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 
-	public function updated()
+	public function updated(Article $article)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 
-	public function deleted()
+	public function deleted(Article $article)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 }

@@ -2,34 +2,31 @@
 
 namespace App\Observers;
 
+use App\Models\Team;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 
 class TeamObserve
 {
-	private const PREFIX = 'teams';
+	private const VERSION_KEY = 'teams_version';
 
-	private function clearCache()
+	private function updateVersion()
 	{
-		$path = storage_path('framework/cache/data');
-
-		collect(File::allFiles($path))
-			->filter(fn($file) => str_contains($file->getFilename(), self::PREFIX))
-			->each(fn($file) => File::delete($file));
+		Cache::forever(self::VERSION_KEY, now()->timestamp);
 	}
 
-	public function created()
+	public function created(Team $team)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 
-	public function updated()
+	public function updated(Team $team)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 
-	public function deleted()
+	public function deleted(Team $team)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 }

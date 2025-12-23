@@ -8,25 +8,29 @@ use Illuminate\Support\Facades\Cache;
 class ArticleService
 {
 	private const PREFIX = 'articles';
+	private const VERSION_KEY = 'articles_version';
 	private const TTL = 600;
 
-	public static function all()
+	public static function paginate($perPage, $search = null)
 	{
-		return Cache::remember(
-			self::PREFIX . '.all',
-			self::TTL,
-			fn() => Article::query()->orderBy('created_at', 'DESC')->get()
-		);
-	}
+		if ($search) {
+			return Article::query()
+				->where(function ($query) use ($search) {
+					$query->where('title', 'like', '%' . $search . '%');
+				})
+				->orderBy('created_at', 'DESC')
+				->paginate($perPage)
+				->withQueryString();
+		}
 
-	public static function paginate($perPage)
-	{
 		$page = request()->get('page', 1);
+		$currentVersion = Cache::get(self::VERSION_KEY, 'init');
+		$cacheKey = self::PREFIX . ".page.$page.v" . $currentVersion;
 
 		return Cache::remember(
-			self::PREFIX . ".page.$page",
+			$cacheKey,
 			self::TTL,
-			fn() => Article::query()->orderBy('created_at', 'DESC')->paginate($perPage)
+			fn() => Article::query()->orderBy('created_at', 'DESC')->paginate($perPage)->onEachSide(1)->withQueryString()
 		);
 	}
 }

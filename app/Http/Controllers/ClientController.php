@@ -18,13 +18,12 @@ class ClientController extends Controller
 	 */
 	public function index()
 	{
-		return view(
-			'admin.clients.index',
-			[
-				'title' => 'Klien',
-				'clients' => ClientService::paginate(8)
-			]
-		);
+		$title = 'Klien';
+		$search = request()->query('search');
+		$clients = ClientService::paginate(8, $search);
+
+		$clients->setPath(request()->url());
+		return view('admin.clients.index', compact('title', 'search', 'clients'));
 	}
 
 	public function create()

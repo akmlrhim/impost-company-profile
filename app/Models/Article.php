@@ -34,10 +34,4 @@ class Article extends Model
 	{
 		return $this->hasMany(Comment::class);
 	}
-
-	protected static function booted()
-	{
-		static::saved(fn() => Cache::flush());
-		static::deleted(fn() => Cache::flush());
-	}
 }

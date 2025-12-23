@@ -2,33 +2,30 @@
 
 namespace App\Observers;
 
-use Illuminate\Support\Facades\File;
+use App\Models\Service;
+use Illuminate\Support\Facades\Cache;
 
 class ServiceObserve
 {
-	private const PREFIX = 'services';
+	private const VERSION_KEY = 'services_version';
 
-	private function clearCache()
+	private function updateVersion()
 	{
-		$path = storage_path('framework/cache/data');
-
-		collect(File::allFiles($path))
-			->filter(fn($file) => str_contains($file->getFilename(), self::PREFIX))
-			->each(fn($file) => File::delete($file));
+		Cache::forever(self::VERSION_KEY, now()->timestamp);
 	}
 
-	public function created()
+	public function created(Service $service)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 
-	public function updated()
+	public function updated(Service $service)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 
-	public function deleted()
+	public function deleted(Service $service)
 	{
-		$this->clearCache();
+		$this->updateVersion();
 	}
 }

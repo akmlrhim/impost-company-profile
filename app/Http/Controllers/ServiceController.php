@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
+use App\Services\ServiceService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -15,22 +16,14 @@ class ServiceController extends Controller
 	 */
 	public function index()
 	{
+		$title = 'Layanan';
 		$search = request()->query('search');
 
-		$services = Service::when($search, function ($query, $search) {
-			$query->where('service_name', 'like', '%' . $search . '%');
-		})
-			->simplePaginate(8)
-			->withQueryString();
+		$services = ServiceService::paginate(8, $search);
 
-		return view(
-			'admin.services.index',
-			[
-				'title' => 'Layanan',
-				'services' => $services,
-				'search' => $search,
-			]
-		);
+		$services->setPath(request()->url());
+
+		return view('admin.services.index', compact('title', 'services', 'search'));
 	}
 
 	/**

@@ -9,24 +9,28 @@ class ServiceService
 {
 	private const PREFIX = 'services';
 	private const TTL = 600;
+	private const VERSION_KEY = 'services_version';
 
-	public static function all()
+	public static function paginate($perPage, $search = null)
 	{
-		return Cache::remember(
-			self::PREFIX . '.all',
-			self::TTL,
-			fn() => Service::query()->orderBy('created_at', 'DESC')->get()
-		);
-	}
+		if ($search) {
+			return Service::query()
+				->where(function ($query) use ($search) {
+					$query->where('service_name', 'like', '%' . $search . '%');
+				})
+				->orderBy('created_at', 'DESC')
+				->paginate($perPage)
+				->withQueryString();
+		}
 
-	public static function paginate($perPage)
-	{
 		$page = request()->get('page', 1);
+		$currentVersion = Cache::get(self::VERSION_KEY, 'init');
+		$cacheKey = self::PREFIX . ".page.$page.v" . $currentVersion;
 
 		return Cache::remember(
-			self::PREFIX . ".page.$page",
+			$cacheKey,
 			self::TTL,
-			fn() => Service::query()->orderBy('created_at', 'DESC')->paginate($perPage)
+			fn() => Service::query()->orderBy('created_at', 'DESC')->paginate($perPage)->onEachSide(1)->withQueryString()
 		);
 	}
 }

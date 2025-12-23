@@ -9,24 +9,39 @@ class ClientService
 {
 	private const PREFIX = 'clients';
 	private const TTL = 600;
+	private const VERSION_KEY = 'clients_version';
 
 	public static function all()
 	{
+		$currentVersion = Cache::get(self::VERSION_KEY, 'init');
+
 		return Cache::remember(
-			'clients.all',
+			self::PREFIX . '.all.v' . $currentVersion,
 			self::TTL,
 			fn() => Client::query()->orderBy('created_at', 'DESC')->get()
 		);
 	}
 
-	public static function paginate($perPage)
+	public static function paginate($perPage, $search = null)
 	{
+		if ($search) {
+			return Client::query()
+				->where(function ($query) use ($search) {
+					$query->where('fullname', 'like', '%' . $search . '%');
+				})
+				->orderBy('created_at', 'DESC')
+				->paginate($perPage)
+				->withQueryString();
+		}
+
 		$page = request()->get('page', 1);
+		$currentVersion = Cache::get(self::VERSION_KEY, 'init');
+		$cacheKey = self::PREFIX . ".page.$page.v" . $currentVersion;
 
 		return Cache::remember(
-			self::PREFIX . ".page.$page",
+			$cacheKey,
 			self::TTL,
-			fn() => Client::query()->orderBy('created_at', 'DESC')->paginate($perPage)
+			fn() => Client::query()->orderBy('created_at', 'DESC')->paginate($perPage)->onEachSide(1)->withQueryString()
 		);
 	}
 }

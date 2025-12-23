@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Article;
+use App\Models\Client;
 use App\Observers\ArticleObserver;
+use App\Observers\ClientObserver;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,7 +27,5 @@ class AppServiceProvider extends ServiceProvider
 		if (str_contains(request()->header('host'), 'ngrok')) {
 			URL::forceScheme('https');
 		}
-
-		Article::observe(ArticleObserver::class);
 	}
 }

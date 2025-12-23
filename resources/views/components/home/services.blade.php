@@ -73,7 +73,7 @@
             active = Math.round($el.scrollLeft / $el.offsetWidth)
           ">
           @foreach ($services as $s)
-            <div class="w-full shrink-0 snap-center px-1">
+            <div class="w-full shrink-0 snap-center px-12">
               <div
                 class="border-2 border-impost-fourth bg-linear-to-b from-impost-primary via-impost-secondary to-impost-fourth rounded-lg overflow-hidden">
                 <div class="h-48 overflow-hidden">

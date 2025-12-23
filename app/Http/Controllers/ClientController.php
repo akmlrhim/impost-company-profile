@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Services\ClientService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +22,7 @@ class ClientController extends Controller
 			'admin.clients.index',
 			[
 				'title' => 'Klien',
-				'clients' => Client::simplePaginate(8)
+				'clients' => ClientService::paginate(8)
 			]
 		);
 	}

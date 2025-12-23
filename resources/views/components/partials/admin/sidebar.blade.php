@@ -7,7 +7,7 @@
       <img src="{{ asset('img/logo_impost_putih.webp') }}" class="mr-3 h-16" alt="Logo" />
     </a>
 
-    <ul class="space-y-2 font-sans font-medium text-md text-gray-300">
+    <ul class="space-y-2 font-medium text-md text-gray-300">
 
       <li>
         <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')"

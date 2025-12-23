@@ -15,41 +15,43 @@
       active: 0,
       total: {{ $articles->count() }}
   }" class="md:hidden">
-    <div x-ref="slider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 scroll-smooth"
+    <div x-ref="slider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-3 pb-1 scroll-smooth"
       @scroll.debounce.100ms="
-        active = Math.round($el.scrollLeft / $el.offsetWidth)
-      ">
+				active = Math.round($el.scrollLeft / $el.offsetWidth)
+			">
       @foreach ($articles as $article)
-        <article
-          class="w-full shrink-0 snap-center bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-lg border-2 border-impost-fourth overflow-hidden flex flex-col">
-          <div class="relative h-32">
-            @if ($article->cover_path)
-              <img src="{{ asset('storage/' . $article->cover_path) }}" class="w-full h-full object-cover">
-            @else
-              <img src="{{ asset('img/article_default.webp') }}" alt="default" class="w-full h-full object-cover">
-            @endif
-          </div>
-
-          <div class="p-4 flex flex-col flex-1">
-            <div class="text-[11px] text-white mb-2">
-              {{ $article->created_at->translatedFormat('d F Y') }}
-              · {{ $article->created_at->diffForHumans() }}
+        <div class="w-full shrink-0 snap-center px-12">
+          <article
+            class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-lg border-2 border-impost-fourth overflow-hidden">
+            <div class="relative h-32">
+              @if ($article->cover_path)
+                <img src="{{ asset('storage/' . $article->cover_path) }}" class="w-full h-full object-cover">
+              @else
+                <img src="{{ asset('img/article_default.webp') }}" alt="default" class="w-full h-full object-cover">
+              @endif
             </div>
 
-            <h3 class="text-sm font-semibold text-white mb-2">
-              {{ $article->title }}
-            </h3>
+            <div class="p-4 flex flex-col flex-1">
+              <div class="text-[11px] text-white mb-2">
+                {{ $article->created_at->translatedFormat('d F Y') }}
+                · {{ $article->created_at->diffForHumans() }}
+              </div>
 
-            <p class="text-xs text-white line-clamp-2 mb-4">
-              {{ Str::limit(strip_tags($article->content), 90) }}
-            </p>
+              <h3 class="text-sm font-semibold text-white mb-2">
+                {{ $article->title }}
+              </h3>
 
-            <a href="{{ route('article.detail', $article) }}"
-              class="mt-auto inline-block text-xs font-medium bg-white text-impost-third rounded-md px-3 py-2 text-center">
-              Baca Selengkapnya
-            </a>
-          </div>
-        </article>
+              <p class="text-xs text-white line-clamp-2 mb-4">
+                {{ Str::limit(strip_tags($article->content), 90) }}
+              </p>
+
+              <a href="{{ route('article.detail', $article) }}"
+                class="mt-auto inline-block text-xs font-medium bg-white text-impost-third rounded-md px-3 py-2 text-center">
+                Baca Selengkapnya
+              </a>
+            </div>
+          </article>
+        </div>
       @endforeach
     </div>
 

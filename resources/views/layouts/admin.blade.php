@@ -10,22 +10,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="{{ asset('quill/quill.css') }}">
-
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ asset('quill/quill.css') }}">
 
   @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   @endif
 
   @stack('styles')
-
-  <style>
-    [x-cloak] {
-      display: none !important
-    }
-  </style>
-
 </head>
 
 <body class="bg-gray-100">

@@ -6,7 +6,10 @@ use App\Models\Article;
 use App\Models\Client;
 use App\Models\Service;
 use App\Models\Team;
-use Illuminate\Support\Facades\Cache;
+use App\Services\ArticleService;
+use App\Services\ClientService;
+use App\Services\ServiceService;
+use App\Services\TeamService;
 
 class HomeController extends Controller
 {
@@ -16,29 +19,12 @@ class HomeController extends Controller
 
 		$page = request('page', 1);
 
-		$services = Cache::remember(
-			"landing_services_page_{$page}",
-			600,
-			function () {
-				return Service::cursorPaginate(6)->fragment('services');
-			}
-		);
+		$services = ServiceService::paginate(6);
 
-		$articles = Cache::remember(
-			'landing_articles_latest_3',
-			600,
-			function () {
-				return Article::latest()->take(3)->get();
-			}
-		);
+		$articles = ArticleService::paginate(6);
 
-		$clients = Cache::remember(
-			'landing_clients_all',
-			600,
-			function () {
-				return Client::get();
-			}
-		);
+		$clients = ClientService::all();
+
 
 		return view('public.home', compact(
 			'title',
@@ -59,15 +45,7 @@ class HomeController extends Controller
 	public function articleAll()
 	{
 		$title = 'Semua Artikel';
-		$page = request()->get('page', 1);
-
-		$articles = Cache::remember(
-			"articles_all_page_{$page}",
-			now()->addMinutes(15),
-			function () {
-				return Article::latest()->paginate(9);
-			}
-		);
+		$articles = ArticleService::paginate(9);
 
 		return view('public.article-all', compact('title', 'articles'));
 	}
@@ -77,13 +55,7 @@ class HomeController extends Controller
 		$title = 'About';
 		$page = request()->get('page', 1);
 
-		$team = Cache::remember(
-			"team_pages_{$page}",
-			now()->addMinutes(15),
-			function () {
-				return Team::get();
-			}
-		);
+		$team = TeamService::paginate(4);
 
 		return view('public.about', compact('title', 'team'));
 	}

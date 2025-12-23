@@ -15,9 +15,6 @@
 @custom-variant dark (&:where(.light, .light *));
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
   --color-primary-50: #eff6ff;
   --color-primary-100: #dbeafe;
   --color-primary-200: #bfdbfe;
@@ -35,6 +32,15 @@
   --color-impost-third: #95774f;
   --color-impost-fourth: #503924;
   --color-impost-fifth: #040404;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+[x-cloak] {
+  display: none !important;
 }
 
 .scrollbar-hide::-webkit-scrollbar {

@@ -188,6 +188,7 @@
               </div>
             </article>
           @empty
+            <x-empty-card item="artikel" />
           @endforelse
         </div>
 
@@ -233,10 +234,10 @@
                         </a>
                       </div>
                     </div>
-
                   </div>
                 </article>
               @empty
+                <x-empty-card item="artikel" />
               @endforelse
             </div>
           </div>

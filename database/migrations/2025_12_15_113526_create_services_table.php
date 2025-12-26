@@ -17,6 +17,7 @@ return new class extends Migration
 			$table->string('slug')->unique();
 			$table->text('description');
 			$table->string('cover_path')->nullable();
+			$table->integer('sort')->index();
 			$table->timestamps();
 		});
 	}

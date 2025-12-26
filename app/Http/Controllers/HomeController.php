@@ -31,7 +31,10 @@ class HomeController extends Controller
 	public function article(Article $article)
 	{
 		$title = 'Artikel';
-		$latestArticle = $article->where('id', '!=', $article->id)->latest()->take(4)->get();
+		$latestArticle = $article->where('id', '!=', $article->id)
+			->latest()
+			->take(4)
+			->get();
 
 		return view('public.article', compact('title', 'article', 'latestArticle'));
 	}

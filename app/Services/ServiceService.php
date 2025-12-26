@@ -11,7 +11,6 @@ class ServiceService
 	private const TTL = 600;
 	private const VERSION_KEY = 'services_version';
 
-
 	public static function all()
 	{
 		$currentVersion = Cache::get(self::VERSION_KEY, 'init');
@@ -32,7 +31,11 @@ class ServiceService
 		return Cache::remember(
 			$cacheKey,
 			self::TTL,
-			fn() => Service::query()->orderBy('created_at', 'DESC')->paginate($perPage)->onEachSide(1)->withQueryString()->fragment('services')
+			fn() => Service::query()->orderBy('created_at', 'DESC')
+				->paginate($perPage)
+				->onEachSide(1)
+				->withQueryString()
+				->fragment('services')
 		);
 	}
 }

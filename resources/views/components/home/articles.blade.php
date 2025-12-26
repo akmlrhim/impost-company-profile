@@ -1,8 +1,8 @@
-<section class="max-w-7xl mx-auto px-4 sm:py-16 py-12" id="blog">
+<section class="max-w-7xl mx-auto px-4 py-4" id="blog">
 
-  <div class="mb-8 text-center space-y-6">
+  <div class="mb-4 sm:mb-8 text-center">
     <h2
-      class="text-xl sm:text-2xl lg:text-4xl font-bold pb-1 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-3">
+      class="text-xl sm:text-2xl lg:text-4xl font-bold pb-1 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent sm:mb-3 mb-1">
       Artikel
     </h2>
     <p class="text-white text-xs sm:text-sm lg:text-base max-w-2xl mx-auto">
@@ -15,35 +15,26 @@
       active: 0,
       total: {{ $articles->count() }}
   }" class="md:hidden">
-    <div x-ref="slider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-3 pb-1 scroll-smooth"
-      @scroll.debounce.100ms="
-				active = Math.round($el.scrollLeft / $el.offsetWidth)
-			">
+
+    <div x-ref="slider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-3 pb-1 scroll-smooth">
       @foreach ($articles as $article)
-        <div class="w-full shrink-0 snap-center px-6">
+        <div class="w-full shrink-0 snap-center px-3">
           <article
-            class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-lg border-2 border-impost-fourth overflow-hidden">
-            <div class="relative h-32">
-              @if ($article->cover_path)
-                <img src="{{ asset('storage/' . $article->cover_path) }}" class="w-full h-full object-cover">
-              @else
-                <img src="{{ asset('img/article_default.webp') }}" alt="default" class="w-full h-full object-cover">
-              @endif
+            class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-lg border-2 border-impost-fourth overflow-hidden w-full flex flex-col">
+            <div class="relative h-40">
+              <img
+                src="{{ $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp') }}"
+                alt="cover" class="w-full h-full object-cover">
             </div>
 
             <div class="p-4 flex flex-col flex-1">
               <div class="text-[11px] text-white mb-2">
-                {{ $article->created_at->translatedFormat('d F Y') }}
-                · {{ $article->created_at->diffForHumans() }}
+                {{ $article->created_at->translatedFormat('d F Y') }} · {{ $article->created_at->diffForHumans() }}
               </div>
 
-              <h3 class="text-sm font-semibold text-white mb-2">
-                {{ $article->title }}
-              </h3>
+              <h3 class="text-sm font-semibold text-white mb-2">{{ $article->title }}</h3>
 
-              <p class="text-xs text-white line-clamp-2 mb-4">
-                {{ Str::limit(strip_tags($article->content), 90) }}
-              </p>
+              <p class="text-xs text-white line-clamp-2 mb-4">{{ Str::limit(strip_tags($article->content), 90) }}</p>
 
               <a href="{{ route('article.detail', $article) }}"
                 class="mt-auto inline-block text-xs font-medium bg-white text-impost-third rounded-md px-3 py-2 text-center">
@@ -53,7 +44,12 @@
           </article>
         </div>
       @endforeach
+
+      @if ($articles->count() == 0)
+        <x-empty-card item="artikel" />
+      @endif
     </div>
+
 
     {{-- indicator --}}
     <div class="flex justify-center gap-2 mt-4">
@@ -73,8 +69,8 @@
   </div>
 
   {{-- desktop --}}
-  <div class="hidden md:grid md:grid-cols-3 gap-6">
-    @foreach ($articles as $article)
+  <div class="hidden md:grid md:grid-cols-3 gap-6 w-full">
+    @forelse ($articles as $article)
       <article
         class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-lg border-2 border-impost-fourth overflow-hidden flex flex-col">
         <div class="relative h-48">
@@ -108,17 +104,24 @@
           </a>
         </div>
       </article>
-    @endforeach
+    @empty
+      <div class="col-span-full flex justify-center items-center">
+        <x-empty-card item="artikel" class="w-full mb-4" />
+      </div>
+    @endforelse
   </div>
 
-  <div class="text-center mt-6">
-    <a href="{{ route('article.all') }}"
-      class="inline-flex items-center text-xs sm:text-sm font-bold gap-2 px-4 sm:px-6 py-2.5 bg-linear-to-r from-impost-primary via-impost-third to-impost-fourth text-white rounded-md">
-      Lihat Semua Artikel
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-      </svg>
-    </a>
-  </div>
+  @if ($articles->count() > 0)
+    <div class="text-center mt-8 mb-8">
+      <a href="{{ route('article.all') }}"
+        class="inline-flex items-center text-xs sm:text-sm font-bold gap-2 px-4 sm:px-6 py-2.5 bg-linear-to-r from-impost-primary via-impost-third to-impost-fourth text-white rounded-md">
+        Lihat Semua Artikel
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  @endif
+
 
 </section>

@@ -6,8 +6,8 @@
       Layanan Kami
     </h2>
     <p class="text-white text-xs sm:text-sm lg:text-base max-w-3xl mx-auto">
-      Kami menyediakan layanan digital end-to-end yang berfokus pada peningkatan omset, visibilitas merek, dan
-      efisiensi pemasaran.
+      Kami menyediakan layanan digital end-to-end yang berfokus pada peningkatan omset, visibilitas merek, dan efisiensi
+      pemasaran.
     </p>
   </div>
 

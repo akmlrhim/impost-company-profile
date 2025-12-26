@@ -46,7 +46,7 @@
           </div>
 
         @empty
-          <div class="col-span-1 md:col-span-2 lg:col-span-3 bg-white p-12">
+          <div class="col-span-full bg-white p-12">
             <div class="flex flex-col items-center justify-center text-center">
               <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

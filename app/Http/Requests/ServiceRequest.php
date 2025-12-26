@@ -29,6 +29,7 @@ class ServiceRequest extends FormRequest
 			'cover_path'   => $this->isMethod('POST')
 				? 'required|image|mimes:jpeg,png,jpg'
 				: 'nullable|image|mimes:jpeg,png,jpg',
+			'sort' => 'required|unique:services,sort,' . $serviceId
 		];
 	}
 }

@@ -7,19 +7,34 @@
       @csrf
 
       <div class="p-6 space-y-6">
-        {{-- nama layanan --}}
-        <div>
-          <label for="service_name" class="block text-sm font-medium text-gray-900 mb-2">
-            Nama Layanan
-          </label>
-          <input type="text" id="service_name" name="service_name"
-            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-            value="{{ old('service_name') }}" placeholder="Masukkan nama layanan" autocomplete="off" />
-          @error('service_name')
-            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-          @enderror
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {{-- nama layanan --}}
+          <div>
+            <label for="service_name" class="block text-sm font-medium text-gray-900 mb-2">
+              Nama Layanan
+            </label>
+            <input type="text" id="service_name" name="service_name"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+              value="{{ old('service_name') }}" placeholder="Masukkan nama layanan" autocomplete="off" />
+            @error('service_name')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+
+          {{-- sort  --}}
+          <div>
+            <label for="sort" class="block text-sm font-medium text-gray-900 mb-2">
+              Urutan
+            </label>
+            <input type="number" id="sort" name="sort"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+              value="{{ old('sort') }}" placeholder="Masukkan urutan layanan" autocomplete="off" />
+            @error('sort')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+          {{-- end  --}}
         </div>
-        {{-- end  --}}
 
         {{-- cover  --}}
         <div x-data="{ preview: null }">

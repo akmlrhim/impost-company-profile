@@ -18,7 +18,7 @@ class ServiceService
 		return Cache::remember(
 			self::PREFIX . '.all.v' . $currentVersion,
 			self::TTL,
-			fn() => Service::query()->orderBy('created_at', 'DESC')->get()
+			fn() => Service::query()->orderBy('sort', 'ASC')->get()
 		);
 	}
 
@@ -31,7 +31,7 @@ class ServiceService
 		return Cache::remember(
 			$cacheKey,
 			self::TTL,
-			fn() => Service::query()->orderBy('created_at', 'DESC')
+			fn() => Service::query()->orderBy('sort', 'ASC')
 				->paginate($perPage)
 				->onEachSide(1)
 				->withQueryString()

@@ -34,7 +34,7 @@
           Kontak Kami
         </h1>
         <p class="text-white text-sm md:text-base px-6 mx-auto">
-          Hubungi kami untuk informasi lebih lanjut atau pertanyaan.
+          Hubungi kami untuk informasi lebih lanjut atau konsultasi gratis.
         </p>
       </div>
 

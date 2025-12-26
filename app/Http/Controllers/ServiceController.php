@@ -25,7 +25,7 @@ class ServiceController extends Controller
 			->when($search, function ($query) use ($search) {
 				$query->where('service_name', 'like', "%{$search}%");
 			})
-			->orderByDesc('created_at')
+			->orderBy('sort', 'ASC')
 			->cursorPaginate(8)
 			->withQueryString();
 
@@ -69,7 +69,8 @@ class ServiceController extends Controller
 				'service_name' => $request->service_name,
 				'slug' => Str::slug($request->service_name),
 				'description' => $request->description,
-				'cover_path' => $cover_path
+				'cover_path' => $cover_path,
+				'sort' => $request->sort
 			];
 
 			Service::create($data);
@@ -106,6 +107,7 @@ class ServiceController extends Controller
 			$service->service_name = $request->service_name;
 			$service->slug = Str::slug($request->service_name);
 			$service->description = $request->description;
+			$service->sort = $request->sort;
 
 			if ($request->hasFile('cover_path')) {
 				if ($service->cover_path && Storage::disk('public')->exists($service->cover_path)) {

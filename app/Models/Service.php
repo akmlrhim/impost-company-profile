@@ -14,6 +14,7 @@ class Service extends Model
 		'slug',
 		'description',
 		'cover_path',
+		'sort'
 	];
 
 	public function getRouteKeyName()

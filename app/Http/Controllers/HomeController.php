@@ -14,13 +14,15 @@ class HomeController extends Controller
 	{
 		$title = 'Home';
 		$page = request('page', 1);
-		$services = ServiceService::paginate(6);
-		$articles = ArticleService::paginate(6);
+		$servicesForDesktop = ServiceService::paginate(6);
+		$servicesForMobile = ServiceService::all();
+		$articles = ArticleService::paginateHome(3);
 		$clients = ClientService::all();
 
 		return view('public.home', compact(
 			'title',
-			'services',
+			'servicesForDesktop',
+			'servicesForMobile',
 			'articles',
 			'clients'
 		));
@@ -37,7 +39,7 @@ class HomeController extends Controller
 	public function articleAll()
 	{
 		$title = 'Semua Artikel';
-		$articles = ArticleService::paginate(9);
+		$articles = ArticleService::paginateAll(6);
 
 		$articles->setPath(request()->url());
 

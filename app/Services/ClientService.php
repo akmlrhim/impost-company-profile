@@ -22,18 +22,8 @@ class ClientService
 		);
 	}
 
-	public static function paginate($perPage, $search = null)
+	public static function paginate($perPage)
 	{
-		if ($search) {
-			return Client::query()
-				->where(function ($query) use ($search) {
-					$query->where('fullname', 'like', '%' . $search . '%');
-				})
-				->orderBy('created_at', 'DESC')
-				->paginate($perPage)
-				->withQueryString();
-		}
-
 		$page = request()->get('page', 1);
 		$currentVersion = Cache::get(self::VERSION_KEY, 'init');
 		$cacheKey = self::PREFIX . ".page.$page.v" . $currentVersion;

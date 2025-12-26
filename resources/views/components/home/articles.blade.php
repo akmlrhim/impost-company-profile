@@ -1,6 +1,6 @@
-<section class="max-w-7xl mx-auto px-4 py-16" id="blog">
+<section class="max-w-7xl mx-auto px-4 sm:py-16 py-12" id="blog">
 
-  <div class="text-center mb-12">
+  <div class="mb-8 text-center space-y-6">
     <h2
       class="text-xl sm:text-2xl lg:text-4xl font-bold pb-1 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-3">
       Artikel

@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OPT_INController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
@@ -45,4 +46,7 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::resource('clients', ClientController::class)->except('show');
 		Route::delete('truncate-clients', [ClientController::class, 'truncate'])->name('truncate-clients');
 	});
+
+	// OPT IN route 
+	Route::get('opt-in', [OPT_INController::class, 'index'])->name('opt-in-index');
 });

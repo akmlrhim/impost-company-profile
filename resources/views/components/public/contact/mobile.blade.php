@@ -26,7 +26,7 @@
 
   <div class="relative">
     <div x-ref="scrollContainer" @scroll.passive="updateSlide()"
-      class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+      class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar">
 
       <a href="https://wa.me/6283147802761" target="_blank"
         class="flex-none w-full snap-center px-4 active:scale-95 transition-transform">
@@ -40,14 +40,15 @@
               </svg>
             </div>
             <div class="min-w-0">
-              <h3 class="text-md font-semibold text-white mb-0.5">WhatsApp</h3>
+              <h3 class="text-sm font-semibold text-white mb-0.5">WhatsApp</h3>
               <p class="text-white font-medium text-xs">+62 831-4780-2761</p>
             </div>
           </div>
         </div>
       </a>
 
-      <a href="mailto:hello@example.com" class="flex-none w-full snap-center px-4 active:scale-95 transition-transform">
+      <a href="mailto:adm.impostmedia@gmail.com?subject=Kontak%20Impost%20Media"
+        class="flex-none w-full snap-center px-4 active:scale-95 transition-transform">
         <div class="bg-linear-to-b from-impost-primary via-impost-secondary to-impost-fourth rounded-xl p-6 shadow-sm">
           <div class="flex items-center space-x-4">
             <div
@@ -58,7 +59,7 @@
               </svg>
             </div>
             <div class="min-w-0">
-              <h3 class="text-md font-semibold text-white mb-0.5">Email</h3>
+              <h3 class="text-sm font-semibold text-white mb-0.5">Email</h3>
               <p class="text-white font-medium text-xs truncate">adm.impostmedia@gmail.com</p>
             </div>
           </div>
@@ -77,7 +78,7 @@
               </svg>
             </div>
             <div class="min-w-0">
-              <h3 class="text-md font-semibold text-white mb-0.5">Instagram</h3>
+              <h3 class="text-sm font-semibold text-white mb-0.5">Instagram</h3>
               <p class="text-white text-xs">@impostmedia</p>
             </div>
           </div>
@@ -115,7 +116,7 @@
               </svg>
             </div>
             <div class="min-w-0">
-              <h3 class="text-md font-semibold text-white mb-0.5">LinkedIn</h3>
+              <h3 class="text-sm font-semibold text-white mb-0.5">LinkedIn</h3>
               <p class="text-white font-medium text-xs">CV Impost Media Indonesia</p>
             </div>
           </div>

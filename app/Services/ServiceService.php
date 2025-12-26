@@ -11,18 +11,20 @@ class ServiceService
 	private const TTL = 600;
 	private const VERSION_KEY = 'services_version';
 
-	public static function paginate($perPage, $search = null)
-	{
-		if ($search) {
-			return Service::query()
-				->where(function ($query) use ($search) {
-					$query->where('service_name', 'like', '%' . $search . '%');
-				})
-				->orderBy('created_at', 'DESC')
-				->paginate($perPage)
-				->withQueryString();
-		}
 
+	public static function all()
+	{
+		$currentVersion = Cache::get(self::VERSION_KEY, 'init');
+
+		return Cache::remember(
+			self::PREFIX . '.all.v' . $currentVersion,
+			self::TTL,
+			fn() => Service::query()->orderBy('created_at', 'DESC')->get()
+		);
+	}
+
+	public static function paginate($perPage)
+	{
 		$page = request()->get('page', 1);
 		$currentVersion = Cache::get(self::VERSION_KEY, 'init');
 		$cacheKey = self::PREFIX . ".page.$page.v" . $currentVersion;
@@ -30,7 +32,7 @@ class ServiceService
 		return Cache::remember(
 			$cacheKey,
 			self::TTL,
-			fn() => Service::query()->orderBy('created_at', 'DESC')->paginate($perPage)->onEachSide(1)->withQueryString()
+			fn() => Service::query()->orderBy('created_at', 'DESC')->paginate($perPage)->onEachSide(1)->withQueryString()->fragment('services')
 		);
 	}
 }

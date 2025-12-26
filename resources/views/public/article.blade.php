@@ -53,21 +53,21 @@
           @endif
         </div>
 
-        <header class="mb-8">
-          <h1 class="mb-6 text-xl sm:text-2xl lg:text-4xl font-bold leading-tight text-white">
+        <header class="mb-8 text-center">
+          <h1 class="mb-6 text-xl sm:text-2xl lg:text-4xl font-bold text-white">
             {{ $article->title }}
           </h1>
 
-          <div class="flex items-center gap-3 text-xs sm:text-sm text-gray-400">
-            <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-center justify-center gap-3 text-xs sm:text-sm text-white">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
             </svg>
-            <time datetime="{{ $article->created_at->toIso8601String() }}" class="text-gray-300">
+            <time datetime="{{ $article->created_at->toIso8601String() }}">
               {{ $article->created_at->translatedFormat('d F Y') }}
             </time>
-            <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
-            <span class="text-gray-400">
+            <span class="w-1 h-1 bg-white rounded-full"></span>
+            <span>
               {{ $article->created_at->diffForHumans() }}
             </span>
           </div>

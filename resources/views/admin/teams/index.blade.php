@@ -12,8 +12,13 @@
 
             <div class="bg-linear-to-br from-indigo-50 to-purple-50 p-6 pb-8">
               <div class="flex flex-col items-center text-center">
-                <img src="{{ asset('storage/' . $team->photo) }}" alt="{{ $team->fullname }}"
-                  class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg mb-3">
+                @if ($team->photo)
+                  <img src="{{ asset('storage/' . $team->photo) }}" alt="{{ $team->fullname }}" loading="lazy"
+                    decoding="async" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg mb-3" />
+                @else
+                  <img src="{{ asset('img/picture_profile_default.webp') }}" alt="{{ $team->fullname }}" loading="lazy"
+                    decoding="async" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg mb-3" />
+                @endif
 
                 <h3 class="font-bold text-gray-900 text-lg">
                   {{ $team->fullname }}
@@ -27,12 +32,12 @@
             <div class="p-5 flex flex-col flex-1">
 
               <ul class="list-none space-y-2 min-h-8 text-center">
-                <li class="px-3 py-1.5 rounded-md bg-red-300 text-red-800 text-xs font-medium shadow-sm">
+                <li class="px-3 py-1.5 rounded-md bg-red-100 text-red-800 text-xs font-medium shadow-sm">
                   Instagram : {{ $team->instagram_link ?? '-' }}
                 </li>
 
                 <li>
-                <li class="px-3 py-1.5 rounded-md bg-blue-300 text-blue-800 text-xs font-medium shadow-sm">
+                <li class="px-3 py-1.5 rounded-md bg-blue-100 text-blue-800 text-xs font-medium shadow-sm">
                   LinkedIn : {{ $team->linkedin_link ?? '-' }}
                 </li>
                 </li>

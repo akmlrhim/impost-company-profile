@@ -17,7 +17,7 @@
     </div>
   </a>
 
-  <a href="mailto:hello@adm.impostmedia@gmail.com"
+  <a href="mailto:adm.impostmedia@gmail.com?subject=Kontak%20Impost%20Media"
     class="group block bg-linear-to-b from-impost-primary via-impost-secondary to-impost-fourth border rounded-xl p-6">
     <div class="flex items-center space-x-4">
       <div

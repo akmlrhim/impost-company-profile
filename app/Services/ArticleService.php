@@ -11,21 +11,24 @@ class ArticleService
 	private const VERSION_KEY = 'articles_version';
 	private const TTL = 600;
 
-	public static function paginate($perPage, $search = null)
+	public static function paginateHome($perPage)
 	{
-		if ($search) {
-			return Article::query()
-				->where(function ($query) use ($search) {
-					$query->where('title', 'like', '%' . $search . '%');
-				})
-				->orderBy('created_at', 'DESC')
-				->paginate($perPage)
-				->withQueryString();
-		}
-
 		$page = request()->get('page', 1);
 		$currentVersion = Cache::get(self::VERSION_KEY, 'init');
 		$cacheKey = self::PREFIX . ".page.$page.v" . $currentVersion;
+
+		return Cache::remember(
+			$cacheKey,
+			self::TTL,
+			fn() => Article::query()->orderBy('created_at', 'DESC')->paginate($perPage)->onEachSide(1)->withQueryString()
+		);
+	}
+
+	public static function paginateAll($perPage)
+	{
+		$page = request()->get('page', 1);
+		$currentVersion = Cache::get(self::VERSION_KEY, 'init');
+		$cacheKey = self::PREFIX . ".page.$page.all.v" . $currentVersion;
 
 		return Cache::remember(
 			$cacheKey,

@@ -16,14 +16,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
     rel="stylesheet">
 
-  <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" sizes="192x192" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('img/favicon.png') }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon.png') }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon.png') }}">
+  <link rel="shortcut icon" href="{{ asset('img/favicon.webp') }}" type="image/x-icon">
 
-  @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-  @endif
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 
   @stack('styles')
 </head>
@@ -39,6 +34,10 @@
   <x-partials.public.footer />
 
   @stack('scripts')
+
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+  </script>
 
 </body>
 

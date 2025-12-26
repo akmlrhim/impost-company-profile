@@ -59,7 +59,7 @@
             </label>
             <input type="email" id="email" name="email"
               class="text-sm bg-gray-700 border border-gray-600 text-white rounded-sm block w-full p-2"
-              placeholder="name@company.com" required value="{{ old('email') }}" autocomplete="off" />
+              placeholder="name@company.com" value="{{ old('email') }}" autocomplete="off" />
             @error('email')
               <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
             @enderror
@@ -72,7 +72,7 @@
             </label>
             <input type="password" id="password" name="password"
               class="text-sm bg-gray-700 border border-gray-600 text-white rounded-sm block w-full p-2"
-              placeholder="••••••••" required />
+              placeholder="••••••••" />
             @error('password')
               <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
             @enderror

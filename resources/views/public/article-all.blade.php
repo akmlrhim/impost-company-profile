@@ -39,7 +39,7 @@
         </ol>
       </nav>
 
-      <div class="mb-12 text-center">
+      <div class="mb-12 text-center px-6">
         <h1
           class="text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
           Semua Artikel
@@ -49,7 +49,7 @@
         </p>
       </div>
 
-      <section class="mx-auto w-full max-w-7xl">
+      <section class="mx-auto w-full max-w-7xl px-6">
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-12">
 

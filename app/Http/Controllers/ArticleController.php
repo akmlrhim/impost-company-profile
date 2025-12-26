@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
-use App\Services\ArticleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -17,11 +16,15 @@ class ArticleController extends Controller
 	 */
 	public function index()
 	{
-		$search = request()->query('search');
+		$search = request('search');
 
-		$articles = ArticleService::paginate(8, $search);
-
-		$articles->setPath(request()->url());
+		$articles = Article::query()
+			->when($search, function ($query) use ($search) {
+				$query->where('title', 'like', "%{$search}%");
+			})
+			->orderByDesc('created_at')
+			->cursorPaginate(8)
+			->withQueryString();
 
 		return view('admin.articles.index', [
 			'title' => 'Artikel',

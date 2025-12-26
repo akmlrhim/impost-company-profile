@@ -22,7 +22,7 @@
             <div class="relative h-48 bg-gray-100 flex items-center justify-center">
               @if ($client->client_logo)
                 <img src="{{ asset('storage/' . $client->client_logo) }}" alt="{{ $client->filename ?? 'Logo Klien' }}"
-                  loading="lazy"
+                  loading="lazy" decoding="async"
                   class="w-28 h-28 rounded-full object-contain bg-white p-3 shadow-sm transition-transform duration-200 hover:scale-105">
               @else
                 <div class="w-28 h-28 rounded-full bg-gray-200 flex items-center justify-center">

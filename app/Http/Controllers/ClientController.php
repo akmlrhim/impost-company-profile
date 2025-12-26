@@ -19,10 +19,17 @@ class ClientController extends Controller
 	public function index()
 	{
 		$title = 'Klien';
-		$search = request()->query('search');
-		$clients = ClientService::paginate(8, $search);
 
-		$clients->setPath(request()->url());
+		$search = request('search');
+
+		$clients = Client::query()
+			->when($search, function ($query) use ($search) {
+				$query->where('filename', 'like', "%{$search}%");
+			})
+			->orderByDesc('created_at')
+			->cursorPaginate(8)
+			->withQueryString();
+
 		return view('admin.clients.index', compact('title', 'search', 'clients'));
 	}
 
@@ -43,9 +50,10 @@ class ClientController extends Controller
 			'client_logo.*' => 'image|mimes:jpg,jpeg,png|max:2048',
 		]);
 
-		DB::beginTransaction();
 
 		try {
+			DB::beginTransaction();
+
 			$manager = new ImageManager(new Driver());
 
 			foreach ($request->file('client_logo') as $logo) {
@@ -57,10 +65,9 @@ class ClientController extends Controller
 
 				$image = $manager->read($logo);
 				$image->scale(width: 200);
-				$image->toWebp(75)->save($path);
+				$image->toWebp(80)->save($path);
 
 				Client::create([
-					'name' => '-',
 					'filename' => $filename,
 					'client_logo' => 'client_logo/' . $filename,
 				]);
@@ -77,7 +84,6 @@ class ClientController extends Controller
 				->withErrors($e->getMessage());
 		}
 	}
-
 
 	public function edit(Client $client)
 	{

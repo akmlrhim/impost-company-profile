@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
-use App\Services\ServiceService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 
 class ServiceController extends Controller
 {
@@ -17,11 +18,16 @@ class ServiceController extends Controller
 	public function index()
 	{
 		$title = 'Layanan';
-		$search = request()->query('search');
 
-		$services = ServiceService::paginate(8, $search);
+		$search = request('search');
 
-		$services->setPath(request()->url());
+		$services = Service::query()
+			->when($search, function ($query) use ($search) {
+				$query->where('service_name', 'like', "%{$search}%");
+			})
+			->orderByDesc('created_at')
+			->cursorPaginate(8)
+			->withQueryString();
 
 		return view('admin.services.index', compact('title', 'services', 'search'));
 	}
@@ -45,18 +51,28 @@ class ServiceController extends Controller
 		try {
 			DB::beginTransaction();
 
+			if ($request->hasFile('cover_path')) {
+				$manager = new ImageManager(new Driver());
+
+				$img = $manager->read($request->file('cover_path'))
+					->scale(width: 1200)
+					->toWebp(quality: 70);
+
+				$filename = time() . '.webp';
+				$path = 'services/' . $filename;
+
+				Storage::disk('public')->put($path, $img);
+				$cover_path = $path;
+			}
+
 			$data = [
 				'service_name' => $request->service_name,
 				'slug' => Str::slug($request->service_name),
 				'description' => $request->description,
+				'cover_path' => $cover_path
 			];
 
-			if ($request->hasFile('cover_path')) {
-				$data['cover_path'] = $request->file('cover_path')->store('services', 'public');
-			}
-
 			Service::create($data);
-
 			DB::commit();
 			return redirect()->route('services.index')->with('success', 'Layanan berhasil ditambahkan.');
 		} catch (\Exception $e) {
@@ -95,7 +111,18 @@ class ServiceController extends Controller
 				if ($service->cover_path && Storage::disk('public')->exists($service->cover_path)) {
 					Storage::disk('public')->delete($service->cover_path);
 				}
-				$service->cover_path = $request->file('cover_path')->store('services', 'public');
+
+				$manager = new ImageManager(new Driver());
+
+				$img = $manager->read($request->file('cover_path'))
+					->scale(width: 1200)
+					->toWebp(quality: 70);
+
+				$filename = time() . '.webp';
+				$path = 'services/' . $filename;
+
+				Storage::disk('public')->put($path, $img);
+				$service->cover_path = $path;
 			}
 
 			$service->save();

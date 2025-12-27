@@ -36,7 +36,6 @@
       </div>
     </div>
 
-
     {{-- desktop  --}}
     <div class="hidden sm:grid grid-cols-2 md:grid-cols-3 gap-6">
       @foreach ($articles as $article)

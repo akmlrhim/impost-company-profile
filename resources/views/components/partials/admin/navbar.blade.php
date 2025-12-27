@@ -18,9 +18,6 @@
       <div class="relative">
         <button type="button" class="flex items-center text-sm">
 
-          <img class="w-10 h-10 rounded-full bg-impost-fourth p-1" src="{{ asset('img/logo_impost_putih.webp') }}"
-            alt="User Avatar" loading="lazy" decoding="async">
-
           <div class="mr-4 ml-3 text-white hidden md:flex flex-col text-left leading-tight">
             <span class="font-semibold">
               {{ Auth::user()->name }}

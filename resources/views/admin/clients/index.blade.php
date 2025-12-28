@@ -40,16 +40,12 @@
               </h3>
 
               <div class="mt-auto flex items-center gap-2">
-                <a href="{{ route('clients.edit', $client) }}"
-                  class="flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-impost-primary rounded-sm hover:bg-opacity-90 transition-colors">
-                  Edit
-                </a>
                 <x-confirm-delete :action="route('clients.destroy', $client)" label="Hapus" />
               </div>
             </div>
           </div>
         @empty
-          <div class="col-span-1 md:col-span-2 lg:col-span-4 bg-white p-12">
+          <div class="col-span-full bg-white p-12">
             <div class="flex flex-col items-center justify-center text-center">
               <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

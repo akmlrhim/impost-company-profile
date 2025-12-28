@@ -18,7 +18,7 @@ class ClientService
 		return Cache::remember(
 			self::PREFIX . '.all.v' . $currentVersion,
 			self::TTL,
-			fn() => Client::query()->orderBy('created_at', 'DESC')->get()
+			fn() => Client::query()->latest()->get()
 		);
 	}
 
@@ -31,7 +31,7 @@ class ClientService
 		return Cache::remember(
 			$cacheKey,
 			self::TTL,
-			fn() => Client::query()->orderBy('created_at', 'DESC')->paginate($perPage)->onEachSide(1)->withQueryString()
+			fn() => Client::query()->latest()->paginate($perPage)->onEachSide(1)->withQueryString()
 		);
 	}
 }

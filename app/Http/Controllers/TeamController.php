@@ -17,14 +17,15 @@ class TeamController extends Controller
 	{
 		$title = 'Tim';
 
-		$search = request('search');
+		$search = request()->string('search')->trim();
 
 		$teams = Team::query()
 			->when($search, function ($query) use ($search) {
 				$query->where('fullname', 'like', "%{$search}%");
 			})
 			->orderByDesc('created_at')
-			->cursorPaginate(8)
+			->paginate(8)
+			->onEachSide(1)
 			->withQueryString();
 
 		return view('admin.teams.index', compact('title', 'search', 'teams'));

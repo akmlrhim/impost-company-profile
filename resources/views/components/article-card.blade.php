@@ -3,7 +3,7 @@
 <article
   class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-lg border-2 border-impost-fourth overflow-hidden flex flex-col h-full">
 
-  <div class="h-48 sm:h-40 overflow-hidden">
+  <div class="h-56 overflow-hidden">
     <img src="{{ $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp') }}"
       class="w-full h-full object-cover" loading="lazy" decoding="async">
   </div>

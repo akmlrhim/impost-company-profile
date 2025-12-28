@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 
 class ArticleController extends Controller
 {
@@ -16,14 +18,15 @@ class ArticleController extends Controller
 	 */
 	public function index()
 	{
-		$search = request('search');
+		$search = request()->string('search')->trim();
 
 		$articles = Article::query()
 			->when($search, function ($query) use ($search) {
 				$query->where('title', 'like', "%{$search}%");
 			})
 			->orderByDesc('created_at')
-			->cursorPaginate(8)
+			->paginate(8)
+			->onEachSide(1)
 			->withQueryString();
 
 		return view('admin.articles.index', [
@@ -51,19 +54,28 @@ class ArticleController extends Controller
 		try {
 			DB::beginTransaction();
 
+			if ($request->hasFile('cover_path')) {
+				$manager = new ImageManager(new Driver());
+
+				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
+
+				$filename = time() . '.webp';
+				$path = 'articles/' . $filename;
+
+				Storage::disk('public')->put($path, $img);
+				$cover_path = $path;
+			}
+
 			$data = [
 				'title' => $request->title,
 				'slug' => Str::slug($request->title),
 				'content' => $request->content,
+				'cover_path' => $cover_path,
 				'excerpt' => Str::limit(strip_tags($request->content), 150, '...'),
 				'meta_title' => $request->title,
 				'meta_description' => Str::limit(strip_tags($request->content), 160, '...'),
-				'status' => $request->status ?? 'draft',
+				'status' => $request->status,
 			];
-
-			if ($request->hasFile('cover_path')) {
-				$data['cover_path'] = $request->file('cover_path')->store('articles', 'public');
-			}
 
 			Article::create($data);
 
@@ -96,7 +108,16 @@ class ArticleController extends Controller
 				if ($article->cover_path && Storage::disk('public')->exists($article->cover_path)) {
 					Storage::disk('public')->delete($article->cover_path);
 				}
-				$article->cover_path = $request->file('cover_path')->store('public', 'articles');
+
+				$manager = new ImageManager(new Driver());
+
+				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
+
+				$filename = time() . '.webp';
+				$path = 'articles/' . $filename;
+
+				Storage::disk('public')->put($path, $img->toString());
+				$article->cover_path = $path;
 			}
 
 			$article->title = $request->title;
@@ -112,7 +133,7 @@ class ArticleController extends Controller
 			return redirect()->route('articles.index')->with('success', 'Artikel berhasil diperbarui.');
 		} catch (\Exception $e) {
 			DB::rollBack();
-			return back()->withInput();
+			return back()->with('error:' . $e->getMessage())->withInput();
 		}
 	}
 

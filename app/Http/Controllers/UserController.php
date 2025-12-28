@@ -16,9 +16,22 @@ class UserController extends Controller
 	 */
 	public function index()
 	{
+		$search = request()->string('search')->trim();
+
+		$users = User::query()
+			->select('name', 'email', 'created_at', 'id')
+			->when($search, function ($query) use ($search) {
+				$query->where('name', 'like', "%{$search}%");
+			})
+			->orderByDesc('created_at')
+			->paginate(10)
+			->onEachSide(1)
+			->withQueryString();
+
 		return view('admin.users.index', [
 			'title' => 'Users',
-			'users' => User::where('id', '!=', Auth::id())->cursorPaginate(10)
+			'users' => $users,
+			'search' => $search
 		]);
 	}
 

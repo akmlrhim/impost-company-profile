@@ -19,14 +19,15 @@ class ServiceController extends Controller
 	{
 		$title = 'Layanan';
 
-		$search = request('search');
+		$search = request()->string('search')->trim();
 
 		$services = Service::query()
 			->when($search, function ($query) use ($search) {
 				$query->where('service_name', 'like', "%{$search}%");
 			})
 			->orderBy('sort', 'ASC')
-			->cursorPaginate(8)
+			->paginate(8)
+			->onEachSide(1)
 			->withQueryString();
 
 		return view('admin.services.index', compact('title', 'services', 'search'));
@@ -54,9 +55,7 @@ class ServiceController extends Controller
 			if ($request->hasFile('cover_path')) {
 				$manager = new ImageManager(new Driver());
 
-				$img = $manager->read($request->file('cover_path'))
-					->scale(width: 1200)
-					->toWebp(quality: 70);
+				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
 
 				$filename = time() . '.webp';
 				$path = 'services/' . $filename;
@@ -104,11 +103,6 @@ class ServiceController extends Controller
 		try {
 			DB::beginTransaction();
 
-			$service->service_name = $request->service_name;
-			$service->slug = Str::slug($request->service_name);
-			$service->description = $request->description;
-			$service->sort = $request->sort;
-
 			if ($request->hasFile('cover_path')) {
 				if ($service->cover_path && Storage::disk('public')->exists($service->cover_path)) {
 					Storage::disk('public')->delete($service->cover_path);
@@ -116,9 +110,7 @@ class ServiceController extends Controller
 
 				$manager = new ImageManager(new Driver());
 
-				$img = $manager->read($request->file('cover_path'))
-					->scale(width: 1200)
-					->toWebp(quality: 70);
+				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
 
 				$filename = time() . '.webp';
 				$path = 'services/' . $filename;
@@ -126,6 +118,11 @@ class ServiceController extends Controller
 				Storage::disk('public')->put($path, $img);
 				$service->cover_path = $path;
 			}
+
+			$service->service_name = $request->service_name;
+			$service->slug = Str::slug($request->service_name);
+			$service->description = $request->description;
+			$service->sort = $request->sort;
 
 			$service->save();
 			DB::commit();

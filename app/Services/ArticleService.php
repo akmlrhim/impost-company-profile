@@ -20,7 +20,12 @@ class ArticleService
 		return Cache::remember(
 			$cacheKey,
 			self::TTL,
-			fn() => Article::query()->orderBy('created_at', 'DESC')->paginate($perPage)->onEachSide(1)->withQueryString()
+			fn() => Article::query()
+				->where('status', 'published')
+				->latest()
+				->paginate($perPage)
+				->onEachSide(1)
+				->withQueryString()
 		);
 	}
 
@@ -33,7 +38,12 @@ class ArticleService
 		return Cache::remember(
 			$cacheKey,
 			self::TTL,
-			fn() => Article::query()->orderBy('created_at', 'DESC')->paginate($perPage)->onEachSide(1)->withQueryString()
+			fn() => Article::query()
+				->where('status', 'published')
+				->latest()
+				->paginate($perPage)
+				->onEachSide(1)
+				->withQueryString()
 		);
 	}
 }

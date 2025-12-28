@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 @section('content')
+  <x-flash></x-flash>
+
   <div class="mx-auto py-4">
     <form id="article-form" action="{{ route('articles.update', $article->slug) }}" method="POST"
       enctype="multipart/form-data" class="bg-white rounded-lg border border-gray-200 overflow-hidden"
@@ -78,6 +80,50 @@
         </div>
         {{-- end  --}}
 
+        <div>
+          <label class="block text-sm font-medium text-gray-900 mb-2">Status Artikel</label>
+
+          <ul class="grid w-full gap-6 md:grid-cols-2">
+            <li>
+              <input type="radio" id="status_published" name="status" value="published" class="hidden peer" required
+                {{ old('status', $article->status ?? '') === 'published' ? 'checked' : '' }}>
+              <label for="status_published"
+                class="inline-flex items-center justify-between w-full p-5 text-body bg-neutral-primary-soft border border-default rounded-base cursor-pointer peer-checked:hover:bg-success-soft peer-checked:border-success-subtle peer-checked:bg-success-soft hover:bg-neutral-secondary-medium peer-checked:text-success-strong">
+                <div class="block">
+                  <div class="w-full font-semibold">Published</div>
+                  <div class="w-full text-sm">Artikel akan langsung ditampilkan ke publik.</div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-8 h-8 ms-3">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+              </label>
+            </li>
+
+            <li>
+              <input type="radio" id="status_draft" name="status" value="draft" class="hidden peer"
+                {{ old('status', $article->status ?? '') === 'draft' ? 'checked' : '' }}>
+              <label for="status_draft"
+                class="inline-flex items-center justify-between w-full p-5 text-body bg-neutral-primary-soft border border-default rounded-base cursor-pointer peer-checked:hover:bg-warning-soft peer-checked:border-warning-subtle peer-checked:bg-warning-soft hover:bg-neutral-secondary-medium peer-checked:text-warning-strong">
+                <div class="block">
+                  <div class="w-full font-semibold">Draft</div>
+                  <div class="w-full text-sm">Artikel akan disimpan sebagai draft dan tidak akan ditampilkan ke publik.
+                  </div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-8 h-8 ms-3">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 0 0 1 6 3.75h1.5m9 0h-9" />
+                </svg>
+              </label>
+            </li>
+          </ul>
+
+          @error('status')
+            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+          @enderror
+        </div>
       </div>
 
       <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-end gap-3">

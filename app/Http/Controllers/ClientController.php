@@ -20,14 +20,15 @@ class ClientController extends Controller
 	{
 		$title = 'Klien';
 
-		$search = request('search');
+		$search = request()->string('search')->trim();
 
 		$clients = Client::query()
 			->when($search, function ($query) use ($search) {
 				$query->where('filename', 'like', "%{$search}%");
 			})
 			->orderByDesc('created_at')
-			->cursorPaginate(8)
+			->paginate(8)
+			->onEachSide(1)
 			->withQueryString();
 
 		return view('admin.clients.index', compact('title', 'search', 'clients'));
@@ -49,7 +50,6 @@ class ClientController extends Controller
 			'client_logo' => 'required',
 			'client_logo.*' => 'image|mimes:jpg,jpeg,png|max:2048',
 		]);
-
 
 		try {
 			DB::beginTransaction();
@@ -85,27 +85,6 @@ class ClientController extends Controller
 		}
 	}
 
-	public function edit(Client $client)
-	{
-		return view(
-			'admin.clients.edit',
-			[
-				'title' => 'Edit Klien',
-				'client' => $client
-			]
-		);
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 */
-	public function update(Request $request, Client $client)
-	{
-		$request->validate([
-			'filename' => ''
-		]);
-	}
-
 	/**
 	 * Remove the specified resource from storage.
 	 */
@@ -114,7 +93,7 @@ class ClientController extends Controller
 		try {
 			DB::beginTransaction();
 
-			if ($client->cover_path) {
+			if ($client->client_logo) {
 				Storage::disk('public')->delete($client->client_logo);
 			}
 

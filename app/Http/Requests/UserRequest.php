@@ -26,7 +26,9 @@ class UserRequest extends FormRequest
 		return [
 			'name' => 'required|string|unique:users,name,' . $userId,
 			'email' => 'email:dns|required|string|unique:users,email,' . $userId,
-			'password' => 'required|min:8|string'
+			'password' => $this->isMethod('POST')
+				? 'required|min:8|string'
+				: 'nullable|min:8|string'
 		];
 	}
 }

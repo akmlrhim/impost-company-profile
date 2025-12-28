@@ -46,7 +46,7 @@
         <div class="mb-8">
           @if ($article->cover_path)
             <img src="{{ asset('storage/' . $article->cover_path) }}" alt="{{ $article->title }}"
-              class="w-full h-48 rounded-md object-cover" />
+              class="w-full h-56 rounded-md object-cover" />
           @else
             <img src="{{ asset('img/article_default.webp') }}" width="400" height="250" alt="{{ $article->title }}"
               class="w-full h-48 rounded-md object-cover" />
@@ -156,7 +156,7 @@
             <article
               class="w-full bg-gray-900 border border-gray-700 rounded-md overflow-hidden hover:border-gray-600 transition-colors flex flex-col h-full">
 
-              <div class="relative h-56 bg-gray-800 shrink-0">
+              <div class="relative bg-gray-800 shrink-0">
                 @if ($latest->cover_path)
                   <img src="{{ asset('storage/' . $latest->cover_path) }}" alt="{{ $latest->title }}"
                     class="w-full h-full rounded-md object-cover" />

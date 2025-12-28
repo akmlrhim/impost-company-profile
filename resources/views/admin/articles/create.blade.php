@@ -80,6 +80,42 @@
         </div>
         {{-- end  --}}
 
+        {{-- status  --}}
+        <div>
+          <label class="block text-sm font-medium text-gray-900 mb-2">Status Artikel</label>
+
+          <ul class="grid w-full gap-6 md:grid-cols-2">
+            <li>
+              <input type="radio" id="status_published" name="status" value="published" class="hidden peer"
+                {{ old('status') === 'published' ? 'checked' : '' }}>
+              <label for="status_published"
+                class="inline-flex items-center justify-between w-full p-5 text-body bg-neutral-primary-soft border border-default rounded-base cursor-pointer peer-checked:hover:bg-success-soft peer-checked:border-success-subtle peer-checked:bg-success-soft hover:bg-neutral-secondary-medium peer-checked:text-success-strong">
+                <div class="block">
+                  <div class="w-full font-semibold">Published</div>
+                  <div class="w-full text-sm">Artikel akan langsung ditampilkan ke publik.</div>
+                </div>
+              </label>
+            </li>
+
+            <li>
+              <input type="radio" id="status_draft" name="status" value="draft" class="hidden peer"
+                {{ old('status') === 'draft' ? 'checked' : '' }}>
+              <label for="status_draft"
+                class="inline-flex items-center justify-between w-full p-5 text-body bg-neutral-primary-soft border border-default rounded-base cursor-pointer peer-checked:hover:bg-warning-soft peer-checked:border-warning-subtle peer-checked:bg-warning-soft hover:bg-neutral-secondary-medium peer-checked:text-warning-strong">
+                <div class="block">
+                  <div class="w-full font-semibold">Draft</div>
+                  <div class="w-full text-sm">Artikel akan disimpan sebagai draft dan tidak akan ditampilkan ke publik.
+                  </div>
+                </div>
+              </label>
+            </li>
+          </ul>
+
+          @error('status')
+            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+          @enderror
+        </div>
+
       </div>
 
       <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-end gap-3">

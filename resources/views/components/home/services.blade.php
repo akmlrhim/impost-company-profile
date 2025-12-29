@@ -5,7 +5,7 @@
       class="text-xl sm:text-2xl lg:text-4xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-2">
       Layanan Kami
     </h2>
-    <p class="text-white text-xs sm:text-sm lg:text-base max-w-3xl mx-auto">
+    <p class="text-white text-sm sm:text-md lg:text-base max-w-3xl mx-auto">
       Kami menyediakan layanan digital end-to-end yang berfokus pada peningkatan omset, visibilitas merek, dan efisiensi
       pemasaran.
     </p>

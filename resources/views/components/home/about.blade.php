@@ -8,7 +8,7 @@
         Tentang Kami
       </h2>
       <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="700"
-        class="mt-3 md:mt-4 lg:mt-6 text-[11px] sm:text-xs md:text-sm lg:text-base text-white leading-relaxed">
+        class="mt-3 md:mt-4 lg:mt-6 text-sm sm:text-md lg:text-base text-white leading-relaxed">
         Impost Media adalah Agensi Pemasaran Digital dan Branding All-in-One pertama di Banjarbaru dan Banjarmasin.
         Kami menawarkan solusi yang fleksibel dan berorientasi pada hasil.
       </p>
@@ -59,12 +59,12 @@
     }" class="pt-8 md:pt-12">
 
       <div class="text-center max-w-3xl mx-auto mb-6 md:mb-8">
-        <p data-aos="zoom-in" data-aos-delay="150" data-aos-duration="600"
+        <p data-aos="fade-up" data-aos-delay="150" data-aos-duration="600"
           class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
           Kami bukan hanya sekadar Agensi Media Sosial
         </p>
         <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="700"
-          class="mt-2 text-[11px] sm:text-xs md:text-sm lg:text-base font-medium text-white">
+          class="mt-2 text-sm sm:text-md lg:text-base font-medium text-white">
           Fokus utama kami adalah meningkatkan profit dan pendapatan bisnis anda.
         </p>
       </div>
@@ -119,7 +119,7 @@
 					]"
           :key="index">
 
-          <div data-aos="fade-up" :data-aos-delay="index * 120" data-aos-duration="700"
+          <div data-aos="fade-up" data-aos-duration="700"
             class="bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth rounded-2xl p-4">
             <h3 class="text-md font-bold text-white mb-3" x-text="card.title"></h3>
             <p class="text-white text-sm leading-relaxed" x-text="card.desc"></p>

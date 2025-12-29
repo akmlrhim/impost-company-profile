@@ -162,8 +162,9 @@ class ArticleController extends Controller
 	public function comments(Article $article)
 	{
 		return view('admin.articles.comments', [
-			'title' => 'Komentar',
-			'article' => $article->comments()->simplePaginate(10)
+			'title'    => 'Komentar',
+			'article'  => $article,
+			'comments' => $article->comments()->latest()->paginate(9),
 		]);
 	}
 }

@@ -45,7 +45,7 @@
 
     <div class="text-center mt-10">
       <a href="{{ route('article.all') }}"
-        class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold bg-linear-to-r from-impost-primary via-impost-third to-impost-fourth text-white rounded-md">
+        class="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 lg:px-6 lg:py-3 text-[11px] sm:text-xs md:text-sm font-bold bg-linear-to-r from-impost-primary via-impost-third to-impost-fourth text-white rounded-md hover:opacity-90 transition-opacity">
         Lihat Semua Artikel
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

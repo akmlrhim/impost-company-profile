@@ -92,7 +92,11 @@
       Semua Komentar
     </h3>
 
-    @forelse ($article->comments as $index => $c)
+    @php
+      $comment = $article->comments()->where('status', '=', 'approved')->latest()->get();
+    @endphp
+
+    @forelse ($comment as $index => $c)
       <article x-show="showAll || {{ $index }} < limit" x-transition
         class="bg-gray-900 border border-gray-800 rounded-md p-4 sm:p-5">
         <div class="flex items-start gap-4">
@@ -102,9 +106,9 @@
                 {{ $c->fullname }}
               </h4>
               <span class="text-xs text-gray-600">•</span>
-              <time class="text-xs text-gray-500">
+              <span class="text-xs text-gray-500">
                 {{ $c->created_at->diffForHumans() }}
-              </time>
+              </span>
             </div>
 
             <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">

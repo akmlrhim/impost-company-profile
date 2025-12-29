@@ -20,6 +20,8 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::post('login', [AuthController::class, 'login'])->name('login');
 		Route::get('about', [HomeController::class, 'about'])->name('about');
 		Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+		Route::get('portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
+		Route::get('study-case', [HomeController::class, 'studyCase'])->name('study-case');
 		Route::get('articles/view/{article:slug}', [HomeController::class, 'article'])->name('article.detail');
 		Route::get('article/view', [HomeController::class, 'articleAll'])->name('article.all');
 		Route::post('article/comment', [CommentController::class, 'store'])->name('article.comment');
@@ -35,7 +37,8 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		// article route 
 		Route::resource('articles', ArticleController::class)->except('show');
-		Route::get('articles/{comment}/comments', [ArticleController::class, 'comments'])->name('articles.comments');
+		Route::get('articles/{article}/comments', [ArticleController::class, 'comments'])->name('articles.comments');
+		Route::patch('articles/{article}/comments/{comment}/status', [CommentController::class, 'status'])->name('articles.comments.status');
 		Route::post('editor-upload', [EditorController::class, 'store'])->name('editor.upload');
 
 		// team route 

@@ -122,31 +122,37 @@
 @push('scripts')
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-
-      document.addEventListener('keydown', e => {
-        if (
-          e.key === 'F12' ||
-          (e.ctrlKey && ['u', 's', 'i'].includes(e.key.toLowerCase()))
-        ) {
-          e.preventDefault();
-        }
-      });
-
       const video = document.getElementById('vsl_video');
       const popup = document.getElementById('vsl_popup');
       const form = document.getElementById('vsl_form');
       const btn = document.getElementById('submit_btn');
       const closeBtn = document.getElementById('close_popup');
-
       const LOCK_AT = 10;
       const STORAGE_KEY = 'vsl_unlocked';
+      const STORAGE_EXPIRY_HOURS = 24;
       const SHEET_API_ENDPOINT = '{{ env('SHEETDB_URL_ENDPOINT') }}';
 
-      let unlocked = localStorage.getItem(STORAGE_KEY) === 'true';
+      let stored = localStorage.getItem(STORAGE_KEY);
+      let unlocked = false;
+      if (stored) {
+        try {
+          const data = JSON.parse(stored);
+          const now = new Date().getTime();
+          if (now - data.timestamp < STORAGE_EXPIRY_HOURS * 3600 * 1000) {
+            unlocked = true;
+          } else {
+            localStorage.removeItem(STORAGE_KEY);
+          }
+        } catch {
+          localStorage.removeItem(STORAGE_KEY);
+        }
+      }
+
+      let locked = !unlocked;
       let shownOnce = false;
 
       video.addEventListener('timeupdate', () => {
-        if (video.currentTime >= LOCK_AT && !unlocked && !shownOnce) {
+        if (video.currentTime >= LOCK_AT && locked && !shownOnce) {
           shownOnce = true;
           video.pause();
           popup.classList.remove('hidden');
@@ -154,7 +160,7 @@
       });
 
       video.addEventListener('play', () => {
-        if (!unlocked && video.currentTime >= LOCK_AT) {
+        if (locked && video.currentTime >= LOCK_AT) {
           video.pause();
           popup.classList.remove('hidden');
         }
@@ -162,11 +168,11 @@
 
       closeBtn.addEventListener('click', () => {
         popup.classList.add('hidden');
+        if (locked) video.pause();
       });
 
       form.addEventListener('submit', e => {
         e.preventDefault();
-
         btn.disabled = true;
         btn.textContent = 'Menyimpan...';
 
@@ -191,11 +197,15 @@
             return res.json();
           })
           .then(() => {
-            localStorage.setItem(STORAGE_KEY, 'true');
+            const now = new Date().getTime();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({
+              unlocked: true,
+              timestamp: now
+            }));
             unlocked = true;
-
+            locked = false;
             popup.classList.add('hidden');
-            video.play();
+            video.play().catch(() => {});
           })
           .catch(() => {
             alert('Terjadi kesalahan. Silakan coba lagi.');

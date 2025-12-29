@@ -12,6 +12,13 @@
           <div class="bg-white rounded-sm shadow-sm overflow-hidden flex flex-col h-full">
 
             <div class="relative h-48 bg-gray-100">
+
+              <span
+                class="absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded-full
+							{{ $article->status === 'published' ? 'bg-green-600 text-white' : 'bg-yellow-500 text-white' }}">
+                {{ $article->status === 'published' ? 'Publish' : 'Draft' }}
+              </span>
+
               @if ($article->cover_path)
                 <img src="{{ asset('storage/' . $article->cover_path) }}" alt="{{ $article->title }}" loading="lazy"
                   class="w-full h-full object-cover">
@@ -26,7 +33,7 @@
             </div>
 
             <div class="p-5 flex flex-col flex-1">
-              <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              <h3 class="text-md font-medium text-gray-900 mb-2">
                 {{ $article->title }}
               </h3>
 

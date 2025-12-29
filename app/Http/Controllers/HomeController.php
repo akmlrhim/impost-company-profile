@@ -65,4 +65,8 @@ class HomeController extends Controller
 		$title = 'Kontak';
 		return view('public.contact', compact('title'));
 	}
+
+	public function portfolio() {}
+
+	public function studyCase() {}
 }

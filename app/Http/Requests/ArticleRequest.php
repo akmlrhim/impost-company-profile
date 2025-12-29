@@ -36,8 +36,8 @@ class ArticleRequest extends FormRequest
 				}
 			],
 			'cover_path' => $this->isMethod('POST')
-				? 'required|image|mimes:jpeg,png,jpg|max:2048'
-				: 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+				? 'required|image|mimes:jpeg,png,jpg'
+				: 'nullable|image|mimes:jpeg,png,jpg',
 		];
 	}
 }

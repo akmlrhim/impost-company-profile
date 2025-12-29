@@ -1,4 +1,25 @@
 @extends('layouts.public')
+
+@push('head')
+  @if ($article->status == 'draft')
+    <meta name="robots" content="noindex, nofollow">
+  @else
+    <meta name="robots" content="index, follow">
+  @endif
+
+  <meta name="description"
+    content="{{ $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155) }}">
+
+  <meta property="og:title" content="{{ $article->meta_title ?? $article->title }}">
+  <meta property="og:description"
+    content="{{ $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155) }}">
+  <meta property="og:image"
+    content="{{ $article->cover_path ? asset('storage/.' . $article->cover_path) : asset('img/article_default.webp') }}">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ url()->current() }}">
+@endpush
+
 @section('content')
   <main class="sm:pt-28 pt-20 pb-16 bg-impost-fifth antialiased">
     <div class="px-4 mx-auto max-w-7xl">

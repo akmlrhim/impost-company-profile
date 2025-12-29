@@ -27,7 +27,7 @@
         Konfirmasi Hapus
       </h3>
 
-      <p class="mb-6 text-body text-center">
+      <p class="mb-6 text-body text-center font-medium">
         {{ $message }}
       </p>
 

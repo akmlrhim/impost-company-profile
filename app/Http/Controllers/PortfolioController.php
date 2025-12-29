@@ -69,7 +69,7 @@ class PortfolioController extends Controller
 			if ($request->hasFile('photos')) {
 				foreach ($request->file('photos') as $photoFile) {
 					$img = $manager->read($photoFile)->toWebp(quality: 60);
-					$filename = time() . '-' . '.webp';
+					$filename = time() . '.webp';
 					$path = 'portfolio/photos/' . $filename;
 
 					Storage::disk('public')->put($path, $img);
@@ -89,27 +89,84 @@ class PortfolioController extends Controller
 	}
 
 	/**
-	 * Display the specified resource.
-	 */
-	public function show(Portfolio $portfolio)
-	{
-		//
-	}
-
-	/**
 	 * Show the form for editing the specified resource.
 	 */
 	public function edit(Portfolio $portfolio)
 	{
-		//
+		$title = 'Edit Portfolio';
+
+		return view('admin.portfolio.edit', [
+			'title' => $title,
+			'portfolio' => $portfolio->load('photos')
+		]);
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 */
-	public function update($request, Portfolio $portfolio)
+	public function update(PortfolioRequest $request, Portfolio $portfolio)
 	{
-		//
+		try {
+			DB::beginTransaction();
+
+			if ($request->hasFile('cover_path')) {
+
+				$manager = new ImageManager(new Driver());
+
+				if ($portfolio->cover_path && Storage::disk('public')->exists($portfolio->cover_path)) {
+					Storage::disk('public')->delete($portfolio->cover_path);
+				}
+
+				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
+				$filename = time() . '.webp';
+				$path = 'portfolio/' . $filename;
+
+				Storage::disk('public')->put($path, $img);
+
+				$portfolio->cover_path = $path;
+			}
+
+			// update data portfolio 
+			$portfolio->update([
+				'name' => $request->name,
+				'slug' => Str::slug($request->name)
+			]);
+
+			// hapus foto lama 
+			if ($request->filled('delete_photos')) {
+				$photos = $portfolio->photos()
+					->whereIn('id', $request->delete_photos)
+					->get();
+
+				foreach ($photos as $photo) {
+					if (Storage::disk('public')->exists($photo->photo_path)) {
+						Storage::disk('public')->delete($photo->photo_path);
+					}
+					$photo->delete();
+				}
+			}
+
+			// tambah portfolio 
+			if ($request->hasFile('photos')) {
+				foreach ($request->file('photos') as $photoFile) {
+					$img = $manager->read($photoFile)->toWebp(quality: 60);
+					$filename = time() . '.webp';
+					$path = 'portfolio/photos/' . $filename;
+
+					Storage::disk('public')->put($path, $img);
+
+					$portfolio->photos()->create([
+						'photo_path' => $path
+					]);
+				}
+			}
+
+			DB::commit();
+			return redirect()->route('portfolio.index')->with('success', 'Portfolio berhasil diperbarui.');
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return back()->withInput();
+		}
 	}
 
 	/**
@@ -117,6 +174,32 @@ class PortfolioController extends Controller
 	 */
 	public function destroy(Portfolio $portfolio)
 	{
-		//
+		try {
+			DB::beginTransaction();
+
+			// hapus cover portfolio 
+			if ($portfolio->cover_path && Storage::disk('public')->exists($portfolio->cover_path)) {
+				Storage::disk('public')->delete($portfolio->cover_path);
+			}
+
+			// hapus semua foto portfolio 
+			foreach ($portfolio->photos as $photo) {
+				if ($photo->photo_path && Storage::disk('public')->exists($photo->photo_path)) {
+					Storage::disk('public')->delete($photo->photo_path);
+				}
+			}
+
+			// hapus foto portfolio 
+			$portfolio->photos()->delete();
+
+			// hapus portfolio 
+			$portfolio->delete();
+
+			DB::commit();
+			return back()->with('success', 'Portfolio berhasil dihapus.');
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return back()->withInput();
+		}
 	}
 }

@@ -7,7 +7,9 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\StudyCaseController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -47,5 +49,11 @@ Route::middleware('throttle:30,1')->group(function () {
 		// client route 
 		Route::resource('clients', ClientController::class)->except(['show', 'edit', 'update']);
 		Route::delete('truncate-clients', [ClientController::class, 'truncate'])->name('truncate-clients');
+
+		// portfolio route 
+		Route::resource('portfolio', PortfolioController::class);
+
+		// study case route 
+		Route::resource('study-case', StudyCaseController::class);
 	});
 });

@@ -1,6 +1,6 @@
 @extends('layouts.public')
 @section('content')
-  <main class="sm:pt-28 pt-20 pb-16 bg-impost-fifth antialiased">
+  <main class="pt-24 sm:pt-28 py-8 sm:py-16 bg-impost-fifth antialiased">
     <div class="px-4 mx-auto max-w-7xl">
 
       <nav class="flex mb-8" aria-label="Breadcrumb">

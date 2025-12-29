@@ -1,4 +1,4 @@
-<section class="mt-16" id="comment-section">
+<section class="mt-8 sm:mt-16 sm:px-0 px-4" id="comment-section">
   <div class="mb-8">
     <h2 class="text-lg sm:text-xl lg:text-2xl font-bold text-white">
       Komentar <span

@@ -1,4 +1,4 @@
-<nav class="bg-transparent/30 backdrop-blur-md fixed w-full z-20 top-0 start-0 border-b border-gray-400">
+<nav class="bg-transparent/30 backdrop-blur-md fixed w-full z-20 top-0 border-b border-gray-400">
   <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto py-3 sm:py-4 px-6 sm:px-8">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="{{ asset('img/logo_impost_putih.webp') }}" class="h-12 w-auto" loading="lazy" />

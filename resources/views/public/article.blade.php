@@ -21,11 +21,11 @@
 @endpush
 
 @section('content')
-  <main class="sm:pt-28 pt-20 pb-16 bg-impost-fifth antialiased">
+  <main class="bg-impost-fifth antialiased pt-24 sm:pt-28 py-8 sm:py-16">
     <div class="px-4 mx-auto max-w-7xl">
 
       {{-- Breadcrumb --}}
-      <nav class="flex mb-8" aria-label="Breadcrumb">
+      <nav class="flex mb-8 " aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
           <li class="inline-flex items-center">
             <a href="{{ url('/') }}" class="inline-flex items-center text-xs sm:text-sm font-medium text-white">

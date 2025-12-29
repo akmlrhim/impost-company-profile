@@ -27,7 +27,7 @@ class ArticleFactory extends Factory
 			'excerpt' => fake()->sentence(12, true),
 			'meta_title' => fake()->sentence(6, true),
 			'meta_description' => fake()->sentence(20, true),
-			'status' => 'draft',
+			'status' => 'published',
 		];
 	}
 }

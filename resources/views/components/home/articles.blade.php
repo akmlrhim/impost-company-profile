@@ -1,11 +1,11 @@
-<section class="max-w-7xl mx-auto px-4 py-6" id="blog">
+<section class="max-w-7xl mx-auto px-4 mb-12" id="blog">
 
   <div class="mb-6 sm:mb-10 text-center">
     <h2
       class="text-xl sm:text-2xl lg:text-4xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-2">
       Artikel
     </h2>
-    <p class="text-white text-xs sm:text-sm lg:text-base max-w-2xl mx-auto">
+    <p class="text-white text-sm sm:text-md lg:text-base max-w-2xl mx-auto">
       Temukan artikel, tips, dan panduan terbaru untuk membantu anda berkembang
     </p>
   </div>

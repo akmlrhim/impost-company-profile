@@ -1,4 +1,4 @@
-<section id="services" class="max-w-7xl mx-auto px-4 py-6">
+<section id="services" class="max-w-7xl mx-auto px-4 mb-12 sm:mb-24">
 
   <div class="mb-6 sm:mb-10 text-center">
     <h2

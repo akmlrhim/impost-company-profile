@@ -1,6 +1,6 @@
 <section id="services" class="max-w-7xl mx-auto px-3 mb-12 sm:mb-24">
 
-  <div class="mb-6 sm:mb-10 text-center">
+  <div class="mb-6 sm:mb-10 text-center" data-aos="fade-up">
     <h2
       class="text-xl sm:text-2xl lg:text-4xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-2">
       Layanan Kami
@@ -62,13 +62,13 @@
       </div>
     </div>
 
-    <div class="hidden sm:grid lg:grid-cols-3 gap-6">
+    <div class="hidden sm:grid lg:grid-cols-3 gap-6" data-aos="fade-up">
       @foreach ($servicesForDesktop as $service)
         <x-service-card :service="$service" />
       @endforeach
     </div>
 
-    <div class="hidden sm:flex justify-center mt-8">
+    <div class="hidden sm:flex justify-center mt-8" data-aos="fade-up">
       <x-custom-pagination :items="$servicesForDesktop" />
     </div>
 

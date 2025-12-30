@@ -1,6 +1,6 @@
 <section class="max-w-7xl mx-auto px-3 mb-12" id="blog">
 
-  <div class="mb-6 sm:mb-10 text-center">
+  <div class="mb-6 sm:mb-10 text-center" data-aos="fade-up">
     <h2
       class="text-xl sm:text-2xl lg:text-4xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-2">
       Artikel
@@ -37,13 +37,13 @@
     </div>
 
     {{-- desktop  --}}
-    <div class="hidden sm:grid grid-cols-2 md:grid-cols-3 gap-6">
+    <div class="hidden sm:grid grid-cols-2 md:grid-cols-3 gap-6" data-aos="fade-up">
       @foreach ($articles as $article)
         <x-article-card :article="$article" />
       @endforeach
     </div>
 
-    <div class="text-center mt-10">
+    <div class="text-center mt-10" data-aos="fade-up">
       <a href="{{ route('article.all') }}"
         class="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 lg:px-6 lg:py-3 text-[11px] sm:text-xs md:text-sm font-bold bg-linear-to-r from-impost-primary via-impost-third to-impost-fourth text-white rounded-md hover:opacity-90 transition-opacity">
         Lihat Semua Artikel

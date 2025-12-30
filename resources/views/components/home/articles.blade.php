@@ -1,4 +1,4 @@
-<section class="max-w-7xl mx-auto px-4 mb-12" id="blog">
+<section class="max-w-7xl mx-auto px-3 mb-12" id="blog">
 
   <div class="mb-6 sm:mb-10 text-center">
     <h2
@@ -17,7 +17,7 @@
   @else
     {{-- mobile --}}
     <div x-data="blogSlider({{ $articles->count() }})" x-init="init()" class="block sm:hidden">
-      <div class="px-6">
+      <div class="px-3">
         <div x-ref="slider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth gap-4">
           @foreach ($articles as $article)
             <div class="w-full shrink-0 snap-center">

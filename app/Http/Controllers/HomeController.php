@@ -13,18 +13,34 @@ class HomeController extends Controller
 	public function index()
 	{
 		$title = 'Home';
-		$page = request('page', 1);
+
 		$servicesForDesktop = ServiceService::paginate(6);
+
 		$servicesForMobile = ServiceService::all();
+
 		$articles = ArticleService::paginateHome(3);
+
 		$clients = ClientService::all();
+
+		$ytUrl = 'https://www.youtube.com/embed/XtwLOM9Egi8'
+			. '?autoplay=1'
+			. '&mute=1'
+			. '&loop=1'
+			. '&playlist=XtwLOM9Egi8'
+			. '&controls=0'
+			. '&showinfo=0'
+			. '&modestbranding=1'
+			. '&playsinline=1';
+
+		$ytEncoded = base64_encode($ytUrl);
 
 		return view('public.home', compact(
 			'title',
 			'servicesForDesktop',
 			'servicesForMobile',
 			'articles',
-			'clients'
+			'clients',
+			'ytEncoded'
 		));
 	}
 

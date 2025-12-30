@@ -1,6 +1,6 @@
 @extends('layouts.public')
 @section('content')
-  <x-home.hero />
+  <x-home.hero :ytEncoded="$ytEncoded" />
 
   <x-home.vsl />
 

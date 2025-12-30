@@ -1,4 +1,4 @@
-<section id="services" class="max-w-7xl mx-auto px-4 mb-12 sm:mb-24">
+<section id="services" class="max-w-7xl mx-auto px-3 mb-12 sm:mb-24">
 
   <div class="mb-6 sm:mb-10 text-center">
     <h2
@@ -12,7 +12,7 @@
   </div>
 
   @if ($servicesForDesktop->isEmpty())
-    <div class="flex justify-center">
+    <div class="flex justify-center px-3">
       <x-empty-card item="layanan" />
     </div>
   @else
@@ -41,7 +41,7 @@
             items.forEach((el) => this.observer.observe(el))
         }
     }" x-init="init()" class="block sm:hidden">
-      <div class="px-6">
+      <div class="px-3">
         <div x-ref="slider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth gap-6">
           @foreach ($servicesForMobile as $service)
             <div class="w-full shrink-0 snap-center">

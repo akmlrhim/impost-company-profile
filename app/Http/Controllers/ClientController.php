@@ -27,8 +27,7 @@ class ClientController extends Controller
 				$query->where('filename', 'like', "%{$search}%");
 			})
 			->orderByDesc('created_at')
-			->paginate(8)
-			->onEachSide(1)
+			->cursorPaginate(8)
 			->withQueryString();
 
 		return view('admin.clients.index', compact('title', 'search', 'clients'));

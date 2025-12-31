@@ -26,9 +26,12 @@ class PortfolioRequest extends FormRequest
 		return [
 			'name' => 'required|string|unique:portfolio,name,' . $portfolioId,
 			'cover_path' => $this->isMethod('POST')
-				? 'required|image|mimes:jpeg,png,jpg'
-				: 'nullable|image|mimes:jpeg,png,jpg',
-			'photo_path.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+				? 'required|image|mimes:jpeg,png,jpg|max:5120'
+				: 'nullable|image|mimes:jpeg,png,jpg|max:5120',
+
+			'photos.*' => $this->isMethod('POST')
+				? 'required|image|mimes:jpeg,png,jpg|max:5120'
+				: 'nullable|image|mimes:jpeg,png,jpg|max:5120',
 		];
 	}
 }

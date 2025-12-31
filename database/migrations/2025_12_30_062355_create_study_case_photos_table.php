@@ -11,9 +11,9 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('portfolio_photo', function (Blueprint $table) {
+		Schema::create('study_case_photos', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('portfolio_id')->constrained('portfolio')->onUpdate('cascade')->onDelete('cascade');
+			$table->foreignId('study_case_id')->constrained('study_cases')->onUpdate('cascade')->onDelete('cascade');
 			$table->string('photo_path');
 			$table->timestamps();
 		});
@@ -24,6 +24,6 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('portfolio_photo');
+		Schema::dropIfExists('study_case_photos');
 	}
 };

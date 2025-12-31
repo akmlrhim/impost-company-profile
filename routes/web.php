@@ -23,6 +23,7 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::get('about', [HomeController::class, 'about'])->name('about');
 		Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 		Route::get('portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
+		Route::get('opt-in', [HomeController::class, 'optIn'])->name('opt-in');
 		Route::get('study-case', [HomeController::class, 'studyCase'])->name('study-case');
 		Route::get('articles/view/{article:slug}', [HomeController::class, 'article'])->name('article.detail');
 		Route::get('article/view', [HomeController::class, 'articleAll'])->name('article.all');

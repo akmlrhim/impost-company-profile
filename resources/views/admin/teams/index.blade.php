@@ -6,7 +6,7 @@
 
   <div class="bg-neutral-primary-soft rounded-base border border-default mb-4">
     <div class="p-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($teams as $team)
           <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
 

@@ -30,7 +30,7 @@
 @push('scripts')
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const encoded = @json($ytEncoded);
+      const encoded = @json($comproUrl);
       document.getElementById('yt-bg').src = atob(encoded);
     })
   </script>

@@ -19,11 +19,23 @@ class PortfolioController extends Controller
 	{
 		$title = "Portfolio";
 
+		$search = request()->string('search')->trim();
+
+		$portfolios = Portfolio::query()
+			->when($search, function ($query) use ($search) {
+				$query->where('name', 'like', "%{$search}%");
+			})
+			->latest()
+			->paginate(8)
+			->onEachSide(1)
+			->withQueryString();
+
 		return view(
 			'admin.portfolio.index',
 			[
 				'title' => $title,
-				'portfolios' => Portfolio::paginate()
+				'portfolios' => $portfolios,
+				'search' => $search
 			]
 		);
 	}

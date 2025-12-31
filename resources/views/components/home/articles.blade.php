@@ -11,7 +11,7 @@
   </div>
 
   @if ($articles->count() === 0)
-    <div class="flex justify-center">
+    <div class="flex justify-center px-3">
       <x-empty-card item="artikel" />
     </div>
   @else

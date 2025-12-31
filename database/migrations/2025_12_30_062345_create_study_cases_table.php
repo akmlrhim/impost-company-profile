@@ -11,10 +11,14 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('portfolio_photo', function (Blueprint $table) {
+		Schema::create('study_cases', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('portfolio_id')->constrained('portfolio')->onUpdate('cascade')->onDelete('cascade');
-			$table->string('photo_path');
+			$table->string('name', 140)->unique();
+			$table->string('slug');
+			$table->text('situation');
+			$table->text('solution');
+			$table->text('result');
+			$table->string('cover_path');
 			$table->timestamps();
 		});
 	}
@@ -24,6 +28,6 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('portfolio_photo');
+		Schema::dropIfExists('study_cases');
 	}
 };

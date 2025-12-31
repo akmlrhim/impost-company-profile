@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="mx-auto py-4">
-    <form id="article-form" action="{{ route('portfolio.update', $portfolio) }}" method="POST" enctype="multipart/form-data"
+    <form action="{{ route('portfolio.update', $portfolio) }}" method="POST" enctype="multipart/form-data"
       class="bg-white rounded-lg border border-gray-200 overflow-hidden" x-data="{ loading: false }"
       @submit.prevent="loading = true; $el.submit()">
       @csrf

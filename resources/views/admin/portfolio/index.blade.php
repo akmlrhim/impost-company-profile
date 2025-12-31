@@ -15,7 +15,7 @@
             <div class="relative h-48 bg-gray-100">
 
               @if ($portfolio->cover_path)
-                <img src="{{ asset('storage/' . $portfolio->cover_path) }}" alt="{{ $portfolio->title }}" loading="lazy"
+                <img src="{{ asset('storage/' . $portfolio->cover_path) }}" alt="{{ $portfolio->name }}" loading="lazy"
                   class="w-full h-full object-cover">
               @else
                 <div class="w-full h-full flex items-center justify-center">

@@ -3,9 +3,8 @@
   <x-flash></x-flash>
 
   <div class="mx-auto py-4">
-    <form id="article-form" action="{{ route('articles.update', $article->slug) }}" method="POST"
-      enctype="multipart/form-data" class="bg-white rounded-lg border border-gray-200 overflow-hidden"
-      x-data="{
+    <form action="{{ route('articles.update', $article->slug) }}" method="POST" enctype="multipart/form-data"
+      class="bg-white rounded-lg border border-gray-200 overflow-hidden" x-data="{
           loading: false,
           syncQuill() {
               const editor = document.querySelector('#editor .ql-editor');
@@ -17,7 +16,8 @@
       
               document.getElementById('quill-content-input').value = html;
           }
-      }" @submit="syncQuill(); loading = true">
+      }"
+      @submit="syncQuill(); loading = true">
       @csrf
       @method('PUT')
 

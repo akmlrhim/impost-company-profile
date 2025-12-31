@@ -123,4 +123,6 @@ return [
 		'store' => env('APP_MAINTENANCE_STORE', 'database'),
 	],
 
+	'compro_video_url' => env('COMPRO_VIDEO_URL'),
+	'sheetdb_api_url' => env('SHEETDB_URL_ENDPOINT')
 ];

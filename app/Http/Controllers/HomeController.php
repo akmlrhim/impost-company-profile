@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Portfolio;
+use App\Models\StudyCase;
 use App\Services\ArticleService;
 use App\Services\ClientService;
 use App\Services\ServiceService;
@@ -81,14 +82,25 @@ class HomeController extends Controller
 		return view('public.portfolio.detail', compact('title', 'portfolio'));
 	}
 
-	public function studyCase() {}
+	public function studyCase()
+	{
+		$title = 'Study Case';
+		$studyCase = StudyCase::paginate(8);
+
+		return view('public.study-case.index', compact('title', 'studyCase'));
+	}
+
+	public function studyCaseDetail(StudyCase $studyCase)
+	{
+		$title = 'Study Case';
+
+		return view('public.study-case.detail', compact('title', 'studyCase'));
+	}
 
 	public function optIn()
 	{
-
 		$title = 'OPT-IN';
-		$optUrl = '';
 
-		return view('public.opt-in', compact('title', 'optUrl'));
+		return view('public.opt-in', compact('title'));
 	}
 }

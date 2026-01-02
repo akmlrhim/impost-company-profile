@@ -57,9 +57,11 @@
             Situasi <span class="text-danger">*</span>
           </label>
 
-          <textarea id="situation" name="situation" rows="4"
-            class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body"
-            placeholder="Write your thoughts here...">{{ old('situation') }}</textarea>
+          <div id="editor" style="height: 300px;">
+            {!! old('situation') !!}
+          </div>
+
+          <input type="hidden" name="situation" id="quill-editor" value="{{ old('situation') }}">
 
           @error('situation')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
@@ -72,9 +74,11 @@
             Solusi <span class="text-danger">*</span>
           </label>
 
-          <textarea id="solution" name="solution" rows="4"
-            class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body"
-            placeholder="Write your thoughts here...">{{ old('solution') }}</textarea>
+          <div id="editor" style="height: 300px;">
+            {!! old('solution') !!}
+          </div>
+
+          <input type="hidden" name="solution" id="quill-editor" value="{{ old('solution') }}">
 
           @error('solution')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
@@ -87,9 +91,11 @@
             Hasil <span class="text-danger">*</span>
           </label>
 
-          <textarea id="result" rows="4" name="result"
-            class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body"
-            placeholder="Write your thoughts here...">{{ old('result') }}</textarea>
+          <div id="editor" style="height: 300px;">
+            {!! old('result') !!}
+          </div>
+
+          <input type="hidden" name="result" id="quill-editor" value="{{ old('result') }}">
 
           @error('result')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
@@ -99,7 +105,7 @@
         {{-- photos --}}
         <div x-data="{ previews: [] }" class="mt-4">
           <label class="block text-sm font-medium mb-2" for="photos">
-            Foto foto study case <span class="text-danger">*</span>
+            Asset study case <span class="text-danger">*</span>
           </label>
 
           <input type="file" name="photos[]" id="photos" accept="image/*" multiple
@@ -138,3 +144,34 @@
     </form>
   </div>
 @endsection
+
+@push('scripts')
+  <script src="{{ asset('quill/quill.js') }}" defer></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('#editor').forEach(function(editor) {
+        new Quill(editor, {
+          theme: 'snow',
+          placeholder: 'Tulis konten anda di sini...',
+          modules: {
+            toolbar: {
+              container: [
+                [{
+                  header: [1, 2, 3, 4, 5, 6, false]
+                }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{
+                  list: 'ordered'
+                }, {
+                  list: 'bullet'
+                }],
+              ],
+            },
+          },
+        });
+      });
+    });
+  </script>
+@endpush

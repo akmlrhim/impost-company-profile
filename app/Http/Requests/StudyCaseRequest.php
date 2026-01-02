@@ -32,7 +32,7 @@ class StudyCaseRequest extends FormRequest
 			'solution' => 'required|string',
 			'result' => 'required|string',
 
-			'photos.*' => $this->isMethod('POST')
+			'media.*' => $this->isMethod('POST')
 				? 'required|image|mimes:jpeg,png,jpg|max:5120'
 				: 'nullable|image|mimes:jpeg,png,jpg|max:5120',
 		];

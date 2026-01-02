@@ -11,10 +11,11 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('study_case_photos', function (Blueprint $table) {
+		Schema::create('testimonials', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('study_case_id')->constrained('study_cases')->onUpdate('cascade')->onDelete('cascade');
-			$table->string('media_path');
+			$table->foreignId('study_case_id')->constrained('study_cases')->onDelete('cascade');
+			$table->string('company_name')->index();
+			$table->text('content');
 			$table->timestamps();
 		});
 	}
@@ -24,6 +25,6 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('study_case_photos');
+		Schema::dropIfExists('testimonials');
 	}
 };

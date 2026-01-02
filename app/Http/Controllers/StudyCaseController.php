@@ -43,8 +43,9 @@ class StudyCaseController extends Controller
 	{
 		DB::beginTransaction();
 
+		$manager = new ImageManager(new Driver());
+
 		try {
-			$manager = new ImageManager(new Driver());
 
 			$cover_path = null;
 
@@ -122,10 +123,10 @@ class StudyCaseController extends Controller
 	{
 		DB::beginTransaction();
 
-		try {
-			$manager = new ImageManager(new Driver());
+		$manager = new ImageManager(new Driver());
 
-			// ===== COVER =====
+		try {
+
 			$cover_path = $studyCase->cover_path;
 
 			if ($request->hasFile('cover_path')) {
@@ -145,7 +146,6 @@ class StudyCaseController extends Controller
 				Storage::disk('public')->put($cover_path, $img);
 			}
 
-			// ===== UPDATE DATA =====
 			$studyCase->update([
 				'name' => $request->name,
 				'slug' => Str::slug($request->name),
@@ -155,10 +155,8 @@ class StudyCaseController extends Controller
 				'cover_path' => $cover_path,
 			]);
 
-			// ===== PHOTOS (optional replace) =====
 			if ($request->hasFile('photos')) {
 
-				// hapus foto lama
 				foreach ($studyCase->photos as $photo) {
 					if (Storage::disk('public')->exists($photo->photo_path)) {
 						Storage::disk('public')->delete($photo->photo_path);
@@ -194,7 +192,7 @@ class StudyCaseController extends Controller
 
 			return back()
 				->withInput()
-				->with('error', 'Gagal memperbarui data: ' . $e->getMessage());
+				->with('error', 'Gagal memperbarui data.');
 		}
 	}
 

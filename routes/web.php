@@ -26,6 +26,7 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::get('portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
 		Route::get('opt-in', [HomeController::class, 'optIn'])->name('opt-in');
 		Route::get('study-case', [HomeController::class, 'studyCase'])->name('study-case');
+		Route::get('study-case/{study_case}', [HomeController::class, 'studyCaseDetail'])->name('study-case.detail');
 		Route::get('articles/view/{article:slug}', [HomeController::class, 'article'])->name('article.detail');
 		Route::get('article/view', [HomeController::class, 'articleAll'])->name('article.all');
 		Route::post('article/comment', [CommentController::class, 'store'])->name('article.comment');

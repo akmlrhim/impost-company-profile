@@ -34,19 +34,19 @@
           {{ $title }}
         </h1>
         <p class="text-white text-sm md:text-base max-w-2xl mx-auto">
-          Karya-karya yang telah kami kerjakan untuk berbagai kebutuhan dan industri.
+          Studi kasus proyek klien yang menunjukkan bagaimana kami memberikan solusi nyata.
         </p>
       </div>
 
       <section class="mx-auto w-full max-w-7xl px-6">
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-12">
-          @forelse ($portfolio as $p)
-            <a href="{{ route('portfolio.detail', $p) }}" class="group">
+          @forelse ($studyCase as $s)
+            <a href="{{ route('study-case.detail', $s) }}" class="group">
               <div class="relative rounded-xl overflow-hidden cursor-pointer aspect-4/3" data-aos="fade-up"
                 data-aos-delay="{{ $loop->index * 100 }}">
 
-                <img src="{{ asset('storage/' . $p->cover_path) }}" alt="{{ $p->name }}" loading="lazy"
+                <img src="{{ asset('storage/' . $s->cover_path) }}" alt="{{ $s->name }}" loading="lazy"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
 
                 <div
@@ -54,7 +54,7 @@
                   <div class="p-6 w-full">
                     <h3
                       class="text-xl md:text-2xl font-semibold text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      {{ $p->name }}
+                      {{ $s->name }}
                     </h3>
                   </div>
                 </div>
@@ -67,12 +67,13 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              <p class="text-gray-400 text-md">Belum ada portfolio yang ditampilkan</p>
+              <p class="text-gray-400 text-md">Belum ada study case yang ditampilkan</p>
             </div>
           @endforelse
         </div>
 
-        <x-custom-pagination :items="$portfolio" />
+
+        <x-custom-pagination :items="$studyCase" />
       </section>
 
     </div>

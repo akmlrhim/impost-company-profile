@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudyCasePhoto extends Model
 {
-	protected $fillable = ['study_case_id', 'photo_path'];
+	protected $fillable = ['study_case_id', 'media_path'];
 
 	public function studyCase()
 	{

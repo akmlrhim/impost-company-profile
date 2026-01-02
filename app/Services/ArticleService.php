@@ -9,7 +9,7 @@ class ArticleService
 {
 	private const PREFIX = 'articles';
 	private const VERSION_KEY = 'articles_version';
-	private const TTL = 600;
+	private const TTL = 3600;
 
 	public static function paginateHome($perPage)
 	{

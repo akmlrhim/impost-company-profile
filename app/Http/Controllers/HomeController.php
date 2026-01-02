@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Portfolio;
 use App\Services\ArticleService;
 use App\Services\ClientService;
 use App\Services\ServiceService;
@@ -20,7 +21,6 @@ class HomeController extends Controller
 		$clients = ClientService::all();
 
 		$comproUrl = base64_encode(config('app.compro_video_url'));
-		// $vslUrl = base64_encode();
 
 		return view('public.home', compact(
 			'title',
@@ -48,18 +48,14 @@ class HomeController extends Controller
 		$title = 'Semua Artikel';
 		$articles = ArticleService::paginateAll(6);
 
-		$articles->setPath(request()->url());
-
 		return view('public.article-all', compact('title', 'articles'));
 	}
 
 	public function about()
 	{
 		$title = 'About';
-		$page = request()->get('page', 1);
 
-		$team = TeamService::paginate(4);
-		$team->setPath(request()->url());
+		$team = TeamService::allCached();
 
 		return view('public.about', compact('title', 'team'));
 	}
@@ -70,7 +66,20 @@ class HomeController extends Controller
 		return view('public.contact', compact('title'));
 	}
 
-	public function portfolio() {}
+	public function portfolio()
+	{
+		$title = 'Portfolio';
+		$portfolio = Portfolio::paginate(8);
+
+		return view('public.portfolio.index', compact('title', 'portfolio'));
+	}
+
+	public function portfolioDetail(Portfolio $portfolio)
+	{
+		$title = 'Portfolio';
+
+		return view('public.portfolio.detail', compact('title', 'portfolio'));
+	}
 
 	public function studyCase() {}
 

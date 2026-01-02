@@ -31,15 +31,61 @@
 
             <div class="p-5 flex flex-col flex-1">
 
-              <ul class="list-none space-y-2 min-h-8 text-center">
-                <li class="px-3 py-1.5 rounded-md bg-red-100 text-red-800 text-xs font-medium shadow-sm">
-                  Instagram : {{ $team->instagram_link ?? '-' }}
+              <ul class="grid grid-cols-2 gap-3">
+                <li
+                  class="group relative overflow-hidden rounded-lg bg-linear-to-br from-pink-50 to-purple-50 p-4 shadow-sm transition-all duration-300 hover:shadow-md">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm font-semibold text-gray-700">Instagram</span>
+                    </div>
+
+                    @if ($team->instagram_link)
+                      <a href="{{ $team->instagram_link }}" target="_blank" rel="noopener noreferrer"
+                        class="flex h-7 w-7 items-center justify-center rounded-full bg-green-100 transition-all duration-300 hover:bg-green-200 hover:scale-110">
+                        <svg class="h-4 w-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    @else
+                      <div class="flex h-7 w-7 items-center justify-center rounded-full bg-red-100">
+                        <svg class="h-4 w-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                    @endif
+                  </div>
                 </li>
 
-                <li>
-                <li class="px-3 py-1.5 rounded-md bg-blue-100 text-blue-800 text-xs font-medium shadow-sm">
-                  LinkedIn : {{ $team->linkedin_link ?? '-' }}
-                </li>
+                <li
+                  class="group relative overflow-hidden rounded-lg bg-linear-to-br from-blue-50 to-cyan-50 p-4 shadow-sm transition-all duration-300 hover:shadow-md">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm font-semibold text-gray-700">LinkedIn</span>
+                    </div>
+
+                    @if ($team->linkedin_link)
+                      <a href="{{ $team->linkedin_link }}" target="_blank" rel="noopener noreferrer"
+                        class="flex h-7 w-7 items-center justify-center rounded-full bg-green-100 transition-all duration-300 hover:bg-green-200 hover:scale-110">
+                        <svg class="h-4 w-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    @else
+                      <div class="flex h-7 w-7 items-center justify-center rounded-full bg-red-100">
+                        <svg class="h-4 w-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                    @endif
+                  </div>
                 </li>
               </ul>
 

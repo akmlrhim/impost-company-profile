@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Cache;
 class ClientService
 {
 	private const PREFIX = 'clients';
-	private const TTL = 600;
+	private const TTL = 3600;
 	private const VERSION_KEY = 'clients_version';
 
 	public static function all()

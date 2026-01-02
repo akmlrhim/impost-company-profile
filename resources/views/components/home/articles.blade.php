@@ -1,4 +1,4 @@
-<section class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20" id="blog">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-14" id="blog">
 
   <div class="mb-10 sm:mb-12 md:mb-16 text-center" data-aos="fade-up">
     <h2

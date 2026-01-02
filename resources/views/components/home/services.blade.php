@@ -1,8 +1,8 @@
-<section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
+<section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-14">
 
   <div class="mb-10 sm:mb-12 md:mb-16 text-center" data-aos="fade-up">
     <h2
-      class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-3 sm:mb-4">
+      class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-3 sm:mb-4">
       Layanan Kami
     </h2>
     <p class="text-white text-sm sm:text-base md:text-lg max-w-2xl lg:max-w-3xl mx-auto leading-relaxed px-2">

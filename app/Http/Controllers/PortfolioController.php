@@ -60,8 +60,9 @@ class PortfolioController extends Controller
 		try {
 			DB::beginTransaction();
 
+			$manager = new ImageManager(new Driver());
+
 			if ($request->hasFile('cover_path')) {
-				$manager = new ImageManager(new Driver());
 
 				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
 
@@ -121,9 +122,10 @@ class PortfolioController extends Controller
 		try {
 			DB::beginTransaction();
 
+			$manager = new ImageManager(new Driver());
+
 			if ($request->hasFile('cover_path')) {
 
-				$manager = new ImageManager(new Driver());
 
 				if ($portfolio->cover_path && Storage::disk('public')->exists($portfolio->cover_path)) {
 					Storage::disk('public')->delete($portfolio->cover_path);

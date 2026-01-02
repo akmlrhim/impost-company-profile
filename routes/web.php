@@ -22,6 +22,7 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::post('login', [AuthController::class, 'login'])->name('login');
 		Route::get('about', [HomeController::class, 'about'])->name('about');
 		Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+		Route::get('portfolio/{portfolio}', [HomeController::class, 'portfolioDetail'])->name('portfolio.detail');
 		Route::get('portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
 		Route::get('opt-in', [HomeController::class, 'optIn'])->name('opt-in');
 		Route::get('study-case', [HomeController::class, 'studyCase'])->name('study-case');

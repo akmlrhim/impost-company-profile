@@ -1,4 +1,4 @@
-<footer class="bg-impost-fourth text-white">
+<footer class="bg-impost-fifth/10 backdrop-blur-lg border-t border-gray-300 text-white">
   <div class="max-w-7xl mx-auto px-4 py-8 md:py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
 
@@ -118,7 +118,7 @@
     </div>
   </div>
 
-  <div class="bg-impost-fourth py-3 md:py-4 border-t border-white">
+  <div class="bg-impost-fifth/10 backdrop-blur-lg  py-3 md:py-4">
     <div class="max-w-7xl mx-auto px-4 text-center text-white">
       <p class="text-xs md:text-sm">
         &copy; 2025 CV.Impost Media Indonesia. All rights reserved.

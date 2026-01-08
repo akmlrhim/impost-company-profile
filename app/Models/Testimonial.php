@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Testimonial extends Model
 {
-    /** @use HasFactory<\Database\Factories\TestimonialFactory> */
-    use HasFactory;
+	/** @use HasFactory<\Database\Factories\TestimonialFactory> */
+	use HasFactory;
+
+	protected $fillable = ['name', 'company_name', 'content'];
 }

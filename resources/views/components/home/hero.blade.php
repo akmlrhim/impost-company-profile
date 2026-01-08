@@ -1,39 +1,97 @@
-<section id="home"
-  class="relative min-h-[85vh] sm:min-h-[95vh] pt-24 sm:pt-36 md:pt-40 pb-16 sm:pb-16 flex items-center overflow-hidden">
+<section id="home" class="relative min-h-screen pt-28 sm:pt-36 pb-16 flex items-center overflow-hidden">
 
-  <div class="absolute inset-0 overflow-hidden hidden lg:block">
-    <iframe
-      class="absolute top-1/2 left-1/2 w-[150vh] h-[56vw] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 scale-100"
-      id="yt-bg" frameborder="0" allow="autoplay; fullscreen" allowfullscreen
-      referrerpolicy="strict-origin-when-cross-origin">
-    </iframe>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- Left Content: Headline -->
+      <div class="space-y-6 sm:space-y-8 text-center sm:text-left">
+
+        <!-- Main Headline -->
+        <h1
+          class="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-tight animate-fade-in-up animate-delay-1">
+          <span
+            class="font-header block mt-2 bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
+            Your Expert Partner in Digital, Event & Business Solutions
+          </span>
+        </h1>
+
+        <!-- Description -->
+        <p
+          class="text-sm sm:text-lg text-gray-300 leading-relaxed max-w-xl mx-auto sm:mx-0 animate-fade-in-up animate-delay-2">
+          Kami menyediakan solusi digital inovatif untuk membantu bisnis anda tumbuh lebih cepat di era modern. Mulai
+          transformasi anda hari ini.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 w-full justify-center sm:justify-start">
+
+          <button
+            class="w-full sm:w-auto cursor-pointer px-8 py-3
+									bg-impost-primary hover:bg-impost-secondary
+									text-black font-semibold rounded-lg
+									transition-all duration-300
+									hover:scale-105 hover:shadow-lg hover:shadow-impost-primary/50">
+            Mulai Sekarang
+          </button>
+
+          <button
+            class="w-full sm:w-auto cursor-pointer px-8 py-3
+									bg-transparent border-2 border-impost-primary/50
+									hover:border-impost-primary
+									text-impost-primary font-semibold rounded-lg
+									transition-all duration-300
+									hover:bg-impost-primary/10">
+            Pelajari Lebih Lanjut
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Right Content: Image/Asset -->
+      <div class="relative lg:block hidden">
+
+        <!-- Main Image Container -->
+        <div class="relative z-10 animate-float overflow-hidden rounded-2xl">
+
+          <!-- Glow Background -->
+          <div
+            class="absolute -inset-4 bg-gradient-to-r from-impost-primary/20 to-impost-secondary/20 rounded-2xl blur-2xl">
+          </div>
+
+          <!-- IMAGE -->
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=1000&fit=crop"
+            alt="Impost Media Hero" class="relative w-full h-auto object-cover rounded-2xl">
+
+          <!-- OVERLAY -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Mobile Image -->
+      <div class="lg:hidden relative">
+
+        <div class="relative overflow-hidden rounded-xl">
+
+          <!-- Glow -->
+          <div
+            class="absolute -inset-2 bg-gradient-to-r from-impost-primary/20 to-impost-secondary/20 rounded-2xl blur-xl">
+          </div>
+
+          <!-- IMAGE -->
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=700&fit=crop"
+            alt="Impost Media Hero" class="relative w-full h-auto object-cover rounded-xl">
+
+          <!-- OVERLAY -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
+          </div>
+
+        </div>
+
+      </div>
+    </div>
   </div>
 
-  <img src="{{ asset('img/Front_Cover_IM.webp') }}" alt="Impost Media Hero" fetchpriority="high" decoding="async"
-    class="absolute inset-0 w-full h-full object-cover object-center lg:hidden">
-
-  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/90"></div>
-
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full flex flex-col items-center">
-
-    <h1
-      class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-snug sm:leading-tight tracking-tight mb-4 sm:mb-6 md:mb-8 bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent max-w-4xl">
-      Your Expert Partner in Digital, Event, and Business Solutions
-    </h1>
-
-    <p class="text-sm sm:text-base md:text-lg text-gray-200 max-w-lg md:max-w-2xl leading-relaxed px-2">
-      Kami menyediakan solusi digital inovatif untuk membantu bisnis anda tumbuh lebih cepat di era modern. Mulai
-      transformasi anda hari ini.
-    </p>
-
-  </div>
 </section>
-
-@push('scripts')
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const encoded = @json($comproUrl);
-      document.getElementById('yt-bg').src = atob(encoded);
-    })
-  </script>
-@endpush

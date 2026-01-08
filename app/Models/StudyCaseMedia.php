@@ -4,9 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StudyCasePhoto extends Model
+class StudyCaseMedia extends Model
 {
-	protected $fillable = ['study_case_id', 'media_path'];
+	protected $table = 'study_case_medias';
+	protected $fillable = [
+		'study_case_id',
+		'file_path',
+		'media_type',
+		'filename'
+	];
 
 	public function studyCase()
 	{

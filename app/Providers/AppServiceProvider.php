@@ -5,12 +5,14 @@ namespace App\Providers;
 use App\Models\Article;
 use App\Models\Client;
 use App\Models\Service;
+use App\Models\StudyCase;
 use App\Models\Team;
 use App\Observers\ArticleObserve;
 use App\Observers\ArticleObserver;
 use App\Observers\ClientObserve;
 use App\Observers\ClientObserver;
 use App\Observers\ServiceObserve;
+use App\Observers\StudyCaseObserve;
 use App\Observers\TeamObserve;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -38,5 +40,6 @@ class AppServiceProvider extends ServiceProvider
 		Article::observe(ArticleObserve::class);
 		Client::observe(ClientObserve::class);
 		Team::observe(TeamObserve::class);
+		StudyCase::observe(StudyCaseObserve::class);
 	}
 }

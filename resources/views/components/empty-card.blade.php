@@ -1,4 +1,4 @@
-<div class="w-full text-center">
+<div class="w-full text-center" data-aos="fade-up">
   <div class="mb-4 sm:mb-5 flex justify-center">
     <img src="{{ asset('img/empty.webp') }}" alt="Data kosong" class="w-24 h-24 sm:w-32 sm:h-32 object-contain opacity-50">
   </div>

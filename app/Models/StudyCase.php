@@ -20,8 +20,8 @@ class StudyCase extends Model
 		return "slug";
 	}
 
-	public function photos()
+	public function media()
 	{
-		return $this->hasMany(StudyCasePhoto::class);
+		return $this->hasMany(StudyCaseMedia::class, 'study_case_id');
 	}
 }

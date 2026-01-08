@@ -32,11 +32,11 @@
           <input type="file" name="cover_path" id="cover_path" accept="image/*"
             class="w-full text-sm rounded-sm border border-gray-300"
             @change="
-					const file = $event.target.files[0];
-					if (file) {
-						preview = URL.createObjectURL(file);
-					}
-				">
+						const file = $event.target.files[0];
+						if (file) {
+							preview = URL.createObjectURL(file);
+						}
+					">
 
           @error('cover_path')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
@@ -57,11 +57,11 @@
             Situasi <span class="text-danger">*</span>
           </label>
 
-          <div id="editor" style="height: 300px;">
+          <div class="quill-editor" data-field="situation" style="height:150px;">
             {!! old('situation') !!}
           </div>
 
-          <input type="hidden" name="situation" id="quill-editor" value="{{ old('situation') }}">
+          <input type="hidden" name="situation" value="{{ old('situation') }}">
 
           @error('situation')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
@@ -74,11 +74,10 @@
             Solusi <span class="text-danger">*</span>
           </label>
 
-          <div id="editor" style="height: 300px;">
+          <div class="quill-editor" data-field="solution" style="height:150px;">
             {!! old('solution') !!}
           </div>
-
-          <input type="hidden" name="solution" id="quill-editor" value="{{ old('solution') }}">
+          <input type="hidden" name="solution" value="{{ old('solution') }}">
 
           @error('solution')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
@@ -91,41 +90,78 @@
             Hasil <span class="text-danger">*</span>
           </label>
 
-          <div id="editor" style="height: 300px;">
+          <div class="quill-editor" data-field="result" style="height:150px;">
             {!! old('result') !!}
           </div>
-
-          <input type="hidden" name="result" id="quill-editor" value="{{ old('result') }}">
+          <input type="hidden" name="result" value="{{ old('result') }}">
 
           @error('result')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
           @enderror
         </div>
 
-        {{-- photos --}}
-        <div x-data="{ previews: [] }" class="mt-4">
-          <label class="block text-sm font-medium mb-2" for="photos">
-            Asset study case <span class="text-danger">*</span>
+
+        {{-- Images --}}
+        <div x-data="{ imagePreviews: [] }" class="mt-4">
+          <label class="block text-sm font-medium mb-2" for="images">
+            Gambar Study Case
           </label>
 
-          <input type="file" name="photos[]" id="photos" accept="image/*" multiple
+          <input type="file" name="images[]" id="images" multiple accept="image/*"
             class="w-full text-sm rounded-sm border border-gray-300"
             @change="
-							previews = [];
-							for (let i = 0; i < $event.target.files.length; i++) {
-								previews.push(URL.createObjectURL($event.target.files[i]));
-							}
-						">
+								imagePreviews = [];
+								for (let i = 0; i < $event.target.files.length; i++) {
+									const file = $event.target.files[i];
+									imagePreviews.push(URL.createObjectURL(file));
+								}
+							">
 
-          <template x-if="previews.length > 0">
-            <div class="mt-4 flex flex-wrap gap-2">
-              <template x-for="src in previews" :key="src">
-                <img :src="src" class="w-24 h-24 object-cover rounded border border-gray-200 shadow-sm"
-                  alt="Preview photo">
+          @error('images.*')
+            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+          @enderror
+
+          <template x-if="imagePreviews.length > 0">
+            <div class="mt-4 flex flex-wrap gap-3">
+              <template x-for="(url, index) in imagePreviews" :key="index">
+                <img :src="url" class="w-32 h-32 object-cover rounded border border-gray-200 shadow-sm"
+                  alt="Preview image">
               </template>
             </div>
           </template>
         </div>
+        {{-- end images --}}
+
+        {{-- Videos --}}
+        <div x-data="{ videoPreviews: [] }" class="mt-4">
+          <label class="block text-sm font-medium mb-2" for="videos">
+            Video Study Case
+          </label>
+
+          <input type="file" name="videos[]" id="videos" multiple accept="video/*"
+            class="w-full text-sm rounded-sm border border-gray-300"
+            @change="
+								videoPreviews = [];
+								for (let i = 0; i < $event.target.files.length; i++) {
+									const file = $event.target.files[i];
+									videoPreviews.push(URL.createObjectURL(file));
+								}
+							">
+
+          @error('videos.*')
+            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+          @enderror
+
+          <template x-if="videoPreviews.length > 0">
+            <div class="mt-4 flex flex-wrap gap-3">
+              <template x-for="(url, index) in videoPreviews" :key="index">
+                <video :src="url" class="w-32 h-32 object-cover rounded border border-gray-200 shadow-sm"
+                  controls></video>
+              </template>
+            </div>
+          </template>
+        </div>
+        {{-- end videos --}}
 
       </div>
 
@@ -150,27 +186,41 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('#editor').forEach(function(editor) {
-        new Quill(editor, {
+
+      document.querySelectorAll('.quill-editor').forEach(function(editor) {
+
+        const field = editor.dataset.field;
+        const hiddenInput = document.querySelector(`input[name="${field}"]`);
+
+        const quill = new Quill(editor, {
           theme: 'snow',
           placeholder: 'Tulis konten anda di sini...',
           modules: {
-            toolbar: {
-              container: [
-                [{
-                  header: [1, 2, 3, 4, 5, 6, false]
-                }],
-                ['bold', 'italic', 'underline', 'strike'],
-                ['blockquote', 'code-block'],
-                [{
-                  list: 'ordered'
-                }, {
-                  list: 'bullet'
-                }],
-              ],
-            },
-          },
+            toolbar: [
+              [{
+                header: [1, 2, 3, 4, 5, 6, false]
+              }],
+              ['bold', 'italic', 'underline', 'strike'],
+              ['blockquote', 'code-block'],
+              [{
+                list: 'ordered'
+              }, {
+                list: 'bullet'
+              }],
+            ]
+          }
         });
+
+        // set old value
+        if (hiddenInput.value) {
+          quill.root.innerHTML = hiddenInput.value;
+        }
+
+        // sync ke input hidden
+        quill.on('text-change', function() {
+          hiddenInput.value = quill.root.innerHTML;
+        });
+
       });
     });
   </script>

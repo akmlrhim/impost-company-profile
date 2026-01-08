@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
 			'password' => Hash::make('omsetnaik1_'),
 		]);
 
-		// $this->call([
-		// 	ServiceSeeder::class,
-		// 	ArticleSeeder::class,
-		// ]);
+		$this->call([
+			ServiceSeeder::class,
+			ArticleSeeder::class,
+		]);
 	}
 }

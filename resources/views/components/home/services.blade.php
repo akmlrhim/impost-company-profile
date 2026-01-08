@@ -1,14 +1,18 @@
-<section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-14">
+<section id="services" class="relative max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-10 overflow-hidden">
 
-  <div class="mb-10 sm:mb-12 md:mb-16 text-center" data-aos="fade-up">
-    <h2
-      class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-3 sm:mb-4">
-      Layanan Kami
+  <!-- Header Section -->
+  <div class="relative mb-8 sm:mb-10 md:mb-12 text-center" data-aos="fade-up">
+    <h2 class="font-header text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6">
+      <span class="text-impost-primary">
+        Layanan Kami
+      </span>
     </h2>
-    <p class="text-white text-sm sm:text-base md:text-lg max-w-2xl lg:max-w-3xl mx-auto leading-relaxed px-2">
+
+    <p class="text-white/80 text-sm sm:text-md md:text-lg max-w-3xl mx-auto leading-relaxed px-4">
       Kami menyediakan layanan digital end-to-end yang berfokus pada peningkatan omset, visibilitas merek, dan efisiensi
       pemasaran.
     </p>
+
   </div>
 
   @if ($servicesForDesktop->isEmpty())
@@ -16,6 +20,7 @@
       <x-empty-card item="layanan" />
     </div>
   @else
+    <!-- Mobile Carousel -->
     <div x-data="{
         active: 0,
         total: {{ $servicesForDesktop->count() }},
@@ -41,35 +46,32 @@
             items.forEach((el) => this.observer.observe(el))
         }
     }" x-init="init()" class="block sm:hidden">
+
       <div class="relative">
+
         <div x-ref="slider"
-          class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth gap-4 px-1 py-2">
+          class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth gap-5 px-4 py-6">
           @foreach ($servicesForMobile as $service)
-            <div class="w-[calc(100%-2rem)] shrink-0 snap-center">
+            <div class="w-[85%] shrink-0 snap-center">
               <x-service-card :service="$service" />
             </div>
           @endforeach
         </div>
       </div>
-
-      {{-- Indicator --}}
-      <div class="flex justify-center gap-2 mt-6">
-        <template x-for="i in total" :key="i">
-          <span class="h-2 rounded-full transition-all duration-300"
-            :class="active === i - 1 ?
-                'w-8 bg-impost-primary' :
-                'w-2 bg-white/30'"></span>
-        </template>
-      </div>
     </div>
 
-    <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8" data-aos="fade-up">
+    <!-- Desktop Grid -->
+    <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-fr" data-aos="fade-up"
+      data-aos-stagger="100">
       @foreach ($servicesForDesktop as $service)
-        <x-service-card :service="$service" />
+        <div data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}" class="h-full">
+          <x-service-card :service="$service" />
+        </div>
       @endforeach
     </div>
 
-    <div class="hidden sm:flex justify-center mt-10 sm:mt-12 md:mt-14" data-aos="fade-up">
+    <!-- Pagination -->
+    <div class="hidden sm:flex justify-center mt-8 sm:mt-12 md:mt-16" data-aos="fade-up">
       <x-custom-pagination :items="$servicesForDesktop" />
     </div>
 

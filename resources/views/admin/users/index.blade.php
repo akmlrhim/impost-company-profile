@@ -37,7 +37,7 @@
               </td>
             </tr>
           @empty
-            <td colspan="4">Data user tidak tersedia, silahkan tambah user.</td>
+            <td colspan="4" class="text-center px-4 py-4">Data user tidak tersedia, silahkan tambah user.</td>
           @endforelse
         </tbody>
       </table>

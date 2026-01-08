@@ -63,7 +63,6 @@
       </nav>
 
       <article class="mx-auto w-full max-w-4xl">
-
         <div class="mb-8">
           @if ($article->cover_path)
             <img src="{{ asset('storage/' . $article->cover_path) }}" alt="{{ $article->title }}"

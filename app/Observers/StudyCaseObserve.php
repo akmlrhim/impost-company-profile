@@ -3,46 +3,29 @@
 namespace App\Observers;
 
 use App\Models\StudyCase;
+use Illuminate\Support\Facades\Cache;
 
 class StudyCaseObserve
 {
-    /**
-     * Handle the StudyCase "created" event.
-     */
-    public function created(StudyCase $studyCase): void
-    {
-        //
-    }
+	private const VERSION_KEY = 'study_cases_version';
 
-    /**
-     * Handle the StudyCase "updated" event.
-     */
-    public function updated(StudyCase $studyCase): void
-    {
-        //
-    }
+	private function updateVersion()
+	{
+		Cache::forever(self::VERSION_KEY, now()->timestamp);
+	}
 
-    /**
-     * Handle the StudyCase "deleted" event.
-     */
-    public function deleted(StudyCase $studyCase): void
-    {
-        //
-    }
+	public function created(StudyCase $studyCas)
+	{
+		$this->updateVersion();
+	}
 
-    /**
-     * Handle the StudyCase "restored" event.
-     */
-    public function restored(StudyCase $studyCase): void
-    {
-        //
-    }
+	public function updated(StudyCase $studyCas)
+	{
+		$this->updateVersion();
+	}
 
-    /**
-     * Handle the StudyCase "force deleted" event.
-     */
-    public function forceDeleted(StudyCase $studyCase): void
-    {
-        //
-    }
+	public function deleted(StudyCase $studyCas)
+	{
+		$this->updateVersion();
+	}
 }

@@ -10,8 +10,7 @@
     <ul class="space-y-2 font-medium text-md text-gray-300">
 
       <li>
-        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')"
-          class="hover:bg-gray-800 text-gray-300 hover:text-white">
+        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-5">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -23,8 +22,7 @@
       </li>
 
       <li>
-        <x-nav-link href="{{ route('services.index') }}" :active="request()->routeIs('services.*')"
-          class="hover:bg-gray-800 text-gray-300 hover:text-white">
+        <x-nav-link href="{{ route('services.index') }}" :active="request()->routeIs('services.*')">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-5">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -36,8 +34,7 @@
       </li>
 
       <li>
-        <x-nav-link href="{{ route('articles.index') }}" :active="request()->routeIs('articles.*')"
-          class="hover:bg-gray-800 text-gray-300 hover:text-white">
+        <x-nav-link href="{{ route('articles.index') }}" :active="request()->routeIs('articles.*')">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-5">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -48,8 +45,7 @@
       </li>
 
       <li>
-        <x-nav-link href="{{ route('teams.index') }}" :active="request()->routeIs('teams.*')"
-          class="hover:bg-gray-800 text-gray-300 hover:text-white">
+        <x-nav-link href="{{ route('teams.index') }}" :active="request()->routeIs('teams.*')">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-5">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -60,8 +56,7 @@
       </li>
 
       <li>
-        <x-nav-link href="{{ route('clients.index') }}" :active="request()->routeIs('clients.*')"
-          class="hover:bg-gray-800 text-gray-300 hover:text-white">
+        <x-nav-link href="{{ route('clients.index') }}" :active="request()->routeIs('clients.*')">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-5">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -72,7 +67,7 @@
       </li>
 
       <li>
-        <x-nav-link href="{{ route('portfolio.index') }}" class="hover:bg-gray-800 text-gray-300 hover:text-white">
+        <x-nav-link href="{{ route('portfolio.index') }}" :active="request()->routeIs('portfolio.*')">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-5">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -83,7 +78,7 @@
       </li>
 
       <li>
-        <x-nav-link href="{{ route('study-case.index') }}" class="hover:bg-gray-800 text-gray-300 hover:text-white">
+        <x-nav-link href="{{ route('study-case.index') }}" :active="request()->routeIs('study-case.*')">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             class="lucide lucide-tool-case-icon lucide-tool-case size-5">
@@ -98,8 +93,30 @@
       </li>
 
       <li>
-        <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')"
-          class="hover:bg-gray-800 text-gray-300 hover:text-white">
+        <x-nav-link href="{{ route('testimonials.index') }}" :active="request()->routeIs('testimonials.*')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-message-square-icon lucide-message-square size-5">
+            <path
+              d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+          </svg>
+          <span class="ms-2">Testimoni</span>
+        </x-nav-link>
+      </li>
+
+      <li>
+        <x-nav-link href="{{ route('leads.index') }}" :active="request()->routeIs('leads.*')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+          </svg>
+          <span class="ms-2">Leads</span>
+        </x-nav-link>
+      </li>
+
+      <li>
+        <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="size-5">
             <path stroke-linecap="round" stroke-linejoin="round"

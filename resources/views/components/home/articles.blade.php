@@ -1,8 +1,8 @@
-<section class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-14" id="blog">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-10" id="blog">
 
-  <div class="mb-10 sm:mb-12 md:mb-16 text-center" data-aos="fade-up">
+  <div class="mb-8 sm:mb-10 md:mb-12 text-center" data-aos="fade-up">
     <h2
-      class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-3 sm:mb-4">
+      class="font-header pb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent mb-3 sm:mb-4">
       Artikel
     </h2>
     <p class="text-white text-sm sm:text-base md:text-lg max-w-2xl lg:max-w-3xl mx-auto leading-relaxed px-2">
@@ -38,15 +38,18 @@
     </div>
 
     {{-- desktop  --}}
-    <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8" data-aos="fade-up">
+    <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-8" data-aos="fade-up"
+      data-aos-stagger="100">
       @foreach ($articles as $article)
-        <x-article-card :article="$article" />
+        <div class="h-full" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}">
+          <x-article-card :article="$article" />
+        </div>
       @endforeach
     </div>
 
     <div class="text-center mt-10 sm:mt-12 md:mt-14" data-aos="fade-up">
       <a href="{{ route('article.all') }}"
-        class="inline-flex items-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 text-sm sm:text-base md:text-lg font-bold bg-gradient-to-r from-impost-primary via-impost-third to-impost-fourth text-white rounded-lg hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg shadow-impost-primary/30">
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-impost-fourth rounded-md text-white shadow-md text-md font-medium hover:scale-105 hover:bg-impost-secondary transition">
         Lihat Semua Artikel
         <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

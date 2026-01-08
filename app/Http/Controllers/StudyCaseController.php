@@ -22,7 +22,7 @@ class StudyCaseController extends Controller
 
 		return view('admin.study-case.index', [
 			'title' => $title,
-			'studyCases' => StudyCase::paginate(8)
+			'studyCases' => StudyCase::latest()->paginate(8)
 		]);
 	}
 
@@ -41,101 +41,15 @@ class StudyCaseController extends Controller
 	 */
 	public function store(StudyCaseRequest $request)
 	{
-		DB::beginTransaction();
-
-		$manager = new ImageManager(new Driver());
-
 		try {
+			DB::beginTransaction();
+
+			$manager = new ImageManager(new Driver());
 
 			$cover_path = null;
 
+			// ================= COVER =================
 			if ($request->hasFile('cover_path')) {
-				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
-
-				$filename = Str::uuid() . '.webp';
-				$path = 'study_case/' . $filename;
-
-				Storage::disk('public')->put($path, $img);
-				$cover_path = $path;
-			}
-
-			$studyCase = StudyCase::create([
-				'name' => $request->name,
-				'slug' => Str::slug($request->name),
-				'situation' => $request->situation,
-				'solution' => $request->solution,
-				'result' => $request->result,
-				'cover_path' => $cover_path
-			]);
-
-			if ($request->hasFile('photos')) {
-				foreach ($request->file('photos') as $photoFile) {
-					$img = $manager
-						->read($photoFile)
-						->toWebp(quality: 60);
-
-					$filename = Str::uuid() . '.webp';
-					$path = 'study_case/photos/' . $filename;
-
-					Storage::disk('public')->put($path, $img);
-
-					$studyCase->photos()->create([
-						'photo_path' => $path
-					]);
-				}
-			}
-
-			DB::commit();
-
-			return redirect()->route('study-case.index')->with('success', 'Study case berhasil ditambahkan.');
-		} catch (\Exception $e) {
-			DB::rollBack();
-
-			// Hapus file yang sudah terupload jika error
-			if (isset($cover_path) && Storage::disk('public')->exists($cover_path)) {
-				Storage::disk('public')->delete($cover_path);
-			}
-
-			return redirect()
-				->back()
-				->withInput()
-				->with('error', 'Gagal menyimpan data: ' . $e->getMessage());
-		}
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 */
-	public function edit(StudyCase $studyCase)
-	{
-		$title = 'Edit Portfolio';
-
-		return view('admin.study-case.edit', [
-			'title' => $title,
-			'studyCase' => $studyCase->load('photos')
-		]);
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 */
-	public function update(StudyCaseRequest $request, StudyCase $studyCase)
-	{
-		DB::beginTransaction();
-
-		$manager = new ImageManager(new Driver());
-
-		try {
-
-			$cover_path = $studyCase->cover_path;
-
-			if ($request->hasFile('cover_path')) {
-
-				// hapus cover lama
-				if ($cover_path && Storage::disk('public')->exists($cover_path)) {
-					Storage::disk('public')->delete($cover_path);
-				}
-
 				$img = $manager
 					->read($request->file('cover_path'))
 					->toWebp(quality: 60);
@@ -146,62 +60,199 @@ class StudyCaseController extends Controller
 				Storage::disk('public')->put($cover_path, $img);
 			}
 
-			$studyCase->update([
-				'name' => $request->name,
-				'slug' => Str::slug($request->name),
-				'situation' => $request->situation,
-				'solution' => $request->solution,
-				'result' => $request->result,
+			// save study case
+			$studyCase = StudyCase::create([
+				'name'       => $request->name,
+				'slug'       => Str::slug($request->name),
+				'situation'  => $request->situation,
+				'solution'   => $request->solution,
+				'result'     => $request->result,
 				'cover_path' => $cover_path,
 			]);
 
-			if ($request->hasFile('photos')) {
-
-				foreach ($studyCase->photos as $photo) {
-					if (Storage::disk('public')->exists($photo->photo_path)) {
-						Storage::disk('public')->delete($photo->photo_path);
-					}
-				}
-				$studyCase->photos()->delete();
-
-				// simpan foto baru
-				foreach ($request->file('photos') as $photoFile) {
-					$img = $manager
-						->read($photoFile)
-						->toWebp(quality: 60);
+			// photo
+			if ($request->hasFile('images')) {
+				foreach ($request->file('images') as $image) {
+					$img = $manager->read($image)->toWebp(quality: 60);
 
 					$filename = Str::uuid() . '.webp';
-					$path = 'study_case/photos/' . $filename;
+					$path = 'study_case/' . $filename;
 
 					Storage::disk('public')->put($path, $img);
 
-					$studyCase->photos()->create([
-						'photo_path' => $path
+					$studyCase->media()->create([
+						'file_path' => $path,
+						'media_type' => 'image',
+						'filename' => $image->getClientOriginalName(),
+					]);
+				}
+			}
+
+			// video
+			if ($request->hasFile('videos')) {
+				foreach ($request->file('videos') as $video) {
+					$filename = Str::uuid() . '.' . $video->getClientOriginalExtension();
+					$path = 'study_case/' . $filename;
+
+					Storage::disk('public')->putFileAs(
+						'study_case',
+						$video,
+						$filename
+					);
+
+					$studyCase->media()->create([
+						'file_path' => $path,
+						'media_type' => 'video',
+						'filename' => $video->getClientOriginalName(),
 					]);
 				}
 			}
 
 			DB::commit();
 
-			return redirect()
-				->route('study-case.index')
-				->with('success', 'Study case berhasil diperbarui.');
+			return redirect()->route('study-case.index')->with('success', 'Study Case berhasil ditambahkan.');
 		} catch (\Throwable $e) {
-
 			DB::rollBack();
-
-			return back()
-				->withInput()
-				->with('error', 'Gagal memperbarui data.');
+			// dd($e->getMessage());
+			return back()->withInput();
 		}
 	}
 
 
 	/**
+	 * Show the form for editing the specified resource.
+	 */
+	public function edit(StudyCase $studyCase)
+	{
+		$title = 'Edit Portfolio';
+
+		return view('admin.study-case.edit', [
+			'title' => $title,
+			'studyCase' => $studyCase->load('media')
+		]);
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 */
+	public function update(StudyCaseRequest $request, StudyCase $studyCase)
+	{
+		DB::beginTransaction();
+
+		try {
+			$manager = new ImageManager(new Driver());
+
+			// cover
+			$coverPath = $studyCase->cover_path;
+
+			if ($request->hasFile('cover_path')) {
+
+				// hapus cover lama
+				if ($coverPath && Storage::disk('public')->exists($coverPath)) {
+					Storage::disk('public')->delete($coverPath);
+				}
+
+				$img = $manager
+					->read($request->file('cover_path'))
+					->toWebp(quality: 60);
+
+				$filename  = Str::uuid() . '.webp';
+				$coverPath = 'study_case/' . $filename;
+
+				Storage::disk('public')->put($coverPath, $img);
+			}
+
+			// update study case
+			$studyCase->update([
+				'name'       => $request->name,
+				'slug'       => Str::slug($request->name),
+				'situation'  => $request->situation,
+				'solution'   => $request->solution,
+				'result'     => $request->result,
+				'cover_path' => $coverPath,
+			]);
+
+			// image
+			if ($request->hasFile('images')) {
+				foreach ($request->file('images') as $image) {
+					$img = $manager->read($image)->toWebp(quality: 60);
+
+					$filename = Str::uuid() . '.webp';
+					$path     = 'study_case/' . $filename;
+
+					Storage::disk('public')->put($path, $img);
+
+					$studyCase->media()->create([
+						'file_path' => $path,
+						'media_type' => 'image',
+						'filename'  => $image->getClientOriginalName(),
+					]);
+				}
+			}
+
+			// video
+			if ($request->hasFile('videos')) {
+				foreach ($request->file('videos') as $video) {
+					$filename = Str::uuid() . '.' . $video->getClientOriginalExtension();
+					$path     = 'study_case/' . $filename;
+
+					Storage::disk('public')->putFileAs(
+						'study_case',
+						$video,
+						$filename
+					);
+
+					$studyCase->media()->create([
+						'file_path' => $path,
+						'media_type' => 'video',
+						'filename'  => $video->getClientOriginalName(),
+					]);
+				}
+			}
+
+			DB::commit();
+
+			return redirect()->route('study-case.index')->with('success', 'Study Case berhasil diperbarui.');
+		} catch (\Throwable $e) {
+			DB::rollBack();
+
+			// dd($e->getMessage());
+			return back()->withInput();
+		}
+	}
+
+
+
+	/**
 	 * Remove the specified resource from storage.
 	 */
-	public function destroy(string $id)
+	public function destroy(StudyCase $studyCase)
 	{
-		//
+
+		try {
+			DB::beginTransaction();
+			// delete cover
+			if ($studyCase->cover_path && Storage::disk('public')->exists($studyCase->cover_path)) {
+				Storage::disk('public')->delete($studyCase->cover_path);
+			}
+
+			// delete media
+			foreach ($studyCase->media as $media) {
+				if (Storage::disk('public')->exists($media->file_path)) {
+					Storage::disk('public')->delete($media->file_path);
+				}
+				$media->delete();
+			}
+
+			$studyCase->delete();
+
+			DB::commit();
+
+			return redirect()->route('study-case.index')->with('success', 'Study Case berhasil dihapus.');
+		} catch (\Throwable $e) {
+			DB::rollBack();
+			// dd($e->getMessage());
+			return back()->with('error', 'Terjadi kesalahan saat menghapus Study Case.');
+		}
 	}
 }

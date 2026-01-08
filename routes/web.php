@@ -7,10 +7,12 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StudyCaseController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,11 +24,16 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::post('login', [AuthController::class, 'login'])->name('login');
 		Route::get('about', [HomeController::class, 'about'])->name('about');
 		Route::get('contact', [HomeController::class, 'contact'])->name('contact');
-		Route::get('portfolio/{portfolio}', [HomeController::class, 'portfolioDetail'])->name('portfolio.detail');
+
 		Route::get('portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
+		Route::get('portfolio/{portfolio}', [HomeController::class, 'portfolioDetail'])->name('portfolio.detail');
+
 		Route::get('opt-in', [HomeController::class, 'optIn'])->name('opt-in');
+		Route::post('vsl', [HomeController::class, 'saveLeads'])->name('save-leads');
+
 		Route::get('study-case', [HomeController::class, 'studyCase'])->name('study-case');
 		Route::get('study-case/{study_case}', [HomeController::class, 'studyCaseDetail'])->name('study-case.detail');
+
 		Route::get('articles/view/{article:slug}', [HomeController::class, 'article'])->name('article.detail');
 		Route::get('article/view', [HomeController::class, 'articleAll'])->name('article.all');
 		Route::post('article/comment', [CommentController::class, 'store'])->name('article.comment');
@@ -58,5 +65,11 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		// study case route 
 		Route::resource('study-case', StudyCaseController::class);
+
+		// lead route
+		Route::get('leads', [LeadController::class, 'index'])->name('leads.index');
+
+		// testimonial route
+		Route::resource('testimonials', TestimonialController::class)->except('show');
 	});
 });

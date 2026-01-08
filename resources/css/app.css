@@ -27,6 +27,11 @@
   --color-primary-900: #1e3a8a;
   --color-primary-950: #172554;
 
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --font-header: "DM Serif Display", serif;
+
   --color-impost-primary: #d4ac3c;
   --color-impost-secondary: #d09738;
   --color-impost-third: #95774f;
@@ -35,8 +40,7 @@
 }
 
 body {
-  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background: #040404;
 }
 
 [x-cloak] {
@@ -73,6 +77,7 @@ body {
   }
 }
 
+/* Client Logo  */
 .animate-marquee {
   animation: marquee var(--marquee-speed) linear infinite;
   will-change: transform;
@@ -102,4 +107,17 @@ body {
   :root {
     --marquee-speed: 45s;
   }
+}
+
+#services [data-aos] {
+  animation: fadeInScale 0.6s ease-out;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

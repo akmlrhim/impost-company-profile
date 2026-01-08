@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Leads;
 use App\Models\Portfolio;
 use App\Models\StudyCase;
+use App\Models\Testimonial;
 use App\Services\ArticleService;
 use App\Services\ClientService;
 use App\Services\ServiceService;
+use App\Services\StudyCaseService;
 use App\Services\TeamService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -18,8 +23,12 @@ class HomeController extends Controller
 
 		$servicesForDesktop = ServiceService::paginate(6);
 		$servicesForMobile = ServiceService::all();
+		$studyCaseForDesktop = StudyCaseService::paginate(6);
+		$studyCaseForMobile = StudyCaseService::all();
+
 		$articles = ArticleService::paginateHome(3);
 		$clients = ClientService::all();
+		$testimonials = Testimonial::select('name', 'company_name', 'content')->latest()->get();
 
 		$comproUrl = base64_encode(config('app.compro_video_url'));
 
@@ -29,7 +38,10 @@ class HomeController extends Controller
 			'servicesForMobile',
 			'articles',
 			'clients',
-			'comproUrl'
+			'comproUrl',
+			'studyCaseForDesktop',
+			'studyCaseForMobile',
+			'testimonials'
 		));
 	}
 
@@ -102,5 +114,58 @@ class HomeController extends Controller
 		$title = 'OPT-IN';
 
 		return view('public.opt-in', compact('title'));
+	}
+
+	public function saveLeads(Request $request)
+	{
+		$request->validate(
+			[
+				'fullname'       => 'required|string|max:160',
+				'email'          => 'required|email:dns|max:160',
+				'phone'          => 'required|digits_between:10,15',
+				'business_name'  => 'required|string|max:160',
+				'income'         => 'required',
+				'note'           => 'nullable|string',
+			],
+			[
+				'required' => ':attribute wajib diisi.',
+				'email' => ':attribute tidak valid.',
+				'digits_between' => ':attribute harus berisi :min–:max digit angka.',
+				'string' => ':attribute harus berupa teks.',
+				'max' => ':attribute maksimal :max karakter.',
+			],
+			[
+				'fullname' => 'Nama Lengkap',
+				'email' => 'Email',
+				'phone' => 'Nomor HP',
+				'business_name' => 'Nama Bisnis',
+				'income' => 'Omzet Per Bulan',
+				'note' => 'Catatan',
+			]
+		);
+
+		try {
+			DB::beginTransaction();
+
+			Leads::create(
+				[
+					'fullname' => $request->fullname,
+					'email' => $request->email,
+					'phone' => $request->phone,
+					'business_name' => $request->business_name,
+					'income' => $request->income,
+					'note' => $request->note,
+				]
+			);
+
+			DB::commit();
+
+			$message = urlencode('Halo, saya tertarik dengan layanan Anda.');
+			$whatsappUrl = "https://wa.me/6283147802761?text={$message}";
+			return redirect($whatsappUrl);
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return back()->withInput();
+		}
 	}
 }

@@ -17,12 +17,12 @@ class ServiceFactory extends Factory
 	 */
 	public function definition(): array
 	{
-
 		$serviceName = $this->faker->unique()->words(3, true);
 
 		return [
 			'service_name' => $serviceName,
 			'slug' => Str::slug($serviceName),
+			'sort' => $this->faker->randomNumber(1, 100),
 			'description' => $this->faker->paragraphs(1, true),
 			'cover_path' => NULL,
 		];

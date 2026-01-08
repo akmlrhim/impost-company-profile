@@ -1,6 +1,6 @@
 @extends('layouts.public')
 @section('content')
-  <x-home.hero :comproUrl="$comproUrl" />
+  <x-home.hero />
 
   <x-home.vsl />
 
@@ -8,7 +8,11 @@
 
   <x-home.about />
 
+  <x-home.works />
+
   <x-home.services :servicesForDesktop="$servicesForDesktop" :servicesForMobile="$servicesForMobile" />
 
-  <x-home.articles :articles="$articles" />
+  <x-home.studycase :studyCaseForDesktop="$studyCaseForDesktop" :studyCaseForMobile="$studyCaseForMobile" />
+
+  <x-home.testimonials :testimonials="$testimonials" />
 @endsection

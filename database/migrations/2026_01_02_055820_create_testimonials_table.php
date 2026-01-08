@@ -13,8 +13,8 @@ return new class extends Migration
 	{
 		Schema::create('testimonials', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('study_case_id')->constrained('study_cases')->onDelete('cascade');
 			$table->string('company_name')->index();
+			$table->string('name')->index();
 			$table->text('content');
 			$table->timestamps();
 		});

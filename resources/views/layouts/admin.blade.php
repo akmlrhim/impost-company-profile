@@ -25,7 +25,7 @@
   <x-partials.admin.navbar />
   <x-partials.admin.sidebar />
 
-  <div class="p-4 md:ml-64 pt-18 min-h-screen overflow-auto">
+  <div class="p-4 md:ml-64 pt-18 min-h-screen overflow-auto bg-white">
     @include('components.partials.admin.breadcrumb', ['title' => $title])
     @yield('content')
   </div>

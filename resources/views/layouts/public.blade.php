@@ -10,11 +10,14 @@
 
   <title>IMPOST MEDIA - {{ $title ?? 'Home Page' }}</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
     rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
   <link rel="shortcut icon" href="{{ asset('img/favicon.webp') }}" type="image/x-icon">
 
@@ -23,13 +26,22 @@
   @stack('styles')
 </head>
 
-<body class="bg-gray-950">
+<body class="bg-impost-fifth relative">
+  <div style="position: absolute; inset: 0; pointer-events: none; overflow: hidden;">
+
+    <!-- Grid Pattern -->
+    <div
+      style="position: absolute; inset: 0; opacity: 0.05; background-image: linear-gradient(#d4ac3c 1px, transparent 1px), linear-gradient(90deg, #d4ac3c 1px, transparent 1px); background-size: 40px 40px;">
+    </div>
+  </div>
 
   <x-partials.public.navbar />
+
 
   <main>
     @yield('content')
   </main>
+
 
   <x-partials.public.footer />
 

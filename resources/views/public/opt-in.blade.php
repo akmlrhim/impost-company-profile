@@ -11,10 +11,12 @@
         <div class="mt-2 md:mt-4 mx-auto w-12 md:w-16 h-1 bg-impost-primary rounded-full"></div>
 
         <div class="relative w-full overflow-hidden rounded-lg aspect-video mt-12">
-          <script src="https://fast.wistia.com/player.js" async></script>
-          <script src="https://fast.wistia.com/embed/xua3iamsq7.js" async type="module"></script><style>wistia-player[media-id='xua3iamsq7']:not(:defined) { background: center / contain
-            no-repeat url('https://fast.wistia.com/embed/medias/xua3iamsq7/swatch'); display: block; filter: blur(5px);
-            padding-top:56.25%; }</style> <wistia-player media-id="xua3iamsq7" aspect="1.7777777777777777"></wistia-player>
+          <div class="sp-embed-player" data-id="cOVn6hnrjSc" data-aspect-ratio="1.777778" data-padding-top="56.250000%"
+            style="position:relative;width:100%;padding-top:56.250000%;height:0;">
+            <script src="https://go.screenpal.com/player/appearance/cOVn6hnrjSc"></script><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+              scrolling="no" src="https://go.screenpal.com/player/cOVn6hnrjSc?ff=1&title=0"
+              allowfullscreen="true"></iframe>
+          </div>
         </div>
 
         <div class="mt-8">
@@ -95,41 +97,95 @@
     const btn = document.getElementById('submit_btn');
     const modal = document.getElementById('vslModal');
 
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      // Disable button and show loading state
       btn.disabled = true;
       btn.textContent = 'Menyimpan...';
 
+      // Get form values
+      const fullname = document.getElementById('fullname').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      const business_name = document.getElementById('business_name').value;
+      const income = document.getElementById('income').value;
+      const note = document.getElementById('note').value;
+
+      // Format timestamp
+      const timestamp = new Date().toLocaleString('id-ID', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+
+      // Prepare payload for SheetDB
       const payload = {
         data: [{
-          Nama: fullname.value,
-          Email: email.value,
-          "Nomor HP": phone.value,
-          "Waktu Mengisi": new Date().toLocaleString('id-ID')
+          Nama: fullname,
+          "Nomor Telepon": phone,
+          Email: email,
+          "Nama Bisnis": business_name,
+          "Omset Bulanan": income,
+          Catatan: note,
+          "Waktu Mengisi": timestamp
         }]
       };
 
-      fetch(SHEET_API_ENDPOINT, {
+      try {
+        const response = await fetch(SHEET_API_ENDPOINT, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           },
           body: JSON.stringify(payload)
-        })
-        .then(res => {
-          if (!res.ok) throw new Error();
-          return res.json();
-        })
-        .then(() => {
-          modal.classList.add('hidden');
-
-        })
-        .catch(() => {
-          alert('Terjadi kesalahan. Silakan coba lagi.');
-          btn.disabled = false;
-          btn.textContent = 'Terkirim';
         });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('Success:', result);
+
+        // Success - close modal and reset form
+        modal.classList.add('hidden');
+        form.reset();
+
+        // Optional: Show success message
+        alert('Data berhasil disimpan! Terima kasih.');
+
+        // Reset button
+        btn.disabled = false;
+        btn.textContent = 'Kirim Data';
+
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Terjadi kesalahan saat menyimpan data. Silakan coba lagi.');
+
+        // Re-enable button
+        btn.disabled = false;
+        btn.textContent = 'Kirim Data';
+      }
+    });
+
+    // Close modal functionality
+    const closeButtons = document.querySelectorAll('[data-modal-hide="vslModal"]');
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        modal.classList.add('hidden');
+      });
+    });
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+      }
     });
   </script>
 @endpush

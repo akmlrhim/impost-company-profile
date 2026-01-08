@@ -28,13 +28,16 @@ class StudyCaseRequest extends FormRequest
 			'cover_path' => $this->isMethod('POST')
 				? 'required|image|mimes:jpg,jpeg,png,webp|max:5120'
 				: 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+
 			'situation' => 'required|string',
 			'solution' => 'required|string',
 			'result' => 'required|string',
 
-			'media.*' => $this->isMethod('POST')
-				? 'required|image|mimes:jpeg,png,jpg|max:5120'
-				: 'nullable|image|mimes:jpeg,png,jpg|max:5120',
+			'images.*' => $this->isMethod('POST')
+				? 'required|mimes:jpg,jpeg,png,webp,mp4,mov,avi|max:5120'
+				: 'nullable|mimes:jpg,jpeg,png,webp,mp4,mov,avi|max:5120',
+
+			"videos.*" => 'nullable|mimes:mp4,mov,avi|max:20480'
 		];
 	}
 }

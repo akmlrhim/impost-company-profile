@@ -317,11 +317,11 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-md mx-auto">
-        <a href="#"
+        <a href="{{ route('contact') }}"
           class="w-full sm:w-auto bg-impost-primary text-white font-bold text-sm md:text-base px-6 sm:px-8 py-3 rounded-lg md:rounded-xl shadow-lg hover:shadow-impost-primary/50 transform hover:-translate-y-1 transition-all duration-300">
           Konsultasi Gratis
         </a>
-        <a href="#"
+        <a href="{{ route('portfolio') }}"
           class="w-full sm:w-auto bg-transparent border-2 border-white/20 text-white font-bold text-sm md:text-base px-6 sm:px-8 py-3 rounded-lg md:rounded-xl hover:bg-white/10 transition-all duration-300">
           Lihat Portfolio
         </a>

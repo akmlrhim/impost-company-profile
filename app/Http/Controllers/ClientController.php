@@ -58,7 +58,7 @@ class ClientController extends Controller
 			foreach ($request->file('client_logo') as $logo) {
 
 				$name = pathinfo($logo->getClientOriginalName(), PATHINFO_FILENAME);
-				$filename = time() . '-' . Str::slug($name) . '.webp';
+				$filename = Str::uuid() . '-' . Str::slug($name) . '.webp';
 
 				$path = storage_path('app/public/client_logo/' . $filename);
 

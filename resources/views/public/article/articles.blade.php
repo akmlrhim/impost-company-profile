@@ -99,15 +99,7 @@
               </div>
             </article>
           @empty
-            <div class="col-span-full text-center py-20">
-              <svg class="w-16 h-16 mx-auto text-impost-fourth mb-4" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 2v6h6"></path>
-              </svg>
-              <p class="text-impost-third text-lg font-medium">Belum ada artikel tersedia saat ini.</p>
-            </div>
+            <x-empty-card item="articles"></x-empty-card>
           @endforelse
         </div>
 

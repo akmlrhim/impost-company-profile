@@ -1,10 +1,9 @@
 <footer class="bg-impost-fifth/10 backdrop-blur-lg border-t border-gray-300 text-white">
-  <div class="max-w-7xl mx-auto px-4 py-8 md:py-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-
+  <div class="max-w-7xl mx-auto px-4 py-6 md:py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
       <div>
-        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">Tentang Kami</h3>
-        <p class="text-white text-sm md:text-base mb-3 md:mb-4">
+        <h3 class="text-base md:text-xl font-bold mb-2 md:mb-4 text-impost-primary md:text-white">Tentang Kami</h3>
+        <p class="text-white text-xs md:text-base mb-3 md:mb-4 leading-relaxed">
           Impost Media adalah all in one digital Marketing dan Branding Agency pertama yang ada di Banjarbaru dan
           Banjarmasin, bisa bekerja dengan Fleksibel dan menyesuaikan kebutuhan anda.
         </p>
@@ -17,7 +16,6 @@
               </path>
             </svg>
           </a>
-
           <a href="mailto:adm.impostmedia@gmail.com?subject=Kontak%20Impost%20Media"
             class="text-white hover:text-gray-300 transition-colors" aria-label="Gmail">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6 fill-current" viewBox="0 0 50 50">
@@ -26,7 +24,6 @@
               </path>
             </svg>
           </a>
-
           <a href="https://www.linkedin.com/company/cv-impost-media-indonesia"
             class="text-white hover:text-gray-300 transition-colors" aria-label="LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6 fill-current" viewBox="0 0 50 50">
@@ -35,7 +32,6 @@
               </path>
             </svg>
           </a>
-
           <a href="https://instagram.com/impostmedia" class="text-white hover:text-gray-300 transition-colors"
             aria-label="Instagram">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6 fill-current" viewBox="0 0 30 30">
@@ -44,7 +40,6 @@
               </path>
             </svg>
           </a>
-
           <a href="https://tiktok.com/@impostmedia" class="text-white hover:text-gray-300 transition-colors"
             aria-label="Tiktok">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6 fill-current" viewBox="0 0 50 50">
@@ -57,71 +52,70 @@
       </div>
 
       <div>
-        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">Hubungi Kami</h3>
+        <h3 class="text-base md:text-xl font-bold mb-2 md:mb-4 text-impost-primary md:text-white">Informasi</h3>
+        <ul class="space-y-2 text-xs md:text-base text-white">
+          <li><a href="{{ route('article.all') }}" class="hover:text-gray-300">Articles / Insights</a></li>
+          <li><a href="{{ route('careers') }}" class="hover:text-gray-300">Careers</a></li>
+          <li><a href="#" class="hover:text-gray-300">Business Units</a></li>
+          <li><a href="#" class="hover:text-gray-300">Media / Resources</a></li>
+          <li><a href="#" class="hover:text-gray-300">Legal / Privacy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-base md:text-xl font-bold mb-2 md:mb-4 text-impost-primary md:text-white">Hubungi Kami</h3>
         <ul class="space-y-2 md:space-y-3">
-          <li class="flex items-start gap-2 md:gap-3">
-            <svg class="w-5 h-5 md:w-6 md:h-6 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor"
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 md:w-6 md:h-6 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor"
               viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            <span class="text-white text-sm md:text-base">
-              Toko, Jl. Kawamara No.3, Landasan Ulin Tengah, Kec. Liang Anggang, Kota Banjarbaru, Kalimantan Selatan
-              70724
-            </span>
+            <span class="text-white text-xs md:text-base">Toko, Jl. Kawamara No.3, Landasan Ulin Tengah, Kec. Liang
+              Anggang, Kota Banjarbaru, Kalimantan Selatan
+              70724</span>
           </li>
-
-          <li class="flex items-center gap-2 md:gap-3">
-            <svg class="w-5 h-5 md:w-6 md:h-6 text-white shrink-0" fill="currentColor" viewBox="0 0 24 24">
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 md:w-6 md:h-6 text-white shrink-0" fill="currentColor" viewBox="0 0 24 24">
               <path
                 d="M7.978 4a2.553 2.553 0 0 0-1.926.877C4.233 6.7 3.699 8.751 4.153 10.814c.44 1.995 1.778 3.893 3.456 5.572 1.68 1.679 3.577 3.018 5.57 3.459 2.062.456 4.115-.073 5.94-1.885a2.556 2.556 0 0 0 .001-3.861l-1.21-1.21a2.689 2.689 0 0 0-3.802 0l-.617.618a.806.806 0 0 1-1.14 0l-1.854-1.855a.807.807 0 0 1 0-1.14l.618-.62a2.692 2.692 0 0 0 0-3.803l-1.21-1.211A2.555 2.555 0 0 0 7.978 4Z" />
             </svg>
-            <span class="text-white text-sm md:text-base">+62 831-4780-2761</span>
+            <span class="text-white text-xs md:text-base">+62 831-4780-2761</span>
           </li>
-
-          <li class="flex items-center gap-2 md:gap-3">
-            <svg class="w-5 h-5 md:w-6 md:h-6 text-white shrink-0" fill="none" stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <span class="text-white text-sm md:text-base">adm.impostmedia@gmail.com</span>
-          </li>
-
-          <li class="flex items-center gap-2 md:gap-3">
-            <svg class="w-5 h-5 md:w-6 md:h-6 text-white shrink-0" fill="none" stroke="currentColor"
+          <li class="flex items-center gap-2">
+            <svg class="w-4 h-4 md:w-6 md:h-6 text-white shrink-0" fill="none" stroke="currentColor"
               viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span class="text-white text-sm md:text-base">Senin - Sabtu &nbsp; (09:00 - 17:00)</span>
+            <span class="text-white text-xs md:text-base">Senin - Sabtu (09:00 - 17:00)</span>
           </li>
         </ul>
       </div>
 
       <div>
-        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">Lokasi Kami</h3>
-        <div class="relative rounded-lg overflow-hidden shadow-lg h-40 md:h-48" onclick="loadMap(this)">
-          <div class="w-full aspect-video relative overflow-hidden rounded-lg">
+        <h3 class="text-base md:text-xl font-bold mb-2 md:mb-4 text-impost-primary md:text-white">Lokasi Kami</h3>
+        <div class="relative rounded-lg overflow-hidden shadow-lg h-32 md:h-48" onclick="loadMap(this)">
+          <div class="w-full h-full relative overflow-hidden rounded-lg">
             <img src="{{ asset('img/map_placeholder.webp') }}" alt="Lokasi Impost Media"
-              class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
+              class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
           </div>
-
           <div
-            class="absolute inset-0 flex items-center justify-center bg-black/40 text-white font-semibold text-sm cursor-pointer">
-            Klik untuk melihat peta
+            class="absolute inset-0 flex items-center justify-center bg-black/40 text-white font-semibold text-xs cursor-pointer uppercase">
+            Klik Peta
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
-  <div class="bg-impost-fifth/10 backdrop-blur-lg  py-3 md:py-4">
+  <div class="bg-impost-fifth/10 backdrop-blur-lg py-3">
     <div class="max-w-7xl mx-auto px-4 text-center text-white">
-      <p class="text-xs md:text-sm">
-        &copy; 2025 CV.Impost Media Indonesia. All rights reserved.
+      <p class="text-[10px] md:text-sm">
+        © {{ date('Y') }} CV.Impost Media Indonesia. All rights reserved.
       </p>
     </div>
   </div>

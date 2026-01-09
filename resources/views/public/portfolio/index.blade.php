@@ -30,7 +30,7 @@
 
       <div class="mb-12 text-center px-6" data-aos="fade-up">
         <h1
-          class="text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent uppercase">
+          class="font-header text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent uppercase">
           {{ $title }}
         </h1>
         <p class="text-white text-sm md:text-base max-w-2xl mx-auto">

@@ -26,7 +26,7 @@
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 w-full justify-center sm:justify-start">
 
-          <button
+          <button onclick="window.location.href='{{ route('contact') }}'"
             class="w-full sm:w-auto cursor-pointer px-8 py-3
 									bg-impost-primary hover:bg-impost-secondary
 									text-black font-semibold rounded-lg

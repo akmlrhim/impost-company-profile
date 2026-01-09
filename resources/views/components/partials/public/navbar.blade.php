@@ -201,6 +201,38 @@
                 </a>
               </li>
 
+
+              <!-- Divider -->
+              <li class="px-4 my-1">
+                <div class="border-t border-impost-primary/10"></div>
+              </li>
+
+              <!-- Contact -->
+              <li>
+                <a href="{{ route('contact') }}"
+                  class="flex items-center px-5 py-3 text-white/90 hover:text-white hover:bg-gradient-to-r hover:from-impost-primary/20 hover:to-impost-primary/10 transition-all duration-300 group relative overflow-hidden {{ request()->routeIs('about') ? 'bg-impost-primary/15 text-white' : '' }}">
+
+                  <span
+                    class="absolute inset-0 bg-gradient-to-r from-impost-primary/0 to-impost-primary/0 group-hover:from-impost-primary/10 group-hover:to-transparent transition-all duration-300">
+                  </span>
+
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-4 h-4 mr-3.5 opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 relative z-10">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                  </svg>
+
+                  <span class="font-medium tracking-wide relative z-10">Contact</span>
+
+                  <svg
+                    class="w-4 h-4 ml-auto opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 relative z-10"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </li>
+
               <!-- Divider -->
               <li class="px-4 my-1">
                 <div class="border-t border-impost-primary/10"></div>
@@ -208,7 +240,7 @@
 
               <!-- Career -->
               <li>
-                <a href="{{ route('about') }}"
+                <a href="{{ route('careers') }}"
                   class="flex items-center px-5 py-3 text-white/90 hover:text-white hover:bg-gradient-to-r hover:from-impost-primary/20 hover:to-impost-primary/10 transition-all duration-300 group relative overflow-hidden {{ request()->routeIs('about') ? 'bg-impost-primary/15 text-white' : '' }}">
 
                   <span

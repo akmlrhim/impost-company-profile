@@ -306,7 +306,7 @@
 
     <div class="relative z-10">
       <h3
-        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 sm:mb-4 md:mb-6 leading-tight">
+        class="font-header text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 sm:mb-4 md:mb-6 leading-tight">
         Siap Memulai Proyek Anda?
       </h3>
 

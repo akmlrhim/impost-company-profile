@@ -19,7 +19,7 @@ return new class extends Migration
 			$table->string('business_name', 160);
 			$table->string('income', 160);
 			$table->text('note')->nullable();
-			$table->string('objective', 160);
+			$table->text('objective');
 			$table->timestamps();
 		});
 	}

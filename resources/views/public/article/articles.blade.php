@@ -41,7 +41,7 @@
 
       <div class="mb-12 text-center px-6">
         <h1
-          class="text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
+          class="font-header text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
           Semua Artikel
         </h1>
         <p class="text-white text-sm md:text-base max-w-2xl mx-auto">
@@ -52,60 +52,61 @@
       <section class="mx-auto w-full max-w-7xl px-6">
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-12">
-
           @forelse ($articles as $article)
             <article
-              class="bg-linear-to-br from-impost-primary via-impost-secondary to-impost-fourth rounded-xl border-2 border-impost-fourth overflow-hidden flex flex-col">
+              class="bg-[#111] rounded-2xl shadow-sm transition-all duration-300 overflow-hidden border border-impost-fourth flex flex-col group hover:-translate-y-2 hover:shadow-[0_10px_30px_-10px_rgba(212,172,60,0.2)]">
 
               <div class="relative h-40 md:h-48 overflow-hidden">
                 @if ($article->cover_path)
                   <img src="{{ asset('storage/' . $article->cover_path) }}" alt="{{ $article->title }}"
-                    class="w-full h-full object-cover">
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                 @else
                   <img src="{{ asset('img/article_default.webp') }}" alt="default" class="w-full h-full object-cover">
                 @endif
-                <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent"></div>
               </div>
 
-              <div class="p-4 md:p-5 flex flex-col flex-1">
-                <div class="flex items-center gap-1.5 md:gap-2 text-xs text-white mb-2 md:mb-3">
-                  <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="p-5 md:p-6 flex flex-col flex-1">
+                <div
+                  class="flex items-center gap-2 text-[10px] uppercase tracking-wider font-bold text-impost-primary mb-3">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
                     </path>
                   </svg>
-                  <span class="font-semibold text-xs text-white">
-                    {{ $article->created_at->translatedFormat('d F Y') }}
-                  </span>
-                  <span>•</span>
-                  <span class="text-xs text-white">{{ $article->created_at->diffForHumans() }}</span>
+                  <span class="text-white">{{ $article->created_at->translatedFormat('d F Y') }}</span>
+                  <span class="text-white">•</span>
+                  <span class="text-white">{{ $article->created_at->diffForHumans() }}</span>
                 </div>
 
-                <h3 class="text-base md:text-lg font-bold text-white mb-2 md:mb-3 line-clamp-2">
+                <h3
+                  class="text-lg md:text-xl font-bold text-white mb-3 line-clamp-2 group-hover:text-impost-primary transition-colors">
                   {{ $article->title }}
                 </h3>
 
-                <p class="text-xs md:text-sm text-white line-clamp-3 mb-3 md:mb-4 flex-1">
+                <p class="text-sm text-white line-clamp-3 mb-6 flex-1 leading-relaxed">
                   {{ Str::limit(strip_tags($article->content), 120) }}
                 </p>
 
                 <a href="{{ route('article.detail', $article) }}"
-                  class="mt-auto inline-flex items-center justify-center gap-1.5 md:gap-2 text-xs md:text-sm font-semibold bg-white text-impost-third rounded-lg px-4 md:px-5 py-2 md:py-2.5 hover:bg-impost-third hover:text-white transition-all duration-300">
-                  Baca Selengkapnya
-                  <svg class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  class="mt-auto inline-flex items-center justify-center gap-2 text-xs md:text-sm font-bold bg-impost-fourth/30 text-impost-primary border border-impost-fourth rounded-xl px-5 py-3 hover:bg-impost-primary hover:text-impost-fifth transition-all duration-300">
+                  BACA SELENGKAPNYA
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                    </path>
                   </svg>
                 </a>
               </div>
             </article>
           @empty
-            <div class="col-span-full text-center py-12">
-              <svg class="w-16 h-16 mx-auto text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="col-span-full text-center py-20">
+              <svg class="w-16 h-16 mx-auto text-impost-fourth mb-4" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                </path>
+                  d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 2v6h6"></path>
               </svg>
-              <p class="text-gray-400 text-lg">Belum ada artikel tersedia</p>
+              <p class="text-impost-third text-lg font-medium">Belum ada artikel tersedia saat ini.</p>
             </div>
           @endforelse
         </div>

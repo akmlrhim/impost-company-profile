@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\JobPosting;
 use App\Models\Leads;
 use App\Models\Portfolio;
 use App\Models\StudyCase;
@@ -53,7 +54,7 @@ class HomeController extends Controller
 			->take(4)
 			->get();
 
-		return view('public.article', compact('title', 'article', 'latestArticle'));
+		return view('public.article.article-detail', compact('title', 'article', 'latestArticle'));
 	}
 
 	public function articleAll()
@@ -61,7 +62,7 @@ class HomeController extends Controller
 		$title = 'Semua Artikel';
 		$articles = ArticleService::paginateAll(6);
 
-		return view('public.article-all', compact('title', 'articles'));
+		return view('public.article.articles', compact('title', 'articles'));
 	}
 
 	public function about()
@@ -116,17 +117,34 @@ class HomeController extends Controller
 		return view('public.opt-in', compact('title'));
 	}
 
+	public function job()
+	{
+		$title = 'Karir';
+		$jobs = JobPosting::latest()->paginate(6);
+
+		return view('public.career.jobs', compact('title', 'jobs'));
+	}
+
+	public function jobDetail($slug)
+	{
+		$title = 'Detail';
+		$job = JobPosting::where('slug', $slug)->firstOrFail();
+
+		return view('public.career.jobs-detail', compact('title', 'job'));
+	}
+
 	public function saveLeads(Request $request)
 	{
 		$request->validate(
 			[
 				'fullname'       => 'required|string|max:160',
-				'email'          => 'nullable|email:dns|max:160',
+				'email'          => 'nullable|email|max:160',
 				'phone'          => 'required|digits_between:10,15',
 				'business_name'  => 'required|string|max:160',
-				'income'         => 'required',
+				'income'         => 'required|in:<10jt,10-50jt,50-100jt,>100jt',
 				'note'           => 'nullable|string',
-				'objective'      => 'required|string|max:160',
+				'objective'      => 'required|array|min:1',
+				'objective.*'    => 'string|max:50',
 			],
 			[
 				'required' => ':attribute wajib diisi.',
@@ -134,6 +152,9 @@ class HomeController extends Controller
 				'digits_between' => ':attribute harus berisi :min–:max digit angka.',
 				'string' => ':attribute harus berupa teks.',
 				'max' => ':attribute maksimal :max karakter.',
+				'array' => ':attribute tidak valid.',
+				'min' => 'Minimal pilih 1 :attribute.',
+				'in' => ':attribute tidak valid.',
 			],
 			[
 				'fullname' => 'Nama Lengkap',
@@ -142,31 +163,31 @@ class HomeController extends Controller
 				'business_name' => 'Nama Bisnis',
 				'income' => 'Omzet Per Bulan',
 				'note' => 'Catatan',
+				'objective' => 'Tujuan Bisnis',
 			]
 		);
 
 		try {
 			DB::beginTransaction();
 
-			Leads::create(
-				[
-					'fullname' => $request->fullname,
-					'email' => $request->email,
-					'phone' => $request->phone,
-					'business_name' => $request->business_name,
-					'income' => $request->income,
-					'note' => $request->note,
-					'objective' => $request->objective,
-				]
-			);
+			Leads::create([
+				'fullname' => $request->fullname,
+				'email' => $request->email,
+				'phone' => $request->phone,
+				'business_name' => $request->business_name,
+				'income' => $request->income,
+				'note' => $request->note,
+				'objective' => implode(',', $request->objective),
+			]);
 
 			DB::commit();
 
 			$message = urlencode('Halo, saya tertarik dengan layanan Anda.');
-			$whatsappUrl = "https://wa.me/6283147802761?text={$message}";
-			return redirect($whatsappUrl);
-		} catch (\Exception $e) {
+			return redirect("https://wa.me/6283147802761?text={$message}");
+		} catch (\Throwable $e) {
 			DB::rollBack();
+
+			dd($e->getMessage());
 			return back()->withInput();
 		}
 	}

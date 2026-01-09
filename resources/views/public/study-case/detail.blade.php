@@ -3,7 +3,6 @@
 @section('content')
   <main class="pt-24 sm:pt-28 bg-gradient-to-br from-impost-fifth via-slate-900 to-impost-fifth antialiased">
 
-    <!-- Header Section -->
     <div class="px-4 mx-auto max-w-7xl py-8 sm:py-12">
       <!-- Breadcrumb -->
       <nav class="flex mb-8" aria-label="Breadcrumb" data-aos="fade-down">
@@ -230,8 +229,19 @@
       ✕
     </button>
 
-    <div id="lightboxContent" class="max-w-6xl w-full max-h-[90vh] flex items-center justify-center">
-    </div>
+    <div id="lightboxContent" class="max-w-6xl w-full max-h-[90vh] flex items-center justify-center"></div>
+
+    <!-- Left -->
+    <button onclick="prevMedia()" class="absolute left-5 text-white text-4xl z-50 hover:text-impost-primary transition">
+      ‹
+    </button>
+
+    <!-- Right -->
+    <button onclick="nextMedia()"
+      class="absolute right-5 text-white text-4xl z-50 hover:text-impost-primary transition">
+      ›
+    </button>
+
   </div>
 
 @endsection

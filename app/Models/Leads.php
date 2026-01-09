@@ -12,6 +12,7 @@ class Leads extends Model
 		'phone',
 		'business_name',
 		'income',
-		'note'
+		'note',
+		'objective'
 	];
 }

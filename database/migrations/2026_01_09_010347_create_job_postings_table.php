@@ -16,8 +16,8 @@ return new class extends Migration
 			$table->string('title', 160);
 			$table->string('slug', 160)->unique();
 			$table->text('description');
-			$table->string('requirements', 255);
-			$table->string('responsibilities', 255);
+			$table->text('requirements');
+			$table->text('responsibilities');
 			$table->string('type', 100);
 			$table->string('status', 50);
 			$table->date('closing_date');

@@ -21,7 +21,7 @@
 @endpush
 
 @section('content')
-  <main class="bg-impost-fifth antialiased pt-24 sm:pt-28 py-8 sm:py-16">
+  <main class="antialiased pt-24 sm:pt-28 py-8 sm:py-16">
     <div class="px-4 mx-auto max-w-7xl">
 
       {{-- Breadcrumb --}}

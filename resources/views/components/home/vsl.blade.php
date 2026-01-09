@@ -167,9 +167,9 @@
         <div class="space-y-2">
           <!-- Branding -->
           <div class="flex items-start">
-            <input type="checkbox" id="branding" name="objective[]" value="branding"
+            <input type="checkbox" id="branding" name="objective[]" value="Branding"
               class="mt-0.5 sm:mt-1 w-4 h-4 rounded bg-gray-800 border border-gray-700 text-impost-primary focus:ring-impost-primary"
-              {{ in_array('branding', old('objective', [])) ? 'checked' : '' }} />
+              {{ in_array('Branding', old('objective', [])) ? 'checked' : '' }} />
             <label for="branding" class="ml-2 sm:ml-3 text-xs sm:text-sm text-gray-300 cursor-pointer">
               <span class="font-medium text-white">Branding</span><br>
               <span class="text-gray-400 text-xs">
@@ -180,9 +180,9 @@
 
           <!-- Engagement -->
           <div class="flex items-start">
-            <input type="checkbox" id="engagement" name="objective[]" value="engagement"
+            <input type="checkbox" id="engagement" name="objective[]" value="Engagement"
               class="mt-0.5 sm:mt-1 w-4 h-4 rounded bg-gray-800 border border-gray-700 text-impost-primary focus:ring-impost-primary"
-              {{ in_array('engagement', old('objective', [])) ? 'checked' : '' }} />
+              {{ in_array('Engagement', old('objective', [])) ? 'checked' : '' }} />
             <label for="engagement" class="ml-2 sm:ml-3 text-xs sm:text-sm text-gray-300 cursor-pointer">
               <span class="font-medium text-white">Engagement</span><br>
               <span class="text-gray-400 text-xs">
@@ -193,9 +193,9 @@
 
           <!-- Sales / ROI -->
           <div class="flex items-start">
-            <input type="checkbox" id="sales" name="objective[]" value="sales_roi"
+            <input type="checkbox" id="sales" name="objective[]" value="Sales ROI"
               class="mt-0.5 sm:mt-1 w-4 h-4 rounded bg-gray-800 border border-gray-700 text-impost-primary focus:ring-impost-primary"
-              {{ in_array('sales_roi', old('objective', [])) ? 'checked' : '' }} />
+              {{ in_array('Sales ROI', old('objective', [])) ? 'checked' : '' }} />
             <label for="sales" class="ml-2 sm:ml-3 text-xs sm:text-sm text-gray-300 cursor-pointer">
               <span class="font-medium text-white">Sales / ROI</span><br>
               <span class="text-gray-400 text-xs">
@@ -206,9 +206,9 @@
 
           <!-- Kombinasi -->
           <div class="flex items-start">
-            <input type="checkbox" id="combination" name="objective[]" value="branding_sales"
+            <input type="checkbox" id="combination" name="objective[]" value="Branding & Sales"
               class="mt-0.5 sm:mt-1 w-4 h-4 rounded bg-gray-800 border border-gray-700 text-impost-primary focus:ring-impost-primary"
-              {{ in_array('branding_sales', old('objective', [])) ? 'checked' : '' }} />
+              {{ in_array('Branding & Sales', old('objective', [])) ? 'checked' : '' }} />
             <label for="combination" class="ml-2 sm:ml-3 text-xs sm:text-sm text-gray-300 cursor-pointer">
               <span class="font-medium text-white">Kombinasi (Branding & Sales)</span><br>
               <span class="text-gray-400 text-xs">
@@ -228,7 +228,7 @@
         <label for="note" class="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5 sm:mb-2">
           Catatan
         </label>
-        <textarea id="note" name="note" rows="3" class="sm:rows-4"
+        <textarea id="note" name="note" rows="3"
           class="w-full rounded-lg bg-gray-800 border border-gray-700 px-3 sm:px-4 py-2.5 sm:py-3 text-sm text-white placeholder-gray-500
 								 focus:outline-none focus:ring-2 focus:ring-impost-primary"
           placeholder="Ceritakan kebutuhan bisnis Anda">{{ old('note') }}</textarea>

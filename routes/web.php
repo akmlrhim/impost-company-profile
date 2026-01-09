@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
@@ -37,6 +38,9 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::get('articles/view/{article:slug}', [HomeController::class, 'article'])->name('article.detail');
 		Route::get('article/view', [HomeController::class, 'articleAll'])->name('article.all');
 		Route::post('article/comment', [CommentController::class, 'store'])->name('article.comment');
+
+		Route::get('careers', [HomeController::class, 'job'])->name('careers');
+		Route::get('careers/{career:slug}', [HomeController::class, 'jobDetail'])->name('career.detail');
 	});
 
 	Route::prefix('admin')->middleware('auth')->group(function () {
@@ -71,5 +75,8 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		// testimonial route
 		Route::resource('testimonials', TestimonialController::class)->except('show');
+
+		// career route
+		Route::resource('careers', CareerController::class)->except('show');
 	});
 });

@@ -66,7 +66,7 @@ class PortfolioController extends Controller
 
 				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
 
-				$filename = time() . '.webp';
+				$filename = Str::uuid() . '.webp';
 				$path = 'portfolio/' . $filename;
 
 				Storage::disk('public')->put($path, $img);
@@ -82,7 +82,7 @@ class PortfolioController extends Controller
 			if ($request->hasFile('photos')) {
 				foreach ($request->file('photos') as $photoFile) {
 					$img = $manager->read($photoFile)->toWebp(quality: 60);
-					$filename = time() . '.webp';
+					$filename = Str::uuid() . '.webp';
 					$path = 'portfolio/photos/' . $filename;
 
 					Storage::disk('public')->put($path, $img);
@@ -132,7 +132,7 @@ class PortfolioController extends Controller
 				}
 
 				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
-				$filename = time() . '.webp';
+				$filename = Str::uuid() . '.webp';
 				$path = 'portfolio/' . $filename;
 
 				Storage::disk('public')->put($path, $img);
@@ -164,7 +164,7 @@ class PortfolioController extends Controller
 			if ($request->hasFile('photos')) {
 				foreach ($request->file('photos') as $photoFile) {
 					$img = $manager->read($photoFile)->toWebp(quality: 60);
-					$filename = time() . '.webp';
+					$filename = Str::uuid() . '.webp';
 					$path = 'portfolio/photos/' . $filename;
 
 					Storage::disk('public')->put($path, $img);

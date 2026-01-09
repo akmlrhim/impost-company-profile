@@ -32,7 +32,6 @@
 
                 <x-confirm-delete action="{{ route('testimonials.destroy', $testimonial) }}" />
               </div>
-
             </div>
           </div>
         @empty

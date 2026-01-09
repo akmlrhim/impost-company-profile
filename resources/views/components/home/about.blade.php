@@ -113,13 +113,8 @@
             <h3 class="text-base lg:text-lg font-bold text-white mb-2" x-text="card.title"></h3>
             <p class="text-white/90 text-sm lg:text-base leading-relaxed" x-text="card.desc"></p>
           </div>
-
         </template>
-
       </div>
-
     </div>
-
   </div>
-
 </section>

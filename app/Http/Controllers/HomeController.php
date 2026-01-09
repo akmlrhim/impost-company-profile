@@ -121,11 +121,12 @@ class HomeController extends Controller
 		$request->validate(
 			[
 				'fullname'       => 'required|string|max:160',
-				'email'          => 'required|email:dns|max:160',
+				'email'          => 'nullable|email:dns|max:160',
 				'phone'          => 'required|digits_between:10,15',
 				'business_name'  => 'required|string|max:160',
 				'income'         => 'required',
 				'note'           => 'nullable|string',
+				'objective'      => 'required|string|max:160',
 			],
 			[
 				'required' => ':attribute wajib diisi.',
@@ -155,6 +156,7 @@ class HomeController extends Controller
 					'business_name' => $request->business_name,
 					'income' => $request->income,
 					'note' => $request->note,
+					'objective' => $request->objective,
 				]
 			);
 

@@ -9,19 +9,19 @@
 
         <!-- Main Headline -->
         <h1
-          class="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-tight animate-fade-in-up animate-delay-1">
+          class="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight animate-fade-in-up animate-delay-1">
           <span
-            class="font-header block mt-2 bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
-            Your Expert Partner in Digital, Event & Business Solutions
+            class="font-header block mt-2 leading-[1.05] bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
+            Naikkan Omset Bisnis Anda 2–3x dalam 90 Hari dengan Digital Marketing
           </span>
         </h1>
 
         <!-- Description -->
         <p
           class="text-sm sm:text-lg text-gray-300 leading-relaxed max-w-xl mx-auto sm:mx-0 animate-fade-in-up animate-delay-2">
-          Kami menyediakan solusi digital inovatif untuk membantu bisnis anda tumbuh lebih cepat di era modern. Mulai
-          transformasi anda hari ini.
+          Bukan sekadar konten atau iklan, tapi sistem pertumbuhan terukur yang bisa diaudit dan dipertanggungjawabkan.
         </p>
+
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 w-full justify-center sm:justify-start">
@@ -32,17 +32,7 @@
 									text-black font-semibold rounded-lg
 									transition-all duration-300
 									hover:scale-105 hover:shadow-lg hover:shadow-impost-primary/50">
-            Mulai Sekarang
-          </button>
-
-          <button
-            class="w-full sm:w-auto cursor-pointer px-8 py-3
-									bg-transparent border-2 border-impost-primary/50
-									hover:border-impost-primary
-									text-impost-primary font-semibold rounded-lg
-									transition-all duration-300
-									hover:bg-impost-primary/10">
-            Pelajari Lebih Lanjut
+            Ajukan diskusi strategis sekarang
           </button>
 
         </div>

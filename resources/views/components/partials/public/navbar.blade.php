@@ -201,6 +201,37 @@
                 </a>
               </li>
 
+              <!-- Divider -->
+              <li class="px-4 my-1">
+                <div class="border-t border-impost-primary/10"></div>
+              </li>
+
+              <!-- Career -->
+              <li>
+                <a href="{{ route('about') }}"
+                  class="flex items-center px-5 py-3 text-white/90 hover:text-white hover:bg-gradient-to-r hover:from-impost-primary/20 hover:to-impost-primary/10 transition-all duration-300 group relative overflow-hidden {{ request()->routeIs('about') ? 'bg-impost-primary/15 text-white' : '' }}">
+
+                  <span
+                    class="absolute inset-0 bg-gradient-to-r from-impost-primary/0 to-impost-primary/0 group-hover:from-impost-primary/10 group-hover:to-transparent transition-all duration-300"></span>
+
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="w-4 h-4 mr-3.5 opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 relative z-10 lucide lucide-briefcase-business-icon lucide-briefcase-business">
+                    <path d="M12 12h.01" />
+                    <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                    <path d="M22 13a18.15 18.15 0 0 1-20 0" />
+                    <rect width="20" height="14" x="2" y="6" rx="2" />
+                  </svg>
+                  <span class="font-medium tracking-wide relative z-10">Career</span>
+
+                  <svg
+                    class="w-4 h-4 ml-auto opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 relative z-10"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </li>
+
             </ul>
           </div>
         </li>

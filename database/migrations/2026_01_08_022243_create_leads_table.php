@@ -14,11 +14,12 @@ return new class extends Migration
 		Schema::create('leads', function (Blueprint $table) {
 			$table->id();
 			$table->string('fullname', 160);
-			$table->string('email', 160);
+			$table->string('email', 160)->nullable();
 			$table->string('phone', 15);
 			$table->string('business_name', 160);
 			$table->string('income', 160);
 			$table->text('note')->nullable();
+			$table->string('objective', 160);
 			$table->timestamps();
 		});
 	}

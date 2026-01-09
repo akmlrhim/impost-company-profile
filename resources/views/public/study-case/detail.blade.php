@@ -33,13 +33,9 @@
 
       <!-- Title -->
       <div class="mb-12 text-center" data-aos="fade-up">
-        <h1
-          class="text-3xl md:text-5xl font-bold bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent uppercase mb-4 leading-tight">
+        <h1 class="text-lg sm:text-xl font-bold text-impost-primary uppercase mb-4 leading-tight">
           {{ $studyCase->name }}
         </h1>
-        <div class="text-gray-400 text-sm sm:text-base">
-          Published on {{ $studyCase->created_at->format('F j, Y') }}
-        </div>
       </div>
 
       <!-- Content Section -->
@@ -48,40 +44,46 @@
         <!-- Media Gallery -->
         @if ($studyCase->media && $studyCase->media->count() > 0)
           <div class="mb-16" data-aos="fade-up">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6 text-center">Project Gallery</h2>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               @foreach ($studyCase->media as $media)
                 <div
                   class="group relative overflow-hidden rounded-xl border border-slate-700/50 bg-slate-800/50 backdrop-blur-sm hover:border-impost-primary/50 transition-all duration-300">
                   @if ($media->media_type === 'image')
                     <!-- Image -->
-                    <div class="aspect-video relative overflow-hidden">
+                    <div class="aspect-video relative overflow-hidden cursor-pointer"
+                      onclick="openMedia({{ $loop->index }})">
+
+
                       <img src="{{ asset('storage/' . $media->file_path) }}" alt="{{ $media->filename }}"
                         class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                         loading="lazy">
+
                       <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent
+														 opacity-0 group-hover:opacity-100 transition-opacity duration-300
+														 pointer-events-none">
                       </div>
 
-                      <!-- Image Overlay Icon -->
                       <div
-                        class="absolute top-3 right-3 w-8 h-8 bg-slate-900/80 rounded-full flex items-center justify-center">
+                        class="absolute top-3 right-3 w-8 h-8 bg-slate-900/80 rounded-full
+														 flex items-center justify-center pointer-events-none">
                         <svg class="w-4 h-4 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </div>
+
                     </div>
                   @elseif ($media->media_type === 'video')
                     <!-- Video -->
-                    <div class="aspect-video relative">
-                      <video controls class="w-full h-full object-cover rounded-t-xl" preload="metadata">
+                    <div class="aspect-video relative overflow-hidden cursor-pointer"
+                      onclick="openMedia({{ $loop->index }})">
+
+                      <video class="w-full h-full object-cover rounded-t-xl pointer-events-none" preload="metadata">
                         <source src="{{ asset('storage/' . $media->file_path) }}" type="video/mp4">
-                        Your browser does not support the video tag.
                       </video>
 
-                      <!-- Video Overlay Icon -->
+                      <!-- Overlay Icon -->
                       <div
                         class="absolute top-3 right-3 w-8 h-8 bg-slate-900/80 rounded-full flex items-center justify-center pointer-events-none">
                         <svg class="w-4 h-4 text-impost-secondary" fill="none" stroke="currentColor"
@@ -92,6 +94,7 @@
                             d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
+
                     </div>
                   @endif
 
@@ -189,8 +192,8 @@
 
               <div
                 class="prose prose-invert prose-sm max-w-none
-													prose-p:text-gray-300 prose-p:leading-relaxed
-													prose-li:marker:text-impost-fourth">
+													prose-p:text-white prose-p:leading-relaxed
+													prose-li:marker:text-white">
                 {!! $studyCase->result !!}
               </div>
             </div>
@@ -219,4 +222,90 @@
       </div>
     </div>
   </main>
+
+  <div id="mediaLightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+
+    <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white hover:text-impost-primary transition">
+      ✕
+    </button>
+
+    <div id="lightboxContent" class="max-w-6xl w-full max-h-[90vh] flex items-center justify-center">
+    </div>
+  </div>
+
 @endsection
+
+@push('scripts')
+  <script>
+    window.mediaGallery = @json(
+        $studyCase->media->values()->map(fn($m) => [
+                'type' => $m->media_type,
+                'src' => asset('storage/' . $m->file_path),
+            ]));
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const lightbox = document.getElementById('mediaLightbox');
+      const content = document.getElementById('lightboxContent');
+      let currentIndex = 0;
+
+      function renderMedia(index) {
+        const media = window.mediaGallery[index];
+        if (!media) return;
+
+        if (media.type === 'image') {
+          content.innerHTML = `
+        <img src="${media.src}"
+          class="max-h-[90vh] max-w-full rounded-xl shadow-2xl">
+      `;
+        } else {
+          content.innerHTML = `
+        <video src="${media.src}"
+          controls autoplay
+          class="max-h-[90vh] max-w-full rounded-xl shadow-2xl">
+        </video>
+      `;
+        }
+      }
+
+      window.openMedia = function(index) {
+        currentIndex = index;
+        renderMedia(currentIndex);
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      };
+
+      window.closeLightbox = function() {
+        content.innerHTML = '';
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+      };
+
+      window.prevMedia = function() {
+        currentIndex =
+          (currentIndex - 1 + window.mediaGallery.length) % window.mediaGallery.length;
+        renderMedia(currentIndex);
+      };
+
+      window.nextMedia = function() {
+        currentIndex =
+          (currentIndex + 1) % window.mediaGallery.length;
+        renderMedia(currentIndex);
+      };
+
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') prevMedia();
+        if (e.key === 'ArrowRight') nextMedia();
+        if (e.key === 'Escape') closeLightbox();
+      });
+
+    });
+  </script>
+@endpush

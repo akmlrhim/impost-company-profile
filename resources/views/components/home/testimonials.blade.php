@@ -20,7 +20,7 @@
               </svg>
 
               <blockquote>
-                <p class="text-md font-medium text-white leading-relaxed">
+                <p class="text-sm sm:text-md font-medium text-white leading-relaxed">
                   “{{ $t->content }}”
                 </p>
               </blockquote>
@@ -37,7 +37,7 @@
 
       <!-- Navigation -->
       <button type="button"
-        class="testimonial-prev absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-impost-primary/80 hover:bg-impost-primary text-white p-3 rounded-full shadow-lg">
+        class="hidden md:flex testimonial-prev absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-impost-primary/80 hover:bg-impost-primary text-white p-3 rounded-full shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           class="lucide lucide-chevron-left-icon lucide-chevron-left">
@@ -46,7 +46,7 @@
       </button>
 
       <button type="button"
-        class="testimonial-next absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-impost-primary/80 hover:bg-impost-primary text-white p-3 rounded-full shadow-lg">
+        class="hidden md:flex testimonial-next absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-impost-primary/80 hover:bg-impost-primary text-white p-3 rounded-full shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           class="lucide lucide-chevron-right-icon lucide-chevron-right">
@@ -85,20 +85,26 @@
         update();
       }
 
-      // Manual navigation
-      next.addEventListener('click', () => {
-        nextSlide();
-        resetAutoplay();
-      });
+      /* ======================
+         DESKTOP NAVIGATION
+      ====================== */
+      if (next && prev) {
+        next.addEventListener('click', () => {
+          nextSlide();
+          resetAutoplay();
+        });
 
-      prev.addEventListener('click', () => {
-        prevSlide();
-        resetAutoplay();
-      });
+        prev.addEventListener('click', () => {
+          prevSlide();
+          resetAutoplay();
+        });
+      }
 
-      // Autoplay
+      /* ======================
+         AUTOPLAY (DESKTOP)
+      ====================== */
       function startAutoplay() {
-        autoplay = setInterval(nextSlide, 4000); // 4 detik
+        autoplay = setInterval(nextSlide, 4000);
       }
 
       function resetAutoplay() {
@@ -106,11 +112,42 @@
         startAutoplay();
       }
 
-      // Pause on hover
-      slider.addEventListener('mouseenter', () => clearInterval(autoplay));
-      slider.addEventListener('mouseleave', startAutoplay);
+      slider.addEventListener('mouseenter', () => {
+        if (window.innerWidth >= 768) clearInterval(autoplay);
+      });
 
-      startAutoplay();
+      slider.addEventListener('mouseleave', () => {
+        if (window.innerWidth >= 768) startAutoplay();
+      });
+
+      if (window.innerWidth >= 768) {
+        startAutoplay();
+      }
+
+      /* ======================
+         SWIPE (MOBILE)
+      ====================== */
+      let startX = 0;
+      let endX = 0;
+
+      slider.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      });
+
+      slider.addEventListener('touchmove', (e) => {
+        endX = e.touches[0].clientX;
+      });
+
+      slider.addEventListener('touchend', () => {
+        const diff = startX - endX;
+
+        if (Math.abs(diff) > 50) {
+          diff > 0 ? nextSlide() : prevSlide();
+        }
+
+        startX = 0;
+        endX = 0;
+      });
     });
   </script>
 @endpush

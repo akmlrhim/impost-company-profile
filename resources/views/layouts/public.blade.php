@@ -31,7 +31,7 @@
   @stack('styles')
 </head>
 
-<body class="bg-impost-fifth relative">
+<body class="bg-impost-fifth relative antialiased">
   <div style="position: absolute; inset: 0; pointer-events: none; overflow: hidden;">
 
     <!-- Grid Pattern -->

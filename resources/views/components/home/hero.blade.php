@@ -50,8 +50,8 @@
           </div>
 
           <!-- IMAGE -->
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=1000&fit=crop"
-            alt="Impost Media Hero" class="relative w-full h-auto object-cover rounded-2xl">
+          <img src="{{ asset('img/hero.webp') }}" loading="lazy" encoding="async" alt="Impost Media Hero"
+            class="relative w-full h-auto object-cover rounded-2xl">
 
           <!-- OVERLAY -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
@@ -71,8 +71,8 @@
           </div>
 
           <!-- IMAGE -->
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=700&fit=crop"
-            alt="Impost Media Hero" class="relative w-full h-auto object-cover rounded-xl">
+          <img src="{{ asset('img/hero.webp') }}" alt="Impost Media Hero" loading="lazy" encoding="async"
+            class="relative w-full h-auto object-cover rounded-xl">
 
           <!-- OVERLAY -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">

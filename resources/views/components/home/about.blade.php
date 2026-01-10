@@ -35,7 +35,7 @@
       <div class="text-center max-w-2xl mx-auto mb-8 md:mb-12 px-2">
         <div
           class="inline-flex items-center mb-4 px-4 py-1.5 rounded-full border border-impost-primary/30 bg-impost-fourth/30">
-          <span class="text-impost-primary font-bold tracking-widest uppercase text-[10px] md:text-xs">WHY US ?</span>
+          <span class="text-impost-primary font-bold tracking-widestst uppercase text-[10px] md:text-xs">WHY US ?</span>
         </div>
         <h2 data-aos="fade-up" class="font-header text-xl md:text-3xl font-bold text-white leading-tight">
           Kami bukan hanya sekadar <span class="text-impost-primary">Agensi Media Sosial</span>
@@ -106,12 +106,15 @@
 <section class="py-4 md:py-12 bg-impost-fifth text-white overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="max-w-3xl mb-12 md:mb-16" data-aos="fade-right">
+    <div class="max-w-3xl mb-8 md:mb-10" data-aos="fade-right">
       <p class="text-xl md:text-2xl lg:text-3xl font-bold leading-tight font-header">
         Kami Bukan Agency yang jual konten atau iklan. <br>
-        <span class="text-impost-secondary font-header">Kami Pionir & Market Leader Digital Marketing di
-          Kalimantan.</span>
+        Kami jual omzet, data, dan hasil. <br>
       </p>
+    </div>
+
+    <div class="text-impost-primary text-xl md:text-2xl lg:text-3xl font-bold font-header mb-4 md:mb-6">
+      Kami merupakan Pionir & Market Leader Digital Marketing di Kalimantan.
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -165,7 +168,7 @@
 
         <div
           class="bg-gradient-to-br from-impost-fourth to-impost-fifth border border-impost-primary/30 p-8 rounded-2xl shadow-2xl">
-          <p class="text-impost-primary font-bold text-sm uppercase tracking-widest mb-2">Our Core Action</p>
+          <p class="text-impost-primary font-bold text-sm uppercase tracking-widestst mb-2">Our Core Action</p>
           <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Kami benahi funnel marketingnya</h3>
           <p class="text-xs md:text-sm text-gray-400">
             Membangun sistem pemasaran yang berkelanjutan, bukan sekadar posting konten.
@@ -317,7 +320,7 @@
         <div
           class="bg-impost-fourth/20 border border-impost-third/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm shadow-xl">
 
-          <p class="pb-4 text-xs font-bold uppercase tracking-widest text-gray-300">
+          <p class="pb-4 text-xs font-bold uppercase tracking-widestst text-gray-300">
             Masalah inti yang kami selesaikan:
           </p>
 
@@ -407,255 +410,12 @@
               Impost Media hadir
               <span class="text-white font-semibold">bukan sebagai vendor</span>,
               tetapi sebagai
-              <span class="text-impost-primary font-semibold uppercase tracking-wide">
+              <span class="text-impost-primary font-semibold uppercase tracking-widest">
                 partner pertumbuhan bisnis.
               </span>
             </p>
           </div>
 
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{{--  --}}
-
-
-
-{{-- Apa yang kami lakukan --}}
-<section class="py-4 md:py-12 bg-impost-fifth border-t border-impost-third/10 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-
-    <div class="max-w-3xl mb-16 md:mb-20">
-      <h2 class="text-impost-primary font-bold tracking-[0.3em] uppercase text-sm mb-4">Apa yang kami lakukan ?</h2>
-      <h3 class="text-3xl md:text-5xl font-bold text-white leading-tight font-header">
-        Strategi Komprehensif untuk <br>
-        <span
-          class="text-transparent bg-clip-text bg-gradient-to-r from-impost-primary to-impost-secondary font-header">Pertumbuhan
-          Bisnis Anda.</span>
-      </h3>
-    </div>
-
-    <div class="lg:hidden" x-data="{ currentSlide: 0, totalSlides: 5 }">
-      <div class="relative">
-        <div x-ref="slider" class="slider-container flex gap-4 overflow-x-auto pb-4"
-          @scroll.debounce.100ms="currentSlide = Math.round($el.scrollLeft / $el.offsetWidth)">
-          <div class="slider-item w-[85%] sm:w-[70%]">
-            <div class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 h-full">
-              <div class="flex justify-between items-start mb-6">
-                <span class="text-4xl font-bold text-impost-primary">01</span>
-                <div class="p-3 bg-impost-primary/10 rounded-2xl text-impost-primary">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
-                    </path>
-                  </svg>
-                </div>
-              </div>
-              <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-wide">Awareness Strategy</h4>
-              <ul class="space-y-3 text-sm text-gray-400 leading-relaxed text-white">
-                <li class="flex gap-2"><span>•</span> Aktivasi & Manajemen Sosial Media</li>
-                <li class="flex gap-2"><span>•</span> Pembuatan Konten & KOL Activation</li>
-                <li class="flex gap-2"><span>•</span> Website & Profile Company</li>
-                <li class="flex gap-2"><span>•</span> Ads Awareness & Strategi Launching</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="slider-item w-[85%] sm:w-[70%]">
-            <div class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 h-full">
-              <div class="flex justify-between items-start mb-6">
-                <span class="text-4xl font-bold text-impost-primary">02</span>
-                <div class="p-3 bg-impost-primary/10 rounded-2xl text-impost-primary">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
-                    </path>
-                  </svg>
-                </div>
-              </div>
-              <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-wide">Consideration</h4>
-              <ul class="space-y-3 text-sm text-gray-400 leading-relaxed text-white">
-                <li class="flex gap-2"><span>•</span> Community Activation & Review</li>
-                <li class="flex gap-2"><span>•</span> KOL Management & CS Support</li>
-                <li class="flex gap-2"><span>•</span> UGC Content & Brand Storytelling</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="slider-item w-[85%] sm:w-[70%]">
-            <div class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 h-full">
-              <div class="flex justify-between items-start mb-6">
-                <span class="text-4xl font-bold text-impost-primary">03</span>
-                <div class="p-3 bg-impost-primary/10 rounded-2xl text-impost-primary">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                    </path>
-                  </svg>
-                </div>
-              </div>
-              <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-wide">Conversion</h4>
-              <ul class="space-y-3 text-sm text-gray-400 leading-relaxed text-white">
-                <li class="flex gap-2"><span>•</span> Sales Ads & High Converting LP</li>
-                <li class="flex gap-2"><span>•</span> Offer & Pricing Strategy</li>
-                <li class="flex gap-2"><span>•</span> Sales Funnel & Pipeline Development</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="slider-item w-[85%] sm:w-[70%]">
-            <div class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 h-full">
-              <div class="flex justify-between items-start mb-6">
-                <span class="text-4xl font-bold text-impost-primary">04</span>
-                <div class="p-3 bg-impost-primary/10 rounded-2xl text-impost-primary">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                    </path>
-                  </svg>
-                </div>
-              </div>
-              <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-wide">Loyalty</h4>
-              <ul class="space-y-3 text-sm text-gray-400 leading-relaxed text-white">
-                <li class="flex gap-2"><span>•</span> Brand Foundation & Identity</li>
-                <li class="flex gap-2"><span>•</span> CRM & Loyalty Program</li>
-                <li class="flex gap-2"><span>•</span> Brand Storytelling</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="slider-item w-[85%] sm:w-[70%]">
-            <div class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 h-full">
-              <div class="flex justify-between items-start mb-6">
-                <span class="text-4xl font-bold text-impost-primary">05</span>
-                <div class="p-3 bg-impost-primary/10 rounded-2xl text-impost-primary">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                  </svg>
-                </div>
-              </div>
-              <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-wide">Advocacy & Scale</h4>
-              <ul class="space-y-3 text-sm text-gray-400 leading-relaxed text-white">
-                <li class="flex gap-2"><span>•</span> AI Integrated Marketing System</li>
-                <li class="flex gap-2"><span>•</span> Konten Testimoni & UGC</li>
-                <li class="flex gap-2"><span>•</span> Reporting & Rekomendasi</li>
-                <li class="flex gap-2"><span>•</span> Campaign Advocacy Strategy</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      <div
-        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 transition-all duration-500 hover:border-impost-primary/40 hover:-translate-y-2">
-        <div class="flex justify-between items-start mb-6">
-          <span class="text-4xl font-bold text-impost-primary">01</span>
-          <div class="p-3 bg-impost-primary/10 rounded-2xl text-impost-primary">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
-              </path>
-            </svg>
-          </div>
-        </div>
-        <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-wide">Awareness Strategy</h4>
-        <ul class="space-y-3 text-sm text-gray-400 leading-relaxed text-white">
-          <li class="flex gap-2"><span>•</span> Aktivasi & Manajemen Sosial Media</li>
-          <li class="flex gap-2"><span>•</span> Pembuatan Konten & KOL Activation</li>
-          <li class="flex gap-2"><span>•</span> Website & Profile Company</li>
-          <li class="flex gap-2"><span>•</span> Ads Awareness & Strategi Launching</li>
-        </ul>
-      </div>
-
-      <div
-        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 transition-all duration-500 hover:border-impost-primary/40 hover:-translate-y-2">
-        <div class="flex justify-between items-start mb-6">
-          <span class="text-4xl font-bold text-impost-primary">02</span>
-          <div class="p-3 bg-impost-primary/10 rounded-2xl text-impost-primary">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
-              </path>
-            </svg>
-          </div>
-        </div>
-        <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-wide">Consideration</h4>
-        <ul class="space-y-3 text-sm text-gray-400 leading-relaxed text-white">
-          <li class="flex gap-2"><span>•</span> Community Activation & Review</li>
-          <li class="flex gap-2"><span>•</span> KOL Management & CS Support</li>
-          <li class="flex gap-2"><span>•</span> UGC Content & Brand Storytelling</li>
-        </ul>
-      </div>
-
-      <div
-        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 transition-all duration-500 hover:border-impost-primary/40 hover:-translate-y-2">
-        <div class="flex justify-between items-start mb-6">
-          <span class="text-4xl font-bold text-impost-primary">03</span>
-          <div class="p-3 bg-impost-primary/10 rounded-2xl text-impost-primary">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-              </path>
-            </svg>
-          </div>
-        </div>
-        <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-wide">Conversion</h4>
-        <ul class="space-y-3 text-sm text-gray-400 leading-relaxed text-white">
-          <li class="flex gap-2"><span>•</span> Sales Ads & High Converting LP</li>
-          <li class="flex gap-2"><span>•</span> Offer & Pricing Strategy</li>
-          <li class="flex gap-2"><span>•</span> Sales Funnel & Pipeline Development</li>
-        </ul>
-      </div>
-
-      <div
-        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 transition-all duration-500 hover:border-impost-primary/40 hover:-translate-y-2">
-        <div class="flex justify-between items-start mb-6">
-          <span class="text-4xl font-bold text-impost-primary">04</span>
-          <div class="p-3 bg-impost-primary/10 rounded-2xl text-impost-primary">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-              </path>
-            </svg>
-          </div>
-        </div>
-        <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-wide">Loyalty</h4>
-        <ul class="space-y-3 text-sm text-gray-400 leading-relaxed text-white">
-          <li class="flex gap-2"><span>•</span> Brand Foundation & Identity</li>
-          <li class="flex gap-2"><span>•</span> CRM & Loyalty Program</li>
-          <li class="flex gap-2"><span>•</span> Brand Storytelling</li>
-        </ul>
-      </div>
-
-      <div
-        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 lg:col-span-2 transition-all duration-500 hover:border-impost-primary/40 hover:-translate-y-2">
-        <div class="flex justify-between items-start mb-6">
-          <span class="text-4xl font-bold text-impost-primary">05</span>
-          <div class="p-3 bg-impost-primary/10 rounded-2xl text-impost-primary">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
-              </path>
-            </svg>
-          </div>
-        </div>
-        <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-wide">Advocacy & Scale</h4>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-          <ul class="space-y-3 text-sm text-gray-400 leading-relaxed text-white">
-            <li class="flex gap-2"><span>•</span> AI Integrated Marketing System</li>
-            <li class="flex gap-2"><span>•</span> Konten Testimoni & UGC</li>
-          </ul>
-          <ul class="space-y-3 text-sm text-gray-400 leading-relaxed text-white">
-            <li class="flex gap-2"><span>•</span> Reporting & Rekomendasi</li>
-            <li class="flex gap-2"><span>•</span> Campaign Advocacy Strategy</li>
-          </ul>
         </div>
       </div>
     </div>

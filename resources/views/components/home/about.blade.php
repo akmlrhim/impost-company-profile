@@ -106,15 +106,12 @@
 <section class="py-4 md:py-12 bg-impost-fifth text-white overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="max-w-3xl mb-8 md:mb-10" data-aos="fade-right">
+    <div class="max-w-3xl mb-12 md:mb-16" data-aos="fade-right">
       <p class="text-xl md:text-2xl lg:text-3xl font-bold leading-tight font-header">
         Kami Bukan Agency yang jual konten atau iklan. <br>
-        Kami jual omzet, data, dan hasil. <br>
+        <span class="text-impost-secondary font-header">Kami Pionir & Market Leader Digital Marketing di
+          Kalimantan.</span>
       </p>
-    </div>
-
-    <div class="text-impost-primary text-xl md:text-2xl lg:text-3xl font-bold font-header mb-4 md:mb-6">
-      Kami merupakan Pionir & Market Leader Digital Marketing di Kalimantan.
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">

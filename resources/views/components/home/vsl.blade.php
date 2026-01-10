@@ -45,177 +45,122 @@
   </div>
 </section>
 
-
-{{-- MODAL  --}}
+<!-- MODAL -->
 <div id="vslModal" tabindex="-1" aria-hidden="true"
-  class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-3 sm:p-4 overflow-y-auto">
+  class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center
+         bg-black/70 backdrop-blur-sm p-2 sm:p-4 overflow-y-auto">
 
+  <!-- MODAL BOX -->
   <div
-    class="relative w-full max-w-2xl bg-gray-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+    class="relative w-full max-w-2xl bg-gray-900 rounded-2xl
+           p-5 sm:p-6 md:p-8
+           shadow-2xl max-h-[92vh] overflow-y-auto">
 
-    <!-- Close Button -->
-    <button type="button"
-      class="absolute top-3 sm:top-4 right-3 sm:right-4 text-gray-400 hover:text-gray-200 transition-colors"
+    <button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-200 transition"
       data-modal-hide="vslModal" aria-label="Tutup">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
 
-    <h3 class="mb-4 sm:mb-6 text-xl sm:text-2xl font-semibold text-white text-center">
+    <h3 class="mb-6 text-xl sm:text-2xl font-semibold text-white text-center">
       Isi data berikut untuk melanjutkan
     </h3>
 
-    <!-- FORM -->
-    <form action="{{ route('save-leads') }}" method="POST" class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+    <form action="{{ route('save-leads') }}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
       @csrf
-      <!-- Nama Lengkap -->
+
       <div>
-        <label for="fullname" class="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5 sm:mb-2">
-          Nama Lengkap <span class="text-red-700">*</span>
+        <label class="block text-sm font-medium text-gray-300 mb-2">
+          Nama Lengkap <span class="text-red-600">*</span>
         </label>
-        <input id="fullname" name="fullname"
-          class="w-full rounded-lg bg-gray-800 border border-gray-700 px-3 sm:px-4 py-2.5 sm:py-3 text-sm text-white placeholder-gray-500
-								 focus:outline-none focus:ring-2 focus:ring-impost-primary"
-          placeholder="Masukkan nama lengkap" value="{{ old('fullname') }}" />
+        <input type="text" name="fullname" value="{{ old('fullname') }}"
+          class="w-full rounded-xl bg-gray-800 border border-gray-700 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-impost-primary"
+          placeholder="Masukkan nama lengkap">
         @error('fullname')
           <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
         @enderror
       </div>
 
-      <!-- Nomor HP -->
       <div>
-        <label for="phone" class="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5 sm:mb-2">
-          Nomor HP <span class="text-red-700">*</span>
+        <label class="block text-sm font-medium text-gray-300 mb-2">
+          Nomor HP <span class="text-red-600">*</span>
         </label>
-        <input type="tel" id="phone" name="phone"
-          class="w-full rounded-lg bg-gray-800 border border-gray-700 px-3 sm:px-4 py-2.5 sm:py-3 text-sm text-white placeholder-gray-500
-								 focus:outline-none focus:ring-2 focus:ring-impost-primary"
-          placeholder="Masukkan nomor telepon" value="{{ old('phone') }}" />
+        <input type="tel" name="phone" value="{{ old('phone') }}"
+          class="w-full rounded-xl bg-gray-800 border border-gray-700 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-impost-primary"
+          placeholder="08xxxxxxxxxx">
         @error('phone')
           <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
         @enderror
       </div>
 
-      <!-- Email -->
       <div>
-        <label for="email" class="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5 sm:mb-2">
+        <label class="block text-sm font-medium text-gray-300 mb-2">
           Email
         </label>
-        <input type="email" id="email" name="email"
-          class="w-full rounded-lg bg-gray-800 border border-gray-700 px-3 sm:px-4 py-2.5 sm:py-3 text-sm text-white placeholder-gray-500
-								 focus:outline-none focus:ring-2 focus:ring-impost-primary"
-          placeholder="Masukkan email Anda" value="{{ old('email') }}" />
+        <input type="email" name="email" value="{{ old('email') }}"
+          class="w-full rounded-xl bg-gray-800 border border-gray-700 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-impost-primary"
+          placeholder="email@contoh.com">
         @error('email')
           <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
         @enderror
       </div>
 
-      <!-- Nama Bisnis -->
       <div>
-        <label for="business_name" class="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5 sm:mb-2">
-          Nama Bisnis <span class="text-red-700">*</span>
+        <label class="block text-sm font-medium text-gray-300 mb-2">
+          Nama Bisnis <span class="text-red-600">*</span>
         </label>
-        <input type="text" id="business_name" name="business_name"
-          class="w-full rounded-lg bg-gray-800 border border-gray-700 px-3 sm:px-4 py-2.5 sm:py-3 text-sm text-white placeholder-gray-500
-								 focus:outline-none focus:ring-2 focus:ring-impost-primary"
-          placeholder="Masukkan nama bisnis Anda" value="{{ old('business_name') }}" />
+        <input type="text" name="business_name" value="{{ old('business_name') }}"
+          class="w-full rounded-xl bg-gray-800 border border-gray-700 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-impost-primary"
+          placeholder="Nama bisnis Anda">
         @error('business_name')
           <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
         @enderror
       </div>
 
-      <!-- Income -->
-      <div class="sm:col-span-2">
-        <label for="income" class="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5 sm:mb-2">
-          Omzet Per Bulan <span class="text-red-700">*</span>
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium text-gray-300 mb-2">
+          Omzet Per Bulan <span class="text-red-600">*</span>
         </label>
-
-        <select id="income" name="income"
-          class="w-full rounded-lg bg-gray-800 border border-gray-700 px-3 sm:px-4 py-2.5 sm:py-3 text-sm text-white
-				 focus:outline-none focus:ring-2 focus:ring-impost-primary">
-
+        <select name="income"
+          class="w-full rounded-xl bg-gray-800 border border-gray-700 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-impost-primary">
           <option value="">Pilih kisaran omzet</option>
-
-          <option value="<10jt" {{ old('income') == '<10jt' ? 'selected' : '' }}>
-            &lt; 10 Juta
-          </option>
-
-          <option value="10-50jt" {{ old('income') == '10-50jt' ? 'selected' : '' }}>
-            10 – 50 Juta
-          </option>
-
-          <option value="50-100jt" {{ old('income') == '50-100jt' ? 'selected' : '' }}>
-            50 – 100 Juta
-          </option>
-
-          <option value=">100jt" {{ old('income') == '>100jt' ? 'selected' : '' }}>
-            &gt; 100 Juta
-          </option>
+          <option value="<10jt" {{ old('income') == '<10jt' ? 'selected' : '' }}>&lt; 10 Juta</option>
+          <option value="10-50jt" {{ old('income') == '10-50jt' ? 'selected' : '' }}>10 – 50 Juta</option>
+          <option value="50-100jt" {{ old('income') == '50-100jt' ? 'selected' : '' }}>50 – 100 Juta</option>
+          <option value=">100jt" {{ old('income') == '>100jt' ? 'selected' : '' }}>&gt; 100 Juta</option>
         </select>
-
         @error('income')
           <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
         @enderror
       </div>
 
-      <!-- Tujuan Bisnis -->
-      <div class="sm:col-span-2">
-        <label class="block text-xs sm:text-sm font-medium text-gray-300 mb-2 sm:mb-3">
-          Tujuan <span class="text-red-700">*</span>
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium text-gray-300 mb-3">
+          Tujuan <span class="text-red-600">*</span>
         </label>
-        <div class="space-y-2">
-          <!-- Branding -->
-          <div class="flex items-start">
-            <input type="checkbox" id="branding" name="objective[]" value="Branding"
-              class="mt-0.5 sm:mt-1 w-4 h-4 rounded bg-gray-800 border border-gray-700 text-impost-primary focus:ring-impost-primary"
-              {{ in_array('Branding', old('objective', [])) ? 'checked' : '' }} />
-            <label for="branding" class="ml-2 sm:ml-3 text-xs sm:text-sm text-gray-300 cursor-pointer">
-              <span class="font-medium text-white">Branding</span><br>
-              <span class="text-gray-400 text-xs">
-                Meningkatkan citra brand, kepercayaan, dan positioning di media sosial
-              </span>
-            </label>
-          </div>
 
-          <!-- Engagement -->
-          <div class="flex items-start">
-            <input type="checkbox" id="engagement" name="objective[]" value="Engagement"
-              class="mt-0.5 sm:mt-1 w-4 h-4 rounded bg-gray-800 border border-gray-700 text-impost-primary focus:ring-impost-primary"
-              {{ in_array('Engagement', old('objective', [])) ? 'checked' : '' }} />
-            <label for="engagement" class="ml-2 sm:ml-3 text-xs sm:text-sm text-gray-300 cursor-pointer">
-              <span class="font-medium text-white">Engagement</span><br>
-              <span class="text-gray-400 text-xs">
-                Mendapatkan interaksi seperti like, komentar, share, dan followers
-              </span>
-            </label>
-          </div>
+        <div class="space-y-4">
+          @php
+            $objectives = [
+                'Branding' => 'Meningkatkan citra dan kepercayaan brand',
+                'Engagement' => 'Mendapatkan interaksi & followers',
+                'Sales ROI' => 'Meningkatkan leads dan penjualan',
+                'Branding & Sales' => 'Branding sekaligus penjualan',
+            ];
+          @endphp
 
-          <!-- Sales / ROI -->
-          <div class="flex items-start">
-            <input type="checkbox" id="sales" name="objective[]" value="Sales ROI"
-              class="mt-0.5 sm:mt-1 w-4 h-4 rounded bg-gray-800 border border-gray-700 text-impost-primary focus:ring-impost-primary"
-              {{ in_array('Sales ROI', old('objective', [])) ? 'checked' : '' }} />
-            <label for="sales" class="ml-2 sm:ml-3 text-xs sm:text-sm text-gray-300 cursor-pointer">
-              <span class="font-medium text-white">Sales / ROI</span><br>
-              <span class="text-gray-400 text-xs">
-                Meningkatkan leads, penjualan, dan hasil bisnis yang terukur
+          @foreach ($objectives as $value => $desc)
+            <label class="flex gap-3 cursor-pointer">
+              <input type="checkbox" name="objective[]" value="{{ $value }}"
+                class="mt-1 w-5 h-5 rounded bg-gray-800 border-gray-700 text-impost-primary focus:ring-impost-primary"
+                {{ in_array($value, old('objective', [])) ? 'checked' : '' }}>
+              <span class="text-sm text-gray-300 leading-relaxed">
+                <span class="block font-medium text-white">{{ $value }}</span>
+                <span class="text-xs text-gray-400">{{ $desc }}</span>
               </span>
             </label>
-          </div>
-
-          <!-- Kombinasi -->
-          <div class="flex items-start">
-            <input type="checkbox" id="combination" name="objective[]" value="Branding & Sales"
-              class="mt-0.5 sm:mt-1 w-4 h-4 rounded bg-gray-800 border border-gray-700 text-impost-primary focus:ring-impost-primary"
-              {{ in_array('Branding & Sales', old('objective', [])) ? 'checked' : '' }} />
-            <label for="combination" class="ml-2 sm:ml-3 text-xs sm:text-sm text-gray-300 cursor-pointer">
-              <span class="font-medium text-white">Kombinasi (Branding & Sales)</span><br>
-              <span class="text-gray-400 text-xs">
-                Membangun brand sekaligus mendorong penjualan
-              </span>
-            </label>
-          </div>
+          @endforeach
         </div>
 
         @error('objective')
@@ -223,41 +168,29 @@
         @enderror
       </div>
 
-      <!-- Catatan -->
-      <div class="sm:col-span-2">
-        <label for="note" class="block text-xs sm:text-sm font-medium text-gray-300 mb-1.5 sm:mb-2">
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium text-gray-300 mb-2">
           Catatan
         </label>
-        <textarea id="note" name="note" rows="3"
-          class="w-full rounded-lg bg-gray-800 border border-gray-700 px-3 sm:px-4 py-2.5 sm:py-3 text-sm text-white placeholder-gray-500
-								 focus:outline-none focus:ring-2 focus:ring-impost-primary"
+        <textarea name="note" rows="3"
+          class="w-full rounded-xl bg-gray-800 border border-gray-700 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-impost-primary"
           placeholder="Ceritakan kebutuhan bisnis Anda">{{ old('note') }}</textarea>
-        @error('note')
-          <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-        @enderror
       </div>
 
-      <!-- Submit -->
-      <div class="sm:col-span-2">
+      <div class="md:col-span-2">
         <button type="submit"
-          class="w-full rounded-lg bg-impost-primary py-2.5 sm:py-3.5 text-sm font-semibold text-white
-								 hover:bg-impost-primary/90 focus:ring-4 focus:ring-impost-primary/30
-								 transition-all shadow-lg shadow-impost-primary/20">
+          class="w-full rounded-xl bg-impost-primary py-3.5 text-sm font-semibold text-white hover:bg-impost-primary/90 focus:ring-4 focus:ring-impost-primary/30 transition">
           Kirim Data
         </button>
 
-        <p class="mt-2.5 sm:mt-3 text-center text-xs text-gray-400 flex items-center justify-center gap-1">
-          <svg class="w-3 sm:w-3.5 h-3 sm:h-3.5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd"
-              d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-              clip-rule="evenodd" />
-          </svg>
-          Data anda aman dan tidak akan disebarkan
+        <p class="mt-3 text-center text-xs text-gray-400">
+          🔒 Data Anda aman dan tidak akan disebarkan
         </p>
       </div>
     </form>
   </div>
 </div>
+
 
 @if ($errors->any())
   <script>

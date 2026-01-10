@@ -12,7 +12,7 @@
           class="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight animate-fade-in-up animate-delay-1">
           <span
             class="font-header block mt-2 leading-[1.05] bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
-            Naikkan Omset Bisnis Anda 2–3x dalam 90 Hari dengan Digital Marketing
+            Naikkan Omzet Bisnis Anda 2–3x dalam 90 Hari dengan Digital Marketing
           </span>
         </h1>
 

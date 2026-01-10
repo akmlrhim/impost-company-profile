@@ -26,7 +26,7 @@
   <!-- Header -->
   <div class="text-center mb-12 sm:mb-16 md:mb-20">
     <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight font-header">
-      Alur Kerja Sama yang
+      Alur Layanan yang
       <span class="text-impost-primary block sm:inline mt-2 sm:mt-0 font-header">Transparan</span>
     </h2>
     <p class="mt-4 sm:mt-6 text-gray-300 max-w-3xl mx-auto leading-relaxed text-sm sm:text-base px-4">

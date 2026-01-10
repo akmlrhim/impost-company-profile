@@ -1,109 +1,5 @@
-<section id="about" class="py-10 md:py-16 bg-impost-fifth overflow-hidden" data-aos="fade-up">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <div x-data="{
-        currentSlide: 0,
-        totalSlides: 6,
-        startX: 0,
-        isDragging: false,
-    
-        goToSlide(i) { this.currentSlide = i },
-        nextSlide() { this.currentSlide = (this.currentSlide + 1) % this.totalSlides },
-        prevSlide() { this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides },
-        handleTouchStart(e) {
-            this.startX = e.touches[0].clientX;
-            this.isDragging = true
-        },
-        handleTouchEnd(e) {
-            if (!this.isDragging) return
-            const diff = this.startX - e.changedTouches[0].clientX
-            if (Math.abs(diff) > 50) diff > 0 ? this.nextSlide() : this.prevSlide()
-            this.isDragging = false
-        },
-        handleMouseDown(e) {
-            this.startX = e.clientX;
-            this.isDragging = true
-        },
-        handleMouseUp(e) {
-            if (!this.isDragging) return
-            const diff = this.startX - e.clientX
-            if (Math.abs(diff) > 50) diff > 0 ? this.nextSlide() : this.prevSlide()
-            this.isDragging = false
-        }
-    }">
-
-      <div class="text-center max-w-2xl mx-auto mb-8 md:mb-12 px-2">
-        <div
-          class="inline-flex items-center mb-4 px-4 py-1.5 rounded-full border border-impost-primary/30 bg-impost-fourth/30">
-          <span class="text-impost-primary font-bold tracking-widestst uppercase text-[10px] md:text-xs">WHY US ?</span>
-        </div>
-        <h2 data-aos="fade-up" class="font-header text-xl md:text-3xl font-bold text-white leading-tight">
-          Kami bukan hanya sekadar <span class="text-impost-primary">Agensi Media Sosial</span>
-        </h2>
-        <p data-aos="fade-up" class="mt-3 text-xs md:text-base font-medium text-gray-400">
-          Fokus utama kami adalah meningkatkan profit dan pendapatan bisnis anda.
-        </p>
-      </div>
-
-      <div class="md:hidden overflow-hidden" data-aos="fade-up">
-        <div class="flex transition-transform duration-500 ease-out select-none cursor-grab active:cursor-grabbing"
-          :style="`transform: translateX(-${currentSlide * 100}%)`" @touchstart="handleTouchStart($event)"
-          @touchend="handleTouchEnd($event)" @mousedown="handleMouseDown($event)" @mouseup="handleMouseUp($event)"
-          @mouseleave="isDragging = false">
-
-          <template
-            x-for="(card, index) in [
-            { title: 'Data-Driven Approach', desc: 'Strategi pemasaran berbasis data terukur dan analisis mendalam.' },
-            { title: 'Terbukti & Fleksibel', desc: 'Solusi teruji berhasil, hemat biaya, dan mudah disesuaikan.' },
-            { title: 'All-in-One Digital', desc: 'Semua layanan branding dan pemasaran digital terintegrasi.' },
-            { title: 'Team Ahli Professional', desc: 'Akses ke tim profesional tanpa biaya rekrutmen internal.' },
-            { title: 'Efisiensi Biaya & Waktu', desc: 'Memangkas biaya operasional dan mempercepat eksekusi.' },
-            { title: 'Performance Based', desc: 'Pembayaran dikaitkan langsung dengan hasil nyata.' }
-          ]"
-            :key="index">
-
-            <div class="w-full shrink-0 px-4">
-              <div class="bg-impost-fourth/40 border border-impost-third/20 rounded-xl p-5 h-full">
-                <h3 class="text-sm font-bold text-impost-primary mb-2" x-text="card.title"></h3>
-                <p class="text-[11px] text-white leading-relaxed" x-text="card.desc"></p>
-              </div>
-            </div>
-          </template>
-        </div>
-
-        <div class="flex justify-center gap-1.5 mt-6">
-          <template x-for="i in totalSlides" :key="i">
-            <button @click="goToSlide(i - 1)" class="rounded-full transition-all duration-300"
-              :class="currentSlide === i - 1 ? 'bg-impost-primary w-6 h-1' : 'bg-impost-third/30 w-1 h-1'">
-            </button>
-          </template>
-        </div>
-      </div>
-
-      <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-        <template
-          x-for="(card, index) in [
-            { title: 'Data-Driven Approach', desc: 'Strategi pemasaran yang sepenuhnya berbasis pada data terukur dan analisis mendalam.' },
-            { title: 'Terbukti, Terjangkau, & Fleksibel', desc: 'Solusi yang telah teruji berhasil, hemat biaya, dan mudah disesuaikan.' },
-            { title: 'All-in-One Digital Marketing', desc: 'Semua layanan branding dan pemasaran digital terintegrasi.' },
-            { title: 'Team Ahli dan Berpengalaman', desc: 'Akses ke tim profesional tanpa biaya rekrutmen internal.' },
-            { title: 'Solusi Hemat Biaya & Waktu', desc: 'Memangkas biaya operasional dan mempercepat eksekusi.' },
-            { title: 'Hasil Dibayar Berdasarkan Kinerja', desc: 'Pembayaran dikaitkan langsung dengan hasil nyata.' }
-          ]"
-          :key="index">
-
-          <div data-aos="fade-up" :data-aos-delay="index * 100"
-            class="group bg-impost-fourth/30 border border-impost-third/10 rounded-xl p-6 shadow-md hover:border-impost-primary/40 transition-all duration-300 transform hover:-translate-y-1">
-            <h3 class="text-base font-bold text-white mb-2 group-hover:text-impost-primary" x-text="card.title"></h3>
-            <p class="text-white text-xs lg:text-sm leading-relaxed" x-text="card.desc"></p>
-          </div>
-        </template>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="py-4 md:py-12 bg-impost-fifth text-white overflow-hidden">
+{{-- kami bukan agensi yang jual konten --}}
+<section class="py-4 md:py-12 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="max-w-3xl mb-12 md:mb-16" data-aos="fade-right">
@@ -167,7 +63,7 @@
           class="bg-gradient-to-br from-impost-fourth to-impost-fifth border border-impost-primary/30 p-8 rounded-2xl shadow-2xl">
           <p class="text-impost-primary font-bold text-sm uppercase tracking-widestst mb-2">Our Core Action</p>
           <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Kami benahi funnel marketingnya</h3>
-          <p class="text-xs md:text-sm text-gray-400">
+          <p class="text-xs md:text-sm text-white">
             Membangun sistem pemasaran yang berkelanjutan, bukan sekadar posting konten.
           </p>
         </div>
@@ -176,8 +72,10 @@
     </div>
   </div>
 </section>
+{{-- end  --}}
 
-{{--  --}}
+
+{{-- kenapa banyak bisnis gagal naik omzet --}}
 <section class="py-4 md:py-12 relative overflow-hidden">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
 
@@ -260,7 +158,7 @@
       <div class="bg-gradient-to-b from-impost-fourth/50 to-transparent border border-white/5 rounded-2xl p-8 md:p-10">
         <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-snug font-header">
           Masalahnya bukan kurang usaha. <br>
-          <span class="italic text-gray-400 font-light">Tapi</span>
+          <span class="italic text-white font-light">Tapi</span>
           <span class="relative text-white font-header">
             tidak ada sistem yang benar.
           </span>
@@ -269,11 +167,11 @@
     </div>
   </div>
 </section>
-{{--  --}}
+{{-- end --}}
 
 
-{{--  --}}
-<section class="py-4 md:py-12 relative overflow-hidden border-t border-impost-third/10">
+{{-- apa yang kami selesaikan --}}
+<section class="py-4 md:py-12 relative overflow-hidden">
   <div class="absolute top-1/2 left-0 w-64 h-64 bg-impost-primary/5 blur-[90px] rounded-full -translate-y-1/2"></div>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
@@ -296,7 +194,7 @@
           Apa yang Kami <span class="text-impost-primary">Selesaikan?</span>
         </h2>
 
-        <div class="space-y-4 text-gray-400">
+        <div class="space-y-4 text-white">
           <p class="text-sm md:text-base leading-relaxed">
             Kami tidak menjual
             <span class="text-white italic font-medium">
@@ -403,7 +301,7 @@
           </ul>
 
           <div class="mt-8 pt-6 border-t border-impost-third/20">
-            <p class="text-xs md:text-sm text-gray-400 italic leading-relaxed">
+            <p class="text-xs md:text-sm text-white italic leading-relaxed">
               Impost Media hadir
               <span class="text-white font-semibold">bukan sebagai vendor</span>,
               tetapi sebagai
@@ -418,4 +316,323 @@
     </div>
   </div>
 </section>
-{{--  --}}
+{{-- end --}}
+
+{{-- hasil nyata bukan janji kosong --}}
+<section class="py-16 md:py-24 relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-impost-primary/5 blur-[120px] rounded-full"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+      <h3 class="text-3xl md:text-5xl font-bold text-white mb-6 font-header" data-aos="fade-up" data-aos-delay="100">
+        Hasil Nyata, <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-impost-primary to-impost-secondary">Bukan Janji
+          Kosong</span>
+      </h3>
+      <p class="text-white text-sm md:text-lg leading-relaxed italic" data-aos="fade-up" data-aos-delay="200">
+        "Kami tidak bicara potensi, kami bicara apa yang sudah terjadi melalui strategi, disiplin, dan sistem yang
+        benar."
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+      <div
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        data-aos="fade-up">
+        <div class="flex items-center gap-3 mb-6">
+          <h4 class="text-white font-bold tracking-wide uppercase">Properti (Meta Ads)</h4>
+        </div>
+        <div class="space-y-4">
+          <div class="p-4 bg-black/40 rounded-2xl border border-white/5">
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Total Sales</p>
+            <p class="text-2xl font-bold text-impost-primary">Rp 7 Miliar</p>
+          </div>
+          <ul class="text-sm text-white space-y-2">
+            <li>• Budget: Rp 30 Juta</li>
+            <li>• ROI Puluhan Ribu Persen</li>
+            <li>• Kasus: Ciputra Group</li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-center gap-3 mb-6">
+          <h4 class="text-white font-bold tracking-wide uppercase">Fashion & UMKM</h4>
+        </div>
+        <div class="space-y-4">
+          <div class="p-4 bg-black/40 rounded-2xl border border-white/5">
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Produk Terjual</p>
+            <p class="text-2xl font-bold text-impost-primary">10.000+ via Shopee</p>
+          </div>
+          <ul class="text-sm text-white space-y-2">
+            <li>• Omzet Ratusan Juta/Bulan</li>
+            <li>• Ribuan Ulasan Positif</li>
+            <li>• Trafik & Konversi Stabil</li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center gap-3 mb-6">
+          <h4 class="text-white font-bold tracking-wide uppercase">Gym & Bela Diri</h4>
+        </div>
+        <div class="space-y-4">
+          <div class="p-4 bg-black/40 rounded-2xl border border-white/5">
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Growth Akun</p>
+            <p class="text-2xl font-bold text-impost-primary">615%</p>
+          </div>
+          <ul class="text-sm text-white space-y-2">
+            <li>• CPC Turun: Rp 100K → Rp 3.285</li>
+            <li>• ROI Hingga 5.000%+</li>
+            <li>• Konten Viral: 30K–60K Views</li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        data-aos="fade-up">
+        <div class="flex items-center gap-3 mb-6">
+          <h4 class="text-white font-bold tracking-wide uppercase">Tour, Travel & Umroh</h4>
+        </div>
+        <ul class="text-sm text-white space-y-3">
+          <li class="flex gap-2"><span>•</span> Jemaah: 0 → >10 tiap bulan</li>
+          <li class="flex gap-2"><span>•</span> Konten FYP & Engagement Masif</li>
+          <li class="flex gap-2"><span>•</span> Offline → Full Digital Marketing</li>
+        </ul>
+      </div>
+
+      <div
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-center gap-3 mb-6">
+          <h4 class="text-white font-bold tracking-wide uppercase">Kesehatan & Lokal</h4>
+        </div>
+        <ul class="text-sm text-white space-y-3">
+          <li class="flex gap-2"><span>•</span> Scale Omzet Ratusan Juta/Bulan</li>
+          <li class="flex gap-2"><span>•</span> Branding Premium (Tanpa Promo)</li>
+          <li class="flex gap-2"><span>•</span> Ratusan Ribu Views/Konten</li>
+        </ul>
+      </div>
+
+      <div
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center gap-3 mb-6">
+          <h4 class="text-white font-bold tracking-wide uppercase">Event & Hiburan</h4>
+        </div>
+        <ul class="text-sm text-white space-y-3">
+          <li class="flex gap-2"><span>•</span> 600.000+ Impressions</li>
+          <li class="flex gap-2"><span>•</span> Ribuan Interaksi Organik</li>
+          <li class="flex gap-2"><span>•</span> Dihadiri Figure Penting</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{{-- end --}}
+
+{{-- kenapa harus kami --}}
+<section class="py-4 md:py-12 overflow-hidden" data-aos="fade-up">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div x-data="{
+        currentSlide: 0,
+        totalSlides: 6,
+        startX: 0,
+        isDragging: false,
+    
+        goToSlide(i) { this.currentSlide = i },
+        nextSlide() { this.currentSlide = (this.currentSlide + 1) % this.totalSlides },
+        prevSlide() { this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides },
+        handleTouchStart(e) {
+            this.startX = e.touches[0].clientX;
+            this.isDragging = true
+        },
+        handleTouchEnd(e) {
+            if (!this.isDragging) return
+            const diff = this.startX - e.changedTouches[0].clientX
+            if (Math.abs(diff) > 50) diff > 0 ? this.nextSlide() : this.prevSlide()
+            this.isDragging = false
+        },
+        handleMouseDown(e) {
+            this.startX = e.clientX;
+            this.isDragging = true
+        },
+        handleMouseUp(e) {
+            if (!this.isDragging) return
+            const diff = this.startX - e.clientX
+            if (Math.abs(diff) > 50) diff > 0 ? this.nextSlide() : this.prevSlide()
+            this.isDragging = false
+        }
+    }">
+
+      <div class="text-center max-w-2xl mx-auto mb-8 md:mb-12 px-2">
+        <h2 data-aos="fade-up" class="font-header text-3xl md:text-5xl font-bold leading-tight text-impost-primary">
+          Kenapa Harus Kami ?
+        </h2>
+
+      </div>
+
+      <div class="md:hidden overflow-hidden" data-aos="fade-up">
+        <div class="flex transition-transform duration-500 ease-out select-none cursor-grab active:cursor-grabbing"
+          :style="`transform: translateX(-${currentSlide * 100}%)`" @touchstart="handleTouchStart($event)"
+          @touchend="handleTouchEnd($event)" @mousedown="handleMouseDown($event)" @mouseup="handleMouseUp($event)"
+          @mouseleave="isDragging = false">
+
+          <template
+            x-for="(card, index) in [
+            { title: 'Data-Driven Approach', desc: 'Strategi pemasaran berbasis data terukur dan analisis mendalam.' },
+            { title: 'Terbukti & Fleksibel', desc: 'Solusi teruji berhasil, hemat biaya, dan mudah disesuaikan.' },
+            { title: 'All-in-One Digital', desc: 'Semua layanan branding dan pemasaran digital terintegrasi.' },
+            { title: 'Team Ahli Professional', desc: 'Akses ke tim profesional tanpa biaya rekrutmen internal.' },
+            { title: 'Efisiensi Biaya & Waktu', desc: 'Memangkas biaya operasional dan mempercepat eksekusi.' },
+            { title: 'Performance Based', desc: 'Pembayaran dikaitkan langsung dengan hasil nyata.' }
+          ]"
+            :key="index">
+
+            <div class="w-full shrink-0 px-4">
+              <div class="bg-impost-fourth/40 border border-impost-third/20 rounded-xl p-5 h-full">
+                <h3 class="text-sm font-bold text-impost-primary mb-2" x-text="card.title"></h3>
+                <p class="text-[11px] text-white leading-relaxed" x-text="card.desc"></p>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <div class="flex justify-center gap-1.5 mt-6">
+          <template x-for="i in totalSlides" :key="i">
+            <button @click="goToSlide(i - 1)" class="rounded-full transition-all duration-300"
+              :class="currentSlide === i - 1 ? 'bg-impost-primary w-6 h-1' : 'bg-impost-third/30 w-1 h-1'">
+            </button>
+          </template>
+        </div>
+      </div>
+
+      <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+        <template
+          x-for="(card, index) in [
+            { title: 'Data-Driven Approach', desc: 'Strategi pemasaran yang sepenuhnya berbasis pada data terukur dan analisis mendalam.' },
+            { title: 'Terbukti, Terjangkau, & Fleksibel', desc: 'Solusi yang telah teruji berhasil, hemat biaya, dan mudah disesuaikan.' },
+            { title: 'All-in-One Digital Marketing', desc: 'Semua layanan branding dan pemasaran digital terintegrasi.' },
+            { title: 'Team Ahli dan Berpengalaman', desc: 'Akses ke tim profesional tanpa biaya rekrutmen internal.' },
+            { title: 'Solusi Hemat Biaya & Waktu', desc: 'Memangkas biaya operasional dan mempercepat eksekusi.' },
+            { title: 'Hasil Dibayar Berdasarkan Kinerja', desc: 'Pembayaran dikaitkan langsung dengan hasil nyata.' }
+          ]"
+          :key="index">
+
+          <div data-aos="fade-up" :data-aos-delay="index * 100"
+            class="group bg-impost-fourth/30 border border-impost-third/10 rounded-xl p-6 shadow-md hover:border-impost-primary/40 transition-all duration-300 transform hover:-translate-y-1">
+            <h3 class="text-base font-bold text-white mb-2 group-hover:text-impost-primary" x-text="card.title"></h3>
+            <p class="text-white text-xs lg:text-sm leading-relaxed" x-text="card.desc"></p>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+{{-- end --}}
+
+{{-- siapa yg cocok bekerja sama dengan kami --}}
+<section class="py-16 md:py-24 relative overflow-hidden bg-impost-fifth">
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-impost-primary/5 blur-[130px] rounded-full">
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16 font-header" data-aos="fade-up">
+      <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight">
+        Siapa yang Cocok <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-impost-primary to-impost-secondary">Bekerja
+          dengan Kami?</span>
+      </h2>
+      <div class="h-1 w-24 bg-impost-primary mt-6 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+      <div class="space-y-4" data-aos="fade-right">
+        <div class="bg-impost-fourth/10 border border-impost-primary/20 rounded-xl p-6 md:p-8 h-full backdrop-blur-sm">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-10 h-10 rounded-full bg-impost-primary/20 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h4 class="text-base font-bold text-white uppercase tracking-wider">Sangat Cocok Untuk:</h4>
+          </div>
+
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3 group">
+              <span class="text-impost-primary text-xs mt-0.5 group-hover:scale-125 transition-transform">✦</span>
+              <p class="text-gray-300 text-sm group-hover:text-white transition-colors">UMKM serius yang ingin naik
+                kelas</p>
+            </li>
+            <li class="flex items-start gap-3 group">
+              <span class="text-impost-primary text-xs mt-0.5 group-hover:scale-125 transition-transform">✦</span>
+              <p class="text-gray-300 text-sm group-hover:text-white transition-colors">Perusahaan berkembang yang
+                ingin tampil konsisten</p>
+            </li>
+            <li class="flex items-start gap-3 group">
+              <span class="text-impost-primary text-xs mt-0.5 group-hover:scale-125 transition-transform">✦</span>
+              <p class="text-gray-300 text-sm group-hover:text-white transition-colors">Korporat yang ingin scale &
+                efisiensi</p>
+            </li>
+            <li class="flex items-start gap-3 group">
+              <span class="text-impost-primary text-xs mt-0.5 group-hover:scale-125 transition-transform">✦</span>
+              <p class="text-gray-300 text-sm group-hover:text-white transition-colors">Owner yang lelah nebak-nebak
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-4" data-aos="fade-left">
+        <div
+          class="bg-black/40 border border-red-900/20 rounded-xl p-6 md:p-8 h-full backdrop-blur-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12">
+                  </path>
+                </svg>
+              </div>
+              <h4 class="text-base font-bold text-white uppercase tracking-wider">TIDAK Cocok Untuk:</h4>
+            </div>
+
+            <ul class="space-y-3 opacity-80">
+              <li class="flex items-start gap-3">
+                <span class="text-red-500 text-xs mt-0.5">✕</span>
+                <p class="text-white text-sm italic">Cari hasil instan</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-red-500 text-xs mt-0.5">✕</span>
+                <p class="text-white text-sm italic">Tidak mau ikut sistem</p>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-red-500 text-xs mt-0.5">✕</span>
+                <p class="text-white text-sm italic">Hanya ingin posting rutin</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 p-4 bg-red-500/5 border-l-2 border-red-500 rounded-r-lg">
+            <p class="text-sm text-white leading-relaxed opacity-90">
+              Kami membatasi jumlah klien untuk memastikan kualitas sistem dan pertumbuhan yang maksimal bagi partner
+              yang berkomitmen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{-- end  --}}

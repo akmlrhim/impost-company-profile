@@ -22,33 +22,6 @@
         {{-- mobile  --}}
         <x-public.contact.mobile />
 
-        <div class="relative rounded-xl  p-5 shadow-sm">
-
-          <div class="flex flex-col items-center text-center gap-1.5">
-
-            <div class="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100 text-yellow-600">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M12 6v6l4 2M12 22a10 10 0 100-20 10 10 0 000 20z" />
-              </svg>
-            </div>
-
-            <p class="text-sm font-semibold text-impost-primary tracking-wide">
-              Waktu Pelayanan
-            </p>
-
-            <p class="text-2xl font-bold text-impost-primary leading-tight">
-              09.00 – 17.00
-            </p>
-
-            <p class="text-xs font-medium text-white">
-              Senin – Sabtu
-            </p>
-
-          </div>
-        </div>
-
       </section>
 
     </div>

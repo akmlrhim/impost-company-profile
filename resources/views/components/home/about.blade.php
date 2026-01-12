@@ -76,10 +76,7 @@
 
 
 {{-- kenapa banyak bisnis gagal naik omzet --}}
-<section class="py-12 md:py-20 relative overflow-hidden bg-impost-fifth">
-  <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-500/5 blur-[120px] rounded-full pointer-events-none">
-  </div>
+<section class="py-12 md:py-20 relative overflow-hidden">
 
   <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
     <div class="text-center mb-10 md:mb-14 font-header" data-aos="fade-up">
@@ -164,7 +161,6 @@
 
 {{-- apa yang kami selesaikan --}}
 <section class="py-4 md:py-12 relative overflow-hidden">
-  <div class="absolute top-1/2 left-0 w-64 h-64 bg-impost-primary/5 blur-[90px] rounded-full -translate-y-1/2"></div>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -311,11 +307,7 @@
 {{-- end --}}
 
 {{-- hasil nyata bukan janji kosong --}}
-<section class="py-16 md:py-24 relative overflow-hidden bg-impost-fifth">
-
-  <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-impost-primary/5 blur-[130px] rounded-full">
-  </div>
+<section class="py-16 md:py-24 relative overflow-hidden">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -480,10 +472,8 @@
 {{-- end --}}
 
 {{-- kenapa harus kami --}}
-<section class="py-4 md:py-12 overflow-hidden bg-impost-fifth" data-aos="fade-up">
-  <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-impost-primary/5 blur-[130px] rounded-full">
-  </div>
+<section class="py-4 md:py-12 overflow-hidden" data-aos="fade-up">
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div x-data="{
@@ -584,10 +574,7 @@
 {{-- end --}}
 
 {{-- siapa yg cocok bekerja sama dengan kami --}}
-<section class="py-16 md:py-24 relative overflow-hidden bg-impost-fifth">
-  <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-impost-primary/5 blur-[130px] rounded-full">
-  </div>
+<section class="py-16 md:py-24 relative overflow-hidden">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16 font-header" data-aos="fade-up">

@@ -31,22 +31,30 @@
   @stack('styles')
 </head>
 
-<body class="bg-impost-fifth relative antialiased">
-  <div style="position: absolute; inset: 0; pointer-events: none; overflow: hidden;">
+<body class="relative antialiased">
 
-    <!-- Grid Pattern -->
-    <div
-      style="position: absolute; inset: 0; opacity: 0.05; background-image: linear-gradient(#d4ac3c 1px, transparent 1px), linear-gradient(90deg, #d4ac3c 1px, transparent 1px); background-size: 40px 40px;">
-    </div>
+  <div class="fixed inset-0 -z-10">
+    <div class="absolute inset-0 bg-gradient-to-br from-black via-black to-neutral-900"></div>
+
+    <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-amber-950/20 to-transparent"></div>
+
+    <div class="absolute top-10 right-1/4 w-72 h-72 bg-amber-600/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-64 h-64 bg-yellow-600/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 left-10 w-56 h-56 bg-amber-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-1/3 w-80 h-80 bg-yellow-500/8 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 right-10 w-48 h-48 bg-amber-600/12 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/2 left-1/4 w-60 h-60 bg-yellow-600/8 rounded-full blur-3xl"></div>
+    <div class="absolute top-20 left-1/2 w-52 h-52 bg-amber-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-10 w-44 h-44 bg-yellow-500/10 rounded-full blur-3xl"></div>
+
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-amber-950/10"></div>
   </div>
 
   <x-partials.public.navbar />
 
-
-  <main>
+  <main class="relative z-0">
     @yield('content')
   </main>
-
 
   <x-partials.public.footer />
 

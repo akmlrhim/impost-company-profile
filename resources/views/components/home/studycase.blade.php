@@ -10,7 +10,6 @@
       Lihat bagaimana kami telah membantu berbagai bisnis mencapai tujuan digital mereka melalui solusi yang
       disesuaikan dan strategi yang efektif.
     </p>
-
   </div>
 
   @if ($studyCaseForDesktop->isEmpty())
@@ -18,51 +17,148 @@
       <x-empty-card item="studi kasus" />
     </div>
   @else
-    <!-- Mobile Carousel -->
+    <!-- Mobile 3D Carousel -->
     <div x-data="{
         active: 0,
         total: {{ $studyCaseForMobile->count() }},
-        observer: null,
+        isAnimating: false,
+        autoPlayInterval: null,
     
-        init: function() {
-            const slider = this.$refs.slider
-            const items = Array.from(slider.children)
+        init() {
+            this.startAutoPlay();
     
-            this.observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            this.active = items.indexOf(entry.target)
-                        }
-                    })
-                }, {
-                    root: slider,
-                    threshold: 0.6
-                }
-            )
+            // Pause on hover
+            this.$refs.container.addEventListener('mouseenter', () => this.stopAutoPlay());
+            this.$refs.container.addEventListener('mouseleave', () => this.startAutoPlay());
+        },
     
-            items.forEach((el) => this.observer.observe(el))
+        startAutoPlay() {
+            this.autoPlayInterval = setInterval(() => {
+                this.next();
+            }, 4000);
+        },
+    
+        stopAutoPlay() {
+            if (this.autoPlayInterval) {
+                clearInterval(this.autoPlayInterval);
+            }
+        },
+    
+        next() {
+            if (!this.isAnimating) {
+                this.isAnimating = true;
+                this.active = (this.active + 1) % this.total;
+                setTimeout(() => { this.isAnimating = false; }, 600);
+            }
+        },
+    
+        prev() {
+            if (!this.isAnimating) {
+                this.isAnimating = true;
+                this.active = (this.active - 1 + this.total) % this.total;
+                setTimeout(() => { this.isAnimating = false; }, 600);
+            }
+        },
+    
+        goTo(index) {
+            if (!this.isAnimating && index !== this.active) {
+                this.isAnimating = true;
+                this.active = index;
+                setTimeout(() => { this.isAnimating = false; }, 600);
+            }
+        },
+    
+        getClass(index) {
+            const diff = (index - this.active + this.total) % this.total;
+    
+            if (diff === 0) return 'active';
+            if (diff === 1 || diff === -this.total + 1) return 'next';
+            if (diff === this.total - 1 || diff === -1) return 'prev';
+            if (diff === 2 || diff === -this.total + 2) return 'hidden-right';
+            if (diff === this.total - 2 || diff === -2) return 'hidden-left';
+    
+            return 'far-hidden';
         }
-    }" x-init="init()" class="block sm:hidden">
+    }" class="block sm:hidden">
 
-      <div class="relative">
+      <style>
+        .carousel-3d-item {
+          transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          transform-style: preserve-3d;
+        }
 
-        <div x-ref="slider"
-          class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth gap-5 px-4 py-6">
-          @foreach ($studyCaseForMobile as $studyCase)
-            <div class="w-[85%] shrink-0 snap-center">
+        .carousel-3d-item.active {
+          transform: translateX(0) translateZ(0) scale(1);
+          z-index: 30;
+          opacity: 1;
+        }
+
+        .carousel-3d-item.prev {
+          transform: translateX(-100%) translateZ(-80px) rotateY(25deg) scale(0.75);
+          z-index: 20;
+          opacity: 0.4;
+          pointer-events: none;
+        }
+
+        .carousel-3d-item.next {
+          transform: translateX(100%) translateZ(-80px) rotateY(-25deg) scale(0.75);
+          z-index: 20;
+          opacity: 0.4;
+          pointer-events: none;
+        }
+
+        .carousel-3d-item.hidden-left,
+        .carousel-3d-item.hidden-right,
+        .carousel-3d-item.far-hidden {
+          transform: translateX(0) translateZ(-150px) scale(0.5);
+          z-index: 10;
+          opacity: 0;
+          pointer-events: none;
+        }
+      </style>
+
+      <div x-ref="container" class="relative h-96 mb-8" style="perspective: 1200px;">
+
+        <!-- Carousel Container -->
+        <div class="relative w-full h-full flex items-center justify-center">
+          @foreach ($studyCaseForMobile as $index => $studyCase)
+            <div :class="getClass({{ $index }})" class="carousel-3d-item absolute w-[85%] max-w-sm">
               <x-study-case-card :studyCase="$studyCase" />
             </div>
           @endforeach
         </div>
+
+        <!-- Navigation Buttons -->
+        <button @click="prev()"
+          class="absolute left-2 top-1/2 -translate-y-1/2 z-40 bg-impost-primary hover:bg-impost-secondary rounded-full p-3 shadow-xl transition-all duration-300 hover:scale-110">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <button @click="next()"
+          class="absolute right-2 top-1/2 -translate-y-1/2 z-40 bg-impost-primary hover:bg-impost-secondary rounded-full p-3 shadow-xl transition-all duration-300 hover:scale-110">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Indicators -->
+      <div class="flex justify-center gap-2 mt-4">
+        <template x-for="(item, index) in total" :key="index">
+          <button @click="goTo(index)" :class="active === index ? 'w-8 bg-impost-primary' : 'w-3 bg-impost-third'"
+            class="h-3 rounded-full transition-all duration-300"></button>
+        </template>
       </div>
     </div>
 
-    <!-- Desktop Grid -->
+    <!-- Desktop Grid with Enhanced Animation -->
     <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-fr" data-aos="fade-up"
       data-aos-stagger="100">
       @foreach ($studyCaseForDesktop as $studyCase)
-        <div data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}" class="h-full">
+        <div data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}"
+          class="h-full transform transition-all duration-300 hover:-translate-y-2">
           <x-study-case-card :studyCase="$studyCase" />
         </div>
       @endforeach

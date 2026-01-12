@@ -2,12 +2,11 @@
 
   <div class="mb-6 sm:mb-10 text-center px-4 max-w-5xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
     <h2
-      class="font-header mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-impost-primary leading-snug sm:leading-tight max-w-3xl mx-auto">
-      Kami Akan Bedah Strategi Digital Marketing Klien Kami
+      class="font-header mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-impost-primary leading-snug sm:leading-tight max-w-3xl mx-auto">
+      Lihat Bagaimana Tim Impost Media Membantu Brand & Bisnis Bertumbuh Secara Terukur
     </h2>
     <p class="text-sm sm:text-base md:text-lg text-gray-300 max-w-lg md:max-w-2xl mx-auto leading-relaxed">
-      Lihat langsung pendekatan yang kami gunakan dan apa yang benar-benar berdampak
-      pada pertumbuhan bisnis mereka.
+      Video ini khusus untuk business owner dari perusahaan yang ingin scale up omzet secara serius.
     </p>
   </div>
 

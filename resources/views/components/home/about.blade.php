@@ -3,7 +3,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="max-w-3xl mb-12 md:mb-16" data-aos="fade-right">
-      <p class="text-xl md:text-2xl lg:text-3xl font-bold leading-tight font-header">
+      <p class="text-xl md:text-2xl lg:text-3xl font-bold leading-tight font-header text-white">
         Kami Bukan Agency yang jual konten atau iklan. <br>
         <span class="text-impost-secondary font-header">Kami Pionir & Market Leader Digital Marketing di
           Kalimantan.</span>
@@ -76,93 +76,85 @@
 
 
 {{-- kenapa banyak bisnis gagal naik omzet --}}
-<section class="py-4 md:py-12 relative overflow-hidden">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+<section class="py-12 md:py-20 relative overflow-hidden bg-impost-fifth">
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-500/5 blur-[120px] rounded-full pointer-events-none">
+  </div>
 
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <div class="inline-block h-1 w-10 bg-impost-primary mb-4 rounded-full"></div>
-      <h2 class="font-header text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
-        Kenapa Banyak Bisnis <br>
-        <span
-          class="font-header text-transparent bg-clip-text bg-gradient-to-r from-impost-primary to-impost-secondary">
-          Gagal Naik Omzet?
-        </span>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+    <div class="text-center mb-10 md:mb-14 font-header" data-aos="fade-up">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+        Kenapa Banyak Bisnis <span class="text-red-500">Gagal Naik Omzet?</span>
       </h2>
-      <p class="text-sm md:text-base text-white italic opacity-80">
-        "Dari ratusan bisnis yang kami tangani, polanya selalu sama:"
-      </p>
+      <p class="text-sm text-white leading-widest">Dari ratusan bisnis yang kami tangani, polanya selalu sama:</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+    <div
+      class="bg-white/[0.02] border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-md transition hover:border-red-500/20"
+      data-aos="zoom-in">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3 md:divide-x md:divide-white/10">
 
-      <div data-aos="fade-right" class="group">
-        <div
-          class="h-full bg-white/[0.02] border border-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 transition hover:border-red-500/30">
-          <ul class="space-y-5">
-            <li class="flex gap-4">
-              <span class="text-red-500 text-sm mt-1">✕</span>
-              <p class="text-sm md:text-base text-gray-300 group-hover:text-white">
+        <div class="space-y-3">
+          <ul class="space-y-3">
+            <li class="flex gap-4 group">
+              <span class="text-red-500 text-sm mt-0.5">✕</span>
+              <p class="text-sm text-gray-300 group-hover:text-white transition-colors leading-tight">
                 Konten jalan, tapi tidak berdampak apa-apa
               </p>
             </li>
-            <li class="flex gap-4">
-              <span class="text-red-500 text-sm mt-1">✕</span>
-              <p class="text-sm md:text-base text-gray-300 group-hover:text-white">
+            <li class="flex gap-4 group">
+              <span class="text-red-500 text-sm mt-0.5">✕</span>
+              <p class="text-sm text-gray-300 group-hover:text-white transition-colors leading-tight">
                 Iklan nyala, tapi boncos
               </p>
             </li>
-            <li class="flex gap-4">
-              <span class="text-red-500 text-sm mt-1">✕</span>
-              <p class="text-sm md:text-base text-gray-300 group-hover:text-white">
-                Tidak ada KPI yang jelas & terukur
+            <li class="flex gap-4 group">
+              <span class="text-red-500 text-sm mt-0.5">✕</span>
+              <p class="text-sm text-gray-300 group-hover:text-white transition-colors leading-tight">
+                Tidak ada KPI yang jelas
               </p>
             </li>
-            <li class="flex gap-4">
-              <span class="text-red-500 text-sm mt-1">✕</span>
-              <p class="text-sm md:text-base text-gray-300 group-hover:text-white">
-                Laporan membingungkan & tidak valid
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div data-aos="fade-left" class="group">
-        <div
-          class="h-full bg-white/[0.02] border border-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 transition hover:border-red-500/30">
-          <ul class="space-y-5">
-            <li class="flex gap-4">
-              <span class="text-red-500 text-sm mt-1">✕</span>
-              <p class="text-sm md:text-base text-gray-300 group-hover:text-white">
-                Owner terjebak operasional
-              </p>
-            </li>
-            <li class="flex gap-4">
-              <span class="text-red-500 text-sm mt-1">✕</span>
-              <p class="text-sm md:text-base text-gray-300 group-hover:text-white">
-                Biaya tim mahal tapi nihil hasil
-              </p>
-            </li>
-            <li class="flex gap-4">
-              <span class="text-red-500 text-sm mt-1">✕</span>
-              <p class="text-sm md:text-base text-gray-300 group-hover:text-white">
-                Trauma janji manis agency
+            <li class="flex gap-4 group">
+              <span class="text-red-500 text-sm mt-0.5">✕</span>
+              <p class="text-sm text-gray-300 group-hover:text-white transition-colors leading-tight">
+                Tidak ada laporan yang bisa dipercaya
               </p>
             </li>
           </ul>
         </div>
-      </div>
-    </div>
 
-    <div class="mt-14 text-center" data-aos="zoom-in">
-      <div class="bg-gradient-to-b from-impost-fourth/50 to-transparent border border-white/5 rounded-2xl p-8 md:p-10">
-        <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-snug font-header">
-          Masalahnya bukan kurang usaha. <br>
-          <span class="italic text-white font-light">Tapi</span>
-          <span class="relative text-white font-header">
+        <div class="space-y-3 pt-3 md:pt-0">
+          <ul class="space-y-3">
+            <li class="flex gap-4 group">
+              <span class="text-red-500 text-sm mt-0.5">✕</span>
+              <p class="text-sm text-gray-300 group-hover:text-white transition-colors leading-tight">
+                Owner sibuk operasional, marketing terbengkalai
+              </p>
+            </li>
+            <li class="flex gap-4 group">
+              <span class="text-red-500 text-sm mt-0.5">✕</span>
+              <p class="text-sm text-gray-300 group-hover:text-white transition-colors leading-tight">
+                Tim internal mahal tapi tidak berdampak
+              </p>
+            </li>
+            <li class="flex gap-4 group">
+              <span class="text-red-500 text-sm mt-0.5">✕</span>
+              <p class="text-sm text-gray-300 group-hover:text-white transition-colors leading-tight">
+                Trauma agency & endorse
+              </p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-white/5 text-center">
+        <p class="text-sm md:text-base text-white font-medium">
+          Masalahnya bukan kurang usaha. Masalahnya:
+          <span class="text-impost-primary italic underline decoration-impost-primary/30 ml-1">
             tidak ada sistem yang benar.
           </span>
-        </h3>
+        </p>
       </div>
     </div>
   </div>
@@ -319,35 +311,53 @@
 {{-- end --}}
 
 {{-- hasil nyata bukan janji kosong --}}
-<section class="py-16 md:py-24 relative overflow-hidden">
-  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-impost-primary/5 blur-[120px] rounded-full"></div>
+<section class="py-16 md:py-24 relative overflow-hidden bg-impost-fifth">
+
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-impost-primary/5 blur-[130px] rounded-full">
+  </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-      <h3 class="text-3xl md:text-5xl font-bold text-white mb-6 font-header" data-aos="fade-up" data-aos-delay="100">
-        Hasil Nyata, <span
-          class="text-transparent bg-clip-text bg-gradient-to-r from-impost-primary to-impost-secondary">Bukan Janji
-          Kosong</span>
+      <h3 class="text-3xl md:text-5xl font-bold text-white mb-6 font-header" data-aos="fade-up">
+        Hasil Nyata,
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-impost-primary to-impost-secondary">
+          Bukan Janji Kosong
+        </span>
       </h3>
-      <p class="text-white text-sm md:text-lg leading-relaxed italic" data-aos="fade-up" data-aos-delay="200">
-        "Kami tidak bicara potensi, kami bicara apa yang sudah terjadi melalui strategi, disiplin, dan sistem yang
-        benar."
+
+      <p class="text-white text-sm md:text-lg leading-relaxed italic" data-aos="fade-up" data-aos-delay="150">
+        "Kami tidak bicara potensi, kami bicara apa yang sudah terjadi melalui strategi,
+        disiplin, dan sistem yang benar."
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    <div
+      class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8
+             overflow-x-auto md:overflow-visible
+             snap-x snap-mandatory
+             no-scrollbar pb-4">
+
 
       <div
-        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8
+               hover:border-impost-primary/40 transition-all duration-500
+               snap-center flex-shrink-0 w-[85%] sm:w-[70%] md:w-auto"
         data-aos="fade-up">
-        <div class="flex items-center gap-3 mb-6">
-          <h4 class="text-white font-bold tracking-wide uppercase">Properti (Meta Ads)</h4>
-        </div>
+
+        <h4 class="text-white font-bold tracking-wide uppercase mb-6">
+          Properti (Meta Ads)
+        </h4>
+
         <div class="space-y-4">
           <div class="p-4 bg-black/40 rounded-2xl border border-white/5">
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Total Sales</p>
-            <p class="text-2xl font-bold text-impost-primary">Rp 7 Miliar</p>
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">
+              Total Sales
+            </p>
+            <p class="text-2xl font-bold text-impost-primary">
+              Rp 7 Miliar
+            </p>
           </div>
           <ul class="text-sm text-white space-y-2">
             <li>• Budget: Rp 30 Juta</li>
@@ -357,16 +367,25 @@
         </div>
       </div>
 
+
       <div
-        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8
+               hover:border-impost-primary/40 transition-all duration-500
+               snap-center flex-shrink-0 w-[85%] sm:w-[70%] md:w-auto"
         data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center gap-3 mb-6">
-          <h4 class="text-white font-bold tracking-wide uppercase">Fashion & UMKM</h4>
-        </div>
+
+        <h4 class="text-white font-bold tracking-wide uppercase mb-6">
+          Fashion & UMKM
+        </h4>
+
         <div class="space-y-4">
           <div class="p-4 bg-black/40 rounded-2xl border border-white/5">
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Produk Terjual</p>
-            <p class="text-2xl font-bold text-impost-primary">10.000+ via Shopee</p>
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">
+              Produk Terjual
+            </p>
+            <p class="text-2xl font-bold text-impost-primary">
+              10.000+ via Shopee
+            </p>
           </div>
           <ul class="text-sm text-white space-y-2">
             <li>• Omzet Ratusan Juta/Bulan</li>
@@ -376,72 +395,95 @@
         </div>
       </div>
 
+
       <div
-        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8
+               hover:border-impost-primary/40 transition-all duration-500
+               snap-center flex-shrink-0 w-[85%] sm:w-[70%] md:w-auto"
         data-aos="fade-up" data-aos-delay="200">
-        <div class="flex items-center gap-3 mb-6">
-          <h4 class="text-white font-bold tracking-wide uppercase">Gym & Bela Diri</h4>
-        </div>
+
+        <h4 class="text-white font-bold tracking-wide uppercase mb-6">
+          Gym & Bela Diri
+        </h4>
+
         <div class="space-y-4">
           <div class="p-4 bg-black/40 rounded-2xl border border-white/5">
-            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Growth Akun</p>
-            <p class="text-2xl font-bold text-impost-primary">615%</p>
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">
+              Growth Akun
+            </p>
+            <p class="text-2xl font-bold text-impost-primary">
+              615%
+            </p>
           </div>
           <ul class="text-sm text-white space-y-2">
-            <li>• CPC Turun: Rp 100K → Rp 3.285</li>
+            <li>• CPC: Rp100K → Rp3.285</li>
             <li>• ROI Hingga 5.000%+</li>
-            <li>• Konten Viral: 30K–60K Views</li>
+            <li>• Konten Viral 30K–60K</li>
           </ul>
         </div>
       </div>
 
       <div
-        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8
+               hover:border-impost-primary/40 transition-all duration-500
+               snap-center flex-shrink-0 w-[85%] sm:w-[70%] md:w-auto"
         data-aos="fade-up">
-        <div class="flex items-center gap-3 mb-6">
-          <h4 class="text-white font-bold tracking-wide uppercase">Tour, Travel & Umroh</h4>
-        </div>
+
+        <h4 class="text-white font-bold tracking-wide uppercase mb-6">
+          Tour, Travel & Umroh
+        </h4>
+
         <ul class="text-sm text-white space-y-3">
-          <li class="flex gap-2"><span>•</span> Jemaah: 0 → >10 tiap bulan</li>
-          <li class="flex gap-2"><span>•</span> Konten FYP & Engagement Masif</li>
-          <li class="flex gap-2"><span>•</span> Offline → Full Digital Marketing</li>
+          <li>• Jemaah: 0 → 10+/bulan</li>
+          <li>• Konten FYP & Engagement</li>
+          <li>• Offline → Full Digital</li>
         </ul>
       </div>
 
       <div
-        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8
+               hover:border-impost-primary/40 transition-all duration-500
+               snap-center flex-shrink-0 w-[85%] sm:w-[70%] md:w-auto"
         data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center gap-3 mb-6">
-          <h4 class="text-white font-bold tracking-wide uppercase">Kesehatan & Lokal</h4>
-        </div>
+
+        <h4 class="text-white font-bold tracking-wide uppercase mb-6">
+          Kesehatan & Lokal
+        </h4>
+
         <ul class="text-sm text-white space-y-3">
-          <li class="flex gap-2"><span>•</span> Scale Omzet Ratusan Juta/Bulan</li>
-          <li class="flex gap-2"><span>•</span> Branding Premium (Tanpa Promo)</li>
-          <li class="flex gap-2"><span>•</span> Ratusan Ribu Views/Konten</li>
+          <li>• Omzet Ratusan Juta/Bulan</li>
+          <li>• Branding Premium</li>
+          <li>• Ratusan Ribu Views</li>
         </ul>
       </div>
 
       <div
-        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500"
+        class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8
+               hover:border-impost-primary/40 transition-all duration-500
+               snap-center flex-shrink-0 w-[85%] sm:w-[70%] md:w-auto"
         data-aos="fade-up" data-aos-delay="200">
-        <div class="flex items-center gap-3 mb-6">
-          <h4 class="text-white font-bold tracking-wide uppercase">Event & Hiburan</h4>
-        </div>
+
+        <h4 class="text-white font-bold tracking-wide uppercase mb-6">
+          Event & Hiburan
+        </h4>
+
         <ul class="text-sm text-white space-y-3">
-          <li class="flex gap-2"><span>•</span> 600.000+ Impressions</li>
-          <li class="flex gap-2"><span>•</span> Ribuan Interaksi Organik</li>
-          <li class="flex gap-2"><span>•</span> Dihadiri Figure Penting</li>
+          <li>• 600.000+ Impressions</li>
+          <li>• Ribuan Interaksi</li>
+          <li>• Dihadiri Tokoh Penting</li>
         </ul>
       </div>
 
     </div>
-
   </div>
 </section>
 {{-- end --}}
 
 {{-- kenapa harus kami --}}
-<section class="py-4 md:py-12 overflow-hidden" data-aos="fade-up">
+<section class="py-4 md:py-12 overflow-hidden bg-impost-fifth" data-aos="fade-up">
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-impost-primary/5 blur-[130px] rounded-full">
+  </div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div x-data="{

@@ -8,11 +8,10 @@
       </span>
     </h2>
 
-    <p class="text-white/80 text-sm sm:text-md md:text-lg max-w-3xl mx-auto leading-relaxed px-4">
+    <p class="text-white/80 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed px-4">
       Kami menyediakan layanan digital end-to-end yang berfokus pada peningkatan omset, visibilitas merek, dan efisiensi
       pemasaran.
     </p>
-
   </div>
 
   @if ($servicesForDesktop->isEmpty())
@@ -42,13 +41,11 @@
                     threshold: 0.6
                 }
             )
-    
             items.forEach((el) => this.observer.observe(el))
         }
     }" x-init="init()" class="block sm:hidden">
 
       <div class="relative">
-
         <div x-ref="slider"
           class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth gap-5 px-4 py-6">
           @foreach ($servicesForMobile as $service)
@@ -74,6 +71,5 @@
     <div class="hidden sm:flex justify-center mt-8 sm:mt-12 md:mt-16" data-aos="fade-up">
       <x-custom-pagination :items="$servicesForDesktop" />
     </div>
-
   @endif
 </section>

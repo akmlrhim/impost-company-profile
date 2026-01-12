@@ -19,10 +19,8 @@
       class="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-primary transition-all duration-500 group-hover:w-full">
     </div>
 
-    <!-- CONTENT with Enhanced Animation -->
     <div class="relative z-10 h-full flex flex-col justify-end p-6">
 
-      <!-- Badge/Tag (Optional - jika ada kategori) -->
       <div
         class="mb-3 transform transition-all duration-500 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
         <span
@@ -31,19 +29,16 @@
         </span>
       </div>
 
-      <!-- Title with Slide Up Effect -->
       <h3
         class="text-xl font-bold text-white leading-snug mb-2 transform transition-all duration-500 group-hover:-translate-y-1">
         {{ $studyCase->name }}
       </h3>
 
-      <!-- Description (Hidden, Shows on Hover) -->
       <p
         class="text-white/80 text-sm leading-relaxed max-h-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:max-h-20 group-hover:opacity-100">
         {{ Str::limit($studyCase->description ?? 'Temukan bagaimana kami membantu mencapai tujuan bisnis mereka.', 80) }}
       </p>
 
-      <!-- Call to Action Arrow -->
       <div
         class="flex items-center gap-2 mt-3 text-impost-primary transform transition-all duration-500 translate-x-0 group-hover:translate-x-2">
         <span class="text-sm font-semibold">Lihat Detail</span>
@@ -54,7 +49,6 @@
       </div>
     </div>
 
-    <!-- Shine Effect on Hover -->
     <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
       <div
         class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000">

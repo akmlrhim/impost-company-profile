@@ -119,7 +119,6 @@
 
       <div x-ref="container" class="relative h-96 mb-8" style="perspective: 1200px;">
 
-        <!-- Carousel Container -->
         <div class="relative w-full h-full flex items-center justify-center">
           @foreach ($studyCaseForMobile as $index => $studyCase)
             <div :class="getClass({{ $index }})" class="carousel-3d-item absolute w-[85%] max-w-sm">
@@ -128,7 +127,6 @@
           @endforeach
         </div>
 
-        <!-- Navigation Buttons -->
         <button @click="prev()"
           class="absolute left-2 top-1/2 -translate-y-1/2 z-40 bg-impost-primary hover:bg-impost-secondary rounded-full p-3 shadow-xl transition-all duration-300 hover:scale-110">
           <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,7 +142,6 @@
         </button>
       </div>
 
-      <!-- Indicators -->
       <div class="flex justify-center gap-2 mt-4">
         <template x-for="(item, index) in total" :key="index">
           <button @click="goTo(index)" :class="active === index ? 'w-8 bg-impost-primary' : 'w-3 bg-impost-third'"
@@ -153,7 +150,6 @@
       </div>
     </div>
 
-    <!-- Desktop Grid with Enhanced Animation -->
     <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-fr" data-aos="fade-up"
       data-aos-stagger="100">
       @foreach ($studyCaseForDesktop as $studyCase)
@@ -164,7 +160,6 @@
       @endforeach
     </div>
 
-    <!-- Pagination -->
     <div class="hidden sm:flex justify-center mt-8 sm:mt-12 md:mt-16" data-aos="fade-up">
       <x-custom-pagination :items="$studyCaseForDesktop" />
     </div>

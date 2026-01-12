@@ -295,3 +295,37 @@
     </div>
   </div>
 </section>
+
+<!-- CTA Section -->
+<div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-12">
+  <div
+    class="bg-impost-fourth p-6 sm:p-8 md:p-12 lg:p-16 rounded-xl md:rounded-2xl shadow-xl text-center relative overflow-hidden group">
+    <div
+      class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+    </div>
+
+    <div class="relative z-10">
+      <h3
+        class="font-header text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 sm:mb-4 md:mb-6 leading-tight">
+        Siap Memulai Proyek Anda?
+      </h3>
+
+      <p
+        class="text-gray-300 font-medium text-xs sm:text-sm md:text-base mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-2">
+        Jangan biarkan ide besar Anda tertunda. Diskusikan kebutuhan bisnis Anda bersama kami dan dapatkan solusi
+        digital terbaik.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-md mx-auto">
+        <a href="{{ route('contact') }}"
+          class="w-full sm:w-auto bg-impost-primary text-white font-bold text-sm md:text-base px-6 sm:px-8 py-3 rounded-lg md:rounded-xl shadow-lg hover:shadow-impost-primary/50 transform hover:-translate-y-1 transition-all duration-300">
+          Konsultasi Gratis
+        </a>
+        <a href="{{ route('portfolio') }}"
+          class="w-full sm:w-auto bg-transparent border-2 border-white/20 text-white font-bold text-sm md:text-base px-6 sm:px-8 py-3 rounded-lg md:rounded-xl hover:bg-white/10 transition-all duration-300">
+          Lihat Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

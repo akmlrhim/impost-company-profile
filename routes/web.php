@@ -30,6 +30,7 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::get('portfolio/{portfolio}', [HomeController::class, 'portfolioDetail'])->name('portfolio.detail');
 
 		Route::get('opt-in', [HomeController::class, 'optIn'])->name('opt-in');
+		Route::get('vsl', [HomeController::class, 'vslForm'])->name('vsl-form');
 		Route::post('vsl', [HomeController::class, 'saveLeads'])->name('save-leads');
 
 		Route::get('study-case', [HomeController::class, 'studyCase'])->name('study-case');

@@ -12,7 +12,7 @@
 
   @if ($articles->count() === 0)
     <div class="flex justify-center">
-      <x-empty-card item="artikel" />
+      <x-c item="artikel" />
     </div>
   @else
     {{-- mobile --}}

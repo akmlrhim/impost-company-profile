@@ -133,6 +133,13 @@ class HomeController extends Controller
 		return view('public.career.jobs-detail', compact('title', 'job'));
 	}
 
+	public function vslForm()
+	{
+		$title = 'Form VSL';
+
+		return view('public.vsl-form', compact('title'));
+	}
+
 	public function saveLeads(Request $request)
 	{
 		$request->validate(

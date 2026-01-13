@@ -23,7 +23,7 @@
 @endpush
 
 <section class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-8 sm:py-10 md:py-12">
-  <div class="text-center mb-12 sm:mb-16 md:mb-20">
+  <div class="text-center mb-12 sm:mb-16 md:mb-20" data-aos="fade-up">
     <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight font-header">
       Alur Layanan
     </h2>
@@ -39,7 +39,8 @@
 
     <div class="md:hidden absolute left-7 top-0 w-0.5 h-full bg-impost-primary opacity-20"></div>
 
-    <div class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row items-start md:items-center justify-between w-full">
+    <div class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row items-start md:items-center justify-between w-full"
+      data-aos="fade-right">
       <div class="md:hidden flex-shrink-0 mr-4">
         <div
           class="w-14 h-14 bg-impost-primary text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg glow">
@@ -79,7 +80,8 @@
     </div>
 
     <div
-      class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row-reverse items-start md:items-center justify-between w-full">
+      class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row-reverse items-start md:items-center justify-between w-full"
+      data-aos="fade-left">
       <div class="md:hidden flex-shrink-0 mr-4">
         <div
           class="w-14 h-14 bg-impost-primary text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg glow">
@@ -118,7 +120,8 @@
       <div class="hidden md:block md:w-5/12 md:order-3"></div>
     </div>
 
-    <div class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row items-start md:items-center justify-between w-full">
+    <div class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row items-start md:items-center justify-between w-full"
+      data-aos="fade-right">
       <div class="md:hidden flex-shrink-0 mr-4">
         <div
           class="w-14 h-14 bg-impost-primary text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg glow">
@@ -158,7 +161,8 @@
     </div>
 
     <div
-      class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row-reverse items-start md:items-center justify-between w-full">
+      class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row-reverse items-start md:items-center justify-between w-full"
+      data-aos="fade-left">
       <div class="md:hidden flex-shrink-0 mr-4">
         <div
           class="w-14 h-14 bg-impost-primary text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg glow">
@@ -197,7 +201,8 @@
       <div class="hidden md:block md:w-5/12 md:order-3"></div>
     </div>
 
-    <div class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row items-start md:items-center justify-between w-full">
+    <div class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row items-start md:items-center justify-between w-full"
+      data-aos="fade-right">
       <div class="md:hidden flex-shrink-0 mr-4">
         <div
           class="w-14 h-14 bg-impost-primary text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg glow">
@@ -211,7 +216,8 @@
           <div class="flex items-start gap-3 sm:gap-4">
             <div
               class="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-impost-primary rounded-lg md:rounded-xl flex items-center justify-center shadow-lg">
-              <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
@@ -236,7 +242,8 @@
       <div class="hidden md:block md:w-5/12 md:order-3"></div>
     </div>
 
-    <div class="flex flex-row md:flex-row-reverse items-start md:items-center justify-between w-full">
+    <div class="flex flex-row md:flex-row-reverse items-start md:items-center justify-between w-full"
+      data-aos="fade-left">
       <div class="md:hidden flex-shrink-0 mr-4">
         <div class="w-14 h-14 bg-impost-primary text-white rounded-xl flex items-center justify-center shadow-lg glow">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"

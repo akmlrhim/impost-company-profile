@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CareerController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\PortfolioCategoryController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StudyCaseController;
@@ -85,5 +87,11 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		// career route
 		Route::resource('careers', CareerController::class)->except('show');
+
+		// article category
+		Route::resource('article-categories', ArticleCategoryController::class);
+
+		// portfolio category
+		Route::resource('portfolio-categories', PortfolioCategoryController::class);
 	});
 });

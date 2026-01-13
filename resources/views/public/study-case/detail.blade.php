@@ -1,10 +1,9 @@
 @extends('layouts.public')
 
 @section('content')
-  <main class="pt-24 sm:pt-28 bg-gradient-to-br from-impost-fifth via-slate-900 to-impost-fifth antialiased">
+  <main class="pt-24 sm:pt-28 antialiased">
 
     <div class="px-4 mx-auto max-w-7xl py-8 sm:py-12">
-      <!-- Breadcrumb -->
       <nav class="flex mb-8" aria-label="Breadcrumb" data-aos="fade-down">
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
           <li class="inline-flex items-center">
@@ -30,17 +29,14 @@
         </ol>
       </nav>
 
-      <!-- Title -->
       <div class="mb-12 text-center" data-aos="fade-up">
         <h1 class="text-lg sm:text-xl font-bold text-impost-primary uppercase mb-4 leading-tight">
           {{ $studyCase->name }}
         </h1>
       </div>
 
-      <!-- Content Section -->
       <div class="px-4 mx-auto max-w-6xl pb-16">
 
-        <!-- Media Gallery -->
         @if ($studyCase->media && $studyCase->media->count() > 0)
           <div class="mb-16" data-aos="fade-up">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -48,7 +44,6 @@
                 <div
                   class="group relative overflow-hidden rounded-xl border border-slate-700/50 bg-slate-800/50 backdrop-blur-sm hover:border-impost-primary/50 transition-all duration-300">
                   @if ($media->media_type === 'image')
-                    <!-- Image -->
                     <div class="aspect-video relative overflow-hidden cursor-pointer"
                       onclick="openMedia({{ $loop->index }})">
 
@@ -74,7 +69,6 @@
 
                     </div>
                   @elseif ($media->media_type === 'video')
-                    <!-- Video -->
                     <div class="aspect-video relative overflow-hidden cursor-pointer"
                       onclick="openMedia({{ $loop->index }})">
 
@@ -82,7 +76,6 @@
                         <source src="{{ asset('storage/' . $media->file_path) }}" type="video/mp4">
                       </video>
 
-                      <!-- Overlay Icon -->
                       <div
                         class="absolute top-3 right-3 w-8 h-8 bg-slate-900/80 rounded-full flex items-center justify-center pointer-events-none">
                         <svg class="w-4 h-4 text-impost-secondary" fill="none" stroke="currentColor"
@@ -105,7 +98,6 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
 
-          {{-- Situation --}}
           @if ($studyCase->situation)
             <div data-aos="fade-up"
               class="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm
@@ -136,7 +128,6 @@
             </div>
           @endif
 
-          {{-- Solution --}}
           @if ($studyCase->solution)
             <div data-aos="fade-up"
               class="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm
@@ -167,7 +158,6 @@
             </div>
           @endif
 
-          {{-- Result --}}
           @if ($studyCase->result)
             <div data-aos="fade-up"
               class="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-sm
@@ -197,11 +187,8 @@
               </div>
             </div>
           @endif
-
         </div>
 
-
-        <!-- CTA Section -->
         <div class="text-center mt-16" data-aos="fade-up">
           <div
             class="bg-gradient-to-r from-impost-primary/10 via-impost-secondary/10 to-impost-fourth/10 rounded-2xl p-8 md:p-12 border border-impost-primary/30">

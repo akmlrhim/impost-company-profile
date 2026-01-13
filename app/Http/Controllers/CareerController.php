@@ -13,8 +13,17 @@ class CareerController extends Controller
 	public function index()
 	{
 		$title = 'Lowongan Kerja';
-		$jobPostings = JobPosting::select('id', 'title', 'type', 'status', 'closing_date')->orderBy('created_at', 'DESC')->get();
-		return view('admin.careers.index', compact('title', 'jobPostings'));
+		$search = request('search');
+
+		$jobPostings = JobPosting::select('id', 'title', 'type', 'status', 'closing_date')
+			->when($search, function ($query) use ($search) {
+				return $query->where('title', 'like', '%' . $search . '%')
+					->orWhere('type', 'like', '%' . $search . '%');
+			})
+			->orderBy('created_at', 'DESC')
+			->get();
+
+		return view('admin.careers.index', compact('title', 'jobPostings', 'search'));
 	}
 
 	/**

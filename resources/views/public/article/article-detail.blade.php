@@ -106,10 +106,10 @@
   </main>
 
   {{-- latest article  --}}
-  <aside class="py-16 bg-gray-900 border-t border-gray-800">
+  <aside class="py-16 border-t border-gray-800">
     <div class="px-4 mx-auto max-w-7xl">
       <h2 class="mb-10 text-lg sm:text-xl lg:text-2xl font-bold text-white">
-        Latest Articles
+        Artikel Terbaru Lainnya
       </h2>
 
       <div class="relative" x-data="{

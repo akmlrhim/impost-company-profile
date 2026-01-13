@@ -19,10 +19,21 @@ class StudyCaseController extends Controller
 	public function index()
 	{
 		$title = 'Study Case';
+		$search = request('search');
+
+		$studyCases = StudyCase::when($search, function ($query) use ($search) {
+			$query->where('name', 'like', '%' . $search . '%')
+				->orWhere('situation', 'like', '%' . $search . '%')
+				->orWhere('solution', 'like', '%' . $search . '%');
+		})
+			->latest()
+			->paginate(8)
+			->appends(request()->query());
 
 		return view('admin.study-case.index', [
 			'title' => $title,
-			'studyCases' => StudyCase::latest()->paginate(8)
+			'studyCases' => $studyCases,
+			'search' => $search
 		]);
 	}
 

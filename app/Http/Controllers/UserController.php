@@ -19,7 +19,7 @@ class UserController extends Controller
 		$search = request()->string('search')->trim();
 
 		$users = User::query()
-		->where('id', '!=', Auth::id())
+			->where('id', '!=', Auth::id())
 			->select('name', 'email', 'created_at', 'id')
 			->when($search, function ($query) use ($search) {
 				$query->where('name', 'like', "%{$search}%");

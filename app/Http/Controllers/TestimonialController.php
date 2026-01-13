@@ -14,8 +14,16 @@ class TestimonialController extends Controller
 	public function index()
 	{
 		$title = 'Testimonials';
-		$testimonials = Testimonial::select('id', 'name', 'company_name', 'content')->latest()->paginate(4);
-		return view('admin.testimonials.index', compact('title', 'testimonials'));
+		$search = request('search');
+		$testimonials = Testimonial::select('id', 'name', 'company_name', 'content')
+			->when($search, function ($query) use ($search) {
+				$query->where('name', 'like', "%{$search}%")
+					->orWhere('company_name', 'like', "%{$search}%")
+					->orWhere('content', 'like', "%{$search}%");
+			})
+			->latest()
+			->paginate(4);
+		return view('admin.testimonials.index', compact('title', 'testimonials', 'search'));
 	}
 
 	/**

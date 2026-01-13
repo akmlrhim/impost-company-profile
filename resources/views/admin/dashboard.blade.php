@@ -17,7 +17,7 @@
           <span class="mt-2 text-sm font-medium text-gray-700">Tambah Layanan</span>
         </a>
 
-        <button
+        <a href="{{ route('articles.create') }}"
           class="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -27,9 +27,9 @@
               d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
           </svg>
           <span class="mt-2 text-sm font-medium text-gray-700">Tambah Artikel</span>
-        </button>
+        </a>
 
-        <button
+        <a href="{{ route('teams.create') }}"
           class="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -40,9 +40,9 @@
             <circle cx="9" cy="7" r="4" />
           </svg>
           <span class="mt-2 text-sm font-medium text-gray-700">Tambah Tim</span>
-        </button>
+        </a>
 
-        <button
+        <a href="{{ route('clients.create') }}"
           class="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -60,9 +60,9 @@
             <rect x="4" y="2" width="16" height="20" rx="2" />
           </svg>
           <span class="mt-2 text-sm font-medium text-gray-700">Tambah Klien</span>
-        </button>
+        </a>
 
-        <button
+        <a href="{{ route('portfolio.create') }}"
           class="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -72,9 +72,9 @@
             <path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1" />
           </svg>
           <span class="mt-2 text-sm font-medium text-gray-700">Tambah Portfolio</span>
-        </button>
+        </a>
 
-        <button
+        <a href="{{ route('users.create') }}"
           class="flex flex-col items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -83,7 +83,7 @@
             <circle cx="12" cy="7" r="4" />
           </svg>
           <span class="mt-2 text-sm font-medium text-gray-700">Tambah User</span>
-        </button>
+        </a>
       </div>
     </div>
   </div>

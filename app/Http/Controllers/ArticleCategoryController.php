@@ -7,59 +7,66 @@ use Illuminate\Http\Request;
 
 class ArticleCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+	/**
+	 * Display a listing of the resource.
+	 */
+	public function index()
+	{
+		$title = 'Article Categories';
+		$articleCategories = ArticleCategory::latest()
+			->orderByDesc('created_at')
+			->simplePaginate(10)
+			->onEachSide(1)
+			->withQueryString();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+		return view('admin.article-category.index', compact('title', 'articleCategories'));
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 */
+	public function create()
+	{
+		//
+	}
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(ArticleCategory $articleCategory)
-    {
-        //
-    }
+	/**
+	 * Store a newly created resource in storage.
+	 */
+	public function store(Request $request)
+	{
+		//
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ArticleCategory $articleCategory)
-    {
-        //
-    }
+	/**
+	 * Display the specified resource.
+	 */
+	public function show(ArticleCategory $articleCategory)
+	{
+		//
+	}
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, ArticleCategory $articleCategory)
-    {
-        //
-    }
+	/**
+	 * Show the form for editing the specified resource.
+	 */
+	public function edit(ArticleCategory $articleCategory)
+	{
+		//
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ArticleCategory $articleCategory)
-    {
-        //
-    }
+	/**
+	 * Update the specified resource in storage.
+	 */
+	public function update(Request $request, ArticleCategory $articleCategory)
+	{
+		//
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 */
+	public function destroy(ArticleCategory $articleCategory)
+	{
+		//
+	}
 }

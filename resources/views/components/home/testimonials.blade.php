@@ -1,4 +1,4 @@
-<section class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 overflow-hidden" id="testimonials">
+<section class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-24 overflow-hidden" id="testimonials">
   <div class="relative mb-10 text-center" data-aos="fade-up">
     <h2 class="font-header text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-impost-primary">
       Apa Kata Mereka?
@@ -19,7 +19,6 @@
 
                   <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                 </div>
-
               </div>
 
               <blockquote>

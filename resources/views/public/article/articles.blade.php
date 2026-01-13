@@ -53,8 +53,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-12">
           @forelse ($articles as $article)
-            <article
-              class="bg-[#111] rounded-2xl shadow-sm transition-all duration-300 overflow-hidden border border-impost-fourth flex flex-col group hover:-translate-y-2 hover:shadow-[0_10px_30px_-10px_rgba(212,172,60,0.2)]">
+            <article class="bg-[#111] rounded-2xl shadow-sm overflow-hidden border border-impost-fourth flex flex-col">
 
               <div class="relative h-40 md:h-48 overflow-hidden">
                 @if ($article->cover_path)

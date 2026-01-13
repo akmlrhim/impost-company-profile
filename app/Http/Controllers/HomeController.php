@@ -22,7 +22,7 @@ class HomeController extends Controller
 	{
 		$title = 'Home';
 
-		$servicesForDesktop = ServiceService::paginate(6);
+		$servicesForDesktop = ServiceService::all();
 		$servicesForMobile = ServiceService::all();
 		$studyCaseForDesktop = StudyCaseService::paginate(6);
 		$studyCaseForMobile = StudyCaseService::all();
@@ -190,7 +190,7 @@ class HomeController extends Controller
 			DB::commit();
 
 			$message = urlencode('Halo, saya tertarik dengan layanan Anda.');
-			return redirect("https://wa.me/6283147802761?text={$message}");
+			return redirect("https://wa.me/6283147802761?text={$message}")->with('success', 'Data berhasil dikirim');
 		} catch (\Throwable $e) {
 			DB::rollBack();
 

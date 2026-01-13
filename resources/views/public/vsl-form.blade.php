@@ -17,7 +17,7 @@
           class="font-header text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent leading-tight">
           Mari Kita Mulai
         </h1>
-        <p class="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        <p class="text-gray-300 text-sm md:text-md max-w-2xl mx-auto leading-relaxed">
           Isi data berikut untuk melanjutkan. Data anda akan kami jaga kerahasiaannya dan hanya digunakan untuk keperluan
           komunikasi terkait layanan kami.
         </p>

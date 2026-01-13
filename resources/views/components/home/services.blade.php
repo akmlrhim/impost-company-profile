@@ -57,19 +57,49 @@
       </div>
     </div>
 
-    <!-- Desktop Grid -->
-    <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-fr" data-aos="fade-up"
-      data-aos-stagger="100">
-      @foreach ($servicesForDesktop as $service)
-        <div data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}" class="h-full">
-          <x-service-card :service="$service" />
+    <div x-data="{
+        page: 0,
+        perPage: 3,
+        total: {{ $servicesForDesktop->count() }},
+        get pages() {
+            return Math.ceil(this.total / this.perPage)
+        },
+        next() {
+            if (this.page < this.pages - 1) this.page++
+        },
+        prev() {
+            if (this.page > 0) this.page--
+        }
+    }" class="hidden sm:block relative">
+
+      <div class="overflow-hidden">
+        <div class="flex transition-transform duration-500 ease-in-out"
+          :style="`transform: translateX(-${page * 100}%)`">
+
+          @foreach ($servicesForDesktop->chunk(3) as $chunk)
+            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-1">
+              @foreach ($chunk as $service)
+                <x-service-card :service="$service" />
+              @endforeach
+            </div>
+          @endforeach
+
         </div>
-      @endforeach
+      </div>
+
+      <div class="flex justify-center gap-4 mt-8">
+        <button @click="prev" :disabled="page === 0"
+          class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white disabled:opacity-30">
+          ‹
+        </button>
+
+        <button @click="next" :disabled="page === pages - 1"
+          class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white disabled:opacity-30">
+          ›
+        </button>
+      </div>
+
     </div>
 
-    <!-- Pagination -->
-    <div class="hidden sm:flex justify-center mt-8 sm:mt-12 md:mt-16" data-aos="fade-up">
-      <x-custom-pagination :items="$servicesForDesktop" />
-    </div>
   @endif
 </section>

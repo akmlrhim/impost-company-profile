@@ -12,7 +12,5 @@
 
   <x-home.services :servicesForDesktop="$servicesForDesktop" :servicesForMobile="$servicesForMobile" />
 
-  <x-home.studycase :studyCaseForDesktop="$studyCaseForDesktop" :studyCaseForMobile="$studyCaseForMobile" />
-
   <x-home.testimonials :testimonials="$testimonials" />
 @endsection

@@ -15,6 +15,7 @@ class Service extends Model
 		'service_name',
 		'slug',
 		'description',
+		'category',
 		'cover_path',
 		'sort'
 	];

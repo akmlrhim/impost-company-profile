@@ -99,7 +99,7 @@
         </li>
 
         <li class="pt-4 md:pt-0 md:ml-2">
-          <a href="{{ route('contact') }}"
+          <a href="{{ route('vsl-form') }}"
             class="flex items-center justify-center gap-2 py-2.5 px-5 bg-impost-primary hover:bg-impost-secondary text-black font-bold text-sm rounded-md transition-all duration-300 w-full md:w-auto shadow-md">
             <span>Get Started</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

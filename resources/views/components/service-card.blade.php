@@ -9,6 +9,18 @@
 
   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
 
+  <div class="absolute top-3 left-3 z-20 flex gap-2">
+    @if ($service->category === 'Featured')
+      <span class="px-3 py-1 text-xs font-semibold rounded-full bg-impost-primary text-white shadow-lg">
+        Featured
+      </span>
+    @elseif ($service->category === 'Add-On')
+      <span class="px-3 py-1 text-xs font-semibold rounded-full bg-amber-500 text-black shadow-lg">
+        Add-On
+      </span>
+    @endif
+  </div>
+
   <div class="absolute inset-0 flex items-end z-10">
     <div class="w-full px-4 pb-4">
 

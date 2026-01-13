@@ -68,6 +68,7 @@ class ServiceController extends Controller
 				'service_name' => $request->service_name,
 				'slug' => Str::slug($request->service_name),
 				'description' => $request->description,
+				'category' => $request->category,
 				'cover_path' => $cover_path,
 				'sort' => $request->sort
 			];
@@ -77,6 +78,7 @@ class ServiceController extends Controller
 			return redirect()->route('services.index')->with('success', 'Layanan berhasil ditambahkan.');
 		} catch (\Exception $e) {
 			DB::rollBack();
+			// dd($e->getMessage());
 			return back()->withInput()->with('error', 'Terjadi kesalahan saat menyimpan layanan');
 		}
 	}
@@ -122,6 +124,7 @@ class ServiceController extends Controller
 			$service->service_name = $request->service_name;
 			$service->slug = Str::slug($request->service_name);
 			$service->description = $request->description;
+			$service->category = $request->category;
 			$service->sort = $request->sort;
 
 			$service->save();
@@ -129,6 +132,8 @@ class ServiceController extends Controller
 			return redirect()->route('services.index')->with('success', 'Layanan berhasil diperbarui.');
 		} catch (\Exception $e) {
 			DB::rollBack();
+
+			dd($e->getMessage());
 			return back()->withInput()->with('error', 'Terjadi kesalahan saat memperbarui layanan.');
 		}
 	}

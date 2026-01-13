@@ -10,5 +10,5 @@ class Testimonial extends Model
 	/** @use HasFactory<\Database\Factories\TestimonialFactory> */
 	use HasFactory;
 
-	protected $fillable = ['name', 'company_name', 'content'];
+	protected $fillable = ['name', 'company_name', 'content', 'photo'];
 }

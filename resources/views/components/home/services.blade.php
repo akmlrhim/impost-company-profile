@@ -77,12 +77,16 @@
           :style="`transform: translateX(-${page * 100}%)`">
 
           @foreach ($servicesForDesktop->chunk(6) as $chunk)
-            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-1">
-              @foreach ($chunk as $service)
-                <x-service-card :service="$service" />
+            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-1" data-aos="fade-left"
+              data-aos-duration="800" data-aos-easing="ease-out-cubic">
+              @foreach ($chunk as $index => $service)
+                <div data-aos="zoom-in" data-aos-delay="{{ $index * 100 }}" data-aos-duration="600">
+                  <x-service-card :service="$service" />
+                </div>
               @endforeach
             </div>
           @endforeach
+
 
         </div>
       </div>

@@ -20,18 +20,14 @@
         class="flex flex-col md:flex-row font-medium text-sm md:text-base p-4 md:p-0 mt-4 md:mt-0 space-y-1 md:space-y-0 md:space-x-3 rtl:space-x-reverse md:items-center">
 
         <li>
-          <a href="{{ url('/') }}" x-data
-            :class="window.location.hash === '#home' && window.location.pathname === '/' ?
-                'bg-impost-primary text-black' : 'text-white'"
+          <a href="{{ url('/') }}"
             class="block py-2 px-4 rounded transition-all duration-300 hover:bg-impost-primary/80">
             Home
           </a>
         </li>
 
         <li>
-          <a href="{{ url('/') }}#services" x-data
-            :class="window.location.hash === '#services' && window.location.pathname === '/' ?
-                'bg-impost-primary text-black' : 'text-white'"
+          <a href="{{ url('/') }}#services"
             class="block py-2 px-4 rounded transition-all duration-300 hover:bg-impost-primary/80">
             Services
           </a>

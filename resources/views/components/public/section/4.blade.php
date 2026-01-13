@@ -97,10 +97,10 @@
   }
 </style>
 
-<section class="py-4 md:py-12 relative overflow-hidden">
+<section class="py-12 md:py-16 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-    <div class="text-center max-w-3xl mx-auto font-header">
+    <div class="text-center max-w-3xl mx-auto mb-8 md:mb-12 font-header">
       <h3 class="text-3xl md:text-5xl font-bold text-white mb-6">
         Hasil Nyata,
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-impost-primary to-impost-secondary">

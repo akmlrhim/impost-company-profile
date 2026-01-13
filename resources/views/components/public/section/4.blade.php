@@ -113,7 +113,7 @@
       </p>
     </div>
 
-    <!-- Desktop 3D Carousel -->
+    {{-- desktop --}}
     <div class="carousel-3d">
       <div class="carousel-container" id="carouselContainer">
       </div>

@@ -1,5 +1,16 @@
 <section id="home" class="relative min-h-screen pt-28 sm:pt-36 pb-16 flex items-center overflow-hidden">
 
+  <div class="absolute inset-0 z-0">
+    <img src="{{ asset('img/hero.webp') }}" alt="Impost Media Background" loading="lazy" encoding="async"
+      class="w-full h-full object-cover">
+
+    <div class="absolute inset-0 bg-black/70"></div>
+
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+  </div>
+
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -34,40 +45,78 @@
         </div>
       </div>
 
-      <div class="relative lg:block hidden">
+      <!-- Decorative elements on right side for desktop -->
+      <div class="lg:block hidden">
+        <div class="relative z-10 space-y-6">
 
-        <div class="relative z-10 animate-float overflow-hidden rounded-2xl">
+          <!-- Floating Cards -->
+          <div class="space-y-4 animate-float">
 
-          <div
-            class="absolute -inset-4 bg-gradient-to-r from-impost-primary/20 to-impost-secondary/20 rounded-2xl blur-2xl">
+            <!-- Card 1: Stats -->
+            <div
+              class="backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl p-6 shadow-2xl hover:bg-white/15 transition-all duration-300 hover:scale-105">
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-lg bg-gradient-to-br from-impost-primary to-impost-secondary flex items-center justify-center">
+                  <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-2xl font-bold text-white">2-3x</p>
+                  <p class="text-sm text-gray-300">ROI Growth</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Time -->
+            <div
+              class="backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl p-6 shadow-2xl hover:bg-white/15 transition-all duration-300 hover:scale-105 ml-8">
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-lg bg-gradient-to-br from-impost-secondary to-impost-fourth flex items-center justify-center">
+                  <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-2xl font-bold text-white">90 Hari</p>
+                  <p class="text-sm text-gray-300">Hasil Terukur</p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl p-6 shadow-2xl hover:bg-white/15 transition-all duration-300 hover:scale-105">
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-lg bg-gradient-to-br from-impost-fourth to-impost-primary flex items-center justify-center">
+                  <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                    </path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-2xl font-bold text-white">20+</p>
+                  <p class="text-sm text-gray-300">Klien Puas</p>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <img src="{{ asset('img/hero.webp') }}" loading="lazy" encoding="async" alt="Impost Media Hero"
-            class="relative w-full h-auto object-cover rounded-2xl">
-
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
+          <div class="absolute -top-20 -right-20 w-64 h-64 bg-impost-primary/20 rounded-full blur-3xl animate-pulse">
+          </div>
+          <div
+            class="absolute top-40 -right-10 w-48 h-48 bg-impost-secondary/20 rounded-full blur-3xl animate-pulse animation-delay-1000">
           </div>
 
         </div>
       </div>
 
-      <div class="lg:hidden relative">
-
-        <div class="relative overflow-hidden rounded-xl">
-
-          <div
-            class="absolute -inset-2 bg-gradient-to-r from-impost-primary/20 to-impost-secondary/20 rounded-2xl blur-xl">
-          </div>
-
-          <img src="{{ asset('img/hero.webp') }}" alt="Impost Media Hero" loading="lazy" encoding="async"
-            class="relative w-full h-auto object-cover rounded-xl">
-
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
-          </div>
-
-        </div>
-
-      </div>
     </div>
   </div>
 

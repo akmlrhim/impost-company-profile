@@ -59,7 +59,7 @@
 
     <div x-data="{
         page: 0,
-        perPage: 3,
+        perPage: 6,
         total: {{ $servicesForDesktop->count() }},
         get pages() {
             return Math.ceil(this.total / this.perPage)
@@ -76,7 +76,7 @@
         <div class="flex transition-transform duration-500 ease-in-out"
           :style="`transform: translateX(-${page * 100}%)`">
 
-          @foreach ($servicesForDesktop->chunk(3) as $chunk)
+          @foreach ($servicesForDesktop->chunk(6) as $chunk)
             <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-1">
               @foreach ($chunk as $service)
                 <x-service-card :service="$service" />

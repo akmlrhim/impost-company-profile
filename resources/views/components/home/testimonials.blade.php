@@ -1,4 +1,4 @@
-<section class="relative max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-8 overflow-hidden" id="testimonials">
+<section class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 overflow-hidden" id="testimonials">
 
   <div class="relative mb-10 text-center" data-aos="fade-up">
     <h2 class="font-header text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-impost-primary">

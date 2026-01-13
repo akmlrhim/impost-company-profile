@@ -23,30 +23,23 @@
 @endpush
 
 <section class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-8 sm:py-10 md:py-12">
-  <!-- Header -->
   <div class="text-center mb-12 sm:mb-16 md:mb-20">
     <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight font-header">
-      Alur Layanan yang
-      <span class="text-impost-primary block sm:inline mt-2 sm:mt-0 font-header">Transparan</span>
+      Alur Layanan
     </h2>
     <p class="mt-4 sm:mt-6 text-gray-300 max-w-3xl mx-auto leading-relaxed text-sm sm:text-base px-4">
       Dari konsultasi hingga evaluasi hasil. Setiap langkah dirancang untuk memastikan kesuksesan proyek Anda.
     </p>
   </div>
 
-  <!-- Timeline -->
   <div class="relative">
-    <!-- Vertical Line - Hidden on mobile -->
     <div
       class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-impost-primary opacity-30 rounded-full timeline-line">
     </div>
 
-    <!-- Mobile Vertical Line -->
     <div class="md:hidden absolute left-7 top-0 w-0.5 h-full bg-impost-primary opacity-20"></div>
 
-    <!-- Step 1 -->
     <div class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row items-start md:items-center justify-between w-full">
-      <!-- Mobile Number (Left) -->
       <div class="md:hidden flex-shrink-0 mr-4">
         <div
           class="w-14 h-14 bg-impost-primary text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg glow">
@@ -54,7 +47,6 @@
         </div>
       </div>
 
-      <!-- Content -->
       <div class="flex-1 md:w-5/12 md:order-1">
         <div
           class="bg-gray-800 p-5 sm:p-6 md:p-8 rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
@@ -77,7 +69,6 @@
         </div>
       </div>
 
-      <!-- Desktop Number (Center) -->
       <div class="hidden md:flex md:w-2/12 md:order-2 justify-center relative z-10">
         <div
           class="w-16 h-16 bg-impost-primary text-white rounded-2xl flex items-center justify-center font-bold text-2xl shadow-xl glow">
@@ -87,7 +78,6 @@
       <div class="hidden md:block md:w-5/12 md:order-3"></div>
     </div>
 
-    <!-- Step 2 -->
     <div
       class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row-reverse items-start md:items-center justify-between w-full">
       <div class="md:hidden flex-shrink-0 mr-4">
@@ -128,7 +118,6 @@
       <div class="hidden md:block md:w-5/12 md:order-3"></div>
     </div>
 
-    <!-- Step 3 -->
     <div class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row items-start md:items-center justify-between w-full">
       <div class="md:hidden flex-shrink-0 mr-4">
         <div
@@ -168,7 +157,6 @@
       <div class="hidden md:block md:w-5/12 md:order-3"></div>
     </div>
 
-    <!-- Step 4 -->
     <div
       class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row-reverse items-start md:items-center justify-between w-full">
       <div class="md:hidden flex-shrink-0 mr-4">
@@ -209,7 +197,6 @@
       <div class="hidden md:block md:w-5/12 md:order-3"></div>
     </div>
 
-    <!-- Step 5 -->
     <div class="mb-8 sm:mb-12 md:mb-16 flex flex-row md:flex-row items-start md:items-center justify-between w-full">
       <div class="md:hidden flex-shrink-0 mr-4">
         <div
@@ -249,7 +236,6 @@
       <div class="hidden md:block md:w-5/12 md:order-3"></div>
     </div>
 
-    <!-- Step 6 - Final -->
     <div class="flex flex-row md:flex-row-reverse items-start md:items-center justify-between w-full">
       <div class="md:hidden flex-shrink-0 mr-4">
         <div class="w-14 h-14 bg-impost-primary text-white rounded-xl flex items-center justify-center shadow-lg glow">

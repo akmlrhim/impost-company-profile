@@ -8,9 +8,9 @@
 
   <x-home.about />
 
-  <x-home.works />
-
   <x-home.services :servicesForDesktop="$servicesForDesktop" :servicesForMobile="$servicesForMobile" />
 
   <x-home.testimonials :testimonials="$testimonials" />
+
+  <x-home.works />
 @endsection

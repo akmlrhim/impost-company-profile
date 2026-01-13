@@ -10,7 +10,7 @@
 
   <x-home.services :servicesForDesktop="$servicesForDesktop" :servicesForMobile="$servicesForMobile" />
 
-  <x-home.testimonials :testimonials="$testimonials" />
-
   <x-home.works />
+
+  <x-home.testimonials :testimonials="$testimonials" />
 @endsection

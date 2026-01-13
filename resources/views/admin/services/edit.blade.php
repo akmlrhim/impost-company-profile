@@ -94,53 +94,55 @@
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
           @enderror
         </div>
-      </div>
-      {{-- end deskripsi  --}}
+        {{-- end deskripsi  --}}
 
-      {{-- category  --}}
-      <div>
-        <label class="block text-sm font-medium text-gray-900 mb-2">
-          Kategori Layanan
-        </label>
 
-        <ul class="grid w-full gap-4 md:grid-cols-2">
-          <li>
-            <input type="radio" id="category_featured" name="category" value="Featured" class="peer sr-only"
-              {{ old('category', $service->category) === 'Featured' ? 'checked' : '' }}>
+        {{-- category  --}}
+        <div>
+          <label class="block text-sm font-medium text-gray-900 mb-2">
+            Kategori Layanan
+          </label>
 
-            <label for="category_featured"
-              class="flex w-full cursor-pointer items-center justify-between rounded-base border border-default
+          <ul class="grid w-full gap-4 md:grid-cols-2">
+            <li>
+              <input type="radio" id="category_featured" name="category" value="Featured" class="peer sr-only"
+                {{ old('category', $service->category) === 'Featured' ? 'checked' : '' }}>
+
+              <label for="category_featured"
+                class="flex w-full cursor-pointer items-center justify-between rounded-base border border-default
 													 bg-neutral-primary-soft p-5 text-body transition
 													 hover:bg-neutral-secondary-medium
 													 peer-checked:border-success-subtle
 													 peer-checked:bg-success-soft
 													 peer-checked:text-success-strong">
-              <span class="font-semibold">Featured</span>
-            </label>
-          </li>
+                <span class="font-semibold">Featured</span>
+              </label>
+            </li>
 
-          <li>
-            <input type="radio" id="category_add_on" name="category" value="Add-On" class="peer sr-only"
-              {{ old('category', $service->category) === 'Add-On' ? 'checked' : '' }}>
+            <li>
+              <input type="radio" id="category_add_on" name="category" value="Add-On" class="peer sr-only"
+                {{ old('category', $service->category) === 'Add-On' ? 'checked' : '' }}>
 
-            <label for="category_add_on"
-              class="flex w-full cursor-pointer items-center justify-between rounded-base border border-default
+              <label for="category_add_on"
+                class="flex w-full cursor-pointer items-center justify-between rounded-base border border-default
 													 bg-neutral-primary-soft p-5 text-body transition
 													 hover:bg-neutral-secondary-medium
 													 peer-checked:border-warning-subtle
 													 peer-checked:bg-warning-soft
 													 peer-checked:text-warning-strong">
-              <span class="font-semibold">Add-On</span>
-            </label>
-          </li>
-        </ul>
+                <span class="font-semibold">Add-On</span>
+              </label>
+            </li>
+          </ul>
 
-        @error('category')
-          <x-invalid-feedback class="mt-2">
-            {{ $message }}
-          </x-invalid-feedback>
-        @enderror
+          @error('category')
+            <x-invalid-feedback class="mt-2">
+              {{ $message }}
+            </x-invalid-feedback>
+          @enderror
+        </div>
       </div>
+
 
       <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-end gap-3">
         <a href="{{ route('services.index') }}"

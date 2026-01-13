@@ -21,14 +21,14 @@
 
         <li>
           <a href="{{ url('/') }}"
-            class="block py-2 px-4 rounded transition-all duration-300 hover:bg-impost-primary/80">
+            class="block py-2 text-white px-4 rounded transition-all duration-300 hover:bg-impost-primary/80">
             Home
           </a>
         </li>
 
         <li>
           <a href="{{ url('/') }}#services"
-            class="block py-2 px-4 rounded transition-all duration-300 hover:bg-impost-primary/80">
+            class="block py-2 text-white px-4 rounded transition-all duration-300 hover:bg-impost-primary/80">
             Services
           </a>
         </li>

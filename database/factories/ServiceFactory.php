@@ -25,6 +25,7 @@ class ServiceFactory extends Factory
 			'sort' => $this->faker->randomNumber(1, 100),
 			'description' => $this->faker->paragraphs(1, true),
 			'cover_path' => NULL,
+			'category' => $this->faker->randomElement(['Featured', 'Add-On']),
 		];
 	}
 }

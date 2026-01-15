@@ -9,8 +9,7 @@
         <span class="text-xs sm:text-sm md:text-base font-semibold tracking-widest text-impost-primary uppercase">
           Tentang Kami
         </span>
-        <h1
-          class="font-header mt-3 md:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+        <h1 class="mt-3 md:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
           CV. Impost Media Indonesia
         </h1>
         <div class="mt-4 md:mt-6 mx-auto w-12 md:w-16 h-1 bg-impost-primary rounded-full"></div>

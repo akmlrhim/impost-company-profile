@@ -9,7 +9,7 @@
       </a>
     </div>
 
-    <div class="flex-1 overflow-y-auto py-2 px-3">
+    <div class="flex-1 overflow-y-auto py-2 px-3 no-scrollbar">
       <ul class="space-y-2 font-medium text-md text-gray-300">
 
         <li>
@@ -84,6 +84,12 @@
                 <span class="ms-2">Testimoni</span>
               </x-nav-link>
             </li>
+
+            <li>
+              <x-nav-link href="{{ route('jobpostings.index') }}" :active="request()->routeIs('jobpostings.*')">
+                <span class="ms-2">Loker</span>
+              </x-nav-link>
+            </li>
           </ul>
         </li>
 
@@ -111,13 +117,13 @@
 
           <ul id="ctg-dropdown" class="hidden text-sm mt-1 ml-4">
             <li>
-              <x-nav-link href="{{ route('services.index') }}" :active="request()->routeIs('services.*')">
+              <x-nav-link href="{{ route('article-categories.index') }}" :active="request()->routeIs('article-categories.*')">
                 <span class="ms-2">Artikel</span>
               </x-nav-link>
             </li>
 
             <li>
-              <x-nav-link href="{{ route('services.index') }}" :active="request()->routeIs('services.*')">
+              <x-nav-link href="{{ route('portfolio-categories.index') }}" :active="request()->routeIs('portfolio-categories.*')">
                 <span class="ms-2">Portfolio</span>
               </x-nav-link>
             </li>

@@ -36,7 +36,7 @@
 
               <div class="mt-auto flex items-center gap-2">
                 <a href="{{ route('services.edit', $service) }}"
-                  class="flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-impost-primary rounded-sm hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-impost-primary">
+                  class="flex-1 inline-flex items-center justify-center px-3 py-1.5 text-xs font-medium text-white bg-impost-primary rounded-sm hover:bg-opacity-90 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-impost-primary">
                   Edit
                 </a>
                 <x-confirm-delete :action="route('services.destroy', $service)" label="Hapus" />

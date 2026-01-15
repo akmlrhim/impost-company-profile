@@ -9,7 +9,6 @@
       <div class="p-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-          <!-- Company Name -->
           <div>
             <label for="company_name" class="block text-sm font-medium text-gray-900 mb-2">
               Nama Perusahaan
@@ -22,7 +21,6 @@
             @enderror
           </div>
 
-          <!-- Name -->
           <div>
             <label for="name" class="block text-sm font-medium text-gray-900 mb-2">
               Nama Lengkap

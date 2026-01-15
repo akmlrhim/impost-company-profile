@@ -1,14 +1,13 @@
 <section id="services" class="relative max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-10 overflow-hidden">
 
-  <!-- Header Section -->
   <div class="relative mb-8 sm:mb-10 md:mb-12 text-center" data-aos="fade-up">
-    <h2 class="font-header text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6">
+    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6">
       <span class="text-impost-primary">
         Layanan Kami
       </span>
     </h2>
 
-    <p class="text-white/80 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed px-4">
+    <p class="text-white text-sm sm:text-base max-w-3xl mx-auto leading-relaxed px-4">
       Kami menyediakan layanan digital end-to-end yang berfokus pada peningkatan omset, visibilitas merek, dan efisiensi
       pemasaran.
     </p>
@@ -19,7 +18,6 @@
       <x-empty-card item="layanan" />
     </div>
   @else
-    <!-- Mobile Carousel -->
     <div x-data="{
         active: 0,
         total: {{ $servicesForDesktop->count() }},
@@ -86,8 +84,6 @@
               @endforeach
             </div>
           @endforeach
-
-
         </div>
       </div>
 
@@ -108,8 +104,6 @@
           </svg>
         </button>
       </div>
-
     </div>
-
   @endif
 </section>

@@ -26,7 +26,7 @@
 
               <div class="mt-auto flex space-x-2 pt-4">
                 <button onclick="window.location.href='{{ route('testimonials.edit', $testimonial) }}'"
-                  class="cursor-pointer flex-1 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                  class="cursor-pointer flex-1 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded-md text-xs font-medium transition-colors">
                   Edit
                 </button>
 

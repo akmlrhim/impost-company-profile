@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ArticleCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -18,10 +19,12 @@ class ArticleFactory extends Factory
 	public function definition(): array
 	{
 		$title = fake()->sentence(6, true);
+		$categoryId = ArticleCategory::inRandomOrder()->first()->id ?? null;
 
 		return [
 			'title' => $title,
 			'slug' => Str::slug($title),
+			'category_id' => $categoryId,
 			'content' => '<p>' . fake()->paragraphs(5, true) . '</p>',
 			'cover_path' => null,
 			'excerpt' => fake()->sentence(12, true),

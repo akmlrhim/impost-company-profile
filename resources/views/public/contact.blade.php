@@ -6,7 +6,7 @@
 
       <div class="mb-12 text-center">
         <h1
-          class="font-header text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
+          class="text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
           Kontak Kami
         </h1>
         <p class="text-white text-sm md:text-base px-6 mx-auto">

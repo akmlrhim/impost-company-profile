@@ -1,4 +1,4 @@
-<nav class="fixed top-0 z-50 w-full bg-impost-fifth/10 backdrop-blur-lg border-b border-gray-300">
+<nav class="fixed top-0 z-50 w-full bg-impost-fifth/10 backdrop-blur-md">
   <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto py-2 sm:py-4 px-4 sm:px-8">
 
     <a href="{{ route('home') }}" class="flex items-center">

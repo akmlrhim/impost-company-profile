@@ -14,8 +14,10 @@ return new class extends Migration
 		Schema::create('portfolio', function (Blueprint $table) {
 			$table->id();
 			$table->string('slug');
-			$table->string('name')->unique();
-			$table->string('cover_path');
+			$table->foreignId('category_id')->nullable()->constrained('portfolio_categories')->onDelete('cascade');
+			$table->string('title')->unique();
+			$table->text('description');
+			$table->string('cover_path')->nullable();
 			$table->timestamps();
 		});
 	}

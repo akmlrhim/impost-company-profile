@@ -6,7 +6,7 @@
 
   <x-home.clients :clients="$clients" />
 
-  <x-home.about />
+  <x-home.about :portfolios="$portfolios" />
 
   <x-home.services :servicesForDesktop="$servicesForDesktop" :servicesForMobile="$servicesForMobile" />
 

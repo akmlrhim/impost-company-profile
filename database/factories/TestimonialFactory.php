@@ -9,15 +9,17 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class TestimonialFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
-    {
-        return [
-            //
-        ];
-    }
+	/**
+	 * Define the model's default state.
+	 *
+	 * @return array<string, mixed>
+	 */
+	public function definition(): array
+	{
+		return [
+			'name' => $this->faker->name(),
+			'company_name' => $this->faker->company(),
+			'content' => $this->faker->paragraph(),
+		];
+	}
 }

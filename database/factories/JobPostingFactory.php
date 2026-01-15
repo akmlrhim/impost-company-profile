@@ -17,7 +17,7 @@ class JobPostingFactory extends Factory
 	 */
 	public function definition(): array
 	{
-		$title = $this->faker->jobTitle();
+		$title = $this->faker->unique()->jobTitle();
 
 		return [
 			'title' => $title,

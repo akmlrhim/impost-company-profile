@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use PHPUnit\Metadata\Test;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,9 +25,12 @@ class DatabaseSeeder extends Seeder
 			'password' => Hash::make('omsetnaik1_'),
 		]);
 
-		// $this->call([
-		// 	ServiceSeeder::class,
-		// 	ArticleSeeder::class,
-		// ])
+		$this->call([
+			ArticleCategorySeeder::class,
+			PortfolioCategorySeeder::class,
+			ServiceSeeder::class,
+			ArticleSeeder::class,
+			TestimonialSeeder::class,
+		]);
 	}
 }

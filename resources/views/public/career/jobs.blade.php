@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('content')
-  <main class="pt-28 sm:pt-32 py-8 sm:py-16 antialiased">
+  <main class="pt-18 sm:pt-32 py-8 sm:py-16 antialiased">
     <div class="px-4 mx-auto max-w-7xl">
 
       <nav class="flex mb-8" aria-label="Breadcrumb">
@@ -90,7 +90,7 @@
             </div>
           @empty
             <div class="col-span-full py-20 text-center">
-              <p class="text-impost-third">Belum ada lowongan tersedia saat ini.</p>
+              <p class="text-white">Belum ada lowongan tersedia saat ini.</p>
             </div>
           @endforelse
 

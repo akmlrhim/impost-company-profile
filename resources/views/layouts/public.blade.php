@@ -72,6 +72,7 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+
   <div class="fixed inset-0 -z-10">
     <div class="absolute inset-0 bg-gradient-to-br from-black via-black to-neutral-900"></div>
 

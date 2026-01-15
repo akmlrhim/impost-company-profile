@@ -18,6 +18,7 @@ class Article extends Model
 		'meta_title',
 		'meta_description',
 		'status',
+		'category_id',
 	];
 
 	protected $casts = [
@@ -32,5 +33,10 @@ class Article extends Model
 	public function comments()
 	{
 		return $this->hasMany(Comment::class);
+	}
+
+	public function category()
+	{
+		return $this->belongsTo(ArticleCategory::class);
 	}
 }

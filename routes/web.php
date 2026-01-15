@@ -9,6 +9,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PortfolioCategoryController;
 use App\Http\Controllers\PortfolioController;
@@ -35,14 +36,12 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 
 		Route::get('portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
-		Route::get('portfolio/{portfolio}', [HomeController::class, 'portfolioDetail'])->name('portfolio.detail');
 
 		Route::get('opt-in', [HomeController::class, 'optIn'])->name('opt-in');
 		Route::get('vsl', [HomeController::class, 'vslForm'])->name('vsl-form');
 		Route::post('vsl', [HomeController::class, 'saveLeads'])->name('save-leads');
 
 		Route::get('study-case', [HomeController::class, 'studyCase'])->name('study-case');
-		Route::get('study-case/{study_case}', [HomeController::class, 'studyCaseDetail'])->name('study-case.detail');
 
 		Route::get('articles/view/{article:slug}', [HomeController::class, 'article'])->name('article.detail');
 		Route::get('article/view', [HomeController::class, 'articleAll'])->name('article.all');
@@ -85,13 +84,13 @@ Route::middleware('throttle:30,1')->group(function () {
 		// testimonial route
 		Route::resource('testimonials', TestimonialController::class)->except('show');
 
-		// career route
-		Route::resource('careers', CareerController::class)->except('show');
+		// job route
+		Route::resource('jobpostings', JobPostingController::class);
 
 		// article category
-		Route::resource('article-categories', ArticleCategoryController::class);
+		Route::resource('article-categories', ArticleCategoryController::class)->except(['create', 'show', 'edit']);
 
 		// portfolio category
-		Route::resource('portfolio-categories', PortfolioCategoryController::class);
+		Route::resource('portfolio-categories', PortfolioCategoryController::class)->except(['create', 'show', 'edit']);
 	});
 });

@@ -197,5 +197,6 @@ return [
 
 	'attributes' => [
 		'cover_path' => 'cover',
+		'category_id' => 'category',
 	],
 ];

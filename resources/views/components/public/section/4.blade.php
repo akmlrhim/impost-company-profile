@@ -1,9 +1,12 @@
+@props(['portfolios'])
+
 <style>
   .carousel-3d {
-    perspective: 1200px;
+    perspective: 2000px;
     position: relative;
     width: 100%;
     height: 500px;
+    overflow: hidden;
   }
 
   .carousel-container {
@@ -11,12 +14,12 @@
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .carousel-card {
     position: absolute;
-    width: 350px;
+    width: 320px;
     left: 50%;
     top: 50%;
     transform-style: preserve-3d;
@@ -27,18 +30,63 @@
   .carousel-card.active {
     z-index: 10;
     opacity: 1;
-    filter: brightness(1.2) saturate(1.2);
+    filter: brightness(1.1);
   }
 
   .carousel-card:not(.active) {
     opacity: 0.5;
-    filter: brightness(0.7) saturate(0.8);
+    filter: brightness(0.6);
     cursor: pointer;
   }
 
   .carousel-card:not(.active):hover {
     opacity: 0.8;
-    filter: brightness(0.9) saturate(1);
+    filter: brightness(0.8);
+  }
+
+  .card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    aspect-ratio: 4/5;
+    background: #000;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+  }
+
+  .card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    color: #d4ac3c;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .card-description {
+    color: #e5e5e5;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 0;
   }
 
   .carousel-nav {
@@ -46,296 +94,249 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 20;
-    background: rgba(0, 212, 255, 0.1);
-    border: 1px solid rgba(0, 212, 255, 0.3);
+    background: rgba(212, 172, 60, 0.1);
+    border: 1px solid rgba(212, 172, 60, 0.3);
     backdrop-filter: blur(10px);
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s;
+    color: #d4ac3c;
   }
 
   .carousel-nav:hover {
-    background: rgba(0, 212, 255, 0.3);
-    border-color: rgba(0, 212, 255, 0.6);
+    background: rgba(212, 172, 60, 0.25);
+    border-color: rgba(212, 172, 60, 0.6);
     transform: translateY(-50%) scale(1.1);
   }
 
   .carousel-nav.prev {
-    left: 20px;
+    left: 1rem;
   }
 
   .carousel-nav.next {
-    right: 20px;
-  }
-
-  .mobile-carousel {
-    display: none;
+    right: 1rem;
   }
 
   @media (max-width: 768px) {
     .carousel-3d {
-      display: none;
+      height: 400px;
     }
 
-    .mobile-carousel {
-      display: flex;
+    .carousel-card {
+      width: 280px;
+    }
+
+    .card-content {
+      padding: 1.25rem;
+    }
+
+    .card-title {
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-description {
+      font-size: 0.8125rem;
+    }
+
+    .carousel-nav {
+      width: 40px;
+      height: 40px;
+    }
+
+    .carousel-nav.prev {
+      left: 0.5rem;
+    }
+
+    .carousel-nav.next {
+      right: 0.5rem;
     }
   }
 
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+  @media (max-width: 480px) {
+    .carousel-3d {
+      height: 360px;
+    }
 
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    .carousel-card {
+      width: 250px;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card-title {
+      font-size: 0.8125rem;
+    }
+
+    .card-description {
+      font-size: 0.75rem;
+    }
   }
 </style>
 
-<section class="py-12 md:py-16 relative overflow-hidden">
+<section class="py-12 md:py-20 lg:py-24 relative overflow-hidden">
+
+  <div class="absolute inset-0 opacity-5">
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-impost-primary rounded-full blur-3xl">
+    </div>
+  </div>
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-    <div class="text-center max-w-3xl mx-auto mb-8 md:mb-4 font-header">
-      <h3 class="text-3xl md:text-5xl font-bold text-white mb-6">
-        Hasil Nyata,
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-impost-primary to-impost-secondary">
-          Bukan Janji Kosong
-        </span>
-      </h3>
-      <p class="text-white text-sm md:text-lg leading-relaxed italic">
-        "Kami tidak bicara potensi, kami bicara apa yang sudah terjadi melalui strategi,
-        disiplin, dan sistem yang benar."
+    <div class="text-center max-w-3xl mx-auto mb-10 md:mb-14 lg:mb-16" data-aos="fade-up">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4 md:mb-6">
+        Hasil Nyata, Bukan Janji Kosong
+      </h2>
+      <p class="text-sm sm:text-base md:text-lg text-white">
+        Kami tidak bicara potensi, kami bicara apa yang sudah terjadi melalui strategi, disiplin, dan sistem yang benar
       </p>
     </div>
 
-    {{-- desktop --}}
     <div class="carousel-3d">
-      <div class="carousel-container" id="carouselContainer">
-      </div>
+      <button class="carousel-nav prev" onclick="portfolioCarousel.navigate(-1)">
+        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18-6-6 6-6" />
+        </svg>
+      </button>
+
+      <div class="carousel-container" id="portfolioCarouselContainer"></div>
+
+      <button class="carousel-nav next" onclick="portfolioCarousel.navigate(1)">
+        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18 6-6-6-6" />
+        </svg>
+      </button>
     </div>
-
-    {{-- mobile  --}}
-    <div class="mobile-carousel overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 gap-6">
-      <div class="flex gap-6">
-        <div
-          class="mobile-card group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-6 md:p-8 hover:border-impost-primary/40 transition-all duration-500 snap-center flex-shrink-0">
-          <h4 class="text-white font-bold tracking-wide uppercase mb-4 text-sm md:text-base">Properti (Meta Ads)</h4>
-          <div class="space-y-3">
-            <div class="p-3 md:p-4 bg-black/40 rounded-2xl border border-white/5">
-              <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Total Sales</p>
-              <p class="text-xl md:text-2xl font-bold text-impost-primary">Rp 7 Miliar</p>
-            </div>
-            <ul class="text-xs md:text-sm text-white space-y-2">
-              <li>• Budget: Rp 30 Juta</li>
-              <li>• ROI Puluhan Ribu Persen</li>
-              <li>• Kasus: Ciputra Group</li>
-            </ul>
-          </div>
-        </div>
-
-        <div
-          class="mobile-card group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-6 md:p-8 hover:border-impost-primary/40 transition-all duration-500 snap-center flex-shrink-0">
-          <h4 class="text-white font-bold tracking-wide uppercase mb-4 text-sm md:text-base">Fashion & UMKM</h4>
-          <div class="space-y-3">
-            <div class="p-3 md:p-4 bg-black/40 rounded-2xl border border-white/5">
-              <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Produk Terjual</p>
-              <p class="text-xl md:text-2xl font-bold text-impost-primary">10.000+ via Shopee</p>
-            </div>
-            <ul class="text-xs md:text-sm text-white space-y-2">
-              <li>• Omzet Ratusan Juta/Bulan</li>
-              <li>• Ribuan Ulasan Positif</li>
-              <li>• Trafik & Konversi Stabil</li>
-            </ul>
-          </div>
-        </div>
-
-        <div
-          class="mobile-card group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-6 md:p-8 hover:border-impost-primary/40 transition-all duration-500 snap-center flex-shrink-0">
-          <h4 class="text-white font-bold tracking-wide uppercase mb-4 text-sm md:text-base">Gym & Bela Diri</h4>
-          <div class="space-y-3">
-            <div class="p-3 md:p-4 bg-black/40 rounded-2xl border border-white/5">
-              <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Growth Akun</p>
-              <p class="text-xl md:text-2xl font-bold text-impost-primary">615%</p>
-            </div>
-            <ul class="text-xs md:text-sm text-white space-y-2">
-              <li>• CPC: Rp100K → Rp3.285</li>
-              <li>• ROI Hingga 5.000%+</li>
-              <li>• Konten Viral 30K–60K</li>
-            </ul>
-          </div>
-        </div>
-
-        <div
-          class="mobile-card group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-6 md:p-8 hover:border-impost-primary/40 transition-all duration-500 snap-center flex-shrink-0">
-          <h4 class="text-white font-bold tracking-wide uppercase mb-4 text-sm md:text-base">Tour, Travel & Umroh</h4>
-          <ul class="text-xs md:text-sm text-white space-y-2.5">
-            <li>• Jemaah: 0 → 10+/bulan</li>
-            <li>• Konten FYP & Engagement</li>
-            <li>• Offline → Full Digital</li>
-          </ul>
-        </div>
-
-        <!-- Card 5 -->
-        <div
-          class="mobile-card group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-6 md:p-8 hover:border-impost-primary/40 transition-all duration-500 snap-center flex-shrink-0">
-          <h4 class="text-white font-bold tracking-wide uppercase mb-4 text-sm md:text-base">Kesehatan & Lokal</h4>
-          <ul class="text-xs md:text-sm text-white space-y-2.5">
-            <li>• Omzet Ratusan Juta/Bulan</li>
-            <li>• Branding Premium</li>
-            <li>• Ratusan Ribu Views</li>
-          </ul>
-        </div>
-
-        <!-- Card 6 -->
-        <div
-          class="mobile-card group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-6 md:p-8 hover:border-impost-primary/40 transition-all duration-500 snap-center flex-shrink-0">
-          <h4 class="text-white font-bold tracking-wide uppercase mb-4 text-sm md:text-base">Event & Hiburan</h4>
-          <ul class="text-xs md:text-sm text-white space-y-2.5">
-            <li>• 600.000+ Impressions</li>
-            <li>• Ribuan Interaksi</li>
-            <li>• Dihadiri Tokoh Penting</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <script>
-  const cardsData = [{
-      title: 'Properti (Meta Ads)',
-      metric: 'Total Sales',
-      value: 'Rp 7 Miliar',
-      details: ['• Budget: Rp 30 Juta', '• ROI Puluhan Ribu Persen', '• Kasus: Ciputra Group']
-    },
-    {
-      title: 'Fashion & UMKM',
-      metric: 'Produk Terjual',
-      value: '10.000+ via Shopee',
-      details: ['• Omzet Ratusan Juta/Bulan', '• Ribuan Ulasan Positif', '• Trafik & Konversi Stabil']
-    },
-    {
-      title: 'Gym & Bela Diri',
-      metric: 'Growth Akun',
-      value: '615%',
-      details: ['• CPC: Rp100K → Rp3.285', '• ROI Hingga 5.000%+', '• Konten Viral 30K–60K']
-    },
-    {
-      title: 'Tour, Travel & Umroh',
-      details: ['• Jemaah: 0 → 10+/bulan', '• Konten FYP & Engagement', '• Offline → Full Digital']
-    },
-    {
-      title: 'Kesehatan & Lokal',
-      details: ['• Omzet Ratusan Juta/Bulan', '• Branding Premium', '• Ratusan Ribu Views']
-    },
-    {
-      title: 'Event & Hiburan',
-      details: ['• 600.000+ Impressions', '• Ribuan Interaksi', '• Dihadiri Tokoh Penting']
-    }
-  ];
+  const portfolioCarousel = (function() {
+    const portfoliosData = @json($portfolios);
 
-  let currentIndex = 0;
-  const container = document.getElementById('carouselContainer');
-  const totalCards = cardsData.length;
+    let currentIndex = 0;
+    let autoRotate;
+    const container = document.getElementById('portfolioCarouselContainer');
+    const totalCards = portfoliosData.length;
 
-  function createCard(data, index) {
-    const card = document.createElement('div');
-    card.className = 'carousel-card';
-    card.innerHTML = `
-      <div class="group bg-impost-fourth/10 border border-impost-third/10 rounded-3xl p-8 hover:border-impost-primary/40 transition-all duration-500 h-full backdrop-blur-sm">
-        <h4 class="text-white font-bold tracking-wide uppercase mb-6">${data.title}</h4>
-        <div class="space-y-4">
-          ${data.metric ? `
-            <div class="p-4 bg-black/40 rounded-2xl border border-white/5">
-              <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">${data.metric}</p>
-              <p class="text-2xl font-bold text-impost-primary">${data.value}</p>
-            </div>
-          ` : ''}
-          <ul class="text-sm text-white space-y-2">
-            ${data.details.map(detail => `<li>${detail}</li>`).join('')}
-          </ul>
+    function createCard(portfolio, index) {
+      const card = document.createElement('div');
+      card.className = 'carousel-card';
+
+      const imageUrl = portfolio.cover_path ?
+        `{{ asset('storage/') }}/${portfolio.cover_path}` :
+        'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&h=600&fit=crop';
+
+      card.innerHTML = `
+        <div class="card-image-wrapper">
+          <img src="${imageUrl}" alt="${portfolio.title}" class="card-image" loading="lazy">
+          <div class="card-overlay"></div>
         </div>
-      </div>
-    `;
-
-    card.addEventListener('click', () => {
-      if (!card.classList.contains('active')) {
-        currentIndex = index;
-        updateCarousel();
-        restartAutoRotate();
-      }
-    });
-
-    return card;
-  }
-
-  function updateCarousel() {
-    const cards = container.querySelectorAll('.carousel-card');
-    const angleStep = 360 / totalCards;
-    const radius = 450;
-
-    cards.forEach((card, index) => {
-      const angle = angleStep * (index - currentIndex);
-      const rad = (angle * Math.PI) / 180;
-
-      const x = Math.sin(rad) * radius;
-      const z = Math.cos(rad) * radius - radius;
-      const rotateY = -angle;
-
-      card.style.transform = `
-        translate(-50%, -50%)
-        translate3d(${x}px, 0, ${z}px)
-        rotateY(${rotateY}deg)
       `;
 
-      if (index === currentIndex) {
-        card.classList.add('active');
-      } else {
-        card.classList.remove('active');
-      }
-    });
-  }
+      card.addEventListener('click', () => {
+        if (!card.classList.contains('active')) {
+          currentIndex = index;
+          updateCarousel();
+          restartAutoRotate();
+        }
+      });
 
-  // Initialize carousel
-  cardsData.forEach((data, index) => {
-    const card = createCard(data, index);
-    container.appendChild(card);
-  });
-
-  updateCarousel();
-
-  // Auto-rotate
-  let autoRotate;
-
-  function startAutoRotate() {
-    autoRotate = setInterval(() => {
-      currentIndex = (currentIndex + 1) % totalCards;
-      updateCarousel();
-    }, 1000);
-  }
-
-  function stopAutoRotate() {
-    if (autoRotate) {
-      clearInterval(autoRotate);
-      autoRotate = null;
+      return card;
     }
-  }
 
-  function restartAutoRotate() {
-    stopAutoRotate();
-    startAutoRotate();
-  }
+    function updateCarousel() {
+      const cards = container.querySelectorAll('.carousel-card');
 
-  // Start auto-rotate on load
-  startAutoRotate();
+      const minAngleStep = 30;
+      const angleStep = Math.max(minAngleStep, 360 / totalCards);
 
-  // Pause on hover
-  container.addEventListener('mouseenter', stopAutoRotate);
-  container.addEventListener('mouseleave', startAutoRotate);
+      let baseRadius = (window.innerWidth <= 480) ? 300 : (window.innerWidth <= 768) ? 450 : 600;
+
+      const radius = baseRadius + (totalCards > 5 ? (totalCards - 5) * 20 : 0);
+
+      cards.forEach((card, index) => {
+        let offset = index - currentIndex;
+
+        if (offset > totalCards / 2) offset -= totalCards;
+        if (offset < -totalCards / 2) offset += totalCards;
+
+        const angle = angleStep * offset;
+        const rad = (angle * Math.PI) / 180;
+
+        const x = Math.sin(rad) * radius;
+        const z = Math.cos(rad) * radius - radius;
+        const rotateY = -angle;
+
+
+        const isVisible = Math.abs(offset) <= 3;
+
+        card.style.transform = `
+				translate(-50%, -50%)
+				translate3d(${x}px, 0, ${z}px)
+				rotateY(${rotateY}deg)
+			`;
+
+        card.style.opacity = isVisible ? (index === currentIndex ? "1" : "0.4") : "0";
+        card.style.pointerEvents = isVisible ? "auto" : "none";
+        card.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    function navigate(direction) {
+      currentIndex = (currentIndex + direction + totalCards) % totalCards;
+      updateCarousel();
+      restartAutoRotate();
+    }
+
+    function startAutoRotate() {
+      autoRotate = setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalCards;
+        updateCarousel();
+      }, 3500);
+    }
+
+    function stopAutoRotate() {
+      if (autoRotate) {
+        clearInterval(autoRotate);
+        autoRotate = null;
+      }
+    }
+
+    function restartAutoRotate() {
+      stopAutoRotate();
+      startAutoRotate();
+    }
+
+    function init() {
+      portfoliosData.forEach((portfolio, index) => {
+        const card = createCard(portfolio, index);
+        container.appendChild(card);
+      });
+
+      updateCarousel();
+      startAutoRotate();
+
+      if (window.innerWidth > 768) {
+        container.addEventListener('mouseenter', stopAutoRotate);
+        container.addEventListener('mouseleave', startAutoRotate);
+      }
+
+      window.addEventListener('resize', updateCarousel);
+    }
+
+    init();
+
+    return {
+      navigate
+    };
+  })();
 </script>

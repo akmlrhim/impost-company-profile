@@ -29,7 +29,7 @@
 
             <div class="p-5 flex flex-col flex-1">
               <h3 class="text-md font-medium text-gray-900 mb-2">
-                {{ $portfolio->name }}
+                {{ $portfolio->title }}
               </h3>
 
               <div class="mt-auto flex items-center gap-2">

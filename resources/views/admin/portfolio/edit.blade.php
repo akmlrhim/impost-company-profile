@@ -9,78 +9,89 @@
       @method('PUT')
 
       <div class="p-6 space-y-3">
-        {{-- nama --}}
+        {{-- juudul --}}
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-900 mb-2">
-            Nama Portfolio
+          <label for="title" class="block text-sm font-medium text-gray-900 mb-2">
+            Judul Portfolio
           </label>
-          <input type="text" id="name" name="name"
+          <input type="text" id="title" name="title"
             class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-            value="{{ old('name', $portfolio->name) }}" placeholder="Masukkan nama portfolio" autocomplete="off" />
-          @error('name')
+            value="{{ old('title', $portfolio->title) }}" placeholder="Masukkan judul portfolio" autocomplete="off" />
+          @error('title')
+            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+          @enderror
+        </div>
+
+        {{-- kategori --}}
+        <div>
+          <label for="category_id" class="block text-sm font-medium text-gray-900 mb-2">
+            Kategori
+          </label>
+          <select id="category_id" name="category_id"
+            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow">
+            <option value="" disabled selected>Pilih kategori</option>
+            @foreach ($category as $id => $name)
+              <option value="{{ $id }}"
+                {{ old('category_id', $portfolio->category_id) == $id ? 'selected' : '' }}>{{ $name }}
+              </option>
+            @endforeach
+          </select>
+          @error('category_id')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
           @enderror
         </div>
 
         {{-- cover  --}}
-        <div x-data="{ preview: '{{ $portfolio->cover_path ? asset('storage/' . $portfolio->cover_path) : '' }}' }">
-          <label class="block text-sm font-medium mb-2">Cover</label>
+        <div x-data="{
+            preview: '{{ $portfolio->cover_path ? asset('storage/' . $portfolio->cover_path) : '' }}',
+            oldPreview: '{{ $portfolio->cover_path ? asset('storage/' . $portfolio->cover_path) : '' }}'
+        }">
+          <label class="block text-sm font-medium mb-2" for="cover_path">
+            Cover
+          </label>
 
-          <input type="file" name="cover_path" accept="image/*"
-            class="w-full text-sm border border-gray-300 rounded-sm"
-            @change="preview = URL.createObjectURL($event.target.files[0])">
+          <input type="file" name="cover_path" id="cover_path" accept="image/*"
+            class="w-full text-sm rounded-sm border border-gray-300"
+            @change="
+						const file = $event.target.files[0];
+						if (file) {
+							if (preview && preview !== oldPreview) {
+								URL.revokeObjectURL(preview);
+							}
+							preview = URL.createObjectURL(file);
+						}
+					">
 
           @error('cover_path')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
           @enderror
 
           <template x-if="preview">
-            <div class="mt-3">
-              <p class="text-xs text-gray-500 mb-1">Preview cover</p>
-              <img :src="preview" class="w-40 rounded-md border object-cover">
+            <div class="mt-4">
+              <p class="text-xs text-gray-500 mb-2">
+                Preview cover
+                <span x-show="preview === oldPreview">(cover saat ini)</span>
+              </p>
+
+              <img :src="preview" class="w-40 h-56 rounded-md border border-gray-200 shadow-sm object-cover"
+                alt="Preview cover">
             </div>
           </template>
         </div>
+
         {{-- end  --}}
 
-        {{-- photos --}}
-        @if ($portfolio->photos->count())
-          <div>
-            <p class="text-sm font-medium mb-2">Foto Saat Ini</p>
-            <div class="flex flex-wrap gap-3">
-              @foreach ($portfolio->photos as $photo)
-                <div class="relative">
-                  <img src="{{ asset('storage/' . $photo->photo_path) }}" class="w-24 h-24 object-cover rounded border">
-                  <label class="absolute top-1 right-1 bg-white rounded px-1 text-xs">
-                    <input type="checkbox" name="delete_photos[]" value="{{ $photo->id }}"
-                      class="scale-50 rounded-md border-danger">
-                    Hapus
-                  </label>
-                </div>
-              @endforeach
-            </div>
-          </div>
-        @endif
-
-        <div x-data="{ previews: [] }">
-          <label class="block text-sm font-medium mb-2">
-            Tambah Foto Portfolio
+        {{-- description --}}
+        <div>
+          <label for="description" class="block text-sm font-medium text-gray-900 mb-2">
+            Deskripsi
           </label>
-
-          <input type="file" name="photos[]" multiple accept="image/*"
-            class="w-full text-sm border border-gray-300 rounded-sm"
-            @change="
-            previews = [];
-            [...$event.target.files].forEach(file => previews.push(URL.createObjectURL(file)))
-          ">
-
-          <template x-if="previews.length">
-            <div class="mt-3 flex flex-wrap gap-2">
-              <template x-for="src in previews" :key="src">
-                <img :src="src" class="w-24 h-24 object-cover rounded border">
-              </template>
-            </div>
-          </template>
+          <textarea id="description" name="description"
+            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+            placeholder="Masukkan deskripsi portfolio" rows="4">{{ old('description', $portfolio->description) }}</textarea>
+          @error('description')
+            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+          @enderror
         </div>
 
       </div>
@@ -94,7 +105,7 @@
         <button type="submit" :disabled="loading"
           class="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
 
-          <span x-text="loading ? 'Menyimpan...' : 'Update Portfolio'"></span>
+          <span x-text="loading ? 'Menyimpan...' : 'Perbarui Portfolio'"></span>
         </button>
       </div>
     </form>

@@ -8,15 +8,33 @@
       @csrf
 
       <div class="p-6 space-y-3">
-        {{-- nama --}}
+        {{-- juudul --}}
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-900 mb-2">
-            Nama Portfolio
+          <label for="title" class="block text-sm font-medium text-gray-900 mb-2">
+            Judul Portfolio
           </label>
-          <input type="text" id="name" name="name"
+          <input type="text" id="title" name="title"
             class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-            value="{{ old('name') }}" placeholder="Masukkan nama portfolio" autocomplete="off" />
-          @error('name')
+            value="{{ old('title') }}" placeholder="Masukkan judul portfolio" autocomplete="off" />
+          @error('title')
+            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+          @enderror
+        </div>
+
+        {{-- kategori --}}
+        <div>
+          <label for="category_id" class="block text-sm font-medium text-gray-900 mb-2">
+            Kategori
+          </label>
+          <select id="category_id" name="category_id"
+            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow">
+            <option value="" disabled selected>Pilih kategori</option>
+            @foreach ($category as $id => $name)
+              <option value="{{ $id }}" {{ old('category_id') == $id ? 'selected' : '' }}>{{ $name }}
+              </option>
+            @endforeach
+          </select>
+          @error('category_id')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
           @enderror
         </div>
@@ -50,30 +68,19 @@
         </div>
         {{-- end  --}}
 
-        {{-- photos --}}
-        <div x-data="{ previews: [] }" class="mt-4">
-          <label class="block text-sm font-medium mb-2" for="photos">
-            Foto Portfolio
+        {{-- description --}}
+        <div>
+          <label for="description" class="block text-sm font-medium text-gray-900 mb-2">
+            Deskripsi
           </label>
-
-          <input type="file" name="photos[]" id="photos" accept="image/*" multiple
-            class="w-full text-sm rounded-sm border border-gray-300"
-            @change="
-							previews = [];
-							for (let i = 0; i < $event.target.files.length; i++) {
-								previews.push(URL.createObjectURL($event.target.files[i]));
-							}
-						">
-
-          <template x-if="previews.length > 0">
-            <div class="mt-4 flex flex-wrap gap-2">
-              <template x-for="src in previews" :key="src">
-                <img :src="src" class="w-24 h-24 object-cover rounded border border-gray-200 shadow-sm"
-                  alt="Preview photo">
-              </template>
-            </div>
-          </template>
+          <textarea id="description" name="description"
+            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+            placeholder="Masukkan deskripsi portfolio" rows="4">{{ old('description') }}</textarea>
+          @error('description')
+            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+          @enderror
         </div>
+
       </div>
 
       <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-end gap-3">

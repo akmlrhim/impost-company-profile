@@ -2,7 +2,7 @@
 
   <div class="mb-6 sm:mb-10 text-center px-4 max-w-5xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
     <h2
-      class="font-header mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-impost-primary leading-snug sm:leading-tight max-w-3xl mx-auto">
+      class="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-impost-primary leading-snug sm:leading-tight max-w-5xl mx-auto">
       Lihat Bagaimana Tim Impost Media Membantu Brand & Bisnis Bertumbuh Secara Terukur
     </h2>
     <p class="text-sm sm:text-base md:text-lg text-gray-300 max-w-lg md:max-w-2xl mx-auto leading-relaxed">
@@ -31,8 +31,7 @@
 
     <div class="mt-6 sm:mt-10 flex flex-col items-center gap-4 px-2" data-aos="fade-up" data-aos-duration="800"
       data-aos-delay="400">
-      <button 
-        onclick="window.location.href='{{ route('vsl-form') }}'"
+      <button onclick="window.location.href='{{ route('vsl-form') }}'"
         class="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base font-semibold text-white bg-impost-primary rounded-lg shadow-lg shadow-impost-primary/30 hover:bg-impost-primary/90 hover:shadow-xl hover:shadow-impost-primary/40 focus:outline-none focus:ring-4 focus:ring-impost-primary/40 transition-all duration-300">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
           stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6">

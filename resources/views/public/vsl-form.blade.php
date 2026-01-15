@@ -2,7 +2,7 @@
 @section('content')
   <main class="pt-32 sm:pt-36 py-8 sm:py-12 antialiased relative overflow-hidden">
 
-    <div class="px-4 mx-auto max-w-4xl relative z-10">
+    <div class="px-2 mx-auto max-w-4xl relative z-10">
 
       <div class="mb-12 text-center">
         <div
@@ -14,7 +14,7 @@
         </div>
 
         <h1
-          class="font-header text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent leading-tight">
+          class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent leading-tight">
           Mari Kita Mulai
         </h1>
         <p class="text-gray-300 text-sm md:text-md max-w-2xl mx-auto leading-relaxed">
@@ -23,19 +23,12 @@
         </p>
       </div>
 
-      <div
-        class="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-10 border border-gray-700/50 shadow-2xl">
+      <div class="bg-gray-800 backdrop-blur-sm rounded-md p-4 sm:p-6 md:p-8 border border-gray-700/50 shadow-md">
         <form action="{{ route('save-leads') }}" method="POST" class="space-y-6">
           @csrf
 
           <div class="space-y-6">
             <div class="flex items-center gap-3 pb-4 border-b border-gray-700/50">
-              <div class="w-8 h-8 rounded-lg bg-impost-primary/20 flex items-center justify-center">
-                <svg class="w-4 h-4 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
               <h2 class="text-lg font-semibold text-white">Informasi Pribadi</h2>
             </div>
 
@@ -107,12 +100,6 @@
 
           <div class="space-y-6 pt-4">
             <div class="flex items-center gap-3 pb-4 border-b border-gray-700/50">
-              <div class="w-8 h-8 rounded-lg bg-impost-secondary/20 flex items-center justify-center">
-                <svg class="w-4 h-4 text-impost-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
               <h2 class="text-lg font-semibold text-white">Informasi Bisnis</h2>
             </div>
 
@@ -173,71 +160,28 @@
 
           <div class="space-y-5 pt-4">
             <div class="flex items-center gap-3 pb-4 border-b border-gray-700/50">
-              <div class="w-8 h-8 rounded-lg bg-impost-fourth/20 flex items-center justify-center">
-                <svg class="w-4 h-4 text-impost-fourth" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
               <h2 class="text-lg font-semibold text-white">Tujuan <span class="text-red-400">*</span></h2>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-3">
               @php
                 $objectives = [
-                    'Branding' => [
-                        'desc' => 'Meningkatkan citra dan kepercayaan brand',
-                        'icon' =>
-                            'M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z',
-                    ],
-                    'Engagement' => [
-                        'desc' => 'Mendapatkan interaksi & followers',
-                        'icon' =>
-                            'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z',
-                    ],
-                    'Sales ROI' => [
-                        'desc' => 'Meningkatkan leads dan penjualan',
-                        'icon' => 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
-                    ],
-                    'Branding & Sales' => [
-                        'desc' => 'Branding sekaligus penjualan',
-                        'icon' =>
-                            'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
-                    ],
+                    'Branding' => 'Meningkatkan citra dan kepercayaan brand',
+                    'Engagement' => 'Mendapatkan interaksi & followers',
+                    'Sales ROI' => 'Meningkatkan leads dan penjualan',
+                    'Branding & Sales' => 'Branding sekaligus penjualan',
                 ];
               @endphp
 
-              @foreach ($objectives as $value => $data)
+              @foreach ($objectives as $value => $desc)
                 <label
-                  class="relative flex gap-4 p-4 rounded-xl bg-gray-900/30 border-2 border-gray-700/50 cursor-pointer transition-all hover:border-impost-primary/50 hover:bg-gray-900/50 group has-[:checked]:border-impost-primary has-[:checked]:bg-impost-primary/5">
+                  class="flex items-center gap-3 p-3 rounded-lg bg-gray-900/30 border border-gray-700/50 cursor-pointer hover:bg-gray-900/50 transition-all has-[:checked]:bg-impost-primary/10 has-[:checked]:border-impost-primary">
                   <input type="checkbox" name="objective[]" value="{{ $value }}"
-                    class="peer mt-1 w-5 h-5 rounded-md bg-gray-800 border-gray-600 text-impost-primary focus:ring-2 focus:ring-impost-primary focus:ring-offset-0 focus:ring-offset-gray-900 cursor-pointer transition-all"
+                    class="w-5 h-5 rounded-md bg-gray-800 border-gray-600 text-impost-primary cursor-pointer"
                     {{ in_array($value, old('objective', [])) ? 'checked' : '' }}>
-
                   <div class="flex-1">
-                    <div class="flex items-start gap-3">
-                      <div
-                        class="w-10 h-10 rounded-lg bg-impost-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-impost-primary/20 transition-colors">
-                        <svg class="w-5 h-5 text-impost-primary" fill="none" stroke="currentColor"
-                          viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="{{ $data['icon'] }}" />
-                        </svg>
-                      </div>
-                      <div class="flex-1">
-                        <span
-                          class="block font-semibold text-white mb-1 group-hover:text-impost-primary transition-colors">{{ $value }}</span>
-                        <span class="block text-xs text-gray-400 leading-relaxed">{{ $data['desc'] }}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    class="absolute top-3 right-3 w-6 h-6 rounded-full border-2 border-gray-600 peer-checked:border-impost-primary peer-checked:bg-impost-primary flex items-center justify-center transition-all">
-                    <svg class="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 transition-opacity"
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                    </svg>
+                    <span class="block font-semibold text-white text-sm">{{ $value }}</span>
+                    <span class="block text-xs text-gray-400">{{ $desc }}</span>
                   </div>
                 </label>
               @endforeach
@@ -248,13 +192,8 @@
             @enderror
           </div>
 
-          <!-- Notes Section -->
           <div class="space-y-3 pt-4">
             <label class="flex items-center gap-3 text-sm font-medium text-gray-300">
-              <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-              </svg>
               Catatan Tambahan
             </label>
             <textarea name="note" rows="4"
@@ -267,10 +206,6 @@
               class="group relative w-full rounded-xl bg-gradient-to-r from-impost-primary to-impost-secondary py-4 text-base font-semibold text-white focus:ring-4 focus:ring-impost-primary/30 transition-all overflow-hidden">
               <span class="relative z-10 flex items-center justify-center gap-2">
                 Kirim Data
-                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
-                  stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
               </span>
               <div
                 class="absolute inset-0 bg-gradient-to-r from-impost-secondary to-impost-primary opacity-0 group-hover:opacity-100 transition-opacity">

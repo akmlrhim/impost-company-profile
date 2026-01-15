@@ -92,7 +92,7 @@
 
               <div class="flex gap-2 pt-4 mt-auto">
                 <a href="{{ route('teams.edit', $team) }}"
-                  class="flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-yellow-600 rounded-sm hover:bg-yellow-700 transition">
+                  class="flex-1 inline-flex items-center justify-center px-3 py-1.5 text-xs font-medium text-white bg-yellow-600 rounded-sm hover:bg-yellow-700 transition">
                   Edit
                 </a>
 

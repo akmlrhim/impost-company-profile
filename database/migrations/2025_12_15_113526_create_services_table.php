@@ -18,6 +18,7 @@ return new class extends Migration
 			$table->text('description');
 			$table->string('cover_path')->nullable();
 			$table->integer('sort')->index();
+			$table->string('category')->index();
 			$table->timestamps();
 		});
 	}

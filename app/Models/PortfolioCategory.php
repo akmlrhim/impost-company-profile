@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PortfolioCategory extends Model
 {
-    /** @use HasFactory<\Database\Factories\PortfolioCategoryFactory> */
-    use HasFactory;
+	use HasFactory;
+
+	protected $table = 'portfolio_categories';
+	protected $fillable = ['name', 'slug'];
 }

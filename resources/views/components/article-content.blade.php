@@ -1,4 +1,4 @@
-<div class="max-w-none px-4 sm:px-0">
+<div class="max-w-none px-2 sm:px-0">
   <div id="content"
     class="prose max-w-none text-justify
 

@@ -28,7 +28,7 @@
 
   <div class="absolute inset-x-0 bottom-0 p-6">
 
-    <h3 class="text-2xl font-bold text-white mb-2 leading-tight">
+    <h3 class="text-lg font-bold text-white mb-2 leading-tight">
       {{ $service->service_name }}
     </h3>
 

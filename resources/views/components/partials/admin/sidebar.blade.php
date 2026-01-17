@@ -26,7 +26,7 @@
         {{-- CMS Dropdown --}}
         <li>
           <button type="button"
-            class="w-full flex items-center justify-between p-2 text-gray-300 rounded-sm hover:bg-gray-800 hover:text-white cursor-pointer"
+            class="w-full flex items-center justify-between p-2 text-white rounded-sm hover:bg-gray-800 hover:text-white cursor-pointer"
             onclick="document.getElementById('cms-dropdown').classList.toggle('hidden')">
             <div class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -96,7 +96,7 @@
         {{-- Category Dropdown --}}
         <li>
           <button type="button"
-            class="w-full flex items-center justify-between p-2 text-gray-300 rounded-sm hover:bg-gray-800 hover:text-white cursor-pointer"
+            class="w-full flex items-center justify-between p-2 text-white rounded-sm hover:bg-gray-800 hover:text-white cursor-pointer"
             onclick="document.getElementById('ctg-dropdown').classList.toggle('hidden')">
             <div class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"

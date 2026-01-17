@@ -1,21 +1,28 @@
 <nav class="fixed top-0 z-50 w-full bg-impost-fifth/10 backdrop-blur-md">
-  <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto py-2 sm:py-4 px-4 sm:px-8">
+  <div x-data="{ open: false, isDesktop: window.innerWidth >= 768 }" x-init="() => { window.addEventListener('resize', () => { isDesktop = window.innerWidth >= 768 }) }" @click.away="if (!isDesktop) open = false"
+    class="max-w-7xl flex flex-wrap items-center justify-between mx-auto py-2 sm:py-4 px-4 sm:px-8">
 
     <a href="{{ route('home') }}" class="flex items-center">
       <img src="{{ asset('img/logo_impost_putih.jpg') }}" class="h-7 sm:h-10 md:h-14 w-auto transition-all duration-300"
         loading="lazy" />
     </a>
 
-    <button data-collapse-toggle="navbar-dropdown" type="button"
-      class="inline-flex items-center justify-center w-8 h-8 p-1 text-impost-primary rounded-md md:hidden hover:bg-white/10 focus:outline-none"
-      aria-controls="navbar-dropdown" aria-expanded="false">
+    <button type="button"
+      class="inline-flex items-center justify-center w-8 h-8 p-1 text-impost-primary rounded-md md:hidden hover:bg-white/10 focus:outline-none transition-colors"
+      aria-controls="navbar-dropdown" :aria-expanded="open.toString()" @click="open = !open">
       <span class="sr-only">Open main menu</span>
       <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
       </svg>
     </button>
 
-    <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+    <div id="navbar-dropdown" x-cloak class="w-full md:block md:w-auto origin-top" x-show="open || isDesktop"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-2 scale-95"
+      x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+      x-transition:leave="transition ease-in duration-180"
+      x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+      x-transition:leave-end="opacity-0 -translate-y-2 scale-95" style="display: none;">
       <ul
         class="flex flex-col md:flex-row font-medium text-sm md:text-base p-4 md:p-0 mt-4 md:mt-0 space-y-1 md:space-y-0 md:space-x-3 rtl:space-x-reverse md:items-center">
 

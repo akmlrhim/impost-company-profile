@@ -33,7 +33,7 @@
             class="flex items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 px-3 sm:px-4 shrink-0 marquee-content">
             @foreach ($clients as $client)
               <img src="{{ asset('storage/' . $client->client_logo) }}" alt="{{ $client->filename }}"
-                class="h-8 sm:h-10 md:h-8 lg:h-12 xl:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+                class="h-8 sm:h-10 md:h-8 lg:h-12 xl:h-16 w-auto object-contain transition-all duration-300 opacity-70 hover:opacity-100"
                 decoding="async" loading="lazy" x-init="markLoaded()">
             @endforeach
           </div>
@@ -42,7 +42,7 @@
             class="flex items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 px-3 sm:px-4 shrink-0 marquee-content">
             @foreach ($clients as $client)
               <img src="{{ asset('storage/' . $client->client_logo) }}" alt="{{ $client->filename }}"
-                class="h-8 sm:h-10 md:h-8 lg:h-12 xl:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+                class="h-8 sm:h-10 md:h-8 lg:h-12 xl:h-16 w-auto object-contain transition-all duration-300 opacity-70 hover:opacity-100"
                 decoding="async" loading="lazy" x-init="markLoaded()">
             @endforeach
           </div>

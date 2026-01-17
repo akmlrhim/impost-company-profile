@@ -1,7 +1,7 @@
 <section id="services" class="relative max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-10 overflow-hidden">
 
   <div class="relative mb-8 sm:mb-10 md:mb-12 text-center" data-aos="fade-up">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6">
+    <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-5 sm:mb-6">
       <span class="text-impost-primary">
         Layanan Kami
       </span>

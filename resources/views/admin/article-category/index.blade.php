@@ -30,7 +30,7 @@
               <td class="px-2 py-1 sm:px-3 sm:py-2 whitespace-nowrap">
                 <button type="button" data-modal-target="edit-category-modal-{{ $articleCategory->id }}"
                   data-modal-toggle="edit-category-modal-{{ $articleCategory->id }}"
-                  class="cursor-pointer flex-1 inline-flex items-center justify-center text-white hover:bg-yellow-500 bg-yellow-600 px-3 py-2 rounded-md">
+                  class="cursor-pointer flex-1 inline-flex items-center justify-center text-white hover:bg-yellow-500 bg-yellow-600 px-3 py-1.5 text-xs rounded-md">
                   Edit
                 </button>
                 <x-confirm-delete :action="route('article-categories.destroy', $articleCategory)" label="Hapus" />

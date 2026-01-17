@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\JobPosting;
 use App\Models\Leads;
 use App\Models\Portfolio;
+use App\Models\PortfolioCategory;
 use App\Models\StudyCase;
 use App\Models\Testimonial;
 use App\Services\ArticleService;
@@ -31,6 +32,7 @@ class HomeController extends Controller
 		$clients = ClientService::all();
 		$testimonials = Testimonial::select('name', 'company_name', 'content')->latest()->get();
 		$portfolios = Portfolio::latest()->get();
+		$portfolioCategories = PortfolioCategory::select('id', 'name', 'slug')->get();
 
 		return view('public.home', compact(
 			'title',
@@ -41,7 +43,8 @@ class HomeController extends Controller
 			'studyCaseForDesktop',
 			'studyCaseForMobile',
 			'testimonials',
-			'portfolios'
+			'portfolios',
+			'portfolioCategories'
 		));
 	}
 

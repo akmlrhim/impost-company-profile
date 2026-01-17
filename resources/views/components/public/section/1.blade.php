@@ -9,7 +9,7 @@
 
     <div class="max-w-4xl mb-12 md:mb-16 lg:mb-20" data-aos="fade-up">
 
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4 md:mb-6">
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white mb-4 md:mb-6">
         Kami Bukan Agency yang Jual Konten atau Iklan
       </h2>
       <p class="text-lg sm:text-xl md:text-2xl text-impost-secondary font-medium">

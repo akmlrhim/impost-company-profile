@@ -6,11 +6,14 @@
 
   <x-home.clients :clients="$clients" />
 
-  <x-home.about :portfolios="$portfolios" />
+  <x-home.about :portfolios="$portfolios" :portfolioCategories="$portfolioCategories" />
 
   <x-home.services :servicesForDesktop="$servicesForDesktop" :servicesForMobile="$servicesForMobile" />
 
   <x-home.works />
 
   <x-home.testimonials :testimonials="$testimonials" />
+
+  <x-home.faq></x-home.faq>
 @endsection
+	

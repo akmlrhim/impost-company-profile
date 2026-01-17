@@ -1,6 +1,6 @@
-<section class="relative max-w-7xl py-12 md:py-20 lg:py-24 mx-auto overflow-hidden" id="testimonials">
-  <div class="relative mb-10 text-center" data-aos="fade-up">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-impost-primary">
+<section class="relative w-full max-w-7xl py-8 sm:py-10 md:py-12 lg:py-16 mx-auto overflow-hidden" id="testimonials">
+  <div class="relative text-center" data-aos="fade-up">
+    <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-impost-primary">
       Apa Kata Mereka?
     </h2>
 
@@ -15,7 +15,8 @@
                 <div class="relative w-full h-64 rounded-xl overflow-hidden border border-white/10 shadow-xl mx-auto">
                   <img
                     src="{{ $t->photo ? asset('storage/' . $t->photo) : 'https://images.unsplash.com/photo-1619658535018-5a55d32e4628' }}"
-                    loading="lazy" alt="Bukti Testimoni {{ $t->name }}" class="w-full h-full object-cover">
+                    loading="lazy" decoding="async" alt="Bukti Testimoni {{ $t->name }}"
+                    class="w-full h-full object-cover">
 
                   <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                 </div>

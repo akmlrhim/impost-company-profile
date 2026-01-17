@@ -9,7 +9,7 @@
 
       <div data-aos="fade-right">
 
-        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6 md:mb-8">
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-6 md:mb-8">
           Apa yang Kami <span class="text-impost-primary">Selesaikan?</span>
         </h2>
 

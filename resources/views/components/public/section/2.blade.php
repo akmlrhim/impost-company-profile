@@ -8,7 +8,7 @@
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center mb-10 md:mb-14 lg:mb-16" data-aos="fade-up">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6 leading-tight">
         Kenapa Banyak Bisnis <span class="text-red-500">Gagal Naik Omzet?</span>
       </h2>
       <p class="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto">

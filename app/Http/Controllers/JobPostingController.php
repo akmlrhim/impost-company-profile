@@ -38,6 +38,16 @@ class JobPostingController extends Controller
 	}
 
 	/**
+	 * Show the form for showing the specified resource.
+	 */
+	public function show(string $slug)
+	{
+		$title = 'Detail Job Posting';
+		$jobPosting = JobPosting::where('slug', $slug)->firstOrFail();
+		return view('admin.jobpostings.detail', compact('title', 'jobPosting'));
+	}
+
+	/**
 	 * Store a newly created resource in storage.
 	 */
 	public function store(Request $request)

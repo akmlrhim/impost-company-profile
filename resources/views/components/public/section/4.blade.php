@@ -1,4 +1,4 @@
-@props(['portfolios'])
+@props(['portfolios', 'portfolioCategories' => []])
 
 <style>
   .carousel-3d {
@@ -62,7 +62,7 @@
   .card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+    background: rgba(0, 0, 0, 0.65);
   }
 
   .card-content {
@@ -87,6 +87,47 @@
     font-size: 0.875rem;
     line-height: 1.6;
     margin: 0;
+  }
+
+  .portfolio-category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .portfolio-category-pill {
+    border-radius: 999px;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    border: 1px solid #d4ac3c;
+    color: black;
+    font-weight: bold;
+    background: #d4ac3c;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .portfolio-category-pill span {
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
+
+  .portfolio-category-pill:hover {
+    border-color: #facc15;
+    background: #eab308;
+    transform: translateY(-1px);
+  }
+
+  .portfolio-category-pill.is-active {
+    border-color: #facc15;
+    background: #f59e0b;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   }
 
   .carousel-nav {
@@ -181,6 +222,10 @@
   }
 </style>
 
+@php
+  $firstCategoryId = $portfolioCategories[0]->id ?? null;
+@endphp
+
 <section class="py-12 md:py-20 lg:py-24 relative overflow-hidden">
 
   <div class="absolute inset-0 opacity-5">
@@ -192,7 +237,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center max-w-3xl mx-auto mb-10 md:mb-14 lg:mb-16" data-aos="fade-up">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4 md:mb-6">
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white mb-4 md:mb-6">
         Hasil Nyata, Bukan Janji Kosong
       </h2>
       <p class="text-sm sm:text-base md:text-lg text-white">
@@ -215,17 +260,34 @@
         </svg>
       </button>
     </div>
+
+
+    {{-- Filter Kategori Portfolio --}}
+    @if (!empty($portfolioCategories) && count($portfolioCategories))
+      <div class="portfolio-category-filter" data-aos="fade-up" data-aos-delay="100">
+        @foreach ($portfolioCategories as $category)
+          <button type="button" class="portfolio-category-pill {{ $loop->first ? 'is-active' : '' }}"
+            data-portfolio-category="{{ $category->id }}"
+            onclick="portfolioCarousel.filterByCategory({{ $category->id }})">
+            <span class="uppercase tracking-wide text-xs">
+              {{ $category->name ?? ($category->title ?? 'Kategori') }}
+            </span>
+          </button>
+        @endforeach
+      </div>
+    @endif
+
   </div>
 </section>
 
 <script>
   const portfolioCarousel = (function() {
-    const portfoliosData = @json($portfolios);
+    const originalPortfolios = @json($portfolios);
 
     let currentIndex = 0;
     let autoRotate;
     const container = document.getElementById('portfolioCarouselContainer');
-    const totalCards = portfoliosData.length;
+    let portfoliosData = [...originalPortfolios];
 
     function createCard(portfolio, index) {
       const card = document.createElement('div');
@@ -254,9 +316,10 @@
     }
 
     function updateCarousel() {
+      const totalCards = portfoliosData.length || 1;
       const cards = container.querySelectorAll('.carousel-card');
 
-      const minAngleStep = 30;
+      const minAngleStep = 45;
       const angleStep = Math.max(minAngleStep, 360 / totalCards);
 
       let baseRadius = (window.innerWidth <= 480) ? 300 : (window.innerWidth <= 768) ? 450 : 600;
@@ -292,16 +355,20 @@
     }
 
     function navigate(direction) {
+      const totalCards = portfoliosData.length || 1;
       currentIndex = (currentIndex + direction + totalCards) % totalCards;
       updateCarousel();
       restartAutoRotate();
     }
 
     function startAutoRotate() {
+      if (!portfoliosData.length) return;
+
       autoRotate = setInterval(() => {
+        const totalCards = portfoliosData.length || 1;
         currentIndex = (currentIndex + 1) % totalCards;
         updateCarousel();
-      }, 3500);
+      }, 1500);
     }
 
     function stopAutoRotate() {
@@ -316,14 +383,67 @@
       startAutoRotate();
     }
 
-    function init() {
+    function clearCards() {
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+    }
+
+    function renderCards() {
+      clearCards();
+
       portfoliosData.forEach((portfolio, index) => {
         const card = createCard(portfolio, index);
         container.appendChild(card);
       });
 
-      updateCarousel();
-      startAutoRotate();
+      if (portfoliosData.length) {
+        updateCarousel();
+      }
+    }
+
+    function setActiveCategoryPill(categoryId) {
+      const pills = document.querySelectorAll('[data-portfolio-category]');
+      pills.forEach((pill) => {
+        const value = pill.getAttribute('data-portfolio-category');
+        const isAll = value === 'all' && (categoryId === null || categoryId === undefined);
+        const isMatch = !isAll && value === String(categoryId);
+        if (isAll || isMatch) {
+          pill.classList.add('is-active');
+        } else {
+          pill.classList.remove('is-active');
+        }
+      });
+    }
+
+    function filterByCategory(categoryId) {
+      if (!originalPortfolios || !originalPortfolios.length) return;
+
+      if (categoryId === null || categoryId === undefined) {
+        portfoliosData = [...originalPortfolios];
+      } else {
+        portfoliosData = originalPortfolios.filter((p) => {
+          if (p.category_id && Number(p.category_id) === Number(categoryId)) return true;
+          if (p.category && p.category.id && Number(p.category.id) === Number(categoryId)) return true;
+          return false;
+        });
+      }
+
+      currentIndex = 0;
+      renderCards();
+      restartAutoRotate();
+      setActiveCategoryPill(categoryId);
+    }
+
+    function init() {
+      renderCards();
+
+      const defaultCategoryId = @json($firstCategoryId ?? null);
+      if (defaultCategoryId) {
+        filterByCategory(defaultCategoryId);
+      } else {
+        startAutoRotate();
+      }
 
       if (window.innerWidth > 768) {
         container.addEventListener('mouseenter', stopAutoRotate);
@@ -336,7 +456,8 @@
     init();
 
     return {
-      navigate
+      navigate,
+      filterByCategory
     };
   })();
 </script>

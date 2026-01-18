@@ -1,4 +1,4 @@
-<section class="py-12 md:py-20 lg:py-24 relative overflow-hidden">
+<section class="py-8 md:py-16 lg:py-20 relative overflow-hidden">
 
   <div class="absolute inset-0 opacity-5">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-500 rounded-full blur-3xl">
@@ -11,7 +11,7 @@
       <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6 leading-tight">
         Kenapa Banyak Bisnis <span class="text-red-500">Gagal Naik Omzet?</span>
       </h2>
-      <p class="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto">
+      <p class="text-sm sm:text-base md:text-lg text-white max-w-2xl mx-auto">
         Dari ratusan bisnis yang kami tangani, polanya selalu sama
       </p>
     </div>

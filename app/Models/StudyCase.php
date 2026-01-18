@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class StudyCase extends Model
 {
+	use HasFactory;
+
 	protected $fillable = [
 		'slug',
 		'name',
@@ -18,10 +21,5 @@ class StudyCase extends Model
 	public function getRouteKeyName()
 	{
 		return "slug";
-	}
-
-	public function media()
-	{
-		return $this->hasMany(StudyCaseMedia::class, 'study_case_id');
 	}
 }

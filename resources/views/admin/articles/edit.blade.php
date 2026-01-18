@@ -22,19 +22,59 @@
       @method('PUT')
 
       <div class="p-6 space-y-6">
-        {{-- judul artikel --}}
-        <div>
-          <label for="title" class="block text-sm font-medium text-gray-900 mb-2">
-            Judul
-          </label>
-          <input type="text" id="title" name="title"
-            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-            value="{{ old('title', $article->title) }}" placeholder="Masukkan judul artikel" autocomplete="off" />
-          @error('title')
-            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-          @enderror
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {{-- judul artikel --}}
+          <div>
+            <label for="title" class="block text-sm font-medium text-gray-900 mb-2">
+              Judul
+            </label>
+            <input type="text" id="title" name="title"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+              value="{{ old('title', $article->title) }}" placeholder="Masukkan judul artikel" autocomplete="off" />
+            @error('title')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+          {{-- end  --}}
+
+          {{-- penulis oleh  --}}
+          <div>
+            <label for="written_by" class="block text-sm font-medium text-gray-900 mb-2">
+              Nama Penulis
+            </label>
+            <input type="text" id="written_by" name="written_by"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+              value="{{ old('written_by', $article->written_by) }}" placeholder="Masukkan nama penulis"
+              autocomplete="off" />
+            @error('written_by')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+          {{-- end  --}}
+
+          {{-- category  --}}
+          <div>
+            <label for="category_id" class="block text-sm font-medium text-gray-900 mb-2">
+              Kategori
+            </label>
+            <select id="category_id" name="category_id"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow">
+              <option value="" disabled selected>Pilih kategori</option>
+              @foreach ($category as $id => $name)
+                <option value="{{ $id }}"
+                  {{ old('category_id', $article->category_id) == $id ? 'selected' : '' }}>
+                  {{ $name }}
+                </option>
+              @endforeach
+            </select>
+            @error('category_id')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+          {{-- end  --}}
+
         </div>
-        {{-- end  --}}
 
         {{-- cover  --}}
         <div x-data="{
@@ -72,7 +112,8 @@
             {!! old('content', $article->content) !!}
           </div>
 
-          <input type="hidden" name="content" id="quill-content-input" value="{{ old('content', $article->content) }}" />
+          <input type="hidden" name="content" id="quill-content-input"
+            value="{{ old('content', $article->content) }}" />
 
           @error('content')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
@@ -93,11 +134,6 @@
                   <div class="w-full font-semibold">Published</div>
                   <div class="w-full text-sm">Artikel akan langsung ditampilkan ke publik.</div>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                  stroke="currentColor" class="w-8 h-8 ms-3">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                </svg>
               </label>
             </li>
 
@@ -111,11 +147,6 @@
                   <div class="w-full text-sm">Artikel akan disimpan sebagai draft dan tidak akan ditampilkan ke publik.
                   </div>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                  stroke="currentColor" class="w-8 h-8 ms-3">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 0 0 1 6 3.75h1.5m9 0h-9" />
-                </svg>
               </label>
             </li>
           </ul>

@@ -53,12 +53,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
-  <link rel="icon" type="image/png" href="{{ asset('img/favicon/favicon-96x96.png') }}" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon/favicon.svg') }}" />
-  <link rel="shortcut icon" href="{{ asset('img/favicon/favicon.ico') }}" />
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/favicon/apple-touch-icon.png') }}" />
-  <meta name="apple-mobile-web-app-title" content="IMPOST MEDIA" />
-  <link rel="manifest" href="{{ asset('img/favicon/site.webmanifest') }}" />
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/favicon/favicon-96x96.png') }}">
+  <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon/favicon.svg') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/favicon/apple-touch-icon.png') }}">
+  <link rel="manifest" href="{{ asset('img/favicon/site.webmanifest') }}">
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 

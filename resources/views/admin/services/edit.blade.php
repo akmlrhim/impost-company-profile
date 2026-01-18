@@ -9,7 +9,6 @@
 
       <div class="p-6 space-y-6">
 
-        {{-- nama layanan  --}}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {{-- nama layanan --}}
           <div>
@@ -105,8 +104,8 @@
 
           <ul class="grid w-full gap-4 md:grid-cols-2">
             <li>
-              <input type="radio" id="category_featured" name="category" value="Featured" class="peer sr-only"
-                {{ old('category', $service->category) === 'Featured' ? 'checked' : '' }}>
+              <input type="radio" id="category_featured" name="category" value="Utama" class="peer sr-only"
+                {{ old('category', $service->category) === 'Utama' ? 'checked' : '' }}>
 
               <label for="category_featured"
                 class="flex w-full cursor-pointer items-center justify-between rounded-base border border-default
@@ -115,13 +114,13 @@
 													 peer-checked:border-success-subtle
 													 peer-checked:bg-success-soft
 													 peer-checked:text-success-strong">
-                <span class="font-semibold">Featured</span>
+                <span class="font-semibold">Utama</span>
               </label>
             </li>
 
             <li>
-              <input type="radio" id="category_add_on" name="category" value="Add-On" class="peer sr-only"
-                {{ old('category', $service->category) === 'Add-On' ? 'checked' : '' }}>
+              <input type="radio" id="category_add_on" name="category" value="Tambahan" class="peer sr-only"
+                {{ old('category', $service->category) === 'Tambahan' ? 'checked' : '' }}>
 
               <label for="category_add_on"
                 class="flex w-full cursor-pointer items-center justify-between rounded-base border border-default
@@ -130,7 +129,7 @@
 													 peer-checked:border-warning-subtle
 													 peer-checked:bg-warning-soft
 													 peer-checked:text-warning-strong">
-                <span class="font-semibold">Add-On</span>
+                <span class="font-semibold">Tambahan</span>
               </label>
             </li>
           </ul>

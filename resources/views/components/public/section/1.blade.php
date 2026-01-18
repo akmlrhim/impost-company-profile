@@ -1,4 +1,4 @@
-<section class="py-12 md:py-20 lg:py-24 relative overflow-hidden">
+<section class="py-8 md:py-16 lg:py-20 relative overflow-hidden">
 
   <div class="absolute inset-0 opacity-5">
     <div class="absolute top-20 right-20 w-96 h-96 bg-impost-primary rounded-full blur-3xl"></div>

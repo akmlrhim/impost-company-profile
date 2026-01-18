@@ -16,8 +16,8 @@ return new class extends Migration
 			$table->string('slug');
 			$table->foreignId('category_id')->nullable()->constrained('portfolio_categories')->onDelete('cascade');
 			$table->string('title')->unique();
-			$table->text('description');
-			$table->string('cover_path')->nullable();
+			$table->string('media_path')->nullable();
+			$table->string('media_type')->nullable();
 			$table->timestamps();
 		});
 	}

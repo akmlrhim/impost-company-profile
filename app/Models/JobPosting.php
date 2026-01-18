@@ -18,6 +18,7 @@ class JobPosting extends Model
 		'type',
 		'status',
 		'closing_date',
+		'apply_link'
 	];
 
 	public function getRouteKeyName()

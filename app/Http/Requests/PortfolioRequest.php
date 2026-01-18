@@ -25,15 +25,10 @@ class PortfolioRequest extends FormRequest
 
 		return [
 			'title' => 'required|string|unique:portfolio,title,' . $portfolioId,
-			'description' => 'required|string',
-			'category_id' => 'required',
-			'cover_path' => $this->isMethod('POST')
-				? 'required|image|mimes:jpeg,png,jpg|max:5120'
-				: 'nullable|image|mimes:jpeg,png,jpg|max:5120',
-
-			'photos.*' => $this->isMethod('POST')
-				? 'required|image|mimes:jpeg,png,jpg|max:5120'
-				: 'nullable|image|mimes:jpeg,png,jpg|max:5120',
+			'category_id' => 'required|exists:portfolio_categories,id',
+			'media_path' => $this->isMethod('POST')
+				? 'required|file|mimes:jpeg,png,jpg,webp,mp4,mov,avi,wmv|max:51200'
+				: 'nullable|file|mimes:jpeg,png,jpg,webp,mp4,mov,avi,wmv|max:51200',
 		];
 	}
 }

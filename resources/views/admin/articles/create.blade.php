@@ -19,19 +19,55 @@
       @csrf
 
       <div class="p-6 space-y-6">
-        {{-- judul artikel --}}
-        <div>
-          <label for="title" class="block text-sm font-medium text-gray-900 mb-2">
-            Judul
-          </label>
-          <input type="text" id="title" name="title"
-            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-            value="{{ old('title') }}" placeholder="Masukkan judul artikel" autocomplete="off" />
-          @error('title')
-            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-          @enderror
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+          {{-- judul artikel --}}
+          <div>
+            <label for="title" class="block text-sm font-medium text-gray-900 mb-2">
+              Judul
+            </label>
+            <input type="text" id="title" name="title"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+              value="{{ old('title') }}" placeholder="Masukkan judul artikel" autocomplete="off" />
+            @error('title')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+          {{-- end  --}}
+
+          {{-- penulis oleh  --}}
+          <div>
+            <label for="written_by" class="block text-sm font-medium text-gray-900 mb-2">
+              Nama Penulis
+            </label>
+            <input type="text" id="written_by" name="written_by"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+              value="{{ old('written_by') }}" placeholder="Masukkan nama penulis" autocomplete="off" />
+            @error('written_by')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+          {{-- end  --}}
+
+          {{-- category  --}}
+          <div>
+            <label for="category_id" class="block text-sm font-medium text-gray-900 mb-2">
+              Kategori
+            </label>
+            <select id="category_id" name="category_id"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow">
+              <option value="" disabled selected>Pilih kategori</option>
+              @foreach ($category as $id => $name)
+                <option value="{{ $id }}" {{ old('category_id') == $id ? 'selected' : '' }}>{{ $name }}
+                </option>
+              @endforeach
+            </select>
+            @error('category_id')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+          {{-- end  --}}
         </div>
-        {{-- end  --}}
 
         {{-- cover  --}}
         <div x-data="{ preview: null }">

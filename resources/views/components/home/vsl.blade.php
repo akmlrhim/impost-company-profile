@@ -17,22 +17,16 @@
       data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
 
       <script src="https://fast.wistia.com/player.js" async></script>
-      <script src="https://fast.wistia.com/embed/qjyocurxgt.js" async type="module"></script>
-      <style>
-        wistia-player[media-id='qjyocurxgt']:not(:defined) {
-          background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/qjyocurxgt/swatch');
-          display: block;
-          filter: blur(5px);
-          padding-top: 56.25%;
-        }
-      </style>
-      <wistia-player media-id="qjyocurxgt" aspect="1.7777777777777777"></wistia-player>
+      <script src="https://fast.wistia.com/embed/72mcq452mh.js" async type="module"></script><style>wistia-player[media-id='72mcq452mh']:not(:defined) { background: center / contain
+        no-repeat url('https://fast.wistia.com/embed/medias/72mcq452mh/swatch'); display: block; filter: blur(5px);
+        padding-top:56.25%; }</style> <wistia-player media-id="72mcq452mh" aspect="1.7777777777777777"></wistia-player>
+
     </div>
 
     <div class="mt-6 sm:mt-10 flex flex-col items-center gap-4 px-2" data-aos="fade-up" data-aos-duration="800"
       data-aos-delay="400">
       <button onclick="window.location.href='{{ route('vsl-form') }}'"
-        class="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base font-semibold text-white bg-impost-primary rounded-lg shadow-lg shadow-impost-primary/30 hover:bg-impost-primary/90 hover:shadow-xl hover:shadow-impost-primary/40 focus:outline-none focus:ring-4 focus:ring-impost-primary/40 transition-all duration-300">
+        class="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base font-semibold text-white bg-impost-primary rounded-lg cursor-pointer hover:bg-impost-secondary transition-colors duration-300">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
           stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6">
           <path stroke-linecap="round" stroke-linejoin="round"

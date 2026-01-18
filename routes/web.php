@@ -3,7 +3,6 @@
 use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
@@ -13,6 +12,7 @@ use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PortfolioCategoryController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StudyCaseController;
 use App\Http\Controllers\TeamController;
@@ -41,7 +41,8 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::get('vsl', [HomeController::class, 'vslForm'])->name('vsl-form');
 		Route::post('vsl', [HomeController::class, 'saveLeads'])->name('save-leads');
 
-		Route::get('study-case', [HomeController::class, 'studyCase'])->name('study-case');
+		Route::get('studycase', [HomeController::class, 'studyCase'])->name('study-case');
+		Route::get('studycase/{studycase}', [HomeController::class, 'studyCaseDetail'])->name('detail-study-case');
 
 		Route::get('articles/view/{article:slug}', [HomeController::class, 'article'])->name('article.detail');
 		Route::get('article/view', [HomeController::class, 'articleAll'])->name('article.all');
@@ -55,6 +56,11 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 		Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 		Route::resource('users', UserController::class)->except('show');
+
+		//profile route 
+		Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+		Route::patch('profile', [ProfileController::class, 'saveProfile'])->name('profile.update');
+		Route::patch('password', [ProfileController::class, 'savePassword'])->name('password.update');
 
 		// service route 
 		Route::resource('services', ServiceController::class)->except('show');

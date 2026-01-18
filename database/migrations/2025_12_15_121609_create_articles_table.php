@@ -13,7 +13,7 @@ return new class extends Migration
 	{
 		Schema::create('articles', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('category_id')->nullable()->constrained('article_categories')->onDelete('cascade');
+			$table->foreignId('category_id')->constrained('article_categories')->onDelete('cascade');
 			$table->string('title')->index();
 			$table->string('slug')->unique();
 			$table->text('content');
@@ -22,6 +22,7 @@ return new class extends Migration
 			$table->string('meta_title')->nullable();
 			$table->text('meta_description')->nullable();
 			$table->enum('status', ['draft', 'published'])->default('draft');
+			$table->string('written_by', 130);
 			$table->timestamps();
 		});
 	}

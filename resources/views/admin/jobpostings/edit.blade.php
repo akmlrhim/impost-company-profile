@@ -70,59 +70,79 @@
           @enderror
         </div>
 
-        {{-- tipe --}}
-        <div>
-          <label for="type" class="block text-sm font-medium text-gray-900 mb-2">
-            Tipe <span class="text-danger">*</span>
-          </label>
-          <select id="type" name="type"
-            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow">
-            <option value="" disabled {{ old('type', $jobPosting->type) ? '' : 'selected' }}>Pilih tipe</option>
-            <option value="Full-time" {{ old('type', $jobPosting->type) == 'Full-time' ? 'selected' : '' }}>Full-time
-            </option>
-            <option value="Part-time" {{ old('type', $jobPosting->type) == 'Part-time' ? 'selected' : '' }}>Part-time
-            </option>
-            <option value="Contract" {{ old('type', $jobPosting->type) == 'Contract' ? 'selected' : '' }}>Contract
-            </option>
-          </select>
-          @error('type')
-            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-          @enderror
-        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-        {{-- status --}}
-        <div>
-          <label for="status" class="block text-sm font-medium text-gray-900 mb-2">
-            Status <span class="text-danger">*</span>
-          </label>
-          <select id="status" name="status"
-            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow">
-            <option value="" disabled {{ old('status', $jobPosting->status) ? '' : 'selected' }}>Pilih status
-            </option>
-            <option value="Open" {{ old('status', $jobPosting->status) == 'Open' ? 'selected' : '' }}>Open</option>
-            <option value="Closed" {{ old('status', $jobPosting->status) == 'Closed' ? 'selected' : '' }}>Closed</option>
-          </select>
-          @error('status')
-            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-          @enderror
-        </div>
-
-        {{-- batas akhir --}}
-        <div class="mb-6">
-          <label for="closing_date" class="block text-sm font-medium text-gray-900 mb-2">
-            Batas Akhir <span class="text-danger">*</span>
-          </label>
-          <div class="relative">
-            <input id="closing_date" name="closing_date" type="date"
-              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-              value="{{ old('closing_date', $jobPosting->closing_date ? date('Y-m-d', strtotime($jobPosting->closing_date)) : '') }}"
-              onclick="this.showPicker()">
+          {{-- tipe --}}
+          <div>
+            <label for="type" class="block text-sm font-medium text-gray-900 mb-2">
+              Tipe <span class="text-danger">*</span>
+            </label>
+            <select id="type" name="type"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow">
+              <option value="" disabled {{ old('type', $jobPosting->type) ? '' : 'selected' }}>Pilih tipe</option>
+              <option value="Full-time" {{ old('type', $jobPosting->type) == 'Full-time' ? 'selected' : '' }}>Full-time
+              </option>
+              <option value="Part-time" {{ old('type', $jobPosting->type) == 'Part-time' ? 'selected' : '' }}>Part-time
+              </option>
+              <option value="Contract" {{ old('type', $jobPosting->type) == 'Contract' ? 'selected' : '' }}>Contract
+              </option>
+            </select>
+            @error('type')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
           </div>
-          @error('closing_date')
-            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-          @enderror
-        </div>
 
+          {{-- status --}}
+          <div>
+            <label for="status" class="block text-sm font-medium text-gray-900 mb-2">
+              Status <span class="text-danger">*</span>
+            </label>
+            <select id="status" name="status"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow">
+              <option value="" disabled {{ old('status', $jobPosting->status) ? '' : 'selected' }}>Pilih status
+              </option>
+              <option value="Open" {{ old('status', $jobPosting->status) == 'Open' ? 'selected' : '' }}>Open</option>
+              <option value="Closed" {{ old('status', $jobPosting->status) == 'Closed' ? 'selected' : '' }}>Closed
+              </option>
+            </select>
+            @error('status')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+
+          {{-- batas akhir --}}
+          <div class="mb-6">
+            <label for="closing_date" class="block text-sm font-medium text-gray-900 mb-2">
+              Batas Akhir <span class="text-danger">*</span>
+            </label>
+            <div class="relative">
+              <input id="closing_date" name="closing_date" type="date"
+                class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+                value="{{ old('closing_date', $jobPosting->closing_date ? date('Y-m-d', strtotime($jobPosting->closing_date)) : '') }}"
+                onclick="this.showPicker()">
+            </div>
+            @error('closing_date')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+
+          {{-- link lamar --}}
+          <div>
+            <label for="apply_link" class="block text-sm font-medium text-gray-900 mb-2">
+              Link untuk melamar <span class="text-danger">*</span> <span class="text-gray-600 text-2xs italic">masukkan
+                salah
+                satu (JobStreet/KitaLulus/Glints/TapLoker,dll)</span>
+            </label>
+            <input type="url" id="apply_link" name="apply_link"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+              value="{{ old('apply_link', $jobPosting->apply_link) }}" placeholder="Masukkan link untuk melamar"
+              autocomplete="off" />
+
+            @error('apply_link')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+        </div>
       </div>
 
       {{-- Action  --}}

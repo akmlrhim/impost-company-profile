@@ -7,7 +7,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center max-w-3xl mx-auto mb-10 md:mb-14 lg:mb-16" data-aos="fade-up">
-      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white mb-4 md:mb-6">
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-impost-primary mb-4 md:mb-6">
         Alur Layanan
       </h2>
       <p class="text-sm sm:text-base text-white max-w-full mx-auto">

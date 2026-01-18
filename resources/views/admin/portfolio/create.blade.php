@@ -39,47 +39,44 @@
           @enderror
         </div>
 
-        {{-- cover  --}}
-        <div x-data="{ preview: null }">
-          <label class="block text-sm font-medium mb-2" for="cover_path">
-            Cover
+        {{-- media_path  --}}
+        <div x-data="{ preview: null, fileType: null }">
+          <label class="block text-sm font-medium mb-2" for="media_path">
+            Media
           </label>
 
-          <input type="file" name="cover_path" id="cover_path" accept="image/*"
+          <input type="file" name="media_path" id="media_path" accept="image/*,video/*"
             class="w-full text-sm rounded-sm border border-gray-300"
             @change="
-					const file = $event.target.files[0];
-					if (file) {
-						preview = URL.createObjectURL(file);
-					}
-				">
+							const file = $event.target.files[0];
+							if (file) {
+								preview = URL.createObjectURL(file);
+								fileType = file.type.startsWith('image/') ? 'image' : 'video';
+							}
+						">
 
-          @error('cover_path')
+          @error('media_path')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
           @enderror
 
           <template x-if="preview">
             <div class="mt-4">
-              <p class="text-xs text-gray-500 mb-2">Preview cover</p>
-              <img :src="preview" class="w-40 h-auto rounded-md border border-gray-200 shadow-sm object-cover"
-                alt="Preview cover">
+              <p class="text-xs text-gray-500 mb-2">Preview Media</p>
+
+              <template x-if="fileType === 'image'">
+                <img :src="preview" class="w-40 h-auto rounded-md border border-gray-200 shadow-sm object-cover"
+                  alt="Preview image">
+              </template>
+
+              <template x-if="fileType === 'video'">
+                <video :src="preview" class="w-full max-w-md h-auto rounded-md border border-gray-200 shadow-sm"
+                  controls>
+                </video>
+              </template>
             </div>
           </template>
         </div>
         {{-- end  --}}
-
-        {{-- description --}}
-        <div>
-          <label for="description" class="block text-sm font-medium text-gray-900 mb-2">
-            Deskripsi
-          </label>
-          <textarea id="description" name="description"
-            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-            placeholder="Masukkan deskripsi portfolio" rows="4">{{ old('description') }}</textarea>
-          @error('description')
-            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-          @enderror
-        </div>
 
       </div>
 

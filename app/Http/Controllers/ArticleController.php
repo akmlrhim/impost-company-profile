@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
+use App\Models\ArticleCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
+use Mews\Purifier\Facades\Purifier;
 
 class ArticleController extends Controller
 {
@@ -18,11 +20,18 @@ class ArticleController extends Controller
 	 */
 	public function index()
 	{
+		$categories = ArticleCategory::select('name', 'slug')->orderBy('name')->get();
+
 		$search = request()->string('search')->trim();
 
 		$articles = Article::query()
 			->when($search, function ($query) use ($search) {
 				$query->where('title', 'like', "%{$search}%");
+			})
+			->when(request()->filled('category'), function ($query) {
+				$query->whereHas('category', function ($q) {
+					$q->where('slug', request('category'));
+				});
 			})
 			->orderByDesc('created_at')
 			->paginate(8)
@@ -33,6 +42,7 @@ class ArticleController extends Controller
 			'title' => 'Artikel',
 			'articles' => $articles,
 			'search' => $search,
+			'categories' => $categories
 		]);
 	}
 
@@ -42,7 +52,8 @@ class ArticleController extends Controller
 	public function create()
 	{
 		return view('admin.articles.create', [
-			'title' => 'Tambah Artikel'
+			'title' => 'Tambah Artikel',
+			'category' => ArticleCategory::pluck('name', 'id')
 		]);
 	}
 
@@ -69,12 +80,14 @@ class ArticleController extends Controller
 			$data = [
 				'title' => $request->title,
 				'slug' => Str::slug($request->title),
-				'content' => $request->content,
+				'category_id' => $request->category_id,
+				'content' => Purifier::clean($request->content),
 				'cover_path' => $cover_path,
 				'excerpt' => Str::limit(strip_tags($request->content), 150, '...'),
 				'meta_title' => $request->title,
 				'meta_description' => Str::limit(strip_tags($request->content), 160, '...'),
 				'status' => $request->status,
+				'written_by' => $request->written_by
 			];
 
 			Article::create($data);
@@ -93,7 +106,8 @@ class ArticleController extends Controller
 	public function edit(Article $article)
 	{
 		$title = 'Edit Artikel';
-		return view('admin.articles.edit', compact('title', 'article'));
+		$category = ArticleCategory::pluck('name', 'id');
+		return view('admin.articles.edit', compact('title', 'article', 'category'));
 	}
 
 	/**
@@ -122,11 +136,13 @@ class ArticleController extends Controller
 
 			$article->title = $request->title;
 			$article->slug = Str::slug($request->title);
-			$article->content = $request->content;
+			$article->content = Purifier::clean($request->content);
+			$article->category_id = $request->category_id;
 			$article->excerpt = Str::limit(strip_tags($request->content), 150);
 			$article->meta_title = $request->title;
 			$article->meta_description = Str::limit(strip_tags($request->content), 160);
 			$article->status = $request->status ?? $article->status;
+			$article->written_by = $request->written_by;
 			$article->save();
 
 			DB::commit();

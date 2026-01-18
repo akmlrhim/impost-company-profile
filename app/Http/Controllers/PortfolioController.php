@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PortfolioRequest;
 use App\Models\ArticleCategory;
 use App\Models\Portfolio;
+use App\Models\PortfolioCategory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -20,11 +21,18 @@ class PortfolioController extends Controller
 	{
 		$title = "Portfolio";
 
+		$categories = PortfolioCategory::select('name', 'slug')->orderBy('name')->get();
+
 		$search = request()->string('search')->trim();
 
 		$portfolios = Portfolio::query()
 			->when($search, function ($query) use ($search) {
 				$query->where('title', 'like', "%{$search}%");
+			})
+			->when(request()->filled('category'), function ($query) {
+				$query->whereHas('category', function ($q) {
+					$q->where('slug', request('category'));
+				});
 			})
 			->latest()
 			->paginate(8)
@@ -36,7 +44,8 @@ class PortfolioController extends Controller
 			[
 				'title' => $title,
 				'portfolios' => $portfolios,
-				'search' => $search
+				'search' => $search,
+				'categories' => $categories
 			]
 		);
 	}
@@ -63,32 +72,46 @@ class PortfolioController extends Controller
 		try {
 			DB::beginTransaction();
 
-			$manager = new ImageManager(new Driver());
+			$media_path = null;
+			$media_type = null;
 
-			if ($request->hasFile('cover_path')) {
+			if ($request->hasFile('media_path')) {
+				$file = $request->file('media_path');
+				$mimeType = $file->getMimeType();
 
-				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 50);
+				if (str_starts_with($mimeType, 'image/')) {
+					$manager = new ImageManager(new Driver());
+					$img = $manager->read($file)->toWebp(quality: 50);
 
-				$filename = Str::uuid() . '.webp';
-				$path = 'portfolio/' . $filename;
+					$filename = Str::uuid() . '.webp';
+					$path = 'portfolio/' . $filename;
 
-				Storage::disk('public')->put($path, $img);
-				$cover_path = $path;
+					Storage::disk('public')->put($path, $img);
+					$media_path = $path;
+					$media_type = 'image';
+				} elseif (str_starts_with($mimeType, 'video/')) {
+					$filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
+					$path = 'portfolio/' . $filename;
+
+					Storage::disk('public')->put($path, file_get_contents($file));
+					$media_path = $path;
+					$media_type = 'video';
+				}
 			}
 
 			Portfolio::create([
 				'title' => $request->title,
-				'description' => $request->description,
 				'slug' => Str::slug($request->title),
-				'cover_path' => $cover_path
+				'category_id' => $request->category_id,
+				'media_path' => $media_path,
+				'media_type' => $media_type
 			]);
 
 			DB::commit();
 			return redirect()->route('portfolio.index')->with('success', 'Portfolio berhasil ditambahkan.');
 		} catch (\Exception $e) {
 			DB::rollBack();
-			dd($e->getMessage());
-			return back()->withInput();
+			return back()->withInput()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
 		}
 	}
 
@@ -114,35 +137,45 @@ class PortfolioController extends Controller
 		try {
 			DB::beginTransaction();
 
-			$manager = new ImageManager(new Driver());
-
-			if ($request->hasFile('cover_path')) {
-
-				if ($portfolio->cover_path && Storage::disk('public')->exists($portfolio->cover_path)) {
-					Storage::disk('public')->delete($portfolio->cover_path);
+			if ($request->hasFile('media_path')) {
+				if ($portfolio->media_path && Storage::disk('public')->exists($portfolio->media_path)) {
+					Storage::disk('public')->delete($portfolio->media_path);
 				}
 
-				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
-				$filename = Str::uuid() . '.webp';
-				$path = 'portfolio/' . $filename;
+				$file = $request->file('media_path');
+				$mimeType = $file->getMimeType();
 
-				Storage::disk('public')->put($path, $img);
+				if (str_starts_with($mimeType, 'image/')) {
+					$manager = new ImageManager(new Driver());
+					$img = $manager->read($file)->toWebp(quality: 60);
 
-				$portfolio->cover_path = $path;
+					$filename = Str::uuid() . '.webp';
+					$path = 'portfolio/' . $filename;
+
+					Storage::disk('public')->put($path, $img);
+					$portfolio->media_path = $path;
+					$portfolio->media_type = 'image';
+				} elseif (str_starts_with($mimeType, 'video/')) {
+					$filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
+					$path = 'portfolio/' . $filename;
+
+					Storage::disk('public')->put($path, file_get_contents($file));
+					$portfolio->media_path = $path;
+					$portfolio->media_type = 'video';
+				}
 			}
 
-			// update data portfolio 
 			$portfolio->update([
 				'title' => $request->title,
 				'slug' => Str::slug($request->title),
-				'description' => $request->description,
+				'category_id' => $request->category_id,
 			]);
 
 			DB::commit();
 			return redirect()->route('portfolio.index')->with('success', 'Portfolio berhasil diperbarui.');
 		} catch (\Exception $e) {
 			DB::rollBack();
-			return back()->withInput();
+			return back()->withInput()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
 		}
 	}
 
@@ -154,21 +187,17 @@ class PortfolioController extends Controller
 		try {
 			DB::beginTransaction();
 
-			// hapus cover portfolio 
-			if ($portfolio->cover_path && Storage::disk('public')->exists($portfolio->cover_path)) {
-				Storage::disk('public')->delete($portfolio->cover_path);
+			if ($portfolio->media_path && Storage::disk('public')->exists($portfolio->media_path)) {
+				Storage::disk('public')->delete($portfolio->media_path);
 			}
 
-			// hapus portfolio 
 			$portfolio->delete();
 
 			DB::commit();
-			return back()->with('success', 'Portfolio berhasil dihapus.');
+			return redirect()->route('portfolio.index')->with('success', 'Portfolio berhasil dihapus.');
 		} catch (\Exception $e) {
 			DB::rollBack();
-
-			dd($e->getMessage());
-			return back()->withInput();
+			return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
 		}
 	}
 }

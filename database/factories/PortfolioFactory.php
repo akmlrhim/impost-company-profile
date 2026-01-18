@@ -24,9 +24,9 @@ class PortfolioFactory extends Factory
 		return [
 			'title' => $title,
 			'slug' => Str::slug($title),
-			'description' => $this->faker->paragraph(),
 			'category_id' => $category ? $category->id : null,
-			'cover_path' => NULL,
+			'media_path' => NULL,
+			'media_type' => fake()->randomElement(['video', 'image'])
 		];
 	}
 }

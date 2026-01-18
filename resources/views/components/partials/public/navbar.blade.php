@@ -1,6 +1,6 @@
-<nav class="fixed top-0 z-50 w-full bg-impost-fifth/10 backdrop-blur-md">
+<nav class="fixed top-0 z-50 w-full backdrop-blur-md">
   <div x-data="{ open: false, isDesktop: window.innerWidth >= 768 }" x-init="() => { window.addEventListener('resize', () => { isDesktop = window.innerWidth >= 768 }) }" @click.away="if (!isDesktop) open = false"
-    class="max-w-7xl flex flex-wrap items-center justify-between mx-auto py-2 sm:py-4 px-4 sm:px-8">
+    class="max-w-7xl flex flex-wrap items-center justify-between mx-auto py-3 sm:py-4 px-4 sm:px-8">
 
     <a href="{{ route('home') }}" class="flex items-center">
       <img src="{{ asset('img/logo_impost_putih.jpg') }}" class="h-7 sm:h-10 md:h-14 w-auto transition-all duration-300"
@@ -17,10 +17,8 @@
     </button>
 
     <div id="navbar-dropdown" x-cloak class="w-full md:block md:w-auto origin-top" x-show="open || isDesktop"
-      x-transition:enter="transition ease-out duration-200"
-      x-transition:enter-start="opacity-0 -translate-y-2 scale-95"
-      x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-      x-transition:leave="transition ease-in duration-180"
+      x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2 scale-95"
+      x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-180"
       x-transition:leave-start="opacity-100 translate-y-0 scale-100"
       x-transition:leave-end="opacity-0 -translate-y-2 scale-95" style="display: none;">
       <ul
@@ -42,7 +40,7 @@
 
         <li x-data="{ open: false }" @click.away="open = false" class="relative">
           <button @click="open = !open" type="button"
-            class="flex items-center justify-between w-full py-2 px-4 transition-all duration-300 hover:bg-impost-primary/90 rounded-md text-white group">
+            class="flex items-center cursor-pointer justify-between w-full py-2 px-4 transition-all duration-300 hover:bg-impost-primary/90 rounded-md text-white group">
             <span>Our Works</span>
             <svg class="w-4 h-4 ms-2 transition-transform duration-300" :class="{ 'rotate-180': open }" fill="none"
               viewBox="0 0 24 24" stroke="currentColor">
@@ -52,7 +50,7 @@
 
           <div x-show="open" x-transition:enter="transition ease-out duration-200"
             x-transition:enter-start="opacity-0 md:-translate-y-2" x-transition:enter-end="opacity-100 md:translate-y-0"
-            class="md:absolute relative left-0 md:right-0 mt-1 md:mt-3 w-full md:w-56 bg-impost-fourth border border-impost-primary/30 rounded-xl shadow-2xl overflow-hidden z-50 backdrop-blur-lg"
+            class="md:absolute relative left-0 md:right-0 mt-1 md:mt-3 w-full md:w-56 bg-impost-fifth rounded-xl shadow-2xl overflow-hidden z-50 backdrop-blur-lg"
             style="display: none;">
             <ul class="py-1 md:py-2 text-sm">
               <li>
@@ -73,7 +71,7 @@
 
         <li x-data="{ open: false }" @click.away="open = false" class="relative">
           <button @click="open = !open" type="button"
-            class="flex items-center justify-between w-full py-2 px-4 transition-all duration-300 hover:bg-impost-primary/90 rounded-md text-white">
+            class="cursor-pointer flex items-center justify-between w-full py-2 px-4 transition-all duration-300 hover:bg-impost-primary/90 rounded-md text-white">
             <span>Company</span>
             <svg class="w-4 h-4 ms-2 transition-transform duration-300" :class="{ 'rotate-180': open }" fill="none"
               viewBox="0 0 24 24" stroke="currentColor">
@@ -82,7 +80,7 @@
           </button>
 
           <div x-show="open"
-            class="md:absolute relative left-0 md:right-0 mt-1 md:mt-3 w-full md:w-56 bg-impost-fourth border border-impost-primary/30 rounded-xl shadow-2xl overflow-hidden z-50"
+            class="md:absolute relative left-0 md:right-0 mt-1 md:mt-3 w-full md:w-56 bg-impost-fifth rounded-xl shadow-2xl overflow-hidden z-50"
             style="display: none;">
             <ul class="py-1 md:py-2 text-sm">
               <li><a href="{{ route('article.all') }}"

@@ -53,9 +53,9 @@
           class="bg-impost-fifth rounded-xl shadow-lg border border-gray-800 overflow-hidden transition-all duration-300 hover:border-impost-primary/50 group">
 
           <button onclick="toggleFAQ(this)"
-            class="cursor-pointer w-full px-6 py-5 text-left flex justify-between items-center bg-impost-fifth hover:bg-zinc-900 transition-colors gap-4">
+            class="cursor-pointer w-full px-4 py-2 text-left flex justify-between items-center bg-impost-fifth hover:bg-zinc-900 transition-colors gap-4">
 
-            <span class="font-bold text-md md:text-lg text-impost-primary group-hover:text-yellow-400 transition-colors">
+            <span class="font-medium text-md text-impost-primary group-hover:text-yellow-400 transition-colors">
               {{ $faq['question'] ?? ($faq->question ?? '') }}
             </span>
 

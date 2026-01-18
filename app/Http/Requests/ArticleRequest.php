@@ -26,6 +26,8 @@ class ArticleRequest extends FormRequest
 		return [
 			'title' => 'required|string|unique:articles,title,' . $articleId . '|max:255',
 			'status' => 'required|string',
+			'category_id' => 'required',
+			'written_by' => 'required',
 			'content' => [
 				'required',
 				function ($attribute, $value, $fail) {

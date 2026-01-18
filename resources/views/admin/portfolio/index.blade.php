@@ -6,6 +6,32 @@
   <x-search-bar search-route="{{ route('portfolio.index') }}" add-route="{{ route('portfolio.create') }}"
     add-label="Tambah Portfolio" />
 
+  {{-- Filtering --}}
+  <form method="GET" action="{{ route('portfolio.index') }}" class="mb-6">
+    <div class="flex flex-wrap gap-2">
+
+      @if (request('search'))
+        <input type="hidden" name="search" value="{{ request('search') }}">
+      @endif
+
+      <a href="{{ route('articles.index') }}"
+        class="px-3 py-1 text-xs font-medium rounded-full
+		{{ request('category') ? 'bg-white text-gray-700 border border-gray-700' : 'bg-blue-600 text-white' }}">
+        Semua
+      </a>
+
+      @foreach ($categories as $category)
+        <button type="submit" name="category" value="{{ $category->slug }}"
+          class="cursor-pointer px-3 py-1 text-xs font-medium rounded-full border transition capitalize
+					{{ request('category') === $category->slug
+         ? 'bg-blue-600 text-white border-blue-600'
+         : 'bg-white text-gray-700 hover:bg-gray-100' }}">
+          {{ $category->name }}
+        </button>
+      @endforeach
+    </div>
+  </form>
+
   <div class="bg-neutral-primary-soft rounded-base border border-default">
     <div class="p-4">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -14,9 +40,29 @@
 
             <div class="relative h-48 bg-gray-100">
 
-              @if ($portfolio->cover_path)
-                <img src="{{ asset('storage/' . $portfolio->cover_path) }}" alt="{{ $portfolio->name }}" loading="lazy"
-                  class="w-full h-full object-cover">
+              <span
+                class="absolute top-3 left-3 px-3 py-1 text-xs font-semibold uppercase rounded-full bg-blue-600 text-white z-10">
+                {{ $portfolio->category->name }}
+              </span>
+
+              @if ($portfolio->media_path)
+                @if ($portfolio->media_type === 'image')
+                  <img src="{{ asset('storage/' . $portfolio->media_path) }}" alt="{{ $portfolio->title }}"
+                    loading="lazy" class="w-full h-full object-cover">
+                @elseif ($portfolio->media_type === 'video')
+                  <video class="w-full h-full object-cover" controls>
+                    <source src="{{ asset('storage/' . $portfolio->media_path) }}" type="video/mp4">
+                    <source src="{{ asset('storage/' . $portfolio->media_path) }}" type="video/webm">
+                    Browser Anda tidak mendukung tag video.
+                  </video>
+                @else
+                  <div class="w-full h-full flex items-center justify-center">
+                    <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                    </svg>
+                  </div>
+                @endif
               @else
                 <div class="w-full h-full flex items-center justify-center">
                   <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,7 +80,7 @@
 
               <div class="mt-auto flex items-center gap-2">
                 <a href="{{ route('portfolio.edit', $portfolio) }}"
-                  class="flex-1 inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-yellow-600 rounded-sm hover:bg-yellow-500 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600">
+                  class="flex-1 inline-flex items-center justify-center px-3 py-1.5 text-xs font-medium text-white bg-yellow-600 rounded-sm hover:bg-yellow-500 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600">
                   Edit
                 </a>
 

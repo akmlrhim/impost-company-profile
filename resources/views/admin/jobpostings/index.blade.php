@@ -9,7 +9,7 @@
     <div class="overflow-x-auto">
       <table class="min-w-full divide-y-2 divide-gray-200 text-xs sm:text-sm">
         <thead class="uppercase tracking-wide text-left">
-          <tr class="*:font-bold *:text-gray-900 *:first:sticky *:first:left-0 *:first:bg-white">
+          <tr class="*:font-bold *:text-gray-900">
             <th class="px-3 py-2 whitespace-nowrap">Posisi</th>
             <th class="px-3 py-2 whitespace-nowrap">Deskripsi</th>
             <th class="px-3 py-2 whitespace-nowrap">Tipe</th>
@@ -22,7 +22,7 @@
         <tbody class="divide-y divide-gray-200">
           @forelse ($jobPostings as $job)
             <tr class="*:text-gray-900 align-top">
-              <td class="px-3 py-2 font-medium whitespace-nowrap sticky left-0 bg-white">
+              <td class="px-3 py-2 font-medium whitespace-nowrap bg-white">
                 {{ $job->title }}
               </td>
 

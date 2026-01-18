@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
+use Mews\Purifier\Facades\Purifier;
 
 class StudyCaseController extends Controller
 {
@@ -59,7 +60,6 @@ class StudyCaseController extends Controller
 
 			$cover_path = null;
 
-			// ================= COVER =================
 			if ($request->hasFile('cover_path')) {
 				$img = $manager
 					->read($request->file('cover_path'))
@@ -73,51 +73,13 @@ class StudyCaseController extends Controller
 
 			// save study case
 			$studyCase = StudyCase::create([
-				'name'       => $request->name,
-				'slug'       => Str::slug($request->name),
-				'situation'  => $request->situation,
-				'solution'   => $request->solution,
-				'result'     => $request->result,
+				'name' => $request->name,
+				'slug' => Str::slug($request->name),
+				'situation' => Purifier::clean($request->situation),
+				'solution' => Purifier::clean($request->solution),
+				'result' => Purifier::clean($request->result),
 				'cover_path' => $cover_path,
 			]);
-
-			// photo
-			if ($request->hasFile('images')) {
-				foreach ($request->file('images') as $image) {
-					$img = $manager->read($image)->toWebp(quality: 60);
-
-					$filename = Str::uuid() . '.webp';
-					$path = 'study_case/' . $filename;
-
-					Storage::disk('public')->put($path, $img);
-
-					$studyCase->media()->create([
-						'file_path' => $path,
-						'media_type' => 'image',
-						'filename' => $image->getClientOriginalName(),
-					]);
-				}
-			}
-
-			// video
-			if ($request->hasFile('videos')) {
-				foreach ($request->file('videos') as $video) {
-					$filename = Str::uuid() . '.' . $video->getClientOriginalExtension();
-					$path = 'study_case/' . $filename;
-
-					Storage::disk('public')->putFileAs(
-						'study_case',
-						$video,
-						$filename
-					);
-
-					$studyCase->media()->create([
-						'file_path' => $path,
-						'media_type' => 'video',
-						'filename' => $video->getClientOriginalName(),
-					]);
-				}
-			}
 
 			DB::commit();
 
@@ -139,7 +101,7 @@ class StudyCaseController extends Controller
 
 		return view('admin.study-case.edit', [
 			'title' => $title,
-			'studyCase' => $studyCase->load('media')
+			'studyCase' => $studyCase
 		]);
 	}
 
@@ -175,51 +137,15 @@ class StudyCaseController extends Controller
 
 			// update study case
 			$studyCase->update([
-				'name'       => $request->name,
-				'slug'       => Str::slug($request->name),
-				'situation'  => $request->situation,
-				'solution'   => $request->solution,
-				'result'     => $request->result,
+				'name' => $request->name,
+				'slug' => Str::slug($request->name),
+				'situation' => Purifier::clean($request->situation),
+				'solution' => Purifier::clean($request->solution),
+				'result' => Purifier::clean($request->result),
 				'cover_path' => $coverPath,
 			]);
 
 			// image
-			if ($request->hasFile('images')) {
-				foreach ($request->file('images') as $image) {
-					$img = $manager->read($image)->toWebp(quality: 60);
-
-					$filename = Str::uuid() . '.webp';
-					$path     = 'study_case/' . $filename;
-
-					Storage::disk('public')->put($path, $img);
-
-					$studyCase->media()->create([
-						'file_path' => $path,
-						'media_type' => 'image',
-						'filename'  => $image->getClientOriginalName(),
-					]);
-				}
-			}
-
-			// video
-			if ($request->hasFile('videos')) {
-				foreach ($request->file('videos') as $video) {
-					$filename = Str::uuid() . '.' . $video->getClientOriginalExtension();
-					$path     = 'study_case/' . $filename;
-
-					Storage::disk('public')->putFileAs(
-						'study_case',
-						$video,
-						$filename
-					);
-
-					$studyCase->media()->create([
-						'file_path' => $path,
-						'media_type' => 'video',
-						'filename'  => $video->getClientOriginalName(),
-					]);
-				}
-			}
 
 			DB::commit();
 
@@ -245,14 +171,6 @@ class StudyCaseController extends Controller
 			// delete cover
 			if ($studyCase->cover_path && Storage::disk('public')->exists($studyCase->cover_path)) {
 				Storage::disk('public')->delete($studyCase->cover_path);
-			}
-
-			// delete media
-			foreach ($studyCase->media as $media) {
-				if (Storage::disk('public')->exists($media->file_path)) {
-					Storage::disk('public')->delete($media->file_path);
-				}
-				$media->delete();
 			}
 
 			$studyCase->delete();

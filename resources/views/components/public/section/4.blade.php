@@ -163,6 +163,33 @@
     right: 1rem;
   }
 
+  .portfolio-empty-message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    color: #e5e5e5;
+  }
+
+  .portfolio-empty-message.show {
+    display: block;
+  }
+
+  .portfolio-empty-message h3 {
+    color: #d4ac3c;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .portfolio-empty-message p {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
   @media (max-width: 768px) {
     .carousel-3d {
       height: 400px;
@@ -226,7 +253,7 @@
   $firstCategoryId = $portfolioCategories[0]->id ?? null;
 @endphp
 
-<section class="py-12 md:py-20 lg:py-24 relative overflow-hidden">
+<section class="py-8 md:py-16 lg:py-20 relative overflow-hidden">
 
   <div class="absolute inset-0 opacity-5">
     <div
@@ -237,7 +264,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center max-w-3xl mx-auto mb-10 md:mb-14 lg:mb-16" data-aos="fade-up">
-      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white mb-4 md:mb-6">
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-impost-primary mb-4 md:mb-6">
         Hasil Nyata, Bukan Janji Kosong
       </h2>
       <p class="text-sm sm:text-base md:text-lg text-white">
@@ -253,6 +280,10 @@
       </button>
 
       <div class="carousel-container" id="portfolioCarouselContainer"></div>
+      <div class="portfolio-empty-message" id="portfolioEmptyMessage">
+        <h3>Belum Ada Portfolio</h3>
+        <p>Kategori ini belum memiliki portfolio tersedia.</p>
+      </div>
 
       <button class="carousel-nav next" onclick="portfolioCarousel.navigate(1)">
         <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -287,6 +318,9 @@
     let currentIndex = 0;
     let autoRotate;
     const container = document.getElementById('portfolioCarouselContainer');
+    const emptyMessage = document.getElementById('portfolioEmptyMessage');
+    const prevButton = document.querySelector('.carousel-nav.prev');
+    const nextButton = document.querySelector('.carousel-nav.next');
     let portfoliosData = [...originalPortfolios];
 
     function createCard(portfolio, index) {
@@ -392,14 +426,38 @@
     function renderCards() {
       clearCards();
 
+      if (portfoliosData.length === 0) {
+        // Tampilkan pesan kosong dan sembunyikan tombol navigasi
+        if (emptyMessage) {
+          emptyMessage.classList.add('show');
+        }
+        if (prevButton) {
+          prevButton.style.display = 'none';
+        }
+        if (nextButton) {
+          nextButton.style.display = 'none';
+        }
+        stopAutoRotate();
+        return;
+      }
+
+      // Sembunyikan pesan kosong dan tampilkan tombol navigasi
+      if (emptyMessage) {
+        emptyMessage.classList.remove('show');
+      }
+      if (prevButton) {
+        prevButton.style.display = 'flex';
+      }
+      if (nextButton) {
+        nextButton.style.display = 'flex';
+      }
+
       portfoliosData.forEach((portfolio, index) => {
         const card = createCard(portfolio, index);
         container.appendChild(card);
       });
 
-      if (portfoliosData.length) {
-        updateCarousel();
-      }
+      updateCarousel();
     }
 
     function setActiveCategoryPill(categoryId) {

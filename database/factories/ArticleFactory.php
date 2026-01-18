@@ -31,6 +31,7 @@ class ArticleFactory extends Factory
 			'meta_title' => fake()->sentence(6, true),
 			'meta_description' => fake()->sentence(20, true),
 			'status' => 'published',
+			'written_by' => fake()->name()
 		];
 	}
 }

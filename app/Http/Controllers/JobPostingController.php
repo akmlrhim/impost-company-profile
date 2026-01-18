@@ -6,6 +6,7 @@ use App\Models\JobPosting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Mews\Purifier\Facades\Purifier;
 
 class JobPostingController extends Controller
 {
@@ -60,6 +61,7 @@ class JobPostingController extends Controller
 			'responsibilities' => 'required|string',
 			'status' => 'required|string|max:255',
 			'closing_date' => 'required|date',
+			'apply_link' => 'required|url'
 		]);
 
 		try {
@@ -70,17 +72,17 @@ class JobPostingController extends Controller
 				'slug' => Str::slug($request->title),
 				'type' => $request->type,
 				'description' => $request->description,
-				'requirements' => $request->requirements,
-				'responsibilities' => $request->responsibilities,
+				'requirements'     => Purifier::clean($request->requirements),
+				'responsibilities' => Purifier::clean($request->responsibilities),
 				'status' => $request->status,
 				'closing_date' => $request->closing_date,
+				'apply_link' => $request->apply_link
 			]);
 
 			DB::commit();
 			return redirect()->route('jobpostings.index')->with('success', 'Lowongan kerja berhasil ditambahkan.');
 		} catch (\Exception $e) {
 			DB::rollBack();
-			// dd($e->getMessage($e->getLine()));
 			return back()->withInput();
 		}
 	}
@@ -110,6 +112,7 @@ class JobPostingController extends Controller
 			'responsibilities' => 'required|string',
 			'status' => 'required|string|max:255',
 			'closing_date' => 'required|date',
+			'apply_link' => 'required|url'
 		]);
 
 		try {
@@ -120,10 +123,11 @@ class JobPostingController extends Controller
 				'slug' => Str::slug($request->title),
 				'type' => $request->type,
 				'description' => $request->description,
-				'requirements' => $request->requirements,
-				'responsibilities' => $request->responsibilities,
+				'requirements'     => Purifier::clean($request->requirements),
+				'responsibilities' => Purifier::clean($request->responsibilities),
 				'status' => $request->status,
 				'closing_date' => $request->closing_date,
+				'apply_link' => $request->apply_link
 			]);
 
 			DB::commit();

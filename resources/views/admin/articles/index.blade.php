@@ -5,6 +5,32 @@
   <x-search-bar search-route="{{ route('articles.index') }}" add-route="{{ route('articles.create') }}"
     add-label="Tambah Artikel" />
 
+  {{-- Filtering  --}}
+  <form method="GET" action="{{ route('articles.index') }}" class="mb-6">
+    <div class="flex flex-wrap gap-2">
+
+      @if (request('search'))
+        <input type="hidden" name="search" value="{{ request('search') }}">
+      @endif
+
+      <a href="{{ route('articles.index') }}"
+        class="px-3 py-1 text-xs font-medium rounded-full
+			{{ request('category') ? 'bg-white text-gray-700 border border-gray-700' : 'bg-blue-600 text-white' }}">
+        Semua
+      </a>
+
+      @foreach ($categories as $category)
+        <button type="submit" name="category" value="{{ $category->slug }}"
+          class="cursor-pointer px-3 py-1 text-xs font-medium rounded-full border transition capitalize
+						{{ request('category') === $category->slug
+          ? 'bg-blue-600 text-white border-blue-600'
+          : 'bg-white text-gray-700 hover:bg-gray-100' }}">
+          {{ $category->name }}
+        </button>
+      @endforeach
+    </div>
+  </form>
+
   <div class="bg-neutral-primary-soft rounded-base border border-default">
     <div class="p-4">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -12,6 +38,11 @@
           <div class="bg-white rounded-sm shadow-sm overflow-hidden flex flex-col h-full">
 
             <div class="relative h-48 bg-gray-100">
+
+              <span
+                class="absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full bg-blue-600 text-white uppercase">
+                {{ $article->category->name }}
+              </span>
 
               <span
                 class="absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded-full

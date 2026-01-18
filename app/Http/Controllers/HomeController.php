@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\ArticleCategory;
 use App\Models\JobPosting;
 use App\Models\Leads;
 use App\Models\Portfolio;
@@ -28,7 +29,6 @@ class HomeController extends Controller
 		$studyCaseForDesktop = StudyCaseService::paginate(6);
 		$studyCaseForMobile = StudyCaseService::all();
 
-		$articles = ArticleService::paginateHome(3);
 		$clients = ClientService::all();
 		$testimonials = Testimonial::select('name', 'company_name', 'content')->latest()->get();
 		$portfolios = Portfolio::latest()->get();
@@ -38,7 +38,6 @@ class HomeController extends Controller
 			'title',
 			'servicesForDesktop',
 			'servicesForMobile',
-			'articles',
 			'clients',
 			'studyCaseForDesktop',
 			'studyCaseForMobile',
@@ -59,12 +58,87 @@ class HomeController extends Controller
 		return view('public.article.article-detail', compact('title', 'article', 'latestArticle'));
 	}
 
-	public function articleAll()
+	public function portfolio(Request $request)
+	{
+		$title = 'Portfolio';
+		$portfolios = Portfolio::select(
+			'id',
+			'title',
+			'category_id',
+			'media_path',
+			'media_type'
+		)
+			->with('category')
+			->when($request->category, function ($q) use ($request) {
+				$q->whereHas('category', function ($c) use ($request) {
+					$c->where('slug', $request->category);
+				});
+			})
+			->latest()
+			->paginate(12)
+			->onEachSide(1)
+			->withQueryString();
+
+		$category = PortfolioCategory::select('id', 'name', 'slug')->get();
+		$activeCategory = $request->category;
+
+		return view('public.portfolio', compact('title', 'portfolios', 'category', 'activeCategory'));
+	}
+
+	public function articleAll(Request $request)
 	{
 		$title = 'Semua Artikel';
-		$articles = ArticleService::paginateAll(6);
+		$category = ArticleCategory::select('id', 'name', 'slug')->get();
+		$articles = Article::select(
+			'id',
+			'title',
+			'slug',
+			'content',
+			'category_id',
+			'cover_path',
+			'created_at'
+		)
+			->with('category')
+			->where('status', 'published')
+			->when($request->category, function ($q) use ($request) {
+				$q->whereHas('category', function ($c) use ($request) {
+					$c->where('slug', $request->category);
+				});
+			})
+			->latest()
+			->paginate(9)
+			->onEachSide(1)
+			->withQueryString();
 
-		return view('public.article.articles', compact('title', 'articles'));
+		return view('public.article.articles', [
+			'title' => $title,
+			'articles' => $articles,
+			'category' => $category,
+			'activeCategory' => $request->category
+		]);
+	}
+
+	public function studyCase()
+	{
+		$title = 'Study Case';
+		$studyCase = StudyCase::select(
+			'name',
+			'slug',
+			'situation',
+			'solution',
+			'result',
+			'cover_path'
+		)->latest()->paginate(12);
+
+		return view('public.studycase.studycases', compact('title', 'studyCase'));
+	}
+
+	public function studyCaseDetail(string $slug)
+	{
+		$studyCase = StudyCase::where('slug', $slug)->firstOrFail();
+		$title = 'Detail ' . $studyCase->name;
+
+		return view('public.studycase.studycase-detail', compact('title', 'studyCase'));
 	}
 
 	public function about()

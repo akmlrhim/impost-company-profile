@@ -19,6 +19,7 @@ class Article extends Model
 		'meta_description',
 		'status',
 		'category_id',
+		'written_by'
 	];
 
 	protected $casts = [

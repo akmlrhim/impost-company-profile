@@ -8,7 +8,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center max-w-3xl mx-auto mb-10 md:mb-14 lg:mb-16" data-aos="fade-up">
-      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-4 md:mb-6">
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-impost-primary leading-tight mb-4 md:mb-6">
         Siapa yang Cocok Bekerja dengan Kami?
       </h2>
       <div class="h-1 w-20 md:w-24 bg-gradient-to-r from-impost-primary to-impost-secondary mx-auto rounded-full"></div>

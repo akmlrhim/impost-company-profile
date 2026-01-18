@@ -156,7 +156,7 @@
   .header-section h3 {
     font-size: 32px;
     font-weight: bold;
-    color: white;
+    color: ;
     margin-bottom: 24px;
     line-height: 1.2;
   }

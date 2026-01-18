@@ -13,17 +13,17 @@
   <div class="bg-gray-900 border border-gray-800 rounded-md p-4 sm:p-6 mb-8">
     <h3 class="text-base sm:text-lg font-semibold text-white mb-4">Tulis Komentar</h3>
 
-    <form class="space-y-4" action="{{ route('article.comment') }}" method="POST" id="form-comment"
-      x-data="{
-          loading: false,
-          submitComment() {
-              this.loading = true;
-              getRecaptchaToken((token) => {
-                  document.getElementById('g-recaptcha-response').value = token;
-                  this.$el.submit();
-              })
-          }
-      }" @submit.prevent="submitComment">
+    <form class="space-y-4" action="{{ route('article.comment') }}" method="POST" x-data="{
+        loading: false,
+        submitComment() {
+            this.loading = true;
+            getRecaptchaToken((token) => {
+                document.getElementById('g-recaptcha-response').value = token;
+                this.$el.submit();
+            })
+        }
+    }"
+      @submit.prevent="submitComment">
       @csrf
 
       {{-- ambil id artikel  --}}

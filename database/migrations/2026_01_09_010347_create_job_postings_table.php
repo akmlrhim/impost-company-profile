@@ -21,6 +21,7 @@ return new class extends Migration
 			$table->string('type', 100);
 			$table->string('status', 50);
 			$table->date('closing_date');
+			$table->text('apply_link');
 			$table->timestamps();
 		});
 	}

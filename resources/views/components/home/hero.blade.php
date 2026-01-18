@@ -3,6 +3,8 @@
   <div class="absolute inset-0 z-0">
     <img src="{{ asset('img/Front_Cover_IM.webp') }}" alt="Impost Media Background" loading="lazy"
       class="w-full h-full object-cover object-center">
+
+    <div class="absolute inset-0 bg-black/60"></div>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full py-20 md:py-0">

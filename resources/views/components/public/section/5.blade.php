@@ -34,7 +34,8 @@
     }">
 
       <div class="text-center max-w-3xl mx-auto mb-10 md:mb-14 lg:mb-16">
-        <h2 data-aos="fade-up" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white">
+        <h2 data-aos="fade-up"
+          class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-impost-primary">
           Kenapa Harus Kami?
         </h2>
       </div>

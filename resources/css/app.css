@@ -27,7 +27,8 @@
   --color-primary-900: #1e3a8a;
   --color-primary-950: #172554;
 
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
+  --font-sans:
+    "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --font-header: "DM Serif Display", serif;
@@ -36,7 +37,7 @@
   --color-impost-secondary: #d09738;
   --color-impost-third: #95774f;
   --color-impost-fourth: #503924;
-  --color-impost-fifth: #040404;	
+  --color-impost-fifth: #040404;
 }
 
 body {

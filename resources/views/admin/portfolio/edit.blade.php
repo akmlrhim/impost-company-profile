@@ -41,16 +41,17 @@
           @enderror
         </div>
 
-        {{-- cover  --}}
+        {{-- media  --}}
         <div x-data="{
-            preview: '{{ $portfolio->cover_path ? asset('storage/' . $portfolio->cover_path) : '' }}',
-            oldPreview: '{{ $portfolio->cover_path ? asset('storage/' . $portfolio->cover_path) : '' }}'
+            preview: '{{ $portfolio->media_path ? $portfolio->media_path : '' }}',
+            oldPreview: '{{ $portfolio->media_path ? $portfolio->media_path : '' }}',
+            fileType: '{{ $portfolio->media_type ?? '' }}'
         }">
-          <label class="block text-sm font-medium mb-2" for="cover_path">
-            Cover
+          <label class="block text-sm font-medium mb-2" for="media_path">
+            Media
           </label>
 
-          <input type="file" name="cover_path" id="cover_path" accept="image/*"
+          <input type="file" name="media_path" id="media_path" accept="image/*,video/*"
             class="w-full text-sm rounded-sm border border-gray-300"
             @change="
 						const file = $event.target.files[0];
@@ -59,40 +60,36 @@
 								URL.revokeObjectURL(preview);
 							}
 							preview = URL.createObjectURL(file);
+							fileType = file.type.startsWith('image/') ? 'image' : 'video';
 						}
 					">
 
-          @error('cover_path')
+          @error('media_path')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
           @enderror
 
           <template x-if="preview">
             <div class="mt-4">
               <p class="text-xs text-gray-500 mb-2">
-                Preview cover
-                <span x-show="preview === oldPreview">(cover saat ini)</span>
+                Preview media
+                <span x-show="preview === oldPreview">(media saat ini)</span>
               </p>
 
-              <img :src="preview" class="w-40 h-56 rounded-md border border-gray-200 shadow-sm object-cover"
-                alt="Preview cover">
+              <template x-if="fileType === 'image'">
+                <img :src="preview" class="w-40 h-56 rounded-md border border-gray-200 shadow-sm object-cover"
+                  alt="Preview image">
+              </template>
+
+              <template x-if="fileType === 'video'">
+                <video :src="preview" class="w-full max-w-md h-auto rounded-md border border-gray-200 shadow-sm"
+                  controls>
+                </video>
+              </template>
             </div>
           </template>
         </div>
 
         {{-- end  --}}
-
-        {{-- description --}}
-        <div>
-          <label for="description" class="block text-sm font-medium text-gray-900 mb-2">
-            Deskripsi
-          </label>
-          <textarea id="description" name="description"
-            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-            placeholder="Masukkan deskripsi portfolio" rows="4">{{ old('description', $portfolio->description) }}</textarea>
-          @error('description')
-            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-          @enderror
-        </div>
 
       </div>
 

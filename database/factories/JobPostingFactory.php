@@ -23,11 +23,12 @@ class JobPostingFactory extends Factory
 			'title' => $title,
 			'slug' => Str::slug($title),
 			'description' => $this->faker->paragraphs(3, true),
-			'requirements' => $this->faker->paragraphs(2, true),
-			'responsibilities' => $this->faker->paragraphs(2, true),
+			'requirements' => '<p>' . $this->faker->paragraphs(3, true) . '</p>',
+			'responsibilities' => '<p>' . $this->faker->paragraphs(3, true) . '</p>',
 			'type' => $this->faker->randomElement(['Full-time', 'Part-time', 'Contract']),
 			'status' => $this->faker->randomElement(['Open', 'Closed']),
 			'closing_date' => $this->faker->dateTimeBetween('now', '+2 months')->format('Y-m-d'),
+			'apply_link' => $this->faker->unique()->url()
 		];
 	}
 }

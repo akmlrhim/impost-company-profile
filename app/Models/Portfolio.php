@@ -10,10 +10,21 @@ class Portfolio extends Model
 	use HasFactory;
 
 	protected $table = 'portfolio';
-	protected $fillable = ['slug', 'title', 'description', 'cover_path'];
+	protected $fillable = [
+		'slug',
+		'title',
+		'media_path',
+		'media_type',
+		'category_id',
+	];
 
 	public function getRouteKeyName()
 	{
 		return 'slug';
+	}
+
+	public function category()
+	{
+		return $this->belongsTo(PortfolioCategory::class);
 	}
 }

@@ -100,69 +100,6 @@
           @enderror
         </div>
 
-
-        {{-- Images --}}
-        <div x-data="{ imagePreviews: [] }" class="mt-4">
-          <label class="block text-sm font-medium mb-2" for="images">
-            Gambar Study Case
-          </label>
-
-          <input type="file" name="images[]" id="images" multiple accept="image/*"
-            class="w-full text-sm rounded-sm border border-gray-300"
-            @change="
-								imagePreviews = [];
-								for (let i = 0; i < $event.target.files.length; i++) {
-									const file = $event.target.files[i];
-									imagePreviews.push(URL.createObjectURL(file));
-								}
-							">
-
-          @error('images.*')
-            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-          @enderror
-
-          <template x-if="imagePreviews.length > 0">
-            <div class="mt-4 flex flex-wrap gap-3">
-              <template x-for="(url, index) in imagePreviews" :key="index">
-                <img :src="url" class="w-32 h-32 object-cover rounded border border-gray-200 shadow-sm"
-                  alt="Preview image">
-              </template>
-            </div>
-          </template>
-        </div>
-        {{-- end images --}}
-
-        {{-- Videos --}}
-        <div x-data="{ videoPreviews: [] }" class="mt-4">
-          <label class="block text-sm font-medium mb-2" for="videos">
-            Video Study Case
-          </label>
-
-          <input type="file" name="videos[]" id="videos" multiple accept="video/*"
-            class="w-full text-sm rounded-sm border border-gray-300"
-            @change="
-								videoPreviews = [];
-								for (let i = 0; i < $event.target.files.length; i++) {
-									const file = $event.target.files[i];
-									videoPreviews.push(URL.createObjectURL(file));
-								}
-							">
-
-          @error('videos.*')
-            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-          @enderror
-
-          <template x-if="videoPreviews.length > 0">
-            <div class="mt-4 flex flex-wrap gap-3">
-              <template x-for="(url, index) in videoPreviews" :key="index">
-                <video :src="url" class="w-32 h-32 object-cover rounded border border-gray-200 shadow-sm"
-                  controls></video>
-              </template>
-            </div>
-          </template>
-        </div>
-        {{-- end videos --}}
-
       </div>
 
       <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-end gap-3">

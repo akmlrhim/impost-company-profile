@@ -35,65 +35,64 @@
 
       <section class="mx-auto w-full max-w-7xl px-3">
 
-        <div class="columns-2 sm:columns-3 lg:columns-4 gap-3 md:gap-4 mb-10 md:mb-12 space-y-3 md:space-y-4">
+        @if ($portfolios->isEmpty())
+          <div class="w-full flex items-center justify-center">
+            <x-empty-card item="Portfolio" />
+          </div>
+        @else
+          <div class="columns-2 sm:columns-3 lg:columns-4 gap-3 md:gap-4 mb-10 md:mb-12 space-y-3 md:space-y-4">
 
-          @forelse ($portfolios as $portfolio)
-            <article
-              class="group relative rounded-2xl overflow-hidden border border-impost-fourth bg-[#0f0f0f] shadow-md cursor-pointer break-inside-avoid mb-3 md:mb-4"
-              data-media="{{ $portfolio->media_path ? asset('storage/' . $portfolio->media_path) : '' }}"
-              data-type="{{ $portfolio->media_type ?? 'image' }}" data-index="{{ $loop->index }}"
-              onclick="openMedia({{ $loop->index }}, '{{ $portfolio->media_type ?? 'image' }}')">
+            @foreach ($portfolios as $portfolio)
+              <article
+                class="group relative rounded-2xl overflow-hidden border border-impost-fourth bg-[#0f0f0f] shadow-md cursor-pointer break-inside-avoid mb-3 md:mb-4"
+                data-media="{{ $portfolio->media_path ? asset('storage/' . $portfolio->media_path) : '' }}"
+                data-type="{{ $portfolio->media_type ?? 'image' }}" data-index="{{ $loop->index }}"
+                onclick="openMedia({{ $loop->index }}, '{{ $portfolio->media_type ?? 'image' }}')">
 
-              <div class="relative w-full overflow-hidden bg-[#151515] flex items-center justify-center">
-
-                @if ($portfolio->media_path)
-                  @if ($portfolio->media_type === 'image')
-                    <img src="{{ asset('storage/' . $portfolio->media_path) }}" alt="{{ $portfolio->title }}"
-                      class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105">
-                  @elseif ($portfolio->media_type === 'video')
-                    <video class="w-full h-auto object-cover" muted>
-                      <source src="{{ asset('storage/' . $portfolio->media_path) }}" type="video/mp4">
-                    </video>
-
-                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div
-                        class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
+                <div class="relative w-full overflow-hidden bg-[#151515] flex items-center justify-center">
+                  @if ($portfolio->media_path)
+                    @if ($portfolio->media_type === 'image')
+                      <img src="{{ asset('storage/' . $portfolio->media_path) }}" alt="{{ $portfolio->title }}"
+                        class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105">
+                    @elseif ($portfolio->media_type === 'video')
+                      <video class="w-full h-auto object-cover" muted>
+                        <source src="{{ asset('storage/' . $portfolio->media_path) }}" type="video/mp4">
+                      </video>
+                      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div
+                          class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
                       </div>
+                    @endif
+                  @else
+                    <div class="w-full aspect-[9/16] flex items-center justify-center">
+                      <svg class="w-24 h-24 text-impost-fourth opacity-70" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor"
+                          stroke-width="1.5" />
+                        <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="1.5" />
+                      </svg>
                     </div>
                   @endif
-                @else
-                  <div class="w-full aspect-[9/16] flex items-center justify-center">
-                    <svg class="w-24 h-24 text-impost-fourth opacity-70" viewBox="0 0 24 24" fill="none">
-                      <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor"
-                        stroke-width="1.5" />
-                      <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="1.5" />
-                      <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="1.5" />
-                    </svg>
-                  </div>
-                @endif
 
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
-                @if ($portfolio->category)
-                  <span
-                    class="absolute top-3 left-3 z-10 rounded-full bg-impost-primary/90 text-impost-fifth text-[10px] md:text-xs font-bold uppercase px-3 py-1 shadow">
-                    {{ $portfolio->category->name }}
-                  </span>
-                @endif
-              </div>
-            </article>
+                  @if ($portfolio->category)
+                    <span
+                      class="absolute top-3 left-3 z-10 rounded-full bg-impost-primary/90 text-impost-fifth text-[10px] md:text-xs font-bold uppercase px-3 py-1 shadow">
+                      {{ $portfolio->category->name }}
+                    </span>
+                  @endif
+                </div>
+              </article>
+            @endforeach
+          </div>
 
-          @empty
-            <div class="col-span-full">
-              <x-empty-card item="Portfolio" />
-            </div>
-          @endforelse
-        </div>
-
-        <x-custom-pagination :items="$portfolios" />
+          <x-custom-pagination :items="$portfolios" />
+        @endif
       </section>
     </div>
   </main>

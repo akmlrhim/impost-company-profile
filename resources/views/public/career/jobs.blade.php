@@ -73,8 +73,8 @@
               </div>
             </div>
           @empty
-            <div class="col-span-full py-20 text-center">
-              <p class="text-white">Belum ada lowongan tersedia saat ini.</p>
+            <div class="col-span-full">
+              <x-empty-card item="Lowongan kerja" />
             </div>
           @endforelse
 

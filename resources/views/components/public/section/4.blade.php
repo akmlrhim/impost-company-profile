@@ -49,20 +49,20 @@
     overflow: hidden;
     border-radius: 1.5rem;
     aspect-ratio: 4/5;
-    background: #000;
+    background: #1a1a1a;
   }
 
   .card-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 1.5rem;
     display: block;
   }
 
   .card-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.65);
   }
 
   .card-content {
@@ -292,13 +292,18 @@
       </button>
     </div>
 
-
     {{-- Filter Kategori Portfolio --}}
     @if (!empty($portfolioCategories) && count($portfolioCategories))
       <div class="portfolio-category-filter" data-aos="fade-up" data-aos-delay="100">
+        {{-- Pill Semua --}}
+        <button type="button" class="portfolio-category-pill" data-portfolio-category="all"
+          onclick="portfolioCarousel.filterByCategory(null)">
+          <span class="uppercase tracking-wide text-xs">Semua</span>
+        </button>
+
+        {{-- Pill kategori --}}
         @foreach ($portfolioCategories as $category)
-          <button type="button" class="portfolio-category-pill {{ $loop->first ? 'is-active' : '' }}"
-            data-portfolio-category="{{ $category->id }}"
+          <button type="button" class="portfolio-category-pill" data-portfolio-category="{{ $category->id }}"
             onclick="portfolioCarousel.filterByCategory({{ $category->id }})">
             <span class="uppercase tracking-wide text-xs">
               {{ $category->name ?? ($category->title ?? 'Kategori') }}
@@ -357,7 +362,6 @@
       const angleStep = Math.max(minAngleStep, 360 / totalCards);
 
       let baseRadius = (window.innerWidth <= 480) ? 300 : (window.innerWidth <= 768) ? 450 : 600;
-
       const radius = baseRadius + (totalCards > 5 ? (totalCards - 5) * 20 : 0);
 
       cards.forEach((card, index) => {
@@ -373,14 +377,13 @@
         const z = Math.cos(rad) * radius - radius;
         const rotateY = -angle;
 
-
         const isVisible = Math.abs(offset) <= 3;
 
         card.style.transform = `
-				translate(-50%, -50%)
-				translate3d(${x}px, 0, ${z}px)
-				rotateY(${rotateY}deg)
-			`;
+          translate(-50%, -50%)
+          translate3d(${x}px, 0, ${z}px)
+          rotateY(${rotateY}deg)
+        `;
 
         card.style.opacity = isVisible ? (index === currentIndex ? "1" : "0.4") : "0";
         card.style.pointerEvents = isVisible ? "auto" : "none";
@@ -427,30 +430,16 @@
       clearCards();
 
       if (portfoliosData.length === 0) {
-        // Tampilkan pesan kosong dan sembunyikan tombol navigasi
-        if (emptyMessage) {
-          emptyMessage.classList.add('show');
-        }
-        if (prevButton) {
-          prevButton.style.display = 'none';
-        }
-        if (nextButton) {
-          nextButton.style.display = 'none';
-        }
+        if (emptyMessage) emptyMessage.classList.add('show');
+        if (prevButton) prevButton.style.display = 'none';
+        if (nextButton) nextButton.style.display = 'none';
         stopAutoRotate();
         return;
       }
 
-      // Sembunyikan pesan kosong dan tampilkan tombol navigasi
-      if (emptyMessage) {
-        emptyMessage.classList.remove('show');
-      }
-      if (prevButton) {
-        prevButton.style.display = 'flex';
-      }
-      if (nextButton) {
-        nextButton.style.display = 'flex';
-      }
+      if (emptyMessage) emptyMessage.classList.remove('show');
+      if (prevButton) prevButton.style.display = 'flex';
+      if (nextButton) nextButton.style.display = 'flex';
 
       portfoliosData.forEach((portfolio, index) => {
         const card = createCard(portfolio, index);
@@ -497,10 +486,11 @@
       renderCards();
 
       const defaultCategoryId = @json($firstCategoryId ?? null);
-      if (defaultCategoryId) {
+      if (defaultCategoryId !== null) {
         filterByCategory(defaultCategoryId);
       } else {
         startAutoRotate();
+        setActiveCategoryPill(null);
       }
 
       if (window.innerWidth > 768) {

@@ -102,7 +102,9 @@
             </article>
 
           @empty
-            <x-empty-card item="articles" />
+            <div class="col-span-full">
+              <x-empty-card item="artikel" />
+            </div>
           @endforelse
 
         </div>

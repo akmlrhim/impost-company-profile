@@ -25,14 +25,14 @@ class DatabaseSeeder extends Seeder
 			'password' => Hash::make('omsetnaik1_'),
 		]);
 
-		// $this->call([
-		// 	ArticleCategorySeeder::class,
-		// 	PortfolioCategorySeeder::class,
-		// 	ServiceSeeder::class,
-		// 	ArticleSeeder::class,
-		// 	TestimonialSeeder::class,
-		// 	PortfolioSeeder::class,
-		// 	StudyCaseSeeder::class
-		// ]);
+		$this->call([
+			ArticleCategorySeeder::class,
+			PortfolioCategorySeeder::class,
+			ServiceSeeder::class,
+			ArticleSeeder::class,
+			TestimonialSeeder::class,
+			PortfolioSeeder::class,
+			StudyCaseSeeder::class
+		]);
 	}
 }

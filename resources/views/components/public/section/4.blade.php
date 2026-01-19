@@ -48,17 +48,17 @@
     position: relative;
     overflow: hidden;
     border-radius: 1.5rem;
-    aspect-ratio: 4/5;
-    background: #1a1a1a;
   }
 
   .card-image {
+    object-fit: contain;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 1.5rem;
     display: block;
+    margin: auto;
   }
+
+
 
   .card-overlay {
     position: absolute;
@@ -483,15 +483,12 @@
     }
 
     function init() {
+      portfoliosData = [...originalPortfolios];
+      currentIndex = 0;
       renderCards();
+      restartAutoRotate();
 
-      const defaultCategoryId = @json($firstCategoryId ?? null);
-      if (defaultCategoryId !== null) {
-        filterByCategory(defaultCategoryId);
-      } else {
-        startAutoRotate();
-        setActiveCategoryPill(null);
-      }
+      setActiveCategoryPill(null);
 
       if (window.innerWidth > 768) {
         container.addEventListener('mouseenter', stopAutoRotate);

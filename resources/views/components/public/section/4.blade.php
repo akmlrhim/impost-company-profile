@@ -327,8 +327,8 @@
       const card = document.createElement('div');
       card.className = 'carousel-card';
 
-      const imageUrl = portfolio.cover_path ?
-        `{{ asset('storage/') }}/${portfolio.cover_path}` :
+      const imageUrl = portfolio.media_path ?
+        `{{ asset('storage/') }}/${portfolio.media_path}` :
         'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&h=600&fit=crop';
 
       card.innerHTML = `

@@ -5,8 +5,10 @@
     perspective: 2000px;
     position: relative;
     width: 100%;
-    height: 500px;
-    overflow: hidden;
+    height: 550px;
+    overflow: visible;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
   }
 
   .carousel-container {
@@ -51,14 +53,11 @@
   }
 
   .card-image {
-    object-fit: contain;
     width: 100%;
-    height: 100%;
+    height: auto;
+    object-fit: contain;
     display: block;
-    margin: auto;
   }
-
-
 
   .card-overlay {
     position: absolute;
@@ -94,7 +93,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.75rem;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
   }
 
   .portfolio-category-pill {
@@ -192,7 +191,9 @@
 
   @media (max-width: 768px) {
     .carousel-3d {
-      height: 400px;
+      height: 450px;
+      margin-bottom: 2.5rem;
+      padding: 1.5rem 0;
     }
 
     .carousel-card {
@@ -224,11 +225,17 @@
     .carousel-nav.next {
       right: 0.5rem;
     }
+
+    .portfolio-category-filter {
+      margin-top: 1.5rem;
+    }
   }
 
   @media (max-width: 480px) {
     .carousel-3d {
-      height: 360px;
+      height: 400px;
+      margin-bottom: 2rem;
+      padding: 1rem 0;
     }
 
     .carousel-card {
@@ -245,6 +252,10 @@
 
     .card-description {
       font-size: 0.75rem;
+    }
+
+    .portfolio-category-filter {
+      margin-top: 1.25rem;
     }
   }
 </style>
@@ -405,7 +416,7 @@
         const totalCards = portfoliosData.length || 1;
         currentIndex = (currentIndex + 1) % totalCards;
         updateCarousel();
-      }, 1500);
+      }, 3000);
     }
 
     function stopAutoRotate() {

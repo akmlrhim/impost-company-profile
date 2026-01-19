@@ -56,7 +56,7 @@ class PortfolioController extends Controller
 	public function create()
 	{
 		$title = 'Tambah Portfolio';
-		$category = ArticleCategory::pluck('name', 'id');
+		$category = PortfolioCategory::pluck('name', 'id');
 
 		return view('admin.portfolio.create', [
 			'title' => $title,

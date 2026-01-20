@@ -37,7 +37,7 @@
         <div class="mb-8">
           @if ($article->cover_path)
             <img src="{{ asset('storage/' . $article->cover_path) }}" alt="{{ $article->title }}"
-              class="w-full h-72 rounded-md object-cover" />
+              class="w-full h-96 rounded-md object-cover" />
           @else
             <div class="w-full h-72 bg-gray-200 flex items-center justify-center rounded-md">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"

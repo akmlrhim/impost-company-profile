@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
-use Mews\Purifier\Facades\Purifier;
 
 class ArticleController extends Controller
 {
@@ -81,7 +80,7 @@ class ArticleController extends Controller
 				'title' => $request->title,
 				'slug' => Str::slug($request->title),
 				'category_id' => $request->category_id,
-				'content' => Purifier::clean($request->content),
+				'content' => $request->content,
 				'cover_path' => $cover_path,
 				'excerpt' => Str::limit(strip_tags($request->content), 150, '...'),
 				'meta_title' => $request->title,
@@ -136,7 +135,7 @@ class ArticleController extends Controller
 
 			$article->title = $request->title;
 			$article->slug = Str::slug($request->title);
-			$article->content = Purifier::clean($request->content);
+			$article->content = $request->content;
 			$article->category_id = $request->category_id;
 			$article->excerpt = Str::limit(strip_tags($request->content), 150);
 			$article->meta_title = $request->title;

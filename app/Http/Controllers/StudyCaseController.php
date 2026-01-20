@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
-use Mews\Purifier\Facades\Purifier;
 
 class StudyCaseController extends Controller
 {
@@ -75,9 +74,9 @@ class StudyCaseController extends Controller
 			$studyCase = StudyCase::create([
 				'name' => $request->name,
 				'slug' => Str::slug($request->name),
-				'situation' => Purifier::clean($request->situation),
-				'solution' => Purifier::clean($request->solution),
-				'result' => Purifier::clean($request->result),
+				'situation' => $request->situation,
+				'solution' => $request->solution,
+				'result' => $request->result,
 				'cover_path' => $cover_path,
 			]);
 
@@ -139,9 +138,9 @@ class StudyCaseController extends Controller
 			$studyCase->update([
 				'name' => $request->name,
 				'slug' => Str::slug($request->name),
-				'situation' => Purifier::clean($request->situation),
-				'solution' => Purifier::clean($request->solution),
-				'result' => Purifier::clean($request->result),
+				'situation' => $request->situation,
+				'solution' => $request->solution,
+				'result' => $request->result,
 				'cover_path' => $coverPath,
 			]);
 

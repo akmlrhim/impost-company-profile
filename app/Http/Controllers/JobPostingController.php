@@ -6,7 +6,6 @@ use App\Models\JobPosting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Mews\Purifier\Facades\Purifier;
 
 class JobPostingController extends Controller
 {
@@ -72,8 +71,8 @@ class JobPostingController extends Controller
 				'slug' => Str::slug($request->title),
 				'type' => $request->type,
 				'description' => $request->description,
-				'requirements'     => Purifier::clean($request->requirements),
-				'responsibilities' => Purifier::clean($request->responsibilities),
+				'requirements'     => $request->requirements,
+				'responsibilities' => $request->responsibilities,
 				'status' => $request->status,
 				'closing_date' => $request->closing_date,
 				'apply_link' => $request->apply_link
@@ -123,8 +122,8 @@ class JobPostingController extends Controller
 				'slug' => Str::slug($request->title),
 				'type' => $request->type,
 				'description' => $request->description,
-				'requirements'     => Purifier::clean($request->requirements),
-				'responsibilities' => Purifier::clean($request->responsibilities),
+				'requirements'     => $request->requirements,
+				'responsibilities' => $request->responsibilities,
 				'status' => $request->status,
 				'closing_date' => $request->closing_date,
 				'apply_link' => $request->apply_link

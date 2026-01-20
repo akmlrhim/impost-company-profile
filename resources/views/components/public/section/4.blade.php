@@ -1,271 +1,12 @@
 @props(['portfolios', 'portfolioCategories' => []])
 
-<style>
-  .carousel-3d {
-    perspective: 2000px;
-    position: relative;
-    width: 100%;
-    height: 550px;
-    overflow: visible;
-    margin-bottom: 3rem;
-    padding: 2rem 0;
-  }
-
-  .carousel-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .carousel-card {
-    position: absolute;
-    width: 320px;
-    left: 50%;
-    top: 50%;
-    transform-style: preserve-3d;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    backface-visibility: hidden;
-  }
-
-  .carousel-card.active {
-    z-index: 10;
-    opacity: 1;
-    filter: brightness(1.1);
-  }
-
-  .carousel-card:not(.active) {
-    opacity: 0.5;
-    filter: brightness(0.6);
-    cursor: pointer;
-  }
-
-  .carousel-card:not(.active):hover {
-    opacity: 0.8;
-    filter: brightness(0.8);
-  }
-
-  .card-image-wrapper {
-    position: relative;
-    overflow: hidden;
-    border-radius: 1.5rem;
-  }
-
-  .card-image {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-  }
-
-  .card-overlay {
-    position: absolute;
-    inset: 0;
-  }
-
-  .card-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1.5rem;
-  }
-
-  .card-title {
-    color: #d4ac3c;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .card-description {
-    color: #e5e5e5;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .portfolio-category-filter {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 2rem;
-  }
-
-  .portfolio-category-pill {
-    border-radius: 999px;
-    padding: 0.5rem 1.25rem;
-    font-size: 0.875rem;
-    border: 1px solid #d4ac3c;
-    color: black;
-    font-weight: bold;
-    background: #d4ac3c;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    transition: all 0.25s ease;
-    backdrop-filter: blur(10px);
-  }
-
-  .portfolio-category-pill span {
-    font-size: 0.75rem;
-    opacity: 0.8;
-  }
-
-  .portfolio-category-pill:hover {
-    border-color: #facc15;
-    background: #eab308;
-    transform: translateY(-1px);
-  }
-
-  .portfolio-category-pill.is-active {
-    border-color: #facc15;
-    background: #f59e0b;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-  }
-
-  .carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20;
-    background: rgba(212, 172, 60, 0.1);
-    border: 1px solid rgba(212, 172, 60, 0.3);
-    backdrop-filter: blur(10px);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    color: #d4ac3c;
-  }
-
-  .carousel-nav:hover {
-    background: rgba(212, 172, 60, 0.25);
-    border-color: rgba(212, 172, 60, 0.6);
-    transform: translateY(-50%) scale(1.1);
-  }
-
-  .carousel-nav.prev {
-    left: 1rem;
-  }
-
-  .carousel-nav.next {
-    right: 1rem;
-  }
-
-  .portfolio-empty-message {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 10;
-    color: #e5e5e5;
-  }
-
-  .portfolio-empty-message.show {
-    display: block;
-  }
-
-  .portfolio-empty-message h3 {
-    color: #d4ac3c;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-  }
-
-  .portfolio-empty-message p {
-    font-size: 1rem;
-    opacity: 0.8;
-  }
-
-  @media (max-width: 768px) {
-    .carousel-3d {
-      height: 450px;
-      margin-bottom: 2.5rem;
-      padding: 1.5rem 0;
-    }
-
-    .carousel-card {
-      width: 280px;
-    }
-
-    .card-content {
-      padding: 1.25rem;
-    }
-
-    .card-title {
-      font-size: 0.875rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-description {
-      font-size: 0.8125rem;
-    }
-
-    .carousel-nav {
-      width: 40px;
-      height: 40px;
-    }
-
-    .carousel-nav.prev {
-      left: 0.5rem;
-    }
-
-    .carousel-nav.next {
-      right: 0.5rem;
-    }
-
-    .portfolio-category-filter {
-      margin-top: 1.5rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .carousel-3d {
-      height: 400px;
-      margin-bottom: 2rem;
-      padding: 1rem 0;
-    }
-
-    .carousel-card {
-      width: 250px;
-    }
-
-    .card-content {
-      padding: 1rem;
-    }
-
-    .card-title {
-      font-size: 0.8125rem;
-    }
-
-    .card-description {
-      font-size: 0.75rem;
-    }
-
-    .portfolio-category-filter {
-      margin-top: 1.25rem;
-    }
-  }
-</style>
-
 @php
   $firstCategoryId = $portfolioCategories[0]->id ?? null;
 @endphp
 
 <section class="py-8 md:py-16 lg:py-20 relative overflow-hidden">
 
+  {{-- Background Effect --}}
   <div class="absolute inset-0 opacity-5">
     <div
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-impost-primary rounded-full blur-3xl">
@@ -274,6 +15,7 @@
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
+    {{-- Header --}}
     <div class="text-center max-w-3xl mx-auto mb-10 md:mb-14 lg:mb-16" data-aos="fade-up">
       <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-impost-primary mb-4 md:mb-6">
         Hasil Nyata, Bukan Janji Kosong
@@ -283,20 +25,36 @@
       </p>
     </div>
 
-    <div class="carousel-3d">
-      <button class="carousel-nav prev" onclick="portfolioCarousel.navigate(-1)">
+    {{-- Carousel Container --}}
+    <div class="relative w-full h-[400px] md:h-[450px] lg:h-[550px] overflow-visible mb-8 md:mb-12 py-4 md:py-8"
+      style="perspective: 2000px;">
+
+      {{-- Previous Button --}}
+      <button
+        class="carousel-nav-prev absolute top-1/2 -translate-y-1/2 left-2 md:left-4 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-impost-primary/10 border border-impost-primary/30 backdrop-blur-sm hover:bg-impost-primary/25 hover:border-impost-primary/60 hover:scale-110 text-impost-primary"
+        onclick="portfolioCarousel.navigate(-1)">
         <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18-6-6 6-6" />
         </svg>
       </button>
 
-      <div class="carousel-container" id="portfolioCarouselContainer"></div>
-      <div class="portfolio-empty-message" id="portfolioEmptyMessage">
-        <h3>Belum Ada Portfolio</h3>
-        <p>Kategori ini belum memiliki portfolio tersedia.</p>
+      {{-- Carousel Container --}}
+      <div class="relative w-full h-full"
+        style="transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);"
+        id="portfolioCarouselContainer">
       </div>
 
-      <button class="carousel-nav next" onclick="portfolioCarousel.navigate(1)">
+      {{-- Empty Message --}}
+      <div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10"
+        id="portfolioEmptyMessage">
+        <h3 class="text-impost-primary text-xl md:text-2xl font-bold mb-3">Belum Ada Portfolio</h3>
+        <p class="text-white/80 text-sm md:text-base">Kategori ini belum memiliki portfolio tersedia.</p>
+      </div>
+
+      {{-- Next Button --}}
+      <button
+        class="carousel-nav-next absolute top-1/2 -translate-y-1/2 right-2 md:right-4 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-impost-primary/10 border border-impost-primary/30 backdrop-blur-sm hover:bg-impost-primary/25 hover:border-impost-primary/60 hover:scale-110 text-impost-primary"
+        onclick="portfolioCarousel.navigate(1)">
         <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18 6-6-6-6" />
         </svg>
@@ -305,22 +63,39 @@
 
     {{-- Filter Kategori Portfolio --}}
     @if (!empty($portfolioCategories) && count($portfolioCategories))
-      <div class="portfolio-category-filter" data-aos="fade-up" data-aos-delay="100">
-        {{-- Pill Semua --}}
-        <button type="button" class="portfolio-category-pill" data-portfolio-category="all"
-          onclick="portfolioCarousel.filterByCategory(null)">
-          <span class="uppercase tracking-wide text-xs">Semua</span>
+      {{-- Desktop version: Pills --}}
+      <div class="hidden md:flex flex-wrap justify-center gap-3 mt-8" data-aos="fade-up" data-aos-delay="100">
+        <button type="button"
+          class="portfolio-category-pill rounded-full px-5 py-2 text-sm border border-impost-primary text-black font-bold bg-impost-primary cursor-pointer inline-flex items-center gap-2 transition-all duration-250 backdrop-blur-sm hover:border-yellow-400 hover:bg-yellow-500 hover:-translate-y-0.5"
+          data-portfolio-category="all" onclick="portfolioCarousel.filterByCategory(null)">
+          <span class="uppercase tracking-wide text-xs opacity-80">Semua</span>
         </button>
 
-        {{-- Pill kategori --}}
         @foreach ($portfolioCategories as $category)
-          <button type="button" class="portfolio-category-pill" data-portfolio-category="{{ $category->id }}"
+          <button type="button"
+            class="portfolio-category-pill rounded-full px-5 py-2 text-sm border border-impost-primary text-black font-bold bg-impost-primary cursor-pointer inline-flex items-center gap-2 transition-all duration-250 backdrop-blur-sm hover:border-yellow-400 hover:bg-yellow-500 hover:-translate-y-0.5"
+            data-portfolio-category="{{ $category->id }}"
             onclick="portfolioCarousel.filterByCategory({{ $category->id }})">
-            <span class="uppercase tracking-wide text-xs">
+            <span class="uppercase tracking-wide text-xs opacity-80">
               {{ $category->name ?? ($category->title ?? 'Kategori') }}
             </span>
           </button>
         @endforeach
+      </div>
+
+      {{-- Mobile version: Dropdown --}}
+      <div class="block md:hidden mt-6 sm:mt-8" data-aos="fade-up" data-aos-delay="100">
+        <select id="portfolioMobileSelect"
+          class="w-full px-4 py-3 pr-10 border-2 border-impost-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-impost-primary focus:border-transparent bg-black/50 backdrop-blur-sm text-white text-sm font-medium appearance-none cursor-pointer transition-all duration-200 hover:bg-black/60"
+          style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23d4ac3c%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1.25rem;"
+          onchange="portfolioCarousel.filterByCategory(this.value === 'all' ? null : parseInt(this.value)); portfolioCarousel.setActiveMobileOption(this.value);">
+          <option value="all" class="bg-black text-white">Semua Kategori</option>
+          @foreach ($portfolioCategories as $category)
+            <option value="{{ $category->id }}" class="bg-black text-white">
+              {{ $category->name ?? ($category->title ?? 'Kategori') }}
+            </option>
+          @endforeach
+        </select>
       </div>
     @endif
 
@@ -335,27 +110,31 @@
     let autoRotate;
     const container = document.getElementById('portfolioCarouselContainer');
     const emptyMessage = document.getElementById('portfolioEmptyMessage');
-    const prevButton = document.querySelector('.carousel-nav.prev');
-    const nextButton = document.querySelector('.carousel-nav.next');
+    const prevButton = document.querySelector('.carousel-nav-prev');
+    const nextButton = document.querySelector('.carousel-nav-next');
+    const mobileSelect = document.getElementById('portfolioMobileSelect');
     let portfoliosData = [...originalPortfolios];
 
     function createCard(portfolio, index) {
       const card = document.createElement('div');
-      card.className = 'carousel-card';
+      card.className =
+        'portfolio-card absolute left-1/2 top-1/2 w-[250px] sm:w-[280px] md:w-[320px] transition-all duration-600 opacity-50';
+      card.style.transformStyle = 'preserve-3d';
+      card.style.backfaceVisibility = 'hidden';
 
       const imageUrl = portfolio.media_path ?
         `{{ asset('storage/') }}/${portfolio.media_path}` :
         'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&h=600&fit=crop';
 
       card.innerHTML = `
-        <div class="card-image-wrapper">
-          <img src="${imageUrl}" alt="${portfolio.title}" class="card-image" loading="lazy">
-          <div class="card-overlay"></div>
+        <div class="relative overflow-hidden rounded-3xl">
+          <img src="${imageUrl}" alt="${portfolio.title}" class="w-full h-auto object-contain block" loading="lazy">
+          <div class="absolute inset-0"></div>
         </div>
       `;
 
       card.addEventListener('click', () => {
-        if (!card.classList.contains('active')) {
+        if (!card.classList.contains('active-card')) {
           currentIndex = index;
           updateCarousel();
           restartAutoRotate();
@@ -367,7 +146,7 @@
 
     function updateCarousel() {
       const totalCards = portfoliosData.length || 1;
-      const cards = container.querySelectorAll('.carousel-card');
+      const cards = container.querySelectorAll('.portfolio-card');
 
       const minAngleStep = 45;
       const angleStep = Math.max(minAngleStep, 360 / totalCards);
@@ -396,9 +175,20 @@
           rotateY(${rotateY}deg)
         `;
 
+        // Update classes based on active state
+        if (index === currentIndex) {
+          card.classList.add('active-card');
+          card.classList.remove('opacity-50', 'cursor-pointer');
+          card.classList.add('opacity-100', 'z-10');
+          card.style.filter = 'brightness(1.1)';
+        } else {
+          card.classList.remove('active-card', 'opacity-100', 'z-10');
+          card.classList.add('opacity-50', 'cursor-pointer');
+          card.style.filter = 'brightness(0.6)';
+        }
+
         card.style.opacity = isVisible ? (index === currentIndex ? "1" : "0.4") : "0";
         card.style.pointerEvents = isVisible ? "auto" : "none";
-        card.classList.toggle('active', index === currentIndex);
       });
     }
 
@@ -441,16 +231,22 @@
       clearCards();
 
       if (portfoliosData.length === 0) {
-        if (emptyMessage) emptyMessage.classList.add('show');
-        if (prevButton) prevButton.style.display = 'none';
-        if (nextButton) nextButton.style.display = 'none';
+        if (emptyMessage) {
+          emptyMessage.classList.remove('hidden');
+          emptyMessage.classList.add('block');
+        }
+        if (prevButton) prevButton.classList.add('hidden');
+        if (nextButton) nextButton.classList.add('hidden');
         stopAutoRotate();
         return;
       }
 
-      if (emptyMessage) emptyMessage.classList.remove('show');
-      if (prevButton) prevButton.style.display = 'flex';
-      if (nextButton) nextButton.style.display = 'flex';
+      if (emptyMessage) {
+        emptyMessage.classList.add('hidden');
+        emptyMessage.classList.remove('block');
+      }
+      if (prevButton) prevButton.classList.remove('hidden');
+      if (nextButton) nextButton.classList.remove('hidden');
 
       portfoliosData.forEach((portfolio, index) => {
         const card = createCard(portfolio, index);
@@ -466,12 +262,21 @@
         const value = pill.getAttribute('data-portfolio-category');
         const isAll = value === 'all' && (categoryId === null || categoryId === undefined);
         const isMatch = !isAll && value === String(categoryId);
+
         if (isAll || isMatch) {
-          pill.classList.add('is-active');
+          pill.classList.remove('border-impost-primary', 'bg-impost-primary');
+          pill.classList.add('border-yellow-400', 'bg-orange-500', 'shadow-lg');
         } else {
-          pill.classList.remove('is-active');
+          pill.classList.add('border-impost-primary', 'bg-impost-primary');
+          pill.classList.remove('border-yellow-400', 'bg-orange-500', 'shadow-lg');
         }
       });
+    }
+
+    function setActiveMobileOption(value) {
+      if (mobileSelect) {
+        mobileSelect.value = value;
+      }
     }
 
     function filterByCategory(categoryId) {
@@ -491,6 +296,10 @@
       renderCards();
       restartAutoRotate();
       setActiveCategoryPill(categoryId);
+
+      if (mobileSelect) {
+        mobileSelect.value = categoryId === null ? 'all' : categoryId;
+      }
     }
 
     function init() {
@@ -513,7 +322,8 @@
 
     return {
       navigate,
-      filterByCategory
+      filterByCategory,
+      setActiveMobileOption
     };
   })();
 </script>

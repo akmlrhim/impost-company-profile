@@ -263,7 +263,9 @@
               </div>
             </article>
           @empty
-            <x-empty-card item="artikel" />
+            <div class="col-span-full">
+              <x-empty-card item="artikel" />
+            </div>
           @endforelse
         </div>
 

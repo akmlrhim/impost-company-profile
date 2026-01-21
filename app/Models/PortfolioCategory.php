@@ -11,4 +11,9 @@ class PortfolioCategory extends Model
 
 	protected $table = 'portfolio_categories';
 	protected $fillable = ['name', 'slug'];
+
+	public function portfolios()
+	{
+		return $this->hasMany(Portfolio::class, 'category_id');
+	}
 }

@@ -1,5 +1,5 @@
 <section class="relative w-full max-w-7xl py-8 sm:py-10 md:py-12 lg:py-16 mx-auto overflow-hidden" id="testimonials">
-  <div class="relative text-center" data-aos="fade-up">
+  <div class="relative text-center">
     <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 text-impost-primary">
       Apa Kata Mereka?
     </h2>

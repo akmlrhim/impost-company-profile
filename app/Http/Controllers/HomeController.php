@@ -32,7 +32,11 @@ class HomeController extends Controller
 		$clients = ClientService::all();
 		$testimonials = Testimonial::select('name', 'company_name', 'content')->latest()->get();
 		$portfolios = Portfolio::latest()->get();
-		$portfolioCategories = PortfolioCategory::select('id', 'name', 'slug')->get();
+		$portfolioCategories = PortfolioCategory::select('id', 'name', 'slug')
+			->withCount('portfolios')
+			->has('portfolios')
+			->orderBy('portfolios_count', 'DESC')
+			->get();
 
 		return view('public.home', compact(
 			'title',

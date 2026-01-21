@@ -4,8 +4,6 @@
 
 <x-public.section.3></x-public.section.3>
 
-<x-public.section.4 :portfolios="$portfolios" :portfolioCategories="$portfolioCategories"></x-public.section.4>
-
 {{-- <x-public.section.4-1></x-public.section.4-1> --}}
 
 <x-public.section.5></x-public.section.5>

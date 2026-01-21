@@ -1,9 +1,9 @@
-<section class="py-8 md:py-16 lg:py-20 relative overflow-hidden">
+<section class="py-12 sm:py-10 md:py-12 relative overflow-hidden">
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
 
-      <div data-aos="fade-right">
+      <div>
 
         <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-6 md:mb-8">
           Apa yang Kami <span class="text-impost-primary">Selesaikan?</span>
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div data-aos="fade-left">
+      <div>
         <div
           class="bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-10 backdrop-blur-sm">
 
@@ -30,12 +30,11 @@
               Masalah inti yang kami selesaikan
             </span>
           </div>
-
-          <ul class="space-y-3 md:space-y-4">
-            <li class="flex items-start gap-3 md:gap-4 group">
+          <ul class="space-y-2 md:space-y-2.5">
+            <li class="flex items-start gap-2.5 md:gap-3 group">
               <div
-                class="flex-shrink-0 w-6 h-6 md:w-7 md:h-7 rounded-lg bg-impost-primary/10 border border-impost-primary/20 flex items-center justify-center mt-0.5">
-                <svg class="w-3 h-3 md:w-4 md:h-4 text-impost-primary" fill="none" stroke="currentColor"
+                class="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-lg bg-impost-primary/10 border border-impost-primary/20 flex items-center justify-center mt-0.5">
+                <svg class="w-2.5 h-2.5 md:w-3 md:h-3 text-impost-primary" fill="none" stroke="currentColor"
                   viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
                 </svg>

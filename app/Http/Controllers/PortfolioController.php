@@ -125,7 +125,7 @@ class PortfolioController extends Controller
 		return view('admin.portfolio.edit', [
 			'title' => $title,
 			'portfolio' => $portfolio,
-			'category' => PortfolioCategory::pluck('name', 'id')
+			'category' => PortfolioCategory::select('id', 'name')->get()
 		]);
 	}
 

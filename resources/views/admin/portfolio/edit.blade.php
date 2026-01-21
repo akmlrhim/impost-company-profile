@@ -29,12 +29,15 @@
           </label>
           <select id="category_id" name="category_id"
             class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow">
+
             <option value="" disabled selected>Pilih kategori</option>
-            @foreach ($category as $id => $name)
-              <option value="{{ $id }}"
-                {{ old('category_id', $portfolio->category_id) == $id ? 'selected' : '' }}>{{ $name }}
+
+            @foreach ($category as $item)
+              <option value="{{ $item->id }}" @selected(old('category_id', $portfolio->category_id) == $item->id)>
+                {{ $item->name }}
               </option>
             @endforeach
+
           </select>
           @error('category_id')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>

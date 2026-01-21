@@ -1,10 +1,5 @@
 <section class="py-8 md:py-16 lg:py-20 relative overflow-hidden">
 
-  <div class="absolute inset-0 opacity-5">
-    <div class="absolute top-20 right-20 w-96 h-96 bg-impost-primary rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 left-20 w-96 h-96 bg-impost-secondary rounded-full blur-3xl"></div>
-  </div>
-
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
     <div class="max-w-4xl mb-12 md:mb-16 lg:mb-20" data-aos="fade-up">

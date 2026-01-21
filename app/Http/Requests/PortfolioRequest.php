@@ -24,7 +24,7 @@ class PortfolioRequest extends FormRequest
 		$portfolioId = $this->route('portfolio')?->id;
 
 		return [
-			'title' => 'required|string|unique:portfolio,title,' . $portfolioId,
+			'title' => 'required|string',
 			'category_id' => 'required|exists:portfolio_categories,id',
 			'media_path' => $this->isMethod('POST')
 				? 'required|file|mimes:jpeg,png,jpg,webp,mp4,mov,avi,wmv|max:51200'

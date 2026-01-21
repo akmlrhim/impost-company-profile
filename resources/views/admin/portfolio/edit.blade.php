@@ -43,9 +43,9 @@
 
         {{-- media  --}}
         <div x-data="{
-            preview: '{{ $portfolio->media_path ? $portfolio->media_path : '' }}',
-            oldPreview: '{{ $portfolio->media_path ? $portfolio->media_path : '' }}',
-            fileType: '{{ $portfolio->media_type ?? '' }}'
+            preview: '{{ $portfolio->media_path ? Storage::url($portfolio->media_path) : '' }}',
+            oldPreview: '{{ $portfolio->media_path ? Storage::url($portfolio->media_path) : '' }}',
+            fileType: '{{ Str::startsWith($portfolio->media_type ?? '', 'video') ? 'video' : 'image' }}'
         }">
           <label class="block text-sm font-medium mb-2" for="media_path">
             Media
@@ -54,16 +54,15 @@
           <input type="file" name="media_path" id="media_path" accept="image/*,video/*"
             class="w-full text-sm rounded-sm border border-gray-300"
             @change="
-						const file = $event.target.files[0];
-						if (file) {
-							if (preview && preview !== oldPreview) {
-								URL.revokeObjectURL(preview);
-							}
-							preview = URL.createObjectURL(file);
-							fileType = file.type.startsWith('image/') ? 'image' : 'video';
-						}
-					">
-
+									const file = $event.target.files[0];
+									if (file) {
+											if (preview && preview !== oldPreview) {
+													URL.revokeObjectURL(preview);
+											}
+											preview = URL.createObjectURL(file);
+											fileType = file.type.startsWith('image/') ? 'image' : 'video';
+									}
+							">
           @error('media_path')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
           @enderror
@@ -72,7 +71,7 @@
             <div class="mt-4">
               <p class="text-xs text-gray-500 mb-2">
                 Preview media
-                <span x-show="preview === oldPreview">(media saat ini)</span>
+                <span x-show="preview === oldPreview" class="text-indigo-600 font-semibold">(Saat ini)</span>
               </p>
 
               <template x-if="fileType === 'image'">
@@ -88,7 +87,6 @@
             </div>
           </template>
         </div>
-
         {{-- end  --}}
 
       </div>

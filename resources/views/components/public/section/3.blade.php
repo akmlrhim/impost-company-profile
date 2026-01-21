@@ -1,9 +1,5 @@
 <section class="py-8 md:py-16 lg:py-20 relative overflow-hidden">
 
-  <div class="absolute inset-0 opacity-5">
-    <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-impost-primary rounded-full blur-3xl"></div>
-  </div>
-
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
 

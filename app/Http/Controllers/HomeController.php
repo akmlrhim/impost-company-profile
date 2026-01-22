@@ -127,7 +127,8 @@ class HomeController extends Controller
 			'situation',
 			'solution',
 			'result',
-			'cover_path'
+			'cover_path',
+			'category'
 		)->latest()->paginate(12);
 
 		return view('public.studycase.studycases', compact('title', 'studyCase'));

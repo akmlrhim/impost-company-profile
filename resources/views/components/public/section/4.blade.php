@@ -58,15 +58,21 @@
                   data-category="{{ $case->category }}">
 
                   <div
-                    class="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/10 shadow-xl h-full flex flex-col">
+                    class="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/10 shadow-xl h-full flex flex-col group hover:border-white/20 transition-all duration-300">
 
                     <div class="mb-3">
                       <div class="relative w-full aspect-video rounded-md overflow-hidden bg-black shadow-lg">
+
+                        <span
+                          class="absolute top-3 left-3 z-10 px-2.5 py-1 text-[10px] opacity sm:text-xs font-bold uppercase tracking-wider text-black bg-impost-primary rounded-full shadow-md">
+                          {{ $case->category ?? 'Case Study' }}
+                        </span>
+
                         @if ($case->cover_path)
                           <img data-src="{{ asset('storage/' . $case->cover_path) }}"
                             src="{{ $index < 3 ? asset('storage/' . $case->cover_path) : '' }}"
                             alt="{{ $case->name }}"
-                            class="{{ $index >= 3 ? 'lazy-img' : '' }} w-full h-full object-cover">
+                            class="{{ $index >= 3 ? 'lazy-img' : '' }} w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                         @else
                           <div
                             class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
@@ -77,14 +83,9 @@
                     </div>
 
                     <div class="flex-1 flex flex-col">
-                      <div class="mb-2">
-                        <span
-                          class="inline-block px-2.5 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-black bg-impost-primary rounded-full">
-                          {{ $case->category ?? 'Case Study' }}
-                        </span>
-                      </div>
 
-                      <h3 class="text-sm sm:text-base font-bold text-white mb-2 line-clamp-2">
+                      <h3
+                        class="text-sm sm:text-base font-bold text-white mb-2 line-clamp-2 group-hover:text-impost-primary transition-colors">
                         {{ $case->name }}
                       </h3>
 
@@ -98,13 +99,14 @@
                         <a href="{{ route('detail-study-case', $case->slug) }}"
                           class="inline-flex items-center text-xs sm:text-sm font-semibold text-impost-primary hover:text-impost-primary/80 transition-colors">
                           Lihat Detail
-                          <svg class="w-3 h-3 sm:w-4 sm:h-4 ml-1" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                          <svg class="w-3 h-3 sm:w-4 sm:h-4 ml-1 transition-transform group-hover:translate-x-1"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                           </svg>
                         </a>
                       </div>
                     </div>
+
                   </div>
                 </div>
               @endforeach

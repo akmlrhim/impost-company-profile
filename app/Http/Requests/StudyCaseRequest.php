@@ -21,10 +21,9 @@ class StudyCaseRequest extends FormRequest
 	 */
 	public function rules(): array
 	{
-		$studyCaseId = $this->route('study_case')?->id;
-
 		return [
-			'name' => 'required|string|max:255|unique:study_cases,name,' . $studyCaseId,
+			'name' => 'required|string|max:255',
+			'category' => 'required',
 			'cover_path' => $this->isMethod('POST')
 				? 'required|image|mimes:jpg,jpeg,png,webp|max:5120'
 				: 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',

@@ -9,19 +9,6 @@
       @method('PUT')
 
       <div class="p-6 space-y-3">
-        {{-- juudul --}}
-        <div>
-          <label for="title" class="block text-sm font-medium text-gray-900 mb-2">
-            Judul Portfolio
-          </label>
-          <input type="text" id="title" name="title"
-            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-            value="{{ old('title', $portfolio->title) }}" placeholder="Masukkan judul portfolio" autocomplete="off" />
-          @error('title')
-            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-          @enderror
-        </div>
-
         {{-- kategori --}}
         <div>
           <label for="category_id" class="block text-sm font-medium text-gray-900 mb-2">

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('content')
-  <div class="pt-20 sm:pt-24 md:pt-28">
+  <div class="pt-20 sm:pt-24 md:pt-28 antialiased bg-[#0a0a0a]">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-14">
       <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12 md:mb-14">

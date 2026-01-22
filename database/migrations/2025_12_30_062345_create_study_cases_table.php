@@ -18,6 +18,7 @@ return new class extends Migration
 			$table->text('situation');
 			$table->text('solution');
 			$table->text('result');
+			$table->string('category');
 			$table->string('cover_path')->nullable();
 			$table->timestamps();
 		});

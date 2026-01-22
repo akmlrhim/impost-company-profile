@@ -32,7 +32,6 @@ class DatabaseSeeder extends Seeder
 			ArticleSeeder::class,
 			TestimonialSeeder::class,
 			PortfolioSeeder::class,
-			StudyCaseSeeder::class
 		]);
 	}
 }

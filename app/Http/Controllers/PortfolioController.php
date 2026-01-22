@@ -100,8 +100,8 @@ class PortfolioController extends Controller
 			}
 
 			Portfolio::create([
-				'title' => $request->title,
-				'slug' => Str::slug($request->title),
+				'title' => time(),
+				'slug' => Str::uuid(),
 				'category_id' => $request->category_id,
 				'media_path' => $media_path,
 				'media_type' => $media_type
@@ -111,6 +111,7 @@ class PortfolioController extends Controller
 			return redirect()->route('portfolio.index')->with('success', 'Portfolio berhasil ditambahkan.');
 		} catch (\Exception $e) {
 			DB::rollBack();
+			dd($e->getMessage());
 			return back()->withInput()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
 		}
 	}
@@ -166,8 +167,6 @@ class PortfolioController extends Controller
 			}
 
 			$portfolio->update([
-				'title' => $request->title,
-				'slug' => Str::slug($request->title),
 				'category_id' => $request->category_id,
 			]);
 

@@ -23,6 +23,31 @@
           @enderror
         </div>
 
+        {{-- Kategori  --}}
+        <div>
+          <label for="category" class="block text-sm font-medium text-gray-900 mb-2">
+            Kategori <span class="text-danger">*</span>
+          </label>
+
+          <input type="text" id="category" name="category" list="category_list"
+            class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+            value="{{ old('category') }}" placeholder="Pilih kategori atau ketik baru..." autocomplete="off" />
+
+          <datalist id="category_list">
+            @if (isset($categories) && count($categories) > 0)
+              @foreach ($categories as $cat)
+                <option value="{{ $cat }}">
+              @endforeach
+            @endif
+          </datalist>
+
+          @error('category')
+            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+          @enderror
+          <p class="text-xs text-gray-500 mt-1">Ketik untuk membuat kategori baru atau pilih dari daftar.</p>
+        </div>
+        {{-- End Category  --}}
+
         {{-- cover  --}}
         <div x-data="{ preview: null }">
           <label class="block text-sm font-medium mb-2" for="cover_path">

@@ -4,19 +4,48 @@
   $firstCategoryId = $portfolioCategories[0]->id ?? null;
 @endphp
 
-<section class="py-8 md:py-16 lg:py-20 relative overflow-hidden">
+<section class="py-8 md:py-16 lg:py-20 relative overflow-hidden" id="portfolios">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     {{-- Header --}}
-    <div class="text-center max-w-3xl mx-auto mb-10 md:mb-14 lg:mb-16">
+    <div class="text-center max-w-5xl mx-auto mb-10 md:mb-14 lg:mb-16">
       <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-impost-primary mb-4 md:mb-6">
-        Hasil Nyata, Bukan Janji Kosong
+        Portfolio
       </h2>
-      <p class="text-sm sm:text-base md:text-lg text-white">
-        Kami tidak bicara potensi, kami bicara apa yang sudah terjadi melalui strategi, disiplin, dan sistem yang benar
+      <p class="text-sm sm:text-base text-gray-300 font-light leading-relaxed mx-auto">
+        Bukan sekadar janji manis, melainkan <span class="text-white font-medium">bukti nyata</span> yang lahir dari
+        strategi terukur dan eksekusi presisi.
       </p>
     </div>
+
+    {{-- Filter Kategori Portfolio - Moved to top --}}
+    @if (!empty($portfolioCategories) && count($portfolioCategories))
+      {{-- Desktop version: Pills --}}
+      <div class="hidden md:flex flex-wrap justify-center gap-3 mb-8 md:mb-10">
+        @foreach ($portfolioCategories as $index => $category)
+          <button type="button"
+            class="portfolio-category-pill rounded-full px-5 py-2 text-sm border font-bold cursor-pointer inline-flex items-center gap-2 transition-all duration-250 backdrop-blur-sm hover:border-yellow-400 hover:bg-yellow-500 hover:-translate-y-0.5 {{ $index === 0 ? 'border-yellow-400 bg-orange-500 shadow-lg text-black' : 'border-impost-primary bg-impost-primary text-black' }}"
+            data-portfolio-category="{{ $category->id }}">
+            <span class="uppercase tracking-wide text-xs opacity-80">
+              {{ $category->name ?? ($category->title ?? 'Kategori') }}
+            </span>
+          </button>
+        @endforeach
+      </div>
+
+      {{-- Mobile version: Dropdown --}}
+      <div class="block md:hidden mb-6 sm:mb-8">
+        <select id="portfolioMobileSelect"
+          class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-xl py-3.5 px-5 pr-12 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-sm font-medium shadow-lg">
+          @foreach ($portfolioCategories as $category)
+            <option value="{{ $category->id }}" class="bg-black text-white">
+              {{ $category->name ?? ($category->title ?? 'Kategori') }}
+            </option>
+          @endforeach
+        </select>
+      </div>
+    @endif
 
     {{-- Carousel Container --}}
     <div class="relative w-full h-[400px] md:h-[450px] lg:h-[550px] overflow-visible mb-8 md:mb-12 py-4 md:py-8"
@@ -31,20 +60,17 @@
         </svg>
       </button>
 
-      {{-- Carousel Container --}}
       <div class="relative w-full h-full"
         style="transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);"
         id="portfolioCarouselContainer">
       </div>
 
-      {{-- Empty Message --}}
       <div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10"
         id="portfolioEmptyMessage">
         <h3 class="text-impost-primary text-xl md:text-2xl font-bold mb-3">Belum Ada Portfolio</h3>
         <p class="text-white/80 text-sm md:text-base">Kategori ini belum memiliki portfolio tersedia.</p>
       </div>
 
-      {{-- Next Button --}}
       <button
         class="carousel-nav-next absolute top-1/2 -translate-y-1/2 right-2 md:right-4 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-impost-primary/10 border border-impost-primary/30 backdrop-blur-sm hover:bg-impost-primary/25 hover:border-impost-primary/60 hover:scale-110 text-impost-primary"
         aria-label="Next portfolio">
@@ -54,34 +80,12 @@
       </button>
     </div>
 
-    {{-- Filter Kategori Portfolio --}}
-    @if (!empty($portfolioCategories) && count($portfolioCategories))
-      {{-- Desktop version: Pills --}}
-      <div class="hidden md:flex flex-wrap justify-center gap-3 mt-8">
-        @foreach ($portfolioCategories as $index => $category)
-          <button type="button"
-            class="portfolio-category-pill rounded-full px-5 py-2 text-sm border font-bold cursor-pointer inline-flex items-center gap-2 transition-all duration-250 backdrop-blur-sm hover:border-yellow-400 hover:bg-yellow-500 hover:-translate-y-0.5 {{ $index === 0 ? 'border-yellow-400 bg-orange-500 shadow-lg text-black' : 'border-impost-primary bg-impost-primary text-black' }}"
-            data-portfolio-category="{{ $category->id }}">
-            <span class="uppercase tracking-wide text-xs opacity-80">
-              {{ $category->name ?? ($category->title ?? 'Kategori') }}
-            </span>
-          </button>
-        @endforeach
-      </div>
-
-      {{-- Mobile version: Dropdown --}}
-      <div class="block md:hidden mt-6 sm:mt-8">
-        <select id="portfolioMobileSelect"
-          class="w-full px-4 py-3 pr-10 border-2 border-impost-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-impost-primary focus:border-transparent bg-black/50 backdrop-blur-sm text-white text-sm font-medium appearance-none cursor-pointer transition-all duration-200 hover:bg-black/60"
-          style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23d4ac3c%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1.25rem;">
-          @foreach ($portfolioCategories as $category)
-            <option value="{{ $category->id }}" class="bg-black text-white">
-              {{ $category->name ?? ($category->title ?? 'Kategori') }}
-            </option>
-          @endforeach
-        </select>
-      </div>
-    @endif
+    <div class="text-center mt-4 md:mt-6">
+      <a href="{{ route('portfolio') ?? '#portfolios' }}"
+        class="bg-impost-primary inline-flex items-center justify-center px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-md font-medium text-black border border-impost-primary rounded-full hover:scale-105 transition-all duration-300">
+        Lihat Portfolio Selengkapnya
+      </a>
+    </div>
 
   </div>
 </section>
@@ -112,11 +116,10 @@
 
     // Constants
     const CARD_VISIBLE_RANGE = 3;
-    const AUTO_ROTATE_DELAY = 3000;
+    const AUTO_ROTATE_DELAY = 1500;
     const ANIMATION_THROTTLE = 16; // ~60fps
     const RESIZE_DEBOUNCE = 200;
 
-    // Cached calculations
     let cachedParams = {
       totalCards: 0,
       angleStep: 0,
@@ -124,7 +127,6 @@
       windowWidth: window.innerWidth
     };
 
-    // Precompute transforms for better performance
     const transformCache = new Map();
 
     function getResponsiveRadius() {
@@ -352,7 +354,6 @@
       if (mobileSelect) mobileSelect.value = categoryId;
     }
 
-    // Optimized resize handler
     let resizeTimeout = null;
     const handleResize = () => {
       if (resizeTimeout) clearTimeout(resizeTimeout);
@@ -366,7 +367,6 @@
       }, RESIZE_DEBOUNCE);
     };
 
-    // Event delegation for better performance
     function handlePillClick(e) {
       const pill = e.target.closest('[data-portfolio-category]');
       if (pill && !isAnimating) {
@@ -376,7 +376,6 @@
     }
 
     function init() {
-      // Initial filter
       if (firstCategoryId) {
         filterByCategory(firstCategoryId);
       } else {
@@ -385,7 +384,6 @@
         startAutoRotate();
       }
 
-      // Event listeners with passive option where applicable
       document.addEventListener('click', handlePillClick);
 
       prevButton?.addEventListener('click', () => navigate(-1));
@@ -395,7 +393,6 @@
         filterByCategory(parseInt(e.target.value));
       });
 
-      // Auto-rotate control (desktop only)
       if (cachedParams.windowWidth > 768) {
         container.addEventListener('mouseenter', stopAutoRotate, {
           passive: true
@@ -409,7 +406,6 @@
         passive: true
       });
 
-      // Cleanup
       window.addEventListener('beforeunload', () => {
         stopAutoRotate();
         if (rafId) cancelAnimationFrame(rafId);
@@ -420,7 +416,6 @@
       });
     }
 
-    // Use requestIdleCallback for non-critical initialization if available
     if ('requestIdleCallback' in window) {
       requestIdleCallback(init, {
         timeout: 1000

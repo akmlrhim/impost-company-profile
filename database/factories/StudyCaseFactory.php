@@ -25,6 +25,7 @@ class StudyCaseFactory extends Factory
 			'situation' => '<p>' . $this->faker->sentence(3) . '</p>',
 			'solution' => '<p>' . $this->faker->sentence(3) . '</p>',
 			'result' => '<p>' . $this->faker->sentence(3) . '</p>',
+			'category' => $this->faker->sentence(1),
 			'cover_path' => NULL
 		];
 	}

@@ -19,14 +19,14 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-// use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\SitemapGenerator;
 
 Route::middleware('throttle:30,1')->group(function () {
 
-	// Route::get('/generate-sitemap', function () {
-	// 	SitemapGenerator::create('https://impostmedia.com')->writeToFile(public_path('sitemap.xml'));
-	// 	return 'Sitemap Berhasil Dibuat';
-	// });
+	Route::get('/generate-sitemap', function () {
+		SitemapGenerator::create('https://impostmedia.com')->writeToFile(public_path('sitemap.xml'));
+		return 'Sitemap Berhasil Dibuat';
+	});
 
 	Route::middleware('guest')->group(function () {
 		Route::get('/', [HomeController::class, 'index'])->name('home');

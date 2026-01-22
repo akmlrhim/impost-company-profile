@@ -70,7 +70,7 @@
           </div>
         </div>
 
-        <div class="space-y-2.5 md:space-y-2 pt-5 md:pt-0 border-t md:border-t-0 border-white/5 md:pl-8 lg:pl-10">
+        <div class="space-y-2.5 md:space-y-2 pt-5 md:pt-0 md:pl-8 lg:pl-10">
           <div class="flex gap-2.5 md:gap-3 group">
             <div
               class="flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full bg-red-500/10 flex items-center justify-center mt-0.5">

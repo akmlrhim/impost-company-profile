@@ -6,7 +6,7 @@
       <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-3">
         Siapa <span class="text-impost-primary">Partner Ideal</span> Kami?
       </h2>
-      <p class="text-xs md:text-base text-gray-400 font-light leading-relaxed">
+      <p class="text-sm sm:text-base md:text-lg text-white text-white font-light leading-relaxed">
         Kami selektif dalam memilih partner untuk memastikan hasil maksimal.
       </p>
     </div>
@@ -101,7 +101,7 @@
             </div>
             <div>
               <h3 class="text-base md:text-xl font-semibold text-gray-200 tracking-wide">Tidak Cocok</h3>
-              <p class="text-[10px] md:text-xs text-gray-500 uppercase tracking-widest font-medium mt-0.5">Not
+              <p class="text-[10px] md:text-xs text-gray-300 uppercase tracking-widest font-medium mt-0.5">Not
                 Recommended</p>
             </div>
           </div>
@@ -111,7 +111,7 @@
               <div class="flex-shrink-0 mt-1">
                 <div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-red-500/50"></div>
               </div>
-              <p class="text-sm md:text-base text-gray-400 font-light leading-relaxed">
+              <p class="text-sm md:text-base text-gray-200 font-light leading-relaxed">
                 Mencari hasil instan dalam semalam (Get Rich Quick).
               </p>
             </li>
@@ -119,7 +119,7 @@
               <div class="flex-shrink-0 mt-1">
                 <div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-red-500/50"></div>
               </div>
-              <p class="text-sm md:text-base text-gray-400 font-light leading-relaxed">
+              <p class="text-sm md:text-base text-gray-200 font-light leading-relaxed">
                 Tidak bersedia mengikuti sistem & roadmap yang teruji.
               </p>
             </li>
@@ -127,7 +127,7 @@
               <div class="flex-shrink-0 mt-1">
                 <div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-red-500/50"></div>
               </div>
-              <p class="text-sm md:text-base text-gray-400 font-light leading-relaxed">
+              <p class="text-sm md:text-base text-gray-200 font-light leading-relaxed">
                 Hanya ingin sekedar posting rutin tanpa strategi jelas.
               </p>
             </li>
@@ -141,7 +141,7 @@
                   d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
                 </path>
               </svg>
-              <p class="text-xs md:text-sm text-gray-500 leading-relaxed italic">
+              <p class="text-xs md:text-sm text-gray-300 leading-relaxed italic">
                 "Kami membatasi jumlah klien untuk menjaga kualitas sistem & pertumbuhan partner."
               </p>
             </div>

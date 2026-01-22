@@ -38,7 +38,7 @@
   ];
 @endphp
 
-<section class="relative w-full max-w-7xl mb-12 mx-auto px-4 sm:px-6 lg:px-8">
+<section class="relative w-full max-w-7xl mb-12 mx-auto px-4 mt-10 md:mt-16 sm:px-6 lg:px-8">
   <div class="mx-auto">
     <div class="text-center mb-12">
       <h2 class="text-3xl sm:text-5xl font-extrabold text-impost-primary mb-2">

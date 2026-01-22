@@ -1,7 +1,7 @@
 <section id="home" class="relative min-h-[80vh] md:min-h-screen flex items-center overflow-hidden">
 
   <div class="absolute inset-0 z-0">
-    <img src="{{ asset('img/Front_Cover_IM.webp') }}" alt="Impost Media Background" loading="lazy"
+    <img src="{{ asset('img/Front_Cover_IM.webp') }}" alt="Impost Media Background" loading="lazy" decoding="async"
       class="w-full h-full object-cover object-center">
 
     <div class="absolute inset-0 bg-black/60"></div>
@@ -25,7 +25,7 @@
 
         <div class="pt-4 flex justify-center">
           <button onclick="window.location.href='{{ route('vsl-form') }}'"
-            class="uppercase w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-impost-primary hover:bg-impost-secondary text-black font-bold rounded-xl cursor-pointer text-sm whitespace-nowrap">
+            class="tracking-wide uppercase w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-impost-primary hover:bg-impost-secondary text-black font-bold rounded-xl cursor-pointer text-sm whitespace-nowrap">
             Ajukan diskusi strategis sekarang
           </button>
         </div>

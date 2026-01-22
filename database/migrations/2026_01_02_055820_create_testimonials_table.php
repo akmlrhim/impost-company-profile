@@ -16,7 +16,8 @@ return new class extends Migration
 			$table->string('company_name')->index();
 			$table->string('name')->index();
 			$table->text('content');
-			$table->string('photo_path')->nullable();
+			$table->string('media_path')->nullable();
+			$table->string('media_type')->nullable();
 			$table->timestamps();
 		});
 	}

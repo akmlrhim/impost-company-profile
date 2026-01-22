@@ -74,10 +74,6 @@
             </div>
 
             <div class="p-5 flex flex-col flex-1">
-              <h3 class="text-md font-medium text-gray-900 mb-2">
-                {{ $portfolio->title }}
-              </h3>
-
               <div class="mt-auto flex items-center gap-2">
                 <a href="{{ route('portfolio.edit', $portfolio) }}"
                   class="flex-1 inline-flex items-center justify-center px-3 py-1.5 text-xs font-medium text-white bg-yellow-600 rounded-sm hover:bg-yellow-500 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600">

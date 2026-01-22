@@ -15,7 +15,8 @@ class StudyCase extends Model
 		'situation',
 		'solution',
 		'result',
-		'cover_path'
+		'cover_path',
+		'category'
 	];
 
 	public function getRouteKeyName()

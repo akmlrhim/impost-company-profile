@@ -27,7 +27,8 @@ class StudyCaseController extends Controller
 				->orWhere('solution', 'like', '%' . $search . '%');
 		})
 			->latest()
-			->paginate(8)
+			->simplePaginate(8)
+			->withQueryString()
 			->appends(request()->query());
 
 		return view('admin.study-case.index', [
@@ -43,7 +44,11 @@ class StudyCaseController extends Controller
 	public function create()
 	{
 		return view('admin.study-case.create', [
-			'title' => 'Tambah Study Case'
+			'title' => 'Tambah Study Case',
+			'categories' => StudyCase::select('category')
+				->distinct()
+				->orderBy('category')
+				->pluck('category')
 		]);
 	}
 
@@ -71,9 +76,10 @@ class StudyCaseController extends Controller
 			}
 
 			// save study case
-			$studyCase = StudyCase::create([
+			StudyCase::create([
 				'name' => $request->name,
 				'slug' => Str::slug($request->name),
+				'category' => $request->category,
 				'situation' => $request->situation,
 				'solution' => $request->solution,
 				'result' => $request->result,
@@ -96,11 +102,15 @@ class StudyCaseController extends Controller
 	 */
 	public function edit(StudyCase $studyCase)
 	{
-		$title = 'Edit Portfolio';
+		$title = 'Edit Study Case';
 
 		return view('admin.study-case.edit', [
 			'title' => $title,
-			'studyCase' => $studyCase
+			'studyCase' => $studyCase,
+			'categories' => StudyCase::select('category')
+				->distinct()
+				->orderBy('category')
+				->pluck('category')
 		]);
 	}
 
@@ -138,13 +148,12 @@ class StudyCaseController extends Controller
 			$studyCase->update([
 				'name' => $request->name,
 				'slug' => Str::slug($request->name),
+				'category' => $request->category,
 				'situation' => $request->situation,
 				'solution' => $request->solution,
 				'result' => $request->result,
 				'cover_path' => $coverPath,
 			]);
-
-			// image
 
 			DB::commit();
 

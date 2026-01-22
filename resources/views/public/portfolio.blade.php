@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('content')
-  <main class="pt-18 sm:pt-32 py-8 sm:py-16 antialiased">
+  <main class="pt-24 sm:pt-42 py-8 sm:py-16 antialiased bg-[#0a0a0a]">
     <div class="mx-auto max-w-7xl">
 
       <div class="mb-8 md:mb-12 text-center px-6">
@@ -11,26 +11,44 @@
         </h1>
       </div>
 
-      <div class="flex flex-wrap justify-center gap-2 mb-10 px-4">
+      <div class="mb-10 px-4">
 
-        <a href="{{ route('portfolio') }}"
-          class="px-4 py-2 rounded-full text-xs md:text-sm font-bold border transition
-        {{ empty($activeCategory)
-            ? 'bg-impost-primary text-impost-fifth border-impost-primary'
-            : 'border-impost-fourth text-white hover:bg-impost-fourth/40' }}">
-          Semua
-        </a>
+        <div class="md:hidden w-full max-w-sm mx-auto relative">
+          <select onchange="window.location.href=this.value"
+            class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-xl py-3.5 px-5 pr-12 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-sm font-medium shadow-lg">
 
-        @foreach ($category as $cat)
-          <a href="{{ route('portfolio', ['category' => $cat->slug]) }}"
-            class="px-4 py-2 rounded-full text-xs md:text-sm font-bold border transition
-          {{ ($activeCategory ?? '') === $cat->slug
-              ? 'bg-impost-primary text-impost-fifth border-impost-primary'
-              : 'border-impost-fourth text-white hover:bg-impost-fourth/40' }}">
-            {{ $cat->name }}
+            <option value="{{ route('portfolio') }}" {{ empty($activeCategory) ? 'selected' : '' }}>
+              Semua Kategori
+            </option>
+
+            @foreach ($category as $cat)
+              <option value="{{ route('portfolio', ['category' => $cat->slug]) }}"
+                {{ ($activeCategory ?? '') === $cat->slug ? 'selected' : '' }}>
+                {{ $cat->name }}
+              </option>
+            @endforeach
+          </select>
+        </div>
+
+        <div class="hidden md:flex flex-wrap justify-center gap-2">
+          <a href="{{ route('portfolio') }}"
+            class="px-4 py-2 rounded-full text-sm font-bold border transition
+            {{ empty($activeCategory)
+                ? 'bg-impost-primary text-impost-fifth border-impost-primary'
+                : 'border-impost-fourth text-white hover:bg-impost-fourth/40' }}">
+            Semua
           </a>
-        @endforeach
 
+          @foreach ($category as $cat)
+            <a href="{{ route('portfolio', ['category' => $cat->slug]) }}"
+              class="px-4 py-2 rounded-full text-sm font-bold border transition
+              {{ ($activeCategory ?? '') === $cat->slug
+                  ? 'bg-impost-primary text-impost-fifth border-impost-primary'
+                  : 'border-impost-fourth text-white hover:bg-impost-fourth/40' }}">
+              {{ $cat->name }}
+            </a>
+          @endforeach
+        </div>
       </div>
 
       <section class="mx-auto w-full max-w-7xl px-3">

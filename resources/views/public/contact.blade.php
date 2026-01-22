@@ -1,6 +1,6 @@
 @extends('layouts.public')
 @section('content')
-  <main class="pt-32 sm:pt-36 py-8 sm:py-12 antialiased">
+  <main class="pt-24 sm:pt-42 py-8 sm:py-12 antialiased bg-[#0a0a0a]">
 
     <div class="px-4 mx-auto max-w-7xl">
 

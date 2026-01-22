@@ -26,11 +26,9 @@ class HomeController extends Controller
 
 		$servicesForDesktop = ServiceService::all();
 		$servicesForMobile = ServiceService::all();
-		$studyCaseForDesktop = StudyCaseService::paginate(6);
-		$studyCaseForMobile = StudyCaseService::all();
 
 		$clients = ClientService::all();
-		$testimonials = Testimonial::select('name', 'company_name', 'content')->latest()->get();
+		$testimonials = Testimonial::select('name', 'company_name', 'content', 'media_path', 'media_type')->latest()->get();
 		$portfolios = Portfolio::latest()->get();
 		$portfolioCategories = PortfolioCategory::select('id', 'name', 'slug')
 			->withCount('portfolios')
@@ -43,8 +41,6 @@ class HomeController extends Controller
 			'servicesForDesktop',
 			'servicesForMobile',
 			'clients',
-			'studyCaseForDesktop',
-			'studyCaseForMobile',
 			'testimonials',
 			'portfolios',
 			'portfolioCategories'

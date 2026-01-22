@@ -35,7 +35,7 @@
       </div>
 
       {{-- Mobile version: Dropdown --}}
-      <div class="block md:hidden mb-6 sm:mb-8">
+      <div class="block md:hidden mb-12 md:mb-8">
         <select id="portfolioMobileSelect"
           class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-xl py-3.5 px-5 pr-12 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-sm font-medium shadow-lg">
           @foreach ($portfolioCategories as $category)

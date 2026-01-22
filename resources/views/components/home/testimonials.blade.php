@@ -49,7 +49,7 @@
 
                     <div class="text-center space-y-2 flex-1 flex flex-col justify-between">
                       <blockquote>
-                        <p class="text-xs sm:text-sm text-white/90 leading-relaxed italic line-clamp-3">
+                        <p class="text-xs sm:text-sm text-white/90 leading-relaxed italic">
                           "{{ $t->content }}"
                         </p>
                       </blockquote>

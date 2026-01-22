@@ -4,7 +4,7 @@
       <div>
         <h3 class="text-base md:text-xl font-bold mb-2 md:mb-4 text-impost-primary md:text-white">Tentang Kami</h3>
         <p class="text-white text-xs md:text-base mb-3 md:mb-4 leading-relaxed">
-          impost media adalah pionir digital marketing & branding agency kalimantan yang berani kasih jaminan uang
+          Impost Media adalah pionir digital marketing & branding agency kalimantan yang berani kasih jaminan uang
           kembali bila KPI tidak tercapai
         </p>
         <div class="flex space-x-3 md:space-x-4">

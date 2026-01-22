@@ -225,9 +225,9 @@
               <div class="relative bg-gray-800 shrink-0">
                 @if ($latest->cover_path)
                   <img src="{{ asset('storage/' . $latest->cover_path) }}" alt="{{ $latest->title }}"
-                    class="w-full h-full rounded-md object-cover" />
+                    class="w-full h-42 object-cover" />
                 @else
-                  <div class="w-full h-36 bg-gray-200 flex items-center justify-center">
+                  <div class="w-full h-42 bg-gray-200 flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                       class="lucide lucide-scroll-text-icon lucide-scroll-text w-12 h-12 text-gray-400">

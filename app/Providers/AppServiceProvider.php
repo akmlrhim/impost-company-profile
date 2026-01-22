@@ -41,5 +41,10 @@ class AppServiceProvider extends ServiceProvider
 		Client::observe(ClientObserve::class);
 		Team::observe(TeamObserve::class);
 		StudyCase::observe(StudyCaseObserve::class);
+
+
+		if (app()->environment('production')) {
+			URL::forceScheme('https');
+		}
 	}
 }

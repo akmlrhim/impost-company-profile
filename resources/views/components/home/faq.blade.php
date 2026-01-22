@@ -3,10 +3,10 @@
       [
           'question' => 'Layanan apa saja yang disediakan?',
           'answer' =>
-              'Lead IM menyediakan layanan digital marketing yang dirancang untuk mendorong pertumbuhan bisnis secara berkelanjutan. Layanan kami meliputi pengelolaan media sosial, iklan digital (Meta Ads, Google Ads, dan platform lainnya), SEO, pembuatan website dan landing page, serta pengembangan strategi dan konten digital. Seluruh layanan disesuaikan dengan kebutuhan, target, dan karakter bisnis klien.',
+              'Leads menyediakan layanan digital marketing yang dirancang untuk mendorong pertumbuhan bisnis secara berkelanjutan. Layanan kami meliputi pengelolaan media sosial, iklan digital (Meta Ads, Google Ads, dan platform lainnya), SEO, pembuatan website dan landing page, serta pengembangan strategi dan konten digital. Seluruh layanan disesuaikan dengan kebutuhan, target, dan karakter bisnis klien.',
       ],
       [
-          'question' => 'Bagaimana alur kerja sama dengan Lead IM?',
+          'question' => 'Bagaimana alur kerja sama dengan Leads?',
           'answer' =>
               'Kerja sama diawali dengan sesi konsultasi untuk memahami model bisnis, target market, dan tujuan klien. Selanjutnya kami melakukan analisis, menyusun strategi, dan mempresentasikan project brief melalui meeting. Setelah strategi disepakati, tim kami akan menjalankan eksekusi secara bertahap, disertai monitoring, optimasi, serta update dan laporan performa secara berkala.',
       ],
@@ -18,12 +18,12 @@
       [
           'question' => 'Apakah layanan ini cocok untuk bisnis saya?',
           'answer' =>
-              'Layanan Lead IM dapat digunakan oleh berbagai skala bisnis, mulai dari UMKM, startup, hingga perusahaan besar. Strategi kampanye akan disesuaikan dengan omzet, kondisi bisnis, serta target KPI masing-masing klien agar hasil yang diperoleh tetap efektif dan efisien.',
+              'Layanan Leads dapat digunakan oleh berbagai skala bisnis, mulai dari UMKM, startup, hingga perusahaan besar. Strategi kampanye akan disesuaikan dengan omzet, kondisi bisnis, serta target KPI masing-masing klien agar hasil yang diperoleh tetap efektif dan efisien.',
       ],
       [
           'question' => 'Berapa tarif layanan pengelolaan media sosial?',
           'answer' =>
-              'Tarif layanan pengelolaan media sosial di Lead IM dimulai dari 1 juta rupiah hingga puluhan juta rupiah per bulan. Penentuan biaya disesuaikan dengan kebutuhan bisnis, target KPI, tingkat kompleksitas campaign, serta strategi yang paling tepat untuk mencapai tujuan klien.',
+              'Tarif layanan pengelolaan media sosial di Leads dimulai dari 1 juta rupiah hingga puluhan juta rupiah per bulan. Penentuan biaya disesuaikan dengan kebutuhan bisnis, target KPI, tingkat kompleksitas campaign, serta strategi yang paling tepat untuk mencapai tujuan klien.',
       ],
       [
           'question' => 'Apakah klien mendapatkan laporan dan evaluasi?',
@@ -31,9 +31,9 @@
               'Ya. Setiap klien akan menerima laporan performa secara rutin yang mencakup perkembangan kampanye, analisis hasil, serta rekomendasi strategi lanjutan. Laporan disusun secara transparan dan mudah dipahami sebagai dasar evaluasi dan pengambilan keputusan.',
       ],
       [
-          'question' => 'Apa yang membedakan Lead IM dengan agensi lain?',
+          'question' => 'Apa yang membedakan Leads dengan agensi lain?',
           'answer' =>
-              'Lead IM mengutamakan pendekatan strategis berbasis data, transparansi, dan komunikasi yang profesional. Kami tidak hanya menjalankan kampanye, tetapi berfokus pada pencapaian tujuan bisnis klien secara nyata. Bagi kami, keberhasilan klien adalah prioritas utama.',
+              'Leads mengutamakan pendekatan strategis berbasis data, transparansi, dan komunikasi yang profesional. Kami tidak hanya menjalankan kampanye, tetapi berfokus pada pencapaian tujuan bisnis klien secara nyata. Bagi kami, keberhasilan klien adalah prioritas utama.',
       ],
   ];
 @endphp

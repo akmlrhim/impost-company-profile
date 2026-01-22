@@ -4,8 +4,8 @@
       <div>
         <h3 class="text-base md:text-xl font-bold mb-2 md:mb-4 text-impost-primary md:text-white">Tentang Kami</h3>
         <p class="text-white text-xs md:text-base mb-3 md:mb-4 leading-relaxed">
-          Impost Media adalah all in one digital Marketing dan Branding Agency pertama yang ada di Banjarbaru dan
-          Banjarmasin, bisa bekerja dengan Fleksibel dan menyesuaikan kebutuhan anda.
+          impost media adalah pionir digital marketing & branding agency kalimantan yang berani kasih jaminan uang
+          kembali bila KPI tidak tercapai
         </p>
         <div class="flex space-x-3 md:space-x-4">
           <a href="https://wa.me/6283147802761" class="text-white hover:text-gray-300 transition-colors"

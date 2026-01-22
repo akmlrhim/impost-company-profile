@@ -14,7 +14,7 @@
         <input type="hidden" name="search" value="{{ request('search') }}">
       @endif
 
-      <a href="{{ route('articles.index') }}"
+      <a href="{{ route('portfolio.index') }}"
         class="px-3 py-1 text-xs font-medium rounded-full
 					{{ request('category') ? 'bg-white text-gray-700 border border-gray-700' : 'bg-blue-600 text-white' }}">
         Semua

@@ -21,10 +21,8 @@
         x-data="{ showLightbox: false }" @click="showLightbox = true; document.body.style.overflow = 'hidden'">
 
         <img src="{{ asset('storage/' . $studyCase->cover_path) }}" alt="{{ $studyCase->name }}"
-          class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="eager">
-
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          class="absolute inset-0 w-full h-full object-contain bg-inherit transition-transform duration-500 group-hover:scale-105"
+          loading="lazy">
 
         <div
           class="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

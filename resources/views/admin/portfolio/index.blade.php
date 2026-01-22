@@ -16,7 +16,7 @@
 
       <a href="{{ route('articles.index') }}"
         class="px-3 py-1 text-xs font-medium rounded-full
-		{{ request('category') ? 'bg-white text-gray-700 border border-gray-700' : 'bg-blue-600 text-white' }}">
+					{{ request('category') ? 'bg-white text-gray-700 border border-gray-700' : 'bg-blue-600 text-white' }}">
         Semua
       </a>
 
@@ -38,7 +38,7 @@
         @forelse ($portfolios as $portfolio)
           <div class="bg-white rounded-sm shadow-sm overflow-hidden flex flex-col h-full">
 
-            <div class="relative h-48 bg-gray-100">
+            <div class="relative aspect-[9/16] bg-gray-100">
 
               <span
                 class="absolute top-3 left-3 px-3 py-1 text-xs font-semibold uppercase rounded-full bg-blue-600 text-white z-10">

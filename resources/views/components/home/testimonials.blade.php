@@ -15,7 +15,7 @@
                     class="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/10 shadow-xl h-full flex flex-col">
 
                     <div class="mb-3">
-                      <div class="relative w-full aspect-video rounded-md overflow-hidden bg-black shadow-lg">
+                      <div class="relative w-full aspect-video overflow-hidden bg-inherit">
                         @if ($t->media_type === 'video')
                           <video controls preload="metadata" playsinline
                             class="w-full h-full object-contain testimonial-video" data-index="{{ $index }}"
@@ -28,7 +28,7 @@
                         @else
                           @if ($index < 3 && $t->media_path)
                             <img src="{{ asset('storage/' . $t->media_path) }}" alt="Testimoni {{ $t->name }}"
-                              class="w-full h-full object-cover">
+                              class="w-full h-full object-contain">
                           @elseif ($t->media_path)
                             <img data-src="{{ asset('storage/' . $t->media_path) }}" alt="Testimoni {{ $t->name }}"
                               loading="lazy" class="w-full h-full object-cover lazy-img"

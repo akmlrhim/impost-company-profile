@@ -80,7 +80,7 @@
       </button>
     </div>
 
-    <div class="text-center mt-4 md:mt-6">
+    <div class="text-center mt-12 md:mt-16">
       <a href="{{ route('portfolio') ?? '#portfolios' }}"
         class="bg-impost-primary inline-flex items-center justify-center px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-md font-medium text-black border border-impost-primary rounded-full hover:scale-105 transition-all duration-300">
         Lihat Portfolio Selengkapnya

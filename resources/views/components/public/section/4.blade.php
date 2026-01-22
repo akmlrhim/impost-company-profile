@@ -1,11 +1,7 @@
-@php
-  $studyCases = \App\Models\StudyCase::select('slug', 'name', 'cover_path', 'category', 'result')->latest()->get();
-  $categories = $studyCases->pluck('category')->unique()->values();
-@endphp
+@php $studyCases = \App\Models\StudyCase::select('slug', 'name', 'cover_path', 'category', 'result')->latest()->get(); @endphp
 
 <section class="py-12 md:py-16 relative overflow-hidden" id="study-cases">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
     <div class="text-center max-w-5xl mx-auto mb-8 md:mb-10 lg:mb-12">
       <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white mb-4 md:mb-6">
         Hasil Nyata, <span class="text-impost-primary">Bukan Janji Kosong.</span>
@@ -13,39 +9,6 @@
       <p class="text-sm sm:text-base md:text-lg text-white mb-6">
         Kami tidak bicara potensi, kami bicara apa yang sudah terjadi melalui strategi, disiplin, dan sistem yang benar
       </p>
-
-      @if ($studyCases->isNotEmpty())
-        <div class="w-full mx-auto relative z-20">
-          {{-- Mobile version: Dropdown --}}
-          <div class="block md:hidden">
-            <div class="relative">
-              <select id="mobile-filter"
-                class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-xl py-3.5 px-5 pr-12 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-sm font-medium shadow-lg">
-                <option value="all" class="bg-black text-white">Semua Kategori</option>
-                @foreach ($categories as $cat)
-                  <option value="{{ $cat }}" class="bg-black text-white">{{ $cat }}</option>
-                @endforeach
-              </select>
-            </div>
-          </div>
-
-          {{-- Desktop version: Pills --}}
-          <div class="hidden md:flex flex-wrap justify-center gap-3" id="desktop-filter">
-            <button type="button" data-filter="all"
-              class="filter-pill rounded-full px-5 py-2 text-sm border font-bold cursor-pointer inline-flex items-center gap-2 transition-all duration-250 backdrop-blur-sm hover:border-yellow-400 hover:bg-yellow-500 hover:-translate-y-0.5 border-yellow-400 bg-orange-500 shadow-lg text-black">
-              <span class="uppercase tracking-wide text-xs opacity-80">Semua</span>
-            </button>
-
-            @foreach ($categories as $cat)
-              <button type="button" data-filter="{{ $cat }}"
-                class="filter-pill rounded-full px-5 py-2 text-sm border font-bold cursor-pointer inline-flex items-center gap-2 transition-all duration-250 backdrop-blur-sm hover:border-yellow-400 hover:bg-yellow-500 hover:-translate-y-0.5 border-impost-primary bg-impost-primary text-black">
-                <span class="uppercase tracking-wide text-xs opacity-80">{{ $cat }}</span>
-              </button>
-            @endforeach
-          </div>
-        </div>
-      @endif
-
     </div>
 
     @if ($studyCases->isNotEmpty())
@@ -54,20 +17,13 @@
           <div class="overflow-hidden">
             <div class="studycase-track flex transition-transform duration-500 ease-out">
               @foreach ($studyCases as $index => $case)
-                <div class="studycase-slide flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-1.5 md:px-2"
-                  data-category="{{ $case->category }}">
+                <div class="studycase-slide flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-1.5 md:px-2">
 
                   <div
                     class="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/10 shadow-xl h-full flex flex-col group hover:border-white/20 transition-all duration-300">
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                       <div class="relative w-full aspect-video rounded-md overflow-hidden bg-black shadow-lg">
-
-                        <span
-                          class="absolute top-3 left-3 z-10 px-2.5 py-1 text-[10px] opacity sm:text-xs font-bold uppercase tracking-wider text-black bg-impost-primary rounded-full shadow-md">
-                          {{ $case->category ?? 'Case Study' }}
-                        </span>
-
                         @if ($case->cover_path)
                           <img data-src="{{ asset('storage/' . $case->cover_path) }}"
                             src="{{ $index < 3 ? asset('storage/' . $case->cover_path) : '' }}"
@@ -85,9 +41,16 @@
                     <div class="flex-1 flex flex-col">
 
                       <h3
-                        class="text-sm sm:text-base font-bold text-white mb-2 line-clamp-2 group-hover:text-impost-primary transition-colors">
+                        class="text-sm sm:text-base font-bold text-white mb-1 line-clamp-2 group-hover:text-impost-primary transition-colors">
                         {{ $case->name }}
                       </h3>
+
+                      <div class="mb-3">
+                        <span
+                          class="inline-block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-impost-primary/90 bg-impost-primary/10 px-2 py-0.5 rounded border border-impost-primary/20">
+                          {{ $case->category ?? 'Case Study' }}
+                        </span>
+                      </div>
 
                       <div class="text-xs sm:text-sm text-white/80 leading-relaxed mb-3 flex-1">
                         <p class="line-clamp-4">
@@ -147,274 +110,225 @@
         <p class="text-white/60 text-sm">Studi kasus belum ditambahkan. Silakan kembali lagi nanti.</p>
       </div>
     @endif
-
   </div>
 </section>
 
 @push('scripts')
   <script>
     (function() {
-      'use strict';
+        'use strict';
 
-      document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener( & #39;DOMContentLoaded&# 39;, function() {
 
-        // Detect study case source for back button
-        const studyCaseLinks = document.querySelectorAll('a[href*="study-case/"], .study-case-link');
+            const studyCaseLinks = document.querySelectorAll( & #39;a[href*= & quot; study -
+              case /&quot;], .study-case-link&#39;);
 
-        studyCaseLinks.forEach(link => {
-          link.addEventListener('click', function() {
-            sessionStorage.setItem('studyCaseSource', 'home');
-          });
-        });
+              studyCaseLinks.forEach(link = & gt;
+              {
+                link.addEventListener( & #39;click&# 39;, function() {
+                  sessionStorage.setItem( & #39;studyCaseSource&# 39;, & #39;home&# 39;);
+                });
+              });
 
+              const sliderContainer = document.querySelector( & #39;.studycase-slider&# 39;);
+              if (!sliderContainer) return;
 
-        const sliderContainer = document.querySelector('.studycase-slider');
-        if (!sliderContainer) return;
+              const track = sliderContainer.querySelector( & #39;.studycase-track&# 39;);
+              const allSlides = Array.from(sliderContainer.querySelectorAll( & #39;.studycase-slide&# 39;));
+              const prevBtn = sliderContainer.querySelector( & #39;.studycase-prev&# 39;);
+              const nextBtn = sliderContainer.querySelector( & #39;.studycase-next&# 39;);
 
-        const track = sliderContainer.querySelector('.studycase-track');
-        const allSlides = Array.from(sliderContainer.querySelectorAll('.studycase-slide'));
-        const prevBtn = sliderContainer.querySelector('.studycase-prev');
-        const nextBtn = sliderContainer.querySelector('.studycase-next');
-        const filterPills = document.querySelectorAll('.filter-pill');
-        const mobileSelect = document.getElementById('mobile-filter');
+              let visibleSlides = allSlides;
+              let currentIndex = 0;
+              let autoplayInterval = null;
+              let isAnimating = false;
+              let slidesToShow = 1;
+              let isUserInteracting = false;
 
-        let visibleSlides = [];
-        let currentIndex = 0;
-        let autoplayInterval = null;
-        let isAnimating = false;
-        let slidesToShow = 1;
-        let isUserInteracting = false; // Flag untuk tracking interaksi user
+              function init() {
+                updateSlidesToShow();
+                updateSliderUI();
+                setupHoverEvents();
+                setupTouchEvents();
+                startAutoplay();
 
-        function init() {
-          setupFilters();
-          applyFilter('all');
-          setupHoverEvents(); // Setup hover events
-          setupTouchEvents();
+                window.addEventListener( & #39;resize&# 39;, () = & gt;
+                {
+                  updateSlidesToShow();
+                  updateSliderUI();
+                });
 
-          window.addEventListener('resize', () => {
-            updateSlidesToShow();
-            updateSliderUI();
-          });
-
-          document.addEventListener('visibilitychange', () => {
-            document.hidden ? stopAutoplay() : startAutoplay();
-          });
-        }
-
-        function setupFilters() {
-          filterPills.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-              const category = e.target.closest('[data-filter]').getAttribute('data-filter');
-              syncFilters(category);
-              applyFilter(category);
-            });
-          });
-
-          if (mobileSelect) {
-            mobileSelect.addEventListener('change', (e) => {
-              const category = e.target.value;
-              syncFilters(category);
-              applyFilter(category);
-            });
-          }
-        }
-
-        function syncFilters(category) {
-          filterPills.forEach(btn => {
-            const isMatch = btn.getAttribute('data-filter') === category;
-
-            if (isMatch) {
-              btn.classList.add('border-yellow-400', 'bg-orange-500', 'shadow-lg');
-              btn.classList.remove('border-impost-primary', 'bg-impost-primary');
-            } else {
-              btn.classList.remove('border-yellow-400', 'bg-orange-500', 'shadow-lg');
-              btn.classList.add('border-impost-primary', 'bg-impost-primary');
-            }
-          });
-
-          if (mobileSelect) mobileSelect.value = category;
-        }
-
-        function applyFilter(category) {
-          stopAutoplay();
-          currentIndex = 0;
-          visibleSlides = [];
-
-          allSlides.forEach(slide => {
-            const slideCat = slide.getAttribute('data-category');
-            const shouldShow = category === 'all' || slideCat === category;
-
-            if (shouldShow) {
-              slide.style.display = '';
-              visibleSlides.push(slide);
-            } else {
-              slide.style.display = 'none';
-            }
-          });
-
-          updateSlidesToShow();
-          updateSliderUI();
-          startAutoplay();
-        }
-
-        function getSlidesToShow() {
-          if (window.innerWidth >= 1024) return 3;
-          if (window.innerWidth >= 640) return 2;
-          return 1;
-        }
-
-        function updateSlidesToShow() {
-          slidesToShow = getSlidesToShow();
-        }
-
-        function getMaxIndex() {
-          return Math.max(0, visibleSlides.length - slidesToShow);
-        }
-
-        function updateSliderUI() {
-          if (isAnimating && visibleSlides.length > 0) return;
-
-          const maxIndex = getMaxIndex();
-          if (currentIndex > maxIndex) currentIndex = maxIndex;
-          if (currentIndex < 0) currentIndex = 0;
-
-          const slidePercent = 100 / slidesToShow;
-          if (track) track.style.transform = `translateX(-${currentIndex * slidePercent}%)`;
-
-          loadVisibleImages();
-        }
-
-        function loadVisibleImages() {
-          for (let i = currentIndex; i < currentIndex + slidesToShow + 1; i++) {
-            if (visibleSlides[i]) {
-              const img = visibleSlides[i].querySelector('img[data-src]');
-              if (img && img.dataset.src) {
-                img.src = img.dataset.src;
-                img.onload = () => img.classList.remove('lazy-img');
-                delete img.dataset.src;
+                document.addEventListener( & #39;visibilitychange&# 39;, () = & gt;
+                {
+                  document.hidden ? stopAutoplay() : startAutoplay();
+                });
               }
-            }
-          }
-        }
 
-        function nextSlide() {
-          const maxIndex = getMaxIndex();
-          if (currentIndex < maxIndex) {
-            currentIndex++;
-          } else {
-            currentIndex = 0;
-          }
-          updateSliderUI();
-        }
+              function getSlidesToShow() {
+                if (window.innerWidth & gt; = 1024) return 3;
+                if (window.innerWidth & gt; = 640) return 2;
+                return 1;
+              }
 
-        function prevSlide() {
-          const maxIndex = getMaxIndex();
-          if (currentIndex > 0) {
-            currentIndex--;
-          } else {
-            currentIndex = maxIndex;
-          }
-          updateSliderUI();
-        }
+              function updateSlidesToShow() {
+                slidesToShow = getSlidesToShow();
+              }
 
-        function startAutoplay() {
-          // Jangan start autoplay jika user sedang berinteraksi
-          if (autoplayInterval || visibleSlides.length <= slidesToShow || isUserInteracting) return;
-          autoplayInterval = setInterval(nextSlide, 5000);
-        }
+              function getMaxIndex() {
+                return Math.max(0, visibleSlides.length - slidesToShow);
+              }
 
-        function stopAutoplay() {
-          if (autoplayInterval) {
-            clearInterval(autoplayInterval);
-            autoplayInterval = null;
-          }
-        }
+              function updateSliderUI() {
+                if (isAnimating & amp; & amp; visibleSlides.length & gt; 0) return;
 
-        function resetAutoplay() {
-          stopAutoplay();
-          startAutoplay();
-        }
+                const maxIndex = getMaxIndex();
+                if (currentIndex & gt; maxIndex) currentIndex = maxIndex;
+                if (currentIndex & lt; 0) currentIndex = 0;
 
-        // Setup hover events untuk desktop
-        function setupHoverEvents() {
-          sliderContainer.addEventListener('mouseenter', () => {
-            isUserInteracting = true;
-            stopAutoplay();
-          });
+                const slidePercent = 100 / slidesToShow;
+                if (track) track.style.transform = `translateX(-${currentIndex * slidePercent}%)`;
 
-          sliderContainer.addEventListener('mouseleave', () => {
-            isUserInteracting = false;
-            startAutoplay();
-          });
-        }
+                loadVisibleImages();
+              }
 
-        if (prevBtn) {
-          prevBtn.addEventListener('click', () => {
-            prevSlide();
-            resetAutoplay();
-          });
-        }
+              function loadVisibleImages() {
+                for (let i = currentIndex; i & lt; currentIndex + slidesToShow + 1; i++) {
+                  if (visibleSlides[i]) {
+                    const img = visibleSlides[i].querySelector( & #39;img[data-src]&# 39;);
+                    if (img & amp; & amp; img.dataset.src) {
+                      img.src = img.dataset.src;
+                      img.onload = () = & gt;
+                      img.classList.remove( & #39;lazy-img&# 39;);
+                      delete img.dataset.src;
+                    }
+                  }
+                }
+              }
 
-        if (nextBtn) {
-          nextBtn.addEventListener('click', () => {
-            nextSlide();
-            resetAutoplay();
-          });
-        }
+              function nextSlide() {
+                const maxIndex = getMaxIndex();
+                if (currentIndex & lt; maxIndex) {
+                  currentIndex++;
+                } else {
+                  currentIndex = 0;
+                }
+                updateSliderUI();
+              }
 
-        function setupTouchEvents() {
-          let touchStartX = 0;
-          let touchEndX = 0;
+              function prevSlide() {
+                const maxIndex = getMaxIndex();
+                if (currentIndex & gt; 0) {
+                  currentIndex--;
+                } else {
+                  currentIndex = maxIndex;
+                }
+                updateSliderUI();
+              }
 
-          sliderContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
-            isUserInteracting = true; // Set flag saat mulai touch
-            stopAutoplay();
-          }, {
-            passive: true
-          });
+              function startAutoplay() {
+                if (autoplayInterval || visibleSlides.length & lt; = slidesToShow || isUserInteracting) return;
+                autoplayInterval = setInterval(nextSlide, 5000);
+              }
 
-          sliderContainer.addEventListener('touchmove', (e) => {
-            touchEndX = e.touches[0].clientX;
-          }, {
-            passive: true
-          });
+              function stopAutoplay() {
+                if (autoplayInterval) {
+                  clearInterval(autoplayInterval);
+                  autoplayInterval = null;
+                }
+              }
 
-          sliderContainer.addEventListener('touchend', () => {
-            if (!touchEndX) {
-              isUserInteracting = false;
-              startAutoplay();
-              return;
-            }
-            const diff = touchStartX - touchEndX;
-            if (Math.abs(diff) > 50) {
-              diff > 0 ? nextSlide() : prevSlide();
-            }
-            touchStartX = 0;
-            touchEndX = 0;
+              function resetAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+              }
 
-            // Delay sebentar sebelum start autoplay lagi setelah touch
-            setTimeout(() => {
-              isUserInteracting = false;
-              resetAutoplay();
-            }, 300);
-          }, {
-            passive: true
-          });
+              function setupHoverEvents() {
+                sliderContainer.addEventListener( & #39;mouseenter&# 39;, () = & gt;
+                {
+                  isUserInteracting = true;
+                  stopAutoplay();
+                });
 
-          // Handle touchcancel
-          sliderContainer.addEventListener('touchcancel', () => {
-            touchStartX = 0;
-            touchEndX = 0;
-            isUserInteracting = false;
-            startAutoplay();
-          }, {
-            passive: true
-          });
-        }
+                sliderContainer.addEventListener( & #39;mouseleave&# 39;, () = & gt;
+                {
+                  isUserInteracting = false;
+                  startAutoplay();
+                });
+              }
 
-        init();
-      });
-    })();
+              if (prevBtn) {
+                prevBtn.addEventListener( & #39;click&# 39;, () = & gt;
+                {
+                  prevSlide();
+                  resetAutoplay();
+                });
+              }
+
+              if (nextBtn) {
+                nextBtn.addEventListener( & #39;click&# 39;, () = & gt;
+                {
+                  nextSlide();
+                  resetAutoplay();
+                });
+              }
+
+              function setupTouchEvents() {
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                sliderContainer.addEventListener( & #39;touchstart&# 39;, (e) = & gt;
+                {
+                  touchStartX = e.touches[0].clientX;
+                  isUserInteracting = true;
+                  stopAutoplay();
+                }, {
+                  passive: true
+                });
+
+                sliderContainer.addEventListener( & #39;touchmove&# 39;, (e) = & gt;
+                {
+                  touchEndX = e.touches[0].clientX;
+                }, {
+                  passive: true
+                });
+
+                sliderContainer.addEventListener( & #39;touchend&# 39;, () = & gt;
+                {
+                  if (!touchEndX) {
+                    isUserInteracting = false;
+                    startAutoplay();
+                    return;
+                  }
+                  const diff = touchStartX - touchEndX;
+                  if (Math.abs(diff) & gt; 50) {
+                    diff & gt;
+                    0 ? nextSlide() : prevSlide();
+                  }
+                  touchStartX = 0;
+                  touchEndX = 0;
+
+                  setTimeout(() = & gt;
+                  {
+                    isUserInteracting = false;
+                    resetAutoplay();
+                  }, 300);
+                }, {
+                  passive: true
+                });
+
+                sliderContainer.addEventListener( & #39;touchcancel&# 39;, () = & gt;
+                {
+                  touchStartX = 0;
+                  touchEndX = 0;
+                  isUserInteracting = false;
+                  startAutoplay();
+                }, {
+                  passive: true
+                });
+              }
+
+              init();
+            });
+        })();
   </script>
 @endpush

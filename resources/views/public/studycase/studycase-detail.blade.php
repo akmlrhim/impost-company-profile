@@ -16,12 +16,21 @@
         </button>
       </div>
 
-      <h1 class="text-impost-primary text-xl sm:text-3xl font-bold mb-8 text-center sm:text-left">
+      <h1 class="text-impost-primary text-xl sm:text-3xl font-bold mb-4 text-center sm:text-left">
         {{ $studyCase->name }}
       </h1>
 
+      <div class="flex justify-center sm:justify-start mb-8">
+        <span
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-impost-primary/30 bg-impost-primary/10 backdrop-blur-sm">
+          <span class="text-xs font-bold text-impost-primary uppercase tracking-wide">
+            {{ $studyCase->category }}
+          </span>
+        </span>
+      </div>
+
       <section
-        class="relative w-full h-auto rounded-2xl sm:rounded-3xl mb-16 sm:mb-20 group cursor-pointer border border-white/5 overflow-hidden flex justify-center bg-[#0a0a0a]"
+        class="relative w-full h-auto mb-16 sm:mb-20 group cursor-pointer overflow-hidden flex justify-center bg-[#0a0a0a]"
         x-data="{ showLightbox: false }" @click="showLightbox = true; document.body.style.overflow = 'hidden'">
 
         <img src="{{ asset('storage/' . $studyCase->cover_path) }}" alt="{{ $studyCase->name }}"

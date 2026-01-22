@@ -14,7 +14,7 @@
   <meta property="og:description"
     content="{{ $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155) }}">
   <meta property="og:image"
-    content="{{ $article->cover_path ? asset('storage/.' . $article->cover_path) : asset('img/article_default.webp') }}">
+    content="{{ $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp') }}">
 
   <meta property="og:type" content="article">
   <meta property="og:url" content="{{ url()->current() }}">

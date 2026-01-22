@@ -10,10 +10,8 @@ use App\Models\Portfolio;
 use App\Models\PortfolioCategory;
 use App\Models\StudyCase;
 use App\Models\Testimonial;
-use App\Services\ArticleService;
 use App\Services\ClientService;
 use App\Services\ServiceService;
-use App\Services\StudyCaseService;
 use App\Services\TeamService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -79,7 +77,12 @@ class HomeController extends Controller
 			->onEachSide(1)
 			->withQueryString();
 
-		$category = PortfolioCategory::select('id', 'name', 'slug')->get();
+		$category = PortfolioCategory::select('id', 'name', 'slug')
+			->withCount('portfolios')
+			->has('portfolios')
+			->orderBy('portfolios_count', 'DESC')
+			->get();
+
 		$activeCategory = $request->category;
 
 		return view('public.portfolio', compact('title', 'portfolios', 'category', 'activeCategory'));

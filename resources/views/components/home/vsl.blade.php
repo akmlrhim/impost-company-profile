@@ -17,9 +17,9 @@
       data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
 
       <script src="https://fast.wistia.com/player.js" async></script>
-      <script src="https://fast.wistia.com/embed/72mcq452mh.js" async type="module"></script><style>wistia-player[media-id='72mcq452mh']:not(:defined) { background: center / contain
-        no-repeat url('https://fast.wistia.com/embed/medias/72mcq452mh/swatch'); display: block; filter: blur(5px);
-        padding-top:56.25%; }</style> <wistia-player media-id="72mcq452mh" aspect="1.7777777777777777"></wistia-player>
+      <script src="https://fast.wistia.com/embed/3rfaxyr3ia.js" async type="module"></script><style>wistia-player[media-id='3rfaxyr3ia']:not(:defined) { background: center / contain
+        no-repeat url('https://fast.wistia.com/embed/medias/3rfaxyr3ia/swatch'); display: block; filter: blur(5px);
+        padding-top:56.25%; }</style> <wistia-player media-id="3rfaxyr3ia" aspect="1.7777777777777777"></wistia-player>
 
     </div>
 

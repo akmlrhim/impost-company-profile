@@ -15,6 +15,16 @@
         <div class="mt-4 md:mt-6 mx-auto w-12 md:w-16 h-1 bg-impost-primary rounded-full"></div>
       </div>
 
+      <div class="mt-12 sm:mt-16 md:mt-20 mb-12 sm:mb-16 md:mb-20 max-w-4xl mx-auto">
+        <div
+          class="relative w-full aspect-video rounded-xl md:rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
+          <script src="https://fast.wistia.com/player.js" async></script>
+          <script src="https://fast.wistia.com/embed/59ntht7a1b.js" async type="module"></script><style>wistia-player[media-id='59ntht7a1b']:not(:defined) { background: center / contain
+            no-repeat url('https://fast.wistia.com/embed/medias/59ntht7a1b/swatch'); display: block; filter: blur(5px);
+            padding-top:56.25%; }</style> <wistia-player media-id="59ntht7a1b" aspect="1.7777777777777777"></wistia-player>
+        </div>
+      </div>
+
       <div class="max-w-4xl mx-auto text-center px-2">
         <p class="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
           <span class="font-semibold text-white">CV Impost Media Indonesia</span>, atau dikenal sebagai

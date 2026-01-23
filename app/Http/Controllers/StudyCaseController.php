@@ -78,7 +78,7 @@ class StudyCaseController extends Controller
 			// save study case
 			StudyCase::create([
 				'name' => $request->name,
-				'slug' => Str::slug($request->name),
+				'slug' => Str::slug($request->name . '-' . $request->category),
 				'category' => $request->category,
 				'situation' => $request->situation,
 				'solution' => $request->solution,
@@ -147,7 +147,7 @@ class StudyCaseController extends Controller
 			// update study case
 			$studyCase->update([
 				'name' => $request->name,
-				'slug' => Str::slug($request->name),
+				'slug' => Str::slug($request->name . '-' . $request->category),
 				'category' => $request->category,
 				'situation' => $request->situation,
 				'solution' => $request->solution,

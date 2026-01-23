@@ -1,4 +1,6 @@
-@php $studyCases = \App\Models\StudyCase::select('slug', 'name', 'cover_path', 'category', 'result')->latest()->get(); @endphp
+@php
+  $studyCases = \App\Models\StudyCase::select('slug', 'name', 'cover_path', 'category', 'result')->latest()->get();
+@endphp
 
 <section class="py-12 md:py-16 relative overflow-hidden" id="study-cases">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -12,13 +14,12 @@
     </div>
 
     @if ($studyCases->isNotEmpty())
-      <div class="relative">
+      <div class="relative group/slider">
         <div class="studycase-slider relative">
           <div class="overflow-hidden">
-            <div class="studycase-track flex transition-transform duration-500 ease-out">
+            <div class="studycase-track flex transition-transform duration-500 ease-out will-change-transform">
               @foreach ($studyCases as $index => $case)
-                <div class="studycase-slide flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-1.5 md:px-2">
-
+                <div class="studycase-slide flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-2">
                   <div
                     class="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/10 shadow-xl h-full flex flex-col group hover:border-white/20 transition-all duration-300">
 
@@ -26,7 +27,7 @@
                       <div class="relative w-full aspect-video rounded-md overflow-hidden bg-black shadow-lg">
                         @if ($case->cover_path)
                           <img data-src="{{ asset('storage/' . $case->cover_path) }}"
-                            src="{{ $index < 3 ? asset('storage/' . $case->cover_path) : '' }}"
+                            src="{{ $index < 3 ? asset('storage/' . $case->cover_path) : 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' }}"
                             alt="{{ $case->name }}"
                             class="{{ $index >= 3 ? 'lazy-img' : '' }} w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                         @else
@@ -39,7 +40,6 @@
                     </div>
 
                     <div class="flex-1 flex flex-col">
-
                       <h3
                         class="text-sm sm:text-base font-bold text-white mb-1 line-clamp-2 group-hover:text-impost-primary transition-colors">
                         {{ $case->name }}
@@ -60,7 +60,7 @@
 
                       <div class="pt-2 border-t border-white/10 mt-auto">
                         <a href="{{ route('detail-study-case', $case->slug) }}"
-                          class="inline-flex items-center text-xs sm:text-sm font-semibold text-impost-primary hover:text-impost-primary/80 transition-colors">
+                          class="study-case-link inline-flex items-center text-xs sm:text-sm font-semibold text-impost-primary hover:text-impost-primary/80 transition-colors">
                           Lihat Detail
                           <svg class="w-3 h-3 sm:w-4 sm:h-4 ml-1 transition-transform group-hover:translate-x-1"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,7 +69,6 @@
                         </a>
                       </div>
                     </div>
-
                   </div>
                 </div>
               @endforeach
@@ -77,19 +76,18 @@
           </div>
 
           <button type="button" aria-label="Previous"
-            class="studycase-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-3 lg:-translate-x-6 z-20 bg-impost-primary hover:bg-impost-primary/80 text-white p-2 rounded-full shadow-lg transition-all disabled:opacity-0 disabled:invisible">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            class="studycase-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 z-20 bg-impost-primary hover:bg-impost-primary/80 text-white p-2 rounded-full shadow-lg transition-all opacity-0 group-hover/slider:opacity-100 focus:opacity-100 translate-x-4 group-hover/slider:translate-x-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           <button type="button" aria-label="Next"
-            class="studycase-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-3 lg:translate-x-6 z-20 bg-impost-primary hover:bg-impost-primary/80 text-white p-2 rounded-full shadow-lg transition-all disabled:opacity-0 disabled:invisible">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            class="studycase-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 z-20 bg-impost-primary hover:bg-impost-primary/80 text-white p-2 rounded-full shadow-lg transition-all opacity-0 group-hover/slider:opacity-100 focus:opacity-100 -translate-x-4 group-hover/slider:translate-x-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
-
         </div>
       </div>
 
@@ -116,219 +114,193 @@
 @push('scripts')
   <script>
     (function() {
-        'use strict';
+      'use strict';
 
-        document.addEventListener( & #39;DOMContentLoaded&# 39;, function() {
+      document.addEventListener('DOMContentLoaded', function() {
+        const studyCaseLinks = document.querySelectorAll('a[href*="study-case/"], .study-case-link');
+        studyCaseLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            sessionStorage.setItem('studyCaseSource', 'home');
+          });
+        });
 
-            const studyCaseLinks = document.querySelectorAll( & #39;a[href*= & quot; study -
-              case /&quot;], .study-case-link&#39;);
+        const sliderContainer = document.querySelector('.studycase-slider');
+        if (!sliderContainer) return;
 
-              studyCaseLinks.forEach(link = & gt;
-              {
-                link.addEventListener( & #39;click&# 39;, function() {
-                  sessionStorage.setItem( & #39;studyCaseSource&# 39;, & #39;home&# 39;);
-                });
-              });
+        const track = sliderContainer.querySelector('.studycase-track');
+        const allSlides = Array.from(sliderContainer.querySelectorAll('.studycase-slide'));
+        const prevBtn = sliderContainer.querySelector('.studycase-prev');
+        const nextBtn = sliderContainer.querySelector('.studycase-next');
 
-              const sliderContainer = document.querySelector( & #39;.studycase-slider&# 39;);
-              if (!sliderContainer) return;
+        let currentIndex = 0;
+        let autoplayInterval = null;
+        let slidesToShow = 1;
+        let isUserInteracting = false;
+        let touchStartX = 0;
+        let touchEndX = 0;
 
-              const track = sliderContainer.querySelector( & #39;.studycase-track&# 39;);
-              const allSlides = Array.from(sliderContainer.querySelectorAll( & #39;.studycase-slide&# 39;));
-              const prevBtn = sliderContainer.querySelector( & #39;.studycase-prev&# 39;);
-              const nextBtn = sliderContainer.querySelector( & #39;.studycase-next&# 39;);
+        function getSlidesToShow() {
+          if (window.innerWidth >= 1024) return 3;
+          if (window.innerWidth >= 640) return 2;
+          return 1;
+        }
 
-              let visibleSlides = allSlides;
-              let currentIndex = 0;
-              let autoplayInterval = null;
-              let isAnimating = false;
-              let slidesToShow = 1;
-              let isUserInteracting = false;
+        function updateSlidesToShow() {
+          slidesToShow = getSlidesToShow();
+          updateSliderUI();
+        }
 
-              function init() {
-                updateSlidesToShow();
-                updateSliderUI();
-                setupHoverEvents();
-                setupTouchEvents();
-                startAutoplay();
+        function getMaxIndex() {
+          return Math.max(0, allSlides.length - slidesToShow);
+        }
 
-                window.addEventListener( & #39;resize&# 39;, () = & gt;
-                {
-                  updateSlidesToShow();
-                  updateSliderUI();
-                });
+        function updateSliderUI() {
+          const maxIndex = getMaxIndex();
 
-                document.addEventListener( & #39;visibilitychange&# 39;, () = & gt;
-                {
-                  document.hidden ? stopAutoplay() : startAutoplay();
-                });
+          if (currentIndex > maxIndex) currentIndex = maxIndex;
+          if (currentIndex < 0) currentIndex = 0;
+
+          const slidePercent = 100 / slidesToShow;
+          if (track) {
+            track.style.transform = `translateX(-${currentIndex * slidePercent}%)`;
+          }
+
+          loadVisibleImages();
+          updateButtonsState();
+        }
+
+        function updateButtonsState() {
+          const maxIndex = getMaxIndex();
+          if (prevBtn) prevBtn.style.opacity = currentIndex <= 0 ? '0.5' : '1';
+          if (nextBtn) nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+
+          if (prevBtn) prevBtn.disabled = currentIndex <= 0;
+          if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+        }
+
+        function loadVisibleImages() {
+          const end = Math.min(currentIndex + slidesToShow + 1, allSlides.length);
+          for (let i = currentIndex; i < end; i++) {
+            if (allSlides[i]) {
+              const img = allSlides[i].querySelector('img[data-src]');
+              if (img && img.dataset.src) {
+                img.src = img.dataset.src;
+                img.onload = () => {
+                  img.classList.remove('lazy-img');
+                  delete img.dataset.src;
+                };
               }
+            }
+          }
+        }
 
-              function getSlidesToShow() {
-                if (window.innerWidth & gt; = 1024) return 3;
-                if (window.innerWidth & gt; = 640) return 2;
-                return 1;
-              }
+        function nextSlide() {
+          const maxIndex = getMaxIndex();
+          if (currentIndex < maxIndex) {
+            currentIndex++;
+          } else {
+            currentIndex = 0;
+          }
+          updateSliderUI();
+        }
 
-              function updateSlidesToShow() {
-                slidesToShow = getSlidesToShow();
-              }
+        function prevSlide() {
+          const maxIndex = getMaxIndex();
+          if (currentIndex > 0) {
+            currentIndex--;
+          } else {
+            currentIndex = maxIndex;
+          }
+          updateSliderUI();
+        }
 
-              function getMaxIndex() {
-                return Math.max(0, visibleSlides.length - slidesToShow);
-              }
+        function startAutoplay() {
+          if (autoplayInterval || isUserInteracting || allSlides.length <= slidesToShow) return;
+          autoplayInterval = setInterval(nextSlide, 5000);
+        }
 
-              function updateSliderUI() {
-                if (isAnimating & amp; & amp; visibleSlides.length & gt; 0) return;
+        function stopAutoplay() {
+          if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+          }
+        }
 
-                const maxIndex = getMaxIndex();
-                if (currentIndex & gt; maxIndex) currentIndex = maxIndex;
-                if (currentIndex & lt; 0) currentIndex = 0;
+        function resetAutoplay() {
+          stopAutoplay();
+          startAutoplay();
+        }
 
-                const slidePercent = 100 / slidesToShow;
-                if (track) track.style.transform = `translateX(-${currentIndex * slidePercent}%)`;
+        window.addEventListener('resize', updateSlidesToShow);
 
-                loadVisibleImages();
-              }
+        document.addEventListener('visibilitychange', () => {
+          document.hidden ? stopAutoplay() : startAutoplay();
+        });
 
-              function loadVisibleImages() {
-                for (let i = currentIndex; i & lt; currentIndex + slidesToShow + 1; i++) {
-                  if (visibleSlides[i]) {
-                    const img = visibleSlides[i].querySelector( & #39;img[data-src]&# 39;);
-                    if (img & amp; & amp; img.dataset.src) {
-                      img.src = img.dataset.src;
-                      img.onload = () = & gt;
-                      img.classList.remove( & #39;lazy-img&# 39;);
-                      delete img.dataset.src;
-                    }
-                  }
-                }
-              }
+        sliderContainer.addEventListener('mouseenter', () => {
+          isUserInteracting = true;
+          stopAutoplay();
+        });
 
-              function nextSlide() {
-                const maxIndex = getMaxIndex();
-                if (currentIndex & lt; maxIndex) {
-                  currentIndex++;
-                } else {
-                  currentIndex = 0;
-                }
-                updateSliderUI();
-              }
+        sliderContainer.addEventListener('mouseleave', () => {
+          isUserInteracting = false;
+          startAutoplay();
+        });
 
-              function prevSlide() {
-                const maxIndex = getMaxIndex();
-                if (currentIndex & gt; 0) {
-                  currentIndex--;
-                } else {
-                  currentIndex = maxIndex;
-                }
-                updateSliderUI();
-              }
+        if (prevBtn) {
+          prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            prevSlide();
+            resetAutoplay();
+          });
+        }
 
-              function startAutoplay() {
-                if (autoplayInterval || visibleSlides.length & lt; = slidesToShow || isUserInteracting) return;
-                autoplayInterval = setInterval(nextSlide, 5000);
-              }
+        if (nextBtn) {
+          nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            nextSlide();
+            resetAutoplay();
+          });
+        }
 
-              function stopAutoplay() {
-                if (autoplayInterval) {
-                  clearInterval(autoplayInterval);
-                  autoplayInterval = null;
-                }
-              }
+        sliderContainer.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          isUserInteracting = true;
+          stopAutoplay();
+        }, {
+          passive: true
+        });
 
-              function resetAutoplay() {
-                stopAutoplay();
-                startAutoplay();
-              }
+        sliderContainer.addEventListener('touchmove', (e) => {
+          touchEndX = e.touches[0].clientX;
+        }, {
+          passive: true
+        });
 
-              function setupHoverEvents() {
-                sliderContainer.addEventListener( & #39;mouseenter&# 39;, () = & gt;
-                {
-                  isUserInteracting = true;
-                  stopAutoplay();
-                });
+        sliderContainer.addEventListener('touchend', () => {
+          if (!touchStartX || !touchEndX) {
+            isUserInteracting = false;
+            startAutoplay();
+            return;
+          }
 
-                sliderContainer.addEventListener( & #39;mouseleave&# 39;, () = & gt;
-                {
-                  isUserInteracting = false;
-                  startAutoplay();
-                });
-              }
+          const diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 50) {
+            diff > 0 ? nextSlide() : prevSlide();
+          }
 
-              if (prevBtn) {
-                prevBtn.addEventListener( & #39;click&# 39;, () = & gt;
-                {
-                  prevSlide();
-                  resetAutoplay();
-                });
-              }
+          touchStartX = 0;
+          touchEndX = 0;
 
-              if (nextBtn) {
-                nextBtn.addEventListener( & #39;click&# 39;, () = & gt;
-                {
-                  nextSlide();
-                  resetAutoplay();
-                });
-              }
+          setTimeout(() => {
+            isUserInteracting = false;
+            resetAutoplay();
+          }, 500);
+        });
 
-              function setupTouchEvents() {
-                let touchStartX = 0;
-                let touchEndX = 0;
-
-                sliderContainer.addEventListener( & #39;touchstart&# 39;, (e) = & gt;
-                {
-                  touchStartX = e.touches[0].clientX;
-                  isUserInteracting = true;
-                  stopAutoplay();
-                }, {
-                  passive: true
-                });
-
-                sliderContainer.addEventListener( & #39;touchmove&# 39;, (e) = & gt;
-                {
-                  touchEndX = e.touches[0].clientX;
-                }, {
-                  passive: true
-                });
-
-                sliderContainer.addEventListener( & #39;touchend&# 39;, () = & gt;
-                {
-                  if (!touchEndX) {
-                    isUserInteracting = false;
-                    startAutoplay();
-                    return;
-                  }
-                  const diff = touchStartX - touchEndX;
-                  if (Math.abs(diff) & gt; 50) {
-                    diff & gt;
-                    0 ? nextSlide() : prevSlide();
-                  }
-                  touchStartX = 0;
-                  touchEndX = 0;
-
-                  setTimeout(() = & gt;
-                  {
-                    isUserInteracting = false;
-                    resetAutoplay();
-                  }, 300);
-                }, {
-                  passive: true
-                });
-
-                sliderContainer.addEventListener( & #39;touchcancel&# 39;, () = & gt;
-                {
-                  touchStartX = 0;
-                  touchEndX = 0;
-                  isUserInteracting = false;
-                  startAutoplay();
-                }, {
-                  passive: true
-                });
-              }
-
-              init();
-            });
-        })();
+        updateSlidesToShow();
+        startAutoplay();
+      });
+    })();
   </script>
 @endpush

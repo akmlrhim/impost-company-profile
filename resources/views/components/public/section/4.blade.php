@@ -14,12 +14,13 @@
     </div>
 
     @if ($studyCases->isNotEmpty())
-      <div class="relative group/slider">
+      <div class="relative max-w-6xl mx-auto">
         <div class="studycase-slider relative">
-          <div class="overflow-hidden">
+
+          <div class="overflow-hidden px-1 py-4">
             <div class="studycase-track flex transition-transform duration-500 ease-out will-change-transform">
               @foreach ($studyCases as $index => $case)
-                <div class="studycase-slide flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-2">
+                <div class="studycase-slide flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-2 md:px-3">
                   <div
                     class="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/10 shadow-xl h-full flex flex-col group hover:border-white/20 transition-all duration-300">
 
@@ -76,22 +77,29 @@
           </div>
 
           <button type="button" aria-label="Previous"
-            class="studycase-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 z-20 bg-impost-primary hover:bg-impost-primary/80 text-white p-2 rounded-full shadow-lg transition-all opacity-0 group-hover/slider:opacity-100 focus:opacity-100 translate-x-4 group-hover/slider:translate-x-0">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            class="studycase-prev absolute top-1/2 -translate-y-1/2 z-20 
+                   left-0 sm:-left-12 lg:-left-16
+                   bg-impost-primary hover:bg-impost-primary/90 text-white 
+                   p-2 sm:p-3 rounded-full shadow-lg transition-transform active:scale-95 flex items-center justify-center">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           <button type="button" aria-label="Next"
-            class="studycase-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 z-20 bg-impost-primary hover:bg-impost-primary/80 text-white p-2 rounded-full shadow-lg transition-all opacity-0 group-hover/slider:opacity-100 focus:opacity-100 -translate-x-4 group-hover/slider:translate-x-0">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            class="studycase-next absolute top-1/2 -translate-y-1/2 z-20 
+                   right-0 sm:-right-12 lg:-right-16
+                   bg-impost-primary hover:bg-impost-primary/90 text-white 
+                   p-2 sm:p-3 rounded-full shadow-lg transition-transform active:scale-95 flex items-center justify-center">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
+
         </div>
       </div>
 
-      <div class="mt-8 md:mt-10 text-center">
+      <div class="mt-8 md:mt-12 text-center">
         <a href="{{ route('study-case') }}"
           class="bg-impost-primary inline-flex items-center justify-center px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-md font-medium text-black border border-impost-primary rounded-full hover:scale-105 transition-all duration-300">
           Lihat Semua Study Case
@@ -171,11 +179,18 @@
 
         function updateButtonsState() {
           const maxIndex = getMaxIndex();
-          if (prevBtn) prevBtn.style.opacity = currentIndex <= 0 ? '0.5' : '1';
-          if (nextBtn) nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
 
-          if (prevBtn) prevBtn.disabled = currentIndex <= 0;
-          if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+          if (prevBtn) {
+            prevBtn.style.opacity = currentIndex <= 0 ? '0.5' : '1';
+            prevBtn.style.cursor = currentIndex <= 0 ? 'not-allowed' : 'pointer';
+            prevBtn.disabled = currentIndex <= 0;
+          }
+
+          if (nextBtn) {
+            nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+            nextBtn.style.cursor = currentIndex >= maxIndex ? 'not-allowed' : 'pointer';
+            nextBtn.disabled = currentIndex >= maxIndex;
+          }
         }
 
         function loadVisibleImages() {

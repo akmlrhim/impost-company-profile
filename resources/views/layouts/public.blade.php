@@ -28,7 +28,13 @@
 
   @stack('head')
 
-  <title>IMPOST MEDIA - {{ $title ?? 'Home Page' }}</title>
+  <title>Impost Media | Jasa Digital Marketing & Website Banjarmasin</title>
+  <meta name="description"
+    content="Solusi digital marketing all-in-one dan jasa pembuatan website profesional di Banjarmasin & Banjarbaru. Tingkatkan bisnis Anda bersama Impost Media.">
+  <meta name="keywords"
+    content="digital marketing banjarmasin, digital marketing banjarbaru, digital marketing, digital marketing kalimantan, digital marketing kalimantan selatan, seo banjarmasin, impost media, impost">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{ url()->current() }}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,12 +45,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
-  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
 
   <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/favicon/favicon-96x96.png') }}">
   <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon/favicon.svg') }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/favicon/apple-touch-icon.png') }}">
   <link rel="manifest" href="{{ asset('img/favicon/site.webmanifest') }}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url('/') }}">
+  <meta property="og:title" content="Impost Media | Digital Marketing Agency">
+  <meta property="og:description"
+    content="Partner terbaik untuk kebutuhan website dan pemasaran digital bisnis Anda di Kalimantan Selatan.">
+  <meta property="og:image" content="{{ asset('img/og_image.png') }}">
+  <meta property="og:locale" content="id_ID">
+
+  <meta name="theme-color" content="#040404">
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 

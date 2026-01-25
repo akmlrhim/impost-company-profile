@@ -239,12 +239,27 @@ class HomeController extends Controller
 
 			DB::commit();
 
-			$message = urlencode('Halo, saya tertarik dengan layanan Anda.');
-			return redirect("https://wa.me/6283147802761?text={$message}")->with('success', 'Data berhasil dikirim');
+			$objectiveString = implode(', ', $request->objective);
+
+			$text  = "Hai kak, saya sudah mengisi form dengan data sebagai berikut:\n\n";
+			$text .= "Nama lengkap: " . $request->fullname . "\n";
+			$text .= "No. HP: " . $request->phone . "\n";
+			$text .= "Email: " . ($request->email ?? '-') . "\n";
+			$text .= "Nama bisnis: " . $request->business_name . "\n";
+			$text .= "Omzet per bulan: " . $request->income . "\n";
+			$text .= "Tujuan: " . $objectiveString . "\n\n";
+			$text .= "Mohon info langkah selanjutnya untuk bisa lanjut ke tahap konsultasi atau pembahasan strategi.";
+
+			$message = urlencode($text);
+			$waUrl = "https://wa.me/6283147802761?text={$message}";
+
+			return redirect()->back()
+				->with('success', 'Data berhasil terkirim! Mengalihkan ke WhatsApp...')
+				->with('wa_url', $waUrl);
 		} catch (\Throwable $e) {
 			DB::rollBack();
 
-			dd($e->getMessage());
+			// dd($e->getMessage());
 			return back()->withInput();
 		}
 	}

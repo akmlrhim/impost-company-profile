@@ -56,7 +56,7 @@
   <meta property="og:url" content="{{ url('/') }}">
   <meta property="og:title" content="Impost Media | Digital Marketing Agency">
   <meta property="og:description"
-    content="Partner terbaik untuk kebutuhan website dan pemasaran digital bisnis Anda di Kalimantan Selatan.">
+    content="Partner terbaik untuk kebutuhan bisnis dan pemasaran digital bisnis Anda di Kalimantan Selatan.">
   <meta property="og:image" content="{{ asset('img/og_image.png') }}">
   <meta property="og:locale" content="id_ID">
 

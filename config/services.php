@@ -23,10 +23,6 @@ return [
 		'key' => env('POSTMARK_API_KEY'),
 	],
 
-	'gtm' => [
-		'id' => env('GOOGLE_TAG_MANAGER_ID'),
-	],
-
 	'resend' => [
 		'key' => env('RESEND_API_KEY'),
 	],

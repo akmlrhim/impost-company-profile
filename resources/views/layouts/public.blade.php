@@ -28,9 +28,9 @@
 
   @stack('head')
 
-  <title>Impost Media | Jasa Digital Marketing & Website Banjarmasin</title>
+  <title>Impost Media | Agensi Digital Marketing di Kalimantan Selatan</title>
   <meta name="description"
-    content="Solusi digital marketing all-in-one dan jasa pembuatan website profesional di Banjarmasin & Banjarbaru. Tingkatkan bisnis Anda bersama Impost Media.">
+    content="Solusi digital marketing all-in-one profesional di Banjarmasin & Banjarbaru. Tingkatkan bisnis Anda bersama Impost Media.">
   <meta name="keywords"
     content="digital marketing banjarmasin, digital marketing banjarbaru, digital marketing, digital marketing kalimantan, digital marketing kalimantan selatan, seo banjarmasin, impost media, impost">
   <meta name="robots" content="index, follow">

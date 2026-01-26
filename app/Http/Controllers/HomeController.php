@@ -251,7 +251,7 @@ class HomeController extends Controller
 			$text .= "Mohon info langkah selanjutnya untuk bisa lanjut ke tahap konsultasi atau pembahasan strategi.";
 
 			$message = urlencode($text);
-			$waUrl = "https://wa.me/6283147802761?text={$message}";
+			$waUrl = "https://wa.me/6285890041800?text={$message}";
 
 			return redirect()->back()
 				->with('success', 'Data berhasil terkirim! Mengalihkan ke WhatsApp...')

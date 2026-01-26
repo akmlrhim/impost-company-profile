@@ -47,10 +47,10 @@
 
   <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
 
-  <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/favicon/favicon-96x96.png') }}">
-  <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon/favicon.svg') }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/favicon/apple-touch-icon.png') }}">
-  <link rel="manifest" href="{{ asset('img/favicon/site.webmanifest') }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicon/favicon-96x96.png') }}">
+  <link rel="icon" type="image/svg+xml" href="{{ asset('favicon/favicon.svg') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+  <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url('/') }}">

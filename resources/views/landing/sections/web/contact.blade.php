@@ -76,7 +76,7 @@
         </div>
 
         <button type="submit" id="btnSubmit"
-          class="w-full bg-impost-primary text-impost-fifth font-bold py-3 rounded-md cursor-pointer hover:bg-yellow-500 transition-all duration-300 flex items-center justify-center gap-2 mt-2 group text-sm shadow-lg transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
+          class="leads-web-btn w-full bg-impost-primary text-impost-fifth font-bold py-3 rounded-md cursor-pointer hover:bg-yellow-500 transition-all duration-300 flex items-center justify-center gap-2 mt-2 group text-sm shadow-lg transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
           Konsultasi Gratis Sekarang
         </button>
       </form>

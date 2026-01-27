@@ -26,7 +26,7 @@
       class="mt-8 lg:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full max-w-md mx-auto sm:max-w-none">
 
       <a href="#pricing"
-        class="w-full sm:w-auto bg-impost-primary text-impost-fifth font-bold text-base px-8 py-3.5 rounded-lg hover:bg-yellow-500 transition-all duration-300 transform hover:-translate-y-1 inline-flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(212,172,60,0.3)]">
+        class="paket-web-btn w-full sm:w-auto bg-impost-primary text-impost-fifth font-bold text-base px-8 py-3.5 rounded-lg hover:bg-yellow-500 transition-all duration-300 transform hover:-translate-y-1 inline-flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(212,172,60,0.3)]">
         Lihat Paket Website
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"

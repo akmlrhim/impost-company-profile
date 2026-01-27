@@ -44,104 +44,107 @@
       </div>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex md:items-center md:gap-6 lg:gap-8">
-        <a href="{{ url('/') }}"
-          class="text-md font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1"
-          @if (request()->is('/')) aria-current="page" @endif>
-          Home
-        </a>
+      @unless (request()->routeIs('landing.promo', 'landing.web'))
+        <div class="hidden md:flex md:items-center md:gap-6 lg:gap-8">
+          <a href="{{ url('/') }}"
+            class="text-md font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1"
+            @if (request()->is('/')) aria-current="page" @endif>
+            Home
+          </a>
 
-        <a href="{{ url('/') }}#services"
-          class="text-md font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1">
-          Services
-        </a>
+          <a href="{{ url('/') }}#services"
+            class="text-md font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1">
+            Services
+          </a>
 
-        <!-- Our Works Dropdown -->
-        <div class="relative" @mouseenter="activeDropdown = 'works'" @mouseleave="closeDropdown()">
-          <button @click="toggleDropdown('works')"
-            class="flex items-center gap-1 text-md font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1"
-            :aria-expanded="(activeDropdown === 'works').toString()" aria-haspopup="true" aria-controls="works-menu">
-            <span>Our Works</span>
-            <svg class="h-4 w-4 transition-transform duration-200"
-              :class="{ 'rotate-180': activeDropdown === 'works' }" fill="none" viewBox="0 0 24 24"
-              stroke-width="2" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
+          <!-- Our Works Dropdown -->
+          <div class="relative" @mouseenter="activeDropdown = 'works'" @mouseleave="closeDropdown()">
+            <button @click="toggleDropdown('works')"
+              class="flex items-center gap-1 text-md font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1"
+              :aria-expanded="(activeDropdown === 'works').toString()" aria-haspopup="true" aria-controls="works-menu">
+              <span>Our Works</span>
+              <svg class="h-4 w-4 transition-transform duration-200"
+                :class="{ 'rotate-180': activeDropdown === 'works' }" fill="none" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
 
-          <div x-show="activeDropdown === 'works'" x-cloak x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
-            x-transition:leave-end="opacity-0 translate-y-1" id="works-menu" role="menu" aria-orientation="vertical"
-            class="absolute left-1/2 -translate-x-1/2 mt-4 w-48 bg-impost-fifth rounded-xl border border-white/10 shadow-xl overflow-hidden ring-1 ring-black ring-opacity-5 z-50">
-            <div class="py-1">
-              <a href="{{ url('/') }}#portfolios" role="menuitem"
-                class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors">
-                Portfolio
-              </a>
-              <a href="{{ url('/') }}#study-cases" role="menuitem"
-                class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors border-t border-white/5">
-                Study Case
-              </a>
+            <div x-show="activeDropdown === 'works'" x-cloak x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+              x-transition:leave-end="opacity-0 translate-y-1" id="works-menu" role="menu" aria-orientation="vertical"
+              class="absolute left-1/2 -translate-x-1/2 mt-4 w-48 bg-impost-fifth rounded-xl border border-white/10 shadow-xl overflow-hidden ring-1 ring-black ring-opacity-5 z-50">
+              <div class="py-1">
+                <a href="{{ url('/') }}#portfolios" role="menuitem"
+                  class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors">
+                  Portfolio
+                </a>
+                <a href="{{ url('/') }}#study-cases" role="menuitem"
+                  class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors border-t border-white/5">
+                  Study Case
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Company Dropdown -->
-        <div class="relative" @mouseenter="activeDropdown = 'company'" @mouseleave="closeDropdown()">
-          <button @click="toggleDropdown('company')"
-            class="flex items-center gap-1 text-md font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1"
-            :aria-expanded="(activeDropdown === 'company').toString()" aria-haspopup="true"
-            aria-controls="company-menu">
-            <span>Company</span>
-            <svg class="h-4 w-4 transition-transform duration-200"
-              :class="{ 'rotate-180': activeDropdown === 'company' }" fill="none" viewBox="0 0 24 24"
-              stroke-width="2" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
+          <!-- Company Dropdown -->
+          <div class="relative" @mouseenter="activeDropdown = 'company'" @mouseleave="closeDropdown()">
+            <button @click="toggleDropdown('company')"
+              class="flex items-center gap-1 text-md font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1"
+              :aria-expanded="(activeDropdown === 'company').toString()" aria-haspopup="true"
+              aria-controls="company-menu">
+              <span>Company</span>
+              <svg class="h-4 w-4 transition-transform duration-200"
+                :class="{ 'rotate-180': activeDropdown === 'company' }" fill="none" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
 
-          <div x-show="activeDropdown === 'company'" x-cloak x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
-            x-transition:leave-end="opacity-0 translate-y-1" id="company-menu" role="menu"
-            aria-orientation="vertical"
-            class="absolute left-1/2 -translate-x-1/2 mt-4 w-48 bg-impost-fifth rounded-xl border border-white/10 shadow-xl overflow-hidden ring-1 ring-black ring-opacity-5 z-50">
-            <div class="py-1">
-              <a href="{{ route('article.all') }}" role="menuitem"
-                class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors {{ request()->routeIs('article.all') ? 'bg-impost-primary/20 text-white' : '' }}"
-                @if (request()->routeIs('article.all')) aria-current="page" @endif>
-                Blog
-              </a>
-              <a href="{{ route('about') }}" role="menuitem"
-                class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors border-t border-white/5 {{ request()->routeIs('about') ? 'bg-impost-primary/20 text-white' : '' }}"
-                @if (request()->routeIs('about')) aria-current="page" @endif>
-                About
-              </a>
-              <a href="{{ route('contact') }}" role="menuitem"
-                class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors border-t border-white/5 {{ request()->routeIs('contact') ? 'bg-impost-primary/20 text-white' : '' }}"
-                @if (request()->routeIs('contact')) aria-current="page" @endif>
-                Contact
-              </a>
-              <a href="{{ route('careers') }}" role="menuitem"
-                class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors border-t border-white/5 {{ request()->routeIs('careers') ? 'bg-impost-primary/20 text-white' : '' }}"
-                @if (request()->routeIs('careers')) aria-current="page" @endif>
-                Career
-              </a>
+            <div x-show="activeDropdown === 'company'" x-cloak x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+              x-transition:leave-end="opacity-0 translate-y-1" id="company-menu" role="menu"
+              aria-orientation="vertical"
+              class="absolute left-1/2 -translate-x-1/2 mt-4 w-48 bg-impost-fifth rounded-xl border border-white/10 shadow-xl overflow-hidden ring-1 ring-black ring-opacity-5 z-50">
+              <div class="py-1">
+                <a href="{{ route('article.all') }}" role="menuitem"
+                  class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors {{ request()->routeIs('article.all') ? 'bg-impost-primary/20 text-white' : '' }}"
+                  @if (request()->routeIs('article.all')) aria-current="page" @endif>
+                  Blog
+                </a>
+                <a href="{{ route('about') }}" role="menuitem"
+                  class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors border-t border-white/5 {{ request()->routeIs('about') ? 'bg-impost-primary/20 text-white' : '' }}"
+                  @if (request()->routeIs('about')) aria-current="page" @endif>
+                  About
+                </a>
+                <a href="{{ route('contact') }}" role="menuitem"
+                  class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors border-t border-white/5 {{ request()->routeIs('contact') ? 'bg-impost-primary/20 text-white' : '' }}"
+                  @if (request()->routeIs('contact')) aria-current="page" @endif>
+                  Contact
+                </a>
+                <a href="{{ route('careers') }}" role="menuitem"
+                  class="block px-4 py-2.5 text-md text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors border-t border-white/5 {{ request()->routeIs('careers') ? 'bg-impost-primary/20 text-white' : '' }}"
+                  @if (request()->routeIs('careers')) aria-current="page" @endif>
+                  Career
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- CTA Button -->
-        <a href="{{ route('vsl-form') }}"
-          class="inline-flex items-center justify-center px-5 py-2 text-sm font-bold text-black transition-all duration-300 bg-impost-primary rounded-lg hover:bg-impost-secondary hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black"
-          aria-label="Get started with Impost">
-          Get Started
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
-        </a>
-      </div>
+          <!-- CTA Button -->
+          <a href="{{ route('vsl-form') }}"
+            class="inline-flex items-center justify-center px-5 py-2 text-sm font-bold text-black transition-all duration-300 bg-impost-primary rounded-lg hover:bg-impost-secondary hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black"
+            aria-label="Get started with Impost">
+            Get Started
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+      @endunless
+
     </div>
   </div>
 

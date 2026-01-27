@@ -34,11 +34,12 @@
         </li>
         <li>
           <a href="#problem"
-            class="block py-2 px-3 text-gray-300 font-bold rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-impost-primary md:p-0 transition">Masalah</a>
+            class="block py-2 px-3 text-gray-300 font-bold rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-impost-primary md:p-0 transition">Our
+            Problem</a>
         </li>
         <li>
           <a href="#pricing"
-            class="block py-2 px-3 text-gray-300 font-bold rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-impost-primary md:p-0 transition">Harga</a>
+            class="block py-2 px-3 text-gray-300 font-bold rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-impost-primary md:p-0 transition">Pricing</a>
         </li>
         <li>
           <a href="#portfolio"
@@ -47,7 +48,7 @@
         <li class="md:hidden mt-4">
           <a href="#contact"
             class="block w-full text-center bg-impost-primary text-impost-fifth font-bold py-3 rounded-lg hover:brightness-110">
-            Konsultasi Gratis
+            Get Started
           </a>
         </li>
       </ul>

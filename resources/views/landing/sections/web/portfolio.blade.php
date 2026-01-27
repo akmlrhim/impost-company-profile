@@ -1,4 +1,4 @@
-<section class="py-26 relative overflow-hidden">
+<section class="py-26 relative overflow-hidden" id="portfolio">
 
   <div class="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
 
@@ -72,19 +72,6 @@
         <div class="absolute bottom-0 left-0 p-6 z-20">
           <h4 class="text-white text-xl font-bold group-hover:text-impost-primary transition">STIFIn Landing Page
           </h4>
-        </div>
-      </div>
-
-      <div class="group relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 z-10 group-hover:opacity-40 transition duration-500">
-        </div>
-        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop" alt="Portfolio 3"
-          class="w-full h-64 md:h-[400px] object-cover object-top transform group-hover:scale-105 transition duration-700 ease-out">
-
-        <div class="absolute bottom-0 left-0 p-6 z-20">
-          <h4 class="text-white text-xl font-bold group-hover:text-impost-primary transition">E-Catalog Product</h4>
-          <p class="text-gray-300 text-sm mt-1">Modern grid layout for products</p>
         </div>
       </div>
 

@@ -53,63 +53,68 @@
         Portfolio
       </div>
 
-      <div onclick="openModal('{{ asset('img/landing/web/portfolio_1.webp') }}')"
-        class="group relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-pointer">
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 z-10 group-hover:opacity-40 transition duration-500">
+      <a href="https://impostmedia.com/" id="">
+        <div onclick="openModal('{{ asset('img/landing/web/portfolio_1.webp') }}')"
+          class="group relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-pointer">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 z-10 group-hover:opacity-40 transition duration-500">
+          </div>
+
+          <div
+            class="absolute top-4 right-4 z-20 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 backdrop-blur-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-white w-5 h-5" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21 21-4.3-4.3" />
+              <path d="M11 8v6" />
+              <path d="M8 11h6" />
+              <circle cx="11" cy="11" r="8" />
+            </svg>
+          </div>
+
+          <img src="{{ asset('img/landing/web/portfolio_1.webp') }}" alt="Impost Media Company Profile"
+            class="w-full h-56 sm:h-72 md:h-[400px] object-cover object-top transform group-hover:scale-105 transition duration-700 ease-out">
+
+          <div class="absolute bottom-0 left-0 p-5 md:p-6 z-20">
+            <h4 class="text-white text-lg md:text-xl font-bold group-hover:text-impost-primary transition">Impost Media
+              Company Profile</h4>
+            <p
+              class="text-gray-300 text-xs md:text-sm mt-1 opacity-0 group-hover:opacity-100 transition duration-300 transform translate-y-2 group-hover:translate-y-0">
+              Klik untuk memperbesar</p>
+          </div>
         </div>
+      </a>
 
-        <div
-          class="absolute top-4 right-4 z-20 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 backdrop-blur-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" class="text-white w-5 h-5" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m21 21-4.3-4.3" />
-            <path d="M11 8v6" />
-            <path d="M8 11h6" />
-            <circle cx="11" cy="11" r="8" />
-          </svg>
+      <a href="https://www.wardamompreneur.com/stifin-umum" id="">
+        <div onclick="openModal('{{ asset('img/landing/web/portfolio_2.webp') }}')"
+          class="group relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-pointer">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 z-10 group-hover:opacity-60 transition duration-500">
+          </div>
+
+          <div
+            class="absolute top-4 right-4 z-20 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 backdrop-blur-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-white w-5 h-5" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21 21-4.3-4.3" />
+              <path d="M11 8v6" />
+              <path d="M8 11h6" />
+              <circle cx="11" cy="11" r="8" />
+            </svg>
+          </div>
+
+          <img src="{{ asset('img/landing/web/portfolio_2.webp') }}" alt="STIFIn Landing Page"
+            class="w-full h-56 sm:h-72 md:h-[400px] object-cover object-top transform group-hover:scale-105 transition duration-700 ease-out">
+
+          <div class="absolute bottom-0 left-0 p-5 md:p-6 z-20">
+            <h4 class="text-white text-lg md:text-xl font-bold group-hover:text-impost-primary transition">STIFIn
+              Landing
+              Page</h4>
+            <p
+              class="text-gray-300 text-xs md:text-sm mt-1 opacity-0 group-hover:opacity-100 transition duration-300 transform translate-y-2 group-hover:translate-y-0">
+              Klik untuk memperbesar</p>
+          </div>
         </div>
-
-        <img src="{{ asset('img/landing/web/portfolio_1.webp') }}" alt="Impost Media Company Profile"
-          class="w-full h-56 sm:h-72 md:h-[400px] object-cover object-top transform group-hover:scale-105 transition duration-700 ease-out">
-
-        <div class="absolute bottom-0 left-0 p-5 md:p-6 z-20">
-          <h4 class="text-white text-lg md:text-xl font-bold group-hover:text-impost-primary transition">Impost Media
-            Company Profile</h4>
-          <p
-            class="text-gray-300 text-xs md:text-sm mt-1 opacity-0 group-hover:opacity-100 transition duration-300 transform translate-y-2 group-hover:translate-y-0">
-            Klik untuk memperbesar</p>
-        </div>
-      </div>
-
-      <div onclick="openModal('{{ asset('img/landing/web/portfolio_2.webp') }}')"
-        class="group relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl cursor-pointer">
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80 z-10 group-hover:opacity-60 transition duration-500">
-        </div>
-
-        <div
-          class="absolute top-4 right-4 z-20 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 backdrop-blur-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" class="text-white w-5 h-5" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m21 21-4.3-4.3" />
-            <path d="M11 8v6" />
-            <path d="M8 11h6" />
-            <circle cx="11" cy="11" r="8" />
-          </svg>
-        </div>
-
-        <img src="{{ asset('img/landing/web/portfolio_2.webp') }}" alt="STIFIn Landing Page"
-          class="w-full h-56 sm:h-72 md:h-[400px] object-cover object-top transform group-hover:scale-105 transition duration-700 ease-out">
-
-        <div class="absolute bottom-0 left-0 p-5 md:p-6 z-20">
-          <h4 class="text-white text-lg md:text-xl font-bold group-hover:text-impost-primary transition">STIFIn Landing
-            Page</h4>
-          <p
-            class="text-gray-300 text-xs md:text-sm mt-1 opacity-0 group-hover:opacity-100 transition duration-300 transform translate-y-2 group-hover:translate-y-0">
-            Klik untuk memperbesar</p>
-        </div>
-      </div>
+      </a>
 
     </div>
 

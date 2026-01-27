@@ -10,4 +10,9 @@ class LandingController extends Controller
 	{
 		return view('landing.web');
 	}
+
+	public function promo()
+	{
+		return view('landing.promo');
+	}
 }

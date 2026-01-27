@@ -48,6 +48,7 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		// Landing 
 		Route::get('landing/web-development', [LandingController::class, 'web'])->name('landing.web');
+		Route::get('landing/promo', [LandingController::class, 'promo'])->name('landing.promo');
 	});
 
 	Route::prefix('admin')->middleware('auth')->group(function () {

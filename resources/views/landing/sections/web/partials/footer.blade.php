@@ -8,8 +8,8 @@
           <img src="{{ asset('img/logo_impost_putih.jpg') }}" class="w-auto h-10 object-contain" alt="">
         </a>
         <p class="text-gray-400 leading-relaxed">
-          Partner digital bisnis Anda. Kami membangun website profesional yang fokus pada konversi, kepercayaan, dan
-          pertumbuhan omzet.
+          Impost Media adalah pionir digital marketing & branding agency kalimantan yang berani kasih jaminan uang
+          kembali bila KPI tidak tercapai
         </p>
 
         <div class="flex gap-4 pt-2">

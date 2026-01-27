@@ -121,22 +121,12 @@
       })
       .then(response => response.json())
       .then(data => {
-        const message = `Mohon langsung kirimkan chat ini tanda edit.
-
-	Hai kak, saya tertarik konsultasi gratis *jasa website* impost media. Saya sudah mengisi form dengan data sebagai
-	berikut:
-
-	Nama Lengkap : ${nama}
-	Nama Bisnis : ${bisnis}
-	No. WhatsApp : ${whatsapp}
-	Kebutuhan Website (Landing Page / Company Profile) : ${kebutuhan}
-
-	Mohon info langkah selanjutnya.`;
+        const message =
+          `Mohon langsung kirimkan chat ini tanda edit.\n\nHai kak, saya tertarik konsultasi gratis *jasa website* impost media. Saya sudah mengisi form dengan data sebagai berikut:\n\nNama Lengkap : ${nama}\nNama Bisnis : ${bisnis}\nNo. WhatsApp : ${whatsapp}\nKebutuhan Website (Landing Page / Company Profile) : ${kebutuhan}\n\nMohon info langkah selanjutnya.`;
 
         const encodedMessage = encodeURIComponent(message);
         window.open(`https://wa.me/${NOMOR_ADMIN}?text=${encodedMessage}`, '_blank');
 
-        // Clear input fields after successful submission
         document.getElementById('consultationForm').reset();
       })
       .catch(error => {

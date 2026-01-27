@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobPostingController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PortfolioCategoryController;
 use App\Http\Controllers\PortfolioController;
@@ -44,6 +45,9 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		Route::get('careers', [HomeController::class, 'job'])->name('careers');
 		Route::get('careers/{career:slug}', [HomeController::class, 'jobDetail'])->name('career.detail');
+
+		// Landing 
+		Route::get('landing/web-development', [LandingController::class, 'web'])->name('landing.web');
 	});
 
 	Route::prefix('admin')->middleware('auth')->group(function () {

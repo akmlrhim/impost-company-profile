@@ -125,7 +125,7 @@
     </div>
 
     <div
-      class="mt-20 bg-gradient-to-r from-neutral-900 to-impost-fifth border border-white/10 rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+      class="mt-8 bg-gradient-to-r from-neutral-900 to-impost-fifth border border-white/10 rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
       <div class="flex-1">
         <h3 class="text-lg md:text-xl font-bold text-white mb-3">Bayangkan Kalau Website Kamu <span
             class="text-impost-primary">Bekerja...</span></h3>
@@ -150,44 +150,33 @@
           </li>
         </ul>
       </div>
-      <div class="hidden md:block">
-        <div
-          class="w-14 h-14 bg-impost-primary rounded-full flex items-center justify-center animate-pulse shadow-[0_0_15px_#d4ac3c]">
-          <svg xmlns="http://www.w3.org/2000/svg" class="text-impost-fifth w-7 h-7" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-            <polyline points="16 7 22 7 22 13" />
-          </svg>
-        </div>
-      </div>
     </div>
   </div>
 
+  <div class="mt-12 md:mt-24 pt-10 md:pt-20">
+    <div class="max-w-4xl mx-auto px-5 md:px-8 relative z-10">
 
-  <div class="mt-24 pt-20">
-    <div class="max-w-4xl mx-auto px-4 md:px-8 relative z-10">
-
-      <div class="text-center mb-10 md:mb-14">
-        <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">
-          Ujung-ujungnya? <span class="block md:inline text-white font-normal mt-1 md:mt-0">Website cuma jadi
+      <div class="text-center mb-8 md:mb-14">
+        <h2 class="text-xl md:text-3xl font-bold text-white mb-3">
+          Ujung-ujungnya? <span class="block md:inline text-gray-300 font-normal mt-1 md:mt-0">Website cuma jadi
             pelengkap.</span>
         </h2>
-        <div class="inline-block mt-2">
+        <div class="inline-block mt-1 md:mt-2">
           <p
-            class="text-red-400 font-medium text-sm md:text-lg bg-red-500/10 px-4 py-2 rounded-lg border border-red-500/20">
+            class="text-red-400 font-medium text-xs md:text-lg bg-red-500/10 px-4 py-2 rounded-lg border border-red-500/20">
             Sudah keluar biaya, tapi nggak bantu closing
           </p>
         </div>
       </div>
 
-      <div class="bg-neutral-900 border border-white/10 rounded-2xl p-6 md:p-10 shadow-2xl relative mt-8">
+      <div class="bg-neutral-900 border border-white/10 rounded-2xl p-5 md:p-10 shadow-2xl relative mt-8 md:mt-10">
 
         <div
-          class="absolute -top-5 left-1/2 -translate-x-1/2 w-[90%] md:w-auto bg-impost-primary text-impost-fifth font-bold px-4 py-2 rounded-full text-xs md:text-sm text-center">
+          class="absolute -top-4 left-1/2 -translate-x-1/2 w-[95%] md:w-auto bg-impost-primary text-impost-fifth font-bold px-4 py-2 rounded-full text-[11px] sm:text-sm text-center shadow-lg whitespace-nowrap md:whitespace-normal overflow-hidden text-ellipsis">
           Sekarang Bayangkan Kalau Website Kamu Bekerja...
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mt-6 md:mt-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 md:gap-y-6 mt-6 md:mt-4">
 
           <div class="flex items-start gap-3">
             <div class="bg-impost-fifth/50 p-1.5 rounded-md border border-white/5 shrink-0">
@@ -246,7 +235,7 @@
                 class="text-white font-semibold">lebih profesional</span>, walau kamu masih UMKM</p>
           </div>
 
-          <div class="flex items-center gap-3 col-span-full ">
+          <div class="flex items-center gap-3 md:col-span-2">
             <div class="flex bg-impost-fifth/50 p-1.5 rounded-md border border-white/5 shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" class="text-impost-primary w-4 h-4 md:w-5 md:h-5"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -261,8 +250,8 @@
         </div>
       </div>
 
-      <div class="text-center mt-12 px-2">
-        <p class="text-base md:text-xl text-white font-medium leading-relaxed">
+      <div class="text-center mt-8 md:mt-12 px-2">
+        <p class="text-sm md:text-xl text-white font-medium leading-relaxed">
           Website kamu bukan cuma cantik, tapi punya tugas jelas: <br class="hidden md:block" />
           <span class="text-impost-primary font-bold border-b border-impost-primary/50 pb-1">bantu closing & bangun
             kepercayaan.</span>

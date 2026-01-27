@@ -7,7 +7,7 @@
       </h2>
 
       <p class="text-sm md:text-base text-gray-300 mb-6 md:mb-8 leading-relaxed">
-        Isi form singkat di samping ini. Tim kami akan segera menghubungi kamu untuk konsultasi strategi digital
+        Isi form singkat ini. Tim kami akan segera menghubungi kamu untuk konsultasi strategi digital
         bisnis kamu.
       </p>
 
@@ -32,14 +32,6 @@
         </div>
       </div>
 
-      <p class="font-medium text-white text-sm md:text-base flex items-center justify-center md:justify-start gap-2">
-        Yuk, bangun website yang beneran bantu jualan
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-impost-primary animate-bounce-x" viewBox="0 0 24 24"
-          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
-        </svg>
-      </p>
     </div>
 
     <div

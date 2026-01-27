@@ -9,7 +9,7 @@
     <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       <a href="#contact"
         class="hidden md:inline-flex bg-impost-primary text-impost-fifth font-bold px-5 py-2.5 rounded-full hover:brightness-110 transition items-center gap-2 text-sm shadow-[0_0_15px_rgba(212,172,60,0.2)]">
-        Konsultasi Gratis
+        Get Started
       </a>
 
       <button id="nav-toggle" data-collapse-toggle="navbar-sticky" type="button"
@@ -34,7 +34,7 @@
         </li>
         <li>
           <a href="#problem"
-            class="block py-2 px-3 text-gray-300 font-bold rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-impost-primary md:p-0 transition">Our
+            class="block py-2 px-3 text-gray-300 font-bold rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-impost-primary md:p-0 transition">Your
             Problem</a>
         </li>
         <li>

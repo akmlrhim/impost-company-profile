@@ -123,34 +123,6 @@
         </div>
       </div>
     </div>
-
-    <div
-      class="mt-8 bg-gradient-to-r from-neutral-900 to-impost-fifth border border-white/10 rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-      <div class="flex-1">
-        <h3 class="text-lg md:text-xl font-bold text-white mb-3">Bayangkan Kalau Website Kamu <span
-            class="text-impost-primary">Bekerja...</span></h3>
-        <ul class="space-y-2 text-sm md:text-base">
-          <li class="flex items-start gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-impost-primary w-4 h-4 mt-1 shrink-0"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <polyline points="22 4 12 14.01 9 11.01" />
-            </svg>
-            <span class="text-gray-300">Nama bisnismu muncul & terlihat kredibel.</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-impost-primary w-4 h-4 mt-1 shrink-0"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <polyline points="22 4 12 14.01 9 11.01" />
-            </svg>
-            <span class="text-gray-300">Alur jelas &rightarrow; langsung klik WhatsApp.</span>
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
 
   <div class="mt-12 md:mt-24 pt-10 md:pt-20">

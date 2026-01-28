@@ -125,7 +125,7 @@
           `Mohon langsung kirimkan chat ini tanda edit.\n\nHai kak, saya tertarik konsultasi gratis *jasa website* impost media. Saya sudah mengisi form dengan data sebagai berikut:\n\nNama Lengkap : ${nama}\nNama Bisnis : ${bisnis}\nNo. WhatsApp : ${whatsapp}\nKebutuhan Website (Landing Page / Company Profile) : ${kebutuhan}\n\nMohon info langkah selanjutnya.`;
 
         const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/${NOMOR_ADMIN}?text=${encodedMessage}`, '_blank');
+        window.open(`https://wa.me/${NOMOR_ADMIN}?text=${encodedMessage}`);
 
         document.getElementById('consultationForm').reset();
       })

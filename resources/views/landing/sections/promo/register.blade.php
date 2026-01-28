@@ -69,7 +69,7 @@
 
       <div class="col-span-1 md:col-span-2 mt-2">
         <button type="submit" id="btnSubmit"
-          class="w-full bg-impost-primary text-neutral-900 font-bold py-2 md:py-3 rounded-xl hover:bg-yellow-400 transition-all text-md md:text-base shadow-lg transform active:scale-95">
+          class="btn-submit-promo-form w-full bg-impost-primary text-neutral-900 font-bold py-2 md:py-3 rounded-xl hover:bg-yellow-400 transition-all text-md md:text-base shadow-lg transform active:scale-95">
           Konsultasi Gratis Sekarang
         </button>
       </div>
@@ -130,7 +130,7 @@
           `Mohon langsung kirimkan chat ini tanda edit.\n\nHai kak, saya tertarik konsultasi gratis *jasa digital marketing* impost media *tart from 3 juta*. Saya sudah mengisi form dengan data sebagai berikut:\n\nNama Lengkap : ${nama}\nNama Bisnis : ${bisnis}\nNo. WhatsApp : ${whatsapp}\nOmzet Perbulan : ${omzet}\n\nMohon info langkah selanjutnya untuk bisa lanjut ke tahap konsultasi atau pembahasan strategi.`;
 
         const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/${NOMOR_ADMIN}?text=${encodedMessage}`, '_blank');
+        window.open(`https://wa.me/${NOMOR_ADMIN}?text=${encodedMessage}`);
 
         document.getElementById('registerForm').reset();
       })

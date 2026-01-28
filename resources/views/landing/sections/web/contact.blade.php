@@ -97,7 +97,7 @@
     const whatsapp = document.getElementById('whatsapp').value;
     const kebutuhan = document.getElementById('kebutuhan').value;
 
-    const NOMOR_ADMIN = "6285890041800";
+    const NOMOR_ADMIN = "6283147802761";
 
     btnSubmit.disabled = true;
     btnSubmit.innerText = "Sedang Memproses...";

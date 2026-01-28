@@ -62,6 +62,8 @@
 
   <meta name="theme-color" content="#040404">
 
+  <meta name="facebook-domain-verification" content="yohcjpxw25wp3igygjcrugwvqnlfek" />
+
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 
   @stack('styles')

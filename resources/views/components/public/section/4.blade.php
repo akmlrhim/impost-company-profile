@@ -48,15 +48,15 @@
 
                       <div class="mb-3">
                         <span
-                          class="inline-block text-[10px] sm:text-xs font-bold uppercase tracking-wider text-impost-primary/90 bg-impost-primary/10 px-2 py-0.5 rounded border border-impost-primary/20">
+												class="inline-block text-[10px]f font-bold uppercase tracking-wider text-impost-primary/90 bg-impost-primary/10 px-2 py-0.5 rounded border border-impost-primary/20">
                           {{ $case->category ?? 'Case Study' }}
                         </span>
                       </div>
 
                       <div class="text-xs sm:text-sm text-white/80 leading-relaxed mb-3 flex-1">
-                        <p class="line-clamp-4">
-                          {{ strip_tags($case->result) }}
-                        </p>
+                        <div class="line-clamp-4 [&>ul]:list-disc [&>ul]:ml-4 [&>ol]:list-decimal [&>ol]:ml-4">
+                          {!! strip_tags($case->result, '<ul><ol><li><p><br><strong><em>') !!}
+                        </div>
                       </div>
 
                       <div class="pt-2 border-t border-white/10 mt-auto">

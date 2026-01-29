@@ -68,7 +68,7 @@
           </button>
 
           <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-            <div class="px-6 pb-6 text-sm md:text-base text-white border-t border-gray-800 pt-4 leading-relaxed">
+            <div class="px-6 pb-6 text-sm md:text-md text-white border-t border-gray-800 pt-4 leading-relaxed">
               {{ $faq['answer'] ?? ($faq->answer ?? '') }}
             </div>
           </div>

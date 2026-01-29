@@ -94,7 +94,7 @@
         </div>
 
         <div class="relative pl-0 sm:pl-8">
-          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-gray-300/90 leading-relaxed">
+          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-white leading-relaxed">
             {!! $studyCase->situation !!}
           </div>
         </div>
@@ -113,7 +113,7 @@
         </div>
 
         <div class="relative pl-0 sm:pl-8">
-          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-gray-300/90 leading-relaxed">
+          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-white leading-relaxed">
             {!! $studyCase->solution !!}
           </div>
         </div>
@@ -135,7 +135,7 @@
         </div>
 
         <div class="relative pl-0 sm:pl-8">
-          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-gray-300/90 leading-relaxed">
+          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-white leading-relaxed">
             {!! $studyCase->result !!}
           </div>
         </div>

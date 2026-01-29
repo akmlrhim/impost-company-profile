@@ -48,7 +48,7 @@
 
                       <div class="mb-3">
                         <span
-												class="inline-block text-[10px]f font-bold uppercase tracking-wider text-impost-primary/90 bg-impost-primary/10 px-2 py-0.5 rounded border border-impost-primary/20">
+                          class="inline-block text-[10px] font-bold uppercase tracking-wider text-impost-primary/90 bg-impost-primary/10 px-2 py-0.5 rounded border border-impost-primary/20">
                           {{ $case->category ?? 'Case Study' }}
                         </span>
                       </div>

@@ -31,7 +31,7 @@
                               class="w-full h-full object-contain">
                           @elseif ($t->media_path)
                             <img data-src="{{ asset('storage/' . $t->media_path) }}" alt="Testimoni {{ $t->name }}"
-                              loading="lazy" class="w-full h-full object-cover lazy-img"
+                              loading="lazy" class="w-full h-full object-contain lazy-img"
                               style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                           @else
                             <div

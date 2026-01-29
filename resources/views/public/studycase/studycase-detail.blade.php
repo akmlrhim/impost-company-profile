@@ -16,11 +16,11 @@
         </button>
       </div>
 
-      <h1 class="text-impost-primary text-xl sm:text-3xl font-bold mb-4 text-center sm:text-left">
+      <h1 class="text-impost-primary text-xl sm:text-3xl font-bold mb-4 text-center">
         {{ $studyCase->name }}
       </h1>
 
-      <div class="flex justify-center sm:justify-start mb-8">
+      <div class="flex justify-center mb-8">
         <span
           class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-impost-primary/30 bg-impost-primary/10 backdrop-blur-sm">
           <span class="text-xs font-bold text-impost-primary uppercase tracking-wide">
@@ -76,38 +76,119 @@
         </template>
       </section>
 
-      <div class="mx-auto max-w-7xl space-y-16 sm:space-y-20">
-        <section>
-          <h2 class="text-lg sm:text-xl font-semibold mb-6 text-impost-primary flex items-center gap-3">
-            <span class="w-1 h-8 bg-impost-primary rounded-full"></span>
-            Situation
-          </h2>
-          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-gray-300">
+      <div class="mx-auto max-w-7xl space-y-12 sm:space-y-16">
+
+
+        <div class="flex items-center gap-4 mb-8">
+          <div class="flex items-center gap-3">
+            <div class="relative">
+
+              <span class="relative block w-1.5 h-10 bg-impost-primary rounded-full"></span>
+            </div>
+            <div>
+              <span class="text-xs uppercase tracking-wider text-impost-primary/60 font-medium">01</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Situation</h2>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="relative pl-0 sm:pl-8">
+          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-gray-300/90 leading-relaxed">
             {!! $studyCase->situation !!}
           </div>
-        </section>
+        </div>
 
-        <section>
-          <h2 class="text-lg sm:text-xl font-semibold mb-6 text-impost-primary flex items-center gap-3">
-            <span class="w-1 h-8 bg-impost-primary rounded-full"></span>
-            Solution
-          </h2>
-          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-gray-300">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="flex items-center gap-3">
+            <div class="relative">
+              <span class="relative block w-1.5 h-10 bg-impost-primary rounded-full"></span>
+            </div>
+            <div>
+              <span class="text-xs uppercase tracking-wider text-impost-primary/60 font-medium">02</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Solution</h2>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="relative pl-0 sm:pl-8">
+          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-gray-300/90 leading-relaxed">
             {!! $studyCase->solution !!}
           </div>
-        </section>
+        </div>
 
-        <section>
-          <h2 class="text-lg sm:text-xl font-semibold mb-6 text-impost-primary flex items-center gap-3">
-            <span class="w-1 h-8 bg-impost-primary rounded-full"></span>
-            Result
-          </h2>
-          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-gray-300">
+
+
+        <div class="flex items-center gap-4 mb-8">
+          <div class="flex items-center gap-3">
+            <div class="relative">
+
+              <span class="relative block w-1.5 h-10 bg-impost-primary rounded-full"></span>
+            </div>
+            <div>
+              <span class="text-xs uppercase tracking-wider text-impost-primary/60 font-medium">03</span>
+              <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Result</h2>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="relative pl-0 sm:pl-8">
+          <div class="prose prose-sm md:prose-base prose-invert max-w-none text-gray-300/90 leading-relaxed">
             {!! $studyCase->result !!}
           </div>
-        </section>
+        </div>
       </div>
 
+
+    </div>
+
+    <div class="mt-24 mb-8">
+      <div class="relative mx-auto w-full bg-impost-primary overflow-hidden">
+
+        <div class="absolute inset-0 opacity-10 pointer-events-none"
+          style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;">
+        </div>
+
+        <div class="relative p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 max-w-7xl mx-auto">
+
+          <div class="text-center md:text-left space-y-3 flex-1">
+            <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight tracking-tight">
+              Ingin bisnis anda tumbuh seperti mereka?
+            </h3>
+            <p class="text-gray-800 text-sm md:text-base font-medium max-w-xl mx-auto md:mx-0 leading-relaxed">
+              Anda sudah melihat buktinya. Sekarang giliran anda untuk mendapatkan solusi digital yang berdampak nyata.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row w-full md:w-auto items-center gap-4 shrink-0 z-10">
+
+            <a href="{{ route('vsl-form') }}"
+              class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-sm transition-all duration-300 hover:bg-gray-900 hover:text-white focus:ring-4 focus:ring-gray-900/20">
+              <span>Daftar Sekarang</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" class="transition-transform group-hover:translate-x-1">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+
+            <a href="{{ route('contact') }}"
+              class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gray-900 text-white rounded-xl font-bold text-sm tracking-wide shadow-xl transition-all duration-300 hover:bg-gray-800 hover:shadow-2xl hover:-translate-y-1 focus:ring-4 focus:ring-gray-900/30">
+              <span>Kontak Kami</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" class="transition-transform group-hover:rotate-12 text-impost-primary">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
     </div>
   </main>
 @endsection

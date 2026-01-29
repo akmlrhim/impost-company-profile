@@ -12,7 +12,6 @@
       </div>
 
       <div class="mb-10 px-4">
-
         <div class="md:hidden w-full max-w-sm mx-auto relative">
           <select onchange="window.location.href=this.value"
             class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-xl py-3.5 px-5 pr-12 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-sm font-medium shadow-lg">
@@ -33,18 +32,18 @@
         <div class="hidden md:flex flex-wrap justify-center gap-2">
           <a href="{{ route('portfolio') }}"
             class="px-4 py-2 rounded-full text-sm font-bold border transition
-            {{ empty($activeCategory)
-                ? 'bg-impost-primary text-impost-fifth border-impost-primary'
-                : 'border-impost-fourth text-white hover:bg-impost-fourth/40' }}">
+          {{ empty($activeCategory)
+              ? 'bg-impost-primary text-impost-fifth border-impost-primary'
+              : 'border-impost-fourth text-white hover:bg-impost-fourth/40' }}">
             Semua
           </a>
 
           @foreach ($category as $cat)
             <a href="{{ route('portfolio', ['category' => $cat->slug]) }}"
               class="px-4 py-2 rounded-full text-sm font-bold border transition
-              {{ ($activeCategory ?? '') === $cat->slug
-                  ? 'bg-impost-primary text-impost-fifth border-impost-primary'
-                  : 'border-impost-fourth text-white hover:bg-impost-fourth/40' }}">
+            {{ ($activeCategory ?? '') === $cat->slug
+                ? 'bg-impost-primary text-impost-fifth border-impost-primary'
+                : 'border-impost-fourth text-white hover:bg-impost-fourth/40' }}">
               {{ $cat->name }}
             </a>
           @endforeach
@@ -52,7 +51,6 @@
       </div>
 
       <section class="mx-auto w-full max-w-7xl px-3">
-
         @if ($portfolios->isEmpty())
           <div class="w-full flex items-center justify-center">
             <x-empty-card item="Portfolio" />
@@ -109,10 +107,58 @@
             @endforeach
           </div>
 
-          <x-custom-pagination :items="$portfolios" />
+          <div class="mb-12">
+            <x-custom-pagination :items="$portfolios" />
+          </div>
         @endif
       </section>
+
     </div>
+
+    <div class="mt-24 mb-8">
+      <div class="relative mx-auto w-full bg-impost-primary overflow-hidden">
+
+        <div class="relative p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 max-w-7xl mx-auto">
+
+          <div class="text-center md:text-left space-y-2 flex-1">
+            <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight tracking-tight">
+              Punya ide brilian?
+            </h3>
+            <p class="text-gray-800 text-sm md:text-base font-medium max-w-md mx-auto md:mx-0">
+              Lihat bagaimana kami menyelesaikan masalah klien lain atau langsung hubungi kami untuk diskusi.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row w-full md:w-auto items-center gap-3 md:gap-4 shrink-0">
+
+            <a href="{{ route('study-case') }}"
+              class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-sm transition-all duration-300 hover:bg-gray-900 hover:text-white focus:ring-4 focus:ring-gray-900/20">
+              <span>Lihat Studi Kasus</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                class="transition-transform group-hover:translate-x-1">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </a>
+
+            <a href="{{ route('contact') }}"
+              class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gray-900 text-white rounded-xl font-bold text-sm tracking-wide shadow-lg transition-all duration-300 hover:bg-gray-800 hover:shadow-xl hover:-translate-y-0.5 focus:ring-4 focus:ring-gray-900/30">
+              <span>Hubungi Kami</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                class="transition-transform group-hover:rotate-45 text-impost-primary">
+                <path d="m5 12 7-7 7 7" />
+                <path d="M12 19V5" />
+              </svg>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <div id="mediaModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/95 backdrop-blur-sm"

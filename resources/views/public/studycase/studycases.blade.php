@@ -74,6 +74,53 @@
         </div>
       </section>
     </div>
+
+    <div class="mt-24 mb-8">
+      <div class="relative mx-auto w-full bg-impost-primary overflow-hidden">
+
+        <div class="absolute inset-0 opacity-10 pointer-events-none"
+          style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;">
+        </div>
+
+        <div class="relative p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 max-w-7xl mx-auto">
+
+          <div class="text-center md:text-left space-y-3 flex-1">
+            <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight tracking-tight">
+              Ingin bisnis anda tumbuh seperti mereka?
+            </h3>
+            <p class="text-gray-800 text-sm md:text-base font-medium max-w-xl mx-auto md:mx-0 leading-relaxed">
+              Anda sudah melihat buktinya. Sekarang giliran anda untuk mendapatkan solusi digital yang berdampak nyata.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row w-full md:w-auto items-center gap-4 shrink-0 z-10">
+
+            <a href="{{ url('/') }}#services"
+              class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-sm transition-all duration-300 hover:bg-gray-900 hover:text-white focus:ring-4 focus:ring-gray-900/20">
+              <span>Lihat Layanan</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                class="transition-transform group-hover:translate-x-1">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+
+            <a href="{{ route('contact') }}"
+              class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gray-900 text-white rounded-xl font-bold text-sm tracking-wide shadow-xl transition-all duration-300 hover:bg-gray-800 hover:shadow-2xl hover:-translate-y-1 focus:ring-4 focus:ring-gray-900/30">
+              <span>Konsultasi Gratis</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                class="transition-transform group-hover:rotate-12 text-impost-primary">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
   </main>
 @endsection
 

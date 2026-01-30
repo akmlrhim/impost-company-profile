@@ -90,7 +90,7 @@ class HomeController extends Controller
 
 	public function articleAll(Request $request)
 	{
-		$title = 'Semua Artikel';
+		$title = 'Artikel';
 		$category = ArticleCategory::select('id', 'name', 'slug')->get();
 		$articles = Article::select(
 			'id',

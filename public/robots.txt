@@ -1,4 +1,17 @@
 User-agent: *
-Disallow:
+
+Disallow: /admin/
+Disallow: /login
+Disallow: /logout
+Disallow: /password/
+
+Disallow: /vsl
+Disallow: /opt-in
+Disallow: /save-leads
+
+Disallow: /storage/*.log
+Disallow: /storage/*.txt
+
+Allow: /storage/
 
 Sitemap: https://impostmedia.com/sitemap.xml

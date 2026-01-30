@@ -15,11 +15,16 @@ use App\Http\Controllers\PortfolioCategoryController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StudyCaseController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
+// sitemap
+Route::get('sitemap.xml', [SitemapController::class, 'index']);
+
 
 Route::middleware('throttle:30,1')->group(function () {
 

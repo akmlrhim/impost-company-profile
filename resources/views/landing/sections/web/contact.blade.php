@@ -1,4 +1,7 @@
 <section id="contact" class="py-10 md:py-20 px-4 md:px-6 bg-impost-fifth overflow-hidden">
+
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lf9SDEsAAAAAIMRNODuo-OeyKzUDhSkK5csYok2"></script>
+
   <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
 
     <div class="text-center md:text-left order-1 md:order-1">
@@ -45,21 +48,21 @@
         <div>
           <label class="block text-xs font-medium text-gray-400 mb-1.5">Nama Lengkap</label>
           <input type="text" id="nama" name="nama" required
-            class="w-full px-4 py-2.5 rounded-md bg-gray-800 border border-gray-700 text-white focus:ring-1 focus:ring-impost-primary focus:border-impost-primary outline-none transition text-sm placeholder-gray-500"
+            class="form-input w-full px-4 py-2.5 rounded-md bg-gray-800 border border-gray-700 text-white focus:ring-1 focus:ring-impost-primary focus:border-impost-primary outline-none transition text-sm placeholder-gray-500"
             placeholder="Contoh: Budi Santoso">
         </div>
 
         <div>
           <label class="block text-xs font-medium text-gray-400 mb-1.5">Nama Bisnis</label>
           <input type="text" id="bisnis" name="bisnis" required
-            class="w-full px-4 py-2.5 rounded-md bg-gray-800 border border-gray-700 text-white focus:ring-1 focus:ring-impost-primary focus:border-impost-primary outline-none transition text-sm placeholder-gray-500"
+            class="form-input w-full px-4 py-2.5 rounded-md bg-gray-800 border border-gray-700 text-white focus:ring-1 focus:ring-impost-primary focus:border-impost-primary outline-none transition text-sm placeholder-gray-500"
             placeholder="Contoh: Kopi Senja Abadi">
         </div>
 
         <div>
           <label class="block text-xs font-medium text-gray-400 mb-1.5">No. WhatsApp</label>
           <input type="tel" id="whatsapp" name="whatsapp" required
-            class="w-full px-4 py-2.5 rounded-md bg-gray-800 border border-gray-700 text-white focus:ring-1 focus:ring-impost-primary focus:border-impost-primary outline-none transition text-sm placeholder-gray-500"
+            class="form-input w-full px-4 py-2.5 rounded-md bg-gray-800 border border-gray-700 text-white focus:ring-1 focus:ring-impost-primary focus:border-impost-primary outline-none transition text-sm placeholder-gray-500"
             placeholder="0812-xxxx-xxxx">
         </div>
 
@@ -67,7 +70,7 @@
           <label class="block text-xs font-medium text-gray-400 mb-1.5">Kebutuhan Website</label>
           <div class="relative">
             <select id="kebutuhan" name="kebutuhan" required
-              class="w-full px-4 py-2.5 rounded-md bg-gray-800 border border-gray-700 text-white focus:ring-1 focus:ring-impost-primary focus:border-impost-primary outline-none transition appearance-none text-sm cursor-pointer">
+              class="form-input w-full px-4 py-2.5 rounded-md bg-gray-800 border border-gray-700 text-white focus:ring-1 focus:ring-impost-primary focus:border-impost-primary outline-none transition appearance-none text-sm cursor-pointer">
               <option selected disabled value="">-- Pilih Kebutuhan --</option>
               <option value="Landing Page">Landing Page</option>
               <option value="Company Profile">Company Profile</option>
@@ -75,9 +78,9 @@
           </div>
         </div>
 
-        <button type="submit" id="btnSubmit"
-          class="leads-web-btn w-full bg-impost-primary text-impost-fifth font-bold py-3 rounded-md cursor-pointer hover:bg-yellow-500 transition-all duration-300 flex items-center justify-center gap-2 mt-2 group text-sm shadow-lg transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
-          Konsultasi Gratis Sekarang
+        <button type="submit" id="btnSubmit" disabled
+          class="leads-web-btn w-full bg-gray-600 text-neutral-400 font-bold py-3 rounded-md cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2 mt-2 group text-sm shadow-none">
+          Lengkapi Data Untuk Lanjut
         </button>
       </form>
     </div>
@@ -86,55 +89,90 @@
 </section>
 
 <script>
-  document.getElementById('consultationForm').addEventListener('submit', function(e) {
+  const form = document.getElementById('consultationForm');
+  const btnSubmit = document.getElementById('btnSubmit');
+  const inputs = form.querySelectorAll('.form-input');
+
+  function checkFormValidity() {
+    const isValid = form.checkValidity();
+
+    if (isValid) {
+      btnSubmit.disabled = false;
+      btnSubmit.innerText = "Konsultasi Gratis Sekarang";
+      btnSubmit.className =
+        "leads-web-btn w-full bg-impost-primary text-impost-fifth font-bold py-3 rounded-md cursor-pointer hover:bg-yellow-500 transition-all duration-300 flex items-center justify-center gap-2 mt-2 group text-sm shadow-lg transform active:scale-95";
+    } else {
+      btnSubmit.disabled = true;
+      btnSubmit.innerText = "Lengkapi Data Untuk Lanjut";
+      btnSubmit.className =
+        "leads-web-btn w-full bg-gray-600 text-neutral-400 font-bold py-3 rounded-md cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2 mt-2 group text-sm shadow-none";
+    }
+  }
+
+  inputs.forEach(input => {
+    input.addEventListener('input', checkFormValidity);
+    input.addEventListener('change', checkFormValidity);
+  });
+
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const btnSubmit = document.getElementById('btnSubmit');
-    const originalBtnText = btnSubmit.innerText;
-
+    const originalBtnText = "Konsultasi Gratis Sekarang";
     const nama = document.getElementById('nama').value;
     const bisnis = document.getElementById('bisnis').value;
     const whatsapp = document.getElementById('whatsapp').value;
     const kebutuhan = document.getElementById('kebutuhan').value;
 
     const NOMOR_ADMIN = "6283147802761";
+    const SITE_KEY = "{{ config('services.recaptcha.site_key') }}";
 
     btnSubmit.disabled = true;
-    btnSubmit.innerText = "Sedang Memproses...";
+    btnSubmit.innerText = "Memverifikasi...";
+    btnSubmit.classList.remove('bg-impost-primary', 'hover:bg-yellow-500');
+    btnSubmit.classList.add('bg-gray-500');
 
-    const dataToSubmit = {
-      data: [{
-        "Nama Lengkap": nama,
-        "Nama Bisnis": bisnis,
-        "No WhatsApp": whatsapp,
-        "Kebutuhan": kebutuhan
-      }]
-    };
+    grecaptcha.ready(function() {
+      grecaptcha.execute(SITE_KEY, {
+        action: 'submit'
+      }).then(function(token) {
 
-    fetch("https://sheetdb.io/api/v1/8n523o1dtqgyf", {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(dataToSubmit)
-      })
-      .then(response => response.json())
-      .then(data => {
-        const message =
-          `Mohon langsung kirimkan chat ini tanda edit.\n\nHai kak, saya tertarik konsultasi gratis *jasa website* impost media. Saya sudah mengisi form dengan data sebagai berikut:\n\nNama Lengkap : ${nama}\nNama Bisnis : ${bisnis}\nNo. WhatsApp : ${whatsapp}\nKebutuhan Website (Landing Page / Company Profile) : ${kebutuhan}\n\nMohon info langkah selanjutnya.`;
+        btnSubmit.innerText = "Sedang Memproses...";
 
-        const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/${NOMOR_ADMIN}?text=${encodedMessage}`);
+        const dataToSubmit = {
+          data: [{
+            "Nama Lengkap": nama,
+            "Nama Bisnis": bisnis,
+            "No WhatsApp": whatsapp,
+            "Kebutuhan": kebutuhan,
+            "Recaptcha Token": token
+          }]
+        };
 
-        document.getElementById('consultationForm').reset();
-      })
-      .catch(error => {
-        console.error(error);
-        alert("Terjadi kesalahan koneksi. Silakan coba lagi.");
+        fetch("https://sheetdb.io/api/v1/8n523o1dtqgyf", {
+            method: "POST",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(dataToSubmit)
+          })
+          .then(response => response.json())
+          .then(data => {
+            const message =
+              `Mohon langsung kirimkan chat ini tanda edit.\n\nHai kak, saya tertarik konsultasi gratis *jasa website* impost media. Saya sudah mengisi form dengan data sebagai berikut:\n\nNama Lengkap : ${nama}\nNama Bisnis : ${bisnis}\nNo. WhatsApp : ${whatsapp}\nKebutuhan Website (Landing Page / Company Profile) : ${kebutuhan}\n\nMohon info langkah selanjutnya.`;
 
-        btnSubmit.disabled = false;
-        btnSubmit.innerText = originalBtnText;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${NOMOR_ADMIN}?text=${encodedMessage}`);
+
+            form.reset();
+            checkFormValidity();
+          })
+          .catch(error => {
+            console.error(error);
+            alert("Terjadi kesalahan koneksi. Silakan coba lagi.");
+            checkFormValidity();
+          });
       });
+    });
   });
 </script>

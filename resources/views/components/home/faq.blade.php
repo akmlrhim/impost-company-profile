@@ -50,10 +50,7 @@
   ];
 @endphp
 
-<section class="relative w-full py-20 bg-zinc-950 text-white overflow-hidden">
-  <div
-    class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-impost-primary/20 blur-[120px] rounded-full opacity-30 pointer-events-none">
-  </div>
+<section class="relative w-full py-20 bg-impost-fifth overflow-hidden">
 
   <div class="relative max-w-4xl mx-auto px-6 lg:px-8 z-10">
     <div class="text-center mb-16">

@@ -21,7 +21,7 @@
       <!-- Logo -->
       <div class="flex-shrink-0">
         <a href="{{ route('home') }}" class="flex items-center gap-2" aria-label="Impost - Home">
-          <img src="{{ asset('img/logo_impost_putih.jpg') }}"
+          <img src="{{ asset('img/logo_original.webp') }}"
             class="h-8 sm:h-10 md:h-12 w-auto object-contain transition-transform hover:scale-105" alt="Impost Logo"
             loading="lazy" width="120" height="48" />
         </a>

@@ -5,7 +5,7 @@
       class="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-impost-primary max-w-5xl mx-auto font-header">
       Lihat Bagaimana Tim Impost Media Membantu Brand & Bisnis Bertumbuh Secara Terukur
     </h2>
-    <p class="text-sm sm:text-base md:text-lg text-gray-300 max-w-lg md:max-w-2xl mx-auto leading-relaxed">
+    <p class="text-md text-gray-300 max-w-lg md:max-w-2xl mx-auto leading-relaxed">
       Video ini khusus untuk business owner dari perusahaan yang ingin scale up omzet secara serius.
     </p>
   </div>
@@ -17,9 +17,17 @@
       data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
 
       <script src="https://fast.wistia.com/player.js" async></script>
-      <script src="https://fast.wistia.com/embed/3rfaxyr3ia.js" async type="module"></script><style>wistia-player[media-id='3rfaxyr3ia']:not(:defined) { background: center / contain
-        no-repeat url('https://fast.wistia.com/embed/medias/3rfaxyr3ia/swatch'); display: block; filter: blur(5px);
-        padding-top:56.25%; }</style> <wistia-player media-id="3rfaxyr3ia" aspect="1.7777777777777777"></wistia-player>
+
+      <style>
+        wistia-player[media-id='3rfaxyr3ia']:not(:defined) {
+          background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/3rfaxyr3ia/swatch');
+          display: block;
+          filter: blur(5px);
+          padding-top: 56.25%;
+        }
+      </style>
+
+      <wistia-player media-id="3rfaxyr3ia" aspect="1.7777777777777777"></wistia-player>
 
     </div>
 

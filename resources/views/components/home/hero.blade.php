@@ -19,13 +19,13 @@
           </span>
         </h1>
 
-        <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-xl mx-auto">
+        <p class="text-md text-white max-w-xl mx-auto">
           Bukan sekadar konten atau iklan, tapi sistem pertumbuhan terukur yang bisa diaudit dan dipertanggungjawabkan.
         </p>
 
         <div class="pt-4 flex justify-center">
           <button onclick="window.location.href='{{ route('vsl-form') }}'"
-            class="tracking-wide capitalize w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-impost-primary hover:bg-impost-secondary text-black text-lg font-bold rounded-xl cursor-pointer whitespace-nowrap">
+            class="tracking-tight capitalize w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-impost-primary hover:bg-impost-secondary text-black text-md sm:text-lg font-bold rounded-xl cursor-pointer whitespace-nowrap">
             Konsultasi Sekarang
           </button>
         </div>

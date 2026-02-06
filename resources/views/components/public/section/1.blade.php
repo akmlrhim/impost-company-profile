@@ -85,33 +85,21 @@
 
       <div class="lg:col-span-2">
         <div class="lg:sticky lg:top-8">
-          <div
-            class="relative bg-gradient-to-br from-impost-primary via-impost-primary/90 to-impost-secondary rounded-xl md:rounded-2xl p-6 md:p-7 shadow-2xl overflow-hidden">
+          <div class="relative bg-impost-secondary rounded-xl md:rounded-2xl p-6 md:p-7 shadow-2xl overflow-hidden">
 
             <div
               class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16 blur-2xl">
             </div>
 
             <div class="relative">
-              <div class="mb-3 md:mb-4">
-                <span
-                  class="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-semibold text-white uppercase tracking-wide">
-                  Our Core Action
-                </span>
-              </div>
 
-              <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 md:mb-4 leading-tight">
+              <h3 class="text-md sm:text-lg md:text-xl font-medium font-header text-white mb-3 md:mb-4 leading-tight">
                 Kami benahi funnel marketingnya
               </h3>
 
               <p class="text-sm sm:text-base text-white/90 leading-relaxed">
                 Membangun sistem pemasaran yang berkelanjutan, bukan sekadar posting konten.
               </p>
-
-              <div class="mt-5 md:mt-6 flex items-center gap-2">
-                <div class="flex-1 h-1 bg-white/30 rounded-full"></div>
-                <div class="w-2 h-2 rounded-full bg-white"></div>
-              </div>
             </div>
 
           </div>

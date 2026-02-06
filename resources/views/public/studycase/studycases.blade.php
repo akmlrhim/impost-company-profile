@@ -6,8 +6,7 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
       <div class="mb-12 md:mb-16 text-center">
-        <h1
-          class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent uppercase tracking-tight">
+        <h1 class="text-3xl md:text-4xl capitalize font-medium font-header mb-4 text-impost-primary">
           {{ $title }}
         </h1>
       </div>

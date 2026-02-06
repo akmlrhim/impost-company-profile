@@ -5,8 +5,7 @@
     <div class="px-4 mx-auto max-w-7xl">
 
       <div class="mb-12 text-center">
-        <h1
-          class="text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-impost-primary font-medium font-header">
           Kontak Kami
         </h1>
         <p class="text-white text-sm md:text-base px-6 mx-auto">

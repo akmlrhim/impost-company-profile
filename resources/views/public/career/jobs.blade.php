@@ -5,8 +5,7 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
       <div class="mb-10 md:mb-14 text-center">
-        <h1
-          class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-impost-primary via-impost-secondary to-impost-fourth bg-clip-text text-transparent">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-impost-primary font-medium font-header">
           {{ $title }}
         </h1>
         <p class="text-white text-sm md:text-base max-w-3xl mx-auto font-light leading-relaxed">

@@ -9,10 +9,10 @@
         <span class="text-xs sm:text-sm md:text-base font-semibold tracking-widest text-impost-primary uppercase">
           Tentang Kami
         </span>
-        <h1 class="mt-3 md:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+        <h1
+          class="mt-3 md:mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white font-header font-medium leading-tight">
           CV. Impost Media Indonesia
         </h1>
-        <div class="mt-4 md:mt-6 mx-auto w-12 md:w-16 h-1 bg-impost-primary rounded-full"></div>
       </div>
 
       <div class="mt-12 sm:mt-16 md:mt-20 mb-12 sm:mb-16 md:mb-20 max-w-4xl mx-auto">
@@ -98,17 +98,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div class="max-w-3xl mx-auto text-center mb-16 sm:mb-24">
-            <span
-              class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-semibold tracking-widest text-impost-primary uppercase mb-4">
-              Our Journey
-            </span>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-medium font-header leading-tight">
               The Impost Way
             </h1>
-            <div
-              class="mt-6 mx-auto w-16 h-1 bg-impost-primary rounded-full shadow-[0_0_15px_rgba(var(--impost-primary-rgb),0.5)]">
-            </div>
-            <p class="mt-6 text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+
+            <p class="mt-6 text-white text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
               Sebuah perjalanan dari menetapkan arah hingga menciptakan dampak nyata.
             </p>
           </div>

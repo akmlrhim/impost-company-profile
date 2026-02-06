@@ -1,155 +1,139 @@
-<section class="py-12 sm:py-10 md:py-12 relative overflow-hidden">
+<section class="py-20 relative z-10 font-sans overflow-hidden">
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6">
 
-    <div class="text-center max-w-2xl mx-auto mb-10 md:mb-16">
-      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-3">
-        Siapa <span class="text-impost-primary">Partner Ideal</span> Kami?
+    <div class="mb-20 text-center max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
+        Kami Tidak Mencari Klien<br>
+        <span class="text-impost-primary font-header italic">Kami Mencari Partner</span>
       </h2>
-      <p class="text-sm sm:text-base md:text-lg text-white text-white font-light leading-relaxed">
-        Kami selektif dalam memilih partner untuk memastikan hasil maksimal.
+      <p class="text-lg text-white font-light leading-relaxed">
+        Sinergi terbaik lahir dari visi yang sama. Apakah kita cocok?
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 lg:gap-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-      <div class="relative group">
-        <div
-          class="absolute inset-0 bg-impost-primary/20 blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500">
+      <div class="lg:col-span-7 space-y-8">
+
+        <div class="flex items-center gap-4 mb-2">
+          <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-black font-bold">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-white">Anda Adalah Partner Ideal Jika:</h3>
         </div>
-        <div
-          class="relative bg-gradient-to-b from-impost-primary/[0.08] to-transparent border border-impost-primary/20 rounded-2xl p-6 md:p-8 h-full backdrop-blur-sm flex flex-col">
 
-          <div class="flex items-center gap-4 mb-6 border-b border-impost-primary/10 pb-4">
-            <div
-              class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-impost-primary/10 flex items-center justify-center border border-impost-primary/20 shadow-[0_0_15px_rgba(var(--impost-primary),0.2)]">
-              <svg class="w-5 h-5 md:w-6 md:h-6 text-impost-primary" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-base md:text-xl font-semibold text-white tracking-wide">Sangat Cocok</h3>
-              <p class="text-[10px] md:text-xs text-impost-primary/80 uppercase tracking-widest font-medium mt-0.5">
-                Recommended</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+          <div
+            class="group p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-amber-500/50 hover:bg-white/[0.05] transition-all duration-300">
+            <h4 class="text-white font-semibold text-lg mb-2 group-hover:text-amber-400 transition-colors">Visioner &
+              Serius</h4>
+            <p class="text-sm text-gray-300 leading-relaxed">Anda melihat marketing sebagai <span
+                class="text-white italic font-medium">investasi</span>, bukan pengeluaran yang harus dipangkas.</p>
+          </div>
+
+          <div
+            class="group p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-amber-500/50 hover:bg-white/[0.05] transition-all duration-300">
+            <h4 class="text-white font-semibold text-lg mb-2 group-hover:text-amber-400 transition-colors">Butuh
+              Kepastian</h4>
+            <p class="text-sm text-gray-300 leading-relaxed">Lelah dengan "bakar uang" iklan tanpa hasil. Anda ingin
+              data yang bisa dipertanggungjawabkan.</p>
+          </div>
+
+          <div
+            class="group p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-amber-500/50 hover:bg-white/[0.05] transition-all duration-300 sm:col-span-2">
+            <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+              <div class="flex-shrink-0 p-3 bg-amber-500/10 rounded-lg text-amber-400">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-white font-semibold text-lg mb-1 group-hover:text-amber-400 transition-colors">Siap
+                  Scale-Up</h4>
+                <p class="text-sm text-gray-300 leading-relaxed">Bisnis Anda sudah berjalan, tapi stuck di level
+                  tertentu dan butuh sistem untuk naik kelas.</p>
+              </div>
             </div>
           </div>
 
-          <ul class="space-y-3 md:space-y-5 flex-grow">
-            <li class="flex items-start gap-3">
-              <div class="flex-shrink-0 mt-0.5">
-                <svg class="w-4 h-4 md:w-5 md:h-5 text-impost-primary" viewBox="0 0 24 24" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd" />
-                </svg>
-              </div>
-              <p class="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-                <strong class="text-white font-medium">UMKM Serius</strong> yang siap investasi untuk naik kelas.
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <div class="flex-shrink-0 mt-0.5">
-                <svg class="w-4 h-4 md:w-5 md:h-5 text-impost-primary" viewBox="0 0 24 24" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd" />
-                </svg>
-              </div>
-              <p class="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-                Perusahaan berkembang yang butuh <strong class="text-white font-medium">branding konsisten</strong>.
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <div class="flex-shrink-0 mt-0.5">
-                <svg class="w-4 h-4 md:w-5 md:h-5 text-impost-primary" viewBox="0 0 24 24" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd" />
-                </svg>
-              </div>
-              <p class="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-                Korporat yang ingin <strong class="text-white font-medium">efisiensi budget</strong> marketing.
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <div class="flex-shrink-0 mt-0.5">
-                <svg class="w-4 h-4 md:w-5 md:h-5 text-impost-primary" viewBox="0 0 24 24" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd" />
-                </svg>
-              </div>
-              <p class="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-                Business Owner yang lelah dengan strategi <span class="italic">trial & error</span>.
-              </p>
-            </li>
-          </ul>
         </div>
+
+
       </div>
 
-      <div class="relative">
-        <div
-          class="bg-gradient-to-b from-white/[0.03] to-transparent border border-white/10 rounded-2xl p-6 md:p-8 h-full backdrop-blur-sm flex flex-col hover:border-red-500/30 transition-colors duration-300">
 
-          <div class="flex items-center gap-4 mb-6 border-b border-white/5 pb-4">
-            <div
-              class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
-              <svg class="w-5 h-5 md:w-6 md:h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-base md:text-xl font-semibold text-gray-200 tracking-wide">Tidak Cocok</h3>
-              <p class="text-[10px] md:text-xs text-gray-300 uppercase tracking-widest font-medium mt-0.5">Not
-                Recommended</p>
+      <div class="lg:col-span-5 relative">
+
+        <div class="h-full pl-8 border-l border-red-500 relative">
+
+          <div class="absolute -left-[9px] top-0">
+            <div class="w-4 h-4 rounded-full bg-[#0a0a0a] border border-red-500/50 flex items-center justify-center">
+              <div class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
             </div>
           </div>
 
-          <ul class="space-y-3 md:space-y-5 mb-6 md:mb-8">
-            <li class="flex items-start gap-3">
-              <div class="flex-shrink-0 mt-1">
-                <div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-red-500/50"></div>
-              </div>
-              <p class="text-sm md:text-base text-gray-200 font-light leading-relaxed">
-                Mencari hasil instan dalam semalam (Get Rich Quick).
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <div class="flex-shrink-0 mt-1">
-                <div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-red-500/50"></div>
-              </div>
-              <p class="text-sm md:text-base text-gray-200 font-light leading-relaxed">
-                Tidak bersedia mengikuti sistem & roadmap yang teruji.
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <div class="flex-shrink-0 mt-1">
-                <div class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-red-500/50"></div>
-              </div>
-              <p class="text-sm md:text-base text-gray-200 font-light leading-relaxed">
-                Hanya ingin sekedar posting rutin tanpa strategi jelas.
-              </p>
-            </li>
-          </ul>
+          <div class="mb-10">
+            <h3 class="text-2xl font-bold text-white leading-snug">
+              Mungkin Kita <br>
+              <span class="text-red-400 italic font-header">Tidak Cocok</span> Jika:
+            </h3>
+            <p class="text-gray-400 text-sm mt-2 font-light">
+              Demi kebaikan bersama, hindari kerjasama jika:
+            </p>
+          </div>
 
-          <div class="mt-auto pt-4 border-t border-white/5">
-            <div class="flex gap-3">
-              <svg class="w-5 h-5 text-red-400/70 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
-                </path>
-              </svg>
-              <p class="text-xs md:text-sm text-gray-300 leading-relaxed italic">
-                "Kami membatasi jumlah klien untuk menjaga kualitas sistem & pertumbuhan partner."
+          <div class="space-y-8">
+
+            <div class="group relative pl-4">
+              <div class="absolute left-0 top-1 bottom-1 w-0.5 bg-white/10 group-hover:bg-red-500/50 transition-colors">
+              </div>
+
+              <h5 class="text-white font-medium text-lg flex items-center gap-3">
+                <span class="text-white font-header italic group-hover:text-red-400/50 transition-colors">01.</span>
+                Ingin Hasil "Sulap"
+              </h5>
+              <p class="text-gray-400 text-sm mt-1 leading-relaxed pl-9">
+                Berharap omzet meledak dalam semalam tanpa pondasi yang kuat.
               </p>
             </div>
+
+            <div class="group relative pl-4">
+              <div class="absolute left-0 top-1 bottom-1 w-0.5 bg-white/10 group-hover:bg-red-500/50 transition-colors">
+              </div>
+
+              <h5 class="text-white font-medium text-lg flex items-center gap-3">
+                <span class="text-white font-header italic group-hover:text-red-400/50 transition-colors">02.</span>
+                Anti Kritik & Data
+              </h5>
+              <p class="text-gray-400 text-sm mt-1 leading-relaxed pl-9">
+                Lebih percaya "feeling" pribadi daripada data riil di lapangan.
+              </p>
+            </div>
+
+            <div class="group relative pl-4">
+              <div class="absolute left-0 top-1 bottom-1 w-0.5 bg-white/10 group-hover:bg-red-500/50 transition-colors">
+              </div>
+
+              <h5 class="text-white font-medium text-lg flex items-center gap-3">
+                <span class="text-white font-header italic group-hover:text-red-400/50 transition-colors">03.</span>
+                Kuantitas > Kualitas
+              </h5>
+              <p class="text-gray-400 text-sm mt-1 leading-relaxed pl-9">
+                Hanya ingin postingan banyak asal jadi, tanpa strategi branding.
+              </p>
+            </div>
+
           </div>
 
         </div>
       </div>
 
     </div>
+
   </div>
 </section>

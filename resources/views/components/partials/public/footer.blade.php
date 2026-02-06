@@ -6,7 +6,6 @@
       <div class="lg:col-span-4 space-y-6">
         <div>
           <h3 class="text-xl font-bold text-white mb-4 tracking-wide uppercase">Tentang Kami</h3>
-          <div class="h-1 w-12 bg-impost-primary rounded mb-6"></div>
         </div>
 
         <p class="text-sm leading-relaxed text-gray-400">
@@ -55,7 +54,6 @@
 
       <div class="lg:col-span-2">
         <h3 class="text-xl font-bold text-white mb-4 tracking-wide uppercase">Informasi</h3>
-        <div class="h-1 w-12 bg-impost-primary rounded mb-6"></div>
 
         <ul class="space-y-3">
           <li><a href="{{ route('article.all') }}"
@@ -78,7 +76,6 @@
 
       <div class="lg:col-span-3">
         <h3 class="text-xl font-bold text-white mb-4 tracking-wide uppercase">Hubungi Kami</h3>
-        <div class="h-1 w-12 bg-impost-primary rounded mb-6"></div>
 
         <ul class="space-y-4">
           <li class="flex items-start gap-3">
@@ -117,15 +114,13 @@
 
       <div class="lg:col-span-3">
         <h3 class="text-xl font-bold text-white mb-4 tracking-wide uppercase">Lokasi Kami</h3>
-        <div class="h-1 w-12 bg-impost-primary rounded mb-6"></div>
 
         <div
           class="relative w-full rounded-xl overflow-hidden shadow-lg border border-white/10 group cursor-pointer h-48"
           onclick="loadMap(this)">
           <div class="absolute inset-0 bg-gray-800 transition-transform duration-500 group-hover:scale-105">
             <img src="{{ asset('img/map_placeholder.webp') }}" alt="Lokasi Impost Media"
-              class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
-              loading="lazy" />
+              class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" loading="lazy" />
           </div>
 
           <div class="absolute inset-0 flex flex-col items-center justify-center z-10">

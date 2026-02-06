@@ -1,4 +1,4 @@
-<section class="py-12 sm:py-10 md:py-12 relative overflow-hidden">
+<section class="py-20 relative overflow-hidden">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 

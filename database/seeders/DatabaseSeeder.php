@@ -19,11 +19,11 @@ class DatabaseSeeder extends Seeder
 	{
 		// User::factory(10)->create();
 
-		User::create([
-			'name' => 'admin',
-			'email' => 'adm.impostmedia@gmail.com',
-			'password' => Hash::make('omsetnaik1_'),
-		]);
+		// User::create([
+		// 	'name' => 'admin',
+		// 	'email' => 'adm.impostmedia@gmail.com',
+		// 	'password' => Hash::make('omsetnaik1_'),
+		// ]);
 
 		$this->call([
 			ArticleCategorySeeder::class,

@@ -1,83 +1,73 @@
 @php
   $faqs = [
       [
-          'question' => 'Apa tujuan utama layanan Impost Media?',
-          'answer' =>
-              'Impost Media tidak sekadar menjual jasa, tetapi menggunakan layanan kami sebagai alat strategis untuk satu tujuan besar: mendatangkan calon pembeli, meningkatkan penjualan, dan membangun bisnis yang lebih rapi lewat digital marketing, branding, dan sistem.',
+          'question' => 'Apa itu Agency & apa itu Impost Media?',
+          'answer' => '
+              <p class="mb-4"><strong>Apa itu Agency?</strong><br>
+              Bahasa gampangnya, Agency adalah tim profesional yang Anda bayar untuk membantu mengurus dan mengembangkan bisnis, supaya Anda tidak perlu mengerjakan semuanya sendiri. Sebagai pemilik bisnis, Anda bisa fokus ke produk, operasional, dan pelayanan. Kami yang bantu bagian pengembangan dan pemasaran (digital & sistem).</p>
+
+              <p class="mb-4"><strong>Apa itu Impost Media?</strong><br>
+              Impost Media adalah digital marketing agency pionir di Kalimantan Selatan yang berlokasi di Landasan Ulin, Banjarbaru. Kami adalah partner bisnis yang membantu usaha Anda naik level lewat digital marketing, branding, dan sistem penjualan—bukan sekadar posting atau iklan.</p>
+
+              <p>Tujuan kami sederhana: membantu bisnis meningkatkan omzet lewat strategi yang terintegrasi agar bisnis Anda lebih dikenal, lebih dipercaya, dan lebih menghasilkan.</p>
+          ',
       ],
       [
-          'question' => 'Apa itu layanan Manajemen Social Media & Konten?',
+          'question' => 'Impost Media jual apa?',
           'answer' =>
-              'Layanan ini bertujuan membuat bisnis Anda terlihat aktif, profesional, dan menarik di ranah digital. Contohnya melalui posting terarah, konten edukasi, promosi, dan video pendek. Dampaknya, bisnis lebih dikenal, kepercayaan audiens terbangun, dan mendatangkan calon pembeli dari sosial media.',
+              'Kami tidak hanya menjual satu jasa, tapi "ekosistem" solusi digital. Layanan kami meliputi Manajemen Social Media & Konten, Branding, Digital Ads (Google/Meta/TikTok), Marketplace Management, Pembuatan Website & SEO, hingga App Development (Sistem ERP/Kasir). Semuanya adalah alat untuk satu tujuan: mendatangkan pembeli.',
       ],
       [
-          'question' => 'Bagaimana layanan Branding & Brand Foundation membantu bisnis?',
+          'question' => 'Bagaimana cara Impost Media meningkatkan omzet bisnis klien?',
           'answer' =>
-              'Kami membantu membangun identitas bisnis yang jelas dan konsisten, mulai dari positioning, logo, hingga brand story. Hal ini membuat bisnis Anda beda dari kompetitor, mudah diingat, menjadi pilihan utama, dan menghindarkan Anda dari perang harga.',
+              'Kami bekerja dengan merapikan funnel bisnis Anda. Mulai dari memperkenalkan produk ke pasar yang tepat (Traffic), membangun citra yang meyakinkan agar orang percaya (Branding), hingga menata sistem penjualan agar calon pembeli yang datang benar-benar terkonversi menjadi sales (Closing). Kami memastikan promosi tidak salah arah.',
       ],
       [
-          'question' => 'Layanan Digital Ads mencakup platform apa saja?',
+          'question' => 'Apa ada garansinya bila hasil tidak tercapai?',
           'answer' =>
-              'Layanan iklan kami mencakup Google Ads, Meta Ads (Instagram & Facebook), TikTok Ads, dan YouTube Ads. Tujuannya untuk menjangkau orang yang tepat dan meningkatkan penjualan berbasis data, sehingga omzet dapat meningkat lebih cepat.',
+              'Komitmen kami adalah bekerja berbasis data dan strategi yang terukur. Kami memberikan garansi berupa pengerjaan yang transparan, laporan rutin, dan optimasi terus-menerus. Untuk detail garansi performa spesifik, hal ini biasanya dibahas dalam sesi konsultasi sesuai dengan paket layanan yang diambil.',
       ],
       [
-          'question' => 'Apa yang dilakukan dalam layanan Marketplace Management?',
+          'question' => 'Berapa tarifnya?',
           'answer' =>
-              'Kami mengoptimalkan toko Anda di Shopee, Tokopedia, atau TikTok Shop melalui optimasi produk, SKU, iklan, dan tampilan. Hasilnya, produk lebih mudah ditemukan, toko lebih dipercaya, dan angka closing meningkat.',
+              'Investasi layanan di Impost Media sangat bervariasi tergantung kebutuhan dan skala bisnis Anda. Kami memiliki paket yang disesuaikan untuk UMKM hingga perusahaan besar. Silakan hubungi tim kami untuk mendapatkan penawaran harga terbaik yang sesuai dengan target bisnis Anda.',
       ],
       [
-          'question' => 'Seberapa penting layanan Website & SEO?',
+          'question' => 'Apakah Impost Media cocok untuk bisnis saya?',
           'answer' =>
-              'Sangat penting untuk membangun "rumah digital" bisnis Anda agar terlihat profesional. Melalui website dan landing page yang teroptimasi SEO, value produk tersampaikan dengan baik sehingga calon pembeli lebih yakin sebelum memutuskan membeli.',
+              'Sangat cocok, terutama jika bisnis Anda punya produk yang bagus dan operasional yang jalan, tapi "nggak tumbuh-tumbuh" karena bingung cara promosi atau tidak punya sistem. Kami hadir untuk membereskan masalah promosi yang salah arah, branding asal-asalan, atau jualan digital yang tanpa strategi.',
       ],
       [
-          'question' => 'Jenis aplikasi apa yang bisa dikembangkan (App Development)?',
+          'question' => 'Berapa lama hasilnya bisa saya rasakan?',
           'answer' =>
-              'Kami mengembangkan sistem untuk efisiensi bisnis seperti CRM, HRIS, ERP, sistem finance, hingga aplikasi instansi. Tujuannya agar operasional kerja lebih rapi, hemat waktu dan biaya, serta organisasi siap untuk berkembang (scale-up).',
+              'Setiap layanan memiliki timeline berbeda. Untuk Digital Ads, traffic bisa masuk dalam hitungan hari. Namun, untuk hasil yang stabil berupa peningkatan brand awareness dan omzet yang konsisten, biasanya dibutuhkan waktu beberapa bulan untuk proses testing, collecting data, dan optimasi strategi.',
       ],
       [
-          'question' => 'Apa manfaat layanan Live Stream Management?',
+          'question' => 'Kapan omzet saya sudah mulai bisa naik?',
           'answer' =>
-              'Layanan ini fokus meningkatkan penjualan secara langsung lewat siaran live di TikTok atau Shopee. Interaksi real-time ini membangun kepercayaan dengan cepat dan mendorong peningkatan penjualan saat live berlangsung.',
-      ],
-      [
-          'question' => 'Bagaimana peran KOL / Endorse Management?',
-          'answer' =>
-              'Kami membantu membangun awareness dan kepercayaan lewat pihak ketiga (KOL/Influencer) melalui review, testimoni, atau konten UGC yang sesuai target market. Ini membuat brand lebih dipercaya dan menjangkau audiens baru.',
-      ],
-      [
-          'question' => 'Apakah menyediakan layanan Foto & Video Produk?',
-          'answer' =>
-              'Ya, kami menyediakan layanan foto katalog dan video produk untuk menampilkan bisnis Anda secara menarik. Visual yang meyakinkan akan membuat produk lebih dilirik dan calon pembeli lebih yakin untuk bertransaksi.',
-      ],
-      [
-          'question' => 'Apa fungsi CRM & Sales Pipeline Development?',
-          'answer' =>
-              'Layanan ini memastikan calon pembeli tidak hilang melalui sistem pencatatan leads dan follow-up yang teratur. Dengan pengelolaan data yang baik, closing rate akan naik dan omzet bisnis menjadi lebih konsisten.',
-      ],
-      [
-          'question' => 'Apa bedanya Customer Service Human dan AI?',
-          'answer' =>
-              'CS Human fokus pada penanganan serius dan hubungan pelanggan untuk meningkatkan repeat order. Sedangkan CS AI (Chatbot) ditujukan untuk respon cepat 24 jam dan menangani orderan masif, terutama saat high season, agar tidak ada chat yang terlewat.',
-      ],
-      [
-          'question' => 'Apakah Impost Media menyediakan jasa Event Organizer?',
-          'answer' =>
-              'Ya, kami mendukung kebutuhan event secara menyeluruh, mulai dari launching produk hingga gathering kantor. Kami memastikan event berjalan sesuai harapan dengan penggunaan budget yang efisien.',
+              'Kenaikan omzet biasanya terjadi bertahap setelah fondasi digital (sosmed/web) rapi dan iklan mulai berjalan efektif. Fokus kami adalah pertumbuhan jangka panjang, bukan hanya lonjakan sesaat. Tim kami akan terus memantau grafik performa untuk memastikan tren penjualan Anda bergerak naik.',
       ],
   ];
 @endphp
 
-<section class="relative w-full py-20 text-white overflow-hidden">
+<section class="relative w-full py-20 bg-zinc-950 text-white overflow-hidden">
   <div
     class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-impost-primary/20 blur-[120px] rounded-full opacity-30 pointer-events-none">
   </div>
 
   <div class="relative max-w-4xl mx-auto px-6 lg:px-8 z-10">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-impost-primary mb-6">
-        FAQ
+      <span
+        class="inline-block py-1 px-3 rounded-full bg-impost-primary/10 border border-impost-primary/20 text-impost-primary text-xs font-semibold tracking-wider uppercase mb-4">
+        Informasi & Layanan
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
+        Pertanyaan <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-impost-primary to-yellow-200">Umum</span>
       </h2>
+      <p class="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed">
+        Pahami bagaimana Impost Media membantu bisnis Anda bertumbuh di era digital.
+      </p>
     </div>
 
     <div class="space-y-4">
@@ -87,7 +77,7 @@
 
           <button onclick="toggleFAQ(this)"
             class="flex items-center justify-between w-full p-6 text-left focus:outline-none">
-            <span class="text-md font-medium text-zinc-100 group-hover:text-impost-primary transition-colors pr-8">
+            <span class="text-lg font-medium text-zinc-100 group-hover:text-impost-primary transition-colors pr-8">
               {{ $faq['question'] }}
             </span>
 
@@ -101,8 +91,8 @@
 
           <div
             class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0">
-            <div class="px-6 pb-6 pt-0 text-white leading-relaxed text-[15px]">
-              {{ $faq['answer'] }}
+            <div class="px-6 pb-6 pt-0 text-zinc-400 leading-relaxed text-[15px]">
+              {!! $faq['answer'] !!}
             </div>
           </div>
 
@@ -111,10 +101,10 @@
     </div>
 
     <div class="mt-12 text-center">
-      <p class="text-white">Butuh solusi spesifik untuk bisnis Anda?</p>
+      <p class="text-zinc-500">Masih ragu atau punya pertanyaan lain?</p>
       <a href="#"
         class="inline-block mt-2 text-impost-primary font-medium hover:underline hover:text-yellow-300 transition-colors">
-        Konsultasikan Sekarang &rarr;
+        Konsultasikan Bisnis Anda Sekarang &rarr;
       </a>
     </div>
   </div>
@@ -130,6 +120,7 @@
 
     const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
 
+    // Tutup item lain
     allContents.forEach((item, index) => {
       item.style.maxHeight = '0px';
       item.style.opacity = '0';
@@ -137,6 +128,7 @@
       item.parentElement.classList.remove('bg-white/10', 'border-impost-primary/30');
     });
 
+    // Buka item yang diklik
     if (!isOpen) {
       content.style.maxHeight = content.scrollHeight + 'px';
       content.style.opacity = '1';

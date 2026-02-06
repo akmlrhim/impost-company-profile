@@ -25,7 +25,7 @@
 
         <div class="pt-4 flex justify-center">
           <button onclick="window.location.href='{{ route('vsl-form') }}'"
-            class="tracking-wide capitalize w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-impost-primary hover:bg-impost-secondary text-black font-medium rounded-xl cursor-pointer text-sm whitespace-nowrap">
+            class="tracking-wide capitalize w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-impost-primary hover:bg-impost-secondary text-black text-lg font-bold rounded-xl cursor-pointer whitespace-nowrap">
             Konsultasi Sekarang
           </button>
         </div>

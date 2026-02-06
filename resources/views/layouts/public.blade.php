@@ -94,7 +94,7 @@
   </style>
 </head>
 
-<body class="relative antialiased">
+<body class="relative antialiased min-h-screen bg-gradient-to-br from-zinc-950 via-black to-amber-900/20 text-white">
 
   <!-- Google Tag Manager (noscript) -->
   <noscript>
@@ -102,30 +102,6 @@
       style="display:none;visibility:hidden"></iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-
-  <div class="fixed inset-0 -z-10 overflow-hidden bg-[#050505]">
-
-    <div class="absolute inset-0 bg-gradient-to-br from-black via-neutral-950 to-neutral-900"></div>
-
-    <div class="absolute inset-0 opacity-40">
-
-      <div
-        class="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.8)_0%,rgba(0,0,0,0)_70%)] translate-x-1/3 -translate-y-1/4 pointer-events-none">
-      </div>
-
-      <div
-        class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[radial-gradient(circle_at_center,rgba(234,179,8,0.8)_0%,rgba(0,0,0,0)_70%)] -translate-x-1/4 translate-y-1/4 pointer-events-none">
-      </div>
-
-      <div
-        class="absolute top-1/2 left-1/2 w-[900px] h-[900px] bg-[radial-gradient(circle_at_center,rgba(217,119,6,0.6)_0%,rgba(0,0,0,0)_70%)] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-      </div>
-
-    </div>
-
-    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/40"></div>
-  </div>
 
   <x-partials.public.navbar />
 
@@ -136,11 +112,7 @@
   <x-partials.public.footer />
 
   @stack('scripts')
-
-  <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-  </script>
-
+	
 </body>
 
 </html>

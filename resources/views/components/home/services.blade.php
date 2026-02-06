@@ -1,7 +1,7 @@
 <section id="services" class="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24 overflow-hidden">
 
   <div class="relative mb-8 sm:mb-10 md:mb-12 text-center">
-    <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-5 sm:mb-6">
+    <h2 class="text-3xl md:text-5xl font-medium font-header mb-5 sm:mb-6">
       <span class="text-impost-primary">
         Layanan Kami
       </span>

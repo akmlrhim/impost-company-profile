@@ -54,17 +54,9 @@
 
   <div class="relative max-w-4xl mx-auto px-6 lg:px-8 z-10">
     <div class="text-center mb-16">
-      <span
-        class="inline-block py-1 px-3 rounded-full bg-impost-primary/10 border border-impost-primary/20 text-impost-primary text-xs font-semibold tracking-wider uppercase mb-4">
-        Informasi & Layanan
-      </span>
-      <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-        Pertanyaan <span
-          class="text-transparent bg-clip-text bg-gradient-to-r from-impost-primary to-yellow-200">Umum</span>
+      <h2 class="text-4xl md:text-5xl font-medium font-header text-white tracking-tight text-impost-primary mb-6">
+        Frequently Asked <span class="text-impost-primary">Question</span>
       </h2>
-      <p class="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed">
-        Pahami bagaimana Impost Media membantu bisnis Anda bertumbuh di era digital.
-      </p>
     </div>
 
     <div class="space-y-4">
@@ -95,14 +87,6 @@
 
         </div>
       @endforeach
-    </div>
-
-    <div class="mt-12 text-center">
-      <p class="text-zinc-500">Masih ragu atau punya pertanyaan lain?</p>
-      <a href="#"
-        class="inline-block mt-2 text-impost-primary font-medium hover:underline hover:text-yellow-300 transition-colors">
-        Konsultasikan Bisnis Anda Sekarang &rarr;
-      </a>
     </div>
   </div>
 </section>

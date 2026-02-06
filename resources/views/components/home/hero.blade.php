@@ -13,8 +13,8 @@
 
       <div class="space-y-6 md:space-y-8">
 
-        <h1 class="font-bold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-tight tracking-tight">
-          <span class="inline-block py-2 text-impost-primary">
+        <h1 class="font-medium text-2xl sm:text-3xl lg:text-4xl xl:text-5xl">
+          <span class="inline-block py-2 text-impost-primary font-header ">
             Naikkan Omzet Bisnis Anda 2–3x dalam 90 Hari dengan Digital Marketing
           </span>
         </h1>

@@ -3,7 +3,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center max-w-3xl mx-auto mb-12 md:mb-20">
-      <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white mb-3">
+      <h2 class="text-3xl md:text-5xl font-medium font-header leading-tight text-impost-primary mb-4 md:mb-6">
         Alur <span class="text-impost-primary">Layanan</span>
       </h2>
       <p class="text-sm sm:text-base md:text-lg text-white font-light max-w-2xl mx-auto leading-relaxed">

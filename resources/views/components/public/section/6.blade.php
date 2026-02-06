@@ -3,9 +3,9 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-6">
 
     <div class="mb-20 text-center max-w-3xl mx-auto">
-      <h2 class="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 leading-tight">
+      <h2 class="text-3xl md:text-5xl font-medium font-header text-white tracking-tight mb-6 leading-tight">
         Kami Tidak Mencari Klien<br>
-        <span class="text-impost-primary font-header italic">Kami Mencari Partner</span>
+        <span class="text-impost-primary italic">Kami Mencari Partner</span>
       </h2>
       <p class="text-lg text-white font-light leading-relaxed">
         Sinergi terbaik lahir dari visi yang sama. Apakah kita cocok?

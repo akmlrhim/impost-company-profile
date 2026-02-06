@@ -4,7 +4,8 @@
 
     <div class="max-w-4xl mb-8 md:mb-12 lg:mb-14">
 
-      <h2 class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight text-white mb-2 md:mb-3">
+      <h2
+        class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium font-header leading-tight text-white mb-2 md:mb-3">
         Kami Bukan Agency yang Jual Konten atau Iklan
       </h2>
       <p class="text-base sm:text-lg md:text-xl text-impost-secondary font-medium">

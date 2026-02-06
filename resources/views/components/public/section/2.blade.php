@@ -3,7 +3,7 @@
   <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
 
     <div class="text-center max-w-4xl mx-auto relative z-20 mb-20 md:mb-0">
-      <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6 text-white">
+      <h2 class="text-4xl md:text-6xl font-medium font-header tracking-tight leading-tight mb-6 text-white">
         Mengapa Omzet <br class="hidden md:block">
         <span class="italic text-danger font-header drop-shadow-lg">Sulit Bertumbuh?</span>
       </h2>

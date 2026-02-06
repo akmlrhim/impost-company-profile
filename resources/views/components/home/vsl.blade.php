@@ -2,7 +2,7 @@
 
   <div class="mb-6 sm:mb-10 text-center px-4 max-w-5xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
     <h2
-      class="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-impost-primary leading-snug sm:leading-tight max-w-5xl mx-auto">
+      class="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-impost-primary max-w-5xl mx-auto font-header">
       Lihat Bagaimana Tim Impost Media Membantu Brand & Bisnis Bertumbuh Secara Terukur
     </h2>
     <p class="text-sm sm:text-base md:text-lg text-gray-300 max-w-lg md:max-w-2xl mx-auto leading-relaxed">

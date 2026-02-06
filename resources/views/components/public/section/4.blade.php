@@ -8,9 +8,9 @@
     <div class="relative mb-12 flex items-center justify-center">
 
       <div class="max-w-3xl mx-auto text-center z-10 px-4">
-        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4 leading-tight">
+        <h2 class="text-3xl md:text-5xl font-medium font-header tracking-tight text-white mb-4 leading-tight">
           Hasil Nyata, <br class="hidden md:block" />
-          <span class="text-impost-primary font-header italic font-normal">Bukan Janji Kosong.</span>
+          <span class="text-impost-primary italic">Bukan Janji Kosong.</span>
         </h2>
         <p class="text-white/80 text-sm md:text-base leading-relaxed max-w-xl mx-auto">
           Bukti autentik dari strategi yang terukur untuk pertumbuhan bisnis Anda.
@@ -69,14 +69,14 @@
                     class="text-lg font-bold text-white group-hover:text-impost-primary mb-3 leading-tight transition-colors">
                     {{ $case->name }}
                   </h3>
-                  <div class="text-sm text-gray-400 leading-relaxed line-clamp-3 mb-5">
+                  <div class="text-sm text-white leading-relaxed line-clamp-3 mb-5">
                     <div class="[&>ul]:list-disc [&>ul]:ml-4 [&>ol]:list-decimal [&>ol]:ml-4">
                       {!! strip_tags($case->result, '<ul><ol><li><p><br><strong><em>') !!}
                     </div>
                   </div>
                   <div class="mt-auto pt-4 border-t border-white/10">
                     <div
-                      class="flex items-center text-sm font-medium text-white/60 group-hover:text-impost-primary transition-colors">
+                      class="flex items-center text-sm font-medium text-white group-hover:text-impost-primary transition-colors">
                       Lihat Detail
                       <svg class="w-3 h-3 ml-2 transform transition-transform group-hover:translate-x-1" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24">

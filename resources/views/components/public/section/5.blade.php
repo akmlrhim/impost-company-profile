@@ -192,7 +192,7 @@
     <div class="lg:hidden flex flex-col gap-8">
       <div class="relative mx-auto mb-4">
         <div class="absolute inset-0 bg-amber-500/20 blur-2xl rounded-full -z-10"></div>
-        <img src="https://placehold.co/300x600/1a1a1a/FFF?text=App+Screenshot" alt="App Mockup"
+        <img src="{{ asset('img/why_us.jpeg') }}" alt="App Mockup"
           class="w-[240px] h-auto rounded-[2rem] border-4 border-white/10 shadow-xl mx-auto object-cover bg-[#0a0a0a]">
       </div>
 

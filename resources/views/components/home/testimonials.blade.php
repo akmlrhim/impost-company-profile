@@ -6,10 +6,10 @@
   <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
 
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
+      <h2 class="text-3xl md:text-5xl font-medium font-header leading-tight text-white mb-3">
         Apa Kata <span class="text-impost-primary">Mereka?</span>
       </h2>
-      <p class="text-gray-200 text-base sm:text-lg font-light">
+      <p class="text-gray-200 text-md font-light">
         Kepuasan klien adalah bukti nyata dari dedikasi kami.
       </p>
     </div>

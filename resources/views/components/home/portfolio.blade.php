@@ -10,7 +10,7 @@
 
     {{-- Header --}}
     <div class="text-center max-w-5xl mx-auto mb-10 md:mb-14 lg:mb-16">
-      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-impost-primary mb-4 md:mb-6">
+      <h2 class="text-3xl md:text-5xl font-medium font-header leading-tight text-impost-primary mb-4 md:mb-6">
         Portfolio
       </h2>
       <p class="text-sm sm:text-base text-gray-300 font-light leading-relaxed mx-auto">

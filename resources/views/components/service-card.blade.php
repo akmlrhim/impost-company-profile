@@ -1,13 +1,13 @@
 @props(['service'])
 
 <article
-  class="group relative h-72 rounded-2xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 cursor-pointer border border-white/10 hover:border-impost-primary/50">
+  class="group relative h-72 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl cursor-pointer border border-white/10 hover:border-impost-primary/50 transform-gpu transition-shadow duration-300">
 
-  <div class="absolute inset-0">
+  <div class="absolute inset-0 z-0">
     @if ($service->cover_path)
       <img src="{{ asset('storage/' . $service->cover_path) }}"
-        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy"
-        decoding="async" alt="{{ $service->service_name }}" />
+        class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 will-change-transform"
+        loading="lazy" decoding="async" alt="{{ $service->service_name }}" />
     @else
       <div class="w-full h-full bg-gray-900 flex items-center justify-center border-b border-white/5">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -23,40 +23,41 @@
     @endif
   </div>
 
-  <div
-    class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100">
-  </div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-10 pointer-events-none"></div>
 
   @if ($service->category === 'Utama')
     <div class="absolute top-4 right-4 z-20">
       <span
-        class="inline-flex items-center px-3 py-1 rounded-full bg-impost-primary/90 text-black backdrop-blur-md shadow-lg border border-white/10">
+        class="inline-flex items-center px-3 py-1 rounded-full bg-impost-primary text-black shadow-md border border-white/10">
         <span class="text-[10px] font-bold uppercase tracking-wider">Utama</span>
       </span>
     </div>
   @elseif ($service->category === 'Tambahan')
     <div class="absolute top-4 right-4 z-20">
       <span
-        class="inline-flex items-center px-3 py-1 rounded-full bg-white/10 text-white backdrop-blur-md shadow-lg border border-white/10">
+        class="inline-flex items-center px-3 py-1 rounded-full bg-gray-800/80 text-white shadow-md border border-white/10">
         <span class="text-[10px] font-bold uppercase tracking-wider">Tambahan</span>
       </span>
     </div>
   @endif
 
-  <div class="absolute inset-x-0 bottom-0 p-6 z-20">
+  <div class="absolute inset-x-0 bottom-0 p-6 z-20 flex flex-col justify-end h-full">
 
-    <h3
-      class="text-xl font-bold text-white mb-2 leading-tight group-hover:text-impost-primary transition-colors duration-300">
-      {{ $service->service_name }}
-    </h3>
+    <div class="transform-gpu transition-transform duration-300 group-hover:-translate-y-1">
+      <h3
+        class="text-xl font-bold text-white mb-2 leading-tight group-hover:text-impost-primary transition-colors duration-300">
+        {{ $service->service_name }}
+      </h3>
 
-    <div class="w-8 h-0.5 bg-impost-primary mb-3 transition-all duration-500 group-hover:w-16"></div>
+      <div class="w-8 h-0.5 bg-impost-primary mb-3 transition-all duration-300 ease-out group-hover:w-16"></div>
 
-    <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500">
-      <p
-        class="text-sm text-gray-300 leading-relaxed overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75">
-        {{ $service->description }}
-      </p>
+      <div
+        class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
+        <p
+          class="text-sm text-gray-300 leading-relaxed overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75">
+          {{ $service->description }}
+        </p>
+      </div>
     </div>
 
   </div>

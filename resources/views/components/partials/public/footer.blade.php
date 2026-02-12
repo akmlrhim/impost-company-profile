@@ -65,10 +65,10 @@
           <li><a href="#"
               class="text-sm text-gray-400 hover:text-impost-primary hover:pl-1 transition-all duration-300 block">Business
               Units</a></li>
-          <li><a href="#"
+          <li><a href="{{ route('docs') }}"
               class="text-sm text-gray-400 hover:text-impost-primary hover:pl-1 transition-all duration-300 block">Media
               Resources</a></li>
-          <li><a href="#"
+          <li><a href="{{ route('legal') }}"
               class="text-sm text-gray-400 hover:text-impost-primary hover:pl-1 transition-all duration-300 block">Legal
               & Privacy</a></li>
         </ul>
@@ -147,11 +147,6 @@
         © {{ date('Y') }} <span class="text-white font-semibold">CV. Impost Media Indonesia</span>. All rights
         reserved.
       </p>
-      <div class="flex gap-4 text-xs text-gray-500">
-        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-        <span>•</span>
-        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-      </div>
     </div>
   </div>
 </footer>

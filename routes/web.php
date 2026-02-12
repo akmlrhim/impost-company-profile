@@ -25,7 +25,6 @@ use Illuminate\Support\Facades\Route;
 // sitemap
 Route::get('sitemap.xml', [SitemapController::class, 'index']);
 
-
 Route::middleware('throttle:30,1')->group(function () {
 
 	Route::middleware('guest')->group(function () {
@@ -50,6 +49,9 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		Route::get('careers', [HomeController::class, 'job'])->name('careers');
 		Route::get('careers/{career:slug}', [HomeController::class, 'jobDetail'])->name('career.detail');
+
+		Route::get('docs', [HomeController::class, 'docs'])->name('docs');
+		Route::get('company-legality', [HomeController::class, 'legal'])->name('legal');
 
 		// Landing 
 		Route::get('landing/web-development', [LandingController::class, 'web'])->name('landing.web');

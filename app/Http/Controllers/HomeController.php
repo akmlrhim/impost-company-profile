@@ -263,4 +263,18 @@ class HomeController extends Controller
 			return back()->withInput();
 		}
 	}
+
+	public function docs()
+	{
+		$title = 'Document';
+
+		return view('public.docs', compact('title'));
+	}
+
+	public function legal()
+	{
+		$title = 'Legalitas';
+
+		return view('public.legal', compact('title'));
+	}
 }

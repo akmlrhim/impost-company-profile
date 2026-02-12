@@ -26,11 +26,6 @@
 <body>
 
   <div class="min-h-screen flex flex-col items-center justify-center px-6 py-8 bg-gray-900">
-    <a href="#"
-      class="flex items-center text-2xl font-semibold bg-linear-to-r from-impost-primary via-impost-secondary to-impost-primary bg-clip-text text-transparent">
-      <img class="w-36 mb-2 object-cover" src="{{ asset('img/logo_original.webp') }}" alt="logo">
-    </a>
-
     <div class="w-full rounded-lg shadow bg-gray-800 border border-gray-700 sm:max-w-md xl:p-0">
       <div class="p-6 space-y-6 sm:p-8">
         <h1 class="text-xl font-bold leading-tight tracking-tight text-center text-white md:text-2xl">

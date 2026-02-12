@@ -1,12 +1,14 @@
+# Root .htaccess (Versi Anti-Loop)
+
 <IfModule mod_rewrite.c>
-	Options -Indexes
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
 
-	<IfModule mod_negotiation.c>
-		Options -MultiViews
-	</IfModule>
+    RewriteEngine On
 
-	RewriteEngine On
+    RewriteRule ^(\.env|composer\.lock|composer\.json|\.git|storage/logs) - [F,L]
 
-	RewriteRule ^(\.env|composer\.lock|composer\.json|\.git|storage/logs) - [F,L]
-	RewriteRule ^(.*)$ public/$1 [L]
+    RewriteRule ^(.*)$ public/$1 [L]
+
 </IfModule>

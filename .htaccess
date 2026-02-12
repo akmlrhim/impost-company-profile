@@ -12,6 +12,6 @@
     RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor|node_modules|lang)/.*$ - [F,L]
 
     RewriteCond %{REQUEST_URI} !^/public/
-    RewriteRule ^(.*)$ public/$1 [L]
+    RewriteRule ^(.*)$ public/$1 [L]np
 
 </IfModule>

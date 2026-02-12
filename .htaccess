@@ -1,4 +1,12 @@
 <IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteRule ^(.*)$ public/$1 [L]
+	Options -Indexes
+
+	<IfModule mod_negotiation.c>
+		Options -MultiViews
+	</IfModule>
+
+	RewriteEngine On
+
+	RewriteRule ^(\.env|composer\.lock|composer\.json|\.git|storage/logs) - [F,L]
+	RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>

@@ -67,7 +67,7 @@
           <div class="bg-[#111] p-6 rounded-lg">
             <span
               class="text-impost-primary font-mono text-sm font-bold bg-[#1a1a1a] px-2 py-1 rounded mb-3 inline-block">74130</span>
-            <h4 class="text-white font-medium mb-2">Desain Komunikasi Visual</h4>
+            <h4 class="text-white font-medium mb-2">Desain Komunikaubsi Visual</h4>
             <p class="text-white text-sm leading-relaxed">
               Aktivitas desain grafis, identitas visual, dan komunikasi digital.
             </p>

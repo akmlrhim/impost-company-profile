@@ -6,7 +6,7 @@
 
     <div class="flex-shrink-0 py-5 px-4 bg-gray-900 z-10 border-b border-gray-800/50">
       <a href="{{ route('dashboard') }}" class="flex items-center ps-2">
-        <img src="{{ asset('img/logo_impost_putih.webp') }}" class="mr-3 h-10 md:h-12 object-contain" alt="Logo" />
+        <img src="{{ asset('img/logo_original.webp') }}" class="mr-3 h-10 md:h-12 object-contain" alt="Logo" />
       </a>
     </div>
 

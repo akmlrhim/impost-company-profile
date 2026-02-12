@@ -5,8 +5,7 @@
 
     RewriteEngine On
 
-    RewriteRule ^public$ / [R=301,L]
-    RewriteRule ^public/(.*)$ /$1 [R=301,L]
+    RewriteRule ^public/?(.*)$ /$1 [R=301,L]
 
     RewriteRule ^(\.env|composer\.lock|composer\.json|\.git|storage/logs|artisan|phpunit\.xml) - [F,L]
 

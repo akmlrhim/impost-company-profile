@@ -7,6 +7,7 @@
     <div class="flex-shrink-0 py-5 px-4 bg-gray-900 z-10 border-b border-gray-800/50">
       <a href="{{ route('dashboard') }}" class="flex items-center ps-2">
         <img src="{{ asset('img/logo_original.webp') }}" class="mr-3 h-10 md:h-12 object-contain" alt="Logo" />
+        <span class="text-white font-bold">IMPOST MEDIA</span>
       </a>
     </div>
 
@@ -22,10 +23,6 @@
             </svg>
             <span class="ms-3">Dashboard</span>
           </x-nav-link>
-        </li>
-
-        <li class="pt-4 pb-2 px-2">
-          <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Content Management</span>
         </li>
 
         <li>
@@ -44,19 +41,6 @@
         </li>
 
         <li>
-          <x-nav-link href="{{ route('article-categories.index') }}" :active="request()->routeIs('article-categories.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="size-5 shrink-0">
-              <path d="M3 6h18" />
-              <path d="M7 12h10" />
-              <path d="M10 18h4" />
-            </svg>
-            <span class="ms-3">Kategori Artikel</span>
-          </x-nav-link>
-        </li>
-
-        <li>
           <x-nav-link href="{{ route('portfolio.index') }}" :active="request()->routeIs('portfolio.*')">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -66,19 +50,6 @@
               <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
             </svg>
             <span class="ms-3">Portfolio</span>
-          </x-nav-link>
-        </li>
-
-        <li>
-          <x-nav-link href="{{ route('portfolio-categories.index') }}" :active="request()->routeIs('portfolio-categories.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="size-5 shrink-0">
-              <path d="M3 6h18" />
-              <path d="M7 12h10" />
-              <path d="M10 18h4" />
-            </svg>
-            <span class="ms-3">Kategori Portfolio</span>
           </x-nav-link>
         </li>
 
@@ -98,8 +69,8 @@
 
         <li>
           <x-nav-link href="{{ route('study-case.index') }}" :active="request()->routeIs('study-case.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
               class="size-5 shrink-0">
               <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
               <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
@@ -108,14 +79,10 @@
           </x-nav-link>
         </li>
 
-        <li class="pt-4 pb-2 px-2">
-          <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Company Data</span>
-        </li>
-
         <li>
           <x-nav-link href="{{ route('teams.index') }}" :active="request()->routeIs('teams.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
               class="size-5 shrink-0">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
               <circle cx="9" cy="7" r="4" />
@@ -163,31 +130,30 @@
           </x-nav-link>
         </li>
 
-        <li class="pt-4 pb-2 px-2">
-          <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">System</span>
-        </li>
 
         <li>
-          <x-nav-link href="{{ route('leads.index') }}" :active="request()->routeIs('leads.*')">
+          <x-nav-link href="{{ route('article-categories.index') }}" :active="request()->routeIs('article-categories.*')">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="lucide lucide-book-user-icon lucide-book-user size-5 shrink-0">
-              <path d="M15 13a3 3 0 1 0-6 0" />
-              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
-              <circle cx="12" cy="8" r="2" />
+              class="size-5 shrink-0">
+              <path d="M3 6h18" />
+              <path d="M7 12h10" />
+              <path d="M10 18h4" />
             </svg>
-            <span class="ms-3">Leads</span>
+            <span class="ms-3">Kategori Artikel</span>
           </x-nav-link>
         </li>
 
         <li>
-          <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="size-5 shrink-0">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+          <x-nav-link href="{{ route('portfolio-categories.index') }}" :active="request()->routeIs('portfolio-categories.*')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="size-5 shrink-0">
+              <path d="M3 6h18" />
+              <path d="M7 12h10" />
+              <path d="M10 18h4" />
             </svg>
-            <span class="ms-3">Users</span>
+            <span class="ms-3">Kategori Portfolio</span>
           </x-nav-link>
         </li>
 

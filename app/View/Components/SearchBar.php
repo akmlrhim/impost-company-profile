@@ -8,14 +8,14 @@ use Illuminate\View\Component;
 
 class SearchBar extends Component
 {
-	public string $searchRoute;
+	public ?string $searchRoute;
 	public ?string $addRoute;
 	public string $addLabel;
 	public string $placeholder;
 	public string $name;
 
 	public function __construct(
-		string $searchRoute,
+		string $searchRoute = null,
 		string $placeholder = 'Masukkan kata kunci',
 		string $name = 'search',
 		string $addRoute = null,

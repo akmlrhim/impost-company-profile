@@ -1,7 +1,6 @@
 <section id="clients" class="py-10 sm:py-12 md:py-16">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-    <p data-aos="fade-up" data-aos-duration="700" data-aos-offset="120" data-aos-easing="ease-out-cubic"
-      class="mb-8 sm:mb-10 md:mb-12 text-impost-primary font-extrabold tracking-wide text-xs sm:text-sm uppercase">
+    <p class="mb-8 sm:mb-10 md:mb-12 text-impost-primary font-extrabold tracking-wide text-xs sm:text-sm uppercase">
       Klien yang telah bekerja sama dengan kami
     </p>
 
@@ -13,8 +12,7 @@
         setTimeout(() => {
             if (loaded < total) loaded = total
         }, 1000)
-    })" class="relative overflow-hidden" x-cloak data-aos="fade-up"
-      data-aos-delay="150" data-aos-duration="800" data-aos-offset="120" data-aos-easing="ease-out-cubic">
+    })" class="relative overflow-hidden" x-cloak>
 
       <div x-show="loaded < total" x-transition.opacity.duration.300ms
         class="flex gap-4 sm:gap-6 md:gap-8 px-4 justify-center animate-pulse">

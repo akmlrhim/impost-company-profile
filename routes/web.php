@@ -10,7 +10,6 @@ use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\LandingController;
-use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PortfolioCategoryController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
@@ -19,7 +18,7 @@ use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StudyCaseController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
-use App\Http\Controllers\UserController;
+// use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // sitemap
@@ -61,7 +60,6 @@ Route::middleware('throttle:30,1')->group(function () {
 	Route::prefix('admin')->middleware('auth')->group(function () {
 		Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 		Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-		Route::resource('users', UserController::class)->except('show');
 
 		//profile route 
 		Route::get('profile', [ProfileController::class, 'index'])->name('profile');
@@ -89,9 +87,6 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		// study case route 
 		Route::resource('study-case', StudyCaseController::class);
-
-		// lead route
-		Route::get('leads', [LeadController::class, 'index'])->name('leads.index');
 
 		// testimonial route
 		Route::resource('testimonials', TestimonialController::class)->except('show');

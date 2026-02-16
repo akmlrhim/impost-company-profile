@@ -28,9 +28,8 @@
 
   @stack('head')
 
-  <title>Impost Media | Agensi Digital Marketing di Kalimantan Selatan</title>
-  <meta name="description"
-    content="Solusi digital marketing all-in-one profesional di Banjarmasin & Banjarbaru. Tingkatkan bisnis Anda bersama Impost Media.">
+  <title>@yield('title', 'Impost Media | Agensi Digital Marketing di Kalimantan Selatan')</title>
+  <meta name="description" content="@yield('meta_description', 'Solusi digital marketing all-in-one profesional di Banjarmasin & Banjarbaru. Tingkatkan bisnis Anda bersama Impost Media.')">
   <meta name="keywords"
     content="digital marketing banjarmasin, digital marketing banjarbaru, digital marketing, digital marketing kalimantan, digital marketing kalimantan selatan, seo banjarmasin, impost media, impost">
   <meta name="robots" content="index, follow">
@@ -88,6 +87,16 @@
       -webkit-transform: translate3d(0, 0, 0);
     }
   </style>
+
+  <script type="application/ld+json">
+	{
+		"@@context": "https://schema.org",
+		"@@type": "Organization",
+		"name": "Impost Media",
+		"url": "{{ url('/') }}",
+		"logo": "{{ asset('img/og_image.png') }}"
+	}
+	</script>
 </head>
 
 <body class="relative antialiased min-h-screen bg-gradient-to-br from-zinc-950 via-black to-amber-900/20 text-white">

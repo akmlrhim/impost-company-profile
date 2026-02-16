@@ -3,8 +3,7 @@
 @section('content')
   <x-flash />
 
-  <x-search-bar search-route="{{ route('portfolio.index') }}" add-route="{{ route('portfolio.create') }}"
-    add-label="Tambah Portfolio" />
+  <x-search-bar add-route="{{ route('portfolio.create') }}" add-label="Tambah Portfolio" />
 
   {{-- Filtering --}}
   <form method="GET" action="{{ route('portfolio.index') }}" class="mb-6">

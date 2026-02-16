@@ -1,6 +1,6 @@
 <section class="py-10 sm:py-16 md:py-20" id="vsl">
 
-  <div class="mb-6 sm:mb-10 text-center px-4 max-w-5xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+  <div class="mb-6 sm:mb-10 text-center px-4 max-w-5xl mx-auto">
     <h2
       class="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-impost-primary max-w-5xl mx-auto font-header">
       Lihat Bagaimana Tim Impost Media Membantu Brand & Bisnis Bertumbuh Secara Terukur
@@ -13,8 +13,7 @@
   <div class="mx-auto max-w-4xl px-4 sm:px-6">
 
     <div
-      class="relative w-full overflow-hidden rounded-lg sm:rounded-2xl aspect-video shadow-2xl shadow-black/40 bg-black/20"
-      data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+      class="relative w-full overflow-hidden rounded-lg sm:rounded-2xl aspect-video shadow-2xl shadow-black/40 bg-black/20">
 
       <script src="https://fast.wistia.com/player.js" async></script>
 
@@ -31,8 +30,7 @@
 
     </div>
 
-    <div class="mt-6 sm:mt-10 flex flex-col items-center gap-4 px-2" data-aos="fade-up" data-aos-duration="800"
-      data-aos-delay="400">
+    <div class="mt-6 sm:mt-10 flex flex-col items-center gap-4 px-2">
       <button onclick="window.location.href='{{ route('vsl-form') }}'"
         class="flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 text-sm sm:text-base font-semibold text-white bg-impost-primary rounded-lg cursor-pointer hover:bg-impost-secondary transition-colors duration-300">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"

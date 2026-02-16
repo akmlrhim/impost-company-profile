@@ -9,7 +9,7 @@
       </div>
       <div class="mt-4 md:mt-0">
         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
-          {{ now()->format('l, d F Y') }}
+          {{ now()->translatedFormat('l, d F Y') }}
         </span>
       </div>
     </div>
@@ -23,8 +23,8 @@
           </svg>
         </div>
         <div class="ml-4">
-          <p class="text-sm font-medium text-gray-500">Total Artikel</p>
-          <p class="text-2xl font-bold text-gray-900">12</p>
+          <p class="text-sm font-medium text-gray-500">Artikel</p>
+          <p class="text-2xl font-bold text-gray-900">{{ count($article) }}</p>
         </div>
       </div>
 
@@ -38,7 +38,7 @@
         </div>
         <div class="ml-4">
           <p class="text-sm font-medium text-gray-500">Layanan Aktif</p>
-          <p class="text-2xl font-bold text-gray-900">8</p>
+          <p class="text-2xl font-bold text-gray-900">{{ count($service) }}</p>
         </div>
       </div>
 
@@ -51,8 +51,8 @@
           </svg>
         </div>
         <div class="ml-4">
-          <p class="text-sm font-medium text-gray-500">Total Portfolio</p>
-          <p class="text-2xl font-bold text-gray-900">15</p>
+          <p class="text-sm font-medium text-gray-500">Portfolio</p>
+          <p class="text-2xl font-bold text-gray-900">{{ count($portfolio) }}</p>
         </div>
       </div>
 
@@ -65,140 +65,67 @@
           </svg>
         </div>
         <div class="ml-4">
-          <p class="text-sm font-medium text-gray-500">Total Klien</p>
-          <p class="text-2xl font-bold text-gray-900">24</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden h-full">
-        <div class="p-5 border-b border-gray-100 bg-gray-50/50">
-          <div class="flex items-center space-x-2">
-            <div class="w-1 h-6 bg-indigo-500 rounded-full"></div>
-            <h2 class="text-lg font-bold text-gray-900">Konten Website</h2>
-          </div>
-          <p class="text-xs text-gray-500 mt-1 pl-3">Kelola apa yang tampil di halaman depan.</p>
-        </div>
-
-        <div class="p-6">
-          <div class="grid grid-cols-2 gap-4">
-            <a href="{{ route('articles.create') }}"
-              class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-xl hover:bg-indigo-50 hover:border-indigo-200 hover:shadow-sm transition group bg-white">
-              <div
-                class="p-3 bg-gray-100 rounded-full group-hover:bg-indigo-100 group-hover:text-indigo-600 transition mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 7v14" />
-                  <path
-                    d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
-                </svg>
-              </div>
-              <span class="text-sm font-semibold text-gray-700 group-hover:text-indigo-700">Tulis Artikel</span>
-            </a>
-
-            <a href="{{ route('portfolio.create') }}"
-              class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-xl hover:bg-indigo-50 hover:border-indigo-200 hover:shadow-sm transition group bg-white">
-              <div
-                class="p-3 bg-gray-100 rounded-full group-hover:bg-indigo-100 group-hover:text-indigo-600 transition mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8" />
-                  <path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z" />
-                  <path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1" />
-                </svg>
-              </div>
-              <span class="text-sm font-semibold text-gray-700 group-hover:text-indigo-700">Tambah Portfolio</span>
-            </a>
-
-            <a href="{{ route('services.create') }}"
-              class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-xl hover:bg-indigo-50 hover:border-indigo-200 hover:shadow-sm transition group bg-white col-span-2">
-              <div class="flex items-center space-x-3">
-                <div
-                  class="p-2 bg-gray-100 rounded-full group-hover:bg-indigo-100 group-hover:text-indigo-600 transition">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path
-                      d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" />
-                  </svg>
-                </div>
-                <span class="text-sm font-semibold text-gray-700 group-hover:text-indigo-700">Tambah Layanan Baru</span>
-              </div>
-            </a>
-          </div>
+          <p class="text-sm font-medium text-gray-500">Klien</p>
+          <p class="text-2xl font-bold text-gray-900">{{ count($client) }}</p>
         </div>
       </div>
 
-      <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden h-full">
-        <div class="p-5 border-b border-gray-100 bg-gray-50/50">
-          <div class="flex items-center space-x-2">
-            <div class="w-1 h-6 bg-emerald-500 rounded-full"></div>
-            <h2 class="text-lg font-bold text-gray-900">Data Perusahaan</h2>
-          </div>
-          <p class="text-xs text-gray-500 mt-1 pl-3">Kelola data internal, klien, dan pengguna sistem.</p>
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center">
+        <div class="p-3 bg-red-50 rounded-lg text-red-600">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+          </svg>
         </div>
-
-        <div class="p-6">
-          <div class="grid grid-cols-2 gap-4">
-            <a href="{{ route('clients.create') }}"
-              class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-xl hover:bg-emerald-50 hover:border-emerald-200 hover:shadow-sm transition group bg-white">
-              <div
-                class="p-3 bg-gray-100 rounded-full group-hover:bg-emerald-100 group-hover:text-emerald-600 transition mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M12 10h.01" />
-                  <path d="M12 14h.01" />
-                  <path d="M12 6h.01" />
-                  <path d="M16 10h.01" />
-                  <path d="M16 14h.01" />
-                  <path d="M16 6h.01" />
-                  <path d="M8 10h.01" />
-                  <path d="M8 14h.01" />
-                  <path d="M8 6h.01" />
-                  <path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3" />
-                  <rect x="4" y="2" width="16" height="20" rx="2" />
-                </svg>
-              </div>
-              <span class="text-sm font-semibold text-gray-700 group-hover:text-emerald-700">Input Klien</span>
-            </a>
-
-            <a href="{{ route('teams.create') }}"
-              class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-xl hover:bg-emerald-50 hover:border-emerald-200 hover:shadow-sm transition group bg-white">
-              <div
-                class="p-3 bg-gray-100 rounded-full group-hover:bg-emerald-100 group-hover:text-emerald-600 transition mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <path d="M16 3.128a4 4 0 0 1 0 7.744" />
-                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                  <circle cx="9" cy="7" r="4" />
-                </svg>
-              </div>
-              <span class="text-sm font-semibold text-gray-700 group-hover:text-emerald-700">Tambah Tim</span>
-            </a>
-
-            <a href="{{ route('users.create') }}"
-              class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-xl hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm transition group bg-white col-span-2">
-              <div class="flex items-center space-x-3">
-                <div class="p-2 bg-gray-100 rounded-full group-hover:bg-gray-200 group-hover:text-gray-800 transition">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                </div>
-                <span class="text-sm font-semibold text-gray-700 group-hover:text-gray-900">Buat User Baru</span>
-              </div>
-            </a>
-          </div>
+        <div class="ml-4">
+          <p class="text-sm font-medium text-gray-500">Study Case</p>
+          <p class="text-2xl font-bold text-gray-900">{{ count($studyCase) }}</p>
         </div>
       </div>
 
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center">
+        <div class="p-3 bg-gray-50 rounded-lg text-gray-600">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        </div>
+        <div class="ml-4">
+          <p class="text-sm font-medium text-gray-500">Testimoni</p>
+          <p class="text-2xl font-bold text-gray-900">{{ count($testimoni) }}</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center">
+        <div class="p-3 bg-emerald-50 rounded-lg text-emerald-600">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
+            <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+          </svg>
+        </div>
+        <div class="ml-4">
+          <p class="text-sm font-medium text-gray-500">Loker</p>
+          <p class="text-2xl font-bold text-gray-900">{{ count($jobs) }}</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center">
+        <div class="p-3 bg-violet-50 rounded-lg text-violet-600">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+        <div class="ml-4">
+          <p class="text-sm font-medium text-gray-500">Tim</p>
+          <p class="text-2xl font-bold text-gray-900">{{ count($team) }}</p>
+        </div>
+      </div>
     </div>
 
   </div>

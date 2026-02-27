@@ -2,13 +2,14 @@
 @section('content')
   <x-home.hero />
 
+  <x-home.clients :clients="$clients" />
+
   <x-home.vsl />
 
-  <x-home.clients :clients="$clients" />
 
   <x-home.about :portfolios="$portfolios" :portfolioCategories="$portfolioCategories" />
 
-  <x-home.services :servicesForDesktop="$servicesForDesktop" :servicesForMobile="$servicesForMobile" />
+  <x-home.services :services="$services" />
 
   {{-- portfolio  --}}
   <x-home.portfolio :portfolios="$portfolios" :portfolioCategories="$portfolioCategories"></x-home.portfolio>

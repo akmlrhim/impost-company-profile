@@ -22,8 +22,7 @@ class HomeController extends Controller
 	{
 		$title = 'Home';
 
-		$servicesForDesktop = ServiceService::all();
-		$servicesForMobile = ServiceService::all();
+		$services = ServiceService::all();
 
 		$clients = ClientService::all();
 		$testimonials = Testimonial::select('name', 'company_name', 'content', 'media_path', 'media_type')->latest()->get();
@@ -36,8 +35,7 @@ class HomeController extends Controller
 
 		return view('public.home', compact(
 			'title',
-			'servicesForDesktop',
-			'servicesForMobile',
+			'services',
 			'clients',
 			'testimonials',
 			'portfolios',
@@ -170,17 +168,8 @@ class HomeController extends Controller
 	public function job()
 	{
 		$title = 'Karir';
-		$jobs = JobPosting::latest()->paginate(6);
 
-		return view('public.career.jobs', compact('title', 'jobs'));
-	}
-
-	public function jobDetail($slug)
-	{
-		$title = 'Detail';
-		$job = JobPosting::where('slug', $slug)->firstOrFail();
-
-		return view('public.career.jobs-detail', compact('title', 'job'));
+		return view('public.jobs', compact('title'));
 	}
 
 	public function vslForm()

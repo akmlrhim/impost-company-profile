@@ -5,7 +5,7 @@
     <div class="mx-auto max-w-7xl">
 
       <div class="mb-8 md:mb-12 text-center px-6">
-        <h1 class="text-3xl md:text-4xl capitalize font-medium font-header mb-4 text-impost-primary">
+        <h1 class="text-3xl md:text-4xl capitalize font-bold mb-4 text-impost-primary">
           {{ $title }}
         </h1>
       </div>

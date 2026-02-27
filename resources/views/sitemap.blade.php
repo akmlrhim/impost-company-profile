@@ -48,13 +48,4 @@
     </url>
   @endforeach
 
-  @foreach ($jobs as $job)
-    <url>
-      <loc>{{ route('career.detail', $job->slug) }}</loc>
-      <lastmod>{{ $job->updated_at->tz('UTC')->toAtomString() }}</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.6</priority>
-    </url>
-  @endforeach
-
 </urlset>

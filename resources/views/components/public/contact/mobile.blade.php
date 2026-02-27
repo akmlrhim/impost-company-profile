@@ -121,14 +121,14 @@
     </div>
 
     <button @click="goToSlide(activeSlide - 1)"
-      class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 backdrop-blur-sm border border-white/10 rounded-full shadow-lg flex items-center justify-center hover:bg-black/70 transition-colors z-10 text-white">
+      class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 backdrop-blur-sm border border-white/10 rounded-full shadow-lg flex items-center justify-center hover:bg-black/70 transition-colors z-10 text-white">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
 
     <button @click="goToSlide(activeSlide + 1)"
-      class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 backdrop-blur-sm border border-white/10 rounded-full shadow-lg flex items-center justify-center hover:bg-black/70 transition-colors z-10 text-white">
+      class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 backdrop-blur-sm border border-white/10 rounded-full shadow-lg flex items-center justify-center hover:bg-black/70 transition-colors z-10 text-white">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
       </svg>

@@ -23,7 +23,6 @@ class DashboardController extends Controller
 		$testimoni = Testimonial::all();
 		$portfolio = Portfolio::all();
 		$studyCase = StudyCase::all();
-		$jobs = JobPosting::all();
 		$team = Team::all();
 
 		return view('admin.dashboard', compact(

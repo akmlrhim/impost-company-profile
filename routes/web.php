@@ -47,7 +47,6 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::post('article/comment', [CommentController::class, 'store'])->name('article.comment');
 
 		Route::get('careers', [HomeController::class, 'job'])->name('careers');
-		Route::get('careers/{career:slug}', [HomeController::class, 'jobDetail'])->name('career.detail');
 
 		Route::get('docs', [HomeController::class, 'docs'])->name('docs');
 		Route::get('company-legality', [HomeController::class, 'legal'])->name('legal');
@@ -90,9 +89,6 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		// testimonial route
 		Route::resource('testimonials', TestimonialController::class)->except('show');
-
-		// job route
-		Route::resource('jobpostings', JobPostingController::class);
 
 		// article category
 		Route::resource('article-categories', ArticleCategoryController::class)->except(['create', 'show', 'edit']);

@@ -98,20 +98,6 @@
       </div>
 
       <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center">
-        <div class="p-3 bg-emerald-50 rounded-lg text-emerald-600">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">
-            <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-          </svg>
-        </div>
-        <div class="ml-4">
-          <p class="text-sm font-medium text-gray-500">Loker</p>
-          <p class="text-2xl font-bold text-gray-900">{{ count($jobs) }}</p>
-        </div>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center">
         <div class="p-3 bg-violet-50 rounded-lg text-violet-600">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8">

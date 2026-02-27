@@ -4,11 +4,10 @@
 
     <div class="max-w-4xl mb-8 md:mb-12 lg:mb-14">
 
-      <h2
-        class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium font-header leading-tight text-white mb-2 md:mb-3">
+      <h2 class="text-base sm:text-xl md:text-2xl lg:text-3xl font-medium leading-tight text-white mb-2 md:mb-3">
         Kami Bukan Agency yang Jual Konten atau Iklan
       </h2>
-      <p class="text-base sm:text-lg md:text-xl text-impost-secondary font-medium">
+      <p class="text-sm sm:text-lg md:text-xl text-impost-secondary font-medium">
         Kami Pionir & Market Leader Digital Marketing di Kalimantan
       </p>
     </div>
@@ -20,7 +19,7 @@
         <div
           class="bg-gradient-to-br from-impost-fourth/30 to-impost-fourth/10 backdrop-blur-sm rounded-xl md:rounded-2xl p-5 md:p-6 border border-white/5">
 
-          <h3 class="text-base sm:text-lg font-semibold text-white mb-4 md:mb-5">
+          <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-white mb-4 md:mb-5">
             Kami hadir karena terlalu banyak bisnis mengalami:
           </h3>
 
@@ -31,7 +30,7 @@
                 class="flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full bg-impost-primary/20 flex items-center justify-center mt-0.5">
                 <div class="w-1.5 h-1.5 rounded-full bg-impost-primary"></div>
               </div>
-              <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
+              <p class="text-xs sm:text-sm md:text-base text-white leading-relaxed">
                 Sudah habis uang untuk iklan
               </p>
             </div>
@@ -41,7 +40,7 @@
                 class="flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full bg-impost-primary/20 flex items-center justify-center mt-0.5">
                 <div class="w-1.5 h-1.5 rounded-full bg-impost-primary"></div>
               </div>
-              <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
+              <p class="text-xs sm:text-sm md:text-base text-white leading-relaxed">
                 Konten jalan tapi branding masih terlihat <span class="italic text-white">"brand murah"</span>
               </p>
             </div>
@@ -51,7 +50,7 @@
                 class="flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full bg-impost-primary/20 flex items-center justify-center mt-0.5">
                 <div class="w-1.5 h-1.5 rounded-full bg-impost-primary"></div>
               </div>
-              <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
+              <p class="text-xs sm:text-sm md:text-base text-white leading-relaxed">
                 Trauma pakai agency tanpa ada hasil yang jelas
               </p>
             </div>
@@ -61,7 +60,7 @@
                 class="flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full bg-impost-primary/20 flex items-center justify-center mt-0.5">
                 <div class="w-1.5 h-1.5 rounded-full bg-impost-primary"></div>
               </div>
-              <p class="text-sm sm:text-base text-white font-medium leading-relaxed">
+              <p class="text-xs sm:text-sm md:text-base text-white font-medium leading-relaxed">
                 Tapi tidak pernah tahu apa yang salah
               </p>
             </div>
@@ -71,12 +70,12 @@
         </div>
 
         <div class="bg-white/5 backdrop-blur-sm rounded-xl md:rounded-2xl p-5 md:p-6 border border-white/10">
-          <p class="text-sm sm:text-base leading-relaxed text-gray-300 mb-2 md:mb-3">
+          <p class="text-xs sm:text-sm md:text-base leading-relaxed text-white mb-2 md:mb-3">
             <span class="text-impost-primary font-semibold">Hasilnya?</span> Penjualan kebanyakan hanya mengandalkan
             promo dengan customer yang tidak loyal.
           </p>
           <div class="h-px bg-gradient-to-r from-white/20 via-white/5 to-transparent my-3 md:my-4"></div>
-          <p class="text-sm sm:text-base leading-relaxed text-gray-400">
+          <p class="text-xs sm:text-sm md:text-base leading-relaxed text-white">
             Ini disebabkan oleh branding yang belum terbangun ke persepsi publik.
           </p>
         </div>
@@ -93,11 +92,11 @@
 
             <div class="relative">
 
-              <h3 class="text-md sm:text-lg md:text-xl font-medium font-header text-white mb-3 md:mb-4 leading-tight">
+              <h3 class="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-white mb-3 md:mb-4 leading-tight">
                 Kami benahi funnel marketingnya
               </h3>
 
-              <p class="text-sm sm:text-base text-white/90 leading-relaxed">
+              <p class="text-xs sm:text-sm md:text-base text-white/90 leading-relaxed">
                 Membangun sistem pemasaran yang berkelanjutan, bukan sekadar posting konten.
               </p>
             </div>

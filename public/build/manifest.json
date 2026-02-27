@@ -1,12 +1,44 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-DqCsZkMs.css",
+    "file": "assets/app-DWJtFlhF.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
     "names": [
       "app.css"
     ]
+  },
+  "resources/fonts/DMSerifDisplay-Italic.ttf": {
+    "file": "assets/DMSerifDisplay-Italic-BhqSsvBP.ttf",
+    "src": "resources/fonts/DMSerifDisplay-Italic.ttf"
+  },
+  "resources/fonts/DMSerifDisplay-Regular.ttf": {
+    "file": "assets/DMSerifDisplay-Regular-CDGr1N9g.ttf",
+    "src": "resources/fonts/DMSerifDisplay-Regular.ttf"
+  },
+  "resources/fonts/FiraCode-Medium.ttf": {
+    "file": "assets/FiraCode-Medium-CvWmJDs-.ttf",
+    "src": "resources/fonts/FiraCode-Medium.ttf"
+  },
+  "resources/fonts/FiraCode-Regular.ttf": {
+    "file": "assets/FiraCode-Regular-DaUYHfpJ.ttf",
+    "src": "resources/fonts/FiraCode-Regular.ttf"
+  },
+  "resources/fonts/PlusJakartaSans-Bold.ttf": {
+    "file": "assets/PlusJakartaSans-Bold-C5aszj9T.ttf",
+    "src": "resources/fonts/PlusJakartaSans-Bold.ttf"
+  },
+  "resources/fonts/PlusJakartaSans-Medium.ttf": {
+    "file": "assets/PlusJakartaSans-Medium-C2x3RLjU.ttf",
+    "src": "resources/fonts/PlusJakartaSans-Medium.ttf"
+  },
+  "resources/fonts/PlusJakartaSans-Regular.ttf": {
+    "file": "assets/PlusJakartaSans-Regular-C2UfmnDu.ttf",
+    "src": "resources/fonts/PlusJakartaSans-Regular.ttf"
+  },
+  "resources/fonts/PlusJakartaSans-SemiBold.ttf": {
+    "file": "assets/PlusJakartaSans-SemiBold-BAz3r7B9.ttf",
+    "src": "resources/fonts/PlusJakartaSans-SemiBold.ttf"
   },
   "resources/js/app.js": {
     "file": "assets/app-Se_-j5xW.js",

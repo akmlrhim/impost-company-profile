@@ -3,84 +3,80 @@
       [
           'question' => 'Apa itu Agency & apa itu Impost Media?',
           'answer' => '
-              <p class="mb-4"><strong>Apa itu Agency?</strong><br>
-              Bahasa gampangnya, Agency adalah tim profesional yang Anda bayar untuk membantu mengurus dan mengembangkan bisnis, supaya Anda tidak perlu mengerjakan semuanya sendiri. Sebagai pemilik bisnis, Anda bisa fokus ke produk, operasional, dan pelayanan. Kami yang bantu bagian pengembangan dan pemasaran (digital & sistem).</p>
-
-              <p class="mb-4"><strong>Apa itu Impost Media?</strong><br>
-              Impost Media adalah digital marketing agency pionir di Kalimantan Selatan yang berlokasi di Landasan Ulin, Banjarbaru. Kami adalah partner bisnis yang membantu usaha Anda naik level lewat digital marketing, branding, dan sistem penjualan—bukan sekadar posting atau iklan.</p>
-
-              <p>Tujuan kami sederhana: membantu bisnis meningkatkan omzet lewat strategi yang terintegrasi agar bisnis Anda lebih dikenal, lebih dipercaya, dan lebih menghasilkan.</p>
-          ',
+      <p class="mb-3"><strong>Apa itu Agency?</strong><br>Agency adalah tim profesional yang Anda bayar untuk membantu mengurus dan mengembangkan bisnis. Sebagai pemilik bisnis, Anda fokus ke produk & operasional. Kami yang bantu bagian pemasaran digital & sistem.</p>
+      <p class="mb-3"><strong>Apa itu Impost Media?</strong><br>Impost Media adalah digital marketing agency pionir di Kalimantan Selatan, berlokasi di Landasan Ulin, Banjarbaru. Kami adalah partner bisnis yang membantu usaha naik level lewat digital marketing, branding, dan sistem penjualan.</p>
+      <p>Tujuan kami: membantu bisnis meningkatkan omzet lewat strategi terintegrasi agar lebih dikenal, dipercaya, dan menghasilkan.</p>
+    ',
       ],
       [
           'question' => 'Impost Media jual apa?',
           'answer' =>
-              'Kami tidak hanya menjual satu jasa, tapi "ekosistem" solusi digital. Layanan kami meliputi Manajemen Social Media & Konten, Branding, Digital Ads (Google/Meta/TikTok), Marketplace Management, Pembuatan Website & SEO, hingga App Development (Sistem ERP/Kasir). Semuanya adalah alat untuk satu tujuan: mendatangkan pembeli.',
+              'Kami menawarkan "ekosistem" solusi digital: Manajemen Social Media & Konten, Branding, Digital Ads (Google/Meta/TikTok), Marketplace Management, Website & SEO, hingga App Development (Sistem ERP/Kasir). Semuanya untuk satu tujuan: mendatangkan pembeli.',
       ],
       [
           'question' => 'Bagaimana cara Impost Media meningkatkan omzet bisnis klien?',
           'answer' =>
-              'Kami bekerja dengan merapikan funnel bisnis Anda. Mulai dari memperkenalkan produk ke pasar yang tepat (Traffic), membangun citra yang meyakinkan agar orang percaya (Branding), hingga menata sistem penjualan agar calon pembeli yang datang benar-benar terkonversi menjadi sales (Closing). Kami memastikan promosi tidak salah arah.',
+              'Kami merapikan funnel bisnis Anda — dari memperkenalkan produk ke pasar yang tepat (Traffic), membangun citra yang meyakinkan (Branding), hingga menata sistem penjualan agar calon pembeli terkonversi menjadi sales (Closing).',
       ],
       [
           'question' => 'Apa ada garansinya bila hasil tidak tercapai?',
           'answer' =>
-              'Komitmen kami adalah bekerja berbasis data dan strategi yang terukur. Kami memberikan garansi berupa pengerjaan yang transparan, laporan rutin, dan optimasi terus-menerus. Untuk detail garansi performa spesifik, hal ini biasanya dibahas dalam sesi konsultasi sesuai dengan paket layanan yang diambil.',
+              'Komitmen kami adalah bekerja berbasis data dan strategi terukur dengan pengerjaan transparan, laporan rutin, dan optimasi terus-menerus. Detail garansi performa spesifik dibahas dalam sesi konsultasi sesuai paket layanan.',
       ],
       [
           'question' => 'Berapa tarifnya?',
           'answer' =>
-              'Investasi layanan di Impost Media sangat bervariasi tergantung kebutuhan dan skala bisnis Anda. Kami memiliki paket yang disesuaikan untuk UMKM hingga perusahaan besar. Silakan hubungi tim kami untuk mendapatkan penawaran harga terbaik yang sesuai dengan target bisnis Anda.',
+              'Investasi sangat bervariasi tergantung kebutuhan dan skala bisnis, mulai dari UMKM hingga perusahaan besar. Hubungi tim kami untuk mendapatkan penawaran terbaik sesuai target bisnis Anda.',
       ],
       [
           'question' => 'Apakah Impost Media cocok untuk bisnis saya?',
           'answer' =>
-              'Sangat cocok, terutama jika bisnis Anda punya produk yang bagus dan operasional yang jalan, tapi "nggak tumbuh-tumbuh" karena bingung cara promosi atau tidak punya sistem. Kami hadir untuk membereskan masalah promosi yang salah arah, branding asal-asalan, atau jualan digital yang tanpa strategi.',
+              'Sangat cocok jika bisnis Anda punya produk bagus dan operasional jalan, tapi tidak tumbuh karena bingung cara promosi atau tidak punya sistem. Kami hadir membereskan masalah promosi salah arah, branding asal-asalan, atau jualan digital tanpa strategi.',
       ],
       [
           'question' => 'Berapa lama hasilnya bisa saya rasakan?',
           'answer' =>
-              'Setiap layanan memiliki timeline berbeda. Untuk Digital Ads, traffic bisa masuk dalam hitungan hari. Namun, untuk hasil yang stabil berupa peningkatan brand awareness dan omzet yang konsisten, biasanya dibutuhkan waktu beberapa bulan untuk proses testing, collecting data, dan optimasi strategi.',
+              'Setiap layanan memiliki timeline berbeda. Digital Ads bisa mendatangkan traffic dalam hitungan hari. Namun untuk hasil stabil berupa peningkatan brand awareness dan omzet konsisten, biasanya butuh beberapa bulan untuk testing, collecting data, dan optimasi.',
       ],
       [
           'question' => 'Kapan omzet saya sudah mulai bisa naik?',
           'answer' =>
-              'Kenaikan omzet biasanya terjadi bertahap setelah fondasi digital (sosmed/web) rapi dan iklan mulai berjalan efektif. Fokus kami adalah pertumbuhan jangka panjang, bukan hanya lonjakan sesaat. Tim kami akan terus memantau grafik performa untuk memastikan tren penjualan Anda bergerak naik.',
+              'Kenaikan omzet biasanya terjadi bertahap setelah fondasi digital rapi dan iklan berjalan efektif. Fokus kami adalah pertumbuhan jangka panjang. Tim kami terus memantau performa untuk memastikan tren penjualan bergerak naik.',
       ],
   ];
 @endphp
 
-<section class="relative w-full py-20 bg-impost-fifth overflow-hidden">
+<section class="relative w-full py-14 sm:py-20 bg-impost-fifth overflow-hidden">
+  <div class="relative max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 z-10">
 
-  <div class="relative max-w-4xl mx-auto px-6 lg:px-8 z-10">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-medium font-header text-white tracking-tight text-impost-primary mb-6">
+    <div class="text-center mb-10 sm:mb-16">
+      <h2
+        class="text-2xl sm:text-3xl md:text-5xl font-medium font-header text-impost-primary tracking-tight mb-2 sm:mb-4">
         Frequently Asked <span class="text-impost-primary">Question</span>
       </h2>
     </div>
 
-    <div class="space-y-4">
-      @foreach ($faqs as $index => $faq)
+    <div class="space-y-3 sm:space-y-4">
+      @foreach ($faqs as $faq)
         <div
-          class="group border border-white/5 rounded-2xl bg-white/5 hover:bg-white/[0.07] transition-all duration-300 overflow-hidden">
+          class="faq-item group border border-white/5 rounded-xl sm:rounded-2xl bg-white/5 hover:bg-white/[0.07] transition-all duration-300 overflow-hidden">
 
           <button onclick="toggleFAQ(this)"
-            class="flex items-center justify-between w-full p-6 text-left focus:outline-none">
-            <span class="text-lg font-medium text-zinc-100 group-hover:text-impost-primary transition-colors pr-8">
+            class="flex items-center justify-between w-full px-4 sm:px-6 py-3.5 sm:py-5 text-left focus:outline-none">
+            <span
+              class="text-xs sm:text-md md:text-base font-medium text-zinc-100 group-hover:text-impost-primary transition-colors pr-6 sm:pr-8">
               {{ $faq['question'] }}
             </span>
-
-            <span class="relative flex-shrink-0 w-6 h-6 flex items-center justify-center">
-              <span
-                class="absolute block w-5 h-0.5 bg-zinc-400 group-hover:bg-impost-primary transition-colors duration-300"></span>
-              <span
-                class="absolute block w-5 h-0.5 bg-zinc-400 group-hover:bg-impost-primary transition-all duration-300 transform rotate-90 icon-v"></span>
-            </span>
+            <svg
+              class="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-zinc-400 group-hover:text-impost-primary transition-all duration-300 transform chevron-icon"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </button>
 
           <div
             class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0">
-            <div class="px-6 pb-6 pt-0 text-zinc-400 leading-relaxed text-[15px]">
+            <div class="px-4 sm:px-6 pb-4 sm:pb-6 pt-0 text-white leading-relaxed text-xs sm:text-sm md:text-[15px]">
               {!! $faq['answer'] !!}
             </div>
           </div>
@@ -88,33 +84,35 @@
         </div>
       @endforeach
     </div>
+
   </div>
 </section>
 
 <script>
-  function toggleFAQ(button) {
-    const content = button.nextElementSibling;
-    const iconVertical = button.querySelector('.icon-v');
-    const allContents = document.querySelectorAll('.faq-content');
-    const allIcons = document.querySelectorAll('.icon-v');
-    const parent = button.parentElement;
+  (function() {
+    function toggleFAQ(button) {
+      const content = button.nextElementSibling;
+      const chevron = button.querySelector('.chevron-icon');
+      const parent = button.parentElement;
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
 
-    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const c = item.querySelector('.faq-content');
+        const ch = item.querySelector('.chevron-icon');
+        c.style.maxHeight = '0px';
+        c.style.opacity = '0';
+        ch.style.transform = 'rotate(0deg)';
+        item.classList.remove('bg-white/10', 'border-impost-primary/30');
+      });
 
-    // Tutup item lain
-    allContents.forEach((item, index) => {
-      item.style.maxHeight = '0px';
-      item.style.opacity = '0';
-      allIcons[index].style.transform = 'rotate(90deg)';
-      item.parentElement.classList.remove('bg-white/10', 'border-impost-primary/30');
-    });
-
-    // Buka item yang diklik
-    if (!isOpen) {
-      content.style.maxHeight = content.scrollHeight + 'px';
-      content.style.opacity = '1';
-      iconVertical.style.transform = 'rotate(0deg)';
-      parent.classList.add('bg-white/10', 'border-impost-primary/30');
+      if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.opacity = '1';
+        chevron.style.transform = 'rotate(180deg)';
+        parent.classList.add('bg-white/10', 'border-impost-primary/30');
+      }
     }
-  }
+
+    window.toggleFAQ = toggleFAQ;
+  })();
 </script>

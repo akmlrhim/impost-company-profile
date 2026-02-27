@@ -16,13 +16,11 @@ class SitemapController extends Controller
 		$articles = Article::latest()->get(['slug', 'updated_at']);
 		$portfolios = Portfolio::latest()->get(['slug', 'updated_at']);
 		$studyCase = StudyCase::latest()->get(['slug', 'updated_at']);
-		$jobs = JobPosting::latest()->get(['slug', 'updated_at']);
 
 		return Response::view('sitemap', [
 			'articles' => $articles,
 			'portfolios' => $portfolios,
 			'studyCases' => $studyCase,
-			'jobs' => $jobs
 		])->header('Content-Type', 'text/xml');
 	}
 }

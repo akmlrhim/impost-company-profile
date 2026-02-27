@@ -2,55 +2,53 @@
   $studyCases = \App\Models\StudyCase::select('slug', 'name', 'cover_path', 'category', 'result')->latest()->get();
 @endphp
 
-<section class="py-20 text-white overflow-hidden" id="study-cases">
+<section class="py-16 sm:py-20 text-white overflow-hidden" id="study-cases">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="relative mb-12 flex items-center justify-center">
-
+    <div class="relative mb-10 sm:mb-12 flex items-center justify-center">
       <div class="max-w-3xl mx-auto text-center z-10 px-4">
-        <h2 class="text-3xl md:text-5xl font-medium font-header tracking-tight text-white mb-4 leading-tight">
+        <h2
+          class="text-2xl sm:text-3xl md:text-5xl font-medium font-header tracking-tight text-white mb-3 sm:mb-4 leading-tight">
           Hasil Nyata, <br class="hidden md:block" />
           <span class="text-impost-primary italic">Bukan Janji Kosong.</span>
         </h2>
-        <p class="text-white/80 text-sm md:text-base leading-relaxed max-w-xl mx-auto">
+        <p class="text-white text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto">
           Bukti autentik dari strategi yang terukur untuk pertumbuhan bisnis Anda.
         </p>
       </div>
 
       @if ($studyCases->isNotEmpty())
         <div class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 gap-3 z-20">
-          <button type="button"
-            class="studycase-prev group flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-impost-primary hover:text-black hover:border-impost-primary transition-all duration-300">
-            <svg class="w-5 h-5 transform group-hover:-translate-x-0.5 transition-transform" fill="none"
+          <button type="button" aria-label="Previous"
+            class="studycase-prev group flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-impost-primary hover:text-black hover:border-impost-primary transition-all duration-300">
+            <svg class="w-4 h-4 transform group-hover:-translate-x-0.5 transition-transform" fill="none"
               stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <button type="button"
-            class="studycase-next group flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-impost-primary hover:text-black hover:border-impost-primary transition-all duration-300">
-            <svg class="w-5 h-5 transform group-hover:translate-x-0.5 transition-transform" fill="none"
+          <button type="button" aria-label="Next"
+            class="studycase-next group flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-impost-primary hover:text-black hover:border-impost-primary transition-all duration-300">
+            <svg class="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none"
               stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
         </div>
       @endif
-
     </div>
 
     @if ($studyCases->isNotEmpty())
       <div class="studycase-slider relative w-full overflow-hidden">
-        <div class="studycase-track flex h-full">
+        <div class="studycase-track flex">
           @foreach ($studyCases as $case)
-            <div class="studycase-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3 h-auto box-border">
+            <div class="studycase-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3 box-border">
               <a href="{{ route('detail-study-case', $case->slug) }}"
-                class="group flex flex-col h-full border border-white/10 bg-white/5 hover:border-impost-primary/50 hover:bg-white/10 rounded-xl p-5 transition-all duration-300">
-                <div class="relative w-full aspect-video mb-5 overflow-hidden rounded-lg bg-gray-900">
-                  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 z-10 transition-colors duration-500">
-                  </div>
+                class="group flex flex-col h-full border border-white/10 bg-white/5 hover:border-impost-primary/50 hover:bg-white/10 rounded-xl p-4 sm:p-5 transition-all duration-300">
+                <div class="relative w-full aspect-video mb-4 overflow-hidden rounded-lg bg-gray-900">
                   @if ($case->cover_path)
                     <img src="{{ asset('storage/' . $case->cover_path) }}" alt="{{ $case->name }}"
-                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy">
                   @else
                     <div class="w-full h-full flex items-center justify-center bg-gray-800">
                       <span class="text-gray-600 text-xs">No Preview</span>
@@ -59,27 +57,27 @@
                 </div>
 
                 <div class="flex flex-col flex-1">
-                  <div class="mb-3">
+                  <div class="mb-2.5">
                     <span
-                      class="inline-block px-2 py-1 bg-impost-primary/10 rounded text-[10px] font-bold tracking-widest uppercase text-impost-primary border border-impost-primary/20">
+                      class="inline-block px-2 py-1 bg-impost-primary/10 rounded text-[9px] sm:text-[10px] font-bold tracking-widest uppercase text-impost-primary border border-impost-primary/20">
                       {{ $case->category ?? 'CASE STUDY' }}
                     </span>
                   </div>
                   <h3
-                    class="text-lg font-bold text-white group-hover:text-impost-primary mb-3 leading-tight transition-colors">
+                    class="text-sm sm:text-base md:text-lg font-bold text-white group-hover:text-impost-primary mb-2 leading-tight transition-colors">
                     {{ $case->name }}
                   </h3>
-                  <div class="text-sm text-white leading-relaxed line-clamp-3 mb-5">
+                  <div class="text-xs sm:text-sm text-white/70 leading-relaxed line-clamp-3 mb-4">
                     <div class="[&>ul]:list-disc [&>ul]:ml-4 [&>ol]:list-decimal [&>ol]:ml-4">
                       {!! strip_tags($case->result, '<ul><ol><li><p><br><strong><em>') !!}
                     </div>
                   </div>
-                  <div class="mt-auto pt-4 border-t border-white/10">
+                  <div class="mt-auto pt-3 border-t border-white/10">
                     <div
-                      class="flex items-center text-sm font-medium text-white group-hover:text-impost-primary transition-colors">
+                      class="flex items-center text-xs sm:text-sm font-medium text-white group-hover:text-impost-primary transition-colors">
                       Lihat Detail
-                      <svg class="w-3 h-3 ml-2 transform transition-transform group-hover:translate-x-1" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
+                      <svg class="w-3 h-3 ml-1.5 transform transition-transform group-hover:translate-x-1"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
@@ -91,28 +89,13 @@
           @endforeach
         </div>
       </div>
-
-      <div class="flex md:hidden justify-center gap-4 mt-8">
-        <button type="button"
-          class="studycase-prev p-3 rounded-full border border-white/10 text-white active:bg-white/10">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button type="button"
-          class="studycase-next p-3 rounded-full border border-white/10 text-white active:bg-white/10">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
     @else
       <div class="py-12 text-center border-t border-white/5">
-        <p class="text-gray-500 text-sm">Belum ada studi kasus yang ditampilkan.</p>
+        <p class="text-gray-500 text-xs sm:text-sm">Belum ada studi kasus yang ditampilkan.</p>
       </div>
     @endif
 
-    <div class="mt-10 text-center">
+    <div class="mt-8 sm:mt-10 text-center">
       <a href="{{ route('study-case') }}"
         class="inline-flex items-center text-xs font-bold uppercase text-white hover:text-impost-primary transition-colors tracking-wider border-b border-transparent hover:border-impost-primary pb-1">
         Lihat Semua Study Case
@@ -128,91 +111,68 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const track = document.querySelector('.studycase-track');
+      if (!track) return;
+
       const slides = Array.from(document.querySelectorAll('.studycase-slide'));
+      if (!slides.length) return;
+
       const prevBtns = document.querySelectorAll('.studycase-prev');
       const nextBtns = document.querySelectorAll('.studycase-next');
+      const CLONE_COUNT = 3;
 
-      if (!track || slides.length === 0) return;
-
-      let currentIndex = 0;
-      let slideWidth = slides[0].getBoundingClientRect().width;
+      let currentIndex = CLONE_COUNT;
       let isTransitioning = false;
-      let autoPlayInterval;
+      let slideWidth = 0;
+      let autoPlayTimer = null;
 
-      // Konfigurasi jumlah clone
-      const cloneCount = 3;
-
-      // Cloning Slide
-      const firstClones = slides.slice(0, cloneCount).map(slide => slide.cloneNode(true));
-      const lastClones = slides.slice(-cloneCount).map(slide => slide.cloneNode(true));
-
-      firstClones.forEach(clone => track.appendChild(clone));
-      lastClones.reverse().forEach(clone => track.insertBefore(clone, track.firstChild));
-
-      // Reset currentIndex ke slide asli pertama
-      currentIndex = cloneCount;
-
-      function updateSlideWidth() {
-        const tempSlide = document.querySelector('.studycase-slide');
-        if (tempSlide) {
-          slideWidth = tempSlide.getBoundingClientRect().width;
-          updateTrackPosition(false);
-        }
+      function getSlideWidth() {
+        return slides[0].getBoundingClientRect().width;
       }
 
-      function updateTrackPosition(transition = true) {
-        if (transition) {
-          track.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-        } else {
-          track.style.transition = 'none';
-        }
+      function buildClones() {
+        slides.slice(0, CLONE_COUNT).forEach(s => track.appendChild(s.cloneNode(true)));
+        slides.slice(-CLONE_COUNT).reverse().forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
+      }
+
+      function setPosition(withTransition) {
+        track.style.transition = withTransition ? 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)' : 'none';
         track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
       }
 
-      // Logic Infinite Loop saat Transisi Selesai
-      track.addEventListener('transitionend', () => {
-        isTransitioning = false;
-        const totalRealSlides = slides.length;
-
-        if (currentIndex >= totalRealSlides + cloneCount) {
-          track.style.transition = 'none';
-          currentIndex = cloneCount;
-          updateTrackPosition(false);
-        } else if (currentIndex < cloneCount) {
-          track.style.transition = 'none';
-          currentIndex = totalRealSlides + cloneCount - 1;
-          updateTrackPosition(false);
-        }
-      });
-
-      // Tombol Next
-      function handleNext() {
+      function next() {
         if (isTransitioning) return;
         isTransitioning = true;
         currentIndex++;
-        updateTrackPosition(true);
+        setPosition(true);
         resetAutoPlay();
       }
 
-      // Tombol Prev
-      function handlePrev() {
+      function prev() {
         if (isTransitioning) return;
         isTransitioning = true;
         currentIndex--;
-        updateTrackPosition(true);
+        setPosition(true);
         resetAutoPlay();
       }
 
-      nextBtns.forEach(btn => btn.addEventListener('click', handleNext));
-      prevBtns.forEach(btn => btn.addEventListener('click', handlePrev));
+      track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        const total = slides.length;
+        if (currentIndex >= total + CLONE_COUNT) {
+          currentIndex = CLONE_COUNT;
+          setPosition(false);
+        } else if (currentIndex < CLONE_COUNT) {
+          currentIndex = total + CLONE_COUNT - 1;
+          setPosition(false);
+        }
+      });
 
-      // Autoplay
       function startAutoPlay() {
-        autoPlayInterval = setInterval(handleNext, 4000);
+        autoPlayTimer = setInterval(next, 4000);
       }
 
       function stopAutoPlay() {
-        clearInterval(autoPlayInterval);
+        clearInterval(autoPlayTimer);
       }
 
       function resetAutoPlay() {
@@ -220,16 +180,19 @@
         startAutoPlay();
       }
 
+      let resizeTimer;
       window.addEventListener('resize', () => {
-        updateSlideWidth();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          slideWidth = getSlideWidth();
+          setPosition(false);
+        }, 150);
       });
 
       track.addEventListener('mouseenter', stopAutoPlay);
       track.addEventListener('mouseleave', startAutoPlay);
 
       let touchStartX = 0;
-      let touchEndX = 0;
-
       track.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
         stopAutoPlay();
@@ -238,14 +201,19 @@
       });
 
       track.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        if (touchStartX - touchEndX > 50) handleNext();
-        if (touchEndX - touchStartX > 50) handlePrev();
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
         startAutoPlay();
+      }, {
+        passive: true
       });
 
-      // Init
-      updateSlideWidth();
+      nextBtns.forEach(btn => btn.addEventListener('click', next));
+      prevBtns.forEach(btn => btn.addEventListener('click', prev));
+
+      buildClones();
+      slideWidth = getSlideWidth();
+      setPosition(false);
       startAutoPlay();
     });
   </script>

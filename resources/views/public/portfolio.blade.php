@@ -6,7 +6,7 @@
   kreatif, dan iklan performa untuk berbagai klien di Kalimantan Selatan.')
 
 @section('content')
-  <main class="pt-24 sm:pt-42 py-8 sm:py-16 antialiased bg-impost-fifth">
+  <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased bg-impost-fifth">
     <div class="mx-auto max-w-7xl">
 
       <div class="mb-8 md:mb-12 text-center px-6">

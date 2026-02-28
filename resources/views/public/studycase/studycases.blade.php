@@ -6,7 +6,7 @@
   strategi digital marketing yang terukur dan berorientasi hasil di Kalimantan Selatan.')
 
 @section('content')
-  <main class="pt-24 sm:pt-42 py-8 sm:py-16 antialiased bg-[#0a0a0a] min-h-screen">
+  <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased bg-[#0a0a0a] min-h-screen">
 
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 

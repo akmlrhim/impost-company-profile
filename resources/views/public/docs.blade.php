@@ -1,11 +1,12 @@
 @extends('layouts.public')
 
 section('title', 'Company Profile & Portfolio | Impost Media')
-@section('meta_description', 'Eksplorasi company profile dan portfolio terbaik Impost Media. Pelajari identitas
+@section('meta_description',
+  'Eksplorasi company profile dan portfolio terbaik Impost Media. Pelajari identitas
   perusahaan, layanan, dan karya nyata yang telah kami hasilkan untuk klien di Kalimantan Selatan.')
 
 @section('content')
-  <main class="pt-24 sm:pt-42 py-8 sm:py-12 antialiased min-h-screen">
+  <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased min-h-screen">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
       <div class="mb-10 text-center">

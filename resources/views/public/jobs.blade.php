@@ -1,11 +1,12 @@
 @extends('layouts.public')
 
 @section('title', 'Karir | Impost Media')
-@section('meta_description', 'Bergabunglah bersama tim Impost Media. Lihat lowongan karir terbaru dan jadilah bagian
+@section('meta_description',
+  'Bergabunglah bersama tim Impost Media. Lihat lowongan karir terbaru dan jadilah bagian
   dari agensi digital marketing terkemuka di Kalimantan Selatan.')
 
 @section('content')
-  <main class="pt-24 sm:pt-42 py-8 sm:py-12 antialiased antialiased bg-[#0a0a0a]">
+  <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased antialiased bg-[#0a0a0a]">
     <div class="mx-auto max-w-7xl px-3 sm:px-4 lg:px-8">
 
       {{-- Header --}}

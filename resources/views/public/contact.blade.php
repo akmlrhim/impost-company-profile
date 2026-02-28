@@ -6,7 +6,7 @@
   dan social media management. Kami siap membantu bisnis Anda berkembang.')
 
 @section('content')
-  <main class="pt-24 sm:pt-42 py-8 sm:py-12 antialiased bg-[#0a0a0a]">
+  <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased bg-[#0a0a0a]">
 
     <div class="px-4 mx-auto max-w-7xl">
 

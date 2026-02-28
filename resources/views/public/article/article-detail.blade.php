@@ -1,26 +1,27 @@
 @extends('layouts.public')
 
 @section('title', ($article->meta_title ?? $article->title) . ' | Impost Media')
-@section('meta_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155))
+@section('meta_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ??
+  $article->content), 155))
 
-@push('head')
-  @if ($article->status == 'draft')
-    <meta name="robots" content="noindex, nofollow">
-  @else
-    <meta name="robots" content="index, follow">
-  @endif
+  @push('head')
+    @if ($article->status == 'draft')
+      <meta name="robots" content="noindex, nofollow">
+    @else
+      <meta name="robots" content="index, follow">
+    @endif
 
-  <meta name="description"
-    content="{{ $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155) }}">
+    <meta name="description"
+      content="{{ $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155) }}">
 
-  <meta property="og:title" content="{{ $article->meta_title ?? $article->title }}">
-  <meta property="og:description"
-    content="{{ $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155) }}">
-  <meta property="og:image"
-    content="{{ $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp') }}">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="{{ url()->current() }}">
-@endpush
+    <meta property="og:title" content="{{ $article->meta_title ?? $article->title }}">
+    <meta property="og:description"
+      content="{{ $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155) }}">
+    <meta property="og:image"
+      content="{{ $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp') }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ url()->current() }}">
+  @endpush
 
 @section('content')
   <main class="antialiased pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 bg-[#0a0a0a]">

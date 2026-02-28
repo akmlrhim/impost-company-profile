@@ -1,11 +1,12 @@
 @extends('layouts.public')
 
 @section('title', 'Legalitas Perusahaan | Impost Media')
-@section('meta_description', 'Informasi legalitas resmi CV. Impost Media Indonesia — NIB, NPWP, dan KBLI terdaftar di
+@section('meta_description',
+  'Informasi legalitas resmi CV. Impost Media Indonesia — NIB, NPWP, dan KBLI terdaftar di
   sistem OSS Republik Indonesia. Transparan, terpercaya, dan profesional.')
 
 @section('content')
-  <main class="pt-24 sm:pt-32 pb-12 sm:pb-20 antialiased bg-[#0a0a0a] min-h-screen">
+  <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased bg-[#0a0a0a] min-h-screen">
     <div class="mx-auto max-w-7xl px-3 sm:px-4 lg:px-8">
 
       {{-- Header --}}

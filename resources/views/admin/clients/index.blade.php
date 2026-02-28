@@ -35,9 +35,6 @@
             </div>
 
             <div class="p-5 flex flex-col flex-1">
-              <h3 class="text-sm font-semibold text-gray-900 mb-2">
-                {{ pathinfo(substr($client->filename, strpos($client->filename, '-') + 1), PATHINFO_FILENAME) }}
-              </h3>
 
               <div class="mt-auto flex items-center gap-2">
                 <x-confirm-delete :action="route('clients.destroy', $client)" label="Hapus" />

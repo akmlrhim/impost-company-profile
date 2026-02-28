@@ -33,7 +33,6 @@ class DashboardController extends Controller
 			'testimoni',
 			'portfolio',
 			'studyCase',
-			'jobs',
 			'team'
 		));
 	}

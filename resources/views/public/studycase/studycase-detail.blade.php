@@ -1,7 +1,11 @@
 @extends('layouts.public')
 
+@section('title', $studyCase->name . ' | Impost Media')
+@section('meta_description', 'Studi kasus ' . $studyCase->name . ' — lihat bagaimana Impost Media memberikan solusi ' .
+  $studyCase->category . ' yang berdampak nyata bagi klien.')
+
 @section('content')
-  <main class="antialiased pt-24 sm:pt-42 pb-12 sm:pb-20 bg-[#0a0a0a]">
+  <main class="antialiased pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 bg-[#0a0a0a]">
 
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
 

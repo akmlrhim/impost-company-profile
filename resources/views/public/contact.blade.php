@@ -11,10 +11,10 @@
     <div class="px-4 mx-auto max-w-7xl">
 
       <div class="mb-12 text-center">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-impost-primary font-medium">
+        <h1 class="text-xl sm:text-3xl md:text-4xl font-bold mb-4 text-impost-primary font-medium">
           Kontak Kami
         </h1>
-        <p class="text-white text-sm md:text-base px-6 mx-auto">
+        <p class="text-white text-xs sm:text-sm md:text-base px-6 mx-auto">
           Hubungi kami untuk informasi lebih lanjut atau konsultasi gratis.
         </p>
       </div>

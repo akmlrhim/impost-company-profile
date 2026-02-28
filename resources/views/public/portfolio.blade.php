@@ -1,11 +1,16 @@
 @extends('layouts.public')
 
+@section('title', 'Portfolio | Impost Media')
+@section('meta_description',
+  'Lihat hasil kerja nyata Impost Media — koleksi portfolio digital marketing, konten
+  kreatif, dan iklan performa untuk berbagai klien di Kalimantan Selatan.')
+
 @section('content')
   <main class="pt-24 sm:pt-42 py-8 sm:py-16 antialiased bg-impost-fifth">
     <div class="mx-auto max-w-7xl">
 
       <div class="mb-8 md:mb-12 text-center px-6">
-        <h1 class="text-3xl md:text-4xl capitalize font-bold mb-4 text-impost-primary">
+        <h1 class="text-2xl md:text-4xl capitalize font-bold mb-4 text-impost-primary">
           {{ $title }}
         </h1>
       </div>
@@ -13,7 +18,7 @@
       <div class="mb-10 px-4">
         <div class="md:hidden w-full max-w-sm mx-auto relative">
           <select onchange="window.location.href=this.value"
-            class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-xl py-3.5 px-5 pr-12 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-sm font-medium shadow-lg">
+            class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-xl py-3 px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-xs sm:text-sm font-medium shadow-lg">
 
             <option value="{{ route('portfolio') }}" {{ empty($activeCategory) ? 'selected' : '' }}>
               Semua Kategori
@@ -75,8 +80,8 @@
                       </video>
                       <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <div
-                          class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                          <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z" />
                           </svg>
                         </div>
@@ -84,7 +89,8 @@
                     @endif
                   @else
                     <div class="w-full aspect-[9/16] flex items-center justify-center">
-                      <svg class="w-24 h-24 text-impost-fourth opacity-70" viewBox="0 0 24 24" fill="none">
+                      <svg class="w-16 h-16 sm:w-24 sm:h-24 text-impost-fourth opacity-70" viewBox="0 0 24 24"
+                        fill="none">
                         <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor"
                           stroke-width="1.5" />
                         <circle cx="9" cy="9" r="2" stroke="currentColor" stroke-width="1.5" />
@@ -97,7 +103,7 @@
 
                   @if ($portfolio->category)
                     <span
-                      class="absolute top-3 left-3 z-10 rounded-full bg-impost-primary/90 text-impost-fifth text-[10px] md:text-xs font-bold uppercase px-3 py-1 shadow">
+                      class="absolute top-2 left-2 sm:top-3 sm:left-3 z-10 rounded-full bg-impost-primary/90 text-impost-fifth text-[9px] sm:text-xs font-bold uppercase px-2.5 py-1 shadow">
                       {{ $portfolio->category->name }}
                     </span>
                   @endif
@@ -114,42 +120,37 @@
 
     </div>
 
-    <div class="mt-24 mb-8">
+    <div class="mt-20 sm:mt-24 mb-8">
       <div class="relative mx-auto w-full bg-impost-primary overflow-hidden">
 
-        <div class="relative p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 max-w-7xl mx-auto">
+        <div
+          class="relative p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 max-w-7xl mx-auto">
 
           <div class="text-center md:text-left space-y-2 flex-1">
-            <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight tracking-tight">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight tracking-tight">
               Punya ide brilian?
             </h3>
-            <p class="text-gray-800 text-sm md:text-base font-medium max-w-md mx-auto md:mx-0">
+            <p class="text-gray-800 text-xs sm:text-sm md:text-base font-medium max-w-md mx-auto md:mx-0">
               Lihat bagaimana kami menyelesaikan masalah klien lain atau langsung hubungi kami untuk diskusi.
             </p>
           </div>
 
-          <div class="flex flex-col sm:flex-row w-full md:w-auto items-center gap-3 md:gap-4 shrink-0">
+          <div class="flex flex-col w-full sm:flex-row md:w-auto items-center gap-3 shrink-0">
 
             <a href="{{ route('study-case') }}"
-              class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-sm transition-all duration-300 hover:bg-gray-900 hover:text-white focus:ring-4 focus:ring-gray-900/20">
+              class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 hover:bg-gray-900 hover:text-white focus:ring-4 focus:ring-gray-900/20">
               <span>Lihat Studi Kasus</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                class="transition-transform group-hover:translate-x-1">
+                class="transition-transform group-hover:translate-x-1 sm:w-4 sm:h-4">
                 <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
                 <circle cx="12" cy="12" r="3" />
               </svg>
             </a>
 
             <a href="{{ route('contact') }}"
-              class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gray-900 text-white rounded-xl font-bold text-sm tracking-wide shadow-lg transition-all duration-300 hover:bg-gray-800 hover:shadow-xl hover:-translate-y-0.5 focus:ring-4 focus:ring-gray-900/30">
+              class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 bg-gray-900 text-white rounded-xl font-bold text-xs sm:text-sm tracking-wide shadow-lg transition-all duration-300 hover:bg-gray-800 hover:shadow-xl hover:-translate-y-0.5 focus:ring-4 focus:ring-gray-900/30">
               <span>Hubungi Kami</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                class="transition-transform group-hover:rotate-45 text-impost-primary">
-                <path d="m5 12 7-7 7 7" />
-                <path d="M12 19V5" />
-              </svg>
             </a>
 
           </div>
@@ -164,25 +165,25 @@
     style="position: fixed; top: 0; left: 0; right: 0; bottom: 0;" onclick="closeMedia()">
 
     <button onclick="closeMedia()"
-      class="fixed top-4 right-4 sm:top-6 sm:right-6 z-[101] w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white text-2xl font-bold transition-all duration-200 backdrop-blur-md border border-white/20 hover:scale-110"
+      class="fixed top-4 right-4 sm:top-6 sm:right-6 z-[101] w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white text-2xl font-bold transition-all duration-200 backdrop-blur-md border border-white/20 hover:scale-110"
       aria-label="Close">
-      <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
 
     <button id="prevBtn" onclick="event.stopPropagation(); previousMedia();"
-      class="fixed left-2 sm:left-4 top-1/2 -translate-y-1/2 z-[101] w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 backdrop-blur-md border border-white/20 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
+      class="fixed left-2 sm:left-4 top-1/2 -translate-y-1/2 z-[101] w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 backdrop-blur-md border border-white/20 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
       aria-label="Previous">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
 
     <button id="nextBtn" onclick="event.stopPropagation(); nextMedia();"
-      class="fixed right-2 sm:right-4 top-1/2 -translate-y-1/2 z-[101] w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 backdrop-blur-md border border-white/20 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
+      class="fixed right-2 sm:right-4 top-1/2 -translate-y-1/2 z-[101] w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 backdrop-blur-md border border-white/20 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
       aria-label="Next">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
       </svg>
     </button>
@@ -199,12 +200,12 @@
     </div>
 
     <div
-      class="fixed top-4 left-1/2 -translate-x-1/2 z-[101] text-white text-sm px-4 py-2 bg-black/50 rounded-full backdrop-blur-md border border-white/20">
+      class="fixed top-4 left-1/2 -translate-x-1/2 z-[101] text-white text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 bg-black/50 rounded-full backdrop-blur-md border border-white/20">
       <span id="currentIndex">1</span> / <span id="totalMedia">1</span>
     </div>
 
     <div
-      class="fixed bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-xs sm:text-sm px-4 py-2 bg-black/30 rounded-full backdrop-blur-sm">
+      class="fixed bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-[10px] sm:text-xs px-3 py-1.5 sm:px-4 sm:py-2 bg-black/30 rounded-full backdrop-blur-sm whitespace-nowrap">
       Klik disini untuk menutup atau ESC
     </div>
   </div>

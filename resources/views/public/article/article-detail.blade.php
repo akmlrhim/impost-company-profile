@@ -1,5 +1,8 @@
 @extends('layouts.public')
 
+@section('title', ($article->meta_title ?? $article->title) . ' | Impost Media')
+@section('meta_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155))
+
 @push('head')
   @if ($article->status == 'draft')
     <meta name="robots" content="noindex, nofollow">

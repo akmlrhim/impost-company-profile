@@ -1,5 +1,10 @@
 @extends('layouts.public')
 
+@section('title', 'Tentang Kami | Impost Media')
+@section('meta_description',
+  'CV Impost Media Indonesia adalah All in One Integrated Digital Marketing Agency berpusat
+  di Banjarbaru, Kalimantan Selatan. Kami hadir dengan pendekatan data-driven dan jaminan uang kembali.')
+
 @section('content')
   <div class="pt-16 sm:pt-20 md:pt-24 antialiased bg-[#0a0a0a]">
 

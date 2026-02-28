@@ -1,4 +1,9 @@
 @extends('layouts.public')
+
+@section('title', 'Impost Media | Agensi Digital Marketing di Kalimantan Selatan')
+@section('meta_description', 'Impost Media adalah All in One Integrated Digital Marketing Agency di Banjarbaru,
+  Kalimantan Selatan. Performance-based advertising dengan jaminan uang kembali.')
+
 @section('content')
   <x-home.hero />
 

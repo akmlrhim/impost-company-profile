@@ -82,15 +82,17 @@
     }
   </style>
 
-  <script type="application/ld+json">
-	{
-		"@@context": "https://schema.org",
-		"@@type": "Organization",
-		"name": "Impost Media",
-		"url": "{{ url('/') }}",
-		"logo": "{{ asset('img/og_image.png') }}"
-	}
-	</script>
+  @php
+    $defaultJsonLd = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Organization',
+        'name' => 'Impost Media',
+        'url' => url('/'),
+        'logo' => asset('img/og_image.png'),
+    ];
+  @endphp
+  <script type="application/ld+json">{!! json_encode($defaultJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+
 </head>
 
 <body class="relative antialiased min-h-screen bg-gradient-to-br from-zinc-950 via-black to-amber-900/20 text-white">

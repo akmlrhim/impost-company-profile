@@ -1,4 +1,10 @@
 @extends('layouts.public')
+
+@section('title', 'Kontak Kami | Impost Media')
+@section('meta_description',
+  'Hubungi Impost Media untuk konsultasi gratis seputar digital marketing, performance ads,
+  dan social media management. Kami siap membantu bisnis Anda berkembang.')
+
 @section('content')
   <main class="pt-24 sm:pt-42 py-8 sm:py-12 antialiased bg-[#0a0a0a]">
 

@@ -20,6 +20,12 @@
   </url>
 
   <url>
+    <loc>{{ route('vsl-form') }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>{{ route('docs') }}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

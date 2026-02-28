@@ -1,5 +1,10 @@
 @extends('layouts.public')
 
+@section('title', 'Artikel | Impost Media')
+@section('meta_description',
+  'Jelajahi artikel seputar strategi digital marketing, data, dan pertumbuhan bisnis dari tim
+  Impost Media — agensi digital marketing terpercaya di Kalimantan Selatan.')
+
 @section('content')
   <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased bg-[#0a0a0a]">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -96,8 +101,7 @@
 
               <div class="p-4 sm:p-6 flex flex-col flex-1 border-t border-white/5">
 
-                <div
-                  class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs font-medium text-white mb-3 sm:mb-4">
+                <div class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs font-medium text-white mb-3 sm:mb-4">
                   <div class="flex items-center gap-1 sm:gap-1.5">
                     <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-impost-primary" fill="none" stroke="currentColor"
                       viewBox="0 0 24 24">

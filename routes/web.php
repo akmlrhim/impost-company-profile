@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobPostingController;
+use App\Http\Controllers\JobVacancyController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PortfolioCategoryController;
 use App\Http\Controllers\PortfolioController;
@@ -47,6 +48,7 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::post('article/comment', [CommentController::class, 'store'])->name('article.comment');
 
 		Route::get('careers', [HomeController::class, 'job'])->name('careers');
+		Route::get('job/{job}', [HomeController::class, 'jobDetail'])->name('job.details');
 
 		Route::get('docs', [HomeController::class, 'docs'])->name('docs');
 		Route::get('company-legality', [HomeController::class, 'legal'])->name('legal');
@@ -67,6 +69,9 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		// service route 
 		Route::resource('services', ServiceController::class)->except('show');
+
+		// job vac. 
+		Route::resource('jobvacancies', JobVacancyController::class);
 
 		// article route 
 		Route::resource('articles', ArticleController::class)->except('show');

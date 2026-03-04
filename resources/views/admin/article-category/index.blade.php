@@ -5,7 +5,7 @@
   <x-search-bar search-route="{{ route('article-categories.index') }}" />
 
   <button type="button"
-    class="px-3 py-2 rounded-md bg-blue-900 text-sm mb-4 text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+    class="inline-flex px-3 py-2 rounded-md bg-blue-900 text-sm mb-4 text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
     data-modal-target="add-category-modal" data-modal-toggle="add-category-modal">
     Tambah Kategori
   </button>

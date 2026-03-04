@@ -10,8 +10,8 @@
 
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
-      <div class="mb-10 md:mb-16 text-center">
-        <h1 class="text-2xl md:text-4xl capitalize font-bold mb-3 md:mb-4 text-impost-primary">
+      <div class="mb-8 md:mb-12 text-center px-6">
+        <h1 class="text-2xl md:text-4xl capitalize font-bold mb-4 text-impost-primary">
           {{ $title }}
         </h1>
       </div>

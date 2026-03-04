@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\ArticleCategory;
-use App\Models\JobPosting;
+use App\Models\JobVacancy;
 use App\Models\Leads;
 use App\Models\Portfolio;
 use App\Models\PortfolioCategory;
@@ -167,9 +167,15 @@ class HomeController extends Controller
 
 	public function job()
 	{
-		$title = 'Karir';
+		$job = JobVacancy::paginate(12);
 
-		return view('public.jobs', compact('title'));
+		return view('public.job.jobs', compact('job'));
+	}
+
+	public function jobDetail(JobVacancy $job)
+	{
+		$job->load('details');
+		return view('public.job.job-detail', compact('job'));
 	}
 
 	public function vslForm()

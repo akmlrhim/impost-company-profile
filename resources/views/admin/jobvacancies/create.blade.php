@@ -155,6 +155,8 @@
                 <option value="Kualifikasi" {{ $detail['section'] == 'Kualifikasi' ? 'selected' : '' }}>Kualifikasi
                 </option>
                 <option value="Benefit" {{ $detail['section'] == 'Benefit' ? 'selected' : '' }}>Benefit</option>
+                <option value="Posisi yang dibutuhkan"
+                  {{ $detail['section'] == 'Posisi yang dibutuhkan' ? 'selected' : '' }}>Posisi yang dibutuhkan</option>
               </select>
             </div>
 

@@ -33,7 +33,7 @@ class JobVacancyRequest extends FormRequest
 			'poster' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
 
 			'details' => 'required|array|min:1',
-			'details.*.section' => 'required|in:Tanggung Jawab,Kualifikasi,Benefit',
+			'details.*.section' => 'required',
 			'details.*.content' => 'required|string',
 		];
 	}

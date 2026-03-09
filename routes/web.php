@@ -8,7 +8,6 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\JobPostingController;
 use App\Http\Controllers\JobVacancyController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PortfolioCategoryController;
@@ -24,6 +23,14 @@ use Illuminate\Support\Facades\Route;
 
 // sitemap
 Route::get('sitemap.xml', [SitemapController::class, 'index']);
+
+Route::get('/public', function () {
+	return redirect('/');
+});
+
+Route::get('/public/{any}', function ($any) {
+	return redirect('/' . $any);
+})->where('any', '.*');
 
 Route::middleware('throttle:30,1')->group(function () {
 

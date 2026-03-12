@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\ArticleCategory;
+use App\Models\Client;
 use App\Models\JobVacancy;
 use App\Models\Leads;
 use App\Models\Portfolio;
 use App\Models\PortfolioCategory;
+use App\Models\Service;
 use App\Models\StudyCase;
 use App\Models\Testimonial;
-use App\Services\ClientService;
-use App\Services\ServiceService;
 use App\Services\TeamService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,11 +22,28 @@ class HomeController extends Controller
 	{
 		$title = 'Home';
 
-		$services = ServiceService::all();
+		$services = Service::select(
+			'id',
+			'service_name',
+			'slug',
+			'description',
+			'cover_path',
+			'sort',
+			'category'
+		)->orderBy('sort', 'ASC')->get();
 
-		$clients = ClientService::all();
-		$testimonials = Testimonial::select('name', 'company_name', 'content', 'media_path', 'media_type')->latest()->get();
+		$clients = Client::select('id', 'filename', 'client_logo')->get();
+
+		$testimonials = Testimonial::select(
+			'name',
+			'company_name',
+			'content',
+			'media_path',
+			'media_type'
+		)->latest()->get();
+
 		$portfolios = Portfolio::latest()->get();
+
 		$portfolioCategories = PortfolioCategory::select('id', 'name', 'slug')
 			->withCount('portfolios')
 			->has('portfolios')
@@ -147,9 +164,7 @@ class HomeController extends Controller
 	{
 		$title = 'About';
 
-		$team = TeamService::allCached();
-
-		return view('public.about', compact('title', 'team'));
+		return view('public.about', compact('title'));
 	}
 
 	public function contact()

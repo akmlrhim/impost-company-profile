@@ -1,6 +1,7 @@
 <nav x-data="{
     mobileMenuOpen: false,
     activeDropdown: null,
+    scrolled: false,
     toggleDropdown(name) {
         this.activeDropdown = this.activeDropdown === name ? null : name;
     },
@@ -10,10 +11,19 @@
     closeAll() {
         this.mobileMenuOpen = false;
         this.activeDropdown = null;
+    },
+    init() {
+        this.scrolled = window.scrollY > 10;
+        window.addEventListener('scroll', () => {
+            this.scrolled = window.scrollY > 10;
+        });
     }
 }" @click.away="closeDropdown()" @keydown.escape.window="closeAll()"
-  class="fixed top-0 z-50 w-full backdrop-blur-md bg-black/60 border-b border-white/10 transition-colors duration-300"
-  role="navigation" aria-label="Main navigation">
+  :class="scrolled
+      ?
+      'backdrop-blur-md bg-black/80 border-b border-white/10' :
+      'bg-transparent border-b border-transparent'"
+  class="fixed top-0 z-50 w-full transition-all duration-300" role="navigation" aria-label="Main navigation">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-14 md:h-20">

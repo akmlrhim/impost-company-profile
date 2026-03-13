@@ -75,7 +75,7 @@
 
       <div class="flex items-center justify-between pt-2">
         <button type="submit" :disabled="loading"
-          class="py-2 sm:py-2.5 px-4 sm:px-6 text-xs sm:text-sm font-semibold cursor-pointer text-white bg-primary-600 rounded-md hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed">
+          class="py-2 sm:py-2.5 px-4 sm:px-6 text-xs sm:text-sm font-semibold cursor-pointer text-white bg-blue-600 rounded-md hover:bg-primary-700 focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
           <span x-text="loading ? 'Mengirim..' : 'Kirim Komentar'"></span>
         </button>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobVacancyController;
 use App\Http\Controllers\LandingController;
@@ -23,14 +24,6 @@ use Illuminate\Support\Facades\Route;
 
 // sitemap
 Route::get('sitemap.xml', [SitemapController::class, 'index']);
-
-Route::get('/public', function () {
-	return redirect('/');
-});
-
-Route::get('/public/{any}', function ($any) {
-	return redirect('/' . $any);
-})->where('any', '.*');
 
 Route::middleware('throttle:30,1')->group(function () {
 
@@ -107,5 +100,8 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		// portfolio category
 		Route::resource('portfolio-categories', PortfolioCategoryController::class)->except(['create', 'show', 'edit']);
+
+		// employee route
+		Route::resource('employees', EmployeeController::class)->except(['show']);
 	});
 });

@@ -34,16 +34,29 @@
         <ul class="space-y-2.5">
           @php
             $layanan = [
-                ['label' => 'Digital Marketing', 'href' => url('/') . '#services'],
-                ['label' => 'Event Organizer', 'href' => url('/') . '#services'],
-                ['label' => 'Hiburan & Musik', 'href' => url('/') . '#services'],
-                ['label' => 'Pengadaan Barang', 'href' => url('/') . '#services'],
+                ['label' => 'Content & Social Media Management', 'href' => url('/') . '/#services'],
+                ['label' => 'Performance Marketing (Ads)', 'href' => url('/') . '/#services'],
+                ['label' => 'Branding & Growth System', 'href' => url('/') . '/#services'],
+                ['label' => 'Marketplace Optimization', 'href' => url('/') . '/#services'],
+                ['label' => 'Live Stream', 'href' => url('/') . '/#services'],
+                ['label' => 'App Development & Website', 'href' => url('/') . '/#services'],
+                ['label' => 'Customer Service', 'href' => url('/') . '/#services'],
+                ['label' => 'CRM, Sales Pipeline, & CS AI', 'href' => url('/') . '/#services'],
+                ['label' => 'Brand Foundation, Branding, Guideline, & Logo', 'href' => url('/') . '/#services'],
+                [
+                    'label' => 'Foto Produk, Foto Katalog & Dokumentasi Event/Gathering',
+                    'href' => url('/') . '/#services',
+                ],
+                [
+                    'label' => 'Forecasting & Growth',
+                    'href' => url('/') . '/#services',
+                ],
             ];
           @endphp
           @foreach ($layanan as $item)
             <li>
               <a href="{{ $item['href'] }}"
-                class="text-xs sm:text-sm text-white/50 hover:text-impost-primary transition-colors duration-200">
+                class="text-xs text-white/50 hover:text-impost-primary transition-colors duration-200">
                 {{ $item['label'] }}
               </a>
             </li>

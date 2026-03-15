@@ -68,7 +68,7 @@
                   <div class="bg-slate-50/70 p-2.5 sm:p-3.5 rounded-lg sm:rounded-xl border border-slate-100">
                     <p class="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-widest">Posisi</p>
                     <p class="mt-0.5 sm:mt-1 text-sm sm:text-base font-bold text-slate-800">{{ $employee->position }}</p>
-                  </div>
+                  </div>	
 
                 </div>
 
@@ -83,7 +83,7 @@
                     <span class="text-[10px] sm:text-xs font-medium">
                       Terverifikasi bergabung sejak:
                       <span
-                        class="font-bold">{{ \Carbon\Carbon::parse($employee->join_date)->translatedFormat('d F Y') }}</span>
+                        class="font-bold">{{ $employee->join_date ? \Carbon\Carbon::parse($employee->join_date)->translatedFormat('d F Y') : '-' }}</span>
                     </span>
                   </div>
                 </div>

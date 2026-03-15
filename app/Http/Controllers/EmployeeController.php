@@ -56,7 +56,7 @@ class EmployeeController extends Controller
 				'slug' => Str::slug($request->fullname),
 				'position' => Str::title($request->position),
 				'employee_id' => $request->employee_id,
-				'join_date' => $request->join_date,
+				'join_date'   => $request->filled('join_date') ? $request->join_date : null,
 			];
 
 			if ($request->hasFile('photo')) {

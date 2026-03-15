@@ -24,7 +24,7 @@ class EmployeeRequest extends FormRequest
 		$employeesId = $this->route('employee')?->id;
 
 		return [
-			'fullname' => 'required|string|max:255|unique:employees,fullname,' . $employeesId,
+			'fullname' => 'required|string|max:255',
 			'position' => 'required|string|max:255',
 			'photo' => 'nullable|image|mimes:jpeg,png,jpg',
 			'join_date' => 'nullable|date',

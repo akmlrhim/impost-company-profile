@@ -54,7 +54,7 @@ class EmployeeController extends Controller
 			$data = [
 				'fullname' => $request->fullname,
 				'slug' => Str::slug($request->fullname),
-				'position' => Str::title($request->position),
+				'position' => $request->position,
 				'employee_id' => $request->employee_id,
 				'join_date'   => $request->filled('join_date') ? $request->join_date : null,
 			];
@@ -102,7 +102,7 @@ class EmployeeController extends Controller
 			$data = [
 				'fullname' => $request->fullname,
 				'slug' => Str::slug($request->fullname),
-				'position' => Str::title($request->position),
+				'position' => $request->position,
 				'employee_id' => $request->employee_id,
 				'join_date' => $request->join_date,
 			];

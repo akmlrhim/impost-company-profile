@@ -25,7 +25,7 @@ class EmployeeRequest extends FormRequest
 
 		return [
 			'fullname' => 'required|string|max:255|unique:employees,fullname,' . $employeesId,
-			'position' => 'required|string|max:255|unique:employees,position,' . $employeesId,
+			'position' => 'required|string|max:255',
 			'photo' => 'nullable|image|mimes:jpeg,png,jpg',
 			'join_date' => 'nullable|date',
 			'employee_id' => 'required|string|max:255|unique:employees,employee_id,' . $employeesId,

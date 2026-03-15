@@ -48,7 +48,7 @@
               </td>
 
               <td class="py-3 px-4 text-sm text-gray-600">
-                {{ \Carbon\Carbon::parse($employee->join_date)->format('d M Y') }}
+                {{ $employee->join_date ? \Carbon\Carbon::parse($employee->join_date)->format('d M Y') : '-' }}
               </td>
 
               <td class="py-3 px-4 text-center space-x-1">

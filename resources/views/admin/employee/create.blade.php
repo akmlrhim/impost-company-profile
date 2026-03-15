@@ -1,14 +1,13 @@
 @extends('layouts.admin')
 @section('content')
   <div class="mx-auto py-4">
-    <form action="{{ route('teams.store') }}" method="POST" enctype="multipart/form-data"
+    <form action="{{ route('employees.store') }}" method="POST" enctype="multipart/form-data"
       class="bg-white rounded-lg border border-gray-200 overflow-hidden" x-data="{ loading: false }"
       @submit.prevent="loading = true; $el.submit()">
       @csrf
 
       <div class="p-6 space-y-6">
-        {{-- nama lengkap --}}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label for="fullname" class="block text-sm font-medium text-gray-900 mb-2">
               Nama Lengkap
@@ -21,10 +20,23 @@
             @enderror
           </div>
 
-          {{-- posisi --}}
+          <div>
+            <label for="employee_id" class="block text-sm font-medium text-gray-900 mb-2">
+              ID Karyawan
+            </label>
+            <input type="text" id="employee_id" name="employee_id"
+              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+              value="{{ old('employee_id') }}" placeholder="Contoh: IM-001" autocomplete="off" />
+            @error('employee_id')
+              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+            @enderror
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label for="position" class="block text-sm font-medium text-gray-900 mb-2">
-              Posisi
+              Posisi / Jabatan
             </label>
             <input type="text" id="position" name="position"
               class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
@@ -34,22 +46,19 @@
             @enderror
           </div>
 
-          {{-- sort  --}}
           <div>
-            <label for="sort_order" class="block text-sm font-medium text-gray-900 mb-2">
-              Urutan
+            <label for="join_date" class="block text-sm font-medium text-gray-900 mb-2">
+              Tanggal Bergabung
             </label>
-            <input type="number" id="sort_order" name="sort_order" min="0"
+            <input type="date" id="join_date" name="join_date" onclick="this.showPicker()"
               class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-              value="{{ old('sort_order') }}" placeholder="Masukkan urutan keberapa?" autocomplete="off" />
-            @error('sort_order')
+              value="{{ old('join_date') }}" />
+            @error('join_date')
               <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
             @enderror
           </div>
         </div>
-        {{-- end  --}}
 
-        {{-- photo  --}}
         <div x-data="{ preview: null }">
           <label class="block text-sm font-medium mb-2" for="photo">
             Foto Profil
@@ -58,11 +67,11 @@
           <input type="file" name="photo" id="photo" accept="image/*"
             class="w-full text-sm rounded-sm border border-gray-300"
             @change="
-					const file = $event.target.files[0];
-					if (file) {
-						preview = URL.createObjectURL(file);
-					}
-				">
+              const file = $event.target.files[0];
+              if (file) {
+                preview = URL.createObjectURL(file);
+              }
+            ">
 
           @error('photo')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
@@ -76,48 +85,18 @@
             </div>
           </template>
         </div>
-        {{-- end  --}}
-
-        {{-- sosmed  --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label for="instagram_link" class="block text-sm font-medium text-gray-900 mb-2">
-              Link Instagram
-            </label>
-            <input type="url" id="instagram_link" name="instagram_link"
-              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-              value="{{ old('instagram_link') }}" placeholder="https://www.instagram.com" autocomplete="off" />
-            @error('instagram_link')
-              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-            @enderror
-          </div>
-
-          <div>
-            <label for="linkedin_link" class="block text-sm font-medium text-gray-900 mb-2">
-              Link LinkedIn
-            </label>
-            <input type="url" id="linkedin_link" name="linkedin_link"
-              class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
-              value="{{ old('linkedin_link') }}" placeholder="https://www.linkedin.com/in/" autocomplete="off" />
-            @error('linkedin_link')
-              <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
-            @enderror
-          </div>
-        </div>
-        {{-- end  --}}
 
       </div>
 
       <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-end gap-3">
-        <a href="{{ route('teams.index') }}"
+        <a href="{{ route('employees.index') }}"
           class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500">
           Batal
         </a>
 
         <button type="submit" :disabled="loading"
           class="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
-
-          <span x-text="loading ? 'Menyimpan...' : 'Simpan Team'"></span>
+          <span x-text="loading ? 'Menyimpan...' : 'Simpan Karyawan'"></span>
         </button>
       </div>
     </form>

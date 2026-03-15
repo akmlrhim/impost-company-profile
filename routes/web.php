@@ -17,9 +17,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StudyCaseController;
-use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
-// use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerifyIdController;
 use Illuminate\Support\Facades\Route;
 
 // sitemap
@@ -79,9 +78,6 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::patch('articles/{article}/comments/{comment}/status', [CommentController::class, 'status'])->name('articles.comments.status');
 		Route::post('editor-upload', [EditorController::class, 'store'])->name('editor.upload');
 
-		// team route 
-		Route::resource('teams', TeamController::class)->except('show');
-
 		// client route 
 		Route::resource('clients', ClientController::class)->except(['show', 'edit', 'update']);
 		Route::delete('truncate-clients', [ClientController::class, 'truncate'])->name('truncate-clients');
@@ -101,7 +97,10 @@ Route::middleware('throttle:30,1')->group(function () {
 		// portfolio category
 		Route::resource('portfolio-categories', PortfolioCategoryController::class)->except(['create', 'show', 'edit']);
 
-		// employee route
-		Route::resource('employees', EmployeeController::class)->except(['show']);
+		// emplpoyee route
+		Route::resource('employees', EmployeeController::class);
+		Route::get('employees/{employee}/download-qr', [EmployeeController::class, 'downloadQrCode'])->name('employees.downloadQr');
 	});
+
+	Route::get('verify-id/{employee:slug}', [VerifyIdController::class, 'verify'])->name('verify-id');
 });

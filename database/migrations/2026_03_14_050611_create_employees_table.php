@@ -11,15 +11,15 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('teams', function (Blueprint $table) {
+		Schema::create('employees', function (Blueprint $table) {
 			$table->id();
-			$table->string('slug');
-			$table->string('fullname')->index();
+			$table->string('fullname')->unique();
+			$table->string('slug')->unique();
+			$table->string('employee_id')->unique();
 			$table->string('position');
-			$table->integer('sort_order');
 			$table->string('photo')->nullable();
-			$table->string('instagram_link')->nullable();
-			$table->string('linkedin_link')->nullable();
+			$table->string('qr_code_id')->nullable();
+			$table->date('join_date')->nullable();
 			$table->timestamps();
 		});
 	}
@@ -29,6 +29,6 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('teams');
+		Schema::dropIfExists('employees');
 	}
 };

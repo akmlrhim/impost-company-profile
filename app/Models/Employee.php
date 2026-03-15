@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Team extends Model
+class Employee extends Model
 {
 	/** @use HasFactory<\Database\Factories\TeamFactory> */
 	use HasFactory;
@@ -13,11 +13,11 @@ class Team extends Model
 	protected $fillable = [
 		'slug',
 		'fullname',
+		'employee_id',
 		'position',
 		'photo',
-		'instagram_link',
-		'linkedin_link',
-		'sort_order'
+		'join_date',
+		'qr_code_id',
 	];
 
 	public function getRouteKeyName()

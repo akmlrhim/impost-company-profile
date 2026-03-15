@@ -12,7 +12,6 @@ use App\Models\PortfolioCategory;
 use App\Models\Service;
 use App\Models\StudyCase;
 use App\Models\Testimonial;
-use App\Services\TeamService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -286,5 +285,12 @@ class HomeController extends Controller
 		$title = 'Legalitas';
 
 		return view('public.legal', compact('title'));
+	}
+
+	public function verifyId()
+	{
+		$title = 'Verifikasi ID';
+
+		return view('verify-id.content', compact('title'));
 	}
 }

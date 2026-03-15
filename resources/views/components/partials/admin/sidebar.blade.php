@@ -24,138 +24,156 @@
             <span class="ms-3">Dashboard</span>
           </x-nav-link>
         </li>
-
-        <li>
-          <x-nav-link href="{{ route('articles.index') }}" :active="request()->routeIs('articles.*')">
+        <li x-data="{ open: false }" class="relative">
+          <button @click="open = !open"
+            class="flex items-center w-full px-2 py-2 focus:outline-none rounded-md text-white"
+            :class="{ 'bg-gray-800': open }" type="button" aria-haspopup="true" :aria-expanded="open.toString()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
               class="size-5 shrink-0">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-              <polyline points="14 2 14 8 20 8" />
-              <line x1="16" x2="8" y1="13" y2="13" />
-              <line x1="16" x2="8" y1="17" y2="17" />
-              <polyline points="10 9 9 9 8 9" />
+              <path d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <span class="ms-3">Artikel</span>
-          </x-nav-link>
+            <span class="ms-3 flex-1 text-left">CMS</span>
+            <svg :class="{ 'rotate-180': open }" class="transition-transform duration-200 size-4 ml-auto text-gray-400"
+              fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <ul x-show="open" @click.away="open = false" x-transition class="mt-1 pl-8 space-y-1 text-gray-300"
+            style="display: none;">
+            <li>
+              <x-nav-link href="{{ route('articles.index') }}" :active="request()->routeIs('articles.*')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="size-5 shrink-0">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" x2="8" y1="13" y2="13" />
+                  <line x1="16" x2="8" y1="17" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg>
+                <span class="ms-3">Artikel</span>
+              </x-nav-link>
+            </li>
+            <li>
+              <x-nav-link href="{{ route('portfolio.index') }}" :active="request()->routeIs('portfolio.*')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="size-5 shrink-0">
+                  <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                  <circle cx="9" cy="9" r="2" />
+                  <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                </svg>
+                <span class="ms-3">Portfolio</span>
+              </x-nav-link>
+            </li>
+            <li>
+              <x-nav-link href="{{ route('services.index') }}" :active="request()->routeIs('services.*')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="size-5 shrink-0">
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                  <line x1="12" y1="22.08" x2="12" y2="12" />
+                </svg>
+                <span class="ms-3">Layanan</span>
+              </x-nav-link>
+            </li>
+            <li>
+              <x-nav-link href="{{ route('study-case.index') }}" :active="request()->routeIs('study-case.*')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="size-5 shrink-0">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                </svg>
+                <span class="ms-3">Study Case</span>
+              </x-nav-link>
+            </li>
+            <li>
+              <x-nav-link href="{{ route('employees.index') }}" :active="request()->routeIs('employees.*')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="size-5 shrink-0">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                <span class="ms-3">Tim</span>
+              </x-nav-link>
+            </li>
+            <li>
+              <x-nav-link href="{{ route('clients.index') }}" :active="request()->routeIs('clients.*')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="size-5 shrink-0">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                <span class="ms-3">Klien</span>
+              </x-nav-link>
+            </li>
+            <li>
+              <x-nav-link href="{{ route('testimonials.index') }}" :active="request()->routeIs('testimonials.*')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="size-5 shrink-0">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+                <span class="ms-3">Testimoni</span>
+              </x-nav-link>
+            </li>
+            <li>
+              <x-nav-link href="{{ route('jobvacancies.index') }}" :active="request()->routeIs('jobvacancies.*')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-briefcase-business-icon lucide-briefcase-business">
+                  <path d="M12 12h.01" />
+                  <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                  <path d="M22 13a18.15 18.15 0 0 1-20 0" />
+                  <rect width="20" height="14" x="2" y="6" rx="2" />
+                </svg>
+                <span class="ms-3">Loker</span>
+              </x-nav-link>
+            </li>
+          </ul>
         </li>
 
-        <li>
-          <x-nav-link href="{{ route('portfolio.index') }}" :active="request()->routeIs('portfolio.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="size-5 shrink-0">
-              <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-              <circle cx="9" cy="9" r="2" />
-              <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-            </svg>
-            <span class="ms-3">Portfolio</span>
-          </x-nav-link>
-        </li>
-
-        <li>
-          <x-nav-link href="{{ route('services.index') }}" :active="request()->routeIs('services.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="size-5 shrink-0">
+        <li x-data="{ open: false }" class="relative">
+          <button @click="open = !open"
+            class="flex items-center w-full px-2 py-2 focus:outline-none rounded-md text-white"
+            :class="{ 'bg-gray-800': open }" type="button" aria-haspopup="true" :aria-expanded="open.toString()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-tags-icon lucide-tags">
               <path
-                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-              <line x1="12" y1="22.08" x2="12" y2="12" />
+                d="M13.172 2a2 2 0 0 1 1.414.586l6.71 6.71a2.4 2.4 0 0 1 0 3.408l-4.592 4.592a2.4 2.4 0 0 1-3.408 0l-6.71-6.71A2 2 0 0 1 6 9.172V3a1 1 0 0 1 1-1z" />
+              <path d="M2 7v6.172a2 2 0 0 0 .586 1.414l6.71 6.71a2.4 2.4 0 0 0 3.191.193" />
+              <circle cx="10.5" cy="6.5" r=".5" fill="currentColor" />
             </svg>
-            <span class="ms-3">Layanan</span>
-          </x-nav-link>
-        </li>
-
-        <li>
-          <x-nav-link href="{{ route('study-case.index') }}" :active="request()->routeIs('study-case.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="size-5 shrink-0">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            <span class="ms-3 flex-1 text-left">Kategori</span>
+            <svg :class="{ 'rotate-180': open }" class="transition-transform duration-200 size-4 ml-auto text-gray-400"
+              fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 9l6 6 6-6" />
             </svg>
-            <span class="ms-3">Study Case</span>
-          </x-nav-link>
-        </li>
-
-        <li>
-          <x-nav-link href="{{ route('teams.index') }}" :active="request()->routeIs('teams.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="size-5 shrink-0">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-            <span class="ms-3">Tim</span>
-          </x-nav-link>
-        </li>
-
-        <li>
-          <x-nav-link href="{{ route('clients.index') }}" :active="request()->routeIs('clients.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="size-5 shrink-0">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-            <span class="ms-3">Klien</span>
-          </x-nav-link>
-        </li>
-
-        <li>
-          <x-nav-link href="{{ route('testimonials.index') }}" :active="request()->routeIs('testimonials.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="size-5 shrink-0">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
-            <span class="ms-3">Testimoni</span>
-          </x-nav-link>
-        </li>
-
-        <li>
-          <x-nav-link href="{{ route('article-categories.index') }}" :active="request()->routeIs('article-categories.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="size-5 shrink-0">
-              <path d="M3 6h18" />
-              <path d="M7 12h10" />
-              <path d="M10 18h4" />
-            </svg>
-            <span class="ms-3">Kategori Artikel</span>
-          </x-nav-link>
-        </li>
-
-        <li>
-          <x-nav-link href="{{ route('portfolio-categories.index') }}" :active="request()->routeIs('portfolio-categories.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="size-5 shrink-0">
-              <path d="M3 6h18" />
-              <path d="M7 12h10" />
-              <path d="M10 18h4" />
-            </svg>
-            <span class="ms-3">Kategori Portfolio</span>
-          </x-nav-link>
-        </li>
-
-        <li>
-          <x-nav-link href="{{ route('jobvacancies.index') }}" :active="request()->routeIs('jobvacancies.*')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="lucide lucide-briefcase-business-icon lucide-briefcase-business">
-              <path d="M12 12h.01" />
-              <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-              <path d="M22 13a18.15 18.15 0 0 1-20 0" />
-              <rect width="20" height="14" x="2" y="6" rx="2" />
-            </svg>
-            <span class="ms-3">Loker</span>
-          </x-nav-link>
+          </button>
+          <ul x-show="open" @click.away="open = false" x-transition class="mt-1 pl-8 space-y-1 text-gray-300"
+            style="display: none;">
+            <li>
+              <x-nav-link href="{{ route('article-categories.index') }}" :active="request()->routeIs('article-categories.*')">
+                <span class="ms-3">Kategori Artikel</span>
+              </x-nav-link>
+            </li>
+            <li>
+              <x-nav-link href="{{ route('portfolio-categories.index') }}" :active="request()->routeIs('portfolio-categories.*')">
+                <span class="ms-3">Kategori Portfolio</span>
+              </x-nav-link>
+            </li>
+          </ul>
         </li>
 
         <li class="h-4"></li>

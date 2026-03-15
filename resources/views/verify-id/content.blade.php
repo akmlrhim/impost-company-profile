@@ -52,8 +52,7 @@
                     Lengkap</p>
                   <h3 class="text-lg sm:text-2xl font-extrabold text-slate-900 leading-tight">{{ $employee->fullname }}
                   </h3>
-                  <p class="text-[11px] sm:text-xs text-blue-600 font-medium mt-0.5"><span>@</span>{{ $employee->slug }}
-                  </p>
+
                 </div>
 
                 <div
@@ -68,7 +67,7 @@
                   <div class="bg-slate-50/70 p-2.5 sm:p-3.5 rounded-lg sm:rounded-xl border border-slate-100">
                     <p class="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-widest">Posisi</p>
                     <p class="mt-0.5 sm:mt-1 text-sm sm:text-base font-bold text-slate-800">{{ $employee->position }}</p>
-                  </div>	
+                  </div>
 
                 </div>
 

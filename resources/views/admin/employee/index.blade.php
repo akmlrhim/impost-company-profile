@@ -21,6 +21,7 @@
         <tbody class="divide-y divide-gray-100">
           @forelse ($employees as $employee)
             <tr class="hover:bg-gray-50 transition">
+
               <td class="py-3 px-4">
                 <div class="flex items-center space-x-2">
                   @if ($employee->photo)
@@ -48,7 +49,7 @@
               </td>
 
               <td class="py-3 px-4 text-sm text-gray-600">
-                {{ $employee->join_date ? date('d-m-Y', strtotime($employee->join_date)) : '-' }}
+                {{ $employee->join_date ? \Carbon\Carbon::parse($employee->join_date)->format('d M Y') : '-' }}
               </td>
 
               <td class="py-3 px-4 text-center space-x-1">

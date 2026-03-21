@@ -1,5 +1,12 @@
 @extends('layouts.public')
 
+@section('title', $job->title . ' | Impost Media')
+@section('meta_description',
+  'Lowongan kerja ' .
+  $job->title .
+  ' di Impost Media. Lihat detail pekerjaan, kualifikasi,
+  dan cara melamar.')
+
 @section('content')
   <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased bg-impost-fifth min-h-screen">
 
@@ -66,18 +73,16 @@
 
                   <div
                     class="prose prose-invert max-w-none 
-            
-									prose-p:text-xs sm:prose-p:text-sm 
-									prose-ul:text-xs sm:prose-ul:text-sm 
-									prose-ol:text-xs sm:prose-ol:text-sm 
-									prose-li:text-xs sm:prose-li:text-sm 
-									prose-headings:text-sm sm:prose-headings:text-base
-			
-									prose-p:text-gray-300 prose-p:leading-relaxed
-									prose-headings:text-white 
-									prose-strong:text-impost-primary
-									prose-ul:text-gray-300 prose-li:marker:text-impost-fourth
-									prose-a:text-impost-primary prose-a:no-underline hover:prose-a:underline">
+                  prose-p:text-xs sm:prose-p:text-sm 
+                  prose-ul:text-xs sm:prose-ul:text-sm 
+                  prose-ol:text-xs sm:prose-ol:text-sm 
+                  prose-li:text-xs sm:prose-li:text-sm 
+                  prose-headings:text-sm sm:prose-headings:text-base
+                  prose-p:text-gray-300 prose-p:leading-relaxed
+                  prose-headings:text-white 
+                  prose-strong:text-impost-primary
+                  prose-ul:text-gray-300 prose-li:marker:text-impost-fourth
+                  prose-a:text-impost-primary prose-a:no-underline hover:prose-a:underline">
                     {!! $detail->content !!}
                   </div>
                 </div>
@@ -173,18 +178,56 @@
             </div>
 
             @if ($job->poster)
-              <div class="bg-impost-fifth border border-impost-fourth rounded-lg p-2">
-                <div class="relative group overflow-hidden rounded">
-                  <img src="{{ asset('storage/' . $job->poster) }}"
+              <div class="bg-impost-fifth border border-impost-fourth rounded-lg p-2" x-data="{ showLightbox: false }">
+                <div class="relative group overflow-hidden rounded cursor-pointer"
+                  @click="showLightbox = true; document.body.style.overflow = 'hidden'">
+                  <img src="{{ asset('storage/' . $job->poster) }}" alt="Poster {{ $job->title }}"
                     class="w-full h-auto object-cover object-top opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100">
-                  <a href="{{ asset('storage/' . $job->poster) }}" target="_blank"
+
+                  <div
                     class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span
                       class="flex items-center gap-2 text-white bg-impost-primary px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
-                      Lihat Poster
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path>
+                      </svg>
+                      Perbesar Poster
                     </span>
-                  </a>
+                  </div>
                 </div>
+
+                <template x-teleport="body">
+                  <div x-show="showLightbox" x-cloak
+                    @click.self="showLightbox = false; document.body.style.overflow = 'auto'"
+                    @keydown.escape.window="showLightbox = false; document.body.style.overflow = 'auto'"
+                    x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200"
+                    x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                    class="fixed inset-0 z-[99999] flex items-center justify-center bg-black/98 backdrop-blur-md"
+                    style="margin: 0 !important; padding: 0 !important;">
+
+                    <button @click="showLightbox = false; document.body.style.overflow = 'auto'"
+                      class="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100000] p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all hover:scale-110 active:scale-95">
+                      <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+
+                    <div class="relative w-full h-full flex items-center justify-center p-4 sm:p-8">
+                      <div @click.stop x-show="showLightbox"
+                        x-transition:enter="transition ease-out duration-300 delay-100"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-200"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90"
+                        class="relative max-w-[95vw] max-h-[90vh]">
+                        <img src="{{ asset('storage/' . $job->poster) }}" alt="Poster {{ $job->title }}"
+                          class="w-auto h-auto max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl ring-1 ring-white/10">
+                      </div>
+                    </div>
+                  </div>
+                </template>
               </div>
             @endif
 

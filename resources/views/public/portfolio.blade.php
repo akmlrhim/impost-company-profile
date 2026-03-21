@@ -1,7 +1,9 @@
 @extends('layouts.public')
 
 @section('title', 'Portfolio | Impost Media')
-@section('meta_description', 'Lihat hasil kerja nyata Impost Media — koleksi portfolio digital marketing, konten kreatif, dan iklan performa untuk berbagai klien di Kalimantan Selatan.')
+@section('meta_description',
+  'Lihat hasil kerja nyata Impost Media — koleksi portfolio digital marketing, konten
+  kreatif, dan iklan performa untuk berbagai klien di Kalimantan Selatan.')
 
 @section('content')
   <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased bg-impost-fifth">
@@ -18,7 +20,8 @@
           <div class="md:hidden w-full max-w-sm mx-auto relative">
             <select onchange="window.location.href=this.value"
               class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-xl py-3 px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-xs sm:text-sm font-medium shadow-lg">
-              <option value="{{ route('portfolio') }}" {{ empty($activeCategory) ? 'selected' : '' }}>Semua Kategori</option>
+              <option value="{{ route('portfolio') }}" {{ empty($activeCategory) ? 'selected' : '' }}>Semua Kategori
+              </option>
               @foreach ($category as $cat)
                 <option value="{{ route('portfolio', ['category' => $cat->slug]) }}"
                   {{ ($activeCategory ?? '') === $cat->slug ? 'selected' : '' }}>
@@ -43,27 +46,27 @@
         </div>
       @endif
 
-      <section class="mx-auto w-full max-w-7xl px-3 relative" id="portfolio-container">
+      <section class="mx-auto w-full max-w-7xl px-3 relative" id="portfolio-container" x-data="portfolioGallery()">
         @if ($portfolios->isEmpty())
-          <div class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
+          <div
+            class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
             <x-empty-card item="Portfolio" />
           </div>
         @else
-          {{-- Skeleton --}}
-          <div id="portfolio-skeleton" class="columns-2 sm:columns-3 lg:columns-4 gap-3 md:gap-4 mb-10 md:mb-12 space-y-3 md:space-y-4 animate-pulse">
+          <div id="portfolio-skeleton"
+            class="columns-2 sm:columns-3 lg:columns-4 gap-3 md:gap-4 mb-10 md:mb-12 space-y-3 md:space-y-4 animate-pulse">
             @for ($i = 0; $i < 8; $i++)
               <div class="w-full bg-[#151515] rounded-2xl aspect-[3/4] border border-impost-fourth mb-3 md:mb-4"></div>
             @endfor
           </div>
 
-          {{-- Content --}}
-          <div id="portfolio-content" class="columns-2 sm:columns-3 lg:columns-4 gap-3 md:gap-4 mb-10 md:mb-12 space-y-3 md:space-y-4 opacity-0 transition-opacity duration-500">
+          <div id="portfolio-content"
+            class="columns-2 sm:columns-3 lg:columns-4 gap-3 md:gap-4 mb-10 md:mb-12 space-y-3 md:space-y-4 opacity-0 transition-opacity duration-500">
             @foreach ($portfolios as $portfolio)
               <article
                 class="group relative rounded-2xl overflow-hidden border border-impost-fourth bg-[#0f0f0f] shadow-md cursor-pointer break-inside-avoid mb-3 md:mb-4"
                 data-media="{{ asset('storage/' . $portfolio->media_path) }}"
-                data-type="{{ $portfolio->media_type ?? 'image' }}" 
-                onclick="openMedia({{ $loop->index }})">
+                data-type="{{ $portfolio->media_type ?? 'image' }}" @click="openMedia({{ $loop->index }})">
 
                 <div class="relative w-full overflow-hidden bg-[#151515]">
                   @if ($portfolio->media_path)
@@ -73,8 +76,11 @@
                           <source src="{{ asset('storage/' . $portfolio->media_path) }}" type="video/mp4">
                         </video>
                         <div class="absolute inset-0 flex items-center justify-center">
-                          <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                          <div
+                            class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
                           </div>
                         </div>
                       </div>
@@ -87,7 +93,8 @@
                   <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
                   @if ($portfolio->category)
-                    <span class="absolute top-2 left-2 z-10 rounded-full bg-impost-primary/90 text-impost-fifth text-[10px] font-bold uppercase px-2 py-0.5 shadow">
+                    <span
+                      class="absolute top-2 left-2 z-10 rounded-full bg-impost-primary/90 text-impost-fifth text-[10px] font-bold uppercase px-2 py-0.5 shadow">
                       {{ $portfolio->category->name }}
                     </span>
                   @endif
@@ -97,40 +104,135 @@
           </div>
           <x-custom-pagination :items="$portfolios" />
 
+          <template x-teleport="body">
+            <div x-show="isOpen" x-cloak @click.self="closeMedia()" @keydown.escape.window="closeMedia()"
+              @keydown.arrow-right.window="nextMedia()" @keydown.arrow-left.window="previousMedia()"
+              x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+              x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200"
+              x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+              class="fixed inset-0 z-[99999] flex items-center justify-center bg-black/98 backdrop-blur-md"
+              style="margin: 0 !important; padding: 0 !important;">
+
+              <button @click="closeMedia()"
+                class="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100000] p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all hover:scale-110 active:scale-95">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              <div
+                class="absolute top-6 left-1/2 -translate-x-1/2 z-[100000] px-4 py-1.5 bg-white/10 rounded-full border border-white/10 text-white text-sm font-medium">
+                <span x-text="currentIdx + 1"></span> / <span x-text="items.length"></span>
+              </div>
+
+              <button @click.stop="previousMedia()" :disabled="currentIdx === 0"
+                class="absolute left-4 sm:left-6 z-[100000] p-3 text-white/50 hover:text-white disabled:opacity-0 transition-all hover:scale-110 active:scale-95">
+                <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <div class="relative w-full h-full flex items-center justify-center p-4 sm:p-16">
+                <div @click.stop x-show="isOpen" x-transition:enter="transition ease-out duration-300 delay-100"
+                  x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                  x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100"
+                  x-transition:leave-end="opacity-0 scale-90"
+                  class="relative max-w-[95vw] max-h-[90vh] flex items-center justify-center">
+
+                  <img x-show="items[currentIdx]?.type !== 'video'" :src="items[currentIdx]?.src"
+                    class="w-auto h-auto max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl ring-1 ring-white/10"
+                    alt="Portfolio Preview">
+
+                  <video x-ref="videoPlayer" x-show="items[currentIdx]?.type === 'video'" :src="items[currentIdx]?.src"
+                    class="w-auto h-auto max-w-full max-h-[85vh] rounded-lg shadow-2xl ring-1 ring-white/10"
+                    controls></video>
+                </div>
+              </div>
+
+              <button @click.stop="nextMedia()" :disabled="currentIdx === items.length - 1"
+                class="absolute right-4 sm:right-6 z-[100000] p-3 text-white/50 hover:text-white disabled:opacity-0 transition-all hover:scale-110 active:scale-95">
+                <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+            </div>
+          </template>
+
           <script>
-            (function() {
-              const skeleton = document.getElementById('portfolio-skeleton');
-              const content = document.getElementById('portfolio-content');
-              if (!skeleton || !content) return;
-              
-              const imgs = content.querySelectorAll('img');
-              let loaded = 0;
+            document.addEventListener('alpine:init', () => {
+              Alpine.data('portfolioGallery', () => ({
+                isOpen: false,
+                currentIdx: 0,
+                items: [],
+                init() {
+                  this.items = Array.from(document.querySelectorAll('article[data-media]')).map(el => ({
+                    src: el.dataset.media,
+                    type: el.dataset.type
+                  }));
 
-              function reveal() {
-                skeleton.style.display = 'none';
-                content.style.opacity = '1';
-              }
+                  const skeleton = document.getElementById('portfolio-skeleton');
+                  const content = document.getElementById('portfolio-content');
+                  if (!skeleton || !content) return;
 
-              if (!imgs.length) {
-                reveal();
-                return;
-              }
+                  const imgs = content.querySelectorAll('img');
+                  let loaded = 0;
 
-              function onLoad() {
-                if (++loaded >= imgs.length) reveal();
-              }
+                  const reveal = () => {
+                    skeleton.style.display = 'none';
+                    content.style.opacity = '1';
+                  };
 
-              imgs.forEach(img => {
-                if (img.complete) {
-                  onLoad();
-                } else {
-                  img.addEventListener('load', onLoad, { once: true });
-                  img.addEventListener('error', onLoad, { once: true });
+                  if (!imgs.length) return reveal();
+
+                  const onLoad = () => {
+                    if (++loaded >= imgs.length) reveal();
+                  };
+
+                  imgs.forEach(img => {
+                    if (img.complete) onLoad();
+                    else {
+                      img.addEventListener('load', onLoad, {
+                        once: true
+                      });
+                      img.addEventListener('error', onLoad, {
+                        once: true
+                      });
+                    }
+                  });
+
+                  setTimeout(reveal, 1500);
+                },
+                openMedia(index) {
+                  this.currentIdx = index;
+                  this.isOpen = true;
+                  document.body.style.overflow = 'hidden';
+                },
+                closeMedia() {
+                  this.isOpen = false;
+                  document.body.style.overflow = '';
+                  this.pauseVideo();
+                },
+                nextMedia() {
+                  if (this.currentIdx < this.items.length - 1) {
+                    this.currentIdx++;
+                    this.pauseVideo();
+                  }
+                },
+                previousMedia() {
+                  if (this.currentIdx > 0) {
+                    this.currentIdx--;
+                    this.pauseVideo();
+                  }
+                },
+                pauseVideo() {
+                  if (this.$refs.videoPlayer) {
+                    this.$refs.videoPlayer.pause();
+                  }
                 }
-              });
-
-              setTimeout(reveal, 1500);
-            })();
+              }));
+            });
           </script>
         @endif
       </section>
@@ -140,101 +242,18 @@
       <div class="max-w-7xl mx-auto p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
         <div class="text-center md:text-left">
           <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">Punya ide brilian?</h3>
-          <p class="text-gray-800 font-medium">Lihat bagaimana kami menyelesaikan masalah klien lain atau hubungi kami.</p>
+          <p class="text-gray-800 font-medium">Lihat bagaimana kami menyelesaikan masalah klien lain atau hubungi kami.
+          </p>
         </div>
         <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-          <a href="{{ route('study-case') }}" class="px-6 py-3 border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-center hover:bg-gray-900 hover:text-white transition-all">Lihat Studi Kasus</a>
-          <a href="{{ route('contact') }}" class="px-8 py-3 bg-gray-900 text-white rounded-xl font-bold text-center shadow-lg hover:bg-gray-800 transition-all">Hubungi Kami</a>
+          <a href="{{ route('study-case') }}"
+            class="px-6 py-3 border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-center hover:bg-gray-900 hover:text-white transition-all">Lihat
+            Studi Kasus</a>
+          <a href="{{ route('contact') }}"
+            class="px-8 py-3 bg-gray-900 text-white rounded-xl font-bold text-center shadow-lg hover:bg-gray-800 transition-all">Hubungi
+            Kami</a>
         </div>
       </div>
     </div>
+  </main>
 @endsection
-
-@push('scripts')
-  <div id="mediaModal" class="fixed inset-0 z-[999] hidden flex-col items-center justify-center bg-black/95 backdrop-blur-md" onclick="closeMedia()">
-    
-    <button onclick="closeMedia()" class="absolute top-6 right-6 z-[1001] p-3 text-white/70 hover:text-white transition-colors" aria-label="Close">
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-    </button>
-
-    <div class="absolute top-6 left-1/2 -translate-x-1/2 z-[1001] px-4 py-1.5 bg-white/10 rounded-full border border-white/10 text-white text-sm font-medium">
-      <span id="currentIndex">1</span> / <span id="totalMedia">1</span>
-    </div>
-
-    <div class="relative w-full h-full flex items-center justify-center p-4 sm:p-12" onclick="event.stopPropagation()">
-      <button id="prevBtn" onclick="previousMedia()" class="absolute left-4 z-[1001] p-2 sm:p-4 text-white/50 hover:text-white disabled:opacity-0 transition-all">
-        <svg class="w-8 h-8 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" /></svg>
-      </button>
-
-      <div class="max-w-5xl max-h-[85vh] flex items-center justify-center overflow-hidden rounded-lg">
-        <img id="modalImage" class="hidden max-w-full max-h-full object-contain shadow-2xl" alt="Portfolio Preview">
-        <video id="modalVideo" class="hidden max-w-full max-h-[80vh] shadow-2xl" controls><source id="videoSource" src="" type="video/mp4"></video>
-      </div>
-
-      <button id="nextBtn" onclick="nextMedia()" class="absolute right-4 z-[1001] p-2 sm:p-4 text-white/50 hover:text-white disabled:opacity-0 transition-all">
-        <svg class="w-8 h-8 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
-      </button>
-    </div>
-  </div>
-
-
-  <script>
-    let currentIdx = 0;
-    let items = [];
-
-    document.addEventListener('DOMContentLoaded', () => {
-      items = Array.from(document.querySelectorAll('article[data-media]')).map(el => ({
-        src: el.dataset.media,
-        type: el.dataset.type
-      }));
-    });
-
-    function openMedia(index) {
-      currentIdx = index;
-      document.getElementById('mediaModal').classList.replace('hidden', 'flex');
-      document.body.style.overflow = 'hidden';
-      updateDisplay();
-    }
-
-    function closeMedia() {
-      document.getElementById('mediaModal').classList.replace('flex', 'hidden');
-      document.body.style.overflow = '';
-      document.getElementById('modalVideo').pause();
-    }
-
-    function updateDisplay() {
-      const item = items[currentIdx];
-      const img = document.getElementById('modalImage');
-      const vid = document.getElementById('modalVideo');
-      const vSrc = document.getElementById('videoSource');
-
-      img.classList.add('hidden');
-      vid.classList.add('hidden');
-      vid.pause();
-
-      if (item.type === 'video') {
-        vSrc.src = item.src;
-        vid.load();
-        vid.classList.remove('hidden');
-      } else {
-        img.src = item.src;
-        img.classList.remove('hidden');
-      }
-
-      document.getElementById('currentIndex').textContent = currentIdx + 1;
-      document.getElementById('totalMedia').textContent = items.length;
-      document.getElementById('prevBtn').disabled = currentIdx === 0;
-      document.getElementById('nextBtn').disabled = currentIdx === items.length - 1;
-    }
-
-    const nextMedia = () => { if(currentIdx < items.length - 1) { currentIdx++; updateDisplay(); } };
-    const previousMedia = () => { if(currentIdx > 0) { currentIdx--; updateDisplay(); } };
-
-    document.addEventListener('keydown', (e) => {
-      if (document.getElementById('mediaModal').classList.contains('hidden')) return;
-      if (e.key === 'Escape') closeMedia();
-      if (e.key === 'ArrowRight') nextMedia();
-      if (e.key === 'ArrowLeft') previousMedia();
-    });
-  </script>
-@endpush

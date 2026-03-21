@@ -88,11 +88,10 @@
                   <a href="{{ route('job.details', $vacancy) }}"
                     class="mt-auto inline-flex items-center text-xs sm:text-sm font-bold text-impost-primary hover:text-white transition-colors group/link">
                     <span class="uppercase">Lihat Detail</span>
-                    <svg
-                      class="w-3 h-3 sm:w-4 sm:h-4 ml-1.5 sm:ml-2 transform transition-transform group-hover/link:translate-x-1"
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
-                      </path>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-chevron-right-icon lucide-chevron-right w-3 h-3 sm:w-4 sm:h-4 ml-1.5 sm:ml-2">
+                      <path d="m9 18 6-6-6-6" />
                     </svg>
                   </a>
                 </div>

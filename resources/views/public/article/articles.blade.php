@@ -67,19 +67,23 @@
       {{-- Articles Grid --}}
       <section class="w-full" id="articles-container">
         @if ($articles->isEmpty())
-          <div class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
+          <div
+            class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
             <x-empty-card item="Artikel" />
           </div>
         @else
           {{-- Skeleton --}}
-          <div id="articles-skeleton" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 animate-pulse">
+          <div id="articles-skeleton"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 animate-pulse">
             @for ($i = 0; $i < 6; $i++)
-              <div class="w-full bg-[#121212] rounded-xl sm:rounded-2xl h-[300px] sm:h-[350px] border border-white/5"></div>
+              <div class="w-full bg-[#121212] rounded-xl sm:rounded-2xl h-[300px] sm:h-[350px] border border-white/5">
+              </div>
             @endfor
           </div>
 
           {{-- Content --}}
-          <div id="articles-content" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 opacity-0 transition-opacity duration-500">
+          <div id="articles-content"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 opacity-0 transition-opacity duration-500">
             @foreach ($articles as $article)
               <article
                 class="group rounded-xl sm:rounded-2xl bg-[#121212] border border-white/5 shadow-sm overflow-hidden hover:border-impost-primary/30 transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
@@ -113,12 +117,14 @@
 
                 <div class="p-4 sm:p-6 flex flex-col flex-1 border-t border-white/5">
 
-                  <div class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs font-medium text-white mb-3 sm:mb-4">
+                  <div
+                    class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs font-medium text-white mb-3 sm:mb-4">
                     <div class="flex items-center gap-1 sm:gap-1.5">
                       <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-impost-primary" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
                       </svg>
                       <span>{{ $article->created_at->translatedFormat('d M Y') }}</span>
                     </div>
@@ -140,60 +146,62 @@
                   <a href="{{ route('article.detail', $article->slug) }}"
                     class="mt-auto inline-flex items-center text-xs sm:text-sm font-bold text-impost-primary hover:text-white transition-colors group/link">
                     <span class="uppercase">Baca Selengkapnya</span>
-                    <svg
-                      class="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2 transform transition-transform group-hover/link:translate-x-1"
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
-                      </path>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-chevron-right-icon lucide-chevron-right w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2">
+                      <path d="m9 18 6-6-6-6" />
                     </svg>
                   </a>
-
                 </div>
               </article>
             @endforeach
           </div>
 
-        {{-- Pagination --}}
-        <div class="mt-6 sm:mt-8">
-          <x-custom-pagination :items="$articles" />
-        </div>
+          {{-- Pagination --}}
+          <div class="mt-6 sm:mt-8">
+            <x-custom-pagination :items="$articles" />
+          </div>
 
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            const skeleton = document.getElementById('articles-skeleton');
-            const content = document.getElementById('articles-content');
-            if (!skeleton || !content) return;
-            
-            const imgs = content.querySelectorAll('img');
-            let loaded = 0;
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const skeleton = document.getElementById('articles-skeleton');
+              const content = document.getElementById('articles-content');
+              if (!skeleton || !content) return;
 
-            function reveal() {
-              skeleton.style.display = 'none';
-              content.style.opacity = '1';
-            }
+              const imgs = content.querySelectorAll('img');
+              let loaded = 0;
 
-            if (!imgs.length) {
-              reveal();
-              return;
-            }
-
-            function onLoad() {
-              if (++loaded >= imgs.length) reveal();
-            }
-
-            imgs.forEach(img => {
-              if (img.complete) {
-                onLoad();
-              } else {
-                img.addEventListener('load', onLoad, { once: true });
-                img.addEventListener('error', onLoad, { once: true });
+              function reveal() {
+                skeleton.style.display = 'none';
+                content.style.opacity = '1';
               }
-            });
 
-            setTimeout(reveal, 1500);
-          });
-        </script>
-      @endif
+              if (!imgs.length) {
+                reveal();
+                return;
+              }
+
+              function onLoad() {
+                if (++loaded >= imgs.length) reveal();
+              }
+
+              imgs.forEach(img => {
+                if (img.complete) {
+                  onLoad();
+                } else {
+                  img.addEventListener('load', onLoad, {
+                    once: true
+                  });
+                  img.addEventListener('error', onLoad, {
+                    once: true
+                  });
+                }
+              });
+
+              setTimeout(reveal, 1500);
+            });
+          </script>
+        @endif
       </section>
 
     </div>

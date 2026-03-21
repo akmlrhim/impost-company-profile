@@ -25,8 +25,8 @@
       style="background-image: url('{{ asset('img/pages/about.webp') }}');">
     </div>
 
-    <div class="absolute inset-0 z-10 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent"></div>
-    <div class="absolute inset-0 z-10 bg-[#0a0a0a]/30"></div>
+    <div class="absolute inset-0 z-10 bg-gradient-to-r from-impost-fifth/80 via-impost-fifth/40 to-transparent"></div>
+    <div class="absolute inset-0 z-10 bg-impost-fifth/30"></div>
 
     <div
       class="relative z-20 h-full flex flex-col justify-end max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6 sm:pb-8 md:pb-14">
@@ -67,7 +67,7 @@
 
   </section>
 
-  <div class="antialiased bg-[#0a0a0a]">
+  <div class="antialiased bg-impost-fifth">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-14">
 

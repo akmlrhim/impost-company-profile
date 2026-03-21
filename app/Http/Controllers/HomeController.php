@@ -179,11 +179,49 @@ class HomeController extends Controller
 		return view('public.opt-in', compact('title'));
 	}
 
-	public function job()
+	public function job(Request $request)
 	{
-		$job = JobVacancy::paginate(12);
+		$search = $request->search;
+		$type = $request->type;
+		$arrangement = $request->arrangement;
 
-		return view('public.job.jobs', compact('job'));
+		$job = JobVacancy::when($search, function ($q) use ($search) {
+				$q->where(function($query) use ($search) {
+					$query->where('title', 'like', "%{$search}%")
+						  ->orWhere('employment_type', 'like', "%{$search}%");
+				});
+			})
+			->when($type, function ($q) use ($type) {
+				$q->where('employment_type', $type);
+			})
+			->when($arrangement, function ($q) use ($arrangement) {
+				$q->whereJsonContains('work_arrangements', $arrangement);
+			})
+			->latest()
+			->paginate(12)
+			->withQueryString();
+
+		$employmentTypes = collect([
+			'Full Time',
+			'Part Time',
+			'Contract',
+			'Internship',
+			'Freelance'
+		]);
+		
+		$dbTypes = JobVacancy::whereNotNull('employment_type')->distinct()->pluck('employment_type');
+		$employmentTypes = $employmentTypes->merge($dbTypes)->unique()->values();
+
+		$workArrangements = collect([
+			'On-site',
+			'Remote',
+			'Hybrid'
+		]);
+
+		$allArrangements = JobVacancy::whereNotNull('work_arrangements')->pluck('work_arrangements');
+		$workArrangements = $workArrangements->merge($allArrangements->flatten())->unique()->values();
+
+		return view('public.job.jobs', compact('job', 'search', 'type', 'arrangement', 'employmentTypes', 'workArrangements'));
 	}
 
 	public function jobDetail(JobVacancy $job)

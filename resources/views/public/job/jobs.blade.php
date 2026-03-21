@@ -6,17 +6,125 @@
   dari agensi digital marketing terkemuka di Kalimantan Selatan.')
 
 @section('content')
-  <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased bg-impost-fifth min-h-screen">
+
+  <section class="relative w-full h-[400px] md:h-[560px] overflow-hidden">
+
+    <div class="absolute inset-0 z-0 bg-fixed bg-center bg-cover bg-no-repeat"
+      style="background-image: url('{{ asset('img/pages/careers.webp') }}');">
+    </div>
+
+    <div class="absolute inset-0 z-10 bg-gradient-to-r from-impost-fifth/80 via-impost-fifth/40 to-transparent"></div>
+    <div class="absolute inset-0 z-10 bg-impost-fifth/30"></div>
+
+    <div
+      class="relative z-20 h-full flex flex-col justify-end max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6 sm:pb-8 md:pb-14">
+
+      <div class="max-w-2xl flex flex-col gap-3 sm:gap-4">
+
+        <nav class="flex mb-1" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+            <li class="inline-flex items-center">
+              <a href="/"
+                class="inline-flex items-center text-xs sm:text-sm font-medium text-white/70 hover:text-white transition-colors duration-200">
+                Home
+              </a>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <svg class="rtl:rotate-180 w-3 h-3 text-white/40 mx-1" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 9 4-4-4-4" />
+                </svg>
+                <span class="ms-1 text-xs sm:text-sm font-medium text-white md:ms-2">Careers</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+          Careers
+        </h1>
+        <p class="text-white/80 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl text-justify">
+          Temukan peran yang tepat untuk mengembangkan potensi Anda. Kami mencari talenta terbaik untuk tumbuh bersama.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <div class="py-8 sm:py-12 md:py-14 antialiased bg-impost-fifth min-h-screen">
 
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
-      <div class="text-center mb-8 sm:mb-16">
-        <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
-          Bergabung Bersama <span class="text-impost-primary">Kami</span>
-        </h1>
-        <p class="text-gray-400 max-w-2xl mx-auto text-xs sm:text-base">
-          Temukan peran yang tepat untuk mengembangkan potensi Anda. Kami mencari talenta terbaik untuk tumbuh bersama.
-        </p>
+      {{-- Search & Filter Section --}}
+      <div
+        class="mb-8 p-3.5 sm:p-6 bg-gradient-to-b from-[#111111] to-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl relative overflow-hidden backdrop-blur-sm">
+
+        <form action="{{ route('careers') }}" method="GET"
+          class="relative z-10 flex flex-col lg:flex-row gap-3 sm:gap-4 items-center" x-data>
+
+          {{-- Search Group --}}
+          <div class="w-full lg:flex-1 flex relative shadow-sm">
+            <div class="relative w-full flex items-center">
+              <svg class="absolute left-3.5 sm:left-4 w-4 h-4 sm:w-5 sm:h-5 text-gray-500" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+              <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari posisi pekerjaan..."
+                class="w-full bg-[#151515] text-white placeholder-gray-500 border border-white/10 rounded-l-xl py-2.5 sm:py-3 pl-10 sm:pl-11 pr-3 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all text-xs sm:text-sm font-medium">
+            </div>
+            <button type="submit"
+              class="bg-impost-primary text-black font-bold uppercase tracking-wide text-[10px] sm:text-xs px-4 sm:px-6 py-2.5 sm:py-3 rounded-r-xl hover:bg-impost-secondary transition-colors focus:ring-2 focus:ring-inset focus:ring-white shrink-0">
+              Cari
+            </button>
+          </div>
+
+          {{-- Filters Wrapper --}}
+          <div class="w-full lg:w-auto flex flex-col sm:flex-row gap-3 shrink-0">
+
+            {{-- Type Filter --}}
+            <div class="relative w-full sm:w-44 lg:w-48 group">
+              <select name="type" @change="$el.closest('form').submit()"
+                class="w-full appearance-none bg-[#151515] text-gray-300 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3.5 sm:px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all text-xs sm:text-sm font-medium cursor-pointer group-hover:border-white/25 shadow-sm">
+                <option value="">Semua Tipe</option>
+                @foreach ($employmentTypes as $optType)
+                  <option value="{{ $optType }}" {{ request('type') == $optType ? 'selected' : '' }}>
+                    {{ $optType }}
+                  </option>
+                @endforeach
+              </select>
+            </div>
+
+            {{-- Arrangement Filter --}}
+            <div class="relative w-full sm:w-44 lg:w-48 group">
+              <select name="arrangement" @change="$el.closest('form').submit()"
+                class="w-full appearance-none bg-[#151515] text-gray-300 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3.5 sm:px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all text-xs sm:text-sm font-medium cursor-pointer group-hover:border-white/25 shadow-sm">
+                <option value="">Semua Sistem</option>
+                @foreach ($workArrangements as $optArr)
+                  <option value="{{ $optArr }}" {{ request('arrangement') == $optArr ? 'selected' : '' }}>
+                    {{ $optArr }}
+                  </option>
+                @endforeach
+              </select>
+            </div>
+
+          </div>
+
+          {{-- Clear Filter --}}
+          @if (request()->filled('search') || request()->filled('type') || request()->filled('arrangement'))
+            <div class="w-full lg:w-auto flex justify-center lg:justify-end pl-0 lg:pl-1 shrink-0 mt-1 lg:mt-0">
+              <a href="{{ route('careers') }}"
+                class="text-[10px] sm:text-xs font-bold flex items-center gap-1.5 py-2 px-3 rounded-md text-white bg-red-600 hover:bg-red-700"
+                title="Hapus Filter">
+                <span>Reset</span>
+              </a>
+            </div>
+          @endif
+
+        </form>
       </div>
 
       @if ($job->count() > 0)
@@ -152,5 +260,5 @@
       @endif
 
     </div>
-  </main>
-@endsection
+    </main>
+  @endsection

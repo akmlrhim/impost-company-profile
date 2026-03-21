@@ -148,8 +148,9 @@
         </div>
       </div>
     </div>
-  </main>
+@endsection
 
+@push('scripts')
   <div id="mediaModal" class="fixed inset-0 z-[999] hidden flex-col items-center justify-center bg-black/95 backdrop-blur-md" onclick="closeMedia()">
     
     <button onclick="closeMedia()" class="absolute top-6 right-6 z-[1001] p-3 text-white/70 hover:text-white transition-colors" aria-label="Close">
@@ -175,9 +176,8 @@
       </button>
     </div>
   </div>
-@endsection
 
-@push('scripts')
+
   <script>
     let currentIdx = 0;
     let items = [];

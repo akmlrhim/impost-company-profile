@@ -157,152 +157,203 @@
         Artikel Terbaru Lainnya
       </h2>
 
-      <div class="relative" x-data="{
-          currentSlide: 0,
-          totalSlides: {{ count($latestArticle) }},
-          startX: 0,
-          isDragging: false,
-      
-          goToSlide(index) {
-              this.currentSlide = index;
-          },
-      
-          nextSlide() {
-              this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-          },
-      
-          prevSlide() {
-              this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-          },
-      
-          handleTouchStart(e) {
-              this.startX = e.touches[0].clientX;
-              this.isDragging = true;
-          },
-      
-          handleTouchEnd(e) {
-              if (!this.isDragging) return;
-              const endX = e.changedTouches[0].clientX;
-              const diff = this.startX - endX;
-              if (Math.abs(diff) > 50) {
-                  diff > 0 ? this.nextSlide() : this.prevSlide();
-              }
-              this.isDragging = false;
-          },
-      
-          handleMouseDown(e) {
-              this.startX = e.clientX;
-              this.isDragging = true;
-          },
-      
-          handleMouseUp(e) {
-              if (!this.isDragging) return;
-              const endX = e.clientX;
-              const diff = this.startX - endX;
-              if (Math.abs(diff) > 50) {
-                  diff > 0 ? this.nextSlide() : this.prevSlide();
-              }
-              this.isDragging = false;
-          }
-      }">
-
-        {{-- Desktop Grid --}}
-        <div class="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
-          @forelse ($latestArticle as $latest)
-            <article
-              class="w-full bg-[#121212] border border-white/5 rounded-lg overflow-hidden flex flex-col h-full group hover:border-impost-primary/30 transition-colors">
-              <div class="relative h-32 sm:h-36 lg:h-40 bg-gray-800 overflow-hidden">
-                @if ($latest->cover_path)
-                  <img src="{{ asset('storage/' . $latest->cover_path) }}" alt="{{ $latest->title }}"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                @else
-                  <div class="w-full h-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="1.5" class="w-10 h-10 text-gray-600">
-                      <path d="M15 12h-5" />
-                      <path d="M15 8h-5" />
-                      <path d="M19 17V5a2 2 0 0 0-2-2H4" />
-                      <path
-                        d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
-                    </svg>
-                  </div>
-                @endif
-              </div>
-
-              <div class="p-3 sm:p-4 flex flex-col flex-1">
-                <h3
-                  class="text-xs sm:text-sm font-semibold text-white mb-2 line-clamp-2 leading-snug group-hover:text-impost-primary transition-colors">
-                  {{ $latest->title }}
-                </h3>
-                <p class="text-[10px] sm:text-xs text-gray-400 mb-3 line-clamp-2 leading-relaxed flex-1">
-                  {{ Str::limit(strip_tags($latest->content), 80) }}
-                </p>
-                <div class="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
-                  <span class="text-[10px] sm:text-xs text-gray-500">
-                    {{ $latest->created_at->translatedFormat('d M Y') }}
-                  </span>
-                  <a href="{{ route('article.detail', $latest->slug) }}"
-                    class="text-impost-primary hover:text-impost-primary/70 transition text-[10px] sm:text-xs font-medium">
-                    Baca &rarr;
-                  </a>
-                </div>
-              </div>
-            </article>
-          @empty
-            <div class="col-span-full">
-              <x-empty-card item="artikel" />
-            </div>
-          @endforelse
+      @if ($latestArticle->isEmpty())
+        <div class="col-span-full py-10 sm:py-12">
+          <x-empty-card item="artikel" />
         </div>
-
-        {{-- Mobile Carousel --}}
-        <div class="sm:hidden">
-          <div class="overflow-hidden">
-            <div
-              class="flex transition-transform duration-300 ease-in-out select-none cursor-grab active:cursor-grabbing"
-              :style="`transform: translateX(-${currentSlide * 100}%)`" @touchstart="handleTouchStart($event)"
-              @touchend="handleTouchEnd($event)" @mousedown="handleMouseDown($event)" @mouseup="handleMouseUp($event)"
-              @mouseleave="isDragging = false">
-
-              @forelse ($latestArticle as $latest)
-                <article class="w-full shrink-0 px-1">
-                  <div class="bg-[#121212] border border-white/5 rounded-lg overflow-hidden flex flex-col h-full">
-                    <div class="relative h-36 bg-gray-800">
-                      @if ($latest->cover_path)
-                        <img src="{{ asset('storage/' . $latest->cover_path) }}" alt="{{ $latest->title }}"
-                          class="w-full h-full object-cover" />
-                      @else
-                        <img src="{{ asset('img/article_default.webp') }}" alt="{{ $latest->title }}"
-                          class="w-full h-full object-cover" />
-                      @endif
-                    </div>
-                    <div class="p-3 flex flex-col flex-1">
-                      <h3 class="text-sm font-semibold text-white mb-1.5 line-clamp-2 leading-snug">
-                        {{ $latest->title }}
-                      </h3>
-                      <p class="text-[11px] text-gray-400 mb-2 line-clamp-2 leading-relaxed flex-1">
-                        {{ Str::limit(strip_tags($latest->content), 80) }}
-                      </p>
-                      <div class="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
-                        <span class="text-[10px] text-gray-500">
-                          {{ $latest->created_at->translatedFormat('d M Y') }}
-                        </span>
-                        <a href="{{ route('article.detail', $latest->slug) }}"
-                          class="text-impost-primary text-[10px] font-medium">
-                          Baca &rarr;
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              @empty
-                <x-empty-card item="artikel" />
-              @endforelse
-            </div>
+      @else
+        {{-- Skeleton --}}
+        <div id="latest-articles-skeleton" class="animate-pulse">
+          {{-- Desktop Skeleton --}}
+          <div class="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+            @for ($i = 0; $i < 4; $i++)
+              <div class="w-full bg-[#121212] rounded-lg h-[240px] sm:h-[260px] lg:h-[280px] border border-white/5"></div>
+            @endfor
+          </div>
+          {{-- Mobile Skeleton --}}
+          <div class="sm:hidden flex gap-2 overflow-hidden">
+            <div class="w-full shrink-0 px-1 border border-white/5 rounded-lg h-[280px] bg-[#121212]"></div>
           </div>
         </div>
 
-      </div>
+        {{-- Content --}}
+        <div id="latest-articles-content" class="relative opacity-0 transition-opacity duration-500" x-data="{
+            currentSlide: 0,
+            totalSlides: {{ count($latestArticle) }},
+            startX: 0,
+            isDragging: false,
+        
+            goToSlide(index) {
+                this.currentSlide = index;
+            },
+        
+            nextSlide() {
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+            },
+        
+            prevSlide() {
+                this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+            },
+        
+            handleTouchStart(e) {
+                this.startX = e.touches[0].clientX;
+                this.isDragging = true;
+            },
+        
+            handleTouchEnd(e) {
+                if (!this.isDragging) return;
+                const endX = e.changedTouches[0].clientX;
+                const diff = this.startX - endX;
+                if (Math.abs(diff) > 50) {
+                    diff > 0 ? this.nextSlide() : this.prevSlide();
+                }
+                this.isDragging = false;
+            },
+        
+            handleMouseDown(e) {
+                this.startX = e.clientX;
+                this.isDragging = true;
+            },
+        
+            handleMouseUp(e) {
+                if (!this.isDragging) return;
+                const endX = e.clientX;
+                const diff = this.startX - endX;
+                if (Math.abs(diff) > 50) {
+                    diff > 0 ? this.nextSlide() : this.prevSlide();
+                }
+                this.isDragging = false;
+            }
+        }">
+
+          {{-- Desktop Grid --}}
+          <div class="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+            @foreach ($latestArticle as $latest)
+              <article
+                class="w-full bg-[#121212] border border-white/5 rounded-lg overflow-hidden flex flex-col h-full group hover:border-impost-primary/30 transition-colors">
+                <div class="relative h-32 sm:h-36 lg:h-40 bg-gray-800 overflow-hidden">
+                  @if ($latest->cover_path)
+                    <img src="{{ asset('storage/' . $latest->cover_path) }}" alt="{{ $latest->title }}"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  @else
+                    <div class="w-full h-full flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5" class="w-10 h-10 text-gray-600">
+                        <path d="M15 12h-5" />
+                        <path d="M15 8h-5" />
+                        <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                        <path
+                          d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
+                      </svg>
+                    </div>
+                  @endif
+                </div>
+
+                <div class="p-3 sm:p-4 flex flex-col flex-1">
+                  <h3
+                    class="text-xs sm:text-sm font-semibold text-white mb-2 line-clamp-2 leading-snug group-hover:text-impost-primary transition-colors">
+                    {{ $latest->title }}
+                  </h3>
+                  <p class="text-[10px] sm:text-xs text-gray-400 mb-3 line-clamp-2 leading-relaxed flex-1">
+                    {{ Str::limit(strip_tags($latest->content), 80) }}
+                  </p>
+                  <div class="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
+                    <span class="text-[10px] sm:text-xs text-gray-500">
+                      {{ $latest->created_at->translatedFormat('d M Y') }}
+                    </span>
+                    <a href="{{ route('article.detail', $latest->slug) }}"
+                      class="text-impost-primary hover:text-impost-primary/70 transition text-[10px] sm:text-xs font-medium">
+                      Baca &rarr;
+                    </a>
+                  </div>
+                </div>
+              </article>
+            @endforeach
+          </div>
+
+          {{-- Mobile Carousel --}}
+          <div class="sm:hidden">
+            <div class="overflow-hidden">
+              <div
+                class="flex transition-transform duration-300 ease-in-out select-none cursor-grab active:cursor-grabbing"
+                :style="`transform: translateX(-${currentSlide * 100}%)`" @touchstart="handleTouchStart($event)"
+                @touchend="handleTouchEnd($event)" @mousedown="handleMouseDown($event)" @mouseup="handleMouseUp($event)"
+                @mouseleave="isDragging = false">
+
+                @foreach ($latestArticle as $latest)
+                  <article class="w-full shrink-0 px-1">
+                    <div class="bg-[#121212] border border-white/5 rounded-lg overflow-hidden flex flex-col h-full">
+                      <div class="relative h-36 bg-gray-800">
+                        @if ($latest->cover_path)
+                          <img src="{{ asset('storage/' . $latest->cover_path) }}" alt="{{ $latest->title }}"
+                            class="w-full h-full object-cover" />
+                        @else
+                          <img src="{{ asset('img/article_default.webp') }}" alt="{{ $latest->title }}"
+                            class="w-full h-full object-cover" />
+                        @endif
+                      </div>
+                      <div class="p-3 flex flex-col flex-1">
+                        <h3 class="text-sm font-semibold text-white mb-1.5 line-clamp-2 leading-snug">
+                          {{ $latest->title }}
+                        </h3>
+                        <p class="text-[11px] text-gray-400 mb-2 line-clamp-2 leading-relaxed flex-1">
+                          {{ Str::limit(strip_tags($latest->content), 80) }}
+                        </p>
+                        <div class="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
+                          <span class="text-[10px] text-gray-500">
+                            {{ $latest->created_at->translatedFormat('d M Y') }}
+                          </span>
+                          <a href="{{ route('article.detail', $latest->slug) }}"
+                            class="text-impost-primary text-[10px] font-medium">
+                            Baca &rarr;
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                @endforeach
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const skeleton = document.getElementById('latest-articles-skeleton');
+            const content = document.getElementById('latest-articles-content');
+            if (!skeleton || !content) return;
+            
+            const imgs = content.querySelectorAll('img');
+            let loaded = 0;
+
+            function reveal() {
+              skeleton.style.display = 'none';
+              content.style.opacity = '1';
+            }
+
+            if (!imgs.length) {
+              reveal();
+              return;
+            }
+
+            function onLoad() {
+              if (++loaded >= imgs.length) reveal();
+            }
+
+            imgs.forEach(img => {
+              if (img.complete) {
+                onLoad();
+              } else {
+                img.addEventListener('load', onLoad, { once: true });
+                img.addEventListener('error', onLoad, { once: true });
+              }
+            });
+
+            setTimeout(reveal, 1500);
+          });
+        </script>
+      @endif
     </div>
   </aside>
 

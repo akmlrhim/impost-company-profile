@@ -18,7 +18,8 @@
       </p>
     </div>
 
-    @if (!empty($portfolioCategories) && count($portfolioCategories))
+    @if (!empty($portfolios) && count($portfolios) > 0)
+      @if (!empty($portfolioCategories) && count($portfolioCategories))
       <div class="hidden md:flex flex-wrap justify-center gap-3 mb-8 md:mb-10">
         @foreach ($portfolioCategories as $index => $category)
           <button type="button"
@@ -48,15 +49,20 @@
       style="perspective: 2000px;">
 
       <button
-        class="carousel-nav-prev absolute top-1/2 -translate-y-1/2 left-1 sm:left-2 md:left-4 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-impost-primary/10 border border-impost-primary/30 hover:bg-impost-primary/25 hover:border-impost-primary/60 hover:scale-110 text-impost-primary"
+        class="carousel-nav-prev absolute top-1/2 -translate-y-1/2 left-1 sm:left-2 md:left-4 z-40 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-impost-primary/10 border border-impost-primary/30 hover:bg-impost-primary/25 hover:border-impost-primary/60 hover:scale-110 text-impost-primary"
         aria-label="Previous portfolio">
         <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18-6-6 6-6" />
         </svg>
       </button>
 
+      {{-- Skeleton --}}
+      <div id="portfolio-carousel-skeleton" class="absolute inset-0 z-30 flex items-center justify-center transition-opacity duration-500">
+        <div class="w-[200px] sm:w-[240px] md:w-[300px] lg:w-[320px] aspect-[4/5] bg-[#151515] rounded-2xl border border-impost-fourth animate-pulse"></div>
+      </div>
+
       <div class="relative w-full h-full" id="portfolioCarouselContainer"
-        style="transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);">
+        style="transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease; opacity: 0;">
       </div>
 
       <div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10"
@@ -80,6 +86,11 @@
         Lihat Portfolio Selengkapnya
       </a>
     </div>
+    @else
+      <div class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
+        <x-empty-card item="Portfolio" />
+      </div>
+    @endif
 
   </div>
 </section>
@@ -265,6 +276,33 @@
       container.appendChild(frag);
       calcParams();
       requestAnimationFrame(updateCarousel);
+
+      const skeleton = document.getElementById('portfolio-carousel-skeleton');
+      if (skeleton && skeleton.style.display !== 'none') {
+        const imgs = container.querySelectorAll('img');
+        let loaded = 0;
+        
+        function reveal() {
+          skeleton.style.opacity = '0';
+          setTimeout(() => skeleton.style.display = 'none', 500);
+          container.style.opacity = '1';
+        }
+        
+        if (!imgs.length) {
+          reveal();
+        } else {
+          imgs.forEach(img => {
+            if (img.complete) {
+              loaded++;
+              if (loaded >= imgs.length) reveal();
+            } else {
+              img.addEventListener('load', () => { loaded++; if (loaded >= imgs.length) reveal(); }, { once: true });
+              img.addEventListener('error', () => { loaded++; if (loaded >= imgs.length) reveal(); }, { once: true });
+            }
+          });
+          setTimeout(reveal, 1500);
+        }
+      }
     }
 
     function setActivePill(categoryId) {

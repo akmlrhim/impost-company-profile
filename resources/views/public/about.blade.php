@@ -91,44 +91,60 @@
 
       <div class="max-w-5xl mx-auto text-justify">
         <p class="text-white/80 text-xs sm:text-sm md:text-base leading-loose">
-          Setiap bisnis punya cerita dan perjalanannya masing-masing. Kami di CV Impost Media Indonesia, atau yang lebih
-          akrab disapa Impost Media, percaya bahwa langkah pertama yang paling penting untuk membangun sebuah brand
+          Setiap bisnis punya cerita dan perjalanannya masing-masing. Kami di CV Impost Media Indonesia, atau yang
+          lebih
+          akrab disapa Impost Media, percaya bahwa langkah pertama yang paling penting untuk membangun sebuah
+          brand
           bukanlah langsung berbicara, melainkan mendengarkan.
         </p>
 
         <p class="mt-4 sm:mt-5 md:mt-6 text-white/80 text-xs sm:text-sm md:text-base leading-loose">
-          Berpusat di Banjarbaru, Kalimantan Selatan, kami hadir sebagai All-in-One Integrated Digital Marketing Agency
-          sekaligus perusahaan multiservice. Kami mendampingi Anda untuk merapikan makna bisnis dengan mencari tahu siapa
-          Anda sebenarnya, untuk siapa Anda hadir, dan kesan apa yang ingin Anda tinggalkan di hati audiens saat mereka
+          Berpusat di Banjarbaru, Kalimantan Selatan, kami hadir sebagai All-in-One Integrated Digital Marketing
+          Agency
+          sekaligus perusahaan multiservice. Kami mendampingi Anda untuk merapikan makna bisnis dengan mencari
+          tahu siapa
+          Anda sebenarnya, untuk siapa Anda hadir, dan kesan apa yang ingin Anda tinggalkan di hati audiens saat
+          mereka
           berinteraksi dengan Anda.
         </p>
 
         <p class="mt-4 sm:mt-5 md:mt-6 text-white/80 text-xs sm:text-sm md:text-base leading-loose">
-          Dari pemahaman mendalam itulah, kami mulai merangkai cerita. Kami sangat mengedepankan pemasaran berbasis konten
-          dan storytelling untuk membangun narasi inti yang konsisten di semua ruang, mulai dari website, media sosial,
-          hingga komunikasi sehari-hari. Tujuan kami sederhana, yaitu memastikan suara perusahaan Anda terdengar jernih,
+          Dari pemahaman mendalam itulah, kami mulai merangkai cerita. Kami sangat mengedepankan pemasaran
+          berbasis konten
+          dan storytelling untuk membangun narasi inti yang konsisten di semua ruang, mulai dari website, media
+          sosial,
+          hingga komunikasi sehari-hari. Tujuan kami sederhana, yaitu memastikan suara perusahaan Anda terdengar
+          jernih,
           membangun identitas merek yang kuat, dan meningkatkan visibilitas Anda secara natural.
         </p>
 
         <p class="mt-4 sm:mt-5 md:mt-6 text-white/80 text-xs sm:text-sm md:text-base leading-loose">
-          Semangat kami berakar pada satu keyakinan fundamental: Insight to Impact. Perjalanan kami yang berawal dari
-          dunia kreasi konten mengajarkan satu pelajaran penting, bahwa cerita yang indah harus mampu membawa perubahan
-          yang terukur. Karena itu, setiap strategi pemasaran dan iklan digital yang kami buat mengusung pendekatan
+          Semangat kami berakar pada satu keyakinan fundamental: Insight to Impact. Perjalanan kami yang berawal
+          dari
+          dunia kreasi konten mengajarkan satu pelajaran penting, bahwa cerita yang indah harus mampu membawa
+          perubahan
+          yang terukur. Karena itu, setiap strategi pemasaran dan iklan digital yang kami buat mengusung
+          pendekatan
           performance-based advertising. Kami tidak suka menebak-nebak. Setiap kampanye dirancang agar efisien,
           berorientasi pada konversi, dan memberikan hasil yang nyata.
         </p>
 
         <p class="mt-4 sm:mt-5 md:mt-6 text-white/80 text-xs sm:text-sm md:text-base leading-loose">
-          Kami mendedikasikan diri untuk menjadi rekan kerja yang mengedepankan transparansi dan akuntabilitas. Sebagai
+          Kami mendedikasikan diri untuk menjadi rekan kerja yang mengedepankan transparansi dan akuntabilitas.
+          Sebagai
           bukti komitmen terhadap pertumbuhan omzet Anda, kami bahkan memberikan jaminan uang kembali (money-back
           guarantee) pada layanan kampanye kami.
         </p>
 
         <p class="mt-4 sm:mt-5 md:mt-6 text-white/80 text-xs sm:text-sm md:text-base leading-loose">
-          Lebih dari sekadar pemasaran digital, Impost Media juga siap mendukung berbagai kebutuhan bisnis Anda melalui
-          layanan event organizer, hiburan profesional, hingga pengadaan barang dan jasa. Pada akhirnya, ini bukanlah
-          sekadar tentang kehadiran Anda di ranah digital atau kesuksesan sebuah acara. Ini adalah komitmen kami untuk
-          menjadi mitra tepercaya yang membantu Anda mengefisienkan biaya, mendorong pertumbuhan yang berkelanjutan, dan
+          Lebih dari sekadar pemasaran digital, Impost Media juga siap mendukung berbagai kebutuhan bisnis Anda
+          melalui
+          layanan event organizer, hiburan profesional, hingga pengadaan barang dan jasa. Pada akhirnya, ini
+          bukanlah
+          sekadar tentang kehadiran Anda di ranah digital atau kesuksesan sebuah acara. Ini adalah komitmen kami
+          untuk
+          menjadi mitra tepercaya yang membantu Anda mengefisienkan biaya, mendorong pertumbuhan yang
+          berkelanjutan, dan
           merawat ikatan yang hangat dengan pelanggan Anda di seluruh Indonesia.
         </p>
       </div>
@@ -167,7 +183,8 @@
 
               <button class="timeline-btn relative flex flex-col items-center gap-4 w-32 focus:outline-none group"
                 data-target="tab-1" onclick="changeTab(this, true)">
-                <span class="text-sm font-medium text-impost-primary transition-colors duration-300">One Direction</span>
+                <span class="text-sm font-medium text-impost-primary transition-colors duration-300">One
+                  Direction</span>
                 <div
                   class="indicator-dot w-4 h-4 rounded-full bg-impost-primary ring-4 ring-[#0a0a0a] transition-all duration-300 shadow-[0_0_12px_rgba(var(--impost-primary-rgb),0.8)]">
                 </div>
@@ -248,7 +265,8 @@
             <p class="text-white/80 text-sm md:text-base leading-relaxed text-justify">
               Impost Media tidak dibangun sebagai individu. Ia dibangun sebagai sebuah sistem.
               Sistem yang menjadi sebuah alat untuk menghubungkan riset, hasil analisis, strategi, eksekusi,
-              distribusi, dan evaluasi dalam satu alur kerja yang rapi dan terstruktur. Setiap perjalanannya saling
+              distribusi, dan evaluasi dalam satu alur kerja yang rapi dan terstruktur. Setiap perjalanannya
+              saling
               menopang, memastikan pertumbuhannya tidak bergantung pada momentum, tetapi pada fondasi.
               Melalui pendekatan seperti sistem ini membuat kami mampu bekerja secara efisien; menghemat
               waktu, menekan biaya yang tidak perlu, dan meminimalisir trial-error yang sering menghambat
@@ -349,8 +367,10 @@
             meningkatkan konversi secara nyata.</li>
           <li>Menyediakan solusi event organizer, hiburan profesional, hingga music performance & production untuk
             mendukung berbagai kebutuhan klien.</li>
-          <li>Mendukung kebutuhan acara dan instansi melalui layanan pengadaan barang dan jasa, seperti katering, alat
-            tulis kantor, serta perlengkapan pendukung lainnya dengan kualitas yang terjamin dan tepat guna.</li>
+          <li>Mendukung kebutuhan acara dan instansi melalui layanan pengadaan barang dan jasa, seperti katering,
+            alat
+            tulis kantor, serta perlengkapan pendukung lainnya dengan kualitas yang terjamin dan tepat guna.
+          </li>
         </ol>
       </div>
     </div>

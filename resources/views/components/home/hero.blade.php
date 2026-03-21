@@ -1,11 +1,32 @@
 <section id="home" class="relative min-h-[75vh] md:min-h-screen flex items-center overflow-hidden">
 
   <!-- Background Image -->
-  <div class="absolute inset-0 z-0">
+  <div class="absolute inset-0 z-0 bg-zinc-900 animate-pulse" id="hero-skeleton"></div>
+  <div class="absolute inset-0 z-0 opacity-0 transition-opacity duration-700" id="hero-bg">
     <img src="{{ asset('img/Front_Cover_IM.webp') }}" alt="Impost Media Background" loading="lazy" decoding="async"
-      class="w-full h-full object-cover object-center">
+      class="w-full h-full object-cover object-center" id="hero-img">
     <div class="absolute inset-0 bg-black/60"></div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const img = document.getElementById('hero-img');
+      const skeleton = document.getElementById('hero-skeleton');
+      const bg = document.getElementById('hero-bg');
+      if (img && skeleton && bg) {
+        function reveal() {
+          skeleton.style.display = 'none';
+          bg.style.opacity = '1';
+        }
+        if (img.complete) reveal();
+        else {
+          img.addEventListener('load', reveal, { once: true });
+          img.addEventListener('error', reveal, { once: true });
+          setTimeout(reveal, 1000); // 1s fallback
+        }
+      }
+    });
+  </script>
 
   <!-- Decorative Elements -->
   <div class="absolute inset-0 z-[1] overflow-hidden pointer-events-none">

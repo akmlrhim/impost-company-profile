@@ -16,13 +16,26 @@
         </h1>
       </div>
 
-      <section class="w-full">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 py-6 mb-8">
+      <section class="w-full relative" id="studycase-container">
+        @if ($studyCase->isEmpty())
+          <div class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
+            <x-empty-card item="Study Case" />
+          </div>
+        @else
+          {{-- Skeleton --}}
+          <div id="studycase-skeleton" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 py-6 mb-8 animate-pulse">
+            @for ($i = 0; $i < 6; $i++)
+              <div class="w-full bg-[#121212] rounded-2xl aspect-[4/3] border border-white/10"></div>
+            @endfor
+          </div>
 
-          @forelse ($studyCase as $s)
-            <a href="{{ route('detail-study-case', $s->slug) }}" class="group block h-full transition-all duration-500">
+          {{-- Content --}}
+          <div id="studycase-content" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 py-6 mb-8 opacity-0 transition-opacity duration-500">
 
-              <div
+            @foreach ($studyCase as $s)
+              <a href="{{ route('detail-study-case', $s->slug) }}" class="group block h-full transition-all duration-500">
+
+                <div
                 class="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-[#121212] transition-all duration-500 hover:border-impost-primary/50 hover:shadow-[0_0_30px_rgba(var(--impost-primary),0.15)] hover:-translate-y-2">
 
                 <div class="relative aspect-[4/3] overflow-hidden">
@@ -64,18 +77,49 @@
                 </div>
 
               </div>
-            </a>
-          @empty
-            <div class="col-span-full py-12">
-              <x-empty-card item="Study Case" />
-            </div>
-          @endforelse
+            @endforeach
+          </div>
 
-        </div>
+          <div class="mt-8">
+            <x-custom-pagination :items="$studyCase" />
+          </div>
 
-        <div class="mt-8">
-          <x-custom-pagination :items="$studyCase" />
-        </div>
+          <script>
+            (function() {
+              const skeleton = document.getElementById('studycase-skeleton');
+              const content = document.getElementById('studycase-content');
+              if (!skeleton || !content) return;
+              
+              const imgs = content.querySelectorAll('img');
+              let loaded = 0;
+
+              function reveal() {
+                skeleton.style.display = 'none';
+                content.style.opacity = '1';
+              }
+
+              if (!imgs.length) {
+                reveal();
+                return;
+              }
+
+              function onLoad() {
+                if (++loaded >= imgs.length) reveal();
+              }
+
+              imgs.forEach(img => {
+                if (img.complete) {
+                  onLoad();
+                } else {
+                  img.addEventListener('load', onLoad, { once: true });
+                  img.addEventListener('error', onLoad, { once: true });
+                }
+              });
+
+              setTimeout(reveal, 1500);
+            })();
+          </script>
+        @endif
       </section>
     </div>
 

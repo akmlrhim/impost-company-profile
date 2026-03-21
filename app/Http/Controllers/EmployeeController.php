@@ -114,7 +114,6 @@ class EmployeeController extends Controller
 				$data['photo'] = $request->file('photo')->store('employee_photos', 'public');
 			}
 
-			// Generate new QR code if employee_id or fullname changed
 			if (
 				$employee->employee_id !== $request->employee_id ||
 				$employee->fullname !== $request->fullname

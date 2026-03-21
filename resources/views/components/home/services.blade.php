@@ -11,8 +11,8 @@
   </div>
 
   @if ($services->isEmpty())
-    <div class="flex justify-center">
-      <x-empty-card item="layanan" />
+    <div class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
+      <x-empty-card item="Layanan" />
     </div>
   @else
     <div class="block sm:hidden">

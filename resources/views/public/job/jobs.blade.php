@@ -20,7 +20,16 @@
       </div>
 
       @if ($job->count() > 0)
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {{-- Skeleton --}}
+        <div id="jobs-skeleton" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 animate-pulse">
+          @for ($i = 0; $i < 6; $i++)
+            <div class="w-full bg-impost-fifth rounded-lg h-[280px] sm:h-[300px] border border-impost-fourth"></div>
+          @endfor
+        </div>
+
+        {{-- Content --}}
+        <div id="jobs-content"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 opacity-0 transition-opacity duration-500">
           @foreach ($job as $vacancy)
             <div
               class="group relative flex flex-col bg-impost-fifth border border-impost-fourth rounded-lg overflow-hidden">
@@ -28,8 +37,8 @@
               <div class="h-32 sm:h-36 w-full overflow-hidden relative bg-[#1a1a1a]">
                 @if ($vacancy->poster)
                   <img src="{{ asset('storage/' . $vacancy->poster) }}" alt="{{ $vacancy->title }}"
-                    class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
-
+                    class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500"
+                    loading="lazy">
                   <div class="absolute inset-0 bg-gradient-to-t from-impost-fifth to-transparent"></div>
                 @else
                   <div class="w-full h-full flex items-center justify-center bg-impost-fourth/20">
@@ -96,14 +105,50 @@
         <div class="mt-8 sm:mt-16 flex justify-center">
           <x-custom-pagination :items="$job" />
         </div>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const skeleton = document.getElementById('jobs-skeleton');
+            const content = document.getElementById('jobs-content');
+            if (!skeleton || !content) return;
+
+            const imgs = content.querySelectorAll('img');
+            let loaded = 0;
+
+            function reveal() {
+              skeleton.style.display = 'none';
+              content.style.opacity = '1';
+            }
+
+            if (!imgs.length) {
+              reveal();
+              return;
+            }
+
+            function onLoad() {
+              if (++loaded >= imgs.length) reveal();
+            }
+
+            imgs.forEach(img => {
+              if (img.complete) {
+                onLoad();
+              } else {
+                img.addEventListener('load', onLoad, {
+                  once: true
+                });
+                img.addEventListener('error', onLoad, {
+                  once: true
+                });
+              }
+            });
+
+            setTimeout(reveal, 1000);
+          });
+        </script>
       @else
-        <div class="text-center py-16 sm:py-20 border border-impost-fourth border-dashed rounded-xl bg-impost-fifth/50">
-          <svg class="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-impost-third" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-          </svg>
-          <h3 class="mt-2 text-xs sm:text-sm font-medium text-white">Belum ada lowongan</h3>
+        <div
+          class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
+          <x-empty-card item="Lowongan pekerjaan" />
         </div>
       @endif
 

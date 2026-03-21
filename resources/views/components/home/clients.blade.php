@@ -1,11 +1,11 @@
 <section id="clients" class="py-10 sm:py-12 md:py-16">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
 
-    <p class="mb-6 sm:mb-10 md:mb-12 text-impost-primary font-extrabold tracking-wide text-xs sm:text-sm uppercase">
-      Klien yang telah bekerja sama dengan kami
-    </p>
-
     @if (isset($clients) && count($clients))
+      <p class="mb-6 sm:mb-10 md:mb-12 text-impost-primary font-extrabold tracking-wide text-xs sm:text-sm uppercase">
+        Klien yang telah bekerja sama dengan kami
+      </p>
+      
       <div class="relative overflow-hidden">
 
         {{-- Skeleton --}}
@@ -73,6 +73,10 @@
           setTimeout(reveal, 1200);
         })();
       </script>
+    @else
+      <div class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
+        <x-empty-card item="Klien" />
+      </div>
     @endif
 
   </div>

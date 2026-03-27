@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-section('title', 'Company Profile & Portfolio | Impost Media')
+@section('title', 'Company Profile & Portfolio | Impost Media')
 @section('meta_description',
   'Eksplorasi company profile dan portfolio terbaik Impost Media. Pelajari identitas
   perusahaan, layanan, dan karya nyata yang telah kami hasilkan untuk klien di Kalimantan Selatan.')

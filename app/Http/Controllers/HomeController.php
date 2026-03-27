@@ -19,7 +19,8 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-		$title = 'Home';
+		$title = 'Agensi Digital Marketing di Kalimantan Selatan';
+		$meta_description = 'Solusi digital marketing all-in-one profesional di Banjarmasin & Banjarbaru. Tingkatkan bisnis Anda bersama Impost Media.';
 
 		$services = Service::select(
 			'id',
@@ -51,6 +52,7 @@ class HomeController extends Controller
 
 		return view('public.home', compact(
 			'title',
+			'meta_description',
 			'services',
 			'clients',
 			'testimonials',
@@ -73,6 +75,7 @@ class HomeController extends Controller
 	public function portfolio(Request $request)
 	{
 		$title = 'Portfolio';
+		$meta_description = 'Lihat berbagai proyek sukses yang telah kami kerjakan untuk klien kami di berbagai industri.';
 		$portfolios = Portfolio::select(
 			'id',
 			'title',
@@ -99,7 +102,7 @@ class HomeController extends Controller
 
 		$activeCategory = $request->category;
 
-		return view('public.portfolio', compact('title', 'portfolios', 'category', 'activeCategory'));
+		return view('public.portfolio', compact('title', 'meta_description', 'portfolios', 'category', 'activeCategory'));
 	}
 
 	public function articleAll(Request $request)
@@ -161,15 +164,17 @@ class HomeController extends Controller
 
 	public function about()
 	{
-		$title = 'About';
+		$title = 'Tentang Kami';
+		$meta_description = 'Kenali lebih dekat Impost Media, agensi digital marketing yang berfokus pada pertumbuhan bisnis Anda.';
 
-		return view('public.about', compact('title'));
+		return view('public.about', compact('title', 'meta_description'));
 	}
 
 	public function contact()
 	{
-		$title = 'Kontak';
-		return view('public.contact', compact('title'));
+		$title = 'Hubungi Kami';
+		$meta_description = 'Siap untuk meningkatkan bisnis Anda? Hubungi Impost Media sekarang untuk konsultasi gratis.';
+		return view('public.contact', compact('title', 'meta_description'));
 	}
 
 	public function optIn()

@@ -4,24 +4,53 @@
 @section('meta_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ??
   $article->content), 155))
 
-  @push('head')
-    @if ($article->status == 'draft')
-      <meta name="robots" content="noindex, nofollow">
-    @else
-      <meta name="robots" content="index, follow">
-    @endif
+@section('og_title', $article->meta_title ?? $article->title)
+@section('og_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155))
+@section('og_image', $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp'))
+@section('og_type', 'article')
 
-    <meta name="description"
-      content="{{ $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155) }}">
+@section('twitter_title', $article->meta_title ?? $article->title)
+@section('twitter_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155))
+@section('twitter_image', $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp'))
 
-    <meta property="og:title" content="{{ $article->meta_title ?? $article->title }}">
-    <meta property="og:description"
-      content="{{ $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155) }}">
-    <meta property="og:image"
-      content="{{ $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp') }}">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="{{ url()->current() }}">
-  @endpush
+@push('json-ld')
+  @php
+    $articleJsonLd = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BlogPosting',
+        'headline' => $article->title,
+        'description' => $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155),
+        'image' => $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp'),
+        'author' => [
+            '@type' => 'Person',
+            'name' => $article->written_by ?? 'Impost Media Team',
+        ],
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => 'Impost Media',
+            'logo' => [
+                '@type' => 'ImageObject',
+                'url' => asset('img/og_image.png'),
+            ],
+        ],
+        'datePublished' => $article->created_at->toIso8601String(),
+        'dateModified' => $article->updated_at->toIso8601String(),
+        'mainEntityOfPage' => [
+            '@type' => 'WebPage',
+            '@id' => url()->current(),
+        ],
+    ];
+  @endphp
+  <script type="application/ld+json">{!! json_encode($articleJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+@endpush
+
+@push('head')
+  @if ($article->status == 'draft')
+    <meta name="robots" content="noindex, nofollow">
+  @else
+    <meta name="robots" content="index, follow">
+  @endif
+@endpush
 
 @section('content')
   <main class="antialiased pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 bg-[#0a0a0a]">

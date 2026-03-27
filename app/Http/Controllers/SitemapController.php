@@ -16,11 +16,13 @@ class SitemapController extends Controller
 		$articles = Article::latest()->get(['slug', 'updated_at']);
 		$portfolios = Portfolio::latest()->get(['slug', 'updated_at']);
 		$studyCase = StudyCase::latest()->get(['slug', 'updated_at']);
+		$articleCategories = \App\Models\ArticleCategory::all(['slug', 'updated_at']);
 
 		return Response::view('sitemap', [
 			'articles' => $articles,
 			'portfolios' => $portfolios,
 			'studyCases' => $studyCase,
+			'articleCategories' => $articleCategories,
 		])->header('Content-Type', 'text/xml');
 	}
 }

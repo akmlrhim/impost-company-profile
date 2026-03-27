@@ -26,6 +26,12 @@
   </url>
 
   <url>
+    <loc>{{ route('article.all') }}</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>{{ route('docs') }}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -54,6 +60,27 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>{{ route('landing.web') }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>{{ route('landing.promo') }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  @foreach ($articleCategories as $category)
+    <url>
+      <loc>{{ route('article.all', ['category' => $category->slug]) }}</loc>
+      <lastmod>{{ $category->updated_at->tz('UTC')->toAtomString() }}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.6</priority>
+    </url>
+  @endforeach
 
   @foreach ($articles as $article)
     <url>

@@ -67,13 +67,13 @@ class ArticleController extends Controller
 			if ($request->hasFile('cover_path')) {
 				$manager = new ImageManager(new Driver());
 
-				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
+				$img = $manager->read($request->file('cover_path'))->toWebp(60);
 
 				$filename = time() . '.webp';
 				$path = 'articles/' . $filename;
 
 				Storage::disk('public')->put($path, $img);
-				$cover_path = $path;
+			$cover_path = $path;
 			}
 
 			$data = [
@@ -124,7 +124,7 @@ class ArticleController extends Controller
 
 				$manager = new ImageManager(new Driver());
 
-				$img = $manager->read($request->file('cover_path'))->toWebp(quality: 60);
+				$img = $manager->read($request->file('cover_path'))->toWebp(60);
 
 				$filename = time() . '.webp';
 				$path = 'articles/' . $filename;

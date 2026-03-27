@@ -28,12 +28,12 @@
 
   @stack('head')
 
-  <title>@yield('title', 'Impost Media | Agensi Digital Marketing di Kalimantan Selatan')</title>
+  <title>@yield('title') | Impost Media</title>
   <meta name="description" content="@yield('meta_description', 'Solusi digital marketing all-in-one profesional di Banjarmasin & Banjarbaru. Tingkatkan bisnis Anda bersama Impost Media.')">
   <meta name="keywords"
     content="digital marketing banjarmasin, digital marketing banjarbaru, digital marketing, digital marketing kalimantan, digital marketing kalimantan selatan, seo banjarmasin, impost media, impost">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="{{ url()->current() }}">
+  <link rel="canonical" href="@yield('canonical', url()->current())">
 
   <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
   <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicon/favicon-96x96.png') }}">
@@ -41,13 +41,21 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
   <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">
 
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ url('/') }}">
-  <meta property="og:title" content="Impost Media | Digital Marketing Agency">
-  <meta property="og:description"
-    content="Partner terbaik untuk kebutuhan bisnis dan pemasaran digital bisnis Anda di Kalimantan Selatan.">
-  <meta property="og:image" content="{{ asset('img/og_image.png') }}">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="@yield('og_type', 'website')">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:title" content="@yield('og_title', 'Impost Media | Agensi Digital Marketing di Kalimantan Selatan')">
+  <meta property="og:description" content="@yield('og_description', 'Partner terbaik untuk kebutuhan bisnis dan pemasaran digital bisnis Anda di Kalimantan Selatan.')">
+  <meta property="og:image" content="@yield('og_image', asset('img/og_image.png'))">
+  <meta property="og:site_name" content="Impost Media">
   <meta property="og:locale" content="id_ID">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="{{ url()->current() }}">
+  <meta name="twitter:title" content="@yield('twitter_title', 'Impost Media | Agensi Digital Marketing')">
+  <meta name="twitter:description" content="@yield('twitter_description', 'Partner terbaik untuk pemasaran digital bisnis Anda di Kalimantan Selatan.')">
+  <meta name="twitter:image" content="@yield('twitter_image', asset('img/og_image.png'))">
 
   <meta name="theme-color" content="#040404">
 
@@ -89,9 +97,42 @@
         'name' => 'Impost Media',
         'url' => url('/'),
         'logo' => asset('img/og_image.png'),
+        'contactPoint' => [
+            '@type' => 'ContactPoint',
+            'telephone' => '+62-831-4780-2761',
+            'contactType' => 'customer service',
+        ],
+        'sameAs' => [
+            'https://www.instagram.com/impostmedia',
+            'https://www.facebook.com/impostmedia',
+        ],
     ];
+
+    $breadcrumbs = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => 'Home',
+                'item' => url('/'),
+            ],
+        ],
+    ];
+
+    if (isset($title) && $title !== 'Home') {
+        $breadcrumbs['itemListElement'][] = [
+            '@type' => 'ListItem',
+            'position' => 2,
+            'name' => $title,
+            'item' => url()->current(),
+        ];
+    }
   @endphp
   <script type="application/ld+json">{!! json_encode($defaultJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+  <script type="application/ld+json">{!! json_encode($breadcrumbs, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+  @stack('json-ld')
 
 </head>
 

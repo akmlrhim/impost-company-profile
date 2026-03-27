@@ -27,7 +27,7 @@ section('title', 'Company Profile & Portfolio | Impost Media')
 
           <div class="relative w-full aspect-[16/9] bg-black">
             <iframe allowfullscreen="allowfullscreen" scrolling="no" class="absolute inset-0 w-full h-full border-0"
-              src="https://heyzine.com/flip-book/caea1a35c5.html">
+              src="https://heyzine.com/flip-book/70b2ce8250.html">
             </iframe>
           </div>
 
@@ -35,7 +35,7 @@ section('title', 'Company Profile & Portfolio | Impost Media')
             <p class="text-white text-xs md:text-sm mb-5 leading-relaxed">
               Pelajari identitas perusahaan, struktur tim, serta layanan profesional yang kami tawarkan secara mendalam.
             </p>
-            <a href="https://heyzine.com/flip-book/caea1a35c5.html" target="_blank"
+            <a href="https://heyzine.com/flip-book/70b2ce8250.html" target="_blank"
               class="block w-full text-center py-3 text-xs md:text-sm font-bold text-black bg-impost-primary rounded hover:bg-opacity-90 transition-opacity">
               Buka Layar Penuh
             </a>
@@ -49,7 +49,7 @@ section('title', 'Company Profile & Portfolio | Impost Media')
 
           <div class="relative w-full aspect-[16/9] bg-black">
             <iframe allowfullscreen="allowfullscreen" scrolling="no" class="absolute inset-0 w-full h-full border-0"
-              src="https://heyzine.com/flip-book/70b2ce8250.html">
+              src="https://heyzine.com/flip-book/caea1a35c5.html">
             </iframe>
           </div>
 
@@ -57,7 +57,7 @@ section('title', 'Company Profile & Portfolio | Impost Media')
             <p class="text-white text-xs md:text-sm mb-5 leading-relaxed">
               Lihat koleksi proyek terbaik yang telah kami selesaikan dan bagaimana kami membantu klien berkembang.
             </p>
-            <a href="https://heyzine.com/flip-book/70b2ce8250.html" target="_blank"
+            <a href="https://heyzine.com/flip-book/caea1a35c5.html" target="_blank"
               class="block w-full text-center py-3 text-xs md:text-sm font-bold text-black bg-impost-primary rounded hover:bg-opacity-90 transition-opacity">
               Buka Layar Penuh
             </a>

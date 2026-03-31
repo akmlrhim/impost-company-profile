@@ -28,7 +28,7 @@
 
   @stack('head')
 
-  <title>@yield('title') | Impost Media</title>
+  <title>@yield('title')</title>
   <meta name="description" content="@yield('meta_description', 'Solusi digital marketing all-in-one profesional di Banjarmasin & Banjarbaru. Tingkatkan bisnis Anda bersama Impost Media.')">
   <meta name="keywords"
     content="digital marketing banjarmasin, digital marketing banjarbaru, digital marketing, digital marketing kalimantan, digital marketing kalimantan selatan, seo banjarmasin, impost media, impost">
@@ -102,10 +102,7 @@
             'telephone' => '+62-831-4780-2761',
             'contactType' => 'customer service',
         ],
-        'sameAs' => [
-            'https://www.instagram.com/impostmedia',
-            'https://www.facebook.com/impostmedia',
-        ],
+        'sameAs' => ['https://www.instagram.com/impostmedia', 'https://www.facebook.com/impostmedia'],
     ];
 
     $breadcrumbs = [

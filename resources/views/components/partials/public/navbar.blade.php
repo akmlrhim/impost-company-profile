@@ -21,8 +21,8 @@
 }" @click.away="closeDropdown()" @keydown.escape.window="closeAll()"
   :class="scrolled
       ?
-      'backdrop-blur-md bg-black/80 border-b border-white/10' :
-      'bg-transparent border-b border-transparent'"
+      'backdrop-blur-2xl bg-black/40 border-b border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.5)]' :
+      'backdrop-blur-md bg-black/10 border-b border-white/5'"
   class="fixed top-0 z-50 w-full transition-all duration-300" role="navigation" aria-label="Main navigation">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -159,7 +159,7 @@
       x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
       x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
       x-transition:leave-end="opacity-0 -translate-y-2" id="mobile-menu"
-      class="md:hidden border-t border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl">
+      class="md:hidden border-t border-white/10 bg-black/50 backdrop-blur-2xl shadow-2xl">
 
       <div class="px-4 pt-2 pb-5 space-y-0.5" role="menu" aria-orientation="vertical">
         <a href="{{ url('/') }}" role="menuitem"

@@ -183,7 +183,6 @@ body {
   scrollbar-width: none;
 }
 
-/* About  */
 .slider-container {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -197,7 +196,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Override specifically Tailwind Text Classes on mobile to be 1 level larger */
 @media (max-width: 639px) {
   .text-xs {
     font-size: 0.875rem !important;
@@ -243,4 +241,8 @@ body {
     font-size: 6rem !important;
     line-height: 1 !important;
   }
+}
+
+.font-header {
+  font-weight: 700 !important;
 }

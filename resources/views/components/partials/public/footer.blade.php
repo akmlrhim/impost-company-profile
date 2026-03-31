@@ -1,6 +1,5 @@
 <footer class="bg-impost-fifth text-gray-300 relative overflow-hidden font-sans border-t border-white/10">
 
-  {{-- ===== TOP: Logo + Alamat ===== --}}
   <div
     class="max-w-7xl mx-auto px-5 sm:px-6 pt-10 sm:pt-14 md:pt-16 pb-8 sm:pb-10 md:pb-12 text-center border-b border-white/[0.07]">
 

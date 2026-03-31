@@ -12,6 +12,7 @@ use App\Models\PortfolioCategory;
 use App\Models\Service;
 use App\Models\StudyCase;
 use App\Models\Testimonial;
+use App\Services\RecaptchaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -191,11 +192,11 @@ class HomeController extends Controller
 		$arrangement = $request->arrangement;
 
 		$job = JobVacancy::when($search, function ($q) use ($search) {
-				$q->where(function($query) use ($search) {
-					$query->where('title', 'like', "%{$search}%")
-						  ->orWhere('employment_type', 'like', "%{$search}%");
-				});
-			})
+			$q->where(function ($query) use ($search) {
+				$query->where('title', 'like', "%{$search}%")
+					->orWhere('employment_type', 'like', "%{$search}%");
+			});
+		})
 			->when($type, function ($q) use ($type) {
 				$q->where('employment_type', $type);
 			})
@@ -213,7 +214,7 @@ class HomeController extends Controller
 			'Internship',
 			'Freelance'
 		]);
-		
+
 		$dbTypes = JobVacancy::whereNotNull('employment_type')->distinct()->pluck('employment_type');
 		$employmentTypes = $employmentTypes->merge($dbTypes)->unique()->values();
 
@@ -275,6 +276,11 @@ class HomeController extends Controller
 				'objective' => 'Tujuan Bisnis',
 			]
 		);
+
+		$captcha = RecaptchaService::verify($request->input('g-recaptcha-response'));
+		if (!$captcha) {
+			return back()->with('error', 'Verifikasi Keamanan/Recaptcha gagal, silakan coba lagi.')->withInput();
+		}
 
 		try {
 			DB::beginTransaction();

@@ -6,66 +6,102 @@
   perusahaan, layanan, dan karya nyata yang telah kami hasilkan untuk klien di Kalimantan Selatan.')
 
 @section('content')
-  <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased min-h-screen">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative w-full h-[400px] md:h-[560px] overflow-hidden">
+    <div class="absolute inset-0 z-0 bg-fixed bg-center bg-cover bg-no-repeat"
+      style="background-image: url('{{ asset('img/pages/docs.webp') }}');">
+    </div>
 
-      <div class="mb-10 text-center">
-        <h1 class="text-2xl md:text-5xl font-bold mb-4 text-impost-primary tracking-tight">
-          {{ $title }}
+    <div class="absolute inset-0 z-10 bg-gradient-to-r from-impost-fifth/80 via-impost-fifth/40 to-transparent"></div>
+    <div class="absolute inset-0 z-10 bg-impost-fifth/30"></div>
+
+    <div
+      class="relative z-20 h-full flex flex-col justify-end max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6 sm:pb-8 md:pb-14">
+
+      <div class="max-w-2xl flex flex-col gap-3 sm:gap-4">
+
+        <nav class="flex mb-1" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+            <li class="inline-flex items-center">
+              <a href="/"
+                class="inline-flex items-center text-xs sm:text-sm font-medium text-white/70 hover:text-white transition-colors duration-200">
+                Home
+              </a>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <svg class="rtl:rotate-180 w-3 h-3 text-white/40 mx-1" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 9 4-4-4-4" />
+                </svg>
+                <span class="ms-1 text-xs sm:text-sm font-medium text-white md:ms-2">Media Resources</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+          Dokumen
         </h1>
-        <p class="text-white text-xs md:text-base max-w-2xl mx-auto font-light leading-relaxed">
+        <p class="text-white/80 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl text-justify">
           Eksplorasi visi, misi, dan karya terbaik IMPOST MEDIA melalui dokumen interaktif di bawah ini.
         </p>
       </div>
+    </div>
+  </section>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+  <div class="antialiased bg-impost-fifth">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-14">
+      <div class="mb-8 sm:mb-10 md:mb-12 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-        <div class="bg-[#111] rounded-xl overflow-hidden flex flex-col h-full">
-          <div class="px-6 py-4 bg-[#161616] border-b border-white/5">
-            <h3 class="text-base md:text-lg font-medium text-impost-primary tracking-wide">Company Profile</h3>
+          <div class="bg-[#111] rounded-xl overflow-hidden flex flex-col h-full">
+            <div class="px-6 py-4 bg-[#161616] border-b border-white/5">
+              <h3 class="text-base md:text-lg font-medium text-impost-primary tracking-wide">Company Profile</h3>
+            </div>
+
+            <div class="relative w-full aspect-[16/9] bg-black">
+              <iframe allowfullscreen="allowfullscreen" scrolling="no" class="absolute inset-0 w-full h-full border-0"
+                src="https://heyzine.com/flip-book/70b2ce8250.html">
+              </iframe>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <p class="text-white text-xs md:text-sm mb-5 leading-relaxed">
+                Pelajari identitas perusahaan, struktur tim, serta layanan profesional yang kami tawarkan secara mendalam.
+              </p>
+              <a href="https://heyzine.com/flip-book/70b2ce8250.html" target="_blank"
+                class="block w-full text-center py-3 text-xs md:text-sm font-bold text-black bg-impost-primary rounded hover:bg-opacity-90 transition-opacity">
+                Buka Layar Penuh
+              </a>
+            </div>
           </div>
 
-          <div class="relative w-full aspect-[16/9] bg-black">
-            <iframe allowfullscreen="allowfullscreen" scrolling="no" class="absolute inset-0 w-full h-full border-0"
-              src="https://heyzine.com/flip-book/70b2ce8250.html">
-            </iframe>
+          <div class="bg-[#111] rounded-xl overflow-hidden flex flex-col h-full">
+            <div class="px-6 py-4 bg-[#161616] border-b border-white/5">
+              <h3 class="text-base md:text-lg font-medium text-impost-primary tracking-wide">Portfolio</h3>
+            </div>
+
+            <div class="relative w-full aspect-[16/9] bg-black">
+              <iframe allowfullscreen="allowfullscreen" scrolling="no" class="absolute inset-0 w-full h-full border-0"
+                src="https://heyzine.com/flip-book/caea1a35c5.html">
+              </iframe>
+            </div>
+
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <p class="text-white text-xs md:text-sm mb-5 leading-relaxed">
+                Lihat koleksi proyek terbaik yang telah kami selesaikan dan bagaimana kami membantu klien berkembang.
+              </p>
+              <a href="https://heyzine.com/flip-book/caea1a35c5.html" target="_blank"
+                class="block w-full text-center py-3 text-xs md:text-sm font-bold text-black bg-impost-primary rounded hover:bg-opacity-90 transition-opacity">
+                Buka Layar Penuh
+              </a>
+            </div>
           </div>
 
-          <div class="p-6 flex-1 flex flex-col justify-between">
-            <p class="text-white text-xs md:text-sm mb-5 leading-relaxed">
-              Pelajari identitas perusahaan, struktur tim, serta layanan profesional yang kami tawarkan secara mendalam.
-            </p>
-            <a href="https://heyzine.com/flip-book/70b2ce8250.html" target="_blank"
-              class="block w-full text-center py-3 text-xs md:text-sm font-bold text-black bg-impost-primary rounded hover:bg-opacity-90 transition-opacity">
-              Buka Layar Penuh
-            </a>
-          </div>
-        </div>
-
-        <div class="bg-[#111] rounded-xl overflow-hidden flex flex-col h-full">
-          <div class="px-6 py-4 bg-[#161616] border-b border-white/5">
-            <h3 class="text-base md:text-lg font-medium text-impost-primary tracking-wide">Portfolio</h3>
-          </div>
-
-          <div class="relative w-full aspect-[16/9] bg-black">
-            <iframe allowfullscreen="allowfullscreen" scrolling="no" class="absolute inset-0 w-full h-full border-0"
-              src="https://heyzine.com/flip-book/caea1a35c5.html">
-            </iframe>
-          </div>
-
-          <div class="p-6 flex-1 flex flex-col justify-between">
-            <p class="text-white text-xs md:text-sm mb-5 leading-relaxed">
-              Lihat koleksi proyek terbaik yang telah kami selesaikan dan bagaimana kami membantu klien berkembang.
-            </p>
-            <a href="https://heyzine.com/flip-book/caea1a35c5.html" target="_blank"
-              class="block w-full text-center py-3 text-xs md:text-sm font-bold text-black bg-impost-primary rounded hover:bg-opacity-90 transition-opacity">
-              Buka Layar Penuh
-            </a>
-          </div>
         </div>
 
       </div>
-
     </div>
-  </main>
+  </div>
 @endsection

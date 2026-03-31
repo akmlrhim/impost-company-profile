@@ -20,33 +20,21 @@
         }
         if (img.complete) reveal();
         else {
-          img.addEventListener('load', reveal, { once: true });
-          img.addEventListener('error', reveal, { once: true });
-          setTimeout(reveal, 1000); // 1s fallback
+          img.addEventListener('load', reveal, {
+            once: true
+          });
+          img.addEventListener('error', reveal, {
+            once: true
+          });
+          setTimeout(reveal, 1000);
         }
       }
     });
   </script>
 
-  <!-- Decorative Elements -->
-  <div class="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
-    <!-- Gradient Orbs -->
-    <div class="absolute -top-40 -left-40 w-96 h-96 bg-impost-primary/20 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-impost-secondary/10 rounded-full blur-3xl"></div>
-
-    <!-- Subtle Grid -->
-    <div class="absolute inset-0 opacity-[0.03]"
-      style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 60px 60px;">
-    </div>
-
-    <!-- Floating Dots -->
-    <div class="absolute top-1/4 right-1/4 w-2 h-2 bg-impost-primary/40 rounded-full animate-pulse"></div>
-    <div class="absolute bottom-1/3 left-1/4 w-1.5 h-1.5 bg-white/30 rounded-full animate-pulse"
-      style="animation-delay: 1s;"></div>
-  </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 w-full py-16 md:py-0">
-    <div class="text-center max-w-4xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
+    <div class="text-center max-w-6xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
 
       <h1 class="font-medium text-xl sm:text-3xl lg:text-4xl xl:text-5xl">
         <span class="inline-block py-1.5 sm:py-2 text-impost-primary font-header leading-snug">
@@ -54,7 +42,7 @@
         </span>
       </h1>
 
-      <p class="text-xs sm:text-sm md:text-base text-white max-w-xl mx-auto leading-relaxed">
+      <p class="text-xs sm:text-sm md:text-base text-white max-w-4xl mx-auto leading-relaxed">
         Bukan sekadar konten atau iklan, tapi sistem pertumbuhan terukur yang bisa diaudit dan dipertanggungjawabkan.
       </p>
 

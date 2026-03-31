@@ -8,7 +8,7 @@
 @section('content')
   <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased relative overflow-hidden">
 
-    <div class="px-4 mx-auto max-w-3xl relative z-10 font-sans">
+    <div class="px-4 mx-auto max-w-7xl relative z-10 font-sans">
       <div class="mb-6 sm:mb-8 text-center">
         <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-impost-primary leading-tight">
           Mari Kita Mulai
@@ -19,7 +19,19 @@
       </div>
 
       <div class="backdrop-blur-md rounded-xl border border-white/10 shadow-2xl bg-gray-900/40 p-4 sm:p-5 md:p-8">
-        <form action="{{ route('save-leads') }}" method="POST" class="space-y-4 sm:space-y-5">
+        <x-flash />
+        <form action="{{ route('save-leads') }}" method="POST" class="space-y-4 sm:space-y-5" x-data="{
+            loading: false,
+            submitForm() {
+                this.loading = true;
+                getRecaptchaToken((token) => {
+                    document.getElementById('g-recaptcha-response').value = token;
+                    this.$el.submit();
+                });
+            }
+        }"
+          @submit.prevent="submitForm">
+          <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
           @csrf
 
           <div class="space-y-3 sm:space-y-4">
@@ -196,9 +208,9 @@
           </div>
 
           <div class="pt-3 sm:pt-4">
-            <button type="submit"
-              class="w-full rounded-lg bg-gradient-to-r from-impost-primary to-impost-secondary py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-lg hover:shadow-impost-primary/25 hover:opacity-90 active:scale-[0.99] transition-all duration-200">
-              Kirim Data Sekarang
+            <button type="submit" :disabled="loading"
+              class="w-full rounded-lg bg-gradient-to-r from-impost-primary to-impost-secondary py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-lg hover:shadow-impost-primary/25 hover:opacity-90 active:scale-[0.99] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+              <span x-text="loading ? 'Memproses...' : 'Kirim Data Sekarang'"></span>
             </button>
           </div>
         </form>
@@ -247,10 +259,33 @@
 
         @if (session('wa_url'))
           setTimeout(function() {
-            window.location.href = "{{ session('wa_url') }}";
+            window.location.href = "{!! session('wa_url') !!}";
           }, 3000);
         @endif
       });
     </script>
   @endif
 @endsection
+
+@push('scripts')
+  <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}" async defer></script>
+  <script>
+    function getRecaptchaToken(callback) {
+      if (typeof grecaptcha === 'undefined') {
+        alert("Recaptcha belum dimuat, silakan refresh halaman.");
+        document.querySelector('form').__x.$data.loading = false;
+        return;
+      }
+      grecaptcha.ready(function() {
+        grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {
+          action: 'submit'
+        }).then(function(token) {
+          callback(token);
+        }).catch(function(error) {
+          alert("Gagal memuat keamanan Recaptcha, silakan refresh halaman.");
+          document.querySelector('form').__x.$data.loading = false;
+        });
+      });
+    }
+  </script>
+@endpush

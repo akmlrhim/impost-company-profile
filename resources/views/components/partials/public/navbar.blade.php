@@ -22,7 +22,7 @@
   :class="scrolled
       ?
       'backdrop-blur-2xl bg-black/40 border-b border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.5)]' :
-      'backdrop-blur-md bg-black/10 border-b border-white/5'"
+      'bg-transparent border-transparent'"
   class="fixed top-0 z-50 w-full transition-all duration-300" role="navigation" aria-label="Main navigation">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

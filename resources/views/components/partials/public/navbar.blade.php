@@ -39,7 +39,7 @@
       @unless (request()->routeIs('landing.promo', 'landing.web'))
         <div class="flex md:hidden">
           <button type="button" @click="mobileMenuOpen = !mobileMenuOpen"
-            class="inline-flex items-center justify-center p-1.5 rounded-md text-gray-200 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-impost-primary transition-colors"
+            class="inline-flex items-center justify-center p-1.5 rounded-md text-gray-200 hover:text-white hover:bg-white/10 focus:outline-none transition-colors"
             aria-controls="mobile-menu" :aria-expanded="mobileMenuOpen.toString()" aria-label="Toggle navigation menu">
             <svg x-show="!mobileMenuOpen" class="block h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" aria-hidden="true">
@@ -56,19 +56,19 @@
       @unless (request()->routeIs('landing.promo', 'landing.web'))
         <div class="hidden md:flex md:items-center md:gap-6 lg:gap-8">
           <a href="{{ url('/') }}"
-            class="text-sm font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1"
+            class="relative text-sm font-medium text-gray-200 hover:text-white transition-all duration-300 focus:outline-none px-2 py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-impost-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-300"
             @if (request()->is('/')) aria-current="page" @endif>
             Home
           </a>
 
           <a href="{{ url('/') }}#services"
-            class="text-sm font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1">
+            class="relative text-sm font-medium text-gray-200 hover:text-white transition-all duration-300 focus:outline-none px-2 py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-impost-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-300">
             Services
           </a>
 
           <div class="relative" @mouseenter="activeDropdown = 'works'" @mouseleave="closeDropdown()">
             <button @click="toggleDropdown('works')"
-              class="flex items-center gap-1 text-sm font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1"
+              class="relative flex items-center gap-1 text-sm font-medium text-gray-200 hover:text-white transition-all duration-300 focus:outline-none px-2 py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-impost-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-300"
               :aria-expanded="(activeDropdown === 'works').toString()" aria-haspopup="true" aria-controls="works-menu">
               <span>Our Works</span>
               <svg class="h-4 w-4 transition-transform duration-200"
@@ -98,7 +98,7 @@
 
           <div class="relative" @mouseenter="activeDropdown = 'company'" @mouseleave="closeDropdown()">
             <button @click="toggleDropdown('company')"
-              class="flex items-center gap-1 text-sm font-medium text-white hover:text-impost-primary transition-colors focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black rounded-sm px-2 py-1"
+              class="relative flex items-center gap-1 text-sm font-medium text-gray-200 hover:text-white transition-all duration-300 focus:outline-none px-2 py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-impost-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:ease-out after:duration-300"
               :aria-expanded="(activeDropdown === 'company').toString()" aria-haspopup="true"
               aria-controls="company-menu">
               <span>Company</span>
@@ -141,7 +141,7 @@
           </div>
 
           <a href="{{ route('vsl-form') }}"
-            class="inline-flex items-center justify-center px-5 py-2 text-sm font-bold text-black transition-all duration-300 bg-impost-primary rounded-lg hover:bg-impost-secondary hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black"
+            class="inline-flex items-center justify-center px-5 py-2 text-sm font-bold text-black transition-all duration-300 bg-impost-primary rounded-lg hover:bg-impost-secondary hover:shadow-lg hover:-translate-y-0.5 focus:outline-none"
             aria-label="Get started with Impost">
             Get Started
             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -235,7 +235,7 @@
 
         <div class="pt-3">
           <a href="{{ route('vsl-form') }}"
-            class="flex items-center justify-center w-full px-5 py-2.5 text-sm font-bold text-black bg-impost-primary rounded-lg hover:bg-impost-secondary focus:outline-none focus:ring-2 focus:ring-impost-primary focus:ring-offset-2 focus:ring-offset-black transition-colors"
+            class="flex items-center justify-center w-full px-5 py-2.5 text-sm font-bold text-black bg-impost-primary rounded-lg hover:bg-impost-secondary focus:outline-none transition-colors"
             aria-label="Get started with Impost">
             Get Started
           </a>

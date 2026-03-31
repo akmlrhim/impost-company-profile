@@ -7,7 +7,7 @@
 @section('content')
   <section class="relative w-full h-[400px] md:h-[560px] overflow-hidden">
     <div class="absolute inset-0 z-0 bg-fixed bg-center bg-cover bg-no-repeat"
-      style="background-image: url('{{ asset('storage/' . $studyCase->cover_path) }}');">
+      style="background-image: url('{{ asset('img/pages/study_case.webp') }}');">
     </div>
 
     <div class="absolute inset-0 z-10 bg-gradient-to-r from-impost-fifth/80 via-impost-fifth/40 to-transparent"></div>
@@ -76,6 +76,10 @@
         <section
           class="relative w-full h-auto mb-12 sm:mb-20 group cursor-pointer overflow-hidden flex justify-center bg-[#111] rounded-2xl border border-white/5"
           x-data="{ showLightbox: false }" @click="showLightbox = true; document.body.style.overflow = 'hidden'">
+
+          <img src="{{ asset('storage/' . $studyCase->cover_path) }}" alt="{{ $studyCase->name }}"
+            class="w-full h-auto sm:w-auto sm:max-w-full sm:max-h-[85vh] object-contain transition-transform duration-500 group-hover:scale-105 block"
+            loading="lazy">
 
           <div
             class="absolute top-3 right-3 sm:top-6 sm:right-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

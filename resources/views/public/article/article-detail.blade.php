@@ -5,52 +5,59 @@
   $article->content), 155))
 
 @section('og_title', $article->meta_title ?? $article->title)
-@section('og_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155))
-@section('og_image', $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp'))
+@section('og_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content),
+  155))
+@section('og_image', $article->cover_path ? asset('storage/' . $article->cover_path) :
+  asset('img/article_default.webp'))
 @section('og_type', 'article')
 
 @section('twitter_title', $article->meta_title ?? $article->title)
-@section('twitter_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155))
-@section('twitter_image', $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp'))
+@section('twitter_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ??
+  $article->content), 155))
+@section('twitter_image', $article->cover_path ? asset('storage/' . $article->cover_path) :
+  asset('img/article_default.webp'))
 
-@push('json-ld')
-  @php
-    $articleJsonLd = [
-        '@context' => 'https://schema.org',
-        '@type' => 'BlogPosting',
-        'headline' => $article->title,
-        'description' => $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155),
-        'image' => $article->cover_path ? asset('storage/' . $article->cover_path) : asset('img/article_default.webp'),
-        'author' => [
-            '@type' => 'Person',
-            'name' => $article->written_by ?? 'Impost Media Team',
-        ],
-        'publisher' => [
-            '@type' => 'Organization',
-            'name' => 'Impost Media',
-            'logo' => [
-                '@type' => 'ImageObject',
-                'url' => asset('img/og_image.png'),
-            ],
-        ],
-        'datePublished' => $article->created_at->toIso8601String(),
-        'dateModified' => $article->updated_at->toIso8601String(),
-        'mainEntityOfPage' => [
-            '@type' => 'WebPage',
-            '@id' => url()->current(),
-        ],
-    ];
-  @endphp
-  <script type="application/ld+json">{!! json_encode($articleJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
-@endpush
+  @push('json-ld')
+    @php
+      $articleJsonLd = [
+          '@context' => 'https://schema.org',
+          '@type' => 'BlogPosting',
+          'headline' => $article->title,
+          'description' =>
+              $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content), 155),
+          'image' => $article->cover_path
+              ? asset('storage/' . $article->cover_path)
+              : asset('img/article_default.webp'),
+          'author' => [
+              '@type' => 'Person',
+              'name' => $article->written_by ?? 'Impost Media Team',
+          ],
+          'publisher' => [
+              '@type' => 'Organization',
+              'name' => 'Impost Media',
+              'logo' => [
+                  '@type' => 'ImageObject',
+                  'url' => asset('img/og_image.png'),
+              ],
+          ],
+          'datePublished' => $article->created_at->toIso8601String(),
+          'dateModified' => $article->updated_at->toIso8601String(),
+          'mainEntityOfPage' => [
+              '@type' => 'WebPage',
+              '@id' => url()->current(),
+          ],
+      ];
+    @endphp
+    <script type="application/ld+json">{!! json_encode($articleJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+  @endpush
 
-@push('head')
-  @if ($article->status == 'draft')
-    <meta name="robots" content="noindex, nofollow">
-  @else
-    <meta name="robots" content="index, follow">
-  @endif
-@endpush
+  @push('head')
+    @if ($article->status == 'draft')
+      <meta name="robots" content="noindex, nofollow">
+    @else
+      <meta name="robots" content="index, follow">
+    @endif
+  @endpush
 
 @section('content')
   <main class="antialiased pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 bg-[#0a0a0a]">
@@ -58,14 +65,46 @@
 
       <article class="mx-auto w-full max-w-5xl">
 
-        {{-- Back Button --}}
-        <button onclick="window.location.href='{{ route('article.all') }}'"
-          class="flex cursor-pointer items-center text-xs sm:text-sm text-gray-300 hover:text-white transition-colors mb-4 sm:mb-5">
-          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          Kembali
-        </button>
+        {{-- Breadcrumb --}}
+        <div class="mb-4 sm:mb-6">
+          <nav class="flex overflow-x-auto whitespace-nowrap scrollbar-hide pb-2 -mb-2" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-2">
+              <li class="inline-flex items-center">
+                <a href="{{ route('home') }}"
+                  class="inline-flex items-center text-xs sm:text-sm font-medium text-gray-400 hover:text-white transition-colors">
+                  <svg class="w-3.5 h-3.5 mr-2 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                  </svg>
+                  Home
+                </a>
+              </li>
+              <li>
+                <div class="flex items-center">
+                  <svg class="w-3 h-3 text-gray-500 mx-1 flex-shrink-0" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                      d="m1 9 4-4-4-4" />
+                  </svg>
+                  <a href="{{ route('article.all') }}"
+                    class="ml-1 text-xs sm:text-sm font-medium text-gray-400 hover:text-white transition-colors md:ml-2">Artikel</a>
+                </div>
+              </li>
+              <li aria-current="page">
+                <div class="flex items-center">
+                  <svg class="w-3 h-3 text-gray-500 mx-1 flex-shrink-0" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                      d="m1 9 4-4-4-4" />
+                  </svg>
+                  <span
+                    class="ml-1 text-xs sm:text-sm font-medium text-white md:ml-2 line-clamp-1 max-w-[150px] sm:max-w-xs md:max-w-sm">{{ $article->title }}</span>
+                </div>
+              </li>
+            </ol>
+          </nav>
+        </div>
 
         {{-- Cover Image --}}
         <div class="mb-6 sm:mb-8">
@@ -140,7 +179,8 @@
           <a href="https://x.com/intent/tweet?text={{ urlencode($article->title) }}&url={{ urlencode(url()->current()) }}"
             target="_blank" rel="noopener"
             class="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 bg-black hover:bg-gray-800 text-white rounded-full transition-all shadow-sm">
-            <svg class="w-4 h-4 sm:w-5 sm:h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="currentColor">
               <path
                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
             </svg>
@@ -148,13 +188,13 @@
 
           <button onclick="copyArticleLink()" id="copyBtn"
             class="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-full transition-all shadow-sm">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" id="copyIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" id="copyIcon" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
               <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
               <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
             </svg>
             <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 hidden" id="checkIcon" xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
               <polyline points="20 6 9 17 4 12" />
             </svg>
             <span class="font-medium text-[10px] sm:text-xs" id="copyText">Salin</span>
@@ -196,7 +236,8 @@
           {{-- Desktop Skeleton --}}
           <div class="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
             @for ($i = 0; $i < 4; $i++)
-              <div class="w-full bg-[#121212] rounded-lg h-[240px] sm:h-[260px] lg:h-[280px] border border-white/5"></div>
+              <div class="w-full bg-[#121212] rounded-lg h-[240px] sm:h-[260px] lg:h-[280px] border border-white/5">
+              </div>
             @endfor
           </div>
           {{-- Mobile Skeleton --}}
@@ -206,54 +247,55 @@
         </div>
 
         {{-- Content --}}
-        <div id="latest-articles-content" class="relative opacity-0 transition-opacity duration-500" x-data="{
-            currentSlide: 0,
-            totalSlides: {{ count($latestArticle) }},
-            startX: 0,
-            isDragging: false,
-        
-            goToSlide(index) {
-                this.currentSlide = index;
-            },
-        
-            nextSlide() {
-                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-            },
-        
-            prevSlide() {
-                this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-            },
-        
-            handleTouchStart(e) {
-                this.startX = e.touches[0].clientX;
-                this.isDragging = true;
-            },
-        
-            handleTouchEnd(e) {
-                if (!this.isDragging) return;
-                const endX = e.changedTouches[0].clientX;
-                const diff = this.startX - endX;
-                if (Math.abs(diff) > 50) {
-                    diff > 0 ? this.nextSlide() : this.prevSlide();
-                }
-                this.isDragging = false;
-            },
-        
-            handleMouseDown(e) {
-                this.startX = e.clientX;
-                this.isDragging = true;
-            },
-        
-            handleMouseUp(e) {
-                if (!this.isDragging) return;
-                const endX = e.clientX;
-                const diff = this.startX - endX;
-                if (Math.abs(diff) > 50) {
-                    diff > 0 ? this.nextSlide() : this.prevSlide();
-                }
-                this.isDragging = false;
-            }
-        }">
+        <div id="latest-articles-content" class="relative opacity-0 transition-opacity duration-500"
+          x-data="{
+              currentSlide: 0,
+              totalSlides: {{ count($latestArticle) }},
+              startX: 0,
+              isDragging: false,
+          
+              goToSlide(index) {
+                  this.currentSlide = index;
+              },
+          
+              nextSlide() {
+                  this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+              },
+          
+              prevSlide() {
+                  this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+              },
+          
+              handleTouchStart(e) {
+                  this.startX = e.touches[0].clientX;
+                  this.isDragging = true;
+              },
+          
+              handleTouchEnd(e) {
+                  if (!this.isDragging) return;
+                  const endX = e.changedTouches[0].clientX;
+                  const diff = this.startX - endX;
+                  if (Math.abs(diff) > 50) {
+                      diff > 0 ? this.nextSlide() : this.prevSlide();
+                  }
+                  this.isDragging = false;
+              },
+          
+              handleMouseDown(e) {
+                  this.startX = e.clientX;
+                  this.isDragging = true;
+              },
+          
+              handleMouseUp(e) {
+                  if (!this.isDragging) return;
+                  const endX = e.clientX;
+                  const diff = this.startX - endX;
+                  if (Math.abs(diff) > 50) {
+                      diff > 0 ? this.nextSlide() : this.prevSlide();
+                  }
+                  this.isDragging = false;
+              }
+          }">
 
           {{-- Desktop Grid --}}
           <div class="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
@@ -292,7 +334,7 @@
                     </span>
                     <a href="{{ route('article.detail', $latest->slug) }}"
                       class="text-impost-primary hover:text-impost-primary/70 transition text-[10px] sm:text-xs font-medium">
-                      Baca &rarr;
+                      Baca
                     </a>
                   </div>
                 </div>
@@ -306,8 +348,8 @@
               <div
                 class="flex transition-transform duration-300 ease-in-out select-none cursor-grab active:cursor-grabbing"
                 :style="`transform: translateX(-${currentSlide * 100}%)`" @touchstart="handleTouchStart($event)"
-                @touchend="handleTouchEnd($event)" @mousedown="handleMouseDown($event)" @mouseup="handleMouseUp($event)"
-                @mouseleave="isDragging = false">
+                @touchend="handleTouchEnd($event)" @mousedown="handleMouseDown($event)"
+                @mouseup="handleMouseUp($event)" @mouseleave="isDragging = false">
 
                 @foreach ($latestArticle as $latest)
                   <article class="w-full shrink-0 px-1">
@@ -334,7 +376,7 @@
                           </span>
                           <a href="{{ route('article.detail', $latest->slug) }}"
                             class="text-impost-primary text-[10px] font-medium">
-                            Baca &rarr;
+                            Baca
                           </a>
                         </div>
                       </div>
@@ -352,7 +394,7 @@
             const skeleton = document.getElementById('latest-articles-skeleton');
             const content = document.getElementById('latest-articles-content');
             if (!skeleton || !content) return;
-            
+
             const imgs = content.querySelectorAll('img');
             let loaded = 0;
 
@@ -374,8 +416,12 @@
               if (img.complete) {
                 onLoad();
               } else {
-                img.addEventListener('load', onLoad, { once: true });
-                img.addEventListener('error', onLoad, { once: true });
+                img.addEventListener('load', onLoad, {
+                  once: true
+                });
+                img.addEventListener('error', onLoad, {
+                  once: true
+                });
               }
             });
 

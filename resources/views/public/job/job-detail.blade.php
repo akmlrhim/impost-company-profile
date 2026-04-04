@@ -12,15 +12,44 @@
 
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
-      <div class="mb-6 sm:mb-8">
-        <a href="{{ route('careers') }}"
-          class="inline-flex items-center gap-2 text-white hover:text-impost-primary transition-colors duration-200 text-xs sm:text-sm font-medium group">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:-translate-x-1"
-            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Kembali ke Daftar Lowongan
-        </a>
+      <div class="mb-4 sm:mb-6">
+        <nav class="flex overflow-x-auto whitespace-nowrap scrollbar-hide pb-2 -mb-2" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 md:space-x-2">
+            <li class="inline-flex items-center">
+              <a href="{{ route('home') }}"
+                class="inline-flex items-center text-xs sm:text-sm font-medium text-gray-400 hover:text-white transition-colors">
+                <svg class="w-3.5 h-3.5 mr-2 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                </svg>
+                Home
+              </a>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <svg class="w-3 h-3 text-gray-500 mx-1 flex-shrink-0" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                    d="m1 9 4-4-4-4" />
+                </svg>
+                <a href="{{ route('careers') }}"
+                  class="ml-1 text-xs sm:text-sm font-medium text-gray-400 hover:text-white transition-colors md:ml-2">Karir</a>
+              </div>
+            </li>
+            <li aria-current="page">
+              <div class="flex items-center">
+                <svg class="w-3 h-3 text-gray-500 mx-1 flex-shrink-0" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                    d="m1 9 4-4-4-4" />
+                </svg>
+                <span
+                  class="ml-1 text-xs sm:text-sm font-medium text-white md:ml-2 line-clamp-1 max-w-[150px] sm:max-w-xs md:max-w-md lg:max-w-lg">{{ $job->title }}</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
@@ -162,7 +191,8 @@
               <div class="space-y-3 sm:space-y-4">
                 <div class="bg-white/20 backdrop-blur-sm p-3 rounded border border-white/10">
                   <p class="text-[10px] sm:text-xs font-semibold opacity-70 uppercase mb-0.5">Kirim CV ke Email:</p>
-                  <a href="mailto:{{ $job->apply_email }}" class="font-bold text-sm sm:text-lg hover:underline break-all">
+                  <a href="mailto:{{ $job->apply_email }}"
+                    class="font-bold text-sm sm:text-lg hover:underline break-all">
                     {{ $job->apply_email }}
                   </a>
                 </div>

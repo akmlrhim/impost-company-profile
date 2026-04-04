@@ -39,12 +39,11 @@
   $rightItems = array_slice($features, 3, 3);
 
   $desktopConnectors = [
-      // left side [svgPath, circleOrigin]
       [
           'side' => 'left',
           'pos' => 'top-[8%]',
           'svg' =>
-              '<path d="M0 10 C 60 10, 80 80, 120 100" stroke="#fbbf24" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="6 6" fill="none"/><circle cx="0" cy="10" r="3" fill="#fbbf24"/>',
+              '<path d="M0 10 C 60 10, 80 80, 120 100" stroke="#d4ac3c" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="5 5" fill="none"/><circle cx="0" cy="10" r="2.5" fill="#d4ac3c" fill-opacity="0.5"/>',
           'box' => 'w-[120px] h-[100px]',
           'vb' => '0 0 120 100',
           'side_cls' => '-right-[120px] top-1/2',
@@ -53,7 +52,7 @@
           'side' => 'left',
           'pos' => 'top-1/2 -translate-y-1/2 left-[-2%]',
           'svg' =>
-              '<path d="M0 20 C 40 20, 60 20, 100 20" stroke="#fbbf24" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="6 6" fill="none"/><circle cx="0" cy="20" r="3" fill="#fbbf24"/>',
+              '<path d="M0 20 C 40 20, 60 20, 100 20" stroke="#d4ac3c" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="5 5" fill="none"/><circle cx="0" cy="20" r="2.5" fill="#d4ac3c" fill-opacity="0.5"/>',
           'box' => 'w-[100px] h-[40px]',
           'vb' => '0 0 100 40',
           'side_cls' => '-right-[100px] top-1/2 -translate-y-1/2',
@@ -62,17 +61,16 @@
           'side' => 'left',
           'pos' => 'bottom-[8%]',
           'svg' =>
-              '<path d="M0 90 C 60 90, 80 20, 120 0" stroke="#fbbf24" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="6 6" fill="none"/><circle cx="0" cy="90" r="3" fill="#fbbf24"/>',
+              '<path d="M0 90 C 60 90, 80 20, 120 0" stroke="#d4ac3c" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="5 5" fill="none"/><circle cx="0" cy="90" r="2.5" fill="#d4ac3c" fill-opacity="0.5"/>',
           'box' => 'w-[120px] h-[100px]',
           'vb' => '0 0 120 100',
           'side_cls' => '-right-[120px] bottom-1/2',
       ],
-      // right side
       [
           'side' => 'right',
           'pos' => 'top-[8%]',
           'svg' =>
-              '<path d="M120 10 C 60 10, 40 80, 0 100" stroke="#fbbf24" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="6 6" fill="none"/><circle cx="120" cy="10" r="3" fill="#fbbf24"/>',
+              '<path d="M120 10 C 60 10, 40 80, 0 100" stroke="#d4ac3c" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="5 5" fill="none"/><circle cx="120" cy="10" r="2.5" fill="#d4ac3c" fill-opacity="0.5"/>',
           'box' => 'w-[120px] h-[100px]',
           'vb' => '0 0 120 100',
           'side_cls' => '-left-[120px] top-1/2',
@@ -81,7 +79,7 @@
           'side' => 'right',
           'pos' => 'top-1/2 -translate-y-1/2 right-[-2%]',
           'svg' =>
-              '<path d="M100 20 C 60 20, 40 20, 0 20" stroke="#fbbf24" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="6 6" fill="none"/><circle cx="100" cy="20" r="3" fill="#fbbf24"/>',
+              '<path d="M100 20 C 60 20, 40 20, 0 20" stroke="#d4ac3c" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="5 5" fill="none"/><circle cx="100" cy="20" r="2.5" fill="#d4ac3c" fill-opacity="0.5"/>',
           'box' => 'w-[100px] h-[40px]',
           'vb' => '0 0 100 40',
           'side_cls' => '-left-[100px] top-1/2 -translate-y-1/2',
@@ -90,7 +88,7 @@
           'side' => 'right',
           'pos' => 'bottom-[8%]',
           'svg' =>
-              '<path d="M120 90 C 60 90, 40 20, 0 0" stroke="#fbbf24" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="6 6" fill="none"/><circle cx="120" cy="90" r="3" fill="#fbbf24"/>',
+              '<path d="M120 90 C 60 90, 40 20, 0 0" stroke="#d4ac3c" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="5 5" fill="none"/><circle cx="120" cy="90" r="2.5" fill="#d4ac3c" fill-opacity="0.5"/>',
           'box' => 'w-[120px] h-[100px]',
           'vb' => '0 0 120 100',
           'side_cls' => '-left-[120px] bottom-1/2',
@@ -98,23 +96,33 @@
   ];
 @endphp
 
-<section class="py-16 sm:py-20 relative overflow-hidden">
+<section class="py-16 sm:py-20 md:py-24 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
+
+    {{-- Header --}}
+    <div class="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
+      <h2 class="text-2xl sm:text-3xl md:text-5xl font-header text-white leading-tight mb-4 sm:mb-5">
+        Kenapa Harus <br class="hidden md:block">
+        <span class="text-impost-primary italic">Impost Media?</span>
+      </h2>
+      <p class="text-white/50 text-xs sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
+        Kami bukan sekadar vendor jasa. Kami partner pertumbuhan bisnis Anda.
+      </p>
+    </div>
 
     {{-- Desktop --}}
     <div class="relative hidden lg:block w-full min-h-[800px]">
 
-      <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30">
-        <div class="w-[500px] h-[500px] border border-amber-500/20 rounded-full absolute"></div>
-        <div class="w-[800px] h-[800px] border border-amber-500/10 rounded-full absolute"></div>
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+        <div class="w-[500px] h-[500px] border border-impost-primary/15 rounded-full absolute"></div>
+        <div class="w-[800px] h-[800px] border border-impost-primary/8 rounded-full absolute"></div>
       </div>
 
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
         <div class="relative">
-          <div class="absolute inset-0 bg-amber-500/20 blur-3xl rounded-full -z-10"></div>
-          <img src="{{ asset('img/why_us.jpeg') }}" alt="Why Us"
-            class="w-[300px] h-auto rounded-[2.5rem] border-4 border-white/10 shadow-2xl shadow-amber-500/10 object-cover bg-[#0a0a0a]"
-            loading="lazy">
+          <div class="absolute -inset-6 bg-impost-primary/10 blur-3xl rounded-full -z-10"></div>
+          <img src="{{ asset('img/why_us.jpeg') }}" alt="Why Choose Impost Media"
+            class="w-[300px] h-auto rounded-3xl border border-white/10 object-cover" loading="lazy">
         </div>
       </div>
 
@@ -130,23 +138,25 @@
         @endphp
         <div class="absolute {{ $pos }} {{ $side }} w-[24rem] group z-30">
           <div
-            class="relative flex items-start gap-4 p-5 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md hover:border-amber-500/30 transition-all duration-300">
+            class="relative flex items-start gap-4 p-5 rounded-2xl border border-white/10 bg-white/5 hover:border-impost-primary/25 transition-all duration-300">
             <div class="absolute {{ $connector['side_cls'] }} {{ $connector['box'] }} pointer-events-none">
               <svg width="100%" height="100%" viewBox="{{ $connector['vb'] }}" fill="none"
-                xmlns="http://www.w3.org/2000/svg ">
+                xmlns="http://www.w3.org/2000/svg">
                 {!! $connector['svg'] !!}
               </svg>
             </div>
             <div
-              class="flex-shrink-0 w-12 h-12 rounded-xl bg-gray-900/50 flex items-center justify-center text-amber-400 border border-white/5">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $item['icon'] }}" />
+              class="flex-shrink-0 w-11 h-11 rounded-xl bg-impost-primary/10 border border-impost-primary/20 flex items-center justify-center">
+              <svg class="w-5 h-5 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
               </svg>
             </div>
             <div>
-              <h4 class="text-white font-bold text-base mb-2 group-hover:text-amber-400 transition-colors">
+              <h4
+                class="text-white font-bold text-base mb-1.5 group-hover:text-impost-primary transition-colors duration-300">
                 {{ $item['title'] }}</h4>
-              <p class="text-white text-sm leading-relaxed">{{ $item['desc'] }}</p>
+              <p class="text-white/50 text-sm leading-relaxed">{{ $item['desc'] }}</p>
             </div>
           </div>
         </div>
@@ -156,24 +166,24 @@
 
     {{-- Mobile --}}
     <div class="lg:hidden flex flex-col gap-6">
-      <div class="relative mx-auto mb-2">
-        <div class="absolute inset-0 bg-amber-500/20 blur-2xl rounded-full -z-10"></div>
-        <img src="{{ asset('img/why_us.jpeg') }}" alt="Why Us"
-          class="w-[200px] sm:w-[240px] h-auto rounded-[2rem] border-4 border-white/10 shadow-xl mx-auto object-cover bg-[#0a0a0a]"
-          loading="lazy">
+      <div class="flex justify-center mb-4">
+        <img src="{{ asset('img/why_us.jpeg') }}" alt="Why Choose Impost Media"
+          class="w-[200px] sm:w-[240px] h-auto rounded-2xl border border-white/10 object-cover" loading="lazy">
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         @foreach ($features as $item)
-          <div class="flex items-start gap-3 p-4 rounded-xl border border-white/10 bg-white/5">
-            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-950 flex items-center justify-center text-amber-400">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ $item['icon'] }}" />
+          <div class="flex items-start gap-3 p-4 rounded-2xl border border-white/10 bg-white/5">
+            <div
+              class="flex-shrink-0 w-10 h-10 rounded-xl bg-impost-primary/10 border border-impost-primary/20 flex items-center justify-center">
+              <svg class="w-5 h-5 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
               </svg>
             </div>
             <div>
               <h4 class="text-white font-bold text-sm sm:text-base mb-1">{{ $item['title'] }}</h4>
-              <p class="text-white/60 text-xs sm:text-sm leading-relaxed">{{ $item['desc'] }}</p>
+              <p class="text-white/40 text-xs sm:text-sm leading-relaxed">{{ $item['desc'] }}</p>
             </div>
           </div>
         @endforeach

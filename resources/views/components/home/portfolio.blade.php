@@ -20,74 +20,84 @@
 
     @if (!empty($portfolios) && count($portfolios) > 0)
       @if (!empty($portfolioCategories) && count($portfolioCategories))
-      <div class="hidden md:flex flex-wrap justify-center gap-3 mb-8 md:mb-10">
-        @foreach ($portfolioCategories as $index => $category)
-          <button type="button"
-            class="portfolio-category-pill rounded-full px-4 py-1.5 text-xs border font-bold cursor-pointer inline-flex items-center gap-2 transition-all duration-250 hover:border-yellow-400 hover:bg-yellow-500 hover:-translate-y-0.5 {{ $index === 0 ? 'border-yellow-400 bg-orange-500 shadow-lg text-black' : 'border-impost-primary bg-impost-primary text-black' }}"
-            data-portfolio-category="{{ $category->id }}">
-            <span class="uppercase tracking-wide text-[10px] opacity-80">
-              {{ $category->name ?? ($category->title ?? 'Kategori') }}
-            </span>
-          </button>
-        @endforeach
-      </div>
-
-      <div class="block md:hidden mb-8">
-        <select id="portfolioMobileSelect"
-          class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-xl py-3 px-4 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-xs font-medium shadow-lg">
-          @foreach ($portfolioCategories as $category)
-            <option value="{{ $category->id }}" class="bg-black text-white">
-              {{ $category->name ?? ($category->title ?? 'Kategori') }}
-            </option>
+        <div class="hidden md:flex flex-wrap justify-center gap-3 mb-8 md:mb-10">
+          @foreach ($portfolioCategories as $index => $category)
+            <button type="button"
+              class="portfolio-category-pill rounded-full px-4 py-1.5 text-xs border font-bold cursor-pointer inline-flex items-center gap-2 transition-all duration-250 hover:border-yellow-400 hover:bg-yellow-500 hover:-translate-y-0.5 {{ $index === 0 ? 'border-yellow-400 bg-orange-500 shadow-lg text-black' : 'border-impost-primary bg-impost-primary text-black' }}"
+              data-portfolio-category="{{ $category->id }}">
+              <span class="uppercase tracking-wide text-[10px] opacity-80">
+                {{ $category->name ?? ($category->title ?? 'Kategori') }}
+              </span>
+            </button>
           @endforeach
-        </select>
+        </div>
+
+        <div class="block md:hidden mb-8">
+          <select id="portfolioMobileSelect"
+            class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-xl py-3 px-4 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-xs font-medium shadow-lg">
+            @foreach ($portfolioCategories as $category)
+              <option value="{{ $category->id }}" class="bg-black text-white">
+                {{ $category->name ?? ($category->title ?? 'Kategori') }}
+              </option>
+            @endforeach
+          </select>
+        </div>
+      @endif
+
+      <div
+        class="relative w-full h-[340px] sm:h-[400px] md:h-[450px] lg:h-[550px] overflow-visible mb-6 md:mb-12 py-4 md:py-8"
+        style="perspective: 2000px;">
+
+        <button
+          class="carousel-nav-prev absolute top-1/2 -translate-y-1/2 left-1 sm:left-2 md:left-4 z-40 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-impost-primary/10 border border-impost-primary/30 hover:bg-impost-primary/25 hover:border-impost-primary/60 hover:scale-110 text-impost-primary"
+          aria-label="Previous portfolio">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18-6-6 6-6" />
+          </svg>
+        </button>
+
+        {{-- Skeleton --}}
+        <div id="portfolio-carousel-skeleton"
+          class="absolute inset-0 z-30 flex items-center justify-center transition-opacity duration-500">
+          <div
+            class="w-[200px] sm:w-[240px] md:w-[300px] lg:w-[320px] aspect-[4/5] bg-[#151515] rounded-2xl border border-impost-fourth animate-pulse">
+          </div>
+        </div>
+
+        <div class="relative w-full h-full" id="portfolioCarouselContainer"
+          style="transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease; opacity: 0;">
+        </div>
+
+        <div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10"
+          id="portfolioEmptyMessage">
+          <h3 class="text-impost-primary text-lg sm:text-xl md:text-2xl font-bold mb-2">Belum Ada Portfolio</h3>
+          <p class="text-white/80 text-xs sm:text-sm md:text-base">Kategori ini belum memiliki portfolio tersedia.</p>
+        </div>
+
+        <button
+          class="carousel-nav-next absolute top-1/2 -translate-y-1/2 right-1 sm:right-2 md:right-4 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-impost-primary/10 border border-impost-primary/30 hover:bg-impost-primary/25 hover:border-impost-primary/60 hover:scale-110 text-impost-primary"
+          aria-label="Next portfolio">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
       </div>
-    @endif
 
-    <div
-      class="relative w-full h-[340px] sm:h-[400px] md:h-[450px] lg:h-[550px] overflow-visible mb-6 md:mb-12 py-4 md:py-8"
-      style="perspective: 2000px;">
+      <div class="text-center mt-8 md:mt-16">
 
-      <button
-        class="carousel-nav-prev absolute top-1/2 -translate-y-1/2 left-1 sm:left-2 md:left-4 z-40 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-impost-primary/10 border border-impost-primary/30 hover:bg-impost-primary/25 hover:border-impost-primary/60 hover:scale-110 text-impost-primary"
-        aria-label="Previous portfolio">
-        <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18-6-6 6-6" />
-        </svg>
-      </button>
+        <a href="{{ route('portfolio') ?? '#portfolios' }}"
+          class="inline-flex items-center text-xs font-bold uppercase text-white hover:text-impost-primary transition-colors tracking-wider border-b border-transparent hover:border-impost-primary pb-1">
+          Lihat Semua Portfolio
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="size-4 ml-2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
 
-      {{-- Skeleton --}}
-      <div id="portfolio-carousel-skeleton" class="absolute inset-0 z-30 flex items-center justify-center transition-opacity duration-500">
-        <div class="w-[200px] sm:w-[240px] md:w-[300px] lg:w-[320px] aspect-[4/5] bg-[#151515] rounded-2xl border border-impost-fourth animate-pulse"></div>
+        </a>
       </div>
-
-      <div class="relative w-full h-full" id="portfolioCarouselContainer"
-        style="transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease; opacity: 0;">
-      </div>
-
-      <div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10"
-        id="portfolioEmptyMessage">
-        <h3 class="text-impost-primary text-lg sm:text-xl md:text-2xl font-bold mb-2">Belum Ada Portfolio</h3>
-        <p class="text-white/80 text-xs sm:text-sm md:text-base">Kategori ini belum memiliki portfolio tersedia.</p>
-      </div>
-
-      <button
-        class="carousel-nav-next absolute top-1/2 -translate-y-1/2 right-1 sm:right-2 md:right-4 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-impost-primary/10 border border-impost-primary/30 hover:bg-impost-primary/25 hover:border-impost-primary/60 hover:scale-110 text-impost-primary"
-        aria-label="Next portfolio">
-        <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18 6-6-6-6" />
-        </svg>
-      </button>
-    </div>
-
-    <div class="text-center mt-8 md:mt-16">
-      <a href="{{ route('portfolio') ?? '#portfolios' }}"
-        class="bg-impost-primary inline-flex items-center justify-center px-5 py-2 sm:px-6 sm:py-2.5 md:px-8 md:py-3 text-xs sm:text-sm font-medium text-black border border-impost-primary rounded-full hover:scale-105 transition-all duration-300">
-        Lihat Portfolio Selengkapnya
-      </a>
-    </div>
     @else
-      <div class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
+      <div
+        class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
         <x-empty-card item="Portfolio" />
       </div>
     @endif
@@ -281,13 +291,13 @@
       if (skeleton && skeleton.style.display !== 'none') {
         const imgs = container.querySelectorAll('img');
         let loaded = 0;
-        
+
         function reveal() {
           skeleton.style.opacity = '0';
           setTimeout(() => skeleton.style.display = 'none', 500);
           container.style.opacity = '1';
         }
-        
+
         if (!imgs.length) {
           reveal();
         } else {
@@ -296,8 +306,18 @@
               loaded++;
               if (loaded >= imgs.length) reveal();
             } else {
-              img.addEventListener('load', () => { loaded++; if (loaded >= imgs.length) reveal(); }, { once: true });
-              img.addEventListener('error', () => { loaded++; if (loaded >= imgs.length) reveal(); }, { once: true });
+              img.addEventListener('load', () => {
+                loaded++;
+                if (loaded >= imgs.length) reveal();
+              }, {
+                once: true
+              });
+              img.addEventListener('error', () => {
+                loaded++;
+                if (loaded >= imgs.length) reveal();
+              }, {
+                once: true
+              });
             }
           });
           setTimeout(reveal, 1500);

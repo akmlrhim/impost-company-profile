@@ -70,7 +70,12 @@ class HomeController extends Controller
 			->take(4)
 			->get();
 
-		return view('public.article.article-detail', compact('title', 'article', 'latestArticle'));
+		$breadcrumbItems = [
+			['name' => 'Artikel', 'url' => route('article.all')],
+			['name' => $article->title, 'url' => url()->current()],
+		];
+
+		return view('public.article.article-detail', compact('title', 'article', 'latestArticle', 'breadcrumbItems'));
 	}
 
 	public function portfolio(Request $request)
@@ -109,6 +114,7 @@ class HomeController extends Controller
 	public function articleAll(Request $request)
 	{
 		$title = 'Artikel';
+		$meta_description = 'Jelajahi artikel seputar strategi digital marketing, data, dan pertumbuhan bisnis dari Impost Media.';
 		$category = ArticleCategory::select('id', 'name', 'slug')->get();
 		$articles = Article::select(
 			'id',
@@ -133,6 +139,7 @@ class HomeController extends Controller
 
 		return view('public.article.articles', [
 			'title' => $title,
+			'meta_description' => $meta_description,
 			'articles' => $articles,
 			'category' => $category,
 			'activeCategory' => $request->category
@@ -142,6 +149,7 @@ class HomeController extends Controller
 	public function studyCase()
 	{
 		$title = 'Study Case';
+		$meta_description = 'Lihat studi kasus nyata klien Impost Media — bagaimana kami membantu bisnis tumbuh melalui strategi digital marketing yang terukur.';
 		$studyCase = StudyCase::select(
 			'name',
 			'slug',
@@ -152,15 +160,21 @@ class HomeController extends Controller
 			'category'
 		)->latest()->paginate(12);
 
-		return view('public.studycase.studycases', compact('title', 'studyCase'));
+		return view('public.studycase.studycases', compact('title', 'meta_description', 'studyCase'));
 	}
 
 	public function studyCaseDetail(string $slug)
 	{
 		$studyCase = StudyCase::where('slug', $slug)->firstOrFail();
-		$title = 'Detail ' . $studyCase->name;
+		$title = $studyCase->name;
+		$meta_description = 'Studi kasus ' . $studyCase->name . ' — lihat bagaimana Impost Media memberikan solusi ' . $studyCase->category . ' yang berdampak nyata.';
 
-		return view('public.studycase.studycase-detail', compact('title', 'studyCase'));
+		$breadcrumbItems = [
+			['name' => 'Study Case', 'url' => route('study-case')],
+			['name' => $studyCase->name, 'url' => url()->current()],
+		];
+
+		return view('public.studycase.studycase-detail', compact('title', 'meta_description', 'studyCase', 'breadcrumbItems'));
 	}
 
 	public function about()
@@ -187,6 +201,8 @@ class HomeController extends Controller
 
 	public function job(Request $request)
 	{
+		$title = 'Karir';
+		$meta_description = 'Bergabunglah bersama tim Impost Media. Lihat lowongan karir terbaru dan jadilah bagian dari agensi digital marketing terkemuka di Kalimantan Selatan.';
 		$search = $request->search;
 		$type = $request->type;
 		$arrangement = $request->arrangement;
@@ -227,13 +243,21 @@ class HomeController extends Controller
 		$allArrangements = JobVacancy::whereNotNull('work_arrangements')->pluck('work_arrangements');
 		$workArrangements = $workArrangements->merge($allArrangements->flatten())->unique()->values();
 
-		return view('public.job.jobs', compact('job', 'search', 'type', 'arrangement', 'employmentTypes', 'workArrangements'));
+		return view('public.job.jobs', compact('title', 'meta_description', 'job', 'search', 'type', 'arrangement', 'employmentTypes', 'workArrangements'));
 	}
 
 	public function jobDetail(JobVacancy $job)
 	{
 		$job->load('details');
-		return view('public.job.job-detail', compact('job'));
+		$title = $job->title;
+		$meta_description = 'Lowongan kerja ' . $job->title . ' di Impost Media. Lihat detail pekerjaan, kualifikasi, dan cara melamar.';
+
+		$breadcrumbItems = [
+			['name' => 'Karir', 'url' => route('careers')],
+			['name' => $job->title, 'url' => url()->current()],
+		];
+
+		return view('public.job.job-detail', compact('title', 'meta_description', 'job', 'breadcrumbItems'));
 	}
 
 	public function vslForm()

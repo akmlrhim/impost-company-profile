@@ -92,8 +92,6 @@
               </div>
             </div>
 
-            <div class="h-px bg-white/5 mb-4"></div>
-
             <p class="text-white/40 text-sm leading-relaxed">
               {{ $item['desc'] }}
             </p>

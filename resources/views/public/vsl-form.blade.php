@@ -9,7 +9,6 @@
   <main class="relative overflow-hidden pt-20 pb-6 antialiased sm:pt-28 sm:pb-12 md:pt-32">
     <div class="relative z-10 mx-auto max-w-7xl px-4 font-sans">
 
-      <!-- Header Section -->
       <div class="mb-6 text-center sm:mb-8">
         <h1 class="mb-2 text-2xl font-bold leading-tight text-impost-primary sm:mb-3 sm:text-3xl md:text-4xl">
           Mari Kita Mulai
@@ -19,7 +18,6 @@
         </p>
       </div>
 
-      <!-- Form Card -->
       <div class="rounded-xl border border-white/10 bg-gray-900/40 p-4 shadow-2xl backdrop-blur-md sm:p-5 md:p-8">
         <form action="{{ route('save-leads') }}" method="POST" class="space-y-4 sm:space-y-5" x-data="{
             loading: false,
@@ -40,14 +38,12 @@
           <x-flash />
           <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
-          <!-- Section: Informasi Pribadi -->
           <div class="space-y-3 sm:space-y-4">
             <h2 class="border-b border-white/10 pb-2 text-sm font-semibold text-gray-200 sm:text-base">
               Informasi Pribadi
             </h2>
 
             <div class="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
-              <!-- Full Name -->
               <div class="group">
                 <label class="mb-1 block text-[10px] font-medium text-gray-400 sm:mb-1.5 sm:text-xs">
                   Nama Lengkap <span class="text-red-400">*</span>
@@ -69,7 +65,6 @@
                 @enderror
               </div>
 
-              <!-- Phone Number -->
               <div class="group">
                 <label class="mb-1 block text-[10px] font-medium text-gray-400 sm:mb-1.5 sm:text-xs">
                   Nomor HP <span class="text-red-400">*</span>
@@ -91,7 +86,6 @@
                 @enderror
               </div>
 
-              <!-- Email -->
               <div class="group md:col-span-2">
                 <label class="mb-1 block text-[10px] font-medium text-gray-400 sm:mb-1.5 sm:text-xs">Email</label>
                 <div class="relative">
@@ -113,7 +107,6 @@
             </div>
           </div>
 
-          <!-- Section: Informasi Bisnis -->
           <div class="space-y-3 pt-1 sm:space-y-4 sm:pt-2">
             <h2 class="border-b border-white/10 pb-2 text-sm font-semibold text-gray-200 sm:text-base">
               Informasi Bisnis
@@ -141,7 +134,6 @@
                 @enderror
               </div>
 
-              <!-- Monthly Income -->
               <div class="group">
                 <label class="mb-1 block text-[10px] font-medium text-gray-400 sm:mb-1.5 sm:text-xs">
                   Omzet Per Bulan <span class="text-red-400">*</span>
@@ -182,7 +174,6 @@
             </div>
           </div>
 
-          <!-- Section: Tujuan Utama -->
           <div class="space-y-2 pt-1 sm:space-y-3 sm:pt-2">
             <h2 class="border-b border-white/10 pb-2 text-sm font-semibold text-gray-200 sm:text-base">
               Tujuan Utama <span class="text-red-400">*</span>
@@ -215,14 +206,12 @@
             @enderror
           </div>
 
-          <!-- Section: Catatan -->
           <div class="space-y-1.5 pt-1 sm:space-y-2 sm:pt-2">
             <label class="block text-[10px] font-medium text-gray-400 sm:text-xs">Catatan Tambahan</label>
             <textarea name="note" rows="3" placeholder="Ceritakan detail kebutuhan Anda..."
               class="w-full resize-none rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-gray-200 transition-all placeholder:text-gray-500 focus:border-impost-primary focus:outline-none focus:ring-1 focus:ring-impost-primary sm:px-4 sm:py-2.5 sm:text-sm">{{ old('note') }}</textarea>
           </div>
 
-          <!-- Submit Button -->
           <div class="pt-3 sm:pt-4">
             <button type="submit" :disabled="loading"
               class="w-full rounded-lg bg-gradient-to-r from-impost-primary to-impost-secondary py-2.5 text-xs font-bold text-white shadow-lg transition-all duration-200 hover:opacity-90 hover:shadow-impost-primary/25 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 sm:py-3 sm:text-sm">
@@ -234,7 +223,6 @@
     </div>
   </main>
 
-  <!-- Success Modal -->
   @if (session('success'))
     <div id="success-modal" tabindex="-1"
       class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0">

@@ -84,12 +84,14 @@
               x-transition:leave-end="opacity-0 translate-y-1" id="works-menu" role="menu" aria-orientation="vertical"
               class="absolute left-1/2 -translate-x-1/2 mt-4 w-48 bg-impost-fifth rounded-xl border border-white/10 shadow-xl overflow-hidden ring-1 ring-black ring-opacity-5 z-50">
               <div class="py-1">
-                <a href="{{ url('/') }}#portfolios" role="menuitem"
-                  class="block px-4 py-2.5 text-sm text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors">
+                <a href="{{ route('portfolio') }}" role="menuitem"
+                  class="block px-4 py-2.5 text-sm text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors {{ request()->routeIs('portfolio') ? 'bg-impost-primary/20 text-white' : '' }}"
+                  @if (request()->routeIs('portfolio')) aria-current="page" @endif>
                   Portfolio
                 </a>
-                <a href="{{ url('/') }}#study-cases" role="menuitem"
-                  class="block px-4 py-2.5 text-sm text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors border-t border-white/5">
+                <a href="{{ route('study-case') }}" role="menuitem"
+                  class="block px-4 py-2.5 text-sm text-gray-200 hover:bg-impost-primary/20 hover:text-white focus:bg-impost-primary/20 focus:text-white focus:outline-none transition-colors border-t border-white/5 {{ request()->routeIs('study-case') ? 'bg-impost-primary/20 text-white' : '' }}"
+                  @if (request()->routeIs('study-case')) aria-current="page" @endif>
                   Study Case
                 </a>
               </div>
@@ -186,12 +188,14 @@
           </button>
           <div x-show="activeDropdown === 'works'" x-collapse id="mobile-works-menu" class="pl-4 space-y-0.5"
             role="menu">
-            <a href="{{ url('/') }}#portfolios" role="menuitem"
-              class="block px-3 py-2 text-xs font-medium text-gray-300 rounded-md hover:bg-white/5 hover:text-white focus:outline-none focus:bg-white/5 focus:text-white transition-colors">
+            <a href="{{ route('portfolio') }}" role="menuitem"
+              class="block px-3 py-2 text-xs font-medium text-gray-300 rounded-md hover:bg-white/5 hover:text-white focus:outline-none focus:bg-white/5 focus:text-white transition-colors"
+              @if (request()->routeIs('portfolio')) aria-current="page" @endif>
               Portfolio
             </a>
-            <a href="{{ url('/') }}#study-cases" role="menuitem"
-              class="block px-3 py-2 text-xs font-medium text-gray-300 rounded-md hover:bg-white/5 hover:text-white focus:outline-none focus:bg-white/5 focus:text-white transition-colors">
+            <a href="{{ route('study-case') }}" role="menuitem"
+              class="block px-3 py-2 text-xs font-medium text-gray-300 rounded-md hover:bg-white/5 hover:text-white focus:outline-none focus:bg-white/5 focus:text-white transition-colors"
+              @if (request()->routeIs('study-case')) aria-current="page" @endif>
               Study Case
             </a>
           </div>

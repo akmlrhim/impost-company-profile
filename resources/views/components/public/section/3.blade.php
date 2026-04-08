@@ -45,14 +45,6 @@
 
 <section class="py-20 sm:py-28 relative overflow-hidden">
 
-  {{-- Background ambient glow --}}
-  <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-impost-primary/[0.06] blur-[150px] rounded-full pointer-events-none">
-  </div>
-  <div
-    class="absolute top-0 right-0 w-[400px] h-[400px] bg-impost-primary/[0.04] blur-[120px] rounded-full pointer-events-none">
-  </div>
-
   <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
 
     {{-- Section Header --}}
@@ -74,11 +66,6 @@
           <div
             class="shrink-0 snap-center w-[78vw] sm:w-[55vw] group relative bg-gradient-to-br from-white/[0.07] to-white/[0.02] border border-white/[0.08] rounded-2xl p-5 sm:p-6 flex flex-col justify-between gap-4 hover:border-impost-primary/30 transition-all duration-500">
 
-            {{-- Gradient accent top --}}
-            <div
-              class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-impost-primary/40 to-transparent">
-            </div>
-
             {{-- Number badge --}}
             <div class="flex items-center justify-between mb-2">
               <div class="flex items-center gap-3">
@@ -99,26 +86,9 @@
               <p class="text-white/50 text-xs sm:text-sm leading-relaxed">{{ $item['desc'] }}</p>
             </div>
 
-            {{-- Bottom arrow indicator --}}
-            <div class="flex items-center gap-2 mt-2">
-              <div class="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent"></div>
-              <svg
-                class="w-4 h-4 text-impost-primary/50 group-hover:text-impost-primary group-hover:translate-x-1 transition-all duration-300"
-                fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </div>
-
           </div>
         @endforeach
 
-      </div>
-
-      {{-- Scroll indicator dots --}}
-      <div class="flex justify-center gap-1.5 mt-4">
-        @for ($i = 0; $i < 6; $i++)
-          <div class="w-1.5 h-1.5 rounded-full {{ $i === 0 ? 'bg-impost-primary' : 'bg-white/20' }}"></div>
-        @endfor
       </div>
     </div>
 
@@ -220,10 +190,10 @@
             stroke-dasharray="4 4" />
           <line x1="50" y1="380" x2="145" y2="280" stroke="url(#line-grad)" stroke-width="1"
             stroke-dasharray="4 4" />
-          <line x1="350" y1="80" x2="255" y2="180" stroke="url(#line-grad)"
-            stroke-width="1" stroke-dasharray="4 4" />
-          <line x1="350" y1="230" x2="260" y2="230" stroke="url(#line-grad)"
-            stroke-width="1" stroke-dasharray="4 4" />
+          <line x1="350" y1="80" x2="255" y2="180" stroke="url(#line-grad)" stroke-width="1"
+            stroke-dasharray="4 4" />
+          <line x1="350" y1="230" x2="260" y2="230" stroke="url(#line-grad)" stroke-width="1"
+            stroke-dasharray="4 4" />
           <line x1="350" y1="380" x2="255" y2="280" stroke="url(#line-grad)"
             stroke-width="1" stroke-dasharray="4 4" />
           <defs>

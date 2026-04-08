@@ -4,6 +4,41 @@
 @section('meta_description', 'Studi kasus ' . $studyCase->name . ' — lihat bagaimana Impost Media memberikan solusi ' .
   $studyCase->category . ' yang berdampak nyata bagi klien.')
 
+@section('og_type', 'article')
+@section('og_image', $studyCase->cover_path ? asset('storage/' . $studyCase->cover_path) :
+  asset('img/og_image.png'))
+
+@push('json-ld')
+  @php
+    $studyCaseJsonLd = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Article',
+        'headline' => $studyCase->name,
+        'description' => 'Studi kasus ' . $studyCase->name . ' — solusi ' . $studyCase->category . ' dari Impost Media.',
+        'image' => $studyCase->cover_path ? asset('storage/' . $studyCase->cover_path) : asset('img/og_image.png'),
+        'author' => [
+            '@type' => 'Organization',
+            'name' => 'Impost Media',
+        ],
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => 'Impost Media',
+            'logo' => [
+                '@type' => 'ImageObject',
+                'url' => asset('img/og_image.png'),
+            ],
+        ],
+        'datePublished' => $studyCase->created_at->toIso8601String(),
+        'dateModified' => $studyCase->updated_at->toIso8601String(),
+        'mainEntityOfPage' => [
+            '@type' => 'WebPage',
+            '@id' => url()->current(),
+        ],
+    ];
+  @endphp
+  <script type="application/ld+json">{!! json_encode($studyCaseJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+@endpush
+
 @section('content')
   <section class="relative w-full h-[400px] md:h-[560px] overflow-hidden">
     <div class="absolute inset-0 z-0 bg-fixed bg-center bg-cover bg-no-repeat"

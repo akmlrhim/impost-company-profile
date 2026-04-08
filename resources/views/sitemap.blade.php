@@ -3,74 +3,65 @@
 
   <url>
     <loc>{{ route('home') }}</loc>
+    <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>{{ route('about') }}</loc>
+    <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>{{ route('legal') }}</loc>
+    <loc>{{ route('contact') }}</loc>
+    <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>{{ route('vsl-form') }}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>{{ route('portfolio') }}</loc>
+    <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>{{ route('study-case') }}</loc>
+    <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>{{ route('article.all') }}</loc>
+    <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>{{ route('docs') }}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
     <loc>{{ route('careers') }}</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>{{ route('contact') }}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>{{ route('legal') }}</loc>
+    <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>{{ route('portfolio') }}</loc>
+    <loc>{{ route('docs') }}</loc>
+    <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>{{ route('study-case') }}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>{{ route('landing.web') }}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>{{ route('landing.promo') }}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
 
   @foreach ($articleCategories as $category)
@@ -97,6 +88,15 @@
       <lastmod>{{ $case->updated_at->tz('UTC')->toAtomString() }}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
+    </url>
+  @endforeach
+
+  @foreach ($jobVacancies as $job)
+    <url>
+      <loc>{{ route('job.details', $job) }}</loc>
+      <lastmod>{{ $job->updated_at->tz('UTC')->toAtomString() }}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
     </url>
   @endforeach
 

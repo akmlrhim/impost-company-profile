@@ -71,9 +71,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-14">
 
       <div class="max-w-5xl mx-auto mb-8 sm:mb-10 md:mb-12">
-        <h1 class="mt-2 sm:mt-3 text-sm sm:text-xl md:text-2xl text-impost-primary lg:text-3xl font-bold leading-tight">
+        <h2 class="mt-2 sm:mt-3 text-sm sm:text-xl md:text-2xl text-impost-primary lg:text-3xl font-bold leading-tight">
           Sekilas Impost Media Indonesia
-        </h1>
+        </h2>
       </div>
 
       <div class="mb-10 sm:mb-14 md:mb-16 max-w-5xl mx-auto">
@@ -340,10 +340,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-14">
       <div class="mt-10 sm:mt-14 md:mt-24 max-w-5xl mx-auto">
         <div class="max-w-5xl mx-auto mb-2 sm:mb-3 md:mb-4">
-          <h1
+          <h2
             class="mt-2 sm:mt-3 text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight text-impost-primary">
             Visi
-          </h1>
+          </h2>
         </div>
 
         <p class="text-white/80 text-xs sm:text-lg leading-loose text-justify">
@@ -354,10 +354,10 @@
 
       <div class="mt-10 sm:mt-14 md:mt-24 max-w-5xl mx-auto">
         <div class="max-w-5xl mx-auto mb-2 sm:mb-3 md:mb-4">
-          <h1
+          <h2
             class="mt-2 sm:mt-3 text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight text-impost-primary">
             Misi
-          </h1>
+          </h2>
         </div>
 
         <ol

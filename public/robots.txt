@@ -1,17 +1,35 @@
 User-agent: *
 
+# Block admin & auth
 Disallow: /admin/
 Disallow: /login
 Disallow: /logout
 Disallow: /password/
 
+# Block lead generation private pages
 Disallow: /vsl
 Disallow: /opt-in
 Disallow: /save-leads
 
+# Block private verification
+Disallow: /verify-id/
+
+# Block log/txt files in storage
 Disallow: /storage/*.log
 Disallow: /storage/*.txt
 
+# Allow public storage
 Allow: /storage/
+
+# Allow all public pages
+Allow: /about
+Allow: /contact
+Allow: /portfolio
+Allow: /studycase
+Allow: /article/
+Allow: /articles/
+Allow: /careers
+Allow: /company-legality
+Allow: /docs
 
 Sitemap: https://impostmedia.com/sitemap.xml

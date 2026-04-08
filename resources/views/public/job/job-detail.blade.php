@@ -7,6 +7,48 @@
   ' di Impost Media. Lihat detail pekerjaan, kualifikasi,
   dan cara melamar.')
 
+@section('og_type', 'article')
+
+@push('json-ld')
+  @php
+    $jobPostingJsonLd = [
+        '@context' => 'https://schema.org',
+        '@type' => 'JobPosting',
+        'title' => $job->title,
+        'description' => $job->title . ' - Lowongan kerja di Impost Media',
+        'datePosted' => $job->created_at->toIso8601String(),
+        'employmentType' => strtoupper(str_replace(' ', '_', $job->employment_type ?? 'FULL_TIME')),
+        'hiringOrganization' => [
+            '@type' => 'Organization',
+            'name' => 'Impost Media',
+            'sameAs' => url('/'),
+            'logo' => asset('img/og_image.png'),
+        ],
+        'jobLocation' => [
+            '@type' => 'Place',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => 'Jl. Kawamara No.3, Landasan Ulin Tengah',
+                'addressLocality' => 'Banjarbaru',
+                'addressRegion' => 'Kalimantan Selatan',
+                'postalCode' => '70724',
+                'addressCountry' => 'ID',
+            ],
+        ],
+    ];
+
+    // Add remote job location if applicable
+    if (!empty($job->work_arrangements) && in_array('Remote', $job->work_arrangements)) {
+        $jobPostingJsonLd['jobLocationType'] = 'TELECOMMUTE';
+    }
+
+    if ($job->status !== 'Active') {
+        $jobPostingJsonLd['validThrough'] = $job->updated_at->toIso8601String();
+    }
+  @endphp
+  <script type="application/ld+json">{!! json_encode($jobPostingJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+@endpush
+
 @section('content')
   <main class="pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 antialiased bg-impost-fifth min-h-screen">
 

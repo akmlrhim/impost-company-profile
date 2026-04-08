@@ -88,6 +88,26 @@
   </div>
 </section>
 
+@push('json-ld')
+  @php
+    $faqJsonLd = [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => array_map(function ($faq) {
+            return [
+                '@type' => 'Question',
+                'name' => $faq['question'],
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => strip_tags($faq['answer']),
+                ],
+            ];
+        }, $faqs),
+    ];
+  @endphp
+  <script type="application/ld+json">{!! json_encode($faqJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+@endpush
+
 <script>
   (function() {
     function toggleFAQ(button) {

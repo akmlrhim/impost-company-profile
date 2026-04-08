@@ -33,7 +33,10 @@
   <meta name="keywords"
     content="digital marketing banjarmasin, digital marketing banjarbaru, digital marketing, digital marketing kalimantan, digital marketing kalimantan selatan, seo banjarmasin, impost media, impost">
   <meta name="robots" content="index, follow">
+  <meta name="author" content="Impost Media">
   <link rel="canonical" href="@yield('canonical', url()->current())">
+  <link rel="alternate" hreflang="id" href="{{ url()->current() }}">
+  <link rel="alternate" hreflang="x-default" href="{{ url()->current() }}">
 
   <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
   <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicon/favicon-96x96.png') }}">
@@ -91,20 +94,74 @@
   </style>
 
   @php
+    // Organization Schema
     $defaultJsonLd = [
         '@context' => 'https://schema.org',
         '@type' => 'Organization',
         'name' => 'Impost Media',
+        'alternateName' => 'CV Impost Media Indonesia',
         'url' => url('/'),
         'logo' => asset('img/og_image.png'),
+        'image' => asset('img/og_image.png'),
+        'description' => 'All in One Integrated Digital Marketing Agency di Banjarbaru, Kalimantan Selatan.',
+        'address' => [
+            '@type' => 'PostalAddress',
+            'streetAddress' => 'Jl. Kawamara No.3, Landasan Ulin Tengah',
+            'addressLocality' => 'Banjarbaru',
+            'addressRegion' => 'Kalimantan Selatan',
+            'postalCode' => '70724',
+            'addressCountry' => 'ID',
+        ],
         'contactPoint' => [
             '@type' => 'ContactPoint',
             'telephone' => '+62-831-4780-2761',
             'contactType' => 'customer service',
+            'availableLanguage' => ['Indonesian', 'English'],
         ],
-        'sameAs' => ['https://www.instagram.com/impostmedia', 'https://www.facebook.com/impostmedia'],
+        'sameAs' => [
+            'https://www.instagram.com/impostmedia',
+            'https://www.facebook.com/impostmedia',
+            'https://linkedin.com/company/cv-impost-media-indonesia',
+        ],
     ];
 
+    // WebSite Schema — enables sitelinks search box
+    $websiteJsonLd = [
+        '@context' => 'https://schema.org',
+        '@type' => 'WebSite',
+        'name' => 'Impost Media',
+        'alternateName' => 'Impost Media Indonesia',
+        'url' => url('/'),
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => 'Impost Media',
+        ],
+        'potentialAction' => [
+            '@type' => 'SearchAction',
+            'target' => [
+                '@type' => 'EntryPoint',
+                'urlTemplate' => route('article.all') . '?search={search_term_string}',
+            ],
+            'query-input' => 'required name=search_term_string',
+        ],
+    ];
+
+    // SiteNavigationElement — helps Google determine sitelinks
+    $siteNavJsonLd = [
+        '@context' => 'https://schema.org',
+        '@type' => 'ItemList',
+        'itemListElement' => [
+            ['@type' => 'SiteNavigationElement', 'position' => 1, 'name' => 'Home', 'url' => url('/')],
+            ['@type' => 'SiteNavigationElement', 'position' => 2, 'name' => 'Tentang Kami', 'url' => route('about')],
+            ['@type' => 'SiteNavigationElement', 'position' => 3, 'name' => 'Portfolio', 'url' => route('portfolio')],
+            ['@type' => 'SiteNavigationElement', 'position' => 4, 'name' => 'Study Case', 'url' => route('study-case')],
+            ['@type' => 'SiteNavigationElement', 'position' => 5, 'name' => 'Artikel', 'url' => route('article.all')],
+            ['@type' => 'SiteNavigationElement', 'position' => 6, 'name' => 'Karir', 'url' => route('careers')],
+            ['@type' => 'SiteNavigationElement', 'position' => 7, 'name' => 'Kontak', 'url' => route('contact')],
+        ],
+    ];
+
+    // Breadcrumb Schema — supports multi-level via $breadcrumbItems
     $breadcrumbs = [
         '@context' => 'https://schema.org',
         '@type' => 'BreadcrumbList',
@@ -118,7 +175,19 @@
         ],
     ];
 
-    if (isset($title) && $title !== 'Home') {
+    // Use $breadcrumbItems from controller if available (for multi-level)
+    if (isset($breadcrumbItems) && is_array($breadcrumbItems)) {
+        $pos = 2;
+        foreach ($breadcrumbItems as $crumb) {
+            $breadcrumbs['itemListElement'][] = [
+                '@type' => 'ListItem',
+                'position' => $pos,
+                'name' => $crumb['name'],
+                'item' => $crumb['url'],
+            ];
+            $pos++;
+        }
+    } elseif (isset($title) && $title !== 'Home') {
         $breadcrumbs['itemListElement'][] = [
             '@type' => 'ListItem',
             'position' => 2,
@@ -128,6 +197,8 @@
     }
   @endphp
   <script type="application/ld+json">{!! json_encode($defaultJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+  <script type="application/ld+json">{!! json_encode($websiteJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+  <script type="application/ld+json">{!! json_encode($siteNavJsonLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
   <script type="application/ld+json">{!! json_encode($breadcrumbs, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
   @stack('json-ld')
 

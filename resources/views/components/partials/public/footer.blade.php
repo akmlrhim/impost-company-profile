@@ -27,8 +27,8 @@
         <ul class="space-y-3">
           @php
             $works = [
-                ['label' => 'Portfolio', 'href' => url('/') . '#portfolios'],
-                ['label' => 'Study Case', 'href' => url('/') . '#study-cases'],
+                ['label' => 'Portfolio', 'href' => route('portfolio')],
+                ['label' => 'Study Case', 'href' => route('study-case')],
             ];
           @endphp
           @foreach ($works as $item)

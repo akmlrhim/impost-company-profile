@@ -41,7 +41,7 @@
         </nav>
 
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
-          LegalitasPerusahaan
+          Legalitas Perusahaan
         </h1>
         <p class="text-white/80 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl text-justify">
           Integritas dan transparansi adalah fondasi kami. Berikut adalah data legalitas resmi CV. Impost Media Indonesia

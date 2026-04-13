@@ -16,15 +16,7 @@
 
     @if (isset($testimonials) && $testimonials->isNotEmpty())
       <div class="relative">
-        <div id="testimonial-skeleton"
-          class="columns-1 md:columns-2 lg:columns-3 gap-5 sm:gap-6 space-y-5 sm:space-y-6 animate-pulse">
-          @for ($i = 0; $i < 6; $i++)
-            <div class="h-48 bg-black/40 border border-white/10 rounded-2xl mb-5 break-inside-avoid"></div>
-          @endfor
-        </div>
-
-        <div id="testimonial-masonry"
-          class="columns-1 md:columns-2 lg:columns-3 gap-5 sm:gap-6 space-y-5 sm:space-y-6 opacity-0 transition-opacity duration-500">
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-5 sm:gap-6 space-y-5 sm:space-y-6">
           @foreach ($testimonials as $index => $t)
             <div
               class="testimonial-item break-inside-avoid bg-black/40 border border-white/10 rounded-2xl p-4 sm:p-6 hover:border-impost-primary/50 transition-all duration-300 shadow-xl relative group
@@ -101,49 +93,6 @@
 @push('scripts')
   <script data-cfasync="false">
     document.addEventListener('DOMContentLoaded', function() {
-      const skeleton = document.getElementById('testimonial-skeleton');
-      const masonry = document.getElementById('testimonial-masonry');
-
-      if (skeleton && masonry) {
-        let revealed = false;
-
-        function reveal() {
-          if (revealed) return;
-          revealed = true;
-          skeleton.style.display = 'none';
-          masonry.classList.remove('opacity-0');
-          masonry.classList.add('opacity-100');
-        }
-
-        const images = masonry.querySelectorAll('img');
-
-        if (!images.length) {
-          reveal();
-        } else {
-          let loaded = 0;
-          const total = images.length;
-
-          images.forEach(function(img) {
-            if (img.complete) {
-              loaded++;
-              if (loaded >= total) reveal();
-            } else {
-              img.addEventListener('load', function() {
-                loaded++;
-                if (loaded >= total) reveal();
-              }, { once: true });
-
-              img.addEventListener('error', function() {
-                loaded++;
-                if (loaded >= total) reveal();
-              }, { once: true });
-            }
-          });
-
-          setTimeout(reveal, 2000);
-        }
-      }
-
       const toggleBtn = document.getElementById('btn-toggle-testimonials');
       if (!toggleBtn) return;
 

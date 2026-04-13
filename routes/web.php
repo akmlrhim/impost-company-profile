@@ -53,8 +53,8 @@ Route::middleware('throttle:30,1')->group(function () {
 		Route::get('company-legality', [HomeController::class, 'legal'])->name('legal');
 
 		// Landing 
-		// Route::get('landing/web-development', [LandingController::class, 'web'])->name('landing.web');
-		// Route::get('landing/promo', [LandingController::class, 'promo'])->name('landing.promo');
+		Route::get('landing/web-development', [LandingController::class, 'web'])->name('landing.web');
+		Route::get('landing/promo', [LandingController::class, 'promo'])->name('landing.promo');
 	});
 
 	Route::prefix('admin')->middleware('auth')->group(function () {

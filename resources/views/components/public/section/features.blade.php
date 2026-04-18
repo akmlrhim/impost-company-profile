@@ -99,7 +99,6 @@
 <section class="py-16 sm:py-20 md:py-24 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-    {{-- Header --}}
     <div class="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
       <h2 class="text-2xl sm:text-3xl md:text-5xl font-header text-white leading-tight mb-4 sm:mb-5">
         Kenapa Harus <br class="hidden md:block">
@@ -110,7 +109,6 @@
       </p>
     </div>
 
-    {{-- Desktop --}}
     <div class="relative hidden lg:block w-full min-h-[800px]">
 
       <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
@@ -155,7 +153,8 @@
             <div>
               <h4
                 class="text-white font-bold text-base mb-1.5 group-hover:text-impost-primary transition-colors duration-300">
-                {{ $item['title'] }}</h4>
+                {{ $item['title'] }}
+              </h4>
               <p class="text-white/50 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
             </div>
           </div>
@@ -164,31 +163,98 @@
 
     </div>
 
-    {{-- Mobile --}}
-    <div class="lg:hidden flex flex-col gap-6">
-      <div class="flex justify-center mb-4">
+    {{-- Mobile Slider --}}
+    <div class="lg:hidden" x-data="featureSlider()" x-init="init()" @touchstart.passive="dragStart($event)"
+      @touchmove.passive="dragMove($event)" @touchend="dragEnd($event)">
+      <div class="flex justify-center mb-6">
         <img src="{{ asset('img/why_us.jpeg') }}" alt="Why Choose Impost Media"
           class="w-[200px] sm:w-[240px] h-auto rounded-2xl border border-white/10 object-cover" loading="lazy">
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        @foreach ($features as $item)
-          <div class="flex items-start gap-3 p-4 rounded-2xl border border-white/10 bg-white/5">
-            <div
-              class="flex-shrink-0 w-10 h-10 rounded-xl bg-impost-primary/10 border border-impost-primary/20 flex items-center justify-center">
-              <svg class="w-5 h-5 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
-              </svg>
+      <div class="overflow-hidden select-none">
+        <div class="flex"
+          :style="`transform: translateX(-${currentIndex * 100}%); transition: ${isDragging ? 'none' : 'transform 500ms ease-in-out'}`">
+          @foreach ($features as $item)
+            <div class="min-w-full px-1">
+              <div class="flex items-start gap-3 p-4 rounded-2xl border border-white/10 bg-white/5">
+                <div
+                  class="flex-shrink-0 w-10 h-10 rounded-xl bg-impost-primary/10 border border-impost-primary/20 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-white font-bold text-base lg:text-lg mb-1">{{ $item['title'] }}</h4>
+                  <p class="text-white/40 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
+                </div>
+              </div>
             </div>
-            <div>
-              <h4 class="text-white font-bold text-base lg:text-lg mb-1">{{ $item['title'] }}</h4>
-              <p class="text-white/40 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
-            </div>
-          </div>
-        @endforeach
+          @endforeach
+        </div>
       </div>
     </div>
 
   </div>
 </section>
+
+<script>
+  function featureSlider() {
+    return {
+      currentIndex: 0,
+      total: {{ count($features) }},
+
+      isDragging: false,
+      startX: 0,
+      threshold: 50,
+      autoplayTimer: null,
+      autoplayDelay: 3000,
+
+      init() {
+        this.startAutoplay();
+      },
+
+      startAutoplay() {
+        this.stopAutoplay();
+        this.autoplayTimer = setInterval(() => {
+          this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
+        }, this.autoplayDelay);
+      },
+
+      stopAutoplay() {
+        if (this.autoplayTimer) clearInterval(this.autoplayTimer);
+      },
+
+      dragStart(e) {
+        this.isDragging = true;
+        this.startX = e.touches ? e.touches[0].clientX : e.clientX;
+        this.stopAutoplay();
+      },
+
+      dragMove(e) {
+        if (!this.isDragging) return;
+      },
+
+      dragEnd(e) {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+
+        const endX = e?.changedTouches ?
+          e.changedTouches[0].clientX :
+          (e?.clientX ?? this.startX);
+
+        const diff = this.startX - endX;
+
+        if (Math.abs(diff) > this.threshold) {
+          if (diff > 0) {
+            this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
+          } else {
+            this.currentIndex = this.currentIndex <= 0 ? this.total - 1 : this.currentIndex - 1;
+          }
+        }
+
+        this.startAutoplay();
+      },
+    };
+  }
+</script>

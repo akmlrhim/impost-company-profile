@@ -51,31 +51,37 @@
       </p>
     </div>
 
-    {{-- Mobile --}}
-    <div class="md:hidden space-y-3">
-      @foreach ($problems as $index => $item)
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-start gap-4">
-          <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center shrink-0 mt-0.5">
-            <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
-            </svg>
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="font-bold text-sm text-white mb-1">{{ $item['title'] }}</h3>
-            <p class="text-sm lg:text-base text-white/40 leading-relaxed">{{ $item['desc'] }}</p>
-          </div>
+    {{-- Mobile Slider --}}
+    <div class="md:hidden" x-data="problemSlider()" x-init="init()" @touchstart.passive="dragStart($event)"
+      @touchmove.passive="dragMove($event)" @touchend="dragEnd($event)">
+      <div class="overflow-hidden select-none">
+        <div class="flex"
+          :style="`transform: translateX(-${currentIndex * 100}%); transition: ${isDragging ? 'none' : 'transform 500ms ease-in-out'}`">
+          @foreach ($problems as $item)
+            <div class="min-w-full px-1">
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
+                  </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-bold text-sm text-white mb-1">{{ $item['title'] }}</h3>
+                  <p class="text-sm lg:text-base text-white/40 leading-relaxed">{{ $item['desc'] }}</p>
+                </div>
+              </div>
+            </div>
+          @endforeach
         </div>
-      @endforeach
+      </div>
     </div>
 
     {{-- Desktop --}}
     <div class="hidden md:block">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-
-        @foreach ($problems as $index => $item)
+        @foreach ($problems as $item)
           <div class="group bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-7">
-
             <div class="flex items-center gap-4 mb-4">
               <div
                 class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center shrink-0 group-hover:bg-red-500/15 transition-colors duration-300">
@@ -91,14 +97,9 @@
                 </h3>
               </div>
             </div>
-
-            <p class="text-white/40 text-sm lg:text-base leading-relaxed">
-              {{ $item['desc'] }}
-            </p>
-
+            <p class="text-white/40 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
           </div>
         @endforeach
-
       </div>
 
       {{-- Bottom callout --}}
@@ -116,3 +117,64 @@
   </div>
 
 </section>
+
+<script>
+  function problemSlider() {
+    return {
+      currentIndex: 0,
+      total: {{ count($problems) }},
+
+      isDragging: false,
+      startX: 0,
+      threshold: 50,
+      autoplayTimer: null,
+      autoplayDelay: 3000,
+
+      init() {
+        this.startAutoplay();
+      },
+
+      startAutoplay() {
+        this.stopAutoplay();
+        this.autoplayTimer = setInterval(() => {
+          this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
+        }, this.autoplayDelay);
+      },
+
+      stopAutoplay() {
+        if (this.autoplayTimer) clearInterval(this.autoplayTimer);
+      },
+
+      dragStart(e) {
+        this.isDragging = true;
+        this.startX = e.touches ? e.touches[0].clientX : e.clientX;
+        this.stopAutoplay();
+      },
+
+      dragMove(e) {
+        if (!this.isDragging) return;
+      },
+
+      dragEnd(e) {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+
+        const endX = e?.changedTouches ?
+          e.changedTouches[0].clientX :
+          (e?.clientX ?? this.startX);
+
+        const diff = this.startX - endX;
+
+        if (Math.abs(diff) > this.threshold) {
+          if (diff > 0) {
+            this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
+          } else {
+            this.currentIndex = this.currentIndex <= 0 ? this.total - 1 : this.currentIndex - 1;
+          }
+        }
+
+        this.startAutoplay();
+      },
+    };
+  }
+</script>

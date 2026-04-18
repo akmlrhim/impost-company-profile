@@ -59,16 +59,16 @@
     </div>
 
     {{-- Mobile Slider --}}
-    <div class="lg:hidden">
-      <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 px-1 no-scrollbar">
+    <div class="lg:hidden" x-data="itemSlider()" x-init="init()" @touchstart.passive="dragStart($event)"
+      @touchmove.passive="dragMove($event)" @touchend="dragEnd($event)">
+      <div class="overflow-hidden select-none">
+        <div class="flex"
+          :style="`transform: translateX(-${currentIndex * 100}%); transition: ${isDragging ? 'none' : 'transform 500ms ease-in-out'}`">
+          @foreach ($items as $item)
+            <div class="min-w-full px-1">
+              <div
+                class="group relative bg-gradient-to-br from-white/[0.07] to-white/[0.02] border border-white/[0.08] rounded-2xl p-5 sm:p-6 flex flex-col gap-4 hover:border-impost-primary/30 transition-all duration-500">
 
-        @foreach ($items as $index => $item)
-          <div
-            class="shrink-0 snap-center w-[78vw] sm:w-[55vw] group relative bg-gradient-to-br from-white/[0.07] to-white/[0.02] border border-white/[0.08] rounded-2xl p-5 sm:p-6 flex flex-col justify-between gap-4 hover:border-impost-primary/30 transition-all duration-500">
-
-            {{-- Number badge --}}
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-3">
                 <div
                   class="w-10 h-10 rounded-xl bg-impost-primary/10 border border-impost-primary/20 flex items-center justify-center group-hover:bg-impost-primary/20 transition-colors duration-300">
                   <svg class="w-5 h-5 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -76,19 +76,19 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
                   </svg>
                 </div>
+
+                <div>
+                  <h3
+                    class="text-white text-sm sm:text-base font-bold mb-2 group-hover:text-impost-primary transition-colors duration-300">
+                    {{ $item['title'] }}
+                  </h3>
+                  <p class="text-white/50 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
+                </div>
+
               </div>
             </div>
-
-            <div>
-              <h3
-                class="text-white text-sm sm:text-base font-bold mb-2 group-hover:text-impost-primary transition-colors duration-300">
-                {{ $item['title'] }}</h3>
-              <p class="text-white/50 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
-            </div>
-
-          </div>
-        @endforeach
-
+          @endforeach
+        </div>
       </div>
     </div>
 
@@ -102,7 +102,6 @@
             class="group relative bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-md border border-white/[0.08] rounded-2xl p-6 hover:border-impost-primary/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(212,172,60,0.15)]"
             style="animation: fadeSlideUp 0.6s ease-out {{ $index * 0.1 }}s both;">
 
-            {{-- Gradient accent --}}
             <div
               class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-impost-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             </div>
@@ -119,7 +118,8 @@
                 <div class="flex items-center gap-3 mb-2">
                   <h3
                     class="text-white text-base font-bold group-hover:text-impost-primary transition-colors duration-300">
-                    {{ $item['title'] }}</h3>
+                    {{ $item['title'] }}
+                  </h3>
                 </div>
                 <p class="text-white/50 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
               </div>
@@ -132,22 +132,18 @@
       {{-- Center: ROI Orb --}}
       <div class="col-span-4 relative flex justify-center items-center" style="min-height: 460px;">
 
-        {{-- Ambient glow --}}
         <div
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-impost-primary/[0.12] blur-[100px] rounded-full">
         </div>
 
-        {{-- Outer orbital ring --}}
         <div
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] rounded-full border border-white/[0.04]"
           style="animation: spin-slow 30s linear infinite;"></div>
 
-        {{-- Middle orbital ring --}}
         <div
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[270px] h-[270px] rounded-full border border-impost-primary/10"
           style="animation: spin-slow 20s linear infinite reverse;"></div>
 
-        {{-- Orbital dots --}}
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px]"
           style="animation: spin-slow 30s linear infinite;">
           <div
@@ -157,6 +153,7 @@
             class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 rounded-full bg-impost-primary/40">
           </div>
         </div>
+
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[270px] h-[270px]"
           style="animation: spin-slow 20s linear infinite reverse;">
           <div
@@ -167,7 +164,6 @@
           </div>
         </div>
 
-        {{-- Main orb --}}
         <div class="relative animate-float-slow">
           <div
             class="w-52 h-52 rounded-full bg-gradient-to-br from-impost-primary/20 via-impost-primary/10 to-transparent border border-impost-primary/20 backdrop-blur-sm flex items-center justify-center shadow-[0_0_80px_rgba(212,172,60,0.15)]">
@@ -182,7 +178,6 @@
           </div>
         </div>
 
-        {{-- Connection lines svg --}}
         <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 400 460">
           <line x1="50" y1="80" x2="145" y2="180" stroke="url(#line-grad)" stroke-width="1"
             stroke-dasharray="4 4" />
@@ -213,7 +208,6 @@
             class="group relative bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-md border border-white/[0.08] rounded-2xl p-6 hover:border-impost-primary/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(212,172,60,0.15)]"
             style="animation: fadeSlideUp 0.6s ease-out {{ ($index + 3) * 0.1 }}s both;">
 
-            {{-- Gradient accent --}}
             <div
               class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-impost-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             </div>
@@ -230,7 +224,8 @@
                 <div class="flex items-center gap-3 mb-2">
                   <h3
                     class="text-white text-base font-bold group-hover:text-impost-primary transition-colors duration-300">
-                    {{ $item['title'] }}</h3>
+                    {{ $item['title'] }}
+                  </h3>
                 </div>
                 <p class="text-white/50 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
               </div>
@@ -269,3 +264,64 @@
     }
   }
 </style>
+
+<script>
+  function itemSlider() {
+    return {
+      currentIndex: 0,
+      total: {{ count($items) }},
+
+      isDragging: false,
+      startX: 0,
+      threshold: 50,
+      autoplayTimer: null,
+      autoplayDelay: 3000,
+
+      init() {
+        this.startAutoplay();
+      },
+
+      startAutoplay() {
+        this.stopAutoplay();
+        this.autoplayTimer = setInterval(() => {
+          this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
+        }, this.autoplayDelay);
+      },
+
+      stopAutoplay() {
+        if (this.autoplayTimer) clearInterval(this.autoplayTimer);
+      },
+
+      dragStart(e) {
+        this.isDragging = true;
+        this.startX = e.touches ? e.touches[0].clientX : e.clientX;
+        this.stopAutoplay();
+      },
+
+      dragMove(e) {
+        if (!this.isDragging) return;
+      },
+
+      dragEnd(e) {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+
+        const endX = e?.changedTouches ?
+          e.changedTouches[0].clientX :
+          (e?.clientX ?? this.startX);
+
+        const diff = this.startX - endX;
+
+        if (Math.abs(diff) > this.threshold) {
+          if (diff > 0) {
+            this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
+          } else {
+            this.currentIndex = this.currentIndex <= 0 ? this.total - 1 : this.currentIndex - 1;
+          }
+        }
+
+        this.startAutoplay();
+      },
+    };
+  }
+</script>

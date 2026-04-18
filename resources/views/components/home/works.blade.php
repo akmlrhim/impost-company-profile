@@ -66,7 +66,7 @@
         class="text-2xl sm:text-3xl md:text-5xl font-medium font-header leading-tight text-impost-primary mb-3 md:mb-6">
         Alur <span class="text-impost-primary">Layanan</span>
       </h2>
-      <p class="text-xs sm:text-sm md:text-lg text-white font-light max-w-2xl mx-auto leading-relaxed">
+      <p class="text-sm lg:text-base text-white font-light max-w-2xl mx-auto leading-relaxed">
         Dari konsultasi hingga evaluasi hasil. Setiap langkah dirancang transparan untuk memastikan kesuksesan proyek
         Anda.
       </p>

@@ -36,7 +36,7 @@
     {{-- Header --}}
     <div class="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
       <h2 class="text-2xl sm:text-3xl md:text-5xl font-header text-white leading-tight mb-4 sm:mb-5">
-        Kami Tidak Mencari <span class="italic text-impost-primary">Klien</span>
+        Kami Tidak Mencari Klien
         <br class="hidden md:block">Kami Mencari <span class="italic text-impost-primary">Partner</span>
       </h2>
       <p class="text-white/50 text-sm lg:text-base leading-relaxed max-w-xl mx-auto">
@@ -81,8 +81,7 @@
 
         <div class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
           <div class="w-9 h-9 rounded-xl bg-red-500/10 flex items-center justify-center shrink-0">
-            <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              stroke-width="2">
+            <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>

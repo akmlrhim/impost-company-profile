@@ -11,21 +11,27 @@
   </div>
 
   @if ($services->isEmpty())
-    <div class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
+    <div
+      class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
       <x-empty-card item="Layanan" />
     </div>
   @else
-    <div class="block sm:hidden">
-      <div class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 px-4 py-4"
-        style="scrollbar-width: none; -ms-overflow-style: none;">
-        @foreach ($services as $service)
-          <div class="w-[80%] shrink-0 snap-center">
-            <x-service-card :service="$service" />
-          </div>
-        @endforeach
+    {{-- Mobile Slider --}}
+    <div class="block sm:hidden" x-data="mobileSlider()" x-init="init()" @touchstart.passive="dragStart($event)"
+      @touchmove.passive="dragMove($event)" @touchend="dragEnd($event)">
+      <div class="overflow-hidden select-none">
+        <div class="flex"
+          :style="`transform: translateX(-${currentIndex * 100}%); transition: ${isDragging ? 'none' : 'transform 500ms ease-in-out'}`">
+          @foreach ($services as $service)
+            <div class="min-w-full px-1">
+              <x-service-card :service="$service" />
+            </div>
+          @endforeach
+        </div>
       </div>
     </div>
 
+    {{-- Desktop Pagination --}}
     <div x-data="{
         page: 0,
         pages: {{ ceil($services->count() / 6) }},
@@ -45,11 +51,9 @@
             }
         }
     }" class="hidden sm:block relative">
-
       <div class="overflow-hidden">
         <div class="flex transition-transform duration-400 ease-in-out"
           :style="'transform: translateX(-' + (page * 100) + '%)'">
-
           @foreach ($services->chunk(6) as $chunk)
             <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-1"
               style="content-visibility: auto; contain-intrinsic-size: 0 600px;">
@@ -81,5 +85,68 @@
         </button>
       </div>
     </div>
+
   @endif
+
 </section>
+
+<script>
+  function mobileSlider() {
+    return {
+      currentIndex: 0,
+      total: {{ $services->count() }},
+
+      isDragging: false,
+      startX: 0,
+      threshold: 50,
+      autoplayTimer: null,
+      autoplayDelay: 3000,
+
+      init() {
+        this.startAutoplay();
+      },
+
+      startAutoplay() {
+        this.stopAutoplay();
+        this.autoplayTimer = setInterval(() => {
+          this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
+        }, this.autoplayDelay);
+      },
+
+      stopAutoplay() {
+        if (this.autoplayTimer) clearInterval(this.autoplayTimer);
+      },
+
+      dragStart(e) {
+        this.isDragging = true;
+        this.startX = e.touches ? e.touches[0].clientX : e.clientX;
+        this.stopAutoplay();
+      },
+
+      dragMove(e) {
+        if (!this.isDragging) return;
+      },
+
+      dragEnd(e) {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+
+        const endX = e?.changedTouches ?
+          e.changedTouches[0].clientX :
+          (e?.clientX ?? this.startX);
+
+        const diff = this.startX - endX;
+
+        if (Math.abs(diff) > this.threshold) {
+          if (diff > 0) {
+            this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
+          } else {
+            this.currentIndex = this.currentIndex <= 0 ? this.total - 1 : this.currentIndex - 1;
+          }
+        }
+
+        this.startAutoplay();
+      },
+    };
+  }
+</script>

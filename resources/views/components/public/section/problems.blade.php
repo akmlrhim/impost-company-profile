@@ -38,7 +38,7 @@
 
 <section class="py-20 sm:py-28 relative overflow-hidden">
 
-  <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
       <h2 class="text-2xl sm:text-3xl md:text-5xl font-header tracking-tight leading-tight mb-5 sm:mb-6 text-white">

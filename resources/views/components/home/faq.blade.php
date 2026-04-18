@@ -47,7 +47,7 @@
 @endphp
 
 <section class="relative w-full py-14 sm:py-20 bg-impost-fifth overflow-hidden">
-  <div class="relative max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 z-10">
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
 
     <div class="text-center mb-10 sm:mb-16">
       <h2

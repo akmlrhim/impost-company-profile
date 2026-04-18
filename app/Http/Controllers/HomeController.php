@@ -6,7 +6,7 @@ use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\Client;
 use App\Models\JobVacancy;
-use App\Models\Leads;
+use App\Models\Lead;
 use App\Models\Portfolio;
 use App\Models\PortfolioCategory;
 use App\Models\Service;
@@ -75,7 +75,7 @@ class HomeController extends Controller
 			['name' => $article->title, 'url' => url()->current()],
 		];
 
-		return view('public.article.article-detail', compact('title', 'article', 'latestArticle', 'breadcrumbItems'));
+		return view('public.articles.detail', compact('title', 'article', 'latestArticle', 'breadcrumbItems'));
 	}
 
 	public function portfolio(Request $request)
@@ -137,7 +137,7 @@ class HomeController extends Controller
 			->onEachSide(1)
 			->withQueryString();
 
-		return view('public.article.articles', [
+		return view('public.articles.index', [
 			'title' => $title,
 			'meta_description' => $meta_description,
 			'articles' => $articles,
@@ -160,7 +160,7 @@ class HomeController extends Controller
 			'category'
 		)->latest()->paginate(12);
 
-		return view('public.studycase.studycases', compact('title', 'meta_description', 'studyCase'));
+		return view('public.study-cases.index', compact('title', 'meta_description', 'studyCase'));
 	}
 
 	public function studyCaseDetail(string $slug)
@@ -174,7 +174,7 @@ class HomeController extends Controller
 			['name' => $studyCase->name, 'url' => url()->current()],
 		];
 
-		return view('public.studycase.studycase-detail', compact('title', 'meta_description', 'studyCase', 'breadcrumbItems'));
+		return view('public.study-cases.detail', compact('title', 'meta_description', 'studyCase', 'breadcrumbItems'));
 	}
 
 	public function about()
@@ -243,7 +243,7 @@ class HomeController extends Controller
 		$allArrangements = JobVacancy::whereNotNull('work_arrangements')->pluck('work_arrangements');
 		$workArrangements = $workArrangements->merge($allArrangements->flatten())->unique()->values();
 
-		return view('public.job.jobs', compact('title', 'meta_description', 'job', 'search', 'type', 'arrangement', 'employmentTypes', 'workArrangements'));
+		return view('public.jobs.index', compact('title', 'meta_description', 'job', 'search', 'type', 'arrangement', 'employmentTypes', 'workArrangements'));
 	}
 
 	public function jobDetail(JobVacancy $job)
@@ -257,7 +257,7 @@ class HomeController extends Controller
 			['name' => $job->title, 'url' => url()->current()],
 		];
 
-		return view('public.job.job-detail', compact('title', 'meta_description', 'job', 'breadcrumbItems'));
+		return view('public.jobs.detail', compact('title', 'meta_description', 'job', 'breadcrumbItems'));
 	}
 
 	public function vslForm()
@@ -309,7 +309,7 @@ class HomeController extends Controller
 		try {
 			DB::beginTransaction();
 
-			Leads::create([
+			Lead::create([
 				'fullname' => $request->fullname,
 				'email' => $request->email,
 				'phone' => $request->phone,
@@ -333,7 +333,7 @@ class HomeController extends Controller
 			$text .= "Mohon info langkah selanjutnya untuk bisa lanjut ke tahap konsultasi atau pembahasan strategi.";
 
 			$message = urlencode($text);
-			$waUrl = "https://wa.me/6283147802761?text={$message}";
+			$waUrl = 'https://wa.me/' . config('contact.whatsapp.customer.number') . "?text={$message}";
 
 			return redirect()->back()
 				->with('success', 'Data berhasil terkirim! Mengalihkan ke WhatsApp...')
@@ -364,6 +364,6 @@ class HomeController extends Controller
 	{
 		$title = 'Verifikasi ID';
 
-		return view('verify-id.content', compact('title'));
+		return view('verify-id', compact('title'));
 	}
 }

@@ -34,7 +34,7 @@
 
     gtag('config', 'AW-18050432705');
   </script>
-	<!-- End Google tag (gtag.js) -->
+  <!-- End Google tag (gtag.js) -->
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,7 +108,6 @@
   </style>
 
   @php
-    // Organization Schema
     $defaultJsonLd = [
         '@context' => 'https://schema.org',
         '@type' => 'Organization',
@@ -120,26 +119,25 @@
         'description' => 'All in One Integrated Digital Marketing Agency di Banjarbaru, Kalimantan Selatan.',
         'address' => [
             '@type' => 'PostalAddress',
-            'streetAddress' => 'Jl. Kawamara No.3, Landasan Ulin Tengah',
-            'addressLocality' => 'Banjarbaru',
-            'addressRegion' => 'Kalimantan Selatan',
-            'postalCode' => '70724',
-            'addressCountry' => 'ID',
+            'streetAddress' => config('contact.address.street'),
+            'addressLocality' => config('contact.address.city'),
+            'addressRegion' => config('contact.address.region'),
+            'postalCode' => config('contact.address.postal_code'),
+            'addressCountry' => config('contact.address.country'),
         ],
         'contactPoint' => [
             '@type' => 'ContactPoint',
-            'telephone' => '+62-831-4780-2761',
+            'telephone' => config('contact.whatsapp.admin.display'),
             'contactType' => 'customer service',
             'availableLanguage' => ['Indonesian', 'English'],
         ],
         'sameAs' => [
-            'https://www.instagram.com/impostmedia',
-            'https://www.facebook.com/impostmedia',
-            'https://linkedin.com/company/cv-impost-media-indonesia',
+            config('contact.socials.instagram.url'),
+            config('contact.socials.facebook.url'),
+            config('contact.socials.linkedin.url'),
         ],
     ];
 
-    // WebSite Schema — enables sitelinks search box
     $websiteJsonLd = [
         '@context' => 'https://schema.org',
         '@type' => 'WebSite',
@@ -160,7 +158,6 @@
         ],
     ];
 
-    // SiteNavigationElement — helps Google determine sitelinks
     $siteNavJsonLd = [
         '@context' => 'https://schema.org',
         '@type' => 'ItemList',
@@ -175,7 +172,6 @@
         ],
     ];
 
-    // Breadcrumb Schema — supports multi-level via $breadcrumbItems
     $breadcrumbs = [
         '@context' => 'https://schema.org',
         '@type' => 'BreadcrumbList',
@@ -189,7 +185,6 @@
         ],
     ];
 
-    // Use $breadcrumbItems from controller if available (for multi-level)
     if (isset($breadcrumbItems) && is_array($breadcrumbItems)) {
         $pos = 2;
         foreach ($breadcrumbItems as $crumb) {

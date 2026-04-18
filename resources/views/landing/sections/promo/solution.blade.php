@@ -1,4 +1,4 @@
-<section class="py-12 md:py-20 px-5 md:px-6">
+<section class="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
   <div class="max-w-5xl mx-auto text-center">
 
     <div
@@ -6,7 +6,7 @@
       Solusi Digital #1
     </div>
 
-    <h2 class="text-2xl md:text-5xl font-bold text-white mb-4 md:mb-6">
+    <h2 class="text-xl sm:text-2xl md:text-5xl font-bold text-white mb-4 md:mb-6">
       Bukan Sekadar Konten Estetik, <br class="hidden md:block">
       Tapi <span class="text-impost-primary">Chat & Penjualan.</span>
     </h2>

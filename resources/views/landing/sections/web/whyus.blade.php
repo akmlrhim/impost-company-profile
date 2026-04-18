@@ -1,8 +1,8 @@
-<section class="py-12 md:py-20 px-5 md:px-6">
+<section class="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
   <div class="max-w-6xl mx-auto">
 
     <div class="text-center mb-8 md:mb-16">
-      <h2 class="text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">
+      <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">
         Kenapa <span class="text-impost-primary">Impost Media?</span>
       </h2>
       <p class="text-white max-w-2xl mx-auto text-sm md:text-base">
@@ -76,7 +76,7 @@
   </div>
 </section>
 
-<section class="bg-impost-fifth text-white py-10 md:py-16 px-5 md:px-6">
+<section class="bg-impost-fifth text-white py-10 md:py-16 px-4 sm:px-6 lg:px-8">
   <div class="max-w-4xl mx-auto text-center font-header italic">
     <h3 class="text-lg md:text-3xl font-medium leading-relaxed">
       "Kami percaya website terbaik bukan yang paling rame animasi, tapi yang paling <span

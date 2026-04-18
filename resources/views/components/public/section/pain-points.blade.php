@@ -24,7 +24,7 @@
 
 <section class="py-16 sm:py-20 md:py-24 relative overflow-hidden">
 
-  <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     {{-- Header --}}
     <div class="text-center mb-12 md:mb-16">

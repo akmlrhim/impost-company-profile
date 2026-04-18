@@ -19,7 +19,7 @@ class JobVacancyController extends Controller
 		$title = 'Loker';
 		$jobs = JobVacancy::paginate(10);
 
-		return view('admin.jobvacancies.index', compact('title', 'jobs'));
+		return view('admin.job-vacancies.index', compact('title', 'jobs'));
 	}
 
 	/**
@@ -29,7 +29,7 @@ class JobVacancyController extends Controller
 	{
 		$title = 'Tambah Loker';
 
-		return view('admin.jobvacancies.create', compact('title'));
+		return view('admin.job-vacancies.create', compact('title'));
 	}
 
 	/**
@@ -93,7 +93,7 @@ class JobVacancyController extends Controller
 		$jobvacancy->load('details');
 		$title = 'Detail Loker';
 
-		return view('admin.jobvacancies.show', compact('title', 'jobvacancy'));
+		return view('admin.job-vacancies.show', compact('title', 'jobvacancy'));
 	}
 
 	/**
@@ -103,7 +103,7 @@ class JobVacancyController extends Controller
 	{
 		$jobvacancy->load('details');
 		$title = 'Edit Loker';
-		return view('admin.jobvacancies.edit', compact('jobvacancy', 'title'));
+		return view('admin.job-vacancies.edit', compact('jobvacancy', 'title'));
 	}
 
 	/**

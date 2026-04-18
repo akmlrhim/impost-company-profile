@@ -3,7 +3,7 @@
 @endphp
 
 <section class="py-14 sm:py-20 bg-impost-fifth relative" id="testimonials">
-  <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
       <h2 class="text-2xl sm:text-3xl md:text-5xl font-medium font-header leading-tight text-white mb-2 sm:mb-3">

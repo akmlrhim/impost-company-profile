@@ -29,7 +29,7 @@ class EmployeeController extends Controller
 			->onEachSide(1)
 			->withQueryString();
 
-		return view('admin.employee.index', compact('title', 'search', 'employees'));
+		return view('admin.employees.index', compact('title', 'search', 'employees'));
 	}
 
 	/**
@@ -38,7 +38,7 @@ class EmployeeController extends Controller
 	public function create()
 	{
 		return view(
-			'admin.employee.create',
+			'admin.employees.create',
 			['title' => 'Tambah Employee']
 		);
 	}
@@ -85,7 +85,7 @@ class EmployeeController extends Controller
 	 */
 	public function edit(Employee $employee)
 	{
-		return view('admin.employee.edit', [
+		return view('admin.employees.edit', [
 			'title' => 'Edit Employee',
 			'employee' => $employee
 		]);

@@ -10,7 +10,7 @@
     <div class="absolute bottom-0 left-0 w-full h-24 lg:h-40 bg-gradient-to-t from-neutral-950 to-transparent"></div>
   </div>
 
-  <div class="max-w-7xl mx-auto px-5 lg:px-8 text-center relative z-10 w-full">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full">
 
     <h1 class="text-3xl sm:text-4xl lg:text-6xl font-extrabold mb-4 lg:mb-6 leading-tight tracking-tight text-white">
       Bikin Website Profesional <br class="hidden lg:block">

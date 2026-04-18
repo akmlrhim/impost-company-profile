@@ -45,7 +45,7 @@
 
 <section class="py-20 sm:py-28 relative overflow-hidden">
 
-  <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     {{-- Section Header --}}
     <div class="max-w-3xl mx-auto text-center mb-16 sm:mb-20 relative z-20">

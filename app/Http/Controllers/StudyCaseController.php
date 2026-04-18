@@ -31,7 +31,7 @@ class StudyCaseController extends Controller
 			->withQueryString()
 			->appends(request()->query());
 
-		return view('admin.study-case.index', [
+		return view('admin.study-cases.index', [
 			'title' => $title,
 			'studyCases' => $studyCases,
 			'search' => $search
@@ -43,7 +43,7 @@ class StudyCaseController extends Controller
 	 */
 	public function create()
 	{
-		return view('admin.study-case.create', [
+		return view('admin.study-cases.create', [
 			'title' => 'Tambah Study Case',
 			'categories' => StudyCase::select('category')
 				->distinct()
@@ -104,7 +104,7 @@ class StudyCaseController extends Controller
 	{
 		$title = 'Edit Study Case';
 
-		return view('admin.study-case.edit', [
+		return view('admin.study-cases.edit', [
 			'title' => $title,
 			'studyCase' => $studyCase,
 			'categories' => StudyCase::select('category')

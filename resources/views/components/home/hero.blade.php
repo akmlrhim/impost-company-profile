@@ -12,7 +12,7 @@
   <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#040404] to-transparent z-[1]"></div>
 
   {{-- Content --}}
-  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 w-full py-20 md:py-0">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 md:py-0">
     <div class="max-w-4xl mx-auto text-center space-y-5 sm:space-y-7">
 
       {{-- Badge --}}

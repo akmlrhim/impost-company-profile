@@ -28,7 +28,7 @@
     </div>
 
     <div class="text-center mb-10">
-      <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Pernah Ngerasa Gini?</h2>
+      <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">Pernah Ngerasa Gini?</h2>
       <p class="text-sm md:text-base text-white">Bisnis kamu sebenarnya sudah jalan. Tapi secara online, rasanya
         belum "hidup".</p>
     </div>
@@ -126,7 +126,7 @@
   </div>
 
   <div class="mt-12 md:mt-24 pt-10 md:pt-20">
-    <div class="max-w-4xl mx-auto px-5 md:px-8 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
 
       <div class="text-center mb-8 md:mb-14">
         <h2 class="text-xl md:text-3xl font-bold text-white mb-3">

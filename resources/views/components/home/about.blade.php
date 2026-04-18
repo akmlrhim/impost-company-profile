@@ -1,12 +1,12 @@
-<x-public.section.1></x-public.section.1>
+<x-public.section.pain-points />
 
-<x-public.section.2></x-public.section.2>
+<x-public.section.problems />
 
-<x-public.section.3></x-public.section.3>
+<x-public.section.solutions />
 
 {{-- Study Case --}}
-<x-public.section.4></x-public.section.4>
+<x-public.section.study-cases />
 
-<x-public.section.5></x-public.section.5>
+<x-public.section.features />
 
-<x-public.section.6></x-public.section.6>
+<x-public.section.ideal-client />

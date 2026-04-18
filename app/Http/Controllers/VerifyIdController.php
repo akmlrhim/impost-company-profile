@@ -8,7 +8,7 @@ class VerifyIdController extends Controller
 {
 	public function verify(Employee $employee)
 	{
-		return view('verify-id.content', [
+		return view('verify-id', [
 			'title' => 'Verifikasi ID Karyawan',
 			'employee' => $employee,
 		]);

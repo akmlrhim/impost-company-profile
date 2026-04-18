@@ -1,4 +1,4 @@
-@extends('verify-id.layout')
+@extends('layouts.verify-id')
 @section('content')
   <div class="bg-slate-50 font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900 py-10 sm:py-16">
     <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

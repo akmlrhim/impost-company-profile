@@ -5,7 +5,7 @@
   <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
 
     <div class="text-center md:text-left order-1 md:order-1">
-      <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 leading-tight">
+      <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 leading-tight">
         Siap Punya Website yang <span class="text-impost-primary">Niat & Profesional?</span>
       </h2>
 
@@ -123,7 +123,7 @@
     const whatsapp = document.getElementById('whatsapp').value;
     const kebutuhan = document.getElementById('kebutuhan').value;
 
-    const NOMOR_ADMIN = "6283147802761";
+    const NOMOR_ADMIN = "{{ config('contact.whatsapp.customer.number') }}";
     const SITE_KEY = "{{ config('services.recaptcha.site_key') }}";
 
     btnSubmit.disabled = true;

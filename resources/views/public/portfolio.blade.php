@@ -209,7 +209,7 @@
       <div class="mt-20 bg-impost-primary">
         <div class="max-w-7xl mx-auto p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div class="text-center md:text-left">
-            <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">Punya ide brilian?</h3>
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">Punya ide brilian?</h3>
             <p class="text-gray-800 font-medium">Lihat bagaimana kami menyelesaikan masalah klien lain atau hubungi kami.
             </p>
           </div>

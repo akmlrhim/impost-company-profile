@@ -145,7 +145,7 @@
           <a href="{{ route('vsl-form') }}"
             class="inline-flex items-center justify-center px-5 py-2 text-sm font-bold text-black transition-all duration-300 bg-impost-primary rounded-lg hover:bg-impost-secondary hover:shadow-lg hover:-translate-y-0.5 focus:outline-none"
             aria-label="Get started with Impost">
-            Get Started
+            Mulai Sekarang
             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -241,7 +241,7 @@
           <a href="{{ route('vsl-form') }}"
             class="flex items-center justify-center w-full px-5 py-2.5 text-sm font-bold text-black bg-impost-primary rounded-lg hover:bg-impost-secondary focus:outline-none transition-colors"
             aria-label="Get started with Impost">
-            Get Started
+            Mulai Sekarang
           </a>
         </div>
       </div>

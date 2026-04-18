@@ -215,6 +215,30 @@
       </div>
     </div>
   </main>
-
-
 @endsection
+
+@push('scripts')
+  <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}" async defer>
+  </script>
+  <script>
+    function getRecaptchaToken(callback) {
+      if (typeof grecaptcha === 'undefined') {
+        console.error("Recaptcha belum dimuat.");
+        callback(null);
+        return;
+      }
+      grecaptcha.ready(function() {
+        grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {
+            action: 'submit'
+          })
+          .then(function(token) {
+            callback(token);
+          })
+          .catch(function(error) {
+            console.error("Recaptcha Error:", error);
+            callback(null);
+          });
+      });
+    }
+  </script>
+@endpush

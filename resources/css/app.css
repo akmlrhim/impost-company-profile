@@ -62,12 +62,29 @@
   font-display: swap;
 }
 
+/* DMSerif */
+@font-face {
+  font-family: "DM Serif Display";
+  src: url("../fonts/DMSerifDisplay-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Serif Display";
+  src: url("../fonts/DMSerifDisplay-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
   --font-sans:
     "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-  --font-header: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-header: "DM Serif Display", ui-sans-serif, system-ui, sans-serif;
 
   --font-mono: "Fira Code", monospace;
 
@@ -194,55 +211,4 @@ body {
 .slider-item {
   scroll-snap-align: start;
   flex-shrink: 0;
-}
-
-@media (max-width: 639px) {
-  .text-xs {
-    font-size: 0.875rem !important;
-    line-height: 1.25rem !important;
-  }
-  .text-sm {
-    font-size: 1rem !important;
-    line-height: 1.5rem !important;
-  }
-  .text-base {
-    font-size: 1.125rem !important;
-    line-height: 1.75rem !important;
-  }
-  .text-lg {
-    font-size: 1.25rem !important;
-    line-height: 1.75rem !important;
-  }
-  .text-xl {
-    font-size: 1.5rem !important;
-    line-height: 2rem !important;
-  }
-  .text-2xl {
-    font-size: 1.875rem !important;
-    line-height: 2.25rem !important;
-  }
-  .text-3xl {
-    font-size: 2.25rem !important;
-    line-height: 2.5rem !important;
-  }
-  .text-4xl {
-    font-size: 3rem !important;
-    line-height: 1 !important;
-  }
-  .text-5xl {
-    font-size: 3.75rem !important;
-    line-height: 1 !important;
-  }
-  .text-6xl {
-    font-size: 4.5rem !important;
-    line-height: 1 !important;
-  }
-  .text-7xl {
-    font-size: 6rem !important;
-    line-height: 1 !important;
-  }
-}
-
-.font-header {
-  font-weight: 700 !important;
 }

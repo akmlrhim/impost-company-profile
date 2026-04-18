@@ -46,7 +46,7 @@
         <br>
         <span class="italic text-red-500">Sulit Bertumbuh?</span>
       </h2>
-      <p class="text-white/50 text-xs sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
+      <p class="text-white/50 text-sm lg:text-base leading-relaxed max-w-xl mx-auto">
         Banyak bisnis terjebak di masalah yang sama berulang-ulang tanpa pernah menyentuh akar persoalannya.
       </p>
     </div>
@@ -63,7 +63,7 @@
           </div>
           <div class="flex-1 min-w-0">
             <h3 class="font-bold text-sm text-white mb-1">{{ $item['title'] }}</h3>
-            <p class="text-xs text-white/40 leading-relaxed">{{ $item['desc'] }}</p>
+            <p class="text-sm lg:text-base text-white/40 leading-relaxed">{{ $item['desc'] }}</p>
           </div>
         </div>
       @endforeach
@@ -86,13 +86,13 @@
               </div>
               <div>
                 <h3
-                  class="text-white text-base self-center lg:text-lg font-bold group-hover:text-red-300 transition-colors duration-300">
+                  class="text-white text-base lg:text-lg font-bold group-hover:text-red-300 transition-colors duration-300">
                   {{ $item['title'] }}
                 </h3>
               </div>
             </div>
 
-            <p class="text-white/40 text-sm leading-relaxed">
+            <p class="text-white/40 text-sm lg:text-base leading-relaxed">
               {{ $item['desc'] }}
             </p>
 

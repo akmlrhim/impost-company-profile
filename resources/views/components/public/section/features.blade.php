@@ -105,7 +105,7 @@
         Kenapa Harus <br class="hidden md:block">
         <span class="text-impost-primary italic">Impost Media?</span>
       </h2>
-      <p class="text-white/50 text-xs sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
+      <p class="text-white/50 text-sm lg:text-base leading-relaxed max-w-xl mx-auto">
         Kami bukan sekadar vendor jasa. Kami partner pertumbuhan bisnis Anda.
       </p>
     </div>
@@ -156,7 +156,7 @@
               <h4
                 class="text-white font-bold text-base mb-1.5 group-hover:text-impost-primary transition-colors duration-300">
                 {{ $item['title'] }}</h4>
-              <p class="text-white/50 text-sm leading-relaxed">{{ $item['desc'] }}</p>
+              <p class="text-white/50 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
             </div>
           </div>
         </div>
@@ -182,8 +182,8 @@
               </svg>
             </div>
             <div>
-              <h4 class="text-white font-bold text-sm sm:text-base mb-1">{{ $item['title'] }}</h4>
-              <p class="text-white/40 text-xs sm:text-sm leading-relaxed">{{ $item['desc'] }}</p>
+              <h4 class="text-white font-bold text-base lg:text-lg mb-1">{{ $item['title'] }}</h4>
+              <p class="text-white/40 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
             </div>
           </div>
         @endforeach

@@ -117,9 +117,9 @@
                         </svg>
                       </div>
                       <div class="flex-1">
-                        <h3 class="text-sm sm:text-base md:text-xl font-semibold text-white mb-1 sm:mb-2">
+                        <h3 class="text-base lg:text-lg font-semibold text-white mb-1 sm:mb-2">
                           {{ $step['title'] }}</h3>
-                        <p class="text-[11px] sm:text-xs md:text-sm text-white font-light leading-relaxed">
+                        <p class="text-sm lg:text-base text-white font-light leading-relaxed">
                           {{ $step['desc'] }}</p>
                       </div>
                     </div>
@@ -178,9 +178,9 @@
                         </svg>
                       </div>
                       <div class="flex-1">
-                        <h3 class="text-sm sm:text-base md:text-xl font-semibold text-white mb-1 sm:mb-2">
+                        <h3 class="text-base lg:text-lg font-semibold text-white mb-1 sm:mb-2">
                           {{ $step['title'] }}</h3>
-                        <p class="text-[11px] sm:text-xs md:text-sm text-white font-light leading-relaxed">
+                        <p class="text-sm lg:text-base text-white font-light leading-relaxed">
                           {{ $step['desc'] }}</p>
                       </div>
                     </div>

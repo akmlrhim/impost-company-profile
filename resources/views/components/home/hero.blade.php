@@ -17,7 +17,7 @@
 
       {{-- Badge --}}
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5">
-        <span class="text-white/70 text-xs sm:text-sm font-medium">Pionir Digital Marketing di Kalimantan</span>
+        <span class="text-white/70 text-sm lg:text-base font-medium">Pionir Digital Marketing di Kalimantan</span>
       </div>
 
       {{-- Headline --}}
@@ -28,7 +28,7 @@
       </h1>
 
       {{-- Subtitle --}}
-      <p class="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
+      <p class="text-sm lg:text-base text-white/60 max-w-2xl mx-auto leading-relaxed">
         Bukan sekadar konten atau iklan, tapi sistem pertumbuhan terukur yang bisa diaudit dan dipertanggungjawabkan.
       </p>
 

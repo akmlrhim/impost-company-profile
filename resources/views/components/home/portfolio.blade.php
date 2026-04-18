@@ -12,7 +12,7 @@
         class="text-2xl sm:text-3xl md:text-5xl font-medium font-header leading-tight text-impost-primary mb-3 md:mb-6">
         Portfolio
       </h2>
-      <p class="text-xs sm:text-sm md:text-base text-gray-300 font-light leading-relaxed mx-auto">
+      <p class="text-sm lg:text-base text-gray-300 font-light leading-relaxed mx-auto">
         Bukan sekadar janji manis, melainkan <span class="text-white font-medium">bukti nyata</span> yang lahir dari
         strategi terukur dan eksekusi presisi.
       </p>
@@ -71,7 +71,7 @@
         <div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10"
           id="portfolioEmptyMessage">
           <h3 class="text-impost-primary text-lg sm:text-xl md:text-2xl font-bold mb-2">Belum Ada Portfolio</h3>
-          <p class="text-white/80 text-xs sm:text-sm md:text-base">Kategori ini belum memiliki portfolio tersedia.</p>
+          <p class="text-white/80 text-sm lg:text-base">Kategori ini belum memiliki portfolio tersedia.</p>
         </div>
 
         <button

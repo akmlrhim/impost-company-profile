@@ -99,7 +99,7 @@
                       d="m1 9 4-4-4-4" />
                   </svg>
                   <span
-                    class="ml-1 text-xs sm:text-sm font-medium text-white md:ml-2 line-clamp-1 max-w-[150px] sm:max-w-xs md:max-w-sm">{{ $article->title }}</span>
+                    class="text-xs sm:text-sm font-medium text-white max-w-[150px] sm:max-w-xs md:max-w-sm">{{ $article->title }}</span>
                 </div>
               </li>
             </ol>

@@ -32,7 +32,7 @@
         Kami Bukan Agency yang <br class="hidden md:block">Jual Konten atau
         <span class="italic text-impost-primary">Iklan</span>
       </h2>
-      <p class="text-sm sm:text-base md:text-lg text-white/50 max-w-2xl mx-auto">
+      <p class="text-sm lg:text-base text-white/50 max-w-2xl mx-auto">
         Kami Pionir & Market Leader Digital Marketing di Kalimantan
       </p>
     </div>
@@ -47,7 +47,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="{{ $point['icon'] }}" />
             </svg>
           </div>
-          <p class="text-xs sm:text-sm md:text-base text-white/70 leading-relaxed">
+          <p class="text-sm lg:text-base text-white/70 leading-relaxed">
             {{ $point['text'] }}
           </p>
         </div>
@@ -59,12 +59,12 @@
 
       {{-- Result --}}
       <div class="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7 flex flex-col justify-center">
-        <p class="text-xs sm:text-sm md:text-base leading-relaxed text-white/70 mb-3">
+        <p class="text-sm lg:text-base leading-relaxed text-white/70 mb-3">
           <span class="text-impost-primary font-semibold">Hasilnya?</span> Penjualan kebanyakan hanya mengandalkan
           promo dengan customer yang tidak loyal.
         </p>
         <div class="h-px bg-white/5 my-3"></div>
-        <p class="text-xs sm:text-sm md:text-base leading-relaxed text-white/70">
+        <p class="text-sm lg:text-base leading-relaxed text-white/70">
           Ini disebabkan oleh branding yang belum terbangun ke persepsi publik.
         </p>
       </div>
@@ -74,7 +74,7 @@
         <h3 class="text-base sm:text-lg md:text-xl font-header text-white mb-3 leading-tight">
           Kami benahi funnel marketingnya
         </h3>
-        <p class="text-xs sm:text-sm md:text-base text-white/80 leading-relaxed">
+        <p class="text-sm lg:text-base text-white/80 leading-relaxed">
           Membangun sistem pemasaran yang berkelanjutan, bukan sekadar posting konten.
         </p>
       </div>

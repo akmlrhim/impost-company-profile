@@ -39,13 +39,13 @@
           <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
           <div class="space-y-3 sm:space-y-4">
-            <h2 class="border-b border-white/10 pb-2 text-sm font-semibold text-gray-200 sm:text-base">
+            <h2 class="border-b border-white/10 pb-2 text-base lg:text-lg font-semibold text-gray-200">
               Informasi Pribadi
             </h2>
 
             <div class="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
               <div class="group">
-                <label class="mb-1 block text-[10px] font-medium text-gray-400 sm:mb-1.5 sm:text-xs">
+                <label class="mb-1 block text-sm lg:text-base font-medium text-gray-400">
                   Nama Lengkap <span class="text-red-400">*</span>
                 </label>
                 <div class="relative">
@@ -58,10 +58,10 @@
                     </svg>
                   </div>
                   <input type="text" name="fullname" value="{{ old('fullname') }}" placeholder="Nama lengkap"
-                    class="w-full rounded-lg border border-white/10 bg-white/5 py-2 pl-9 pr-3 text-xs text-gray-200 transition-all placeholder:text-gray-500 focus:border-impost-primary focus:outline-none focus:ring-1 focus:ring-impost-primary sm:py-2.5 sm:pl-10 sm:text-sm">
+                    class="w-full rounded-lg border border-white/10 bg-white/5 py-2 pl-9 pr-3 text-sm lg:text-base text-gray-200 transition-all placeholder:text-gray-500 focus:border-impost-primary focus:outline-none focus:ring-1 focus:ring-impost-primary">
                 </div>
                 @error('fullname')
-                  <p class="mt-1 text-[10px] text-red-400 sm:text-xs">{{ $message }}</p>
+                  <p class="mt-1 text-xs lg:text-sm text-red-400">{{ $message }}</p>
                 @enderror
               </div>
 
@@ -108,7 +108,7 @@
           </div>
 
           <div class="space-y-3 pt-1 sm:space-y-4 sm:pt-2">
-            <h2 class="border-b border-white/10 pb-2 text-sm font-semibold text-gray-200 sm:text-base">
+            <h2 class="border-b border-white/10 pb-2 text-base lg:text-lg font-semibold text-gray-200">
               Informasi Bisnis
             </h2>
             <div class="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2">
@@ -148,7 +148,7 @@
                     </svg>
                   </div>
                   <select name="income"
-                    class="w-full cursor-pointer appearance-none rounded-lg border border-white/10 bg-white/5 py-2 pl-9 pr-8 text-xs text-gray-200 focus:border-impost-primary focus:outline-none focus:ring-1 focus:ring-impost-primary sm:py-2.5 sm:pl-10 sm:text-sm">
+                    class="w-full cursor-pointer appearance-none rounded-lg border border-white/10 bg-white/5 py-2 pl-9 pr-8 text-sm lg:text-base text-gray-200 focus:border-impost-primary focus:outline-none focus:ring-1 focus:ring-impost-primary">
                     <option value="" disabled selected class="bg-gray-800 text-gray-400">Pilih kisaran omzet
                     </option>
                     <option value="<10jt" {{ old('income') == '<10jt' ? 'selected' : '' }}
@@ -175,7 +175,7 @@
           </div>
 
           <div class="space-y-2 pt-1 sm:space-y-3 sm:pt-2">
-            <h2 class="border-b border-white/10 pb-2 text-sm font-semibold text-gray-200 sm:text-base">
+            <h2 class="border-b border-white/10 pb-2 text-base lg:text-lg font-semibold text-gray-200">
               Tujuan Utama <span class="text-red-400">*</span>
             </h2>
             <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3">
@@ -195,8 +195,8 @@
                     class="h-3.5 w-3.5 rounded border-gray-500 bg-transparent text-impost-primary focus:ring-impost-primary focus:ring-offset-0 sm:h-4 sm:w-4"
                     {{ in_array($value, old('objective', [])) ? 'checked' : '' }}>
                   <div class="ml-2.5 sm:ml-3">
-                    <span class="block text-xs font-medium text-gray-200 sm:text-sm">{{ $value }}</span>
-                    <span class="block text-[10px] text-gray-400 sm:text-xs">{{ $desc }}</span>
+                    <span class="block text-sm lg:text-base font-medium text-gray-200">{{ $value }}</span>
+                    <span class="block text-xs lg:text-sm text-gray-400">{{ $desc }}</span>
                   </div>
                 </label>
               @endforeach
@@ -207,9 +207,9 @@
           </div>
 
           <div class="space-y-1.5 pt-1 sm:space-y-2 sm:pt-2">
-            <label class="block text-[10px] font-medium text-gray-400 sm:text-xs">Catatan Tambahan</label>
+            <label class="block text-sm lg:text-base font-medium text-gray-400">Catatan Tambahan</label>
             <textarea name="note" rows="3" placeholder="Ceritakan detail kebutuhan Anda..."
-              class="w-full resize-none rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-gray-200 transition-all placeholder:text-gray-500 focus:border-impost-primary focus:outline-none focus:ring-1 focus:ring-impost-primary sm:px-4 sm:py-2.5 sm:text-sm">{{ old('note') }}</textarea>
+              class="w-full resize-none rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm lg:text-base text-gray-200 transition-all placeholder:text-gray-500 focus:border-impost-primary focus:outline-none focus:ring-1 focus:ring-impost-primary">{{ old('note') }}</textarea>
           </div>
 
           <div class="pt-3 sm:pt-4">

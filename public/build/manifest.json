@@ -1,12 +1,20 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-BtQ3fb05.css",
+    "file": "assets/app-BSiuwRxY.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
     "names": [
       "app.css"
     ]
+  },
+  "resources/fonts/DMSerifDisplay-Italic.ttf": {
+    "file": "assets/DMSerifDisplay-Italic-BhqSsvBP.ttf",
+    "src": "resources/fonts/DMSerifDisplay-Italic.ttf"
+  },
+  "resources/fonts/DMSerifDisplay-Regular.ttf": {
+    "file": "assets/DMSerifDisplay-Regular-CDGr1N9g.ttf",
+    "src": "resources/fonts/DMSerifDisplay-Regular.ttf"
   },
   "resources/fonts/FiraCode-Medium.ttf": {
     "file": "assets/FiraCode-Medium-CvWmJDs-.ttf",

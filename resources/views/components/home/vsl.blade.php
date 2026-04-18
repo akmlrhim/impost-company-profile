@@ -2,10 +2,10 @@
 
   <div class="mb-6 sm:mb-10 text-center px-4 max-w-5xl mx-auto">
     <h2
-      class="mb-3 sm:mb-4 text-base sm:text-2xl md:text-3xl lg:text-4xl font-medium text-impost-primary max-w-5xl mx-auto font-header">
+      class="mb-3 sm:mb-4 text-base lg:text-lg font-medium text-impost-primary max-w-5xl mx-auto font-header">
       Lihat Bagaimana Tim Impost Media Membantu Brand & Bisnis Bertumbuh Secara Terukur
     </h2>
-    <p class="text-xs sm:text-sm md:text-base text-gray-300 max-w-lg md:max-w-2xl mx-auto leading-relaxed">
+    <p class="text-sm lg:text-base text-gray-300 max-w-lg md:max-w-2xl mx-auto leading-relaxed">
       Video ini khusus untuk business owner dari perusahaan yang ingin scale up omzet secara serius.
     </p>
   </div>

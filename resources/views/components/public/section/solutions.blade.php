@@ -52,7 +52,7 @@
       <h2 class="text-2xl sm:text-3xl md:text-5xl text-white leading-tight mb-5 sm:mb-6 font-header">
         Apa yang Sebenarnya <br class="hidden md:block"> Kami <span class="italic text-impost-primary">Selesaikan?</span>
       </h2>
-      <p class="text-white/60 text-xs sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+      <p class="text-white/60 text-sm lg:text-base leading-relaxed max-w-2xl mx-auto">
         Kami menolak menjadi sekadar vendor yang menjual "jasa digital marketing". Kami hadir memberikan kepastian
         data, pertumbuhan omzet, dan profit nyata.
       </p>
@@ -83,7 +83,7 @@
               <h3
                 class="text-white text-sm sm:text-base font-bold mb-2 group-hover:text-impost-primary transition-colors duration-300">
                 {{ $item['title'] }}</h3>
-              <p class="text-white/50 text-xs sm:text-sm leading-relaxed">{{ $item['desc'] }}</p>
+              <p class="text-white/50 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
             </div>
 
           </div>
@@ -121,7 +121,7 @@
                     class="text-white text-base font-bold group-hover:text-impost-primary transition-colors duration-300">
                     {{ $item['title'] }}</h3>
                 </div>
-                <p class="text-white/50 text-sm leading-relaxed">{{ $item['desc'] }}</p>
+                <p class="text-white/50 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
               </div>
             </div>
 
@@ -176,7 +176,7 @@
               class="absolute inset-8 rounded-full border border-white/[0.04] bg-black/50 flex items-center justify-center">
               <div class="text-center">
                 <span class="block text-4xl font-bold text-impost-primary mb-1 tracking-tight">ROI</span>
-                <span class="text-[11px] text-white/60 uppercase tracking-[0.25em] font-semibold">Focused</span>
+                <span class="text-xs lg:text-sm text-white/60 uppercase tracking-[0.25em] font-semibold">Focused</span>
               </div>
             </div>
           </div>
@@ -232,7 +232,7 @@
                     class="text-white text-base font-bold group-hover:text-impost-primary transition-colors duration-300">
                     {{ $item['title'] }}</h3>
                 </div>
-                <p class="text-white/50 text-sm leading-relaxed">{{ $item['desc'] }}</p>
+                <p class="text-white/50 text-sm lg:text-base leading-relaxed">{{ $item['desc'] }}</p>
               </div>
             </div>
 

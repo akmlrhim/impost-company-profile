@@ -9,7 +9,7 @@
       <h2 class="text-2xl sm:text-3xl md:text-5xl font-medium font-header leading-tight text-white mb-2 sm:mb-3">
         Apa Kata <span class="text-impost-primary">Mereka?</span>
       </h2>
-      <p class="text-xs sm:text-sm md:text-base text-gray-200 font-light">
+      <p class="text-sm lg:text-base text-gray-200 font-light">
         Kepuasan klien adalah bukti nyata dari dedikasi kami.
       </p>
     </div>
@@ -28,12 +28,12 @@
                   {{ substr($t->name, 0, 1) }}
                 </div>
                 <div class="leading-tight">
-                  <h4 class="text-white font-bold text-xs sm:text-sm">{{ $t->name }}</h4>
-                  <span class="text-[10px] sm:text-xs text-gray-400 mt-0.5 block">{{ $t->company_name }}</span>
+                  <h4 class="text-white font-bold text-sm lg:text-base">{{ $t->name }}</h4>
+                  <span class="text-xs lg:text-sm text-gray-400 mt-0.5 block">{{ $t->company_name }}</span>
                 </div>
               </div>
 
-              <div class="text-gray-200 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 font-light italic">
+              <div class="text-gray-200 text-sm lg:text-base leading-relaxed mb-4 sm:mb-5 font-light italic">
                 "{!! $t->content !!}"
               </div>
 
@@ -69,7 +69,7 @@
               class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-impost-primary text-black font-bold flex items-center justify-center">
               <span class="text-[8px]">{{ count($testimonials) }}</span>
             </div>
-            <span id="btn-text" class="text-xs sm:text-sm font-semibold tracking-tight">Eksplor Lebih
+            <span id="btn-text" class="text-sm lg:text-base font-semibold tracking-tight">Eksplor Lebih
               Banyak</span>
             <div class="bg-white/10 p-1 rounded-full group-hover:bg-black/10 transition-colors">
               <svg id="btn-icon" class="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300" fill="none"

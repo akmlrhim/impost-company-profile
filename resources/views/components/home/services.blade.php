@@ -4,7 +4,7 @@
     <h2 class="text-2xl sm:text-3xl md:text-5xl font-medium font-header mb-3 sm:mb-5 md:mb-6">
       <span class="text-impost-primary">Layanan Kami</span>
     </h2>
-    <p class="text-white text-xs sm:text-sm md:text-base max-w-3xl mx-auto leading-relaxed px-4">
+    <p class="text-white text-sm lg:text-base max-w-3xl mx-auto leading-relaxed px-4">
       Kami menyediakan layanan digital end-to-end yang berfokus pada peningkatan omset, visibilitas merek, dan efisiensi
       pemasaran.
     </p>

@@ -203,22 +203,23 @@
         </section>
       </div>
 
-      <div class="mt-20 bg-impost-primary">
-        <div class="max-w-7xl mx-auto p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div class="text-center md:text-left">
-            <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">Punya ide brilian?</h3>
-            <p class="text-gray-800 text-sm md:text-base font-medium">Lihat bagaimana kami menyelesaikan masalah klien
-              lain atau hubungi kami.
-            </p>
-          </div>
-          <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-            <a href="{{ route('study-case') }}"
-              class="px-6 py-3 border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-sm md:text-base text-center hover:bg-gray-900 hover:text-white transition-all">Lihat
-              Studi Kasus</a>
-            <a href="{{ route('contact') }}"
-              class="px-8 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm md:text-base text-center shadow-lg hover:bg-gray-800 transition-all">Hubungi
-              Kami</a>
-          </div>
+    </div>
+
+    <div class="mt-20 bg-impost-primary">
+      <div class="max-w-7xl mx-auto p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="text-center md:text-left">
+          <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">Punya ide brilian?</h3>
+          <p class="text-gray-800 text-sm md:text-base font-medium">Lihat bagaimana kami menyelesaikan masalah klien
+            lain atau hubungi kami.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+          <a href="{{ route('study-case') }}"
+            class="px-6 py-3 border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-sm md:text-base text-center hover:bg-gray-900 hover:text-white transition-all">Lihat
+            Studi Kasus</a>
+          <a href="{{ route('contact') }}"
+            class="px-8 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm md:text-base text-center shadow-lg hover:bg-gray-800 transition-all">Hubungi
+            Kami</a>
         </div>
       </div>
     </div>

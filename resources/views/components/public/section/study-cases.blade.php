@@ -99,15 +99,13 @@
               </div>
             @endforeach
           </div>
-          <div class="mt-8 sm:mt-10 text-center">
-            <a href="{{ route('study-case') }}"
-              class="inline-flex items-center text-xs font-bold uppercase text-white hover:text-impost-primary transition-colors tracking-wider border-b border-transparent hover:border-impost-primary pb-1">
+          <div class="text-center mt-8">
+            <a href="{{ route('study-case') ?? '#studycases' }}"
+              class="inline-flex items-center justify-center px-5 py-2 text-sm md:text-base font-bold text-black transition-all duration-300 bg-impost-primary rounded-lg hover:bg-impost-secondary hover:shadow-lg hover:-translate-y-0.5 focus:outline-none hover:scale-105">
               Lihat Semua Study Case
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="size-4 ml-2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-
             </a>
           </div>
         </div>

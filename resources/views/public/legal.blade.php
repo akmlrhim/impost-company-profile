@@ -40,10 +40,10 @@
           </ol>
         </nav>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Legalitas Perusahaan
         </h1>
-        <p class="text-white/80 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl text-justify">
+        <p class="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl text-justify">
           Integritas dan transparansi adalah fondasi kami. Berikut adalah data legalitas resmi CV. Impost Media Indonesia
           yang terdaftar di sistem pemerintahan Republik Indonesia.
         </p>
@@ -63,7 +63,7 @@
         {{-- Main Card --}}
         <div class="bg-[#111] rounded-lg sm:rounded-xl overflow-hidden mb-8 sm:mb-12">
           <div class="px-4 sm:px-6 md:px-8 py-4 sm:py-6 bg-[#161616] border-b border-white/5">
-            <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-white">CV. IMPOST MEDIA INDONESIA</h2>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white">CV. IMPOST MEDIA INDONESIA</h2>
             <p class="text-gray-400 text-xs sm:text-sm mt-1">Badan Usaha Resmi Terdaftar</p>
           </div>
 
@@ -112,7 +112,7 @@
         {{-- KBLI Section --}}
         <div>
           <h3
-            class="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white mb-4 sm:mb-6 pl-2 sm:pl-3 border-l-2 sm:border-l-4 border-impost-primary leading-tight">
+            class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 pl-2 sm:pl-3 border-l-2 sm:border-l-4 border-impost-primary leading-tight">
             Klasifikasi Baku Lapangan Usaha Indonesia (KBLI)
           </h3>
 

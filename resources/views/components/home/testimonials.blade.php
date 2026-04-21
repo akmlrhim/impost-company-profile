@@ -6,10 +6,10 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-      <h2 class="text-2xl sm:text-3xl md:text-5xl font-medium font-header leading-tight text-white mb-2 sm:mb-3">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-header leading-tight text-white mb-2 sm:mb-3">
         Apa Kata <span class="text-impost-primary">Mereka?</span>
       </h2>
-      <p class="text-sm lg:text-base text-gray-200 font-light">
+      <p class="text-sm sm:text-base md:text-lg text-gray-200 font-light">
         Kepuasan klien adalah bukti nyata dari dedikasi kami.
       </p>
     </div>
@@ -28,12 +28,12 @@
                   {{ substr($t->name, 0, 1) }}
                 </div>
                 <div class="leading-tight">
-                  <h4 class="text-white font-bold text-sm lg:text-base">{{ $t->name }}</h4>
+                  <h4 class="text-white font-bold text-base sm:text-lg md:text-xl">{{ $t->name }}</h4>
                   <span class="text-xs lg:text-sm text-gray-400 mt-0.5 block">{{ $t->company_name }}</span>
                 </div>
               </div>
 
-              <div class="text-gray-200 text-sm lg:text-base leading-relaxed mb-4 sm:mb-5 font-light italic">
+              <div class="text-gray-200 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-5 font-light italic">
                 "{!! $t->content !!}"
               </div>
 

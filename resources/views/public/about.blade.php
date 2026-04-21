@@ -53,10 +53,10 @@
           </ol>
         </nav>
 
-        <h1 class="text-xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Tentang Kami
         </h1>
-        <p class="text-white/80 text-sm lg:text-base leading-relaxed max-w-xl text-justify">
+        <p class="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl text-justify">
           Kenali perjalanan, visi, dan misi kami yang menjadi fondasi layanan digital marketing,
           event organizer, serta pengadaan barang dan jasa yang kami hadirkan untuk bisnis Indonesia.
         </p>
@@ -161,7 +161,7 @@
       <div class="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col h-full flex-grow">
 
         <div class="mb-16">
-          <h2 class="text-xl md:text-5xl text-white font-bold leading-tight">
+          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-bold leading-tight">
             Brand History
           </h2>
           <p class="mt-4 text-white/80 text-sm lg:text-base max-w-2xl leading-relaxed text-justify">

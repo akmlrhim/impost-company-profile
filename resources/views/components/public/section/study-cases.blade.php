@@ -8,11 +8,11 @@
     <div class="relative mb-10 sm:mb-12 flex items-center justify-center">
       <div class="max-w-3xl mx-auto text-center z-10 px-4">
         <h2
-          class="text-2xl sm:text-3xl md:text-5xl font-medium font-header tracking-tight text-white mb-3 sm:mb-4 leading-tight">
+          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-header tracking-tight text-white mb-3 sm:mb-4 leading-tight">
           Hasil Nyata, <br class="hidden md:block" />
           <span class="text-impost-primary italic">Bukan Janji Kosong.</span>
         </h2>
-        <p class="text-white text-sm lg:text-base leading-relaxed max-w-xl mx-auto">
+        <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
           Bukti autentik dari strategi yang terukur untuk pertumbuhan bisnis Anda.
         </p>
       </div>
@@ -76,17 +76,17 @@
                       </span>
                     </div>
                     <h3
-                      class="text-sm sm:text-base md:text-lg font-bold text-white group-hover:text-impost-primary mb-2 leading-tight transition-colors">
+                      class="text-lg sm:text-xl md:text-2xl font-bold text-white group-hover:text-impost-primary mb-2 leading-tight transition-colors">
                       {{ $case->name }}
                     </h3>
-                    <div class="text-sm lg:text-base text-white/70 leading-relaxed line-clamp-3 mb-4">
+                    <div class="text-sm sm:text-base md:text-lg text-white/70 leading-relaxed line-clamp-3 mb-4">
                       <div class="[&>ul]:list-disc [&>ul]:ml-4 [&>ol]:list-decimal [&>ol]:ml-4">
                         {!! strip_tags($case->result, '<ul><ol><li><p><br><strong><em>') !!}
                       </div>
                     </div>
                     <div class="mt-auto pt-3 border-t border-white/10">
                       <div
-                        class="flex items-center text-sm lg:text-base font-medium text-white group-hover:text-impost-primary transition-colors">
+                        class="flex items-center text-sm sm:text-base md:text-lg font-medium text-white group-hover:text-impost-primary transition-colors">
                         Lihat Detail
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                           stroke="currentColor" class="size-4 ml-2">

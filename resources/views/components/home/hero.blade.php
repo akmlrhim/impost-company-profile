@@ -21,14 +21,14 @@
       </div>
 
       {{-- Headline --}}
-      <h1 class="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-header leading-[1.15] text-white">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-header leading-[1.15] text-white">
         Naikkan Omzet Bisnis Anda
         <br class="hidden sm:block">
         <span class="text-impost-primary">2–3x dalam 90 Hari</span>
       </h1>
 
       {{-- Subtitle --}}
-      <p class="text-sm lg:text-base text-white/60 max-w-2xl mx-auto leading-relaxed">
+      <p class="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
         Bukan sekadar konten atau iklan, tapi sistem pertumbuhan terukur yang bisa diaudit dan dipertanggungjawabkan.
       </p>
 

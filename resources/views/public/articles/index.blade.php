@@ -40,10 +40,10 @@
           </ol>
         </nav>
 
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Artikel
         </h1>
-        <p class="text-white/80 text-sm lg:text-base leading-relaxed max-w-xl text-justify">
+        <p class="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl text-justify">
           Jelajahi koleksi artikel kami tentang berbagai topik menarik seputar strategi, data, dan pertumbuhan bisnis.
         </p>
       </div>

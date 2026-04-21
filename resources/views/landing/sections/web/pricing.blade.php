@@ -1,8 +1,8 @@
 <section id="pricing" class="py-16">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="text-3xl font-bold text-white mb-4">Pilih Solusi Anda</h2>
-      <p class="text-white">Pilih solusi yang Sesuai Kebutuhan Bisnismu</p>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Pilih Solusi Anda</h2>
+      <p class="text-white text-sm sm:text-base md:text-lg">Pilih solusi yang Sesuai Kebutuhan Bisnismu</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
@@ -10,7 +10,7 @@
       <div
         class="bg-neutral-900/50 rounded-2xl p-6 border border-white/10 flex flex-col hover:border-white/30 transition">
         <div class="mb-4">
-          <h3 class="text-xl font-bold text-white">Landing Page Basic</h3>
+          <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white">Landing Page Basic</h3>
           <p class="text-gray-500 text-sm mt-2">Cocok untuk kamu yang baru mulai dan butuh halaman simpel untuk validasi
             produk/jasa.</p>
         </div>
@@ -86,7 +86,7 @@
           BEST SELLER
         </div>
         <div class="mb-4">
-          <h3 class="text-xl font-bold text-white">Landing Page Pro</h3>
+          <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white">Landing Page Pro</h3>
           <p class="text-gray-400 text-sm mt-2">Paling banyak dipilih untuk iklan & closing.</p>
         </div>
         <div class="mb-6">
@@ -157,7 +157,7 @@
       <div
         class="bg-neutral-900/50 rounded-2xl p-6 border border-white/10 flex flex-col hover:border-white/30 transition">
         <div class="mb-4">
-          <h3 class="text-xl font-bold text-white">Company Profile</h3>
+          <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white">Company Profile</h3>
           <p class="text-gray-500 text-sm mt-2">Cocok untuk bisnis yang ingin tampil lebih kredibel dan siap scale.</p>
         </div>
         <div class="mb-6">
@@ -216,7 +216,7 @@
       <div
         class="bg-neutral-900/50 rounded-2xl p-6 border border-white/10 flex flex-col hover:border-white/30 transition">
         <div class="mb-4">
-          <h3 class="text-xl font-bold text-white">Management Website</h3>
+          <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white">Management Website</h3>
           <p class="text-gray-500 text-sm mt-2">Biar website tetap rapi & terurus tanpa ribet.</p>
         </div>
         <div class="mb-6">
@@ -261,7 +261,7 @@
       <div
         class="bg-neutral-900/50 rounded-2xl p-6 border border-white/10 flex flex-col hover:border-white/30 transition">
         <div class="mb-4">
-          <h3 class="text-xl font-bold text-white">Custom / Enterprise</h3>
+          <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white">Custom / Enterprise</h3>
           <p class="text-gray-500 text-sm mt-2">Solusi sistem kompleks & unik.</p>
         </div>
         <div class="mb-6">

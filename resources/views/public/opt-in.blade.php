@@ -5,7 +5,7 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
       <div class="max-w-3xl mx-auto text-center mb-8 md:mb-14">
-        <span class="text-sm sm:text-base md:text-lg font-semibold tracking-widest text-impost-primary uppercase">
+        <span class="text-base sm:text-lg md:text-xl font-semibold tracking-widest text-impost-primary uppercase">
           OPT-IN
         </span>
         <div class="mt-2 md:mt-4 mx-auto w-12 md:w-16 h-1 bg-impost-primary rounded-full"></div>

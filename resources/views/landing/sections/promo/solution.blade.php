@@ -6,7 +6,7 @@
       Solusi Digital #1
     </div>
 
-    <h2 class="text-xl sm:text-2xl md:text-5xl font-bold text-white mb-4 md:mb-6">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
       Bukan Sekadar Konten Estetik, <br class="hidden md:block">
       Tapi <span class="text-impost-primary">Chat & Penjualan.</span>
     </h2>
@@ -29,7 +29,7 @@
             <path d="M8 12h8" />
           </svg>
         </div>
-        <h3 class="text-lg md:text-xl font-bold text-white mb-1 md:mb-2">Meta Ads</h3>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 md:mb-2">Meta Ads</h3>
         <p class="text-xs md:text-sm text-gray-400 leading-relaxed">Targeting presisi di Facebook & Instagram untuk
           mendatangkan traffic berkualitas.</p>
       </div>
@@ -45,7 +45,7 @@
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
           </svg>
         </div>
-        <h3 class="text-lg md:text-xl font-bold text-white mb-1 md:mb-2">Web & LP</h3>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 md:mb-2">Web & LP</h3>
         <p class="text-xs md:text-sm text-gray-400 leading-relaxed">Wadah penampung traffic yang didesain khusus untuk
           konversi penjualan.</p>
       </div>
@@ -60,7 +60,7 @@
               d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
           </svg>
         </div>
-        <h3 class="text-lg md:text-xl font-bold text-white mb-1 md:mb-2">Branding</h3>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 md:mb-2">Branding</h3>
         <p class="text-xs md:text-sm text-gray-400 leading-relaxed">Membangun citra bisnis yang profesional dan
           dipercaya oleh customer.</p>
       </div>

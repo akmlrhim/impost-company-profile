@@ -129,7 +129,7 @@
 
         {{-- Header --}}
         <header class="mb-6 sm:mb-8 text-center">
-          <h1 class="mb-4 sm:mb-6 text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold text-white leading-tight">
+          <h1 class="mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
             {{ $article->title }}
           </h1>
 
@@ -222,7 +222,7 @@
   {{-- Latest Articles --}}
   <aside class="py-10 sm:py-12 md:py-16 bg-[#0a0a0a] border-t border-white/10">
     <div class="px-3 sm:px-4 mx-auto max-w-7xl">
-      <h2 class="mb-6 sm:mb-8 text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white">
+      <h2 class="mb-6 sm:mb-8 text-xl sm:text-2xl md:text-3xl font-bold text-white">
         Artikel Terbaru Lainnya
       </h2>
 

@@ -3,7 +3,7 @@
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
 
     <div class="text-center relative z-10 mb-16">
-      <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
         Bukan Cuma Soal <span class="text-impost-primary italic">Tampilan!</span>
       </h1>
 
@@ -28,7 +28,7 @@
     </div>
 
     <div class="text-center mb-10">
-      <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">Pernah Ngerasa Gini?</h2>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">Pernah Ngerasa Gini?</h2>
       <p class="text-sm md:text-base text-white">Bisnis kamu sebenarnya sudah jalan. Tapi secara online, rasanya
         belum "hidup".</p>
     </div>
@@ -46,7 +46,7 @@
             <path d="m8 9 6 6" />
           </svg>
         </div>
-        <h3 class="text-base font-bold text-white mb-2">Hantu di Google</h3>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Hantu di Google</h3>
         <p class="text-white text-xs md:text-sm leading-relaxed">Usaha sudah ada, tapi nggak muncul pas dicari. Yang
           keluar malah kompetitor.</p>
       </div>
@@ -65,7 +65,7 @@
               d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7" />
           </svg>
         </div>
-        <h3 class="text-base font-bold text-white mb-2">Kalah Saing Visual</h3>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Kalah Saing Visual</h3>
         <p class="text-white text-xs md:text-sm leading-relaxed">Bisnis kelihatan kurang profesional dan meyakinkan
           dibanding kompetitor sebelah.</p>
       </div>
@@ -82,7 +82,7 @@
             <path d="M14.9 14.9a2 2 0 0 1-1.9 1.1H9l-4 4V8.3" />
           </svg>
         </div>
-        <h3 class="text-base font-bold text-white mb-2">Sepi Chat & Leads</h3>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Sepi Chat & Leads</h3>
         <p class="text-white text-xs md:text-sm leading-relaxed">Sudah punya website, tapi sunyi senyap. Jarang ada
           yang chat atau tanya-tanya.</p>
       </div>
@@ -100,7 +100,7 @@
             <line x1="21" x2="9" y1="12" y2="12" />
           </svg>
         </div>
-        <h3 class="text-base font-bold text-white mb-2">Cuma Numpang Lewat</h3>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Cuma Numpang Lewat</h3>
         <p class="text-white text-xs md:text-sm leading-relaxed">Pengunjung datang, lihat sebentar, tapi nggak klik
           tombol WhatsApp lalu pergi.</p>
       </div>
@@ -117,7 +117,7 @@
           </svg>
         </div>
         <div>
-          <h3 class="text-base font-bold text-white mb-1">Bingung Nulis Konten?</h3>
+          <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1">Bingung Nulis Konten?</h3>
           <p class="text-white text-xs md:text-sm leading-relaxed">Takut bahasanya salah, kaku, dan malah bikin calon
             pembeli nggak yakin sama produk kamu.</p>
         </div>
@@ -129,7 +129,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
 
       <div class="text-center mb-8 md:mb-14">
-        <h2 class="text-xl md:text-3xl font-bold text-white mb-3">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
           Ujung-ujungnya? <span class="block md:inline text-gray-300 font-normal mt-1 md:mt-0">Website cuma jadi
             pelengkap.</span>
         </h2>

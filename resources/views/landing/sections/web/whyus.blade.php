@@ -2,7 +2,7 @@
   <div class="max-w-6xl mx-auto">
 
     <div class="text-center mb-8 md:mb-16">
-      <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4">
         Kenapa <span class="text-impost-primary">Impost Media?</span>
       </h2>
       <p class="text-white max-w-2xl mx-auto text-sm md:text-base">
@@ -23,7 +23,7 @@
             <circle cx="12" cy="12" r="2" />
           </svg>
         </div>
-        <h3 class="text-sm md:text-lg font-bold text-impost-primary mb-1 md:mb-2">Fokus Fungsi</h3>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-impost-primary mb-1 md:mb-2">Fokus Fungsi</h3>
         <p class="text-white text-xs md:text-sm leading-relaxed">Bukan sekadar desain cantik, tapi fitur penunjang
           penjualan.</p>
       </div>
@@ -39,7 +39,7 @@
             <line x1="9" x2="9" y1="21" y2="9" />
           </svg>
         </div>
-        <h3 class="text-sm md:text-lg font-bold text-impost-primary mb-1 md:mb-2">Struktur Jelas</h3>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-impost-primary mb-1 md:mb-2">Struktur Jelas</h3>
         <p class="text-white text-xs md:text-sm leading-relaxed">Navigasi yang mudah dipahami user, anti bingung.</p>
       </div>
 
@@ -53,7 +53,7 @@
             <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
           </svg>
         </div>
-        <h3 class="text-sm md:text-lg font-bold text-impost-primary mb-1 md:mb-2">Berpengalaman</h3>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-impost-primary mb-1 md:mb-2">Berpengalaman</h3>
         <p class="text-white text-xs md:text-sm leading-relaxed">Portofolio luas mulai dari UMKM hingga level Corporate.
         </p>
       </div>
@@ -67,7 +67,7 @@
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </svg>
         </div>
-        <h3 class="text-sm md:text-lg font-bold text-impost-primary mb-1 md:mb-2">Transparan</h3>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-impost-primary mb-1 md:mb-2">Transparan</h3>
         <p class="text-white text-xs md:text-sm leading-relaxed">Alur kerja rapi, komunikatif, dan tidak ada biaya
           tersembunyi.</p>
       </div>
@@ -78,7 +78,7 @@
 
 <section class="bg-impost-fifth text-white py-10 md:py-16 px-4 sm:px-6 lg:px-8">
   <div class="max-w-4xl mx-auto text-center font-header italic">
-    <h3 class="text-lg md:text-3xl font-medium leading-relaxed">
+    <h3 class="text-xl sm:text-2xl md:text-3xl font-medium leading-relaxed">
       "Kami percaya website terbaik bukan yang paling rame animasi, tapi yang paling <span
         class="text-impost-primary font-bold border-b border-impost-primary">jelas bikin orang percaya</span> dan
       menghasilkan closing."

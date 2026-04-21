@@ -10,10 +10,10 @@
     <div class="relative z-10 mx-auto max-w-7xl px-4 font-sans">
 
       <div class="mb-6 text-center sm:mb-8">
-        <h1 class="mb-2 text-2xl font-bold leading-tight text-impost-primary sm:mb-3 sm:text-3xl md:text-4xl">
+        <h1 class="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-impost-primary sm:mb-3">
           Mari Kita Mulai
         </h1>
-        <p class="mx-auto max-w-xl text-sm leading-relaxed text-gray-400">
+        <p class="mx-auto max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-gray-400">
           Isi data berikut untuk melanjutkan. Privasi data Anda terjamin aman bersama kami.
         </p>
       </div>

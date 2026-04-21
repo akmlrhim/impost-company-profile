@@ -87,7 +87,7 @@
           </ol>
         </nav>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           {{ $studyCase->name }}
         </h1>
 
@@ -164,7 +164,7 @@
                 <span class="relative block w-1.5 h-8 sm:h-10 bg-impost-primary rounded-full"></span>
               </div>
               <div>
-                <h2 class="text-lg sm:text-2xl font-bold text-white tracking-tight">Situation</h2>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight">Situation</h2>
               </div>
             </div>
           </div>
@@ -181,7 +181,7 @@
                 <span class="relative block w-1.5 h-8 sm:h-10 bg-impost-primary rounded-full"></span>
               </div>
               <div>
-                <h2 class="text-lg sm:text-2xl font-bold text-white tracking-tight">Solution</h2>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight">Solution</h2>
               </div>
             </div>
           </div>
@@ -198,7 +198,7 @@
                 <span class="relative block w-1.5 h-8 sm:h-10 bg-impost-primary rounded-full"></span>
               </div>
               <div>
-                <h2 class="text-lg sm:text-2xl font-bold text-white tracking-tight">Result</h2>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight">Result</h2>
               </div>
             </div>
           </div>

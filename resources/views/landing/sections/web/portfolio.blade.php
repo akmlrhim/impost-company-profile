@@ -3,7 +3,7 @@
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center mb-10 md:mb-16">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6 leading-tight">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
         Ratusan bisnis sudah kami bantu membangun <br class="hidden md:block">
         <span class="text-impost-primary border-b-2 border-impost-primary/30 pb-1">pondasi digitalnya.</span>
       </h2>
@@ -76,7 +76,7 @@
               class="w-full h-56 sm:h-72 md:h-[400px] object-cover object-top transform group-hover:scale-105 transition duration-700 ease-out">
 
             <div class="absolute bottom-0 left-0 p-5 md:p-6 z-20">
-              <h4 class="text-white text-lg md:text-xl font-bold group-hover:text-impost-primary transition">Impost
+              <h4 class="text-white text-lg sm:text-xl md:text-2xl font-bold group-hover:text-impost-primary transition">Impost
                 Media Company Profile</h4>
               <p
                 class="text-gray-300 text-xs md:text-sm mt-1 opacity-0 group-hover:opacity-100 transition duration-300 transform translate-y-2 group-hover:translate-y-0">
@@ -106,7 +106,7 @@
               class="w-full h-56 sm:h-72 md:h-[400px] object-cover object-top transform group-hover:scale-105 transition duration-700 ease-out">
 
             <div class="absolute bottom-0 left-0 p-5 md:p-6 z-20">
-              <h4 class="text-white text-lg md:text-xl font-bold group-hover:text-impost-primary transition">STIFIn
+              <h4 class="text-white text-lg sm:text-xl md:text-2xl font-bold group-hover:text-impost-primary transition">STIFIn
                 Landing Page</h4>
               <p
                 class="text-gray-300 text-xs md:text-sm mt-1 opacity-0 group-hover:opacity-100 transition duration-300 transform translate-y-2 group-hover:translate-y-0">

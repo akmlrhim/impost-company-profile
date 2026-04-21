@@ -2,7 +2,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
 
     @if (isset($clients) && count($clients))
-      <p class="mb-6 sm:mb-10 md:mb-12 text-impost-primary font-extrabold tracking-wide text-sm lg:text-base uppercase">
+      <p class="mb-6 sm:mb-10 md:mb-12 text-impost-primary font-extrabold tracking-wide text-sm sm:text-base md:text-lg uppercase">
         Klien yang telah bekerja sama dengan kami
       </p>
       

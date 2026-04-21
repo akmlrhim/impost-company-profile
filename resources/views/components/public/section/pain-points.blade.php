@@ -27,11 +27,11 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center mb-12 md:mb-16">
-      <h2 class="text-2xl sm:text-3xl md:text-5xl font-header leading-tight text-white mb-3 md:mb-4">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-header leading-tight text-white mb-3 md:mb-4">
         Kami Bukan Agency yang <br class="hidden md:block">Jual Konten atau
         <span class="italic text-impost-primary">Iklan</span>
       </h2>
-      <p class="text-sm lg:text-base text-white/50 max-w-2xl mx-auto">
+      <p class="text-sm sm:text-base md:text-lg text-white/50 max-w-2xl mx-auto">
         Kami Pionir & Market Leader Digital Marketing di Kalimantan
       </p>
     </div>
@@ -42,18 +42,21 @@
         @mousedown="dragStart($event)" @mousemove="dragMove($event)" @mouseup="dragEnd($event)"
         @mouseleave="dragEnd($event)" @touchstart.passive="dragStart($event)" @touchmove.passive="dragMove($event)"
         @touchend="dragEnd($event)">
-        <div class="flex"
+
+        <div class="flex items-start"
           :style="`transform: translateX(-${currentIndex * (100 / visibleCount)}%); transition: ${isDragging ? 'none' : 'transform 500ms ease-in-out'}`">
           @foreach ($painPoints as $point)
             <div class="flex-shrink-0 px-2 md:px-2.5" :style="`width: ${100 / visibleCount}%`">
-              <div class="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 h-full">
+
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 h-fit">
+
                 <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
                   <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="{{ $point['icon'] }}" />
                   </svg>
                 </div>
-                <p class="text-sm lg:text-base text-white/70 leading-relaxed">
+                <p class="text-sm sm:text-base md:text-lg text-white/70 leading-relaxed">
                   {{ $point['text'] }}
                 </p>
               </div>
@@ -69,22 +72,22 @@
 
       {{-- Result --}}
       <div class="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7 flex flex-col justify-center">
-        <p class="text-sm lg:text-base leading-relaxed text-white/70 mb-3">
+        <p class="text-sm sm:text-base md:text-lg leading-relaxed text-white/70 mb-3">
           <span class="text-impost-primary font-semibold">Hasilnya?</span> Penjualan kebanyakan hanya mengandalkan
           promo dengan customer yang tidak loyal.
         </p>
         <div class="h-px bg-white/5 my-3"></div>
-        <p class="text-sm lg:text-base leading-relaxed text-white/70">
+        <p class="text-sm sm:text-base md:text-lg leading-relaxed text-white/70">
           Ini disebabkan oleh branding yang belum terbangun ke persepsi publik.
         </p>
       </div>
 
       {{-- Solution --}}
       <div class="bg-impost-secondary rounded-2xl p-6 md:p-7 flex flex-col justify-center">
-        <h3 class="text-base sm:text-lg md:text-xl font-header text-white mb-3 leading-tight">
+        <h3 class="text-xl sm:text-2xl md:text-3xl font-header text-white mb-3 leading-tight">
           Kami benahi funnel marketingnya
         </h3>
-        <p class="text-sm lg:text-base text-white/80 leading-relaxed">
+        <p class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
           Membangun sistem pemasaran yang berkelanjutan, bukan sekadar posting konten.
         </p>
       </div>

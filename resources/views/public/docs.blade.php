@@ -41,10 +41,10 @@
           </ol>
         </nav>
 
-        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Dokumen
         </h1>
-        <p class="text-white/80 text-[10px] sm:text-[11px] md:text-xs leading-relaxed max-w-xl text-justify">
+        <p class="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl text-justify">
           Eksplorasi visi, misi, dan karya terbaik IMPOST MEDIA melalui dokumen interaktif di bawah ini.
         </p>
       </div>
@@ -68,11 +68,11 @@
             </div>
 
             <div class="p-5 flex-1 flex flex-col justify-between">
-              <p class="text-white/80 text-[10px] md:text-[11px] mb-4 leading-relaxed">
+              <p class="text-white/80 text-sm sm:text-base md:text-lg mb-4 leading-relaxed">
                 Pelajari identitas perusahaan, struktur tim, serta layanan profesional yang kami tawarkan secara mendalam.
               </p>
               <a href="https://heyzine.com/flip-book/70b2ce8250.html" target="_blank"
-                class="block w-full text-center py-2 text-[10px] md:text-[11px] font-bold text-black uppercase tracking-wider bg-impost-primary rounded hover:bg-opacity-90 transition-opacity">
+                class="block w-full text-center py-2 text-sm sm:text-base md:text-lg font-bold text-black bg-impost-primary rounded hover:bg-opacity-90 transition-opacity">
                 Buka Layar Penuh
               </a>
             </div>
@@ -90,11 +90,11 @@
             </div>
 
             <div class="p-5 flex-1 flex flex-col justify-between">
-              <p class="text-white/80 text-[10px] md:text-[11px] mb-4 leading-relaxed">
+              <p class="text-white/80 text-sm sm:text-base md:text-lg mb-4 leading-relaxed">
                 Lihat koleksi proyek terbaik yang telah kami selesaikan dan bagaimana kami membantu klien berkembang.
               </p>
               <a href="https://heyzine.com/flip-book/caea1a35c5.html" target="_blank"
-                class="block w-full text-center py-2 text-[10px] md:text-[11px] font-bold text-black uppercase tracking-wider bg-impost-primary rounded hover:bg-opacity-90 transition-opacity">
+                class="block w-full text-center py-2 text-sm sm:text-base md:text-lg font-bold text-black bg-impost-primary rounded hover:bg-opacity-90 transition-opacity">
                 Buka Layar Penuh
               </a>
             </div>

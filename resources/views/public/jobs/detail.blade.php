@@ -99,7 +99,7 @@
         <div class="lg:col-span-2 space-y-6 sm:space-y-8">
 
           <div class="border-b border-impost-fourth pb-6">
-            <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-3 sm:mb-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3 sm:mb-4">
               {{ $job->title }}
             </h1>
 
@@ -131,7 +131,7 @@
               @foreach ($job->details as $detail)
                 <div class="bg-impost-fifth border border-impost-fourth rounded-lg p-4 sm:p-8">
 
-                  <h3 class="text-lg sm:text-xl font-bold text-impost-primary mb-4 sm:mb-6 flex items-center gap-3">
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-impost-primary mb-4 sm:mb-6 flex items-center gap-3">
                     <span class="p-1.5 sm:p-2 bg-impost-primary/10 rounded-lg text-impost-primary">
                       <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -2,7 +2,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="text-center max-w-5xl mx-auto mb-8 md:mb-16">
-      <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4">
         Dari Website Biasa Jadi
         <span class="text-impost-primary block md:inline">Alat Closing Bisnis</span>
       </h2>

@@ -2,7 +2,7 @@
   <div class="max-w-6xl mx-auto">
 
     <div class="text-center mb-8 md:mb-16">
-      <h2 class="text-xl sm:text-2xl md:text-5xl font-bold text-white mb-2 md:mb-4">Mari Berhitung...</h2>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4">Mari Berhitung...</h2>
       <p class="text-gray-400 text-sm md:text-base">Bandingkan biaya jika Anda merekrut tim sendiri vs menggunakan Impost
         Media.</p>
     </div>
@@ -16,7 +16,7 @@
         </div>
 
         <h3
-          class="text-lg md:text-2xl font-bold text-white mb-4 md:mb-8 border-b border-white/10 pb-3 md:pb-4 mt-2 md:mt-0">
+          class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 md:mb-8 border-b border-white/10 pb-3 md:pb-4 mt-2 md:mt-0">
           Jika Bangun Tim Sendiri
         </h3>
 
@@ -60,7 +60,7 @@
           SOLUSI CERDAS
         </div>
 
-        <h3 class="text-lg md:text-2xl font-bold text-neutral-900 mb-1 md:mb-2 mt-2 md:mt-0">Pakai Impost Media</h3>
+        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-900 mb-1 md:mb-2 mt-2 md:mt-0">Pakai Impost Media</h3>
         <p
           class="text-neutral-800 text-xs md:text-sm font-medium mb-5 md:mb-8 border-b border-neutral-900/10 pb-3 md:pb-4">
           Lebih hemat, terarah, dan cepat menghasilkan.

@@ -1,4 +1,4 @@
-<section class="relative pt-28 pb-16 lg:pt-48 lg:pb-32 text-center overflow-hidden px-6" id="home">
+<section class="relative pt-28 pb-16 lg:pt-48 lg:pb-32 text-center overflow-hidden px-4 sm:px-6 lg:px-8" id="home">
 
   <div class="max-w-5xl mx-auto relative z-10">
 
@@ -7,7 +7,7 @@
       ⚠️ LEJITKAN OMZET BISNIS ANDA SEKARANG
     </div>
 
-    <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 md:mb-6">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight mb-4 md:mb-6">
       Cukup Gaji Kami <br>
       <span class="text-impost-primary bg-clip-text text-transparent bg-gradient-to-r from-impost-primary to-yellow-200">
         Rp 3 Juta / Bulan
@@ -15,7 +15,7 @@
     </h1>
 
     <p
-      class="text-base sm:text-xl md:text-3xl text-gray-300 font-medium mb-8 md:mb-10 max-w-3xl mx-auto leading-relaxed px-2">
+      class="text-base sm:text-lg md:text-xl text-gray-300 font-medium mb-8 md:mb-10 max-w-3xl mx-auto leading-relaxed px-2">
       Targetkan Omzet Bisnis Anda Naik <span
         class="text-white border-b-2 md:border-b-4 border-impost-primary font-bold">2-3x Lipat</span> Tanpa Pusing
       Mikirin Strategi.

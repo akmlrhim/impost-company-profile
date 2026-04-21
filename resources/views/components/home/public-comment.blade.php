@@ -1,8 +1,8 @@
 <section class="mt-8 sm:mt-16 sm:px-0 px-2" id="comment-section">
   <div class="mb-8">
-    <h2 class="text-lg sm:text-xl lg:text-2xl font-bold text-white">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
       Komentar <span
-        class="text-sm sm:text-base lg:text-lg font-normal text-gray-500">({{ $article->comments->count() }})</span>
+        class="text-base sm:text-lg md:text-xl font-normal text-gray-500">({{ $article->comments->count() }})</span>
     </h2>
   </div>
 
@@ -11,7 +11,7 @@
 
   {{-- form komentar  --}}
   <div class="bg-gray-900 border border-gray-800 rounded-md p-4 sm:p-6 mb-8">
-    <h3 class="text-base sm:text-lg font-semibold text-white mb-4">Tulis Komentar</h3>
+    <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-4">Tulis Komentar</h3>
 
     <form class="space-y-4" action="{{ route('article.comment') }}" method="POST" x-data="{
         loading: false,
@@ -88,7 +88,7 @@
   </div>
 
   <div x-data="{ showAll: false, limit: 3 }" class="space-y-4">
-    <h3 class="text-base sm:text-lg font-semibold text-white">
+    <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-white">
       Semua Komentar
     </h3>
 

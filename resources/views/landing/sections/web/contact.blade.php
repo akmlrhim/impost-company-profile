@@ -5,7 +5,7 @@
   <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
 
     <div class="text-center md:text-left order-1 md:order-1">
-      <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 leading-tight">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
         Siap Punya Website yang <span class="text-impost-primary">Niat & Profesional?</span>
       </h2>
 
@@ -41,7 +41,7 @@
       class="bg-neutral-900 border border-white/10 p-6 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden order-2 md:order-2">
       <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-impost-primary to-yellow-600"></div>
 
-      <h3 class="text-lg md:text-xl font-bold text-impost-primary mb-5 text-center md:text-left">Form Pendaftaran
+      <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-impost-primary mb-5 text-center md:text-left">Form Pendaftaran
       </h3>
 
       <form id="consultationForm" class="space-y-4">

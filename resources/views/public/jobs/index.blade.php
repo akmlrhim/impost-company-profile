@@ -45,7 +45,7 @@
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Careers
         </h1>
-        <p class="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl text-justify">
+        <p class="text-white/80 text-sm md:text-base lg:text-lg leading-relaxed max-w-xl text-justify">
           Temukan peran yang tepat untuk mengembangkan potensi Anda. Kami mencari talenta terbaik untuk tumbuh bersama.
         </p>
       </div>
@@ -74,10 +74,10 @@
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
               </svg>
               <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari posisi pekerjaan..."
-                class="w-full bg-[#151515] text-white placeholder-gray-500 border border-white/10 rounded-l-xl py-2.5 sm:py-3 pl-10 sm:pl-11 pr-3 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all text-xs sm:text-sm font-medium">
+                class="w-full bg-[#151515] text-white placeholder-gray-500 border border-white/10 rounded-l-xl py-2.5 sm:py-3 pl-10 sm:pl-11 pr-3 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all text-xs md:text-sm font-medium">
             </div>
             <button type="submit"
-              class="bg-impost-primary text-black font-bold uppercase tracking-wide text-[10px] sm:text-xs px-4 sm:px-6 py-2.5 sm:py-3 rounded-r-xl hover:bg-impost-secondary transition-colors focus:ring-2 focus:ring-inset focus:ring-white shrink-0">
+              class="bg-impost-primary text-black font-bold uppercase tracking-wide text-[10px] md:text-xs px-4 sm:px-6 py-2.5 sm:py-3 rounded-r-xl hover:bg-impost-secondary transition-colors focus:ring-2 focus:ring-inset focus:ring-white shrink-0">
               Cari
             </button>
           </div>
@@ -88,7 +88,7 @@
             {{-- Type Filter --}}
             <div class="relative w-full sm:w-44 lg:w-48 group">
               <select name="type" @change="$el.closest('form').submit()"
-                class="w-full appearance-none bg-[#151515] text-gray-300 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3.5 sm:px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all text-xs sm:text-sm font-medium cursor-pointer group-hover:border-white/25 shadow-sm">
+                class="w-full appearance-none bg-[#151515] text-gray-300 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3.5 sm:px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all text-xs md:text-sm font-medium cursor-pointer group-hover:border-white/25 shadow-sm">
                 <option value="">Semua Tipe</option>
                 @foreach ($employmentTypes as $optType)
                   <option value="{{ $optType }}" {{ request('type') == $optType ? 'selected' : '' }}>
@@ -101,7 +101,7 @@
             {{-- Arrangement Filter --}}
             <div class="relative w-full sm:w-44 lg:w-48 group">
               <select name="arrangement" @change="$el.closest('form').submit()"
-                class="w-full appearance-none bg-[#151515] text-gray-300 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3.5 sm:px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all text-xs sm:text-sm font-medium cursor-pointer group-hover:border-white/25 shadow-sm">
+                class="w-full appearance-none bg-[#151515] text-gray-300 border border-white/10 rounded-xl py-2.5 sm:py-3 px-3.5 sm:px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all text-xs md:text-sm font-medium cursor-pointer group-hover:border-white/25 shadow-sm">
                 <option value="">Semua Sistem</option>
                 @foreach ($workArrangements as $optArr)
                   <option value="{{ $optArr }}" {{ request('arrangement') == $optArr ? 'selected' : '' }}>
@@ -117,7 +117,7 @@
           @if (request()->filled('search') || request()->filled('type') || request()->filled('arrangement'))
             <div class="w-full lg:w-auto flex justify-center lg:justify-end pl-0 lg:pl-1 shrink-0 mt-1 lg:mt-0">
               <a href="{{ route('careers') }}"
-                class="text-[10px] sm:text-xs font-bold flex items-center gap-1.5 py-2 px-3 rounded-md text-white bg-red-600 hover:bg-red-700"
+                class="text-[10px] md:text-xs font-bold flex items-center gap-1.5 py-2 px-3 rounded-md text-white bg-red-600 hover:bg-red-700"
                 title="Hapus Filter">
                 <span>Reset</span>
               </a>
@@ -161,14 +161,14 @@
 
                 <div class="absolute top-3 right-3">
                   <span
-                    class="px-2 py-1 text-[10px] font-semibold tracking-wide uppercase rounded bg-impost-primary text-impost-fifth">
+                    class="px-2 py-1 text-[10px] md:text-xs font-semibold tracking-wide uppercase rounded bg-impost-primary text-impost-fifth">
                     {{ $vacancy->employment_type }}
                   </span>
                 </div>
               </div>
 
               <div class="p-4 sm:p-5 flex flex-col flex-grow">
-                <div class="flex items-center gap-2 text-impost-third text-[10px] sm:text-xs mb-2">
+                <div class="flex items-center gap-2 text-impost-third text-[10px] md:text-xs mb-2">
                   <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -177,7 +177,7 @@
                 </div>
 
                 <h3
-                  class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-impost-primary transition-colors line-clamp-2">
+                  class="text-lg md:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-impost-primary transition-colors line-clamp-2">
                   {{ $vacancy->title }}
                 </h3>
 
@@ -185,7 +185,7 @@
                   @if (!empty($vacancy->work_arrangements))
                     @foreach ($vacancy->work_arrangements as $arrangement)
                       <span
-                        class="inline-flex items-center px-2 py-0.5 rounded text-[10px] sm:text-xs font-medium border border-impost-fourth text-impost-secondary bg-impost-fourth/10">
+                        class="inline-flex items-center px-2 py-0.5 rounded text-[10px] md:text-xs font-medium border border-impost-fourth text-impost-secondary bg-impost-fourth/10">
                         {{ $arrangement }}
                       </span>
                     @endforeach
@@ -194,7 +194,7 @@
 
                 <div class="mt-auto pt-3 sm:pt-4 border-t border-impost-fourth">
                   <a href="{{ route('job.details', $vacancy) }}"
-                    class="mt-auto inline-flex items-center text-xs sm:text-sm font-bold text-impost-primary hover:text-white transition-colors group/link">
+                    class="mt-auto inline-flex items-center text-xs md:text-sm font-bold text-impost-primary hover:text-white transition-colors group/link">
                     <span class="uppercase">Lihat Detail</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -260,5 +260,5 @@
       @endif
 
     </div>
-    </main>
-  @endsection
+  </div>
+@endsection

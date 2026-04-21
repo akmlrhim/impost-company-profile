@@ -66,24 +66,21 @@
         class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-header leading-tight text-impost-primary mb-3 md:mb-6">
         Alur <span class="text-impost-primary">Layanan</span>
       </h2>
-      <p class="text-sm sm:text-base md:text-lg text-white font-light max-w-2xl mx-auto leading-relaxed">
+      <p class="text-sm md:text-base lg:text-lg text-white font-light max-w-2xl mx-auto leading-relaxed">
         Dari konsultasi hingga evaluasi hasil. Setiap langkah dirancang transparan untuk memastikan kesuksesan proyek
         Anda.
       </p>
     </div>
 
     <div class="relative">
-
       <div
         class="absolute left-6 md:left-1/2 md:-translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-impost-primary/30 to-transparent z-0">
       </div>
 
       <div class="space-y-6 sm:space-y-8 md:space-y-12">
-
         @foreach ($steps as $step)
           <div class="relative flex items-center">
 
-            {{-- Mobile dot --}}
             <div class="md:hidden absolute left-6 -translate-x-1/2 z-10">
               @if ($step['last'])
                 <div
@@ -101,9 +98,7 @@
             </div>
 
             <div class="flex-1 md:flex md:items-center md:gap-10">
-
               @if ($step['side'] === 'left')
-                {{-- Card left --}}
                 <div class="md:w-[45%] md:text-right pl-12 sm:pl-14 md:pl-0">
                   <div
                     class="group {{ $step['last'] ? 'bg-gradient-to-br from-impost-primary/[0.05] to-transparent border-impost-primary/20' : 'bg-white/[0.02] border-white/10 hover:border-impost-primary/30 hover:bg-white/[0.04]' }} border rounded-xl p-4 sm:p-5 md:p-8 transition-all duration-300 hover:-translate-y-1">
@@ -117,16 +112,15 @@
                         </svg>
                       </div>
                       <div class="flex-1">
-                        <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-white mb-1 sm:mb-2">
+                        <h3 class="text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-1 sm:mb-2">
                           {{ $step['title'] }}</h3>
-                        <p class="text-sm sm:text-base md:text-lg text-white font-light leading-relaxed">
+                        <p class="text-sm md:text-base lg:text-lg text-white font-light leading-relaxed">
                           {{ $step['desc'] }}</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {{-- Desktop dot --}}
                 <div class="hidden md:flex md:w-[10%] justify-center relative z-10">
                   @if ($step['last'])
                     <div
@@ -142,12 +136,9 @@
                     </div>
                   @endif
                 </div>
-
                 <div class="hidden md:block md:w-[45%]"></div>
               @else
                 <div class="hidden md:block md:w-[45%]"></div>
-
-                {{-- Desktop dot --}}
                 <div class="hidden md:flex md:w-[10%] justify-center relative z-10">
                   @if ($step['last'])
                     <div
@@ -164,7 +155,6 @@
                   @endif
                 </div>
 
-                {{-- Card right --}}
                 <div class="md:w-[45%] md:text-left pl-12 sm:pl-14 md:pl-0">
                   <div
                     class="group {{ $step['last'] ? 'bg-gradient-to-br from-impost-primary/[0.05] to-transparent border-impost-primary/20' : 'bg-white/[0.02] border-white/10 hover:border-impost-primary/30 hover:bg-white/[0.04]' }} border rounded-xl p-4 sm:p-5 md:p-8 transition-all duration-300 hover:-translate-y-1">
@@ -178,20 +168,18 @@
                         </svg>
                       </div>
                       <div class="flex-1">
-                        <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-white mb-1 sm:mb-2">
+                        <h3 class="text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-1 sm:mb-2">
                           {{ $step['title'] }}</h3>
-                        <p class="text-sm sm:text-base md:text-lg text-white font-light leading-relaxed">
+                        <p class="text-sm md:text-base lg:text-lg text-white font-light leading-relaxed">
                           {{ $step['desc'] }}</p>
                       </div>
                     </div>
                   </div>
                 </div>
               @endif
-
             </div>
           </div>
         @endforeach
-
       </div>
     </div>
   </div>

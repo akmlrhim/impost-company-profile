@@ -7,7 +7,7 @@
     prose-h2:text-base sm:prose-h2:text-xl lg:prose-h2:text-2xl prose-h2:mt-6 prose-h2:mb-3
     prose-h3:text-sm sm:prose-h3:text-lg lg:prose-h3:text-xl prose-h3:mt-5 prose-h3:mb-2
 
-    prose-p:text-white prose-p:text-xs sm:prose-p:text-base
+    prose-p:text-white prose-p:text-xs md:prose-p:text-base lg:prose-p:text-lg
     prose-p:leading-relaxed
     prose-p:my-0
     prose-p:empty:hidden
@@ -18,7 +18,7 @@
 
     prose-ul:list-disc prose-ul:ml-6 prose-ul:mb-3
     prose-ol:list-decimal prose-ol:ml-6 prose-ol:mb-3
-    prose-li:text-white prose-li:text-xs sm:prose-li:text-base prose-li:mb-1
+    prose-li:text-white prose-li:text-xs md:prose-li:text-base lg:prose-li:text-lg prose-li:mb-1
 
     prose-a:text-primary-400 prose-a:no-underline hover:prose-a:underline
     prose-strong:text-white prose-strong:font-semibold
@@ -29,7 +29,7 @@
     prose-blockquote:py-2 prose-blockquote:my-3
 
     prose-code:text-white prose-code:bg-gray-900 prose-code:px-2 prose-code:py-1
-    prose-code:rounded prose-code:text-[11px] sm:prose-code:text-sm
+    prose-code:rounded prose-code:text-[11px] md:prose-code:text-sm
 
     prose-pre:bg-gray-900 prose-pre:text-white prose-pre:rounded-md
     prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:my-4
@@ -43,10 +43,10 @@
     prose-th:bg-gray-900 prose-th:p-3 prose-th:text-left prose-th:font-semibold
     prose-th:text-white prose-th:border prose-th:border-gray-800
     prose-td:border prose-td:border-gray-800 prose-td:p-3 prose-td:text-white
-    prose-td:text-[11px] sm:prose-td:text-sm
+    prose-td:text-[11px] md:prose-td:text-sm
 
     prose-figure:my-4 prose-figure:max-w-full lg:prose-figure:max-w-2xl prose-figure:mx-auto
-    prose-figcaption:text-[11px] sm:prose-figcaption:text-sm prose-figcaption:text-white
+    prose-figcaption:text-[11px] md:prose-figcaption:text-sm prose-figcaption:text-white
     prose-figcaption:mt-1 prose-figcaption:text-center">
     {!! $slot !!}
   </div>

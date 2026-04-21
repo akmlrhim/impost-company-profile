@@ -104,13 +104,12 @@
         Kenapa Harus <br class="hidden md:block">
         <span class="text-impost-primary italic">Impost Media?</span>
       </h2>
-      <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
+      <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-xl mx-auto">
         Kami bukan sekadar vendor jasa. Kami partner pertumbuhan bisnis Anda.
       </p>
     </div>
 
     <div class="relative hidden lg:block w-full min-h-[800px]">
-
       <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
         <div class="w-[500px] h-[500px] border border-impost-primary/15 rounded-full absolute"></div>
         <div class="w-[800px] h-[800px] border border-impost-primary/8 rounded-full absolute"></div>
@@ -152,15 +151,14 @@
             </div>
             <div>
               <h4
-                class="text-white font-bold text-lg sm:text-xl md:text-2xl mb-1.5 group-hover:text-impost-primary transition-colors duration-300">
+                class="text-white font-bold text-lg md:text-xl lg:text-2xl mb-1.5 group-hover:text-impost-primary transition-colors duration-300">
                 {{ $item['title'] }}
               </h4>
-              <p class="text-white/50 text-sm sm:text-base md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
+              <p class="text-white/50 text-sm md:text-base lg:text-lg leading-relaxed">{{ $item['desc'] }}</p>
             </div>
           </div>
         </div>
       @endforeach
-
     </div>
 
     {{-- Mobile Slider --}}
@@ -185,8 +183,8 @@
                   </svg>
                 </div>
                 <div>
-                  <h4 class="text-white font-bold text-lg sm:text-xl md:text-2xl mb-1">{{ $item['title'] }}</h4>
-                  <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
+                  <h4 class="text-white font-bold text-lg md:text-xl lg:text-2xl mb-1">{{ $item['title'] }}</h4>
+                  <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed">{{ $item['desc'] }}</p>
                 </div>
               </div>
             </div>

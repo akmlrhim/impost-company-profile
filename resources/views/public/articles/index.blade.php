@@ -23,7 +23,7 @@
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
               <a href="/"
-                class="inline-flex items-center text-sm lg:text-base font-medium text-white/70 hover:text-white transition-colors duration-200">
+                class="inline-flex items-center text-xs sm:text-sm font-medium text-white/70 hover:text-white transition-colors duration-200">
                 Home
               </a>
             </li>
@@ -34,7 +34,7 @@
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 text-sm lg:text-base font-medium text-white md:ms-2">Artikel</span>
+                <span class="ms-1 text-xs sm:text-sm font-medium text-white md:ms-2">Artikel</span>
               </div>
             </li>
           </ol>
@@ -43,7 +43,7 @@
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Artikel
         </h1>
-        <p class="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl text-justify">
+        <p class="text-white/80 text-sm md:text-base lg:text-lg leading-relaxed max-w-xl text-justify">
           Jelajahi koleksi artikel kami tentang berbagai topik menarik seputar strategi, data, dan pertumbuhan bisnis.
         </p>
       </div>
@@ -63,7 +63,7 @@
         {{-- Mobile Dropdown --}}
         <div class="md:hidden w-full relative">
           <select onchange="window.location.href=this.value"
-            class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-lg sm:rounded-xl py-2.5 px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-sm lg:text-base font-medium shadow-lg">
+            class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-lg sm:rounded-xl py-2.5 px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-xs md:text-sm font-medium shadow-lg">
             <option value="{{ route('article.all') }}" {{ empty($activeCategory) ? 'selected' : '' }}>
               Semua Kategori
             </option>
@@ -84,7 +84,7 @@
         {{-- Desktop Pills --}}
         <div class="hidden md:flex flex-wrap justify-center gap-2.5">
           <a href="{{ route('article.all') }}"
-            class="px-4 py-2 rounded-full text-xs font-bold border transition-all duration-300
+            class="px-4 py-2 rounded-full text-[10px] md:text-xs font-bold border transition-all duration-300
             {{ empty($activeCategory)
                 ? 'bg-impost-primary text-black border-impost-primary shadow-[0_0_15px_rgba(var(--impost-primary),0.4)]'
                 : 'border-white/10 text-white hover:border-impost-primary/50 hover:text-white bg-white/5 hover:bg-white/10' }}">
@@ -92,7 +92,7 @@
           </a>
           @foreach ($category as $cat)
             <a href="{{ route('article.all', ['category' => $cat->slug]) }}"
-              class="px-4 py-2 rounded-full text-xs font-bold border transition-all duration-300
+              class="px-4 py-2 rounded-full text-[10px] md:text-xs font-bold border transition-all duration-300
               {{ ($activeCategory ?? '') === $cat->slug
                   ? 'bg-impost-primary text-black border-impost-primary shadow-[0_0_15px_rgba(var(--impost-primary),0.4)]'
                   : 'border-white/10 text-white hover:border-impost-primary/50 hover:text-white bg-white/5 hover:bg-white/10' }}">
@@ -156,9 +156,9 @@
                 <div class="p-4 sm:p-5 flex flex-col flex-1 border-t border-white/5">
 
                   <div
-                    class="flex items-center gap-2 sm:gap-2.5 text-sm lg:text-base font-medium text-white/70 mb-2 sm:mb-3">
+                    class="flex items-center gap-2 sm:gap-2.5 text-[10px] md:text-xs font-medium text-white/70 mb-2 sm:mb-3">
                     <div class="flex items-center gap-1 sm:gap-1.5">
-                      <svg class="w-2.5 h-2.5 sm:w-3 sm:h-3 text-impost-primary" fill="none" stroke="currentColor"
+                      <svg class="w-2.5 h-2.5 md:w-3 md:h-3 text-impost-primary" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
@@ -171,22 +171,23 @@
                   </div>
 
                   <h3
-                    class="text-base lg:text-lg font-bold text-white mb-2 line-clamp-2 leading-snug group-hover:text-impost-primary transition-colors">
+                    class="text-base md:text-lg lg:text-xl font-bold text-white mb-2 line-clamp-2 leading-snug group-hover:text-impost-primary transition-colors">
                     <a href="{{ route('article.detail', $article->slug) }}">
                       {{ $article->title }}
                     </a>
                   </h3>
 
-                  <p class="text-sm lg:text-base text-white/80 line-clamp-3 mb-4 sm:mb-5 flex-1 leading-relaxed">
+                  <p
+                    class="text-xs md:text-sm lg:text-base text-white/80 line-clamp-3 mb-4 sm:mb-5 flex-1 leading-relaxed">
                     {{ Str::limit(strip_tags($article->content), 100) }}
                   </p>
 
                   <a href="{{ route('article.detail', $article->slug) }}"
-                    class="mt-auto inline-flex items-center text-sm lg:text-base font-bold text-impost-primary hover:text-white transition-colors group/link">
-                    <span class="uppercase tracking-wider text-xs lg:text-sm">Baca Selengkapnya</span>
+                    class="mt-auto inline-flex items-center text-xs md:text-sm lg:text-base font-bold text-impost-primary hover:text-white transition-colors group/link">
+                    <span class="uppercase tracking-wider text-[10px] md:text-xs lg:text-sm">Baca Selengkapnya</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="lucide lucide-chevron-right-icon lucide-chevron-right w-3 h-3 sm:w-3.5 sm:h-3.5 ml-1.5">
+                      class="lucide lucide-chevron-right-icon lucide-chevron-right w-3 h-3 md:w-3.5 md:h-3.5 ml-1.5">
                       <path d="m9 18 6-6-6-6" />
                     </svg>
                   </a>

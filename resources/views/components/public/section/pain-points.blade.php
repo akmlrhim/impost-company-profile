@@ -31,7 +31,7 @@
         Kami Bukan Agency yang <br class="hidden md:block">Jual Konten atau
         <span class="italic text-impost-primary">Iklan</span>
       </h2>
-      <p class="text-sm sm:text-base md:text-lg text-white max-w-2xl mx-auto">
+      <p class="text-sm md:text-base lg:text-lg text-white max-w-2xl mx-auto">
         Kami Pionir & Market Leader Digital Marketing di Kalimantan
       </p>
     </div>
@@ -56,7 +56,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="{{ $point['icon'] }}" />
                   </svg>
                 </div>
-                <p class="text-sm sm:text-md md:text-lg text-white leading-relaxed">
+                <p class="text-sm md:text-base lg:text-lg text-white leading-relaxed">
                   {{ $point['text'] }}
                 </p>
               </div>
@@ -70,21 +70,21 @@
     <div class="grid md:grid-cols-2 gap-4 md:gap-5">
 
       <div class="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7 flex flex-col justify-center">
-        <p class="text-sm sm:text-base md:text-lg leading-relaxed text-white mb-3">
+        <p class="text-sm md:text-base lg:text-lg leading-relaxed text-white mb-3">
           <span class="text-impost-primary font-semibold">Hasilnya?</span> Penjualan kebanyakan hanya mengandalkan
           promo dengan customer yang tidak loyal.
         </p>
         <div class="h-px bg-white/5 my-3"></div>
-        <p class="text-sm sm:text-base md:text-lg leading-relaxed text-white">
+        <p class="text-sm md:text-base lg:text-lg leading-relaxed text-white">
           Ini disebabkan oleh branding yang belum terbangun ke persepsi publik.
         </p>
       </div>
 
       <div class="bg-impost-secondary rounded-2xl p-6 md:p-7 flex flex-col justify-center">
-        <h3 class="text-xl sm:text-2xl md:text-3xl font-header text-black mb-3 italic">
+        <h3 class="text-xl sm:text-2xl lg:text-3xl font-header text-black mb-3 italic">
           Kami benahi funnel marketingnya
         </h3>
-        <p class="text-sm sm:text-base md:text-lg text-black font-medium leading-relaxed">
+        <p class="text-sm md:text-base lg:text-lg text-black font-medium leading-relaxed">
           Membangun sistem pemasaran yang berkelanjutan, bukan sekadar posting konten.
         </p>
       </div>

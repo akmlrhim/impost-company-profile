@@ -16,7 +16,6 @@
 
   <x-home.services :services="$services" />
 
-  {{-- portfolio  --}}
   <x-home.portfolio :portfolios="$portfolios" :portfolioCategories="$portfolioCategories"></x-home.portfolio>
 
   <x-home.works />

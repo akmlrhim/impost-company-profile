@@ -5,8 +5,7 @@
   $studyCase->category . ' yang berdampak nyata bagi klien.')
 
 @section('og_type', 'article')
-@section('og_image', $studyCase->cover_path ? asset('storage/' . $studyCase->cover_path) :
-  asset('img/og_image.png'))
+@section('og_image', $studyCase->cover_path ? asset('storage/' . $studyCase->cover_path) : asset('img/og_image.png'))
 
 @push('json-ld')
   @php
@@ -14,7 +13,8 @@
         '@context' => 'https://schema.org',
         '@type' => 'Article',
         'headline' => $studyCase->name,
-        'description' => 'Studi kasus ' . $studyCase->name . ' — solusi ' . $studyCase->category . ' dari Impost Media.',
+        'description' =>
+            'Studi kasus ' . $studyCase->name . ' — solusi ' . $studyCase->category . ' dari Impost Media.',
         'image' => $studyCase->cover_path ? asset('storage/' . $studyCase->cover_path) : asset('img/og_image.png'),
         'author' => [
             '@type' => 'Organization',
@@ -164,7 +164,7 @@
                 <span class="relative block w-1.5 h-8 sm:h-10 bg-impost-primary rounded-full"></span>
               </div>
               <div>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight">Situation</h2>
+                <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">Situation</h2>
               </div>
             </div>
           </div>
@@ -181,7 +181,7 @@
                 <span class="relative block w-1.5 h-8 sm:h-10 bg-impost-primary rounded-full"></span>
               </div>
               <div>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight">Solution</h2>
+                <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">Solution</h2>
               </div>
             </div>
           </div>
@@ -198,7 +198,7 @@
                 <span class="relative block w-1.5 h-8 sm:h-10 bg-impost-primary rounded-full"></span>
               </div>
               <div>
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight">Result</h2>
+                <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">Result</h2>
               </div>
             </div>
           </div>
@@ -220,10 +220,10 @@
         class="relative p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 max-w-7xl mx-auto">
 
         <div class="text-center md:text-left space-y-2 sm:space-y-3 flex-1">
-          <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight tracking-tight">
+          <h3 class="text-xl md:text-2xl lg:text-3xl font-extrabold text-gray-900 leading-tight tracking-tight">
             Ingin bisnis anda tumbuh seperti mereka?
           </h3>
-          <p class="text-gray-800 text-xs sm:text-sm md:text-base font-medium max-w-xl mx-auto md:mx-0 leading-relaxed">
+          <p class="text-gray-800 text-xs md:text-sm lg:text-base font-medium max-w-xl mx-auto md:mx-0 leading-relaxed">
             Anda sudah melihat buktinya. Sekarang giliran anda untuk mendapatkan solusi digital yang berdampak nyata.
           </p>
         </div>
@@ -231,7 +231,7 @@
         <div class="flex flex-col w-full sm:flex-row md:w-auto items-center gap-3 sm:gap-4 shrink-0 z-10">
 
           <a href="{{ route('vsl-form') }}"
-            class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 hover:bg-gray-900 hover:text-white focus:ring-4 focus:ring-gray-900/20">
+            class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-xs md:text-sm lg:text-base transition-all duration-300 hover:bg-gray-900 hover:text-white focus:ring-4 focus:ring-gray-900/20">
             <span>Daftar Sekarang</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
@@ -242,7 +242,7 @@
           </a>
 
           <a href="{{ route('contact') }}"
-            class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 bg-gray-900 text-white rounded-xl font-bold text-xs sm:text-sm tracking-wide shadow-xl transition-all duration-300 hover:bg-gray-800 hover:shadow-2xl hover:-translate-y-1 focus:ring-4 focus:ring-gray-900/30">
+            class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 bg-gray-900 text-white rounded-xl font-bold text-xs md:text-sm lg:text-base tracking-wide shadow-xl transition-all duration-300 hover:bg-gray-800 hover:shadow-2xl hover:-translate-y-1 focus:ring-4 focus:ring-gray-900/30">
             <span>Kontak Kami</span>
           </a>
 

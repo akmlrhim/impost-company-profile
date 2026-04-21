@@ -64,7 +64,7 @@
           <button onclick="toggleFAQ(this)"
             class="flex items-center justify-between w-full px-4 sm:px-6 py-3.5 sm:py-5 text-left focus:outline-none">
             <span
-              class="text-sm sm:text-base md:text-lg font-semibold text-zinc-100 group-hover:text-impost-primary transition-colors pr-6 sm:pr-8">
+              class="text-sm md:text-base lg:text-lg font-semibold text-zinc-100 group-hover:text-impost-primary transition-colors pr-6 sm:pr-8">
               {{ $faq['question'] }}
             </span>
             <svg
@@ -76,7 +76,7 @@
 
           <div
             class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0">
-            <div class="px-4 sm:px-6 pb-4 sm:pb-6 pt-0 text-white leading-relaxed text-sm sm:text-base md:text-lg">
+            <div class="px-4 sm:px-6 pb-4 sm:pb-6 pt-0 text-white leading-relaxed text-sm md:text-base lg:text-lg">
               {!! $faq['answer'] !!}
             </div>
           </div>

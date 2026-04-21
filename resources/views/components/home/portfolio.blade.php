@@ -12,7 +12,7 @@
         class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-header leading-tight text-impost-primary mb-3 md:mb-6">
         Portfolio
       </h2>
-      <p class="text-sm sm:text-base md:text-lg text-white font-light leading-relaxed mx-auto">
+      <p class="text-sm md:text-base lg:text-lg text-white font-light leading-relaxed mx-auto">
         Bukan sekadar janji manis, melainkan <span class="text-white font-bold">bukti nyata</span> yang lahir dari
         strategi terukur dan eksekusi presisi.
       </p>
@@ -56,7 +56,6 @@
           </svg>
         </button>
 
-        {{-- Skeleton --}}
         <div id="portfolio-carousel-skeleton"
           class="absolute inset-0 z-30 flex items-center justify-center transition-opacity duration-500">
           <div
@@ -70,8 +69,8 @@
 
         <div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10"
           id="portfolioEmptyMessage">
-          <h3 class="text-impost-primary text-xl sm:text-2xl md:text-3xl font-bold mb-2">Belum Ada Portfolio</h3>
-          <p class="text-white/80 text-sm sm:text-base md:text-lg">Kategori ini belum memiliki portfolio tersedia.</p>
+          <h3 class="text-impost-primary text-xl md:text-2xl lg:text-3xl font-bold mb-2">Belum Ada Portfolio</h3>
+          <p class="text-white/80 text-sm md:text-base lg:text-lg">Kategori ini belum memiliki portfolio tersedia.</p>
         </div>
 
         <button
@@ -84,9 +83,8 @@
       </div>
 
       <div class="text-center mt-8">
-
         <a href="{{ route('portfolio') ?? '#portfolios' }}"
-          class="inline-flex items-center justify-center px-5 py-2 text-sm font-bold text-black transition-all duration-300 bg-impost-primary rounded-lg hover:bg-impost-secondary hover:shadow-lg hover:-translate-y-0.5 focus:outline-none hover:scale-105">
+          class="inline-flex items-center justify-center px-5 py-2 text-sm md:text-base font-bold text-black transition-all duration-300 bg-impost-primary rounded-lg hover:bg-impost-secondary hover:shadow-lg hover:-translate-y-0.5 focus:outline-none hover:scale-105">
           Lihat Semua Portfolio
           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -96,7 +94,9 @@
     @else
       <div
         class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
-        <x-empty-card item="Portfolio" />
+        <div class="text-sm md:text-base lg:text-lg text-white">
+          <x-empty-card item="Portfolio" />
+        </div>
       </div>
     @endif
 

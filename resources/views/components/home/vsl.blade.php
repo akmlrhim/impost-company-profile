@@ -2,10 +2,10 @@
 
   <div class="mb-6 sm:mb-10 text-center px-4 max-w-5xl mx-auto">
     <h2
-      class="mb-3 sm:mb-4 text-xl sm:text-2xl md:text-3xl font-medium text-impost-primary max-w-5xl mx-auto font-header">
+      class="mb-3 sm:mb-4 text-xl sm:text-2xl lg:text-3xl font-medium text-impost-primary max-w-5xl mx-auto font-header">
       Lihat Bagaimana Tim Impost Media Membantu Brand & Bisnis Bertumbuh Secara Terukur
     </h2>
-    <p class="text-sm sm:text-base md:text-lg text-gray-300 max-w-lg md:max-w-2xl mx-auto leading-relaxed">
+    <p class="text-sm md:text-base lg:text-lg text-gray-300 max-w-lg md:max-w-2xl mx-auto leading-relaxed">
       Video ini khusus untuk business owner dari perusahaan yang ingin scale up omzet secara serius.
     </p>
   </div>
@@ -32,7 +32,7 @@
 
     <div class="mt-6 sm:mt-10 flex flex-col items-center gap-4 px-2">
       <button onclick="window.location.href='{{ route('vsl-form') }}'"
-        class="flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm md:text-base font-semibold text-black bg-impost-primary rounded-lg cursor-pointer hover:bg-impost-secondary transition-colors duration-300">
+        class="flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 text-xs md:text-sm lg:text-base font-semibold text-black bg-impost-primary rounded-lg cursor-pointer hover:bg-impost-secondary transition-colors duration-300">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
           stroke="currentColor" class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6">
           <path stroke-linecap="round" stroke-linejoin="round"

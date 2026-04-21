@@ -43,7 +43,7 @@
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Study Case
         </h1>
-        <p class="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl text-justify">
+        <p class="text-white/80 text-sm md:text-base lg:text-lg leading-relaxed max-w-xl text-justify">
           Bukti autentik dari strategi yang terukur untuk pertumbuhan bisnis Anda.
         </p>
       </div>
@@ -105,13 +105,13 @@
 
                     <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20">
                       <h3
-                        class="text-white text-base sm:text-lg md:text-xl font-bold leading-tight mb-1.5 sm:mb-2 group-hover:text-impost-primary transition-colors duration-300 line-clamp-2">
+                        class="text-white text-base md:text-lg lg:text-xl font-bold leading-tight mb-1.5 sm:mb-2 group-hover:text-impost-primary transition-colors duration-300 line-clamp-2">
                         {{ $s->name }}
                       </h3>
 
                       <div class="flex items-center gap-2 mb-1 sm:mb-3">
                         <p
-                          class="text-[10px] sm:text-xs font-bold text-white uppercase tracking-wide group-hover:text-white transition-colors">
+                          class="text-[10px] md:text-xs font-bold text-white uppercase tracking-wide group-hover:text-white transition-colors">
                           {{ $s->category }}
                         </p>
                       </div>
@@ -119,6 +119,7 @@
                     </div>
 
                   </div>
+                </a>
               @endforeach
             </div>
 
@@ -139,10 +140,10 @@
         class="relative p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 max-w-7xl mx-auto">
 
         <div class="text-center md:text-left space-y-2 sm:space-y-3 flex-1">
-          <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight tracking-tight">
+          <h3 class="text-xl md:text-2xl lg:text-3xl font-extrabold text-gray-900 leading-tight tracking-tight">
             Ingin bisnis anda tumbuh seperti mereka?
           </h3>
-          <p class="text-gray-800 text-xs sm:text-sm md:text-base font-medium max-w-xl mx-auto md:mx-0 leading-relaxed">
+          <p class="text-gray-800 text-xs md:text-sm lg:text-base font-medium max-w-xl mx-auto md:mx-0 leading-relaxed">
             Anda sudah melihat buktinya. Sekarang giliran anda untuk mendapatkan solusi digital yang berdampak nyata.
           </p>
         </div>
@@ -150,7 +151,7 @@
         <div class="flex flex-col sm:flex-row w-full md:w-auto items-center gap-3 sm:gap-4 shrink-0 z-10">
 
           <a href="{{ url('/') }}#services"
-            class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 hover:bg-gray-900 hover:text-white focus:ring-4 focus:ring-gray-900/20">
+            class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-xs md:text-sm lg:text-base transition-all duration-300 hover:bg-gray-900 hover:text-white focus:ring-4 focus:ring-gray-900/20">
             <span>Lihat Layanan</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
@@ -161,7 +162,7 @@
           </a>
 
           <a href="{{ route('contact') }}"
-            class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 bg-gray-900 text-white rounded-xl font-bold text-xs sm:text-sm tracking-wide shadow-xl transition-all duration-300 hover:bg-gray-800 hover:shadow-2xl hover:-translate-y-1 focus:ring-4 focus:ring-gray-900/30">
+            class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 bg-gray-900 text-white rounded-xl font-bold text-xs md:text-sm lg:text-base tracking-wide shadow-xl transition-all duration-300 hover:bg-gray-800 hover:shadow-2xl hover:-translate-y-1 focus:ring-4 focus:ring-gray-900/30">
             <span>Kontak Kami</span>
           </a>
 
@@ -170,7 +171,6 @@
       </div>
     </div>
   </div>
-  </main>
 @endsection
 
 @push('scripts')

@@ -6,10 +6,11 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-header leading-tight text-white mb-2 sm:mb-3">
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-header leading-tight text-white mb-2 sm:mb-3">
         Apa Kata <span class="text-impost-primary">Mereka?</span>
       </h2>
-      <p class="text-sm sm:text-base md:text-lg text-gray-200 font-light">
+      <p class="text-sm md:text-base lg:text-lg text-gray-200 font-light">
         Kepuasan klien adalah bukti nyata dari dedikasi kami.
       </p>
     </div>
@@ -28,12 +29,12 @@
                   {{ substr($t->name, 0, 1) }}
                 </div>
                 <div class="leading-tight">
-                  <h4 class="text-white font-bold text-base sm:text-lg md:text-xl">{{ $t->name }}</h4>
+                  <h4 class="text-white font-bold text-base lg:text-xl">{{ $t->name }}</h4>
                   <span class="text-xs lg:text-sm text-gray-400 mt-0.5 block">{{ $t->company_name }}</span>
                 </div>
               </div>
 
-              <div class="text-gray-200 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-5 font-light italic">
+              <div class="text-gray-200 text-sm md:text-base lg:text-lg leading-relaxed mb-4 sm:mb-5 font-light italic">
                 "{!! $t->content !!}"
               </div>
 
@@ -69,8 +70,7 @@
               class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-impost-primary text-black font-bold flex items-center justify-center">
               <span class="text-[8px]">{{ count($testimonials) }}</span>
             </div>
-            <span id="btn-text" class="text-sm lg:text-base font-semibold tracking-tight">Eksplor Lebih
-              Banyak</span>
+            <span id="btn-text" class="text-sm md:text-base font-semibold tracking-tight">Eksplor Lebih Banyak</span>
             <div class="bg-white/10 p-1 rounded-full group-hover:bg-black/10 transition-colors">
               <svg id="btn-icon" class="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300" fill="none"
                 stroke="currentColor" viewBox="0 0 24 24">
@@ -83,7 +83,10 @@
     @else
       <div
         class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
-        <x-empty-card item="Testimoni" />
+        {{-- Isian card jika kosong menggunakan md: untuk desktop --}}
+        <div class="text-sm md:text-base lg:text-lg">
+          <x-empty-card item="Testimoni" />
+        </div>
       </div>
     @endif
 

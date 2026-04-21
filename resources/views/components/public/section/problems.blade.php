@@ -47,7 +47,7 @@
         <br>
         <span class="italic text-red-500">Sulit Bertumbuh?</span>
       </h2>
-      <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
+      <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-xl mx-auto">
         Banyak bisnis terjebak di masalah yang sama berulang-ulang tanpa pernah menyentuh akar persoalannya.
       </p>
     </div>
@@ -93,12 +93,12 @@
               </div>
               <div>
                 <h3
-                  class="text-white text-lg sm:text-xl md:text-2xl font-bold group-hover:text-red-300 transition-colors duration-300">
+                  class="text-white text-lg md:text-xl lg:text-2xl font-bold group-hover:text-red-300 transition-colors duration-300">
                   {{ $item['title'] }}
                 </h3>
               </div>
             </div>
-            <p class="text-white text-sm sm:text-md md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
+            <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed">{{ $item['desc'] }}</p>
           </div>
         @endforeach
       </div>
@@ -106,7 +106,7 @@
       {{-- Bottom callout --}}
       <div class="mt-12 lg:mt-16">
         <div class="bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 text-center">
-          <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto">
             Jika bisnis Anda mengalami <span class="text-red-400 font-semibold">salah satu</span> dari masalah di atas,
             berarti Anda membutuhkan <span class="text-white font-semibold">sistem marketing yang benar</span> — bukan
             sekadar konten atau iklan.

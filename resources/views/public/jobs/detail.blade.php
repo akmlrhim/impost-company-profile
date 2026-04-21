@@ -37,7 +37,6 @@
         ],
     ];
 
-    // Add remote job location if applicable
     if (!empty($job->work_arrangements) && in_array('Remote', $job->work_arrangements)) {
         $jobPostingJsonLd['jobLocationType'] = 'TELECOMMUTE';
     }
@@ -103,7 +102,7 @@
               {{ $job->title }}
             </h1>
 
-            <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm">
+            <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-xs md:text-sm">
               <div class="flex items-center gap-1.5 text-white">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -114,12 +113,12 @@
 
               @if ($job->status === 'Active')
                 <span
-                  class="px-2 py-0.5 rounded-full bg-impost-primary/10 text-impost-primary border border-impost-primary/20 text-[10px] sm:text-xs font-semibold uppercase tracking-wide">
+                  class="px-2 py-0.5 rounded-full bg-impost-primary/10 text-impost-primary border border-impost-primary/20 text-[10px] md:text-xs font-semibold uppercase tracking-wide">
                   Sedang Dibuka
                 </span>
               @else
                 <span
-                  class="px-2 py-0.5 rounded-full bg-red-900/20 text-red-400 border border-red-900/30 text-[10px] sm:text-xs font-semibold uppercase tracking-wide">
+                  class="px-2 py-0.5 rounded-full bg-red-900/20 text-red-400 border border-red-900/30 text-[10px] md:text-xs font-semibold uppercase tracking-wide">
                   Ditutup
                 </span>
               @endif
@@ -131,7 +130,8 @@
               @foreach ($job->details as $detail)
                 <div class="bg-impost-fifth border border-impost-fourth rounded-lg p-4 sm:p-8">
 
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-impost-primary mb-4 sm:mb-6 flex items-center gap-3">
+                  <h3
+                    class="text-xl md:text-2xl lg:text-3xl font-bold text-impost-primary mb-4 sm:mb-6 flex items-center gap-3">
                     <span class="p-1.5 sm:p-2 bg-impost-primary/10 rounded-lg text-impost-primary">
                       <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -144,16 +144,16 @@
 
                   <div
                     class="prose prose-invert max-w-none 
-                  prose-p:text-xs sm:prose-p:text-sm 
-                  prose-ul:text-xs sm:prose-ul:text-sm 
-                  prose-ol:text-xs sm:prose-ol:text-sm 
-                  prose-li:text-xs sm:prose-li:text-sm 
-                  prose-headings:text-sm sm:prose-headings:text-base
-                  prose-p:text-gray-300 prose-p:leading-relaxed
-                  prose-headings:text-white 
-                  prose-strong:text-impost-primary
-                  prose-ul:text-gray-300 prose-li:marker:text-impost-fourth
-                  prose-a:text-impost-primary prose-a:no-underline hover:prose-a:underline">
+								prose-p:text-xs md:prose-p:text-sm lg:prose-p:text-base
+								prose-ul:text-xs md:prose-ul:text-sm lg:prose-ul:text-base
+								prose-ol:text-xs md:prose-ol:text-sm lg:prose-ol:text-base
+								prose-li:text-xs md:prose-li:text-sm lg:prose-li:text-base
+								prose-headings:text-sm md:prose-headings:text-base lg:prose-headings:text-lg
+								prose-p:text-gray-300 prose-p:leading-relaxed
+								prose-headings:text-white 
+								prose-strong:text-impost-primary
+								prose-ul:text-gray-300 prose-li:marker:text-impost-fourth
+								prose-a:text-impost-primary prose-a:no-underline hover:prose-a:underline">
                     {!! $detail->content !!}
                   </div>
                 </div>
@@ -161,7 +161,7 @@
             </div>
           @else
             <div class="p-6 sm:p-8 border border-dashed border-impost-fourth rounded-lg text-center">
-              <p class="text-sm text-gray-500">Detail informasi belum tersedia.</p>
+              <p class="text-sm md:text-base text-gray-500">Detail informasi belum tersedia.</p>
             </div>
           @endif
 
@@ -173,7 +173,7 @@
             <div
               class="bg-impost-fifth border border-impost-fourth rounded-lg p-5 sm:p-6 shadow-lg shadow-impost-primary/5">
               <h4
-                class="text-white font-bold uppercase tracking-wider text-xs sm:text-sm mb-4 sm:mb-5 border-b border-impost-fourth pb-3">
+                class="text-white font-bold uppercase tracking-wider text-xs md:text-sm lg:text-base mb-4 sm:mb-5 border-b border-impost-fourth pb-3">
                 Ringkasan Pekerjaan
               </h4>
 
@@ -188,8 +188,8 @@
                     </svg>
                   </div>
                   <div>
-                    <p class="text-[10px] sm:text-xs text-gray-500 uppercase font-semibold">Tipe Kerja</p>
-                    <p class="text-sm sm:text-base text-white font-medium">{{ $job->employment_type }}</p>
+                    <p class="text-[10px] md:text-xs text-gray-500 uppercase font-semibold">Tipe Kerja</p>
+                    <p class="text-sm md:text-base lg:text-lg text-white font-medium">{{ $job->employment_type }}</p>
                   </div>
                 </div>
 
@@ -203,12 +203,12 @@
                     </svg>
                   </div>
                   <div>
-                    <p class="text-[10px] sm:text-xs text-gray-500 uppercase font-semibold mb-1">Sistem</p>
+                    <p class="text-[10px] md:text-xs text-gray-500 uppercase font-semibold mb-1">Sistem</p>
                     <div class="flex flex-wrap gap-1.5 sm:gap-2">
                       @if (!empty($job->work_arrangements))
                         @foreach ($job->work_arrangements as $arrangement)
                           <span
-                            class="inline-block px-2 py-0.5 rounded text-[10px] bg-impost-primary/20 text-impost-primary border border-impost-primary/30">
+                            class="inline-block px-2 py-0.5 rounded text-[10px] md:text-xs bg-impost-primary/20 text-impost-primary border border-impost-primary/30">
                             {{ $arrangement }}
                           </span>
                         @endforeach
@@ -221,7 +221,7 @@
 
             <div
               class="bg-gradient-to-br from-impost-primary to-impost-secondary rounded-lg p-5 sm:p-6 shadow-lg text-impost-fifth">
-              <h4 class="font-bold text-base sm:text-lg mb-3 sm:mb-4 flex items-center gap-2">
+              <h4 class="font-bold text-base md:text-lg lg:text-xl mb-3 sm:mb-4 flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
@@ -232,17 +232,17 @@
 
               <div class="space-y-3 sm:space-y-4">
                 <div class="bg-white/20 backdrop-blur-sm p-3 rounded border border-white/10">
-                  <p class="text-[10px] sm:text-xs font-semibold opacity-70 uppercase mb-0.5">Kirim CV ke Email:</p>
+                  <p class="text-[10px] md:text-xs font-semibold opacity-70 uppercase mb-0.5">Kirim CV ke Email:</p>
                   <a href="mailto:{{ $job->apply_email }}"
-                    class="font-bold text-sm sm:text-lg hover:underline break-all">
+                    class="font-bold text-sm md:text-base lg:text-lg hover:underline break-all">
                     {{ $job->apply_email }}
                   </a>
                 </div>
 
                 <div class="bg-white/20 backdrop-blur-sm p-3 rounded border border-white/10">
-                  <p class="text-[10px] sm:text-xs font-semibold opacity-70 uppercase mb-0.5">Subjek Email:</p>
+                  <p class="text-[10px] md:text-xs font-semibold opacity-70 uppercase mb-0.5">Subjek Email:</p>
                   <code
-                    class="block bg-impost-fifth/80 text-impost-primary p-2 rounded text-xs sm:text-sm font-mono select-all">
+                    class="block bg-impost-fifth/80 text-impost-primary p-2 rounded text-xs md:text-sm lg:text-base font-mono select-all">
                     {{ $job->apply_subject }}
                   </code>
                 </div>
@@ -259,7 +259,7 @@
                   <div
                     class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span
-                      class="flex items-center gap-2 text-white bg-impost-primary px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                      class="flex items-center gap-2 text-white bg-impost-primary px-3 py-1.5 rounded-full text-xs md:text-sm font-bold shadow-lg">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path>

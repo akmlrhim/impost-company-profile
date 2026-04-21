@@ -133,7 +133,7 @@
             {{ $article->title }}
           </h1>
 
-          <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[10px] sm:text-xs text-gray-400">
+          <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[10px] md:text-xs text-gray-400">
             <div class="flex items-center gap-1 sm:gap-2">
               <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -197,7 +197,7 @@
               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
               <polyline points="20 6 9 17 4 12" />
             </svg>
-            <span class="font-medium text-[10px] sm:text-xs" id="copyText">Salin</span>
+            <span class="font-medium text-[10px] md:text-xs" id="copyText">Salin</span>
           </button>
         </div>
 
@@ -207,7 +207,7 @@
           <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
           </svg>
-          <span class="font-medium text-[10px] sm:text-xs">Link berhasil disalin!</span>
+          <span class="font-medium text-[10px] md:text-xs">Link berhasil disalin!</span>
         </div>
 
         {{-- Article Content --}}
@@ -222,7 +222,7 @@
   {{-- Latest Articles --}}
   <aside class="py-10 sm:py-12 md:py-16 bg-[#0a0a0a] border-t border-white/10">
     <div class="px-3 sm:px-4 mx-auto max-w-7xl">
-      <h2 class="mb-6 sm:mb-8 text-xl sm:text-2xl md:text-3xl font-bold text-white">
+      <h2 class="mb-6 sm:mb-8 text-xl md:text-2xl lg:text-3xl font-bold text-white">
         Artikel Terbaru Lainnya
       </h2>
 
@@ -322,18 +322,18 @@
 
                 <div class="p-3 sm:p-4 flex flex-col flex-1">
                   <h3
-                    class="text-xs sm:text-sm font-semibold text-white mb-2 line-clamp-2 leading-snug group-hover:text-impost-primary transition-colors">
+                    class="text-xs md:text-sm font-semibold text-white mb-2 line-clamp-2 leading-snug group-hover:text-impost-primary transition-colors">
                     {{ $latest->title }}
                   </h3>
-                  <p class="text-[10px] sm:text-xs text-gray-400 mb-3 line-clamp-2 leading-relaxed flex-1">
+                  <p class="text-[10px] md:text-xs text-gray-400 mb-3 line-clamp-2 leading-relaxed flex-1">
                     {{ Str::limit(strip_tags($latest->content), 80) }}
                   </p>
                   <div class="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
-                    <span class="text-[10px] sm:text-xs text-gray-500">
+                    <span class="text-[10px] md:text-xs text-gray-500">
                       {{ $latest->created_at->translatedFormat('d M Y') }}
                     </span>
                     <a href="{{ route('article.detail', $latest->slug) }}"
-                      class="text-impost-primary hover:text-impost-primary/70 transition text-[10px] sm:text-xs font-medium">
+                      class="text-impost-primary hover:text-impost-primary/70 transition text-[10px] md:text-xs font-medium">
                       Baca
                     </a>
                   </div>

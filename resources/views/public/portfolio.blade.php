@@ -43,14 +43,12 @@
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Portfolio
         </h1>
-        <p class="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl text-justify">
+        <p class="text-white/80 text-sm md:text-base lg:text-lg leading-relaxed max-w-xl text-justify">
           Bukan sekadar janji manis, melainkan bukti nyata yang lahir dari strategi terukur dan eksekusi presisi.
         </p>
       </div>
     </div>
   </section>
-
-
 
   <div class="antialiased bg-impost-fifth">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-14">
@@ -201,7 +199,6 @@
 
               </div>
             </template>
-
           @endif
         </section>
       </div>
@@ -210,15 +207,16 @@
         <div class="max-w-7xl mx-auto p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div class="text-center md:text-left">
             <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">Punya ide brilian?</h3>
-            <p class="text-gray-800 font-medium">Lihat bagaimana kami menyelesaikan masalah klien lain atau hubungi kami.
+            <p class="text-gray-800 text-sm md:text-base font-medium">Lihat bagaimana kami menyelesaikan masalah klien
+              lain atau hubungi kami.
             </p>
           </div>
           <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
             <a href="{{ route('study-case') }}"
-              class="px-6 py-3 border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-center hover:bg-gray-900 hover:text-white transition-all">Lihat
+              class="px-6 py-3 border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-sm md:text-base text-center hover:bg-gray-900 hover:text-white transition-all">Lihat
               Studi Kasus</a>
             <a href="{{ route('contact') }}"
-              class="px-8 py-3 bg-gray-900 text-white rounded-xl font-bold text-center shadow-lg hover:bg-gray-800 transition-all">Hubungi
+              class="px-8 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm md:text-base text-center shadow-lg hover:bg-gray-800 transition-all">Hubungi
               Kami</a>
           </div>
         </div>

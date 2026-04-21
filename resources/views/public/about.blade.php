@@ -1,7 +1,8 @@
 @extends('layouts.public')
 
 @section('title', 'Tentang Kami | Impost Media')
-@section('meta_description', 'CV Impost Media Indonesia adalah All in One Integrated Digital Marketing Agency berpusat
+@section('meta_description',
+  'CV Impost Media Indonesia adalah All in One Integrated Digital Marketing Agency berpusat
   di Banjarbaru, Kalimantan Selatan. Kami hadir dengan pendekatan data-driven dan jaminan uang kembali.')
 
   @push('styles')
@@ -48,7 +49,7 @@
         </nav>
 
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">Tentang Kami</h1>
-        <p class="text-white/80 text-sm md:text-base leading-relaxed max-w-xl">
+        <p class="text-white/80 text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
           Kenali perjalanan, visi, dan misi kami yang menjadi fondasi layanan digital marketing, event organizer, serta
           pengadaan barang dan jasa yang kami hadirkan untuk bisnis Indonesia.
         </p>
@@ -75,21 +76,21 @@
       </div>
 
       <div class="max-w-5xl mx-auto space-y-6 md:space-y-8">
-        <p class="text-white/80 text-sm md:text-base leading-loose">
+        <p class="text-white/80 text-sm md:text-base lg:text-lg leading-loose">
           Setiap bisnis punya cerita dan perjalanannya masing-masing. Kami di CV Impost Media Indonesia percaya bahwa
           langkah pertama yang paling penting untuk membangun sebuah brand bukanlah langsung berbicara, melainkan
           mendengarkan.
         </p>
-        <p class="text-white/80 text-sm md:text-base leading-loose">
+        <p class="text-white/80 text-sm md:text-base lg:text-lg leading-loose">
           Berpusat di Banjarbaru, Kalimantan Selatan, kami hadir sebagai All-in-One Integrated Digital Marketing Agency.
           Kami mendampingi Anda untuk merapikan makna bisnis dengan mencari tahu siapa Anda sebenarnya, untuk siapa Anda
           hadir, dan kesan apa yang ingin Anda tinggalkan.
         </p>
         <p
-          class="text-white/80 text-sm md:text-base leading-loose font-medium text-white italic border-l-4 border-impost-primary pl-6 py-2 bg-white/5">
+          class="text-white/80 text-sm md:text-base lg:text-lg leading-loose font-medium text-white italic border-l-4 border-impost-primary pl-6 py-2 bg-white/5">
           Semangat kami berakar pada satu keyakinan fundamental: Insight to Impact.
         </p>
-        <p class="text-white/80 text-sm md:text-base leading-loose">
+        <p class="text-white/80 text-sm md:text-base lg:text-lg leading-loose">
           Kami mendedikasikan diri untuk menjadi rekan kerja yang mengedepankan transparansi. Sebagai bukti komitmen
           terhadap pertumbuhan omzet Anda, kami memberikan jaminan uang kembali (money-back guarantee) pada layanan
           kampanye kami.
@@ -105,7 +106,7 @@
       <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-16">
           <h2 class="text-2xl md:text-4xl lg:text-5xl text-white font-bold">Brand History</h2>
-          <p class="mt-4 text-white/60 text-sm md:text-base max-w-2xl leading-relaxed">
+          <p class="mt-4 text-white/60 text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed">
             Sebuah perjalanan dari menetapkan arah hingga menciptakan dampak nyata.
           </p>
         </div>
@@ -165,8 +166,8 @@
           @foreach ($histories as $index => $history)
             <div id="tab-{{ $index + 1 }}"
               class="tab-content {{ $index === 0 ? 'relative opacity-100' : 'absolute top-0 left-0 w-full opacity-0 pointer-events-none' }} transition-all duration-700 translate-y-4">
-              <h3 class="text-xl lg:text-2xl font-bold text-white mb-4">{{ $history[0] }}</h3>
-              <p class="text-white/70 text-sm md:text-base leading-loose">{{ $history[1] }}</p>
+              <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4">{{ $history[0] }}</h3>
+              <p class="text-white/70 text-sm md:text-base lg:text-lg leading-loose">{{ $history[1] }}</p>
             </div>
           @endforeach
         </div>
@@ -177,14 +178,14 @@
       <div class="grid md:grid-cols-2 gap-16 md:gap-24 max-w-5xl mx-auto">
         <div>
           <h2 class="text-lg lg:text-xl font-bold text-impost-primary uppercase tracking-tighter mb-6">Visi</h2>
-          <p class="text-white/80 text-sm md:text-base leading-relaxed">
+          <p class="text-white/80 text-sm md:text-base lg:text-lg leading-relaxed">
             Menjadi mitra multiservice terpercaya di Indonesia melalui layanan bisnis, event, dan pengadaan yang
             profesional serta berorientasi pada hasil.
           </p>
         </div>
         <div>
           <h2 class="text-lg lg:text-xl font-bold text-impost-primary uppercase tracking-tighter mb-6">Misi</h2>
-          <ul class="space-y-4 text-sm md:text-base text-white/80 list-disc pl-5">
+          <ul class="space-y-4 text-sm md:text-base lg:text-lg text-white/80 list-disc pl-5">
             <li>Layanan digital marketing berbasis data untuk pertumbuhan brand dan konversi nyata.</li>
             <li>Solusi event organizer dan produksi musik profesional untuk kebutuhan klien.</li>
             <li>Pengadaan barang dan jasa dengan kualitas terjamin dan tepat guna untuk instansi.</li>

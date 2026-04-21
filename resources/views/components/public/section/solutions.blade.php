@@ -50,7 +50,7 @@
       <h2 class="text-xl md:text-3xl lg:text-5xl text-white leading-tight mb-6 font-header">
         Apa yang Sebenarnya <br class="hidden md:block"> Kami <span class="italic text-impost-primary">Selesaikan?</span>
       </h2>
-      <p class="text-white text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+      <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto">
         Kami menolak menjadi sekadar vendor yang menjual "jasa digital marketing". Kami hadir memberikan kepastian data,
         pertumbuhan omzet, dan profit nyata.
       </p>
@@ -76,10 +76,10 @@
 
             <div>
               <h3
-                class="text-lg lg:text-xl font-semibold text-white mb-3 group-hover:text-impost-primary transition-colors duration-300">
+                class="text-lg md:text-xl lg:text-2xl font-semibold text-white mb-3 group-hover:text-impost-primary transition-colors duration-300">
                 {{ $item['title'] }}
               </h3>
-              <p class="text-white text-sm md:text-base leading-relaxed">
+              <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed">
                 {{ $item['desc'] }}
               </p>
             </div>

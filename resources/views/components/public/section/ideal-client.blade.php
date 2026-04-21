@@ -10,7 +10,7 @@
       ],
       [
           'title' => 'Siap Scale-Up',
-          'desc' => 'Bisnis Anda sudah berjalan, tapi stuck di level tertentu dan butuh sistem untuk naik kelas.',
+          'desc' => 'Bisnis Anda sudah berjalan, tapi stuck di level tertentu and butuh sistem untuk naik kelas.',
       ],
   ];
 
@@ -39,13 +39,14 @@
         Kami Tidak Mencari Klien
         <br class="hidden md:block">Kami Mencari <span class="italic text-impost-primary">Partner</span>
       </h2>
-      <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
+      <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-xl mx-auto">
         Sinergi terbaik lahir dari visi yang sama. Apakah kita cocok?
       </p>
     </div>
 
     <div class="grid lg:grid-cols-2 gap-5 lg:gap-6 items-start">
 
+      {{-- Partner Ideal --}}
       <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
 
         <div class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
@@ -55,7 +56,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white">Anda Adalah Partner Ideal Jika:</h3>
+          <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-white">Anda Adalah Partner Ideal Jika:</h3>
         </div>
 
         <div class="divide-y divide-white/5">
@@ -64,8 +65,8 @@
               <div class="flex items-start gap-3">
                 <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 shrink-0"></div>
                 <div>
-                  <h4 class="text-white font-bold text-lg sm:text-xl md:text-2xl mb-1">{{ $item['title'] }}</h4>
-                  <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
+                  <h4 class="text-white font-bold text-lg md:text-xl lg:text-2xl mb-1">{{ $item['title'] }}</h4>
+                  <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed">{{ $item['desc'] }}</p>
                 </div>
               </div>
             </div>
@@ -74,6 +75,7 @@
 
       </div>
 
+      {{-- Tidak Cocok --}}
       <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
 
         <div class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
@@ -82,7 +84,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>
-          <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white">Mungkin Kita Tidak Cocok Jika:</h3>
+          <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-white">Mungkin Kita Tidak Cocok Jika:</h3>
         </div>
 
         <div class="divide-y divide-white/5">
@@ -91,8 +93,8 @@
               <div class="flex items-start gap-3">
                 <div class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0"></div>
                 <div>
-                  <h4 class="text-white font-bold text-lg sm:text-xl md:text-2xl mb-1">{{ $item['title'] }}</h4>
-                  <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
+                  <h4 class="text-white font-bold text-lg md:text-xl lg:text-2xl mb-1">{{ $item['title'] }}</h4>
+                  <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed">{{ $item['desc'] }}</p>
                 </div>
               </div>
             </div>

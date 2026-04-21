@@ -4,7 +4,7 @@
     <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-header mb-3 sm:mb-5 md:mb-6">
       <span class="text-impost-primary">Layanan Kami</span>
     </h2>
-    <p class="text-white text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed px-4">
+    <p class="text-white text-sm md:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed px-4">
       Kami menyediakan layanan digital end-to-end yang berfokus pada peningkatan omset, visibilitas merek, dan efisiensi
       pemasaran.
     </p>
@@ -13,10 +13,11 @@
   @if ($services->isEmpty())
     <div
       class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
-      <x-empty-card item="Layanan" />
+      <div class="text-sm md:text-base">
+        <x-empty-card item="Layanan" />
+      </div>
     </div>
   @else
-    {{-- Mobile Slider --}}
     <div class="block sm:hidden" x-data="mobileSlider()" x-init="init()" @touchstart.passive="dragStart($event)"
       @touchmove.passive="dragMove($event)" @touchend="dragEnd($event)">
       <div class="overflow-hidden select-none">
@@ -31,7 +32,6 @@
       </div>
     </div>
 
-    {{-- Desktop Pagination --}}
     <div x-data="{
         page: 0,
         pages: {{ ceil($services->count() / 6) }},

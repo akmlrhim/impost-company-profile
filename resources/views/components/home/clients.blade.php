@@ -2,13 +2,13 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
 
     @if (isset($clients) && count($clients))
-      <p class="mb-6 sm:mb-10 md:mb-12 text-impost-primary font-extrabold tracking-wide text-sm sm:text-base md:text-lg uppercase">
+      <p
+        class="mb-6 sm:mb-10 md:mb-12 text-impost-primary font-extrabold tracking-wide text-sm sm:text-base lg:text-lg uppercase">
         Klien yang telah bekerja sama dengan kami
       </p>
-      
+
       <div class="relative overflow-hidden">
 
-        {{-- Skeleton --}}
         <div id="clients-skeleton" class="flex gap-4 sm:gap-6 px-4 justify-center animate-pulse">
           @for ($i = 0; $i < 8; $i++)
             <div
@@ -74,8 +74,12 @@
         })();
       </script>
     @else
-      <div class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
-        <x-empty-card item="Klien" />
+      <div
+        class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
+        {{-- Isian card jika kosong menggunakan md: untuk desktop --}}
+        <div class="text-sm md:text-base">
+          <x-empty-card item="Klien" />
+        </div>
       </div>
     @endif
 

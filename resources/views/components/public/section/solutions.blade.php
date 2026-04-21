@@ -43,219 +43,68 @@
   ];
 @endphp
 
-<section class="py-20 sm:py-28 relative overflow-hidden">
-
+<section class="py-20 md:py-28 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-    {{-- Section Header --}}
-    <div class="max-w-3xl mx-auto text-center mb-16 sm:mb-20 relative z-20">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight mb-5 sm:mb-6 font-header">
+    <div class="max-w-3xl mx-auto text-center mb-16 md:mb-20">
+      <h2 class="text-xl md:text-3xl lg:text-5xl text-white leading-tight mb-6 font-header">
         Apa yang Sebenarnya <br class="hidden md:block"> Kami <span class="italic text-impost-primary">Selesaikan?</span>
       </h2>
-      <p class="text-white/60 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-        Kami menolak menjadi sekadar vendor yang menjual "jasa digital marketing". Kami hadir memberikan kepastian
-        data, pertumbuhan omzet, dan profit nyata.
+      <p class="text-white text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+        Kami menolak menjadi sekadar vendor yang menjual "jasa digital marketing". Kami hadir memberikan kepastian data,
+        pertumbuhan omzet, dan profit nyata.
       </p>
     </div>
 
-    {{-- Mobile Slider --}}
-    <div class="lg:hidden" x-data="itemSlider()" x-init="init()" @touchstart.passive="dragStart($event)"
-      @touchmove.passive="dragMove($event)" @touchend="dragEnd($event)">
-      <div class="overflow-hidden select-none">
-        <div class="flex"
-          :style="`transform: translateX(-${currentIndex * 100}%); transition: ${isDragging ? 'none' : 'transform 500ms ease-in-out'}`">
-          @foreach ($items as $item)
-            <div class="min-w-full px-1">
-              <div
-                class="group relative bg-gradient-to-br from-white/[0.07] to-white/[0.02] border border-white/[0.08] rounded-2xl p-5 sm:p-6 flex flex-col gap-4 hover:border-impost-primary/30 transition-all duration-500">
-
-                <div
-                  class="w-10 h-10 rounded-xl bg-impost-primary/10 border border-impost-primary/20 flex items-center justify-center group-hover:bg-impost-primary/20 transition-colors duration-300">
-                  <svg class="w-5 h-5 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
-                  </svg>
-                </div>
-
-                <div>
-                  <h3
-                    class="text-white text-lg sm:text-xl md:text-2xl font-bold mb-2 group-hover:text-impost-primary transition-colors duration-300">
-                    {{ $item['title'] }}
-                  </h3>
-                  <p class="text-white/50 text-sm sm:text-base md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
-                </div>
-
-              </div>
-            </div>
-          @endforeach
-        </div>
-      </div>
-    </div>
-
-    {{-- Desktop Bento Grid --}}
-    <div class="hidden lg:grid grid-cols-12 gap-5 items-start relative">
-
-      {{-- Left column: cards 1-3 --}}
-      <div class="col-span-4 flex flex-col gap-5">
-        @foreach (array_slice($items, 0, 3) as $index => $item)
+    <div
+      class="flex overflow-x-auto pb-8 -mx-4 px-4 sm:mx-0 sm:px-0 sm:pb-0 snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 hide-scrollbar">
+      @foreach ($items as $item)
+        <div class="min-w-[85vw] sm:min-w-0 snap-center animate-fade-in-up"
+          style="animation-delay: {{ $loop->index * 100 }}ms; animation-fill-mode: both;">
           <div
-            class="group relative bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-md border border-white/[0.08] rounded-2xl p-6 hover:border-impost-primary/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(212,172,60,0.15)]"
-            style="animation: fadeSlideUp 0.6s ease-out {{ $index * 0.1 }}s both;">
+            class="group h-full bg-white/[0.03] border border-white/[0.08] hover:border-impost-primary/40 hover:bg-white/[0.05] rounded-2xl p-6 md:p-8 transition-all duration-300">
 
-            <div
-              class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-impost-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            </div>
-
-            <div class="flex items-start gap-4">
+            <div class="flex items-center justify-between mb-6">
               <div
-                class="w-11 h-11 rounded-xl bg-impost-primary/10 border border-impost-primary/20 flex items-center justify-center shrink-0 group-hover:bg-impost-primary/20 group-hover:border-impost-primary/40 transition-all duration-300">
-                <svg class="w-5 h-5 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                class="w-12 h-12 rounded-xl bg-impost-primary/10 border border-impost-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-6 h-6 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                   stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
                 </svg>
               </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-3 mb-2">
-                  <h3
-                    class="text-white text-lg sm:text-xl md:text-2xl font-bold group-hover:text-impost-primary transition-colors duration-300">
-                    {{ $item['title'] }}
-                  </h3>
-                </div>
-                <p class="text-white/50 text-sm sm:text-base md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
-              </div>
+            </div>
+
+            <div>
+              <h3
+                class="text-lg lg:text-xl font-semibold text-white mb-3 group-hover:text-impost-primary transition-colors duration-300">
+                {{ $item['title'] }}
+              </h3>
+              <p class="text-white text-sm md:text-base leading-relaxed">
+                {{ $item['desc'] }}
+              </p>
             </div>
 
           </div>
-        @endforeach
-      </div>
-
-      {{-- Center: ROI Orb --}}
-      <div class="col-span-4 relative flex justify-center items-center" style="min-height: 460px;">
-
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-impost-primary/[0.12] blur-[100px] rounded-full">
         </div>
-
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] rounded-full border border-white/[0.04]"
-          style="animation: spin-slow 30s linear infinite;"></div>
-
-        <div
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[270px] h-[270px] rounded-full border border-impost-primary/10"
-          style="animation: spin-slow 20s linear infinite reverse;"></div>
-
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px]"
-          style="animation: spin-slow 30s linear infinite;">
-          <div
-            class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-impost-primary/60 shadow-[0_0_12px_rgba(212,172,60,0.4)]">
-          </div>
-          <div
-            class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 rounded-full bg-impost-primary/40">
-          </div>
-        </div>
-
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[270px] h-[270px]"
-          style="animation: spin-slow 20s linear infinite reverse;">
-          <div
-            class="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-impost-primary/50 shadow-[0_0_8px_rgba(212,172,60,0.3)]">
-          </div>
-          <div
-            class="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-impost-primary/30">
-          </div>
-        </div>
-
-        <div class="relative animate-float-slow">
-          <div
-            class="w-52 h-52 rounded-full bg-gradient-to-br from-impost-primary/20 via-impost-primary/10 to-transparent border border-impost-primary/20 backdrop-blur-sm flex items-center justify-center shadow-[0_0_80px_rgba(212,172,60,0.15)]">
-            <div class="absolute inset-3 rounded-full border border-impost-primary/10"></div>
-            <div
-              class="absolute inset-8 rounded-full border border-white/[0.04] bg-black/50 flex items-center justify-center">
-              <div class="text-center">
-                <span class="block text-4xl font-bold text-impost-primary mb-1 tracking-tight">ROI</span>
-                <span class="text-xs sm:text-sm md:text-base text-white/60 uppercase tracking-[0.25em] font-semibold">Focused</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 400 460">
-          <line x1="50" y1="80" x2="145" y2="180" stroke="url(#line-grad)" stroke-width="1"
-            stroke-dasharray="4 4" />
-          <line x1="50" y1="230" x2="140" y2="230" stroke="url(#line-grad)" stroke-width="1"
-            stroke-dasharray="4 4" />
-          <line x1="50" y1="380" x2="145" y2="280" stroke="url(#line-grad)" stroke-width="1"
-            stroke-dasharray="4 4" />
-          <line x1="350" y1="80" x2="255" y2="180" stroke="url(#line-grad)" stroke-width="1"
-            stroke-dasharray="4 4" />
-          <line x1="350" y1="230" x2="260" y2="230" stroke="url(#line-grad)" stroke-width="1"
-            stroke-dasharray="4 4" />
-          <line x1="350" y1="380" x2="255" y2="280" stroke="url(#line-grad)"
-            stroke-width="1" stroke-dasharray="4 4" />
-          <defs>
-            <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#d4ac3c" stop-opacity="0.6" />
-              <stop offset="100%" stop-color="#d4ac3c" stop-opacity="0" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-      </div>
-
-      {{-- Right column: cards 4-6 --}}
-      <div class="col-span-4 flex flex-col gap-5">
-        @foreach (array_slice($items, 3, 3) as $index => $item)
-          <div
-            class="group relative bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-md border border-white/[0.08] rounded-2xl p-6 hover:border-impost-primary/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(212,172,60,0.15)]"
-            style="animation: fadeSlideUp 0.6s ease-out {{ ($index + 3) * 0.1 }}s both;">
-
-            <div
-              class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-impost-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div
-                class="w-11 h-11 rounded-xl bg-impost-primary/10 border border-impost-primary/20 flex items-center justify-center shrink-0 group-hover:bg-impost-primary/20 group-hover:border-impost-primary/40 transition-all duration-300">
-                <svg class="w-5 h-5 text-impost-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                  stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
-                </svg>
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="flex items-center gap-3 mb-2">
-                  <h3
-                    class="text-white text-lg sm:text-xl md:text-2xl font-bold group-hover:text-impost-primary transition-colors duration-300">
-                    {{ $item['title'] }}
-                  </h3>
-                </div>
-                <p class="text-white/50 text-sm sm:text-base md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
-              </div>
-            </div>
-
-          </div>
-        @endforeach
-      </div>
-
+      @endforeach
     </div>
-
   </div>
-
 </section>
 
 <style>
-  @keyframes spin-slow {
-    from {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-
-    to {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 
-  @keyframes fadeSlideUp {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(20px);
     }
 
     to {
@@ -263,65 +112,8 @@
       transform: translateY(0);
     }
   }
-</style>
 
-<script>
-  function itemSlider() {
-    return {
-      currentIndex: 0,
-      total: {{ count($items) }},
-
-      isDragging: false,
-      startX: 0,
-      threshold: 50,
-      autoplayTimer: null,
-      autoplayDelay: 3000,
-
-      init() {
-        this.startAutoplay();
-      },
-
-      startAutoplay() {
-        this.stopAutoplay();
-        this.autoplayTimer = setInterval(() => {
-          this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
-        }, this.autoplayDelay);
-      },
-
-      stopAutoplay() {
-        if (this.autoplayTimer) clearInterval(this.autoplayTimer);
-      },
-
-      dragStart(e) {
-        this.isDragging = true;
-        this.startX = e.touches ? e.touches[0].clientX : e.clientX;
-        this.stopAutoplay();
-      },
-
-      dragMove(e) {
-        if (!this.isDragging) return;
-      },
-
-      dragEnd(e) {
-        if (!this.isDragging) return;
-        this.isDragging = false;
-
-        const endX = e?.changedTouches ?
-          e.changedTouches[0].clientX :
-          (e?.clientX ?? this.startX);
-
-        const diff = this.startX - endX;
-
-        if (Math.abs(diff) > this.threshold) {
-          if (diff > 0) {
-            this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
-          } else {
-            this.currentIndex = this.currentIndex <= 0 ? this.total - 1 : this.currentIndex - 1;
-          }
-        }
-
-        this.startAutoplay();
-      },
-    };
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
   }
-</script>
+</style>

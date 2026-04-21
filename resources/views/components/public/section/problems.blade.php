@@ -41,12 +41,13 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-header tracking-tight leading-tight mb-5 sm:mb-6 text-white">
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-header tracking-tight leading-tight mb-5 sm:mb-6 text-white">
         Mengapa Omzet
         <br>
         <span class="italic text-red-500">Sulit Bertumbuh?</span>
       </h2>
-      <p class="text-white/50 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
+      <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
         Banyak bisnis terjebak di masalah yang sama berulang-ulang tanpa pernah menyentuh akar persoalannya.
       </p>
     </div>
@@ -68,7 +69,7 @@
                 </div>
                 <div class="flex-1 min-w-0">
                   <h3 class="font-bold text-lg sm:text-xl md:text-2xl text-white mb-1">{{ $item['title'] }}</h3>
-                  <p class="text-sm sm:text-base md:text-lg text-white/40 leading-relaxed">{{ $item['desc'] }}</p>
+                  <p class="text-sm sm:text-md md:text-lg text-white leading-relaxed">{{ $item['desc'] }}</p>
                 </div>
               </div>
             </div>
@@ -97,7 +98,7 @@
                 </h3>
               </div>
             </div>
-            <p class="text-white/40 text-sm sm:text-base md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
+            <p class="text-white text-sm sm:text-md md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
           </div>
         @endforeach
       </div>
@@ -105,7 +106,7 @@
       {{-- Bottom callout --}}
       <div class="mt-12 lg:mt-16">
         <div class="bg-white/5 border border-white/10 rounded-2xl p-6 lg:p-8 text-center">
-          <p class="text-white/60 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
             Jika bisnis Anda mengalami <span class="text-red-400 font-semibold">salah satu</span> dari masalah di atas,
             berarti Anda membutuhkan <span class="text-white font-semibold">sistem marketing yang benar</span> — bukan
             sekadar konten atau iklan.

@@ -207,7 +207,7 @@
 
           <div class="pt-4">
             <button type="submit" :disabled="loading"
-              class="w-full rounded-lg bg-gradient-to-r from-impost-primary to-impost-secondary py-3 text-sm font-bold text-white shadow-lg transition-all duration-200 hover:opacity-90 hover:shadow-impost-primary/25 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50">
+              class="w-full rounded-lg bg-gradient-to-r from-impost-primary to-impost-secondary py-3 text-sm font-bold text-black shadow-lg transition-all duration-200 hover:opacity-90 hover:shadow-impost-primary/25 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50">
               <span x-text="loading ? 'Memproses...' : 'Kirim Data Sekarang'"></span>
             </button>
           </div>

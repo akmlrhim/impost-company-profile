@@ -43,7 +43,7 @@
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Kontak Kami
         </h1>
-        <p class="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl text-justify">
+        <p class="text-white/80 text-sm md:text-base leading-relaxed max-w-xl text-justify">
           Hubungi kami untuk informasi lebih lanjut atau konsultasi gratis.
         </p>
       </div>
@@ -72,8 +72,8 @@
                 </svg>
               </div>
               <div class="min-w-0">
-                 <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">WhatsApp</h3>
-                <p class="text-zinc-400 font-medium text-sm lg:text-base group-hover:text-white transition-colors">
+                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">WhatsApp</h3>
+                <p class="text-zinc-400 font-medium text-sm md:text-base group-hover:text-white transition-colors">
                   {{ config('contact.whatsapp.customer.display') }}</p>
               </div>
             </div>
@@ -91,7 +91,8 @@
               </div>
               <div class="min-w-0">
                 <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">Email</h3>
-                <p class="text-zinc-400 text-sm lg:text-base font-medium truncate group-hover:text-white transition-colors">
+                <p
+                  class="text-zinc-400 text-sm md:text-base font-medium truncate group-hover:text-white transition-colors">
                   {{ config('contact.email') }}</p>
               </div>
             </div>
@@ -108,8 +109,9 @@
                 </svg>
               </div>
               <div class="min-w-0">
-                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">{{ config('contact.socials.instagram.label') }}</h3>
-                <p class="text-zinc-400 font-medium text-sm lg:text-base group-hover:text-white transition-colors">
+                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">
+                  {{ config('contact.socials.instagram.label') }}</h3>
+                <p class="text-zinc-400 font-medium text-sm md:text-base group-hover:text-white transition-colors">
                   {{ config('contact.socials.instagram.handle') }}</p>
               </div>
             </div>
@@ -126,8 +128,9 @@
                 </svg>
               </div>
               <div class="min-w-0">
-                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">{{ config('contact.socials.tiktok.label') }}</h3>
-                <p class="text-zinc-400 font-medium text-sm lg:text-base group-hover:text-white transition-colors">
+                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">
+                  {{ config('contact.socials.tiktok.label') }}</h3>
+                <p class="text-zinc-400 font-medium text-sm md:text-base group-hover:text-white transition-colors">
                   {{ config('contact.socials.tiktok.handle') }}</p>
               </div>
             </div>
@@ -144,8 +147,9 @@
                 </svg>
               </div>
               <div class="min-w-0">
-                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">{{ config('contact.socials.linkedin.label') }}</h3>
-                <p class="text-zinc-400 font-medium text-sm lg:text-base group-hover:text-white transition-colors">
+                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">
+                  {{ config('contact.socials.linkedin.label') }}</h3>
+                <p class="text-zinc-400 font-medium text-sm md:text-base group-hover:text-white transition-colors">
                   {{ config('contact.socials.linkedin.handle') }}</p>
               </div>
             </div>

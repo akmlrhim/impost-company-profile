@@ -104,7 +104,7 @@
         Kenapa Harus <br class="hidden md:block">
         <span class="text-impost-primary italic">Impost Media?</span>
       </h2>
-      <p class="text-white/50 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
+      <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto">
         Kami bukan sekadar vendor jasa. Kami partner pertumbuhan bisnis Anda.
       </p>
     </div>
@@ -186,7 +186,7 @@
                 </div>
                 <div>
                   <h4 class="text-white font-bold text-lg sm:text-xl md:text-2xl mb-1">{{ $item['title'] }}</h4>
-                  <p class="text-white/40 text-sm sm:text-base md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
+                  <p class="text-white text-sm sm:text-base md:text-lg leading-relaxed">{{ $item['desc'] }}</p>
                 </div>
               </div>
             </div>

@@ -12,8 +12,8 @@
         class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-header leading-tight text-impost-primary mb-3 md:mb-6">
         Portfolio
       </h2>
-      <p class="text-sm sm:text-base md:text-lg text-gray-300 font-light leading-relaxed mx-auto">
-        Bukan sekadar janji manis, melainkan <span class="text-white font-medium">bukti nyata</span> yang lahir dari
+      <p class="text-sm sm:text-base md:text-lg text-white font-light leading-relaxed mx-auto">
+        Bukan sekadar janji manis, melainkan <span class="text-white font-bold">bukti nyata</span> yang lahir dari
         strategi terukur dan eksekusi presisi.
       </p>
     </div>
@@ -25,7 +25,7 @@
             <button type="button"
               class="portfolio-category-pill rounded-full px-4 py-1.5 text-xs border font-bold cursor-pointer inline-flex items-center gap-2 transition-all duration-250 hover:border-yellow-400 hover:bg-yellow-500 hover:-translate-y-0.5 {{ $index === 0 ? 'border-yellow-400 bg-orange-500 shadow-lg text-black' : 'border-impost-primary bg-impost-primary text-black' }}"
               data-portfolio-category="{{ $category->id }}">
-              <span class="uppercase tracking-wide text-[10px] opacity-80">
+              <span class="capitalize tracking-wide text-[10px] opacity-80">
                 {{ $category->name ?? ($category->title ?? 'Kategori') }}
               </span>
             </button>
@@ -83,16 +83,14 @@
         </button>
       </div>
 
-      <div class="text-center mt-8 md:mt-16">
+      <div class="text-center mt-8">
 
         <a href="{{ route('portfolio') ?? '#portfolios' }}"
-          class="inline-flex items-center text-xs font-bold uppercase text-white hover:text-impost-primary transition-colors tracking-wider border-b border-transparent hover:border-impost-primary pb-1">
+          class="inline-flex items-center justify-center px-5 py-2 text-sm font-bold text-black transition-all duration-300 bg-impost-primary rounded-lg hover:bg-impost-secondary hover:shadow-lg hover:-translate-y-0.5 focus:outline-none hover:scale-105">
           Lihat Semua Portfolio
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="size-4 ml-2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
-
         </a>
       </div>
     @else

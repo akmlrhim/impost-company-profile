@@ -115,23 +115,18 @@
 
     let portfoliosData = [], visibleCards = [], currentIndex = 0;
     let autoRotateTimer = null, rafId = null, isAnimating = false, resizeTimeout = null;
-    const AUTO_ROTATE_DELAY = 1800;
-    function getVisibleRange() { return params.windowWidth <= 480 ? 1 : 3; }
+    const CARD_VISIBLE_RANGE = 3, AUTO_ROTATE_DELAY = 1800;
     const transformCache = new Map();
     let params = { totalCards:0, angleStep:0, radius:0, windowWidth: window.innerWidth };
 
     function getRadius() {
       const w = params.windowWidth;
-      // Keep side cards within viewport bounds on each screen size
-      return w <= 480 ? 90 : w <= 768 ? 210 : 420;
+      return w <= 480 ? 80 : w <= 768 ? 380 : 580;
     }
     function calcParams() {
       const total = portfoliosData.length;
       if (!total) return;
-      // On mobile, don't expand radius for many cards — keep it fixed
-      const baseRadius = getRadius();
-      const extraRadius = params.windowWidth <= 480 ? 0 : Math.max(0, (total - 5) * 15);
-      params = { totalCards:total, angleStep: Math.max(28, 360/total), radius: baseRadius + extraRadius, windowWidth: window.innerWidth };
+      params = { totalCards:total, angleStep: Math.max(28, 360/total), radius: getRadius() + Math.max(0,(total-5)*20), windowWidth: window.innerWidth };
       transformCache.clear();
     }
     function getTransform(offset) {
@@ -141,12 +136,11 @@
       const x   = Math.sin(rad) * params.radius;
       const z   = Math.cos(rad) * params.radius - params.radius;
       const absOff = Math.abs(offset);
-      const visRange = getVisibleRange();
       const result = {
         style: `translate(-50%,-50%) translate3d(${x}px,0,${z}px) rotateY(${-(params.angleStep*offset)}deg)`,
-        isVisible: absOff <= visRange,
+        isVisible: absOff <= CARD_VISIBLE_RANGE,
         isActive:  offset === 0,
-        opacity:   absOff <= visRange ? (offset===0 ? 1 : 0.4) : 0
+        opacity:   absOff <= CARD_VISIBLE_RANGE ? (offset===0 ? 1 : 0.4) : 0
       };
       transformCache.set(key, result);
       return result;

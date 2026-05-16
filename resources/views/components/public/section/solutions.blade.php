@@ -27,9 +27,8 @@
     {{-- Horizontal feature strips --}}
     <div class="border-y border-white/[0.07] divide-y divide-white/[0.07]">
       @foreach ($items as $item)
-        <div class="group flex items-center gap-6 md:gap-10 py-7 md:py-9
-          hover:bg-white/[0.025]
-          -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8
+        <div class="group flex items-center gap-6 md:gap-10 py-7 md:py-9 px-4 sm:px-6
+          hover:bg-white/[0.025] rounded-xl
           transition-colors duration-200">
 
           {{-- Large icon box --}}

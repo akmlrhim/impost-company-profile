@@ -219,7 +219,7 @@
 
 </head>
 
-<body class="relative antialiased min-h-screen bg-impost-fifth text-white">
+<body class="relative antialiased min-h-screen bg-impost-fifth text-white overflow-x-hidden">
 
   <!-- Google Tag Manager (noscript) -->
   <noscript>

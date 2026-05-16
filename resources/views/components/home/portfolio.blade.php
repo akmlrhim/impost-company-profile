@@ -2,7 +2,7 @@
 
 @php $firstCategoryId = $portfolioCategories[0]->id ?? null; @endphp
 
-<section class="py-16 sm:py-20 lg:py-24 im-section-alt" id="portfolios">
+<section class="py-16 sm:py-20 lg:py-24 im-section-alt overflow-hidden" id="portfolios">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {{-- Header --}}
@@ -44,8 +44,9 @@
         </div>
       @endif
 
-      {{-- 3D Carousel --}}
-      <div class="relative w-full h-[340px] sm:h-[400px] md:h-[480px] lg:h-[560px] overflow-visible mb-8 md:mb-12 py-4 md:py-8"
+      {{-- 3D Carousel — outer clip wrapper forces clipping even for 3D-transformed children --}}
+      <div class="relative w-full mb-8 md:mb-12" style="overflow: clip; contain: layout paint;">
+      <div class="relative w-full h-[340px] sm:h-[400px] md:h-[480px] lg:h-[560px] py-4 md:py-8"
         style="perspective: 2000px;">
 
         <button class="carousel-nav-prev absolute top-1/2 -translate-y-1/2 left-1 sm:left-3 md:left-6 z-40
@@ -80,6 +81,7 @@
           </svg>
         </button>
       </div>
+      </div>{{-- /clip wrapper --}}
 
       {{-- CTA --}}
       <div class="text-center">

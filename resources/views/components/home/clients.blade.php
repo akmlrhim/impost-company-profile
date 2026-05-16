@@ -1,4 +1,4 @@
-<section id="clients" class="py-12 sm:py-16 border-y border-white/6">
+<section id="clients" class="py-12 sm:py-16 border-y border-white/6 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
     @if (isset($clients) && count($clients))

@@ -6,7 +6,7 @@
     {{-- Header --}}
     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
       <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Suara Klien</p>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
+      <h2 class="font-bold leading-tight text-white mb-4">
         Apa Kata <span class="text-impost-primary">Mereka?</span>
       </h2>
       <p class="text-base font-medium leading-relaxed text-white">
@@ -16,71 +16,73 @@
 
     @if (isset($testimonials) && $testimonials->isNotEmpty())
 
-      {{-- Masonry grid --}}
-      <div class="relative">
-        <div class="columns-1 md:columns-2 lg:columns-3 gap-4 sm:gap-5 space-y-4 sm:space-y-5">
-          @foreach ($testimonials as $index => $t)
-            <div
-              class="break-inside-avoid bg-white/[0.04] border border-white/[0.08] rounded-2xl hover:border-white/[0.15] transition-colors duration-200 p-5 sm:p-6 transition-all duration-300 relative group
-              {{ $index >= $initialCount ? 'hidden more-testimonials opacity-0 translate-y-4' : '' }}">
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 sm:gap-5 space-y-4 sm:space-y-5">
+        @foreach ($testimonials as $index => $t)
+          <div class="break-inside-avoid bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5 sm:p-6 group
+            hover:border-white/[0.15] transition-all duration-200
+            {{ $index >= $initialCount ? 'hidden more-testimonials opacity-0 translate-y-4' : '' }}">
 
-              {{-- Quote mark --}}
-              <div class="text-impost-primary/20 text-5xl leading-none font-bold mb-2 select-none">"</div>
+            {{-- Quote mark --}}
+            <div class="text-impost-primary/25 text-4xl leading-none font-bold mb-3 select-none">"</div>
 
-              {{-- Quote text --}}
-              <div class="text-sm font-medium leading-relaxed text-white leading-relaxed mb-5 italic">
-                {!! $t->content !!}
+            {{-- Quote text — strip tags, plain readable text --}}
+            <p class="text-sm font-medium leading-relaxed text-white mb-5">
+              {{ strip_tags($t->content) }}
+            </p>
+
+            {{-- Media --}}
+            @if ($t->media_path)
+              <div class="w-full rounded-xl overflow-hidden border border-white/[0.08] mb-5 bg-black/20">
+                @if ($t->media_type === 'video')
+                  <video controls preload="none" playsinline
+                    class="w-full h-auto max-h-52 object-cover">
+                    <source src="{{ asset('storage/' . $t->media_path) }}" type="video/mp4">
+                  </video>
+                @else
+                  <img src="{{ asset('storage/' . $t->media_path) }}" alt="Testimoni" loading="lazy"
+                    class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                @endif
               </div>
+            @endif
 
-              {{-- Media --}}
-              @if ($t->media_path)
-                <div class="w-full rounded-xl overflow-hidden border border-white/6 mb-5 bg-black/20">
-                  @if ($t->media_type === 'video')
-                    <video controls preload="none" playsinline class="w-full h-auto max-h-48 object-cover">
-                      <source src="{{ asset('storage/' . $t->media_path) }}" type="video/mp4">
-                    </video>
-                  @else
-                    <img src="{{ asset('storage/' . $t->media_path) }}" alt="Testimoni" loading="lazy"
-                      class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-                  @endif
-                </div>
-              @endif
-
-              {{-- Author --}}
-              <div class="flex items-center gap-3 pt-4 border-t border-white/6">
-                <div
-                  class="w-9 h-9 rounded-full bg-impost-primary/15 border border-impost-primary/25 flex items-center justify-center font-bold text-impost-primary text-sm flex-shrink-0">
-                  {{ strtoupper(substr($t->name, 0, 1)) }}
-                </div>
-                <div>
-                  <p class="font-bold text-white text-sm leading-tight">{{ $t->name }}</p>
-                  <p class="text-xs font-medium text-white/50 mt-0.5">{{ $t->company_name }}</p>
-                </div>
+            {{-- Author --}}
+            <div class="flex items-center gap-3 pt-4 border-t border-white/[0.07]">
+              <div class="w-9 h-9 rounded-full bg-impost-primary/15 border border-impost-primary/25
+                flex items-center justify-center font-bold text-impost-primary text-sm flex-shrink-0">
+                {{ strtoupper(substr($t->name, 0, 1)) }}
               </div>
-
+              <div class="min-w-0">
+                <p class="font-bold text-white text-sm leading-tight truncate">{{ $t->name }}</p>
+                <p class="text-xs font-medium text-white/50 mt-0.5 truncate">{{ $t->company_name }}</p>
+              </div>
             </div>
-          @endforeach
-        </div>
+
+          </div>
+        @endforeach
       </div>
 
       {{-- Load more --}}
       @if ($testimonials->count() > $initialCount)
-        <div class="mt-10 text-center relative z-30">
-          <button type="button" id="btn-toggle-testimonials" class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-4 py-2 bg-white/[0.06] text-white border border-white/10 hover:bg-white/10 transition-all duration-150 cursor-pointer whitespace-nowrap gap-3">
-            <div
-              class="w-6 h-6 rounded-full bg-impost-primary text-black text-xs font-bold flex items-center justify-center">
-              {{ count($testimonials) }}
+        <div class="mt-10 text-center">
+          <button type="button" id="btn-toggle-testimonials"
+            class="inline-flex items-center justify-center gap-3 text-sm font-bold rounded-full
+              px-6 py-3 bg-white/[0.06] text-white border border-white/10
+              hover:bg-white/10 transition-all duration-150 cursor-pointer">
+            <div class="w-6 h-6 rounded-full bg-impost-primary text-black text-xs font-bold
+              flex items-center justify-center shrink-0">
+              {{ $testimonials->count() }}
             </div>
-            <span id="btn-text" class="text-sm font-bold">Eksplor Lebih Banyak</span>
-            <svg id="btn-icon" class="w-3.5 h-3.5 transition-transform duration-300" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            <span id="btn-text">Eksplor Lebih Banyak</span>
+            <svg id="btn-icon" class="w-3.5 h-3.5 transition-transform duration-300"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
             </svg>
           </button>
         </div>
       @endif
+
     @else
-      <div class="flex items-center justify-center py-20 border border-white/6 rounded-[2rem] bg-white/2">
+      <div class="flex items-center justify-center py-20 border border-white/6 rounded-[2rem] bg-white/[0.02]">
         <x-empty-card item="Testimoni" />
       </div>
     @endif
@@ -90,14 +92,13 @@
 
 @push('scripts')
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const btn = document.getElementById('btn-toggle-testimonials');
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn       = document.getElementById('btn-toggle-testimonials');
       if (!btn) return;
-      const btnText = document.getElementById('btn-text');
-      const btnIcon = document.getElementById('btn-icon');
-      const overlay = document.getElementById('fade-overlay');
+      const btnText   = document.getElementById('btn-text');
+      const btnIcon   = document.getElementById('btn-icon');
       const moreItems = document.querySelectorAll('.more-testimonials');
-      let expanded = false;
+      let expanded    = false;
 
       btn.addEventListener('click', () => {
         expanded = !expanded;
@@ -111,7 +112,6 @@
           });
           if (btnText) btnText.textContent = 'Sembunyikan';
           if (btnIcon) btnIcon.style.transform = 'rotate(180deg)';
-          if (overlay) overlay.style.opacity = '0';
         } else {
           moreItems.forEach(item => {
             item.classList.add('opacity-0', 'translate-y-4');
@@ -119,10 +119,7 @@
           });
           if (btnText) btnText.textContent = 'Eksplor Lebih Banyak';
           if (btnIcon) btnIcon.style.transform = 'rotate(0deg)';
-          if (overlay) overlay.style.opacity = '1';
-          document.getElementById('testimonials')?.scrollIntoView({
-            behavior: 'smooth'
-          });
+          document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' });
         }
       });
     });

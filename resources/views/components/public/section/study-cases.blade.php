@@ -2,7 +2,7 @@
   $studyCases = \App\Models\StudyCase::select('slug', 'name', 'cover_path', 'category', 'result')->latest()->get();
 @endphp
 
-<section class="py-16 sm:py-20 lg:py-24 bg-impost-fifth" id="study-cases">
+<section class="py-16 sm:py-20 lg:py-24 bg-impost-fifth overflow-hidden" id="study-cases">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {{-- Header + nav arrows --}}
@@ -28,13 +28,6 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
-          <a href="{{ route('study-case') }}"
-            class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#d4ac3c] text-[#040404] hover:bg-[#d09738] transition-colors duration-150 cursor-pointer whitespace-nowrap ml-2">
-            Lihat Semua
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
         </div>
       @endif
     </div>
@@ -56,7 +49,7 @@
           @foreach ($studyCases as $case)
             <div class="studycase-slide flex-shrink-0 w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
               <a href="{{ route('detail-study-case', $case->slug) }}"
-                class="group flex flex-col h-full bg-white/[0.04] border border-white/[0.08] rounded-2xl hover:border-white/[0.15] transition-colors duration-200 hover:border-impost-primary/30 p-4 sm:p-5 transition-all duration-300 hover:-translate-y-1">
+                class="group flex flex-col h-full bg-white/[0.04] border border-white/[0.08] rounded-2xl hover:border-impost-primary/30 p-4 sm:p-5 transition-all duration-300 hover:-translate-y-1">
 
                 {{-- Cover --}}
                 <div class="relative w-full aspect-video mb-4 overflow-hidden rounded-xl bg-black/20 flex-shrink-0">
@@ -81,9 +74,9 @@
                     class="font-bold text-white group-hover:text-impost-primary text-sm mb-2 leading-snug transition-colors">
                     {{ $case->name }}
                   </h3>
-                  <div class="text-sm font-medium leading-relaxed text-white line-clamp-3 flex-1">
-                    {!! strip_tags($case->result, '<ul><ol><li><p><br><strong><em>') !!}
-                  </div>
+                  <p class="text-sm font-medium leading-relaxed text-white line-clamp-3 flex-1">
+                    {{ strip_tags($case->result) }}
+                  </p>
                   <div
                     class="mt-4 pt-3 border-t border-white/6 flex items-center text-sm font-bold leading-relaxed text-white group-hover:text-impost-primary transition-colors">
                     Lihat Detail
@@ -97,6 +90,17 @@
             </div>
           @endforeach
         </div>
+
+      </div>
+
+      <div class="mt-5 flex justify-center">
+        <a href="{{ route('study-case') }}"
+          class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#d4ac3c] text-[#040404] hover:bg-[#d09738] transition-colors duration-150 cursor-pointer whitespace-nowrap">
+          Lihat Semua
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
       </div>
     @else
       <div class="flex items-center justify-center py-20 border border-white/6 rounded-[2rem] bg-white/2">

@@ -24,77 +24,8 @@
       </p>
     </div>
 
-    {{-- ── MOBILE: CSS scroll-snap carousel ──────────────────────────────────── --}}
-    <div class="sm:hidden"
-      x-data="{
-        active: 0,
-        total: {{ count($problems) }},
-        goTo(i) {
-          this.active = i;
-          const track = this.$refs.track;
-          track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
-        }
-      }">
-
-      {{-- Scroll track — overflow-x: auto + scroll-snap handles everything natively --}}
-      <div class="no-scrollbar overflow-x-auto"
-        style="scroll-snap-type: x mandatory;"
-        x-ref="track"
-        @scroll.passive="active = Math.round($el.scrollLeft / Math.max($el.clientWidth, 1))">
-
-        <div class="flex">
-          @foreach ($problems as $item)
-            {{-- min-width: 100% = 100% of the scroll container's clientWidth --}}
-            <div class="flex-shrink-0 px-1" style="min-width: 100%; scroll-snap-align: start;">
-
-              <div class="relative bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden
-                flex flex-col items-center text-center p-8">
-
-                {{-- Red glow --}}
-                <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 rounded-full
-                  bg-red-500/10 blur-2xl pointer-events-none"></div>
-
-                {{-- Icon --}}
-                <div class="relative z-10 mb-6">
-                  <svg class="w-12 h-12 text-red-400/80"
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.3">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}"/>
-                  </svg>
-                </div>
-
-                <h3 class="font-bold text-white mb-2.5">{{ $item['title'] }}</h3>
-                <p class="text-sm leading-relaxed text-white/80">{{ $item['desc'] }}</p>
-
-                <div class="absolute bottom-0 left-0 right-0 h-px
-                  bg-gradient-to-r from-transparent via-red-500/50 to-transparent"></div>
-              </div>
-
-            </div>
-          @endforeach
-        </div>
-      </div>
-
-      {{-- Dot pagination --}}
-      <div class="flex justify-center items-center gap-1.5 mt-5">
-        @foreach ($problems as $i => $item)
-          <button type="button"
-            @click="goTo({{ $i }})"
-            class="rounded-full transition-all duration-300"
-            :class="active === {{ $i }}
-              ? 'w-5 h-1.5 bg-red-400'
-              : 'w-1.5 h-1.5 bg-white/25'">
-          </button>
-        @endforeach
-      </div>
-
-      {{-- Slide counter --}}
-      <p class="text-center mt-2" style="font-size: 11px; color: rgba(255,255,255,0.3);">
-        <span x-text="active + 1"></span>&thinsp;/&thinsp;{{ count($problems) }}
-      </p>
-    </div>
-
-    {{-- ── DESKTOP: 3-column grid ─────────────────────────────────────────────── --}}
-    <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+    {{-- Grid — 1 col mobile, 2 col tablet, 3 col desktop --}}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
       @foreach ($problems as $item)
         <div class="group relative bg-white/[0.04] border border-white/[0.08] rounded-2xl hover:border-white/[0.15]
           flex flex-col items-center text-center p-8 md:p-10 overflow-hidden

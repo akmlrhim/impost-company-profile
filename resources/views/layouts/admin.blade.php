@@ -8,6 +8,12 @@
 
   <title>{{ $title ?? 'Page' }}</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+
   <meta name="robots" content="noindex, nofollow">
 
   <link rel="shortcut icon" href="{{ asset('img/favicon.webp') }}" type="image/x-icon">
@@ -18,7 +24,7 @@
   @stack('styles')
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 admin">
 
   <x-partials.admin.navbar />
   <x-partials.admin.sidebar />

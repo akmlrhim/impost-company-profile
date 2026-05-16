@@ -1,42 +1,42 @@
-<section id="home" class="relative min-h-[80vh] md:min-h-screen flex items-center overflow-hidden">
+<section id="home" class="relative min-h-screen flex flex-col overflow-hidden">
 
   <div class="absolute inset-0 z-0 bg-zinc-900 animate-pulse" id="hero-skeleton"></div>
   <div class="absolute inset-0 z-0 opacity-0 transition-opacity duration-700" id="hero-bg">
-    <img src="{{ asset('img/Front_Cover_IM.webp') }}" alt="Impost Media Background" loading="eager" decoding="async"
+    <img src="{{ asset('img/Front_Cover_IM.webp') }}" alt="Impost Media" loading="eager" decoding="async"
       class="w-full h-full object-cover object-center" id="hero-img">
-    <div class="absolute inset-0 bg-black/65"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/30"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-impost-fifth via-transparent to-transparent"></div>
   </div>
 
-  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#040404] to-transparent z-[1]"></div>
+  <div class="relative z-10 flex-1 flex items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-32 md:py-40 lg:py-0">
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 md:py-0">
-    <div class="max-w-4xl mx-auto text-center space-y-5 sm:space-y-7">
+      <div class="max-w-3xl space-y-6 sm:space-y-8">
 
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5">
-        <span class="text-white/70 text-sm lg:text-base font-medium">Pionir Digital Marketing di Kalimantan</span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">
+          Naikkan Omzet <br class="hidden sm:block">
+          Bisnis Anda<br>
+          <span class="text-impost-primary">2–3× dalam 90 Hari</span>
+        </h1>
+
+        <p class="text-lg font-medium leading-relaxed text-white max-w-xl">
+          Bukan sekadar konten atau iklan — sistem pertumbuhan terukur yang bisa diaudit dan
+          dipertanggungjawabkan secara data.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <a href="{{ route('vsl-form') }}" class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#d4ac3c] text-[#040404] hover:bg-[#d09738] transition-colors duration-150 cursor-pointer whitespace-nowrap">
+            Konsultasi Gratis
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a href="#study-cases" class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-7 py-3 text-white border-2 border-white/25 hover:border-white/60 transition-colors duration-150 cursor-pointer whitespace-nowrap">
+            Lihat Hasil Klien
+          </a>
+        </div>
+
       </div>
-
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-header leading-[1.15] text-white">
-        Naikkan Omzet Bisnis Anda
-        <br class="hidden sm:block">
-        <span class="text-impost-primary">2–3x dalam 90 Hari</span>
-      </h1>
-
-      <p class="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed">
-        Bukan sekadar konten atau iklan, tapi sistem pertumbuhan terukur yang bisa diaudit dan dipertanggungjawabkan.
-      </p>
-
-      <div class="pt-2 sm:pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-        <a href="{{ route('vsl-form') }}"
-          class="w-full sm:w-auto px-8 py-3 sm:py-3.5 bg-impost-primary hover:bg-impost-secondary text-black text-sm md:text-base font-bold rounded-xl transition-colors duration-300 text-center">
-          Konsultasi Sekarang
-        </a>
-        <a href="#study-cases"
-          class="w-full sm:w-auto px-8 py-3 sm:py-3.5 border border-white/15 hover:border-white/30 text-white text-sm md:text-base font-medium rounded-xl transition-colors duration-300 text-center">
-          Lihat Hasil Kami
-        </a>
-      </div>
-
     </div>
   </div>
 
@@ -48,21 +48,21 @@
       const img = document.getElementById('hero-img');
       const skeleton = document.getElementById('hero-skeleton');
       const bg = document.getElementById('hero-bg');
-      if (img && skeleton && bg) {
-        function reveal() {
-          skeleton.style.display = 'none';
-          bg.style.opacity = '1';
-        }
-        if (img.complete) reveal();
-        else {
-          img.addEventListener('load', reveal, {
-            once: true
-          });
-          img.addEventListener('error', reveal, {
-            once: true
-          });
-          setTimeout(reveal, 1500);
-        }
+
+      function reveal() {
+        if (skeleton) skeleton.style.display = 'none';
+        if (bg) bg.style.opacity = '1';
+      }
+      if (!img || !bg) return;
+      if (img.complete) reveal();
+      else {
+        img.addEventListener('load', reveal, {
+          once: true
+        });
+        img.addEventListener('error', reveal, {
+          once: true
+        });
+        setTimeout(reveal, 1500);
       }
     });
   </script>

@@ -1,167 +1,71 @@
 @php
   $painPoints = [
-      [
-          'icon' =>
-              'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
-          'text' => 'Kehabisan uang karena terlalu banyak untuk iklan.',
-      ],
-      [
-          'icon' =>
-              'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z',
-          'text' => 'Konten jalan tapi branding terlihat "brand murah"',
-      ],
-      [
-          'icon' => 'M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636',
-          'text' => 'Trauma pakai agency tanpa ada hasil yang jelas',
-      ],
-      [
-          'icon' =>
-              'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
-          'text' => 'Tapi tidak pernah tahu apa yang salah',
-      ],
+    ['icon'=>'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z','text'=>'Kehabisan uang karena terlalu banyak untuk iklan.'],
+    ['icon'=>'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z','text'=>'Konten jalan tapi branding terlihat "brand murah".'],
+    ['icon'=>'M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636','text'=>'Trauma pakai agency tanpa ada hasil yang jelas.'],
+    ['icon'=>'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z','text'=>'Tidak pernah tahu metrik mana yang sebenarnya penting.'],
   ];
 @endphp
 
-<section class="py-16 sm:py-20 md:py-24 relative overflow-hidden">
+<section class="py-16 sm:py-20 lg:py-24 im-section-alt">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-    <div class="text-center mb-12 md:mb-16">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-header leading-tight text-white mb-3 md:mb-4">
-        Kami Bukan Agency yang <br class="hidden md:block">Jual Konten atau
-        <span class="italic text-impost-primary">Iklan</span>
+    {{-- Full-width headline — no card, no center-align --}}
+    <div class="mb-12 sm:mb-16">
+      <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-4">Masalah yang Sering Terjadi</p>
+      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white mb-5 max-w-3xl">
+        Kami Bukan Agency<br>
+        yang Jual Konten<br>
+        atau <span class="text-impost-primary">Iklan</span>
       </h2>
-      <p class="text-sm md:text-base lg:text-lg text-white max-w-2xl mx-auto">
-        Kami Pionir & Market Leader Digital Marketing di Kalimantan
+      <p class="text-base font-medium leading-relaxed text-white max-w-lg">
+        Kami Pionir &amp; Market Leader Digital Marketing di Kalimantan
       </p>
     </div>
 
-    <div class="mb-6 md:mb-8" x-data="painPointSlider()" x-init="init()">
+    {{-- 2×2 pain point cards with large centered icons --}}
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 mb-4">
+      @foreach ($painPoints as $point)
+        <div class="group relative bg-white/[0.04] border border-white/[0.08] rounded-2xl hover:border-white/[0.15] transition-colors duration-200 p-8 md:p-10 overflow-hidden
+          hover:-translate-y-1.5 transition-all duration-300">
 
-      <div class="relative overflow-hidden cursor-grab active:cursor-grabbing select-none"
-        @mousedown="dragStart($event)" @mousemove="dragMove($event)" @mouseup="dragEnd($event)"
-        @mouseleave="dragEnd($event)" @touchstart.passive="dragStart($event)" @touchmove.passive="dragMove($event)"
-        @touchend="dragEnd($event)">
+          {{-- Red glow blob --}}
+          <div class="absolute top-8 left-8 w-20 h-20 rounded-full bg-red-500/10
+            blur-2xl group-hover:bg-red-500/20 transition-colors duration-500 pointer-events-none"></div>
 
-        <div class="flex items-start"
-          :style="`transform: translateX(-${currentIndex * (100 / visibleCount)}%); transition: ${isDragging ? 'none' : 'transform 500ms ease-in-out'}`">
-          @foreach ($painPoints as $point)
-            <div class="flex-shrink-0 px-2 md:px-2.5" :style="`width: ${100 / visibleCount}%`">
+          {{-- Large icon --}}
+          <div class="relative z-10 mb-6">
+            <svg class="w-12 h-12 text-red-400/70 group-hover:text-red-400 transition-colors duration-300"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="{{ $point['icon'] }}"/>
+            </svg>
+          </div>
 
-              <div class="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 h-fit">
+          {{-- Bold statement --}}
+          <p class="text-lg font-bold leading-relaxed text-white leading-relaxed group-hover:text-white transition-colors duration-300">
+            {{ $point['text'] }}
+          </p>
 
-                <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center mb-4">
-                  <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="{{ $point['icon'] }}" />
-                  </svg>
-                </div>
-                <p class="text-sm md:text-base lg:text-lg text-white leading-relaxed">
-                  {{ $point['text'] }}
-                </p>
-              </div>
-            </div>
-          @endforeach
+          {{-- Bottom accent --}}
+          <div class="absolute bottom-0 left-0 right-0 h-px
+            bg-gradient-to-r from-red-500/0 via-red-500/40 to-red-500/0
+            opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
-      </div>
-
+      @endforeach
     </div>
 
-    <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-
-      <div class="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7 flex flex-col justify-center">
-        <p class="text-sm md:text-base lg:text-lg leading-relaxed text-white mb-3">
-          <span class="text-impost-primary font-semibold">Hasilnya?</span> Penjualan kebanyakan hanya mengandalkan
-          promo dengan customer yang tidak loyal.
-        </p>
-        <div class="h-px bg-white/5 my-3"></div>
-        <p class="text-sm md:text-base lg:text-lg leading-relaxed text-white">
-          Ini disebabkan oleh branding yang belum terbangun ke persepsi publik.
+    {{-- Verdict + gold CTA strip --}}
+    <div class="bg-[#d4ac3c] rounded-2xl text-[#040404] p-7 md:p-9 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
+      <div class="flex-1 min-w-0">
+        <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-snug text-black mb-2">Kami benahi funnel marketingnya.</h3>
+        <p class="text-sm font-medium leading-relaxed text-black leading-relaxed max-w-xl">
+          Membangun sistem pemasaran yang berkelanjutan — bukan sekadar posting konten atau pasang iklan.
         </p>
       </div>
-
-      <div class="bg-impost-secondary rounded-2xl p-6 md:p-7 flex flex-col justify-center">
-        <h3 class="text-xl sm:text-2xl lg:text-3xl font-header text-black mb-3 italic">
-          Kami benahi funnel marketingnya
-        </h3>
-        <p class="text-sm md:text-base lg:text-lg text-black font-medium leading-relaxed">
-          Membangun sistem pemasaran yang berkelanjutan, bukan sekadar posting konten.
-        </p>
-      </div>
+      <a href="{{ route('vsl-form') }}" class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#040404] text-white border border-white/20 hover:border-white/45 transition-colors duration-150 cursor-pointer whitespace-nowrap flex-shrink-0 self-start sm:self-center">
+        Lihat Caranya
+      </a>
     </div>
+
   </div>
 </section>
-
-@push('scripts')
-  <script>
-    function painPointSlider() {
-      return {
-        currentIndex: 0,
-        visibleCount: 4,
-        totalItems: {{ count($painPoints) }},
-        totalDots: 1,
-
-        isDragging: false,
-        startX: 0,
-        threshold: 50,
-        autoplayTimer: null,
-        autoplayDelay: 3000,
-
-        init() {
-          this.updateVisible();
-          window.addEventListener('resize', () => this.updateVisible());
-          this.startAutoplay();
-        },
-
-        updateVisible() {
-          const w = window.innerWidth;
-          this.visibleCount = w < 640 ? 1 : w < 1024 ? 2 : 4;
-          this.totalDots = Math.ceil(this.totalItems / this.visibleCount);
-          if (this.currentIndex >= this.totalDots) this.currentIndex = this.totalDots - 1;
-        },
-
-        startAutoplay() {
-          this.stopAutoplay();
-          this.autoplayTimer = setInterval(() => {
-            this.currentIndex = this.currentIndex >= this.totalDots - 1 ? 0 : this.currentIndex + 1;
-          }, this.autoplayDelay);
-        },
-
-        stopAutoplay() {
-          if (this.autoplayTimer) clearInterval(this.autoplayTimer);
-        },
-
-        dragStart(e) {
-          this.isDragging = true;
-          this.startX = e.touches ? e.touches[0].clientX : e.clientX;
-          this.stopAutoplay();
-        },
-
-        dragMove(e) {
-          if (!this.isDragging) return;
-        },
-
-        dragEnd(e) {
-          if (!this.isDragging) return;
-          this.isDragging = false;
-
-          const endX = e?.changedTouches ?
-            e.changedTouches[0].clientX :
-            (e?.clientX ?? this.startX);
-
-          const diff = this.startX - endX;
-
-          if (Math.abs(diff) > this.threshold) {
-            if (diff > 0) {
-              this.currentIndex = this.currentIndex >= this.totalDots - 1 ? 0 : this.currentIndex + 1;
-            } else {
-              this.currentIndex = this.currentIndex <= 0 ? this.totalDots - 1 : this.currentIndex - 1;
-            }
-          }
-
-          this.startAutoplay();
-        },
-      };
-    }
-  </script>
-@endpush

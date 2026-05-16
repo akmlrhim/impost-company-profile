@@ -1,152 +1,121 @@
-<section id="services" class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 overflow-hidden">
+<section id="services" class="py-16 sm:py-20 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-  <div class="relative mb-6 sm:mb-10 md:mb-12 text-center">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-header mb-3 sm:mb-5 md:mb-6">
-      <span class="text-impost-primary">Layanan Kami</span>
-    </h2>
-    <p class="text-white text-sm md:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed px-4">
-      Kami menyediakan layanan digital end-to-end yang berfokus pada peningkatan omset, visibilitas merek, dan efisiensi
-      pemasaran.
-    </p>
-  </div>
+    {{-- Section header --}}
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 sm:mb-16">
+      <div>
+        <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Apa yang Kami Kerjakan</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
+          Layanan <span class="text-impost-primary">Kami</span>
+        </h2>
+      </div>
+      <p class="text-base font-medium leading-relaxed text-white max-w-sm md:text-right">
+        End-to-end digital solutions berfokus pada peningkatan omset, visibilitas, dan efisiensi.
+      </p>
+    </div>
 
-  @if ($services->isEmpty())
-    <div
-      class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
-      <div class="text-sm md:text-base">
+    @if ($services->isEmpty())
+      <div class="flex items-center justify-center py-20 border border-white/6 rounded-[2rem] bg-white/2">
         <x-empty-card item="Layanan" />
       </div>
-    </div>
-  @else
-    <div class="block sm:hidden" x-data="mobileSlider()" x-init="init()" @touchstart.passive="dragStart($event)"
-      @touchmove.passive="dragMove($event)" @touchend="dragEnd($event)">
-      <div class="overflow-hidden select-none">
-        <div class="flex"
-          :style="`transform: translateX(-${currentIndex * 100}%); transition: ${isDragging ? 'none' : 'transform 500ms ease-in-out'}`">
-          @foreach ($services as $service)
-            <div class="min-w-full px-1">
-              <x-service-card :service="$service" />
-            </div>
-          @endforeach
-        </div>
-      </div>
-    </div>
+    @else
 
-    <div x-data="{
-        page: 0,
-        pages: {{ ceil($services->count() / 6) }},
-        transitioning: false,
-        next() {
-            if (this.page < this.pages - 1 && !this.transitioning) {
-                this.transitioning = true;
-                this.page++;
-                setTimeout(() => this.transitioning = false, 400);
-            }
-        },
-        prev() {
-            if (this.page > 0 && !this.transitioning) {
-                this.transitioning = true;
-                this.page--;
-                setTimeout(() => this.transitioning = false, 400);
-            }
-        }
-    }" class="hidden sm:block relative">
-      <div class="overflow-hidden">
-        <div class="flex transition-transform duration-400 ease-in-out"
-          :style="'transform: translateX(-' + (page * 100) + '%)'">
-          @foreach ($services->chunk(6) as $chunk)
-            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-1"
-              style="content-visibility: auto; contain-intrinsic-size: 0 600px;">
-              @foreach ($chunk as $service)
-                <x-service-card :service="$service" />
-              @endforeach
-            </div>
+      {{-- Mobile: single-item swipe slider --}}
+      <div class="block sm:hidden"
+        x-data="mobileSlider()" x-init="init()"
+        @touchstart.passive="dragStart($event)"
+        @touchmove.passive="dragMove($event)"
+        @touchend="dragEnd($event)">
+
+        <div class="overflow-hidden select-none">
+          <div class="flex" :style="`transform:translateX(-${currentIndex*100}%);transition:${isDragging?'none':'transform 480ms cubic-bezier(0.23,1,0.32,1)'}`">
+            @foreach ($services as $service)
+              <div class="min-w-full px-1"><x-service-card :service="$service" /></div>
+            @endforeach
+          </div>
+        </div>
+
+        {{-- Dot indicators --}}
+        <div class="flex justify-center gap-1.5 mt-4">
+          @foreach ($services as $i => $service)
+            <button @click="currentIndex={{ $i }};stopAutoplay()" type="button"
+              class="rounded-full transition-all duration-300"
+              :class="currentIndex==={{ $i }} ? 'w-5 h-1.5 bg-impost-primary' : 'w-1.5 h-1.5 bg-white/20'">
+            </button>
           @endforeach
         </div>
       </div>
 
-      <div class="flex justify-center gap-4 mt-6 sm:mt-8">
-        <button @click="prev" :disabled="page === 0"
-          :class="page === 0 ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer'" class="text-white transition-opacity"
-          type="button" aria-label="Previous page">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="m15 18-6-6 6-6" />
-          </svg>
-        </button>
+      {{-- Desktop: paginated 3-column grid --}}
+      <div x-data="{
+        page:0, pages:{{ ceil($services->count()/6) }}, transitioning:false,
+        next(){ if(this.page<this.pages-1&&!this.transitioning){this.transitioning=true;this.page++;setTimeout(()=>this.transitioning=false,400);} },
+        prev(){ if(this.page>0&&!this.transitioning){this.transitioning=true;this.page--;setTimeout(()=>this.transitioning=false,400);} }
+      }" class="hidden sm:block">
 
-        <button @click="next" :disabled="page === pages - 1"
-          :class="page === pages - 1 ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer'"
-          class="text-white transition-opacity" type="button" aria-label="Next page">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="m9 18 6-6-6-6" />
-          </svg>
-        </button>
+        <div class="overflow-hidden">
+          <div class="flex transition-transform duration-400 ease-in-out"
+            :style="'transform:translateX(-'+(page*100)+'%)'">
+            @foreach ($services->chunk(6) as $chunk)
+              <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 px-0.5">
+                @foreach ($chunk as $service)
+                  <x-service-card :service="$service" />
+                @endforeach
+              </div>
+            @endforeach
+          </div>
+        </div>
+
+        {{-- Pagination arrows --}}
+        @if (ceil($services->count()/6) > 1)
+          <div class="flex items-center justify-center gap-4 mt-10">
+            <button @click="prev" :disabled="page===0"
+              :class="page===0?'opacity-25 cursor-not-allowed':'hover:border-white/30'"
+              class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full cursor-pointer inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-4 py-2 bg-white/[0.06] text-white border border-white/10 hover:bg-white/10 transition-all duration-150 cursor-pointer whitespace-nowrap w-10 h-10 p-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <span class="text-sm font-medium leading-relaxed text-white/50">
+              <span x-text="page+1"></span> / {{ ceil($services->count()/6) }}
+            </span>
+            <button @click="next" :disabled="page===pages-1"
+              :class="page===pages-1?'opacity-25 cursor-not-allowed':'hover:border-white/30'"
+              class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full cursor-pointer inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-4 py-2 bg-white/[0.06] text-white border border-white/10 hover:bg-white/10 transition-all duration-150 cursor-pointer whitespace-nowrap w-10 h-10 p-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        @endif
+
       </div>
-    </div>
 
-  @endif
-
+    @endif
+  </div>
 </section>
 
 <script>
   function mobileSlider() {
     return {
-      currentIndex: 0,
-      total: {{ $services->count() }},
-
-      isDragging: false,
-      startX: 0,
-      threshold: 50,
-      autoplayTimer: null,
-      autoplayDelay: 3000,
-
-      init() {
-        this.startAutoplay();
-      },
-
+      currentIndex: 0, total: {{ $services->count() }},
+      isDragging: false, startX: 0, threshold: 50,
+      autoplayTimer: null, autoplayDelay: 3500,
+      init() { this.startAutoplay(); },
       startAutoplay() {
         this.stopAutoplay();
         this.autoplayTimer = setInterval(() => {
-          this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
+          this.currentIndex = this.currentIndex >= this.total-1 ? 0 : this.currentIndex+1;
         }, this.autoplayDelay);
       },
-
-      stopAutoplay() {
-        if (this.autoplayTimer) clearInterval(this.autoplayTimer);
-      },
-
-      dragStart(e) {
-        this.isDragging = true;
-        this.startX = e.touches ? e.touches[0].clientX : e.clientX;
-        this.stopAutoplay();
-      },
-
-      dragMove(e) {
-        if (!this.isDragging) return;
-      },
-
-      dragEnd(e) {
-        if (!this.isDragging) return;
-        this.isDragging = false;
-
-        const endX = e?.changedTouches ?
-          e.changedTouches[0].clientX :
-          (e?.clientX ?? this.startX);
-
+      stopAutoplay() { if(this.autoplayTimer){ clearInterval(this.autoplayTimer); this.autoplayTimer=null; } },
+      dragStart(e) { this.isDragging=true; this.startX=e.touches?e.touches[0].clientX:e.clientX; this.stopAutoplay(); },
+      dragMove()   {},
+      dragEnd(e)   {
+        if(!this.isDragging) return; this.isDragging=false;
+        const endX = e?.changedTouches ? e.changedTouches[0].clientX : (e?.clientX ?? this.startX);
         const diff = this.startX - endX;
-
         if (Math.abs(diff) > this.threshold) {
-          if (diff > 0) {
-            this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
-          } else {
-            this.currentIndex = this.currentIndex <= 0 ? this.total - 1 : this.currentIndex - 1;
-          }
+          this.currentIndex = diff>0 ? Math.min(this.currentIndex+1, this.total-1) : Math.max(this.currentIndex-1, 0);
         }
-
         this.startAutoplay();
-      },
+      }
     };
   }
 </script>

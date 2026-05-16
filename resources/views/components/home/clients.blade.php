@@ -1,85 +1,61 @@
-<section id="clients" class="py-10 sm:py-12 md:py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+<section id="clients" class="py-12 sm:py-16 border-y border-white/6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
     @if (isset($clients) && count($clients))
-      <p
-        class="mb-6 sm:mb-10 md:mb-12 text-impost-primary font-extrabold tracking-wide text-sm sm:text-base lg:text-lg uppercase">
-        Klien yang telah bekerja sama dengan kami
+
+      <p class="text-center text-xs font-bold text-impost-primary uppercase tracking-[0.2em] mb-8 sm:mb-10">
+        Dipercaya oleh klien-klien terbaik kami
       </p>
 
       <div class="relative overflow-hidden">
+        {{-- Fade edges --}}
+        <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-impost-fifth to-transparent"></div>
+        <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-impost-fifth to-transparent"></div>
 
-        <div id="clients-skeleton" class="flex gap-4 sm:gap-6 px-4 justify-center animate-pulse">
-          @for ($i = 0; $i < 8; $i++)
-            <div
-              class="h-8 sm:h-10 md:h-12 w-16 sm:w-20 md:w-24 rounded-md bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700">
-            </div>
+        {{-- Skeleton --}}
+        <div id="clients-skeleton" class="flex gap-6 px-4 justify-center animate-pulse">
+          @for ($i = 0; $i < 7; $i++)
+            <div class="h-9 w-20 sm:w-24 rounded bg-white/5 flex-shrink-0"></div>
           @endfor
         </div>
 
-        {{-- Marquee --}}
-        <div id="clients-marquee" class="marquee-wrapper opacity-0 transition-opacity duration-500">
+        <div id="clients-marquee" class="opacity-0 transition-opacity duration-500">
           <div class="flex w-max animate-marquee">
-
-            @foreach ([1, 2] as $pass)
-              <div class="flex items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 px-3 sm:px-4 shrink-0">
+            @foreach ([1, 2] as $_)
+              <div class="flex items-center gap-10 sm:gap-14 lg:gap-16 px-5 shrink-0">
                 @foreach ($clients as $client)
-                  <img src="{{ asset('storage/' . $client->client_logo) }}" alt="{{ $client->filename }}"
-                    class="h-8 sm:h-10 lg:h-12 xl:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    decoding="async" loading="lazy">
+                  <img src="{{ asset('storage/'.$client->client_logo) }}" alt="{{ $client->filename }}"
+                    class="h-8 sm:h-10 lg:h-11 w-auto object-contain opacity-35 hover:opacity-75 transition-all duration-300 grayscale hover:grayscale-0"
+                    loading="lazy" decoding="async">
                 @endforeach
               </div>
             @endforeach
-
           </div>
         </div>
-
       </div>
 
       <script>
         (function() {
           const skeleton = document.getElementById('clients-skeleton');
-          const marquee = document.getElementById('clients-marquee');
-          const imgs = marquee.querySelectorAll('img');
+          const marquee  = document.getElementById('clients-marquee');
+          const imgs     = marquee ? marquee.querySelectorAll('img') : [];
           let loaded = 0;
-
-          function reveal() {
-            skeleton.style.display = 'none';
-            marquee.style.opacity = '1';
-          }
-
-          if (!imgs.length) {
-            reveal();
-            return;
-          }
-
-          function onLoad() {
-            if (++loaded >= imgs.length) reveal();
-          }
-
+          function reveal() { if(skeleton) skeleton.style.display='none'; if(marquee) marquee.style.opacity='1'; }
+          if (!imgs.length) { reveal(); return; }
           imgs.forEach(img => {
-            if (img.complete) {
-              onLoad();
-            } else {
-              img.addEventListener('load', onLoad, {
-                once: true
-              });
-              img.addEventListener('error', onLoad, {
-                once: true
-              });
+            if (img.complete) { if(++loaded >= imgs.length) reveal(); }
+            else {
+              img.addEventListener('load',  ()=>{ if(++loaded>=imgs.length) reveal(); }, { once:true });
+              img.addEventListener('error', ()=>{ if(++loaded>=imgs.length) reveal(); }, { once:true });
             }
           });
-
           setTimeout(reveal, 1200);
         })();
       </script>
+
     @else
-      <div
-        class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
-        {{-- Isian card jika kosong menggunakan md: untuk desktop --}}
-        <div class="text-sm md:text-base">
-          <x-empty-card item="Klien" />
-        </div>
+      <div class="flex items-center justify-center py-10 border border-white/6 rounded-2xl bg-white/2">
+        <x-empty-card item="Klien" />
       </div>
     @endif
 

@@ -2,118 +2,106 @@
   $studyCases = \App\Models\StudyCase::select('slug', 'name', 'cover_path', 'category', 'result')->latest()->get();
 @endphp
 
-<section class="py-16 sm:py-20 text-white overflow-hidden" id="study-cases">
+<section class="py-16 sm:py-20 lg:py-24 bg-impost-fifth" id="study-cases">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="relative mb-10 sm:mb-12 flex items-center justify-center">
-      <div class="max-w-3xl mx-auto text-center z-10 px-4">
-        <h2
-          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-header tracking-tight text-white mb-3 sm:mb-4 leading-tight">
-          Hasil Nyata, <br class="hidden md:block" />
-          <span class="text-impost-primary italic">Bukan Janji Kosong.</span>
+    {{-- Header + nav arrows --}}
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10 sm:mb-14">
+      <div>
+        <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Hasil Nyata</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
+          Bukan Janji<br><span class="text-impost-primary">Kosong.</span>
         </h2>
-        <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-xl mx-auto">
-          Bukti autentik dari strategi yang terukur untuk pertumbuhan bisnis Anda.
-        </p>
       </div>
 
       @if ($studyCases->isNotEmpty())
-        <div class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 gap-3 z-20">
+        <div class="flex gap-2 items-center">
           <button type="button" aria-label="Previous"
-            class="studycase-prev group flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-impost-primary hover:text-black hover:border-impost-primary transition-all duration-300">
-            <svg class="w-4 h-4 transform group-hover:-translate-x-0.5 transition-transform" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            class="studycase-prev inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/[0.06] text-white border border-white/10 hover:bg-white/10 hover:border-impost-primary/40 transition-all duration-150 cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           <button type="button" aria-label="Next"
-            class="studycase-next group flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-impost-primary hover:text-black hover:border-impost-primary transition-all duration-300">
-            <svg class="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            class="studycase-next inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/[0.06] text-white border border-white/10 hover:bg-white/10 hover:border-impost-primary/40 transition-all duration-150 cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
+          <a href="{{ route('study-case') }}"
+            class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#d4ac3c] text-[#040404] hover:bg-[#d09738] transition-colors duration-150 cursor-pointer whitespace-nowrap ml-2">
+            Lihat Semua
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
         </div>
       @endif
     </div>
 
     @if ($studyCases->isNotEmpty())
-      <div class="relative">
-        {{-- Skeleton --}}
-        <div id="studycases-carousel-skeleton" class="flex flex-nowrap overflow-hidden animate-pulse mb-6">
-          @for ($i = 0; $i < 3; $i++)
-            <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3 box-border">
-              <div class="h-[280px] sm:h-[320px] rounded-xl border border-white/10 bg-white/5"></div>
+      {{-- Skeleton --}}
+      <div id="studycases-carousel-skeleton" class="flex gap-4 overflow-hidden animate-pulse mb-6">
+        @for ($i = 0; $i < 3; $i++)
+          <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0">
+            <div class="h-[300px] sm:h-[340px] rounded-[1.5rem] bg-white/[0.04] border border-white/[0.08]"></div>
+          </div>
+        @endfor
+      </div>
+
+      {{-- Slider --}}
+      <div id="studycases-carousel-content"
+        class="studycase-slider relative w-full overflow-hidden opacity-0 transition-opacity duration-500">
+        <div class="studycase-track flex gap-4">
+          @foreach ($studyCases as $case)
+            <div class="studycase-slide flex-shrink-0 w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
+              <a href="{{ route('detail-study-case', $case->slug) }}"
+                class="group flex flex-col h-full bg-white/[0.04] border border-white/[0.08] rounded-2xl hover:border-white/[0.15] transition-colors duration-200 hover:border-impost-primary/30 p-4 sm:p-5 transition-all duration-300 hover:-translate-y-1">
+
+                {{-- Cover --}}
+                <div class="relative w-full aspect-video mb-4 overflow-hidden rounded-xl bg-black/20 flex-shrink-0">
+                  @if ($case->cover_path)
+                    <img src="{{ asset('storage/' . $case->cover_path) }}" alt="{{ $case->name }}"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy">
+                  @else
+                    <div class="w-full h-full flex items-center justify-center">
+                      <span class="text-xs font-medium text-white/20">No Preview</span>
+                    </div>
+                  @endif
+                </div>
+
+                {{-- Content --}}
+                <div class="flex flex-col flex-1">
+                  <div class="mb-3">
+                    <span
+                      class="inline-flex items-center gap-1 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#d4ac3c] text-[#040404]">{{ $case->category ?? 'CASE STUDY' }}</span>
+                  </div>
+                  <h3
+                    class="font-bold text-white group-hover:text-impost-primary text-sm mb-2 leading-snug transition-colors">
+                    {{ $case->name }}
+                  </h3>
+                  <div class="text-sm font-medium leading-relaxed text-white line-clamp-3 flex-1">
+                    {!! strip_tags($case->result, '<ul><ol><li><p><br><strong><em>') !!}
+                  </div>
+                  <div
+                    class="mt-4 pt-3 border-t border-white/6 flex items-center text-sm font-bold leading-relaxed text-white group-hover:text-impost-primary transition-colors">
+                    Lihat Detail
+                    <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                      stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </div>
+                </div>
+              </a>
             </div>
-          @endfor
+          @endforeach
         </div>
-
-        {{-- Content --}}
-        <div id="studycases-carousel-content"
-          class="studycase-slider relative w-full overflow-hidden opacity-0 transition-opacity duration-500">
-          <div class="studycase-track flex">
-            @foreach ($studyCases as $case)
-              <div class="studycase-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-3 box-border">
-                <a href="{{ route('detail-study-case', $case->slug) }}"
-                  class="group flex flex-col h-full border border-white/10 bg-white/5 hover:border-impost-primary/50 hover:bg-white/10 rounded-xl p-4 sm:p-5 transition-all duration-300">
-                  <div class="relative w-full aspect-video mb-4 overflow-hidden rounded-lg bg-gray-900">
-                    @if ($case->cover_path)
-                      <img src="{{ asset('storage/' . $case->cover_path) }}" alt="{{ $case->name }}"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy">
-                    @else
-                      <div class="w-full h-full flex items-center justify-center bg-gray-800">
-                        <span class="text-gray-600 text-xs">No Preview</span>
-                      </div>
-                    @endif
-                  </div>
-
-                  <div class="flex flex-col flex-1">
-                    <div class="mb-2.5">
-                      <span
-                        class="inline-block px-2 py-1 bg-impost-primary/10 rounded text-[9px] sm:text-[10px] font-bold tracking-widest uppercase text-impost-primary border border-impost-primary/20">
-                        {{ $case->category ?? 'CASE STUDY' }}
-                      </span>
-                    </div>
-                    <h3
-                      class="text-lg md:text-xl lg:text-2xl font-bold text-white group-hover:text-impost-primary mb-2 leading-tight transition-colors">
-                      {{ $case->name }}
-                    </h3>
-                    <div class="text-sm md:text-base lg:text-lg text-white/70 leading-relaxed line-clamp-3 mb-4">
-                      <div class="[&>ul]:list-disc [&>ul]:ml-4 [&>ol]:list-decimal [&>ol]:ml-4">
-                        {!! strip_tags($case->result, '<ul><ol><li><p><br><strong><em>') !!}
-                      </div>
-                    </div>
-                    <div class="mt-auto pt-3 border-t border-white/10">
-                      <div
-                        class="flex items-center text-sm md:text-base lg:text-lg font-medium text-white group-hover:text-impost-primary transition-colors">
-                        Lihat Detail
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                          stroke="currentColor" class="size-4 ml-2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            @endforeach
-          </div>
-          <div class="text-center mt-8">
-            <a href="{{ route('study-case') ?? '#studycases' }}"
-              class="inline-flex items-center justify-center px-5 py-2 text-sm md:text-base font-bold text-black transition-all duration-300 bg-impost-primary rounded-lg hover:bg-impost-secondary hover:shadow-lg hover:-translate-y-0.5 focus:outline-none hover:scale-105">
-              Lihat Semua Study Case
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      @else
-        <div
-          class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
-          <x-empty-card item="Study Case" />
-        </div>
+      </div>
+    @else
+      <div class="flex items-center justify-center py-20 border border-white/6 rounded-[2rem] bg-white/2">
+        <x-empty-card item="Study Case" />
+      </div>
     @endif
 
   </div>
@@ -121,150 +109,84 @@
 
 @push('scripts')
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    (function() {
       const track = document.querySelector('.studycase-track');
-      if (!track) return;
-
-      const slides = Array.from(document.querySelectorAll('.studycase-slide'));
-      if (!slides.length) return;
-
-      const prevBtns = document.querySelectorAll('.studycase-prev');
-      const nextBtns = document.querySelectorAll('.studycase-next');
-      const CLONE_COUNT = 3;
-
-      let currentIndex = CLONE_COUNT;
-      let isTransitioning = false;
-      let slideWidth = 0;
-      let autoPlayTimer = null;
-
-      function getSlideWidth() {
-        return slides[0].getBoundingClientRect().width;
-      }
-
-      function buildClones() {
-        slides.slice(0, CLONE_COUNT).forEach(s => track.appendChild(s.cloneNode(true)));
-        slides.slice(-CLONE_COUNT).reverse().forEach(s => track.insertBefore(s.cloneNode(true), track
-          .firstChild));
-      }
-
-      function setPosition(withTransition) {
-        track.style.transition = withTransition ? 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)' : 'none';
-        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-      }
-
-      function next() {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        currentIndex++;
-        setPosition(true);
-        resetAutoPlay();
-      }
-
-      function prev() {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        currentIndex--;
-        setPosition(true);
-        resetAutoPlay();
-      }
-
-      track.addEventListener('transitionend', () => {
-        isTransitioning = false;
-        const total = slides.length;
-        if (currentIndex >= total + CLONE_COUNT) {
-          currentIndex = CLONE_COUNT;
-          setPosition(false);
-        } else if (currentIndex < CLONE_COUNT) {
-          currentIndex = total + CLONE_COUNT - 1;
-          setPosition(false);
-        }
-      });
-
-      function startAutoPlay() {
-        autoPlayTimer = setInterval(next, 4000);
-      }
-
-      function stopAutoPlay() {
-        clearInterval(autoPlayTimer);
-      }
-
-      function resetAutoPlay() {
-        stopAutoPlay();
-        startAutoPlay();
-      }
-
-      let resizeTimer;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-          slideWidth = getSlideWidth();
-          setPosition(false);
-        }, 150);
-      });
-
-      track.addEventListener('mouseenter', stopAutoPlay);
-      track.addEventListener('mouseleave', startAutoPlay);
-
-      let touchStartX = 0;
-      track.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-        stopAutoPlay();
-      }, {
-        passive: true
-      });
-
-      track.addEventListener('touchend', e => {
-        const diff = touchStartX - e.changedTouches[0].screenX;
-        if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
-        startAutoPlay();
-      }, {
-        passive: true
-      });
-
-      nextBtns.forEach(btn => btn.addEventListener('click', next));
-      prevBtns.forEach(btn => btn.addEventListener('click', prev));
-
-      buildClones();
-      slideWidth = getSlideWidth();
-      setPosition(false);
-      startAutoPlay();
-
+      const slides = document.querySelectorAll('.studycase-slide');
+      const prevBtn = document.querySelector('.studycase-prev');
+      const nextBtn = document.querySelector('.studycase-next');
       const skeleton = document.getElementById('studycases-carousel-skeleton');
       const content = document.getElementById('studycases-carousel-content');
-      if (skeleton && content) {
-        const imgs = content.querySelectorAll('img');
-        let loaded = 0;
+      if (!track || !slides.length) return;
 
-        function reveal() {
-          skeleton.style.display = 'none';
-          content.style.opacity = '1';
-        }
+      let current = 0,
+        perPage = 1;
 
-        if (!imgs.length) {
-          reveal();
-        } else {
-          imgs.forEach(img => {
-            if (img.complete) {
-              loaded++;
-              if (loaded >= imgs.length) reveal();
-            } else {
-              img.addEventListener('load', () => {
-                loaded++;
-                if (loaded >= imgs.length) reveal();
-              }, {
-                once: true
-              });
-              img.addEventListener('error', () => {
-                loaded++;
-                if (loaded >= imgs.length) reveal();
-              }, {
-                once: true
-              });
-            }
-          });
-          setTimeout(reveal, 1500);
-        }
+      function getPerPage() {
+        const w = window.innerWidth;
+        return w >= 1024 ? 3 : w >= 768 ? 2 : 1;
       }
-    });
+
+      function maxIdx() {
+        return Math.max(0, slides.length - perPage);
+      }
+
+      function move() {
+        const slideW = slides[0].offsetWidth;
+        const gap = 16; /* gap-4 */
+        track.style.transition = 'transform .5s cubic-bezier(.23,1,.32,1)';
+        track.style.transform = `translateX(-${current * (slideW + gap)}px)`;
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', () => {
+        if (current > 0) {
+          current--;
+          move();
+        }
+      });
+      if (nextBtn) nextBtn.addEventListener('click', () => {
+        if (current < maxIdx()) {
+          current++;
+          move();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        perPage = getPerPage();
+        current = Math.min(current, maxIdx());
+        move();
+      }, {
+        passive: true
+      });
+
+      const imgs = track.querySelectorAll('img');
+      let loaded = 0;
+
+      function reveal() {
+        if (skeleton) skeleton.style.display = 'none';
+        if (content) content.style.opacity = '1';
+      }
+      if (!imgs.length) {
+        reveal();
+      } else {
+        imgs.forEach(img => {
+          if (img.complete) {
+            if (++loaded >= imgs.length) reveal();
+          } else {
+            img.addEventListener('load', () => {
+              if (++loaded >= imgs.length) reveal();
+            }, {
+              once: true
+            });
+            img.addEventListener('error', () => {
+              if (++loaded >= imgs.length) reveal();
+            }, {
+              once: true
+            });
+          }
+        });
+        setTimeout(reveal, 1500);
+      }
+      perPage = getPerPage();
+    })();
   </script>
 @endpush

@@ -207,12 +207,15 @@ class HomeController extends Controller
 		$type = $request->type;
 		$arrangement = $request->arrangement;
 
-		$job = JobVacancy::when($search, function ($q) use ($search) {
-			$q->where(function ($query) use ($search) {
-				$query->where('title', 'like', "%{$search}%")
-					->orWhere('employment_type', 'like', "%{$search}%");
-			});
-		})
+		$activeJobs = JobVacancy::where('status', 'Active');
+
+		$job = (clone $activeJobs)
+			->when($search, function ($q) use ($search) {
+				$q->where(function ($query) use ($search) {
+					$query->where('title', 'like', "%{$search}%")
+						->orWhere('employment_type', 'like', "%{$search}%");
+				});
+			})
 			->when($type, function ($q) use ($type) {
 				$q->where('employment_type', $type);
 			})
@@ -223,31 +226,29 @@ class HomeController extends Controller
 			->paginate(12)
 			->withQueryString();
 
-		$employmentTypes = collect([
-			'Full Time',
-			'Part Time',
-			'Contract',
-			'Internship',
-			'Freelance'
-		]);
+		// Pull filter options only from Active jobs
+		$employmentTypes = (clone $activeJobs)
+			->whereNotNull('employment_type')
+			->distinct()
+			->pluck('employment_type')
+			->sort()
+			->values();
 
-		$dbTypes = JobVacancy::whereNotNull('employment_type')->distinct()->pluck('employment_type');
-		$employmentTypes = $employmentTypes->merge($dbTypes)->unique()->values();
-
-		$workArrangements = collect([
-			'On-site',
-			'Remote',
-			'Hybrid'
-		]);
-
-		$allArrangements = JobVacancy::whereNotNull('work_arrangements')->pluck('work_arrangements');
-		$workArrangements = $workArrangements->merge($allArrangements->flatten())->unique()->values();
+		$workArrangements = (clone $activeJobs)
+			->whereNotNull('work_arrangements')
+			->pluck('work_arrangements')
+			->flatten()
+			->unique()
+			->sort()
+			->values();
 
 		return view('public.jobs.index', compact('title', 'meta_description', 'job', 'search', 'type', 'arrangement', 'employmentTypes', 'workArrangements'));
 	}
 
 	public function jobDetail(JobVacancy $job)
 	{
+		abort_if($job->status !== 'Active', 404);
+
 		$job->load('details');
 		$title = $job->title;
 		$meta_description = 'Lowongan kerja ' . $job->title . ' di Impost Media. Lihat detail pekerjaan, kualifikasi, dan cara melamar.';

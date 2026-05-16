@@ -1,5 +1,3 @@
-<x-public.section.pain-points />
-
 <x-public.section.problems />
 
 <x-public.section.solutions />

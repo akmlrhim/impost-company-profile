@@ -29,15 +29,10 @@
           <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Tipe Kerja</label>
           <select name="employment_type"
             class="w-full border rounded px-3 py-2 text-xs sm:text-sm focus:outline-none focus:ring-1 @error('employment_type') border-red-500 focus:ring-red-500 @else border-gray-300 focus:ring-blue-500 focus:border-blue-500 @enderror">
-            <option value="Full-time"
-              {{ old('employment_type', $jobvacancy->employment_type) == 'Full-time' ? 'selected' : '' }}>Full-time
-            </option>
-            <option value="Internship"
-              {{ old('employment_type', $jobvacancy->employment_type) == 'Internship' ? 'selected' : '' }}>Internship
-            </option>
-            <option value="Part-time"
-              {{ old('employment_type', $jobvacancy->employment_type) == 'Part-time' ? 'selected' : '' }}>Part-time
-            </option>
+            <option value="Full-time"  {{ old('employment_type', $jobvacancy->employment_type) == 'Full-time'  ? 'selected' : '' }}>Full-time</option>
+            <option value="Part-time"  {{ old('employment_type', $jobvacancy->employment_type) == 'Part-time'  ? 'selected' : '' }}>Part-time</option>
+            <option value="Contract"   {{ old('employment_type', $jobvacancy->employment_type) == 'Contract'   ? 'selected' : '' }}>Contract</option>
+            <option value="Internship" {{ old('employment_type', $jobvacancy->employment_type) == 'Internship' ? 'selected' : '' }}>Internship</option>
           </select>
           @error('employment_type')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
@@ -165,13 +160,11 @@
               <label class="block text-xs font-semibold text-gray-500 uppercase mb-1">Bagian</label>
               <select name="details[{{ $index }}][section]"
                 class="w-full border rounded px-3 py-2 text-xs sm:text-sm focus:outline-none focus:ring-1 @error('details.' . $index . '.section') border-red-500 focus:ring-red-500 @else border-gray-300 focus:ring-blue-500 focus:border-blue-500 @enderror">
-                <option value="Tanggung Jawab" {{ $detail['section'] == 'Tanggung Jawab' ? 'selected' : '' }}>Tanggung
-                  Jawab</option>
-                <option value="Kualifikasi" {{ $detail['section'] == 'Kualifikasi' ? 'selected' : '' }}>Kualifikasi
-                </option>
-                <option value="Benefit" {{ $detail['section'] == 'Benefit' ? 'selected' : '' }}>Benefit</option>
-                <option value="Posisi yang dibutuhkan"
-                  {{ $detail['section'] == 'Posisi yang dibutuhkan' ? 'selected' : '' }}>Posisi yang dibutuhkan</option>
+                <option value="Deskripsi Pekerjaan"   {{ $detail['section'] == 'Deskripsi Pekerjaan'   ? 'selected' : '' }}>Deskripsi Pekerjaan</option>
+                <option value="Tanggung Jawab"       {{ $detail['section'] == 'Tanggung Jawab'       ? 'selected' : '' }}>Tanggung Jawab</option>
+                <option value="Kualifikasi"          {{ $detail['section'] == 'Kualifikasi'          ? 'selected' : '' }}>Kualifikasi</option>
+                <option value="Benefit"              {{ $detail['section'] == 'Benefit'              ? 'selected' : '' }}>Benefit</option>
+                <option value="Posisi yang dibutuhkan" {{ $detail['section'] == 'Posisi yang dibutuhkan' ? 'selected' : '' }}>Posisi yang dibutuhkan</option>
               </select>
             </div>
 
@@ -269,9 +262,11 @@
               <label class="block text-xs font-semibold text-gray-500 uppercase mb-1">Bagian</label>
               <select name="details[${detailIndex}][section]"
                   class="w-full border rounded px-3 py-2 text-xs sm:text-sm focus:outline-none focus:ring-1 border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                  <option value="Deskripsi Pekerjaan">Deskripsi Pekerjaan</option>
                   <option value="Tanggung Jawab">Tanggung Jawab</option>
                   <option value="Kualifikasi">Kualifikasi</option>
                   <option value="Benefit">Benefit</option>
+                  <option value="Posisi yang dibutuhkan">Posisi yang dibutuhkan</option>
               </select>
           </div>
           <div class="w-full flex flex-col gap-1">

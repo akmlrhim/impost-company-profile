@@ -77,7 +77,7 @@
 </section>
 
 <section class="bg-impost-fifth text-white py-10 md:py-16 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-4xl mx-auto text-center font-header italic">
+  <div class="max-w-4xl mx-auto text-center italic">
     <h3 class="text-xl sm:text-2xl md:text-3xl font-medium leading-relaxed">
       "Kami percaya website terbaik bukan yang paling rame animasi, tapi yang paling <span
         class="text-impost-primary font-bold border-b border-impost-primary">jelas bikin orang percaya</span> dan

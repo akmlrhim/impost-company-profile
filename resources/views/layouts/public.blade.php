@@ -40,6 +40,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+
   @stack('head')
 
   <title>@yield('title')</title>
@@ -213,7 +219,7 @@
 
 </head>
 
-<body class="relative antialiased min-h-screen bg-gradient-to-br from-zinc-950 via-black to-amber-900/20 text-white">
+<body class="relative antialiased min-h-screen bg-impost-fifth text-white">
 
   <!-- Google Tag Manager (noscript) -->
   <noscript>

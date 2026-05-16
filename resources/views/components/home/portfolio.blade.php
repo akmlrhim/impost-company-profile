@@ -44,9 +44,8 @@
         </div>
       @endif
 
-      {{-- 3D Carousel — outer clip wrapper forces clipping even for 3D-transformed children --}}
-      <div class="relative w-full mb-8 md:mb-12" style="overflow: clip; contain: layout paint;">
-      <div class="relative w-full h-[340px] sm:h-[400px] md:h-[480px] lg:h-[560px] py-4 md:py-8"
+      {{-- 3D Carousel --}}
+      <div class="relative w-full h-[340px] sm:h-[400px] md:h-[480px] lg:h-[560px] mb-8 md:mb-12 py-4 md:py-8"
         style="perspective: 2000px;">
 
         <button class="carousel-nav-prev absolute top-1/2 -translate-y-1/2 left-1 sm:left-3 md:left-6 z-40
@@ -81,7 +80,6 @@
           </svg>
         </button>
       </div>
-      </div>{{-- /clip wrapper --}}
 
       {{-- CTA --}}
       <div class="text-center">
@@ -117,18 +115,23 @@
 
     let portfoliosData = [], visibleCards = [], currentIndex = 0;
     let autoRotateTimer = null, rafId = null, isAnimating = false, resizeTimeout = null;
-    const CARD_VISIBLE_RANGE = 3, AUTO_ROTATE_DELAY = 1800;
+    const AUTO_ROTATE_DELAY = 1800;
+    function getVisibleRange() { return params.windowWidth <= 480 ? 1 : 3; }
     const transformCache = new Map();
     let params = { totalCards:0, angleStep:0, radius:0, windowWidth: window.innerWidth };
 
     function getRadius() {
       const w = params.windowWidth;
-      return w <= 480 ? 260 : w <= 768 ? 400 : 620;
+      // Keep side cards within viewport bounds on each screen size
+      return w <= 480 ? 90 : w <= 768 ? 210 : 420;
     }
     function calcParams() {
       const total = portfoliosData.length;
       if (!total) return;
-      params = { totalCards:total, angleStep: Math.max(28, 360/total), radius: getRadius() + Math.max(0,(total-5)*20), windowWidth: window.innerWidth };
+      // On mobile, don't expand radius for many cards — keep it fixed
+      const baseRadius = getRadius();
+      const extraRadius = params.windowWidth <= 480 ? 0 : Math.max(0, (total - 5) * 15);
+      params = { totalCards:total, angleStep: Math.max(28, 360/total), radius: baseRadius + extraRadius, windowWidth: window.innerWidth };
       transformCache.clear();
     }
     function getTransform(offset) {
@@ -138,11 +141,12 @@
       const x   = Math.sin(rad) * params.radius;
       const z   = Math.cos(rad) * params.radius - params.radius;
       const absOff = Math.abs(offset);
+      const visRange = getVisibleRange();
       const result = {
         style: `translate(-50%,-50%) translate3d(${x}px,0,${z}px) rotateY(${-(params.angleStep*offset)}deg)`,
-        isVisible: absOff <= CARD_VISIBLE_RANGE,
+        isVisible: absOff <= visRange,
         isActive:  offset === 0,
-        opacity:   absOff <= CARD_VISIBLE_RANGE ? (offset===0 ? 1 : 0.4) : 0
+        opacity:   absOff <= visRange ? (offset===0 ? 1 : 0.4) : 0
       };
       transformCache.set(key, result);
       return result;

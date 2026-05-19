@@ -48,12 +48,20 @@
           page: 0,
           pages: {{ ceil($services->count() / 6) }},
           transitioning: false,
-          next() { if (this.page < this.pages - 1 && !this.transitioning) { this.transitioning = true;
+          next() {
+              if (this.page < this.pages - 1 && !this.transitioning) {
+                  this.transitioning = true;
                   this.page++;
-                  setTimeout(() => this.transitioning = false, 400); } },
-          prev() { if (this.page > 0 && !this.transitioning) { this.transitioning = true;
+                  setTimeout(() => this.transitioning = false, 400);
+              }
+          },
+          prev() {
+              if (this.page > 0 && !this.transitioning) {
+                  this.transitioning = true;
                   this.page--;
-                  setTimeout(() => this.transitioning = false, 400); } }
+                  setTimeout(() => this.transitioning = false, 400);
+              }
+          }
       }" class="hidden sm:block">
 
         <div class="overflow-hidden">

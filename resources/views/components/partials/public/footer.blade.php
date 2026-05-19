@@ -114,9 +114,12 @@
       © {{ date('Y') }} <span class="text-white font-semibold">CV. Impost Media Indonesia</span>. All rights
       reserved.
     </p>
-    <p class="text-xs text-white text-center sm:text-right">
-      Senin – Sabtu &nbsp;·&nbsp; 09:00 – 17:00 WITA
-    </p>
+    <div class="flex items-center flex-wrap justify-center sm:justify-end">
+      <a href="{{ route('tnc') }}" class="text-xs text-white hover:text-white transition-colors duration-200">
+        Syarat & Ketentuan
+      </a>
+
+    </div>
   </div>
 
 </footer>

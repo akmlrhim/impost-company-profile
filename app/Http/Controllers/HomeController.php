@@ -361,6 +361,13 @@ class HomeController extends Controller
 		return view('public.legal', compact('title'));
 	}
 
+	public function tnc()
+	{
+		$title = 'Syarat & Ketentuan';
+
+		return view('public.tnc', compact('title'));
+	}
+
 	public function verifyId()
 	{
 		$title = 'Verifikasi ID';

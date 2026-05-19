@@ -51,6 +51,7 @@ Route::middleware('throttle:30,1')->group(function () {
 
 		Route::get('docs', [HomeController::class, 'docs'])->name('docs');
 		Route::get('company-legality', [HomeController::class, 'legal'])->name('legal');
+		Route::get('terms-and-conditions', [HomeController::class, 'tnc'])->name('tnc');
 
 		// Landing 
 		Route::get('landing/web-development', [LandingController::class, 'web'])->name('landing.web');

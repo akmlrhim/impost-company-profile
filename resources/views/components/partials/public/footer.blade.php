@@ -116,7 +116,7 @@
     </p>
     <div class="flex items-center flex-wrap justify-center sm:justify-end">
       <a href="{{ route('tnc') }}" class="text-xs text-white hover:text-white transition-colors duration-200">
-        Syarat & Ketentuan
+        Syarat dan Ketentuan
       </a>
 
     </div>

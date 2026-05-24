@@ -93,7 +93,9 @@ jobs:
             fi
 
             cd $APP
-            $PHP artisan storage:link --force || true
+            $PHP artisan storage:link --force 2>/dev/null || \
+              ln -sfn $APP/storage/app/public $APP/public/storage 2>/dev/null || \
+              true
             $PHP artisan config:cache
             $PHP artisan route:cache
             $PHP artisan event:cache

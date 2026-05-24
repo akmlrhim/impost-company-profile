@@ -93,6 +93,7 @@ jobs:
             fi
 
             cd $APP
+            $PHP artisan storage:link --force || true
             $PHP artisan config:cache
             $PHP artisan route:cache
             $PHP artisan event:cache

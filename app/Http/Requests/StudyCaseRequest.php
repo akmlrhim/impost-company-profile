@@ -6,19 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StudyCaseRequest extends FormRequest
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 */
 	public function authorize(): bool
 	{
 		return true;
 	}
 
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-	 */
 	public function rules(): array
 	{
 		return [
@@ -27,16 +19,33 @@ class StudyCaseRequest extends FormRequest
 			'cover_path' => $this->isMethod('POST')
 				? 'required|image|mimes:jpg,jpeg,png,webp|max:5120'
 				: 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
-
 			'situation' => 'required|string',
 			'solution' => 'required|string',
 			'result' => 'required|string',
-
 			'images.*' => $this->isMethod('POST')
 				? 'required|mimes:jpg,jpeg,png,webp,mp4,mov,avi|max:5120'
 				: 'nullable|mimes:jpg,jpeg,png,webp,mp4,mov,avi|max:5120',
+			'videos.*' => 'nullable|mimes:mp4,mov,avi|max:20480',
+		];
+	}
 
-			"videos.*" => 'nullable|mimes:mp4,mov,avi|max:20480'
+	public function messages(): array
+	{
+		return [
+			'name.required' => 'Nama study case wajib diisi.',
+			'name.max' => 'Nama study case maksimal 255 karakter.',
+			'category.required' => 'Kategori wajib dipilih.',
+			'cover_path.required' => 'Cover wajib diupload.',
+			'cover_path.image' => 'File cover harus berupa gambar.',
+			'cover_path.mimes' => 'Format cover harus jpg, jpeg, png, atau webp.',
+			'cover_path.max' => 'Ukuran cover maksimal 5 MB.',
+			'situation.required' => 'Situasi wajib diisi.',
+			'solution.required' => 'Solusi wajib diisi.',
+			'result.required' => 'Hasil wajib diisi.',
+			'images.*.mimes' => 'Format gambar/video harus jpg, jpeg, png, webp, mp4, mov, atau avi.',
+			'images.*.max' => 'Ukuran file maksimal 5 MB.',
+			'videos.*.mimes' => 'Format video harus mp4, mov, atau avi.',
+			'videos.*.max' => 'Ukuran video maksimal 20 MB.',
 		];
 	}
 }

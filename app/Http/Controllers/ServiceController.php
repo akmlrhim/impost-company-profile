@@ -52,6 +52,8 @@ class ServiceController extends Controller
 		try {
 			DB::beginTransaction();
 
+			$cover_path = null;
+
 			if ($request->hasFile('cover_path')) {
 				$manager = new ImageManager(new Driver());
 
@@ -78,8 +80,7 @@ class ServiceController extends Controller
 			return redirect()->route('services.index')->with('success', 'Layanan berhasil ditambahkan.');
 		} catch (\Exception $e) {
 			DB::rollBack();
-			// dd($e->getMessage());
-			return back()->withInput()->with('error', 'Terjadi kesalahan saat menyimpan layanan');
+			return back()->withInput()->withErrors(['upload' => 'Gagal menyimpan layanan: ' . $e->getMessage()]);
 		}
 	}
 
@@ -132,9 +133,7 @@ class ServiceController extends Controller
 			return redirect()->route('services.index')->with('success', 'Layanan berhasil diperbarui.');
 		} catch (\Exception $e) {
 			DB::rollBack();
-
-			dd($e->getMessage());
-			return back()->withInput()->with('error', 'Terjadi kesalahan saat memperbarui layanan.');
+			return back()->withInput()->withErrors(['upload' => 'Gagal memperbarui layanan: ' . $e->getMessage()]);
 		}
 	}
 

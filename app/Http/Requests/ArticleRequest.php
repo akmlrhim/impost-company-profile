@@ -6,40 +6,47 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ArticleRequest extends FormRequest
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 */
 	public function authorize(): bool
 	{
 		return true;
 	}
 
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-	 */
 	public function rules(): array
 	{
 		$articleId = $this->route('article')?->id;
 
 		return [
-			'title' => 'required|string|unique:articles,title,' . $articleId . '|max:255',
-			'status' => 'required|string',
+			'title'       => 'required|string|unique:articles,title,' . $articleId . '|max:255',
+			'status'      => 'required|string',
 			'category_id' => 'required',
-			'written_by' => 'required',
-			'content' => [
+			'written_by'  => 'required',
+			'content'     => [
 				'required',
 				function ($attribute, $value, $fail) {
-					$cleanedContent = trim(strip_tags($value));
-					if (empty($cleanedContent)) {
-						$fail('The ' . $attribute . ' field must not be empty.');
+					if (empty(trim(strip_tags($value)))) {
+						$fail('Konten artikel wajib diisi.');
 					}
-				}
+				},
 			],
 			'cover_path' => $this->isMethod('POST')
 				? 'required|image|mimes:jpeg,png,jpg'
 				: 'nullable|image|mimes:jpeg,png,jpg',
+		];
+	}
+
+	public function messages(): array
+	{
+		return [
+			'title.required'       => 'Judul artikel wajib diisi.',
+			'title.unique'         => 'Judul artikel sudah digunakan.',
+			'title.max'            => 'Judul artikel maksimal 255 karakter.',
+			'status.required'      => 'Status wajib dipilih.',
+			'category_id.required' => 'Kategori wajib dipilih.',
+			'written_by.required'  => 'Nama penulis wajib diisi.',
+			'content.required'     => 'Konten artikel wajib diisi.',
+			'cover_path.required'  => 'Cover artikel wajib diupload.',
+			'cover_path.image'     => 'File cover harus berupa gambar.',
+			'cover_path.mimes'     => 'Format cover harus jpeg, png, atau jpg.',
 		];
 	}
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudyCaseRequest;
 use App\Models\StudyCase;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -13,13 +12,10 @@ use Intervention\Image\ImageManager;
 
 class StudyCaseController extends Controller
 {
-	/**
-	 * Display a listing of the resource.
-	 */
 	public function index()
 	{
 		$title = 'Study Case';
-		$search = request('search');
+		$search = request()->string('search')->trim();
 
 		$studyCases = StudyCase::when($search, function ($query) use ($search) {
 			$query->where('name', 'like', '%' . $search . '%')
@@ -28,8 +24,7 @@ class StudyCaseController extends Controller
 		})
 			->latest()
 			->simplePaginate(8)
-			->withQueryString()
-			->appends(request()->query());
+			->withQueryString();
 
 		return view('admin.study-cases.index', [
 			'title' => $title,
@@ -38,9 +33,6 @@ class StudyCaseController extends Controller
 		]);
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 */
 	public function create()
 	{
 		return view('admin.study-cases.create', [
@@ -52,9 +44,6 @@ class StudyCaseController extends Controller
 		]);
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 */
 	public function store(StudyCaseRequest $request)
 	{
 		try {
@@ -75,7 +64,6 @@ class StudyCaseController extends Controller
 				Storage::disk('public')->put($cover_path, $img);
 			}
 
-			// save study case
 			StudyCase::create([
 				'name' => $request->name,
 				'slug' => Str::slug($request->name . '-' . $request->category),
@@ -91,21 +79,14 @@ class StudyCaseController extends Controller
 			return redirect()->route('study-case.index')->with('success', 'Study Case berhasil ditambahkan.');
 		} catch (\Throwable $e) {
 			DB::rollBack();
-			// dd($e->getMessage());
-			return back()->withInput();
+			return back()->withInput()->withErrors(['upload' => 'Gagal menyimpan study case: ' . $e->getMessage()]);
 		}
 	}
 
-
-	/**
-	 * Show the form for editing the specified resource.
-	 */
 	public function edit(StudyCase $studyCase)
 	{
-		$title = 'Edit Study Case';
-
 		return view('admin.study-cases.edit', [
-			'title' => $title,
+			'title' => 'Edit Study Case',
 			'studyCase' => $studyCase,
 			'categories' => StudyCase::select('category')
 				->distinct()
@@ -114,22 +95,16 @@ class StudyCaseController extends Controller
 		]);
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 */
 	public function update(StudyCaseRequest $request, StudyCase $studyCase)
 	{
-		DB::beginTransaction();
-
 		try {
+			DB::beginTransaction();
+
 			$manager = new ImageManager(new Driver());
 
-			// cover
 			$coverPath = $studyCase->cover_path;
 
 			if ($request->hasFile('cover_path')) {
-
-				// hapus cover lama
 				if ($coverPath && Storage::disk('public')->exists($coverPath)) {
 					Storage::disk('public')->delete($coverPath);
 				}
@@ -144,7 +119,6 @@ class StudyCaseController extends Controller
 				Storage::disk('public')->put($coverPath, $img);
 			}
 
-			// update study case
 			$studyCase->update([
 				'name' => $request->name,
 				'slug' => Str::slug($request->name . '-' . $request->category),
@@ -160,23 +134,15 @@ class StudyCaseController extends Controller
 			return redirect()->route('study-case.index')->with('success', 'Study Case berhasil diperbarui.');
 		} catch (\Throwable $e) {
 			DB::rollBack();
-
-			// dd($e->getMessage());
-			return back()->withInput();
+			return back()->withInput()->withErrors(['upload' => 'Gagal memperbarui study case: ' . $e->getMessage()]);
 		}
 	}
 
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 */
 	public function destroy(StudyCase $studyCase)
 	{
-
 		try {
 			DB::beginTransaction();
-			// delete cover
+
 			if ($studyCase->cover_path && Storage::disk('public')->exists($studyCase->cover_path)) {
 				Storage::disk('public')->delete($studyCase->cover_path);
 			}
@@ -188,8 +154,7 @@ class StudyCaseController extends Controller
 			return redirect()->route('study-case.index')->with('success', 'Study Case berhasil dihapus.');
 		} catch (\Throwable $e) {
 			DB::rollBack();
-			// dd($e->getMessage());
-			return back()->with('error', 'Terjadi kesalahan saat menghapus Study Case.');
+			return back()->with('error', 'Gagal menghapus study case: ' . $e->getMessage());
 		}
 	}
 }

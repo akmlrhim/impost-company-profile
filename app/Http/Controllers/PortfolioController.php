@@ -111,8 +111,7 @@ class PortfolioController extends Controller
 			return redirect()->route('portfolio.index')->with('success', 'Portfolio berhasil ditambahkan.');
 		} catch (\Exception $e) {
 			DB::rollBack();
-			dd($e->getMessage());
-			return back()->withInput()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+			return back()->withInput()->withErrors(['upload' => 'Gagal menyimpan portfolio: ' . $e->getMessage()]);
 		}
 	}
 

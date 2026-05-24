@@ -3,6 +3,8 @@
 @section('content')
   <div class="w-full md:w-2/3 lg:w-1/2">
 
+    <x-flash />
+
     <form action="{{ route('clients.store') }}" method="POST" enctype="multipart/form-data"
       class="bg-white rounded-lg border border-gray-200 overflow-hidden" x-data="{ loading: false }"
       @submit.prevent="loading = true; $el.submit()">
@@ -28,7 +30,13 @@
             @change="handleFiles($event)"
             class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full shadow-xs">
 
+          @error('client_logo')
+            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+          @enderror
           @error('client_logo.*')
+            <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
+          @enderror
+          @error('upload')
             <x-invalid-feedback>{{ $message }}</x-invalid-feedback>
           @enderror
 

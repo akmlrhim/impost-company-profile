@@ -45,8 +45,8 @@ class ClientController extends Controller
 	public function store(Request $request)
 	{
 		$request->validate([
-			'client_logo' => 'required',
-			'client_logo.*' => 'image|mimes:jpg,jpeg,png|max:2048',
+			'client_logo' => 'required|array|min:1',
+			'client_logo.*' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
 		]);
 
 		try {
@@ -54,16 +54,18 @@ class ClientController extends Controller
 
 			$manager = new ImageManager(new Driver());
 
-			foreach ($request->file('client_logo') as $logo) {
+			$dir = storage_path('app/public/client_logo');
+			if (!is_dir($dir)) {
+				mkdir($dir, 0775, true);
+			}
 
+			foreach ($request->file('client_logo') as $logo) {
 				$name = pathinfo($logo->getClientOriginalName(), PATHINFO_FILENAME);
 				$filename = Str::uuid() . '-' . Str::slug($name) . '.webp';
 
-				$path = storage_path('app/public/client_logo/' . $filename);
-
 				$image = $manager->read($logo);
 				$image->scale(width: 200);
-				$image->toWebp(80)->save($path);
+				$image->toWebp(80)->save($dir . '/' . $filename);
 
 				Client::create([
 					'filename' => $filename,
@@ -79,7 +81,7 @@ class ClientController extends Controller
 			DB::rollBack();
 			return back()
 				->withInput()
-				->withErrors($e->getMessage());
+				->withErrors(['upload' => 'Gagal upload: ' . $e->getMessage()]);
 		}
 	}
 

@@ -15,7 +15,7 @@
         {{-- Skeleton --}}
         <div id="clients-skeleton" class="flex gap-6 px-4 justify-center animate-pulse">
           @for ($i = 0; $i < 7; $i++)
-            <div class="h-9 w-20 sm:w-24 rounded bg-white/5 flex-shrink-0"></div>
+            <div class="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-white/5 flex-shrink-0"></div>
           @endfor
         </div>
 
@@ -24,9 +24,11 @@
             @foreach ([1, 2] as $_)
               <div class="flex items-center gap-10 sm:gap-14 lg:gap-16 px-5 shrink-0">
                 @foreach ($clients as $client)
-                  <img src="{{ asset('storage/'.$client->client_logo) }}" alt="{{ $client->filename }}"
-                    class="h-8 sm:h-10 lg:h-11 w-auto object-contain opacity-35 hover:opacity-75 transition-all duration-300 grayscale hover:grayscale-0"
-                    loading="lazy" decoding="async">
+                  <div class="h-14 w-14 sm:h-16 sm:w-16 lg:h-18 lg:w-18 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-white/10 opacity-35 hover:opacity-80 transition-all duration-300 grayscale hover:grayscale-0">
+                    <img src="{{ asset('storage/'.$client->client_logo) }}" alt="{{ $client->filename }}"
+                      class="w-full h-full object-cover"
+                      loading="lazy" decoding="async">
+                  </div>
                 @endforeach
               </div>
             @endforeach

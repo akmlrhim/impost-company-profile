@@ -20,7 +20,7 @@
         </h1>
 
         <p class="text-lg font-medium leading-relaxed text-white max-w-xl">
-          Bukan sekadar konten atau iklan — sistem pertumbuhan terukur yang bisa diaudit dan
+          Bukan sekadar konten atau iklan, melainkan sistem pertumbuhan terukur yang bisa diaudit dan
           dipertanggungjawabkan secara data.
         </p>
 

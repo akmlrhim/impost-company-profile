@@ -2,7 +2,7 @@
   <div class="max-w-6xl mx-auto">
 
     <div class="text-center mb-8 md:mb-16">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4">Mari Berhitung...</h2>
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 md:mb-4">Mari Berhitung...</h2>
       <p class="text-gray-400 text-sm md:text-base">Bandingkan biaya jika Anda merekrut tim sendiri vs menggunakan Impost
         Media.</p>
     </div>

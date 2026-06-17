@@ -2,7 +2,7 @@
 
 @section('title', 'Portfolio | Impost Media')
 @section('meta_description',
-  'Lihat hasil kerja nyata Impost Media — koleksi portfolio digital marketing, konten
+  'Lihat hasil kerja nyata Impost Media, koleksi portfolio digital marketing, konten
   kreatif, dan iklan performa untuk berbagai klien di Kalimantan Selatan.')
 
 @section('content')

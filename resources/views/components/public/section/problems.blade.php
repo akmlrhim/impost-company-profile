@@ -24,7 +24,7 @@
       </p>
     </div>
 
-    {{-- Grid — 1 col mobile, 2 col tablet, 3 col desktop --}}
+    {{-- Grid - 1 col mobile, 2 col tablet, 3 col desktop --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
       @foreach ($problems as $item)
         <div class="group relative bg-white/[0.04] border border-white/[0.08] rounded-2xl hover:border-white/[0.15]
@@ -57,7 +57,7 @@
     <div class="mt-6 bg-[#0a0a0a] border border-[#d4ac3c]/25 rounded-[2rem] p-6 md:p-8 text-center">
       <p class="text-base font-medium leading-relaxed text-white max-w-2xl mx-auto">
         Jika bisnis Anda mengalami <span class="text-red-400 font-bold">salah satu</span> dari masalah di atas,
-        berarti Anda butuh <span class="text-white font-bold">sistem marketing yang benar</span> — bukan sekadar
+        berarti Anda butuh <span class="text-white font-bold">sistem marketing yang benar</span>, bukan sekadar
         konten atau iklan.
       </p>
     </div>

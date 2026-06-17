@@ -12,13 +12,13 @@
         Port<span class="text-impost-primary">folio</span>
       </h2>
       <p class="text-base font-medium leading-relaxed text-white">
-        Bukan sekadar janji — <span class="text-white font-semibold">bukti nyata</span> dari strategi terukur dan eksekusi presisi.
+        Bukan sekadar janji, <span class="text-white font-semibold">bukti nyata</span> dari strategi terukur dan eksekusi presisi.
       </p>
     </div>
 
     @if (!empty($portfolios) && count($portfolios) > 0)
 
-      {{-- Category pills — desktop --}}
+      {{-- Category pills - desktop --}}
       @if (!empty($portfolioCategories) && count($portfolioCategories))
         <div class="hidden md:flex flex-wrap justify-center gap-2 mb-10">
           @foreach ($portfolioCategories as $index => $category)

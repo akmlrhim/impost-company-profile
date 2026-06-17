@@ -3,7 +3,7 @@
 @section('title', 'Artikel | Impost Media')
 @section('meta_description',
   'Jelajahi artikel seputar strategi digital marketing, data, dan pertumbuhan bisnis dari tim
-  Impost Media — agensi digital marketing terpercaya di Kalimantan Selatan.')
+  Impost Media, agensi digital marketing terpercaya di Kalimantan Selatan.')
 
 @section('content')
   <section class="relative w-full h-[400px] md:h-[560px] overflow-hidden">

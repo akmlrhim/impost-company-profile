@@ -7,7 +7,7 @@
       ⚠️ LEJITKAN OMZET BISNIS ANDA SEKARANG
     </div>
 
-    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-tight mb-4 md:mb-6">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4 md:mb-6">
       Cukup Gaji Kami <br>
       <span class="text-impost-primary bg-clip-text text-transparent bg-gradient-to-r from-impost-primary to-yellow-200">
         Rp 3 Juta / Bulan

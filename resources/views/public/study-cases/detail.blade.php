@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', $studyCase->name . ' | Impost Media')
-@section('meta_description', 'Studi kasus ' . $studyCase->name . ' — lihat bagaimana Impost Media memberikan solusi ' .
+@section('meta_description', 'Studi kasus ' . $studyCase->name . ',lihat bagaimana Impost Media memberikan solusi ' .
   $studyCase->category . ' yang berdampak nyata bagi klien.')
 
 @section('og_type', 'article')
@@ -14,7 +14,7 @@
         '@type' => 'Article',
         'headline' => $studyCase->name,
         'description' =>
-            'Studi kasus ' . $studyCase->name . ' — solusi ' . $studyCase->category . ' dari Impost Media.',
+            'Studi kasus ' . $studyCase->name . ',solusi ' . $studyCase->category . ' dari Impost Media.',
         'image' => $studyCase->cover_path ? asset('storage/' . $studyCase->cover_path) : asset('img/og_image.png'),
         'author' => [
             '@type' => 'Organization',

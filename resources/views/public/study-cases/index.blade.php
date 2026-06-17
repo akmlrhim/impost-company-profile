@@ -2,7 +2,7 @@
 
 @section('title', 'Study Case | Impost Media')
 @section('meta_description',
-  'Lihat studi kasus nyata klien Impost Media — bagaimana kami membantu bisnis tumbuh melalui
+  'Lihat studi kasus nyata klien Impost Media, bagaimana kami membantu bisnis tumbuh melalui
   strategi digital marketing yang terukur dan berorientasi hasil di Kalimantan Selatan.')
 
 @section('content')

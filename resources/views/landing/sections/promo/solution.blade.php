@@ -6,7 +6,7 @@
       Solusi Digital #1
     </div>
 
-    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
+    <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6">
       Bukan Sekadar Konten Estetik, <br class="hidden md:block">
       Tapi <span class="text-impost-primary">Chat & Penjualan.</span>
     </h2>

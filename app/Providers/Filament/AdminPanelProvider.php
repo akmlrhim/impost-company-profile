@@ -11,7 +11,6 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\View\PanelsRenderHook;
-use Filament\Widgets;
 use Illuminate\Support\HtmlString;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -44,9 +43,7 @@ class AdminPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
-            ->widgets([
-                Widgets\AccountWidget::class,
-            ])
+            ->widgets([])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -67,6 +64,7 @@ class AdminPanelProvider extends PanelProvider
                     <style>
                         .fi-simple-layout .fi-form-component-ctn > .grid { gap: 0.75rem; }
                         .fi-simple-layout .fi-simple-main { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+                        .fi-user-menu { display: none !important; }
                     </style>
                 ')
             )

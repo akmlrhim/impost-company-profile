@@ -10,7 +10,7 @@
         class="bg-red-600 text-white px-3 py-1 md:px-4 md:py-1.5 rounded text-[10px] md:text-xs font-bold tracking-wider animate-pulse inline-block mb-3 md:mb-4">
         TERBATAS!
       </span>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
         Hanya <span class="text-impost-primary">4 Klien</span> Setiap Bulan
       </h2>
       <p class="text-gray-400 text-xs md:text-sm mt-2 md:mt-3">

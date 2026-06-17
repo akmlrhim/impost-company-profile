@@ -98,7 +98,7 @@
           </div>
         </div>
 
-        {{-- Detail sections — editorial style (no per-section cards) --}}
+        {{-- Detail sections - editorial style (no per-section cards) --}}
         @if ($job->details->count() > 0)
           <div class="space-y-10 sm:space-y-12">
             @foreach ($job->details as $detail)

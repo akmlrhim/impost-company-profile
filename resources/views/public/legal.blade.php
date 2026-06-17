@@ -2,7 +2,7 @@
 
 @section('title', 'Legalitas Perusahaan | Impost Media')
 @section('meta_description',
-  'Informasi legalitas resmi CV. Impost Media Indonesia — NIB, NPWP, dan KBLI terdaftar di
+  'Informasi legalitas resmi CV. Impost Media Indonesia, NIB, NPWP, dan KBLI terdaftar di
   sistem OSS Republik Indonesia. Transparan, terpercaya, dan profesional.')
 
 @section('content')

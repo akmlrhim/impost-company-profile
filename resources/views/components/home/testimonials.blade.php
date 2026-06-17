@@ -25,7 +25,7 @@
             {{-- Quote mark --}}
             <div class="text-impost-primary/25 text-4xl leading-none font-bold mb-3 select-none">"</div>
 
-            {{-- Quote text — strip tags, plain readable text --}}
+            {{-- Quote text - strip tags, plain readable text --}}
             <p class="text-sm font-medium leading-relaxed text-white mb-5">
               {{ strip_tags($t->content) }}
             </p>

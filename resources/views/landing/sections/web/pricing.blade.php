@@ -1,7 +1,7 @@
 <section id="pricing" class="py-16">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Pilih Solusi Anda</h2>
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">Pilih Solusi Anda</h2>
       <p class="text-white text-sm sm:text-base md:text-lg">Pilih solusi yang Sesuai Kebutuhan Bisnismu</p>
     </div>
 

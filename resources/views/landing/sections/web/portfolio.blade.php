@@ -3,7 +3,7 @@
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
     <div class="text-center mb-10 md:mb-16">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6 leading-tight">
         Ratusan bisnis sudah kami bantu membangun <br class="hidden md:block">
         <span class="text-impost-primary border-b-2 border-impost-primary/30 pb-1">pondasi digitalnya.</span>
       </h2>

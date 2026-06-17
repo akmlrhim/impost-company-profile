@@ -239,7 +239,7 @@
             </div>
           </div>
 
-          {{-- Reset (reactive — shows when any filter active) --}}
+          {{-- Reset (reactive - shows when any filter active) --}}
           <button type="button" @click="reset()" x-show="hasFilter" x-cloak
             class="shrink-0 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl
               text-xs font-bold text-white/60 hover:text-white
@@ -256,7 +256,7 @@
         </form>
       </div>
 
-      {{-- ── #jobs-area — this whole block gets swapped by fetch ─────────── --}}
+      {{-- #jobs-area - this whole block gets swapped by fetch --}}
       <div id="jobs-area">
 
         @if ($job->count() > 0)

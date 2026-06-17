@@ -18,7 +18,7 @@
     <div class="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
       <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Cocok atau Tidak?</p>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
-        Kami Tidak Mencari Klien —<br>Kami Mencari
+        Kami Tidak Mencari Klien,<br>Kami Mencari
         <span class="text-impost-primary"> Partner</span>
       </h2>
       <p class="text-base font-medium leading-relaxed text-white max-w-xl mx-auto">

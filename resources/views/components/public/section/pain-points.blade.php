@@ -10,7 +10,7 @@
 <section class="py-16 sm:py-20 lg:py-24 im-section-alt">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    {{-- Full-width headline — no card, no center-align --}}
+    {{-- Full-width headline - no card, no center-align --}}
     <div class="mb-12 sm:mb-16">
       <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-4">Masalah yang Sering Terjadi</p>
       <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white mb-5 max-w-3xl">
@@ -59,7 +59,7 @@
       <div class="flex-1 min-w-0">
         <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-snug text-black mb-2">Kami benahi funnel marketingnya.</h3>
         <p class="text-sm font-medium leading-relaxed text-black leading-relaxed max-w-xl">
-          Membangun sistem pemasaran yang berkelanjutan — bukan sekadar posting konten atau pasang iklan.
+          Membangun sistem pemasaran yang berkelanjutan, bukan sekadar posting konten atau pasang iklan.
         </p>
       </div>
       <a href="{{ route('vsl-form') }}" class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#040404] text-white border border-white/20 hover:border-white/45 transition-colors duration-150 cursor-pointer whitespace-nowrap flex-shrink-0 self-start sm:self-center">

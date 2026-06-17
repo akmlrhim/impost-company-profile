@@ -19,7 +19,7 @@
         Alur <span class="text-impost-primary">Layanan</span>
       </h2>
       <p class="text-base font-medium leading-relaxed text-white">
-        Dari konsultasi hingga evaluasi hasil — setiap langkah dirancang transparan dan terukur.
+        Dari konsultasi hingga evaluasi hasil, setiap langkah dirancang transparan dan terukur.
       </p>
     </div>
 

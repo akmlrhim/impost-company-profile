@@ -13,7 +13,7 @@
       </p>
     </div>
 
-    {{-- Video container — DESIGN.md card-feature-photo: rounded.xxxl, no border --}}
+    {{-- Video container - DESIGN.md card-feature-photo: rounded.xxxl, no border --}}
     <div class="relative w-full overflow-hidden rounded-[2rem] aspect-video shadow-[0_40px_100px_rgba(0,0,0,0.7)]">
       <script src="https://fast.wistia.com/player.js" async></script>
       <style>

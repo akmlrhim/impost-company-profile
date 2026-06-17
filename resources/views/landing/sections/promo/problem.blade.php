@@ -1,7 +1,7 @@
 <section class="py-12 md:py-20 px-4 sm:px-6 lg:px-8" id="problem">
   <div class="max-w-4xl mx-auto">
 
-    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 md:mb-12 text-white">
+    <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-white">
       Kami Paham Betul <span class="text-red-500 italic">Masalah Anda...</span>
     </h2>
 

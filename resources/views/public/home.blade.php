@@ -11,7 +11,6 @@
 
   <x-home.vsl />
 
-
   <x-home.about :portfolios="$portfolios" :portfolioCategories="$portfolioCategories" />
 
   <x-home.services :services="$services" />

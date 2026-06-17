@@ -6,7 +6,7 @@
     {{-- Header --}}
     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
       <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Suara Klien</p>
-      <h2 class="font-bold leading-tight text-white mb-4">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
         Apa Kata <span class="text-impost-primary">Mereka?</span>
       </h2>
       <p class="text-base font-medium leading-relaxed text-white">

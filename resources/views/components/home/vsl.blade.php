@@ -1,20 +1,21 @@
-<section class="py-16 sm:py-20 lg:py-24 im-section-alt" id="vsl">
+<section class="py-16 sm:py-20 lg:py-28 im-section-alt" id="vsl">
   <div class="max-w-5xl mx-auto px-4 sm:px-6">
 
-    {{-- Section header --}}
-    <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-	<p class="text-impost-primary uppercase tracking-[0.15em] mb-3">Video Presentasi</p>
+    {{-- Header --}}
+    <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+      <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Video Presentasi</p>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
-        Lihat Bagaimana Kami Membantu
-        <span class="text-impost-primary"> Bisnis Bertumbuh Terukur</span>
+        Lihat Bagaimana Kami<br>
+        Membantu <span class="text-impost-primary">Bisnis Bertumbuh</span>
       </h2>
-      <p class="text-base font-medium leading-relaxed text-white">
+      <p class="text-base font-medium leading-relaxed text-white/70">
         Khusus untuk business owner yang ingin scale up omzet secara serius dan berkelanjutan.
       </p>
     </div>
 
-    {{-- Video container - DESIGN.md card-feature-photo: rounded.xxxl, no border --}}
-    <div class="relative w-full overflow-hidden rounded-[2rem] aspect-video shadow-[0_40px_100px_rgba(0,0,0,0.7)]">
+    {{-- Video --}}
+    <div class="relative w-full overflow-hidden rounded-2xl
+      shadow-[0_32px_80px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)]">
       <script src="https://fast.wistia.com/player.js" async></script>
       <style>
         wistia-player[media-id='3rfaxyr3ia']:not(:defined) {
@@ -27,10 +28,19 @@
       <wistia-player media-id="3rfaxyr3ia" aspect="1.7777777777777777"></wistia-player>
     </div>
 
-    {{-- CTA below video --}}
-    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="{{ route('vsl-form') }}" class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#d4ac3c] text-[#040404] hover:bg-[#d09738] transition-colors duration-150 cursor-pointer whitespace-nowrap w-full sm:w-auto">
-        Konsultasi Sekarang
+    {{-- CTA --}}
+    <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="text-center sm:text-left">
+        <p class="text-sm text-white/50 mb-3 sm:mb-0">Siap membawa bisnis Anda ke level berikutnya?</p>
+      </div>
+      <a href="{{ route('vsl-form') }}"
+        class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5
+          bg-impost-primary text-[#040404] hover:bg-impost-secondary transition-colors duration-150
+          whitespace-nowrap w-full sm:w-auto flex-shrink-0">
+        Konsultasi Gratis Sekarang
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
       </a>
     </div>
 

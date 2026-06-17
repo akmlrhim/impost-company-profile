@@ -32,19 +32,19 @@
       </div>
 
       {{-- Right: accordion --}}
-      <div class="space-y-2">
+      <div class="divide-y divide-white/[0.08] border-t border-white/[0.08]">
         @foreach ($faqs as $i => $faq)
-          <div class="faq-item group border border-white/8 rounded-2xl overflow-hidden bg-white/[0.025] transition-all duration-250">
+          <div class="faq-item group">
             <button onclick="toggleFAQ(this)"
-              class="flex items-center justify-between w-full px-5 sm:px-6 py-4 sm:py-5 text-left focus:outline-none">
-              <span class="text-sm font-medium leading-relaxed font-bold text-white pr-6 leading-snug">{{ $faq['q'] }}</span>
-              <svg class="w-5 h-5 flex-shrink-0 text-white/50 group-hover:text-impost-primary transition-all duration-250 chevron-icon"
+              class="flex items-center justify-between w-full py-5 sm:py-6 text-left focus:outline-none">
+              <span class="text-sm font-bold text-white pr-6 leading-snug">{{ $faq['q'] }}</span>
+              <svg class="w-5 h-5 flex-shrink-0 text-white/40 group-hover:text-impost-primary transition-all duration-250 chevron-icon"
                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
             <div class="faq-content max-h-0 overflow-hidden transition-all duration-400 ease-in-out opacity-0">
-              <div class="px-5 sm:px-6 pb-5 sm:pb-6 text-sm font-medium leading-relaxed text-white leading-relaxed">
+              <div class="pb-5 sm:pb-6 text-sm font-medium leading-relaxed text-white/70">
                 {!! $faq['a'] !!}
               </div>
             </div>
@@ -76,16 +76,12 @@
         const ch = item.querySelector('.chevron-icon');
         c.style.maxHeight='0px'; c.style.opacity='0';
         ch.style.transform='rotate(0deg)';
-        item.style.borderColor='';
-        item.style.backgroundColor='';
       });
 
       if (!isOpen) {
         content.style.maxHeight = content.scrollHeight+'px';
         content.style.opacity   = '1';
         chevron.style.transform = 'rotate(180deg)';
-        parent.style.borderColor = 'rgba(212,172,60,0.3)';
-        parent.style.backgroundColor = 'rgba(212,172,60,0.04)';
       }
     }
     window.toggleFAQ = toggleFAQ;

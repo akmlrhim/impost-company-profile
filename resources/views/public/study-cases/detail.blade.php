@@ -213,44 +213,32 @@
     </div>
   </div>
 
-  <div class="mt-16 sm:mt-24 mb-8">
-    <div class="relative mx-auto w-full bg-impost-primary overflow-hidden">
-
-      <div
-        class="relative p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 max-w-7xl mx-auto">
-
-        <div class="text-center md:text-left space-y-2 sm:space-y-3 flex-1">
-          <h3 class="text-xl md:text-2xl lg:text-3xl font-extrabold text-gray-900 leading-tight tracking-tight">
-            Ingin bisnis anda tumbuh seperti mereka?
-          </h3>
-          <p class="text-gray-800 text-xs md:text-sm lg:text-base font-medium max-w-xl mx-auto md:mx-0 leading-relaxed">
-            Anda sudah melihat buktinya. Sekarang giliran anda untuk mendapatkan solusi digital yang berdampak nyata.
-          </p>
-        </div>
-
-        <div class="flex flex-col w-full sm:flex-row md:w-auto items-center gap-3 sm:gap-4 shrink-0 z-10">
-
-          <a href="{{ route('vsl-form') }}"
-            class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-xs md:text-sm lg:text-base transition-all duration-300 hover:bg-gray-900 hover:text-white focus:ring-4 focus:ring-gray-900/20">
-            <span>Daftar Sekarang</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-              class="w-4 h-4 sm:w-[18px] sm:h-[18px] transition-transform group-hover:translate-x-1">
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
-          </a>
-
-          <a href="{{ route('contact') }}"
-            class="group relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 bg-gray-900 text-white rounded-xl font-bold text-xs md:text-sm lg:text-base tracking-wide shadow-xl transition-all duration-300 hover:bg-gray-800 hover:shadow-2xl hover:-translate-y-1 focus:ring-4 focus:ring-gray-900/30">
-            <span>Kontak Kami</span>
-          </a>
-
-        </div>
-
+  <section class="py-16 sm:py-20 border-t border-white/[0.07]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Siap Bertumbuh?</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+        Ingin Bisnis Anda Tumbuh <span class="text-impost-primary">Seperti Mereka?</span>
+      </h2>
+      <p class="text-base font-medium text-white max-w-xl mx-auto mb-8">
+        Anda sudah melihat buktinya. Sekarang giliran Anda untuk mendapatkan solusi digital yang berdampak nyata.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="{{ route('vsl-form') }}"
+          class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5
+            bg-impost-primary text-[#040404] hover:bg-impost-secondary transition-colors duration-150 whitespace-nowrap">
+          Konsultasi Gratis
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+        <a href="{{ route('contact') }}"
+          class="inline-flex items-center justify-center text-sm font-bold rounded-full px-7 py-3.5
+            text-white border-2 border-white/30 hover:border-white/70 transition-colors duration-150 whitespace-nowrap">
+          Kontak Kami
+        </a>
       </div>
     </div>
-  </div>
+  </section>
 @endsection
 
 @push('scripts')

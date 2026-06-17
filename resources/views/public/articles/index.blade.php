@@ -43,7 +43,7 @@
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Artikel
         </h1>
-        <p class="text-white/80 text-sm md:text-base lg:text-lg leading-relaxed max-w-xl text-justify">
+        <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
           Jelajahi koleksi artikel kami tentang berbagai topik menarik seputar strategi, data, dan pertumbuhan bisnis.
         </p>
       </div>
@@ -178,7 +178,7 @@
                   </h3>
 
                   <p
-                    class="text-xs md:text-sm lg:text-base text-white/80 line-clamp-3 mb-4 sm:mb-5 flex-1 leading-relaxed">
+                    class="text-xs md:text-sm lg:text-base text-white line-clamp-3 mb-4 sm:mb-5 flex-1 leading-relaxed">
                     {{ Str::limit(strip_tags($article->content), 100) }}
                   </p>
 

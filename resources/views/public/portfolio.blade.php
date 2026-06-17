@@ -43,7 +43,7 @@
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Portfolio
         </h1>
-        <p class="text-white/80 text-sm md:text-base lg:text-lg leading-relaxed max-w-xl text-justify">
+        <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
           Bukan sekadar janji manis, melainkan bukti nyata yang lahir dari strategi terukur dan eksekusi presisi.
         </p>
       </div>
@@ -205,24 +205,32 @@
 
     </div>
 
-    <div class="mt-20 bg-impost-primary">
-      <div class="max-w-7xl mx-auto p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
-        <div class="text-center md:text-left">
-          <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">Punya ide brilian?</h3>
-          <p class="text-gray-800 text-sm md:text-base font-medium">Lihat bagaimana kami menyelesaikan masalah klien
-            lain atau hubungi kami.
-          </p>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+    <section class="mt-16 sm:mt-20 py-16 sm:py-20 border-t border-white/[0.07]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Siap Bertumbuh?</p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          Punya Ide untuk <span class="text-impost-primary">Bisnis Anda?</span>
+        </h2>
+        <p class="text-base font-medium text-white max-w-xl mx-auto mb-8">
+          Lihat bagaimana kami menyelesaikan masalah klien, atau langsung konsultasikan kebutuhan bisnis Anda.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
           <a href="{{ route('study-case') }}"
-            class="px-6 py-3 border-2 border-gray-900 text-gray-900 rounded-xl font-bold text-sm md:text-base text-center hover:bg-gray-900 hover:text-white transition-all">Lihat
-            Studi Kasus</a>
+            class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5
+              bg-impost-primary text-[#040404] hover:bg-impost-secondary transition-colors duration-150 whitespace-nowrap">
+            Lihat Studi Kasus
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
           <a href="{{ route('contact') }}"
-            class="px-8 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm md:text-base text-center shadow-lg hover:bg-gray-800 transition-all">Hubungi
-            Kami</a>
+            class="inline-flex items-center justify-center text-sm font-bold rounded-full px-7 py-3.5
+              text-white border-2 border-white/30 hover:border-white/70 transition-colors duration-150 whitespace-nowrap">
+            Hubungi Kami
+          </a>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 @endsection
 

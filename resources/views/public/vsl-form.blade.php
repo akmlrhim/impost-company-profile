@@ -13,7 +13,7 @@
         <h1 class="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-impost-primary sm:mb-3">
           Mari Kita Mulai
         </h1>
-        <p class="mx-auto max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-gray-400">
+        <p class="mx-auto max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-white">
           Isi data berikut untuk melanjutkan. Privasi data Anda terjamin aman bersama kami.
         </p>
       </div>
@@ -39,13 +39,13 @@
           <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
           <div class="space-y-4">
-            <h2 class="border-b border-white/10 pb-2 text-lg font-semibold text-gray-200">
+            <h2 class="border-b border-white/[0.08] pb-2 text-base font-bold text-white">
               Informasi Pribadi
             </h2>
 
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div class="group">
-                <label class="mb-1.5 block text-sm font-medium text-gray-400">
+                <label class="mb-1.5 block text-sm font-medium text-white/60">
                   Nama Lengkap <span class="text-red-400">*</span>
                 </label>
                 <div class="relative">
@@ -65,7 +65,7 @@
               </div>
 
               <div class="group">
-                <label class="mb-1.5 block text-sm font-medium text-gray-400">
+                <label class="mb-1.5 block text-sm font-medium text-white/60">
                   Nomor HP <span class="text-red-400">*</span>
                 </label>
                 <div class="relative">
@@ -85,7 +85,7 @@
               </div>
 
               <div class="group md:col-span-2">
-                <label class="mb-1.5 block text-sm font-medium text-gray-400">Email</label>
+                <label class="mb-1.5 block text-sm font-medium text-white/60">Email</label>
                 <div class="relative">
                   <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <svg class="h-4 w-4 text-gray-500 transition-colors group-focus-within:text-impost-primary"
@@ -105,12 +105,12 @@
           </div>
 
           <div class="space-y-4 pt-2">
-            <h2 class="border-b border-white/10 pb-2 text-lg font-semibold text-gray-200">
+            <h2 class="border-b border-white/[0.08] pb-2 text-base font-bold text-white">
               Informasi Bisnis
             </h2>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div class="group">
-                <label class="mb-1.5 block text-sm font-medium text-gray-400">
+                <label class="mb-1.5 block text-sm font-medium text-white/60">
                   Nama Bisnis <span class="text-red-400">*</span>
                 </label>
                 <div class="relative">
@@ -130,7 +130,7 @@
               </div>
 
               <div class="group">
-                <label class="mb-1.5 block text-sm font-medium text-gray-400">
+                <label class="mb-1.5 block text-sm font-medium text-white/60">
                   Omzet Per Bulan <span class="text-red-400">*</span>
                 </label>
                 <div class="relative">
@@ -168,7 +168,7 @@
           </div>
 
           <div class="space-y-3 pt-2">
-            <h2 class="border-b border-white/10 pb-2 text-lg font-semibold text-gray-200">
+            <h2 class="border-b border-white/[0.08] pb-2 text-base font-bold text-white">
               Tujuan Utama <span class="text-red-400">*</span>
             </h2>
             <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -207,7 +207,7 @@
 
           <div class="pt-4">
             <button type="submit" :disabled="loading"
-              class="w-full rounded-lg bg-gradient-to-r from-impost-primary to-impost-secondary py-3 text-sm font-bold text-black shadow-lg transition-all duration-200 hover:opacity-90 hover:shadow-impost-primary/25 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50">
+              class="w-full rounded-full bg-impost-primary py-3.5 text-sm font-bold text-[#040404] shadow-lg transition-all duration-200 hover:bg-impost-secondary active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50">
               <span x-text="loading ? 'Memproses...' : 'Kirim Data Sekarang'"></span>
             </button>
           </div>

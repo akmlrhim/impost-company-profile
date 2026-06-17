@@ -21,7 +21,7 @@
           <span class="text-impost-primary">2–3× dalam 90 Hari</span>
         </h1>
 
-        <p class="text-base sm:text-lg font-medium leading-relaxed text-white/75 max-w-2xl mx-auto mb-8">
+        <p class="text-base sm:text-lg font-medium leading-relaxed text-white max-w-2xl mx-auto mb-8">
           Bukan sekadar konten atau iklan, melainkan sistem pertumbuhan terukur yang bisa diaudit dan
           dipertanggungjawabkan secara data.
         </p>

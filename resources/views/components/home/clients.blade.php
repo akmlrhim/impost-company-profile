@@ -39,9 +39,9 @@
                   @foreach ($clients as $client)
                     <img src="{{ asset('storage/'.$client->client_logo) }}"
                       alt="{{ $client->filename }}"
-                      class="h-7 sm:h-8 w-auto max-w-[100px] object-contain
-                        opacity-35 grayscale hover:opacity-70 hover:grayscale-0
-                        transition-all duration-300 flex-shrink-0"
+                      class="h-9 sm:h-11 w-auto max-w-[120px] object-contain rounded-2xl
+                        opacity-80 hover:opacity-100
+                        transition-opacity duration-300 flex-shrink-0"
                       loading="lazy" decoding="async">
                   @endforeach
                 </div>

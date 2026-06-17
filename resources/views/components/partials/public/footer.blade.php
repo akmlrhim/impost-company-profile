@@ -50,7 +50,7 @@
         <div>
           <p class="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-2">Kantor Pusat</p>
           <p class="text-sm font-semibold text-white mb-1.5">CV. Impost Media Indonesia</p>
-          <p class="text-sm text-white/55 leading-relaxed">
+          <p class="text-sm text-white leading-relaxed">
             Jl. Kawamara No.3, Landasan Ulin Tengah,<br>
             Banjarbaru, Kalimantan Selatan 70724
           </p>

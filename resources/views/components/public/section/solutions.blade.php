@@ -224,7 +224,7 @@
           </div>
           <div>
             <h3 class="text-sm md:text-base font-bold text-white mb-1.5">{{ $item['title'] }}</h3>
-            <p class="text-xs md:text-sm leading-relaxed text-white/55">{{ $item['desc'] }}</p>
+            <p class="text-xs md:text-sm leading-relaxed text-white">{{ $item['desc'] }}</p>
           </div>
         </div>
       @endforeach

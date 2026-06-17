@@ -38,8 +38,8 @@
           </ol>
         </nav>
 
-        <h1 class="font-bold text-white leading-tight">Karir</h1>
-        <p class="text-white/80 text-sm md:text-base leading-relaxed max-w-xl">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">Karir</h1>
+        <p class="text-white text-sm md:text-base leading-relaxed max-w-xl">
           Temukan peran yang tepat untuk mengembangkan potensi Anda. Kami mencari talenta terbaik untuk tumbuh bersama.
         </p>
       </div>

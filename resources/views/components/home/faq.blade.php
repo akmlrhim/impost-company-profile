@@ -44,7 +44,7 @@
               </svg>
             </button>
             <div class="faq-content max-h-0 overflow-hidden transition-all duration-400 ease-in-out opacity-0">
-              <div class="pb-5 sm:pb-6 text-sm font-medium leading-relaxed text-white/70">
+              <div class="pb-5 sm:pb-6 text-sm font-medium leading-relaxed text-white">
                 {!! $faq['a'] !!}
               </div>
             </div>

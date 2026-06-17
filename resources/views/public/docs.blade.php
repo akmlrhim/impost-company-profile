@@ -43,7 +43,7 @@
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Dokumen
         </h1>
-        <p class="text-white/80 text-sm md:text-base leading-relaxed max-w-xl text-justify">
+        <p class="text-white text-sm md:text-base leading-relaxed max-w-xl text-justify">
           Eksplorasi visi, misi, dan karya terbaik IMPOST MEDIA melalui dokumen interaktif di bawah ini.
         </p>
       </div>
@@ -67,7 +67,7 @@
             </div>
 
             <div class="p-5 flex-1 flex flex-col justify-between">
-              <p class="text-white/80 text-sm md:text-base mb-4 leading-relaxed">
+              <p class="text-white text-sm md:text-base mb-4 leading-relaxed">
                 Pelajari identitas perusahaan, struktur tim, serta layanan profesional yang kami tawarkan secara mendalam.
               </p>
               <a href="https://heyzine.com/flip-book/70b2ce8250.html" target="_blank"
@@ -89,7 +89,7 @@
             </div>
 
             <div class="p-5 flex-1 flex flex-col justify-between">
-              <p class="text-white/80 text-sm md:text-base mb-4 leading-relaxed">
+              <p class="text-white text-sm md:text-base mb-4 leading-relaxed">
                 Lihat koleksi proyek terbaik yang telah kami selesaikan dan bagaimana kami membantu klien berkembang.
               </p>
               <a href="https://heyzine.com/flip-book/caea1a35c5.html" target="_blank"

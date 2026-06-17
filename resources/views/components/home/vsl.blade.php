@@ -8,7 +8,7 @@
         Lihat Bagaimana Kami<br>
         Membantu <span class="text-impost-primary">Bisnis Bertumbuh</span>
       </h2>
-      <p class="text-base font-medium leading-relaxed text-white/70">
+      <p class="text-base font-medium leading-relaxed text-white">
         Khusus untuk business owner yang ingin scale up omzet secara serius dan berkelanjutan.
       </p>
     </div>
@@ -31,7 +31,7 @@
     {{-- CTA --}}
     <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
       <div class="text-center sm:text-left">
-        <p class="text-sm text-white/50 mb-3 sm:mb-0">Siap membawa bisnis Anda ke level berikutnya?</p>
+        <p class="text-sm text-white mb-3 sm:mb-0">Siap membawa bisnis Anda ke level berikutnya?</p>
       </div>
       <a href="{{ route('vsl-form') }}"
         class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5

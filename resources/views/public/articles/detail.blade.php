@@ -60,7 +60,7 @@
   @endpush
 
 @section('content')
-  <main class="antialiased pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 bg-[#0a0a0a]">
+  <main class="antialiased pt-20 sm:pt-28 md:pt-32 py-6 sm:py-12 bg-impost-fifth">
     <div class="px-3 sm:px-4 mx-auto max-w-7xl">
 
       <article class="mx-auto w-full max-w-5xl">
@@ -133,7 +133,7 @@
             {{ $article->title }}
           </h1>
 
-          <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[10px] md:text-xs text-gray-400">
+          <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[10px] md:text-xs text-white/50">
             <div class="flex items-center gap-1 sm:gap-2">
               <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -220,7 +220,7 @@
   </main>
 
   {{-- Latest Articles --}}
-  <aside class="py-10 sm:py-12 md:py-16 bg-[#0a0a0a] border-t border-white/10">
+  <aside class="py-10 sm:py-12 md:py-16 bg-impost-fifth border-t border-white/[0.07]">
     <div class="px-3 sm:px-4 mx-auto max-w-7xl">
       <h2 class="mb-6 sm:mb-8 text-xl md:text-2xl lg:text-3xl font-bold text-white">
         Artikel Terbaru Lainnya
@@ -301,8 +301,8 @@
           <div class="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
             @foreach ($latestArticle as $latest)
               <article
-                class="w-full bg-[#121212] border border-white/5 rounded-lg overflow-hidden flex flex-col h-full group hover:border-impost-primary/30 transition-colors">
-                <div class="relative h-32 sm:h-36 lg:h-40 bg-gray-800 overflow-hidden">
+                class="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl overflow-hidden flex flex-col h-full group hover:border-impost-primary/30 transition-colors">
+                <div class="relative h-32 sm:h-36 lg:h-40 bg-white/[0.03] overflow-hidden">
                   @if ($latest->cover_path)
                     <img src="{{ asset('storage/' . $latest->cover_path) }}" alt="{{ $latest->title }}"
                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -325,11 +325,11 @@
                     class="text-xs md:text-sm font-semibold text-white mb-2 line-clamp-2 leading-snug group-hover:text-impost-primary transition-colors">
                     {{ $latest->title }}
                   </h3>
-                  <p class="text-[10px] md:text-xs text-gray-400 mb-3 line-clamp-2 leading-relaxed flex-1">
+                  <p class="text-[10px] md:text-xs text-white/50 mb-3 line-clamp-2 leading-relaxed flex-1">
                     {{ Str::limit(strip_tags($latest->content), 80) }}
                   </p>
                   <div class="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
-                    <span class="text-[10px] md:text-xs text-gray-500">
+                    <span class="text-[10px] md:text-xs text-white/40">
                       {{ $latest->created_at->translatedFormat('d M Y') }}
                     </span>
                     <a href="{{ route('article.detail', $latest->slug) }}"
@@ -353,8 +353,8 @@
 
                 @foreach ($latestArticle as $latest)
                   <article class="w-full shrink-0 px-1">
-                    <div class="bg-[#121212] border border-white/5 rounded-lg overflow-hidden flex flex-col h-full">
-                      <div class="relative h-36 bg-gray-800">
+                    <div class="bg-white/[0.04] border border-white/[0.08] rounded-xl overflow-hidden flex flex-col h-full">
+                      <div class="relative h-36 bg-white/[0.03]">
                         @if ($latest->cover_path)
                           <img src="{{ asset('storage/' . $latest->cover_path) }}" alt="{{ $latest->title }}"
                             class="w-full h-full object-cover" />
@@ -367,11 +367,11 @@
                         <h3 class="text-sm font-semibold text-white mb-1.5 line-clamp-2 leading-snug">
                           {{ $latest->title }}
                         </h3>
-                        <p class="text-[11px] text-gray-400 mb-2 line-clamp-2 leading-relaxed flex-1">
+                        <p class="text-[11px] text-white/50 mb-2 line-clamp-2 leading-relaxed flex-1">
                           {{ Str::limit(strip_tags($latest->content), 80) }}
                         </p>
                         <div class="flex items-center justify-between pt-2 border-t border-white/5 mt-auto">
-                          <span class="text-[10px] text-gray-500">
+                          <span class="text-[10px] text-white/40">
                             {{ $latest->created_at->translatedFormat('d M Y') }}
                           </span>
                           <a href="{{ route('article.detail', $latest->slug) }}"

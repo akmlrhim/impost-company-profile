@@ -73,13 +73,13 @@
               <div class="w-1.5 h-1.5 rounded-full bg-red-400/60 mt-2.5 flex-shrink-0"></div>
               <div>
                 <h4 class="font-bold text-white text-sm mb-1">{{ $item['title'] }}</h4>
-                <p class="text-sm font-medium leading-relaxed text-white/50 leading-relaxed">{{ $item['desc'] }}</p>
+                <p class="text-sm font-medium leading-relaxed text-white leading-relaxed">{{ $item['desc'] }}</p>
               </div>
             </div>
           @endforeach
         </div>
         <div class="px-6 py-5 border-t border-white/8">
-          <p class="text-xs font-medium text-white/50">Kami hanya bekerja sama dengan klien yang berkomitmen pada pertumbuhan jangka panjang.</p>
+          <p class="text-xs font-medium text-white">Kami hanya bekerja sama dengan klien yang berkomitmen pada pertumbuhan jangka panjang.</p>
         </div>
       </div>
 

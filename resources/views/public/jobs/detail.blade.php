@@ -76,7 +76,7 @@
           </div>
 
           {{-- Title --}}
-          <h1 class="font-bold text-white leading-tight mb-4">{{ $job->title }}</h1>
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">{{ $job->title }}</h1>
 
           {{-- Meta row --}}
           <div class="flex items-center gap-4 text-sm text-white/40">
@@ -107,13 +107,13 @@
                 {{-- Section heading with gold left accent --}}
                 <div class="flex items-center gap-3 mb-5">
                   <span class="w-0.5 h-5 rounded-full bg-impost-primary shrink-0"></span>
-                  <h2 class="font-bold text-white">{{ $detail->section }}</h2>
+                  <h2 class="text-lg font-bold text-white">{{ $detail->section }}</h2>
                 </div>
 
                 <div class="prose prose-invert max-w-none
-                  prose-p:text-white/75 prose-p:leading-relaxed prose-p:text-sm sm:prose-p:text-base
-                  prose-ul:text-white/75 prose-ul:text-sm sm:prose-ul:text-base
-                  prose-li:text-white/75 prose-li:leading-relaxed prose-li:my-1
+                  prose-p:text-white prose-p:leading-relaxed prose-p:text-sm sm:prose-p:text-base
+                  prose-ul:text-white prose-ul:text-sm sm:prose-ul:text-base
+                  prose-li:text-white prose-li:leading-relaxed prose-li:my-1
                   prose-li:marker:text-impost-primary
                   prose-strong:text-white prose-strong:font-bold
                   prose-a:text-impost-primary prose-a:no-underline hover:prose-a:underline">

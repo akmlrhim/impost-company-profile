@@ -6,7 +6,7 @@
   dan social media management. Kami siap membantu bisnis Anda berkembang.')
 
 @section('content')
-  <section class="relative w-full h-[400px] md:h-[560px] overflow-hidden mb-12 sm:mb-16 md:mb-20">
+  <section class="relative w-full h-[400px] md:h-[560px] overflow-hidden">
     <div class="absolute inset-0 z-0 bg-fixed bg-center bg-cover bg-no-repeat"
       style="background-image: url('{{ asset('img/pages/contact.webp') }}');">
     </div>
@@ -43,7 +43,7 @@
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
           Kontak Kami
         </h1>
-        <p class="text-white/80 text-sm md:text-base leading-relaxed max-w-xl text-justify">
+        <p class="text-white text-sm md:text-base leading-relaxed max-w-xl">
           Hubungi kami untuk informasi lebih lanjut atau konsultasi gratis.
         </p>
       </div>

@@ -1,9 +1,7 @@
 <div class="w-full text-center py-4">
   <div class="mb-4 flex justify-center">
-    <svg class="w-16 h-16 text-white/10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m13.5 8.5-5 5"/><path d="m8.5 8.5 5 5"/>
-      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+    <svg class="w-16 h-16 text-white/10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path fill-rule="evenodd" d="M6.912 3a3 3 0 0 0-2.868 2.118l-2.411 7.838a3 3 0 0 0-.133.882V18a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-4.162c0-.299-.045-.592-.133-.882l-2.412-7.838A3 3 0 0 0 17.088 3H6.912Zm13.823 9.75-2.213-7.191A1.5 1.5 0 0 0 17.088 4.5H6.912a1.5 1.5 0 0 0-1.434 1.059L3.265 12.75H6.11a3 3 0 0 1 2.684 1.658l.256.513a1.5 1.5 0 0 0 1.342.829h3.218a1.5 1.5 0 0 0 1.342-.83l.256-.512a3 3 0 0 1 2.684-1.658h2.844Z" clip-rule="evenodd" />
     </svg>
   </div>
   <h3 class="font-bold text-white text-sm mb-1">Data {{ $item }} tidak tersedia.</h3>

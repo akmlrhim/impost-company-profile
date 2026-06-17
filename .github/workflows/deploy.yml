@@ -80,9 +80,11 @@ jobs:
               echo "Update — pulling latest code..."
               cd $APP
               $PHP artisan down || true
+              trap "cd $APP && $PHP artisan up" EXIT
 
-              git pull $REPO main
-              git reset --hard FETCH_HEAD
+              git remote set-url origin $REPO
+              git fetch origin main
+              git reset --hard origin/main
 
               COMPOSER_MEMORY_LIMIT=-1 composer install \
                 --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-scripts
@@ -101,5 +103,6 @@ jobs:
             $PHP artisan event:cache
             $PHP artisan view:cache
             chmod -R 775 storage bootstrap/cache
+            trap - EXIT
             $PHP artisan up
             echo "Deploy sukses: $(date)"

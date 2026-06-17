@@ -120,32 +120,43 @@
           @endforeach
         </div>
 
-        {{-- Mobile: vertical list with blur effect --}}
-        <div class="sm:hidden mt-5 relative">
-          <div>
-            @foreach ($serviceList as $i => $service)
-              <button type="button" @click="go({{ $i }})"
-                class="bg-[#040404]"
-                :style="active < {{ $i }} ?
-                    'filter:blur(' + Math.min(({{ $i }} - active) * 2, 5) + 'px);opacity:' + Math.max(0.12,
-                        0.55 - ({{ $i }} - active) * 0.18) :
-                    ''"
-                class="w-full text-left px-4 py-4 transition-all duration-300 flex items-center gap-3">
-                <div class="min-w-0">
-                  <h3 :class="active === {{ $i }} ? 'text-white' : 'text-white/45'"
-                    class="font-bold text-sm leading-snug mb-1 transition-colors duration-200">
-                    {{ $service->service_name }}</h3>
-                  <p :class="active === {{ $i }} ? 'text-white/55' : 'text-white/20'"
-                    class="text-xs leading-relaxed line-clamp-2 transition-colors duration-200">
-                    {{ $service->description }}</p>
-                </div>
-              </button>
-            @endforeach
-          </div>
+        {{-- Mobile: vertical list --}}
+        <div class="sm:hidden mt-4 relative space-y-1">
+          @foreach ($serviceList as $i => $service)
+            <button
+              type="button"
+              @click="go({{ $i }})"
+              :class="active === {{ $i }}
+                ? 'bg-white/[0.07] border-impost-primary/30'
+                : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]'"
+              :style="active < {{ $i }}
+                ? 'filter:blur(' + Math.min(({{ $i }} - active) * 1.5, 4) + 'px);opacity:' + Math.max(0.15, 0.6 - ({{ $i }} - active) * 0.18)
+                : ''"
+              class="w-full text-left px-4 py-3.5 rounded-xl border transition-all duration-300 flex items-start gap-3 cursor-pointer"
+            >
+              {{-- Active indicator dot --}}
+              <div class="mt-1.5 flex-shrink-0">
+                <div
+                  :class="active === {{ $i }} ? 'bg-impost-primary' : 'bg-white/20'"
+                  class="w-1.5 h-1.5 rounded-full transition-colors duration-300"
+                ></div>
+              </div>
+              <div class="min-w-0">
+                <h3
+                  :class="active === {{ $i }} ? 'text-white' : 'text-white/60'"
+                  class="font-bold text-sm leading-snug mb-0.5 transition-colors duration-200"
+                >{{ $service->service_name }}</h3>
+                <p
+                  :class="active === {{ $i }} ? 'text-white/70' : 'text-white/40'"
+                  class="text-xs leading-relaxed line-clamp-2 transition-colors duration-200"
+                >{{ $service->description }}</p>
+              </div>
+            </button>
+          @endforeach
 
-          {{-- Gradient fade hint at bottom --}}
-          <div class="absolute bottom-0 left-0 right-0 h-20 pointer-events-none rounded-b-xl"
-            style="background:linear-gradient(to bottom, transparent, rgba(10,10,10,0.85))"></div>
+          {{-- Gradient fade at bottom --}}
+          <div class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+               style="background:linear-gradient(to bottom, transparent, rgba(4,4,4,0.9))"></div>
         </div>
 
       </div>

@@ -1,4 +1,4 @@
-<section id="home" class="relative sm:min-h-screen flex flex-col overflow-hidden">
+<section id="home" class="relative flex flex-col overflow-hidden pt-16 md:pt-20 min-h-[calc(100svh-0px)] sm:min-h-screen">
 
   {{-- Background image --}}
   <div class="absolute inset-0 z-0">
@@ -12,7 +12,7 @@
 
   {{-- Content --}}
   <div class="relative z-10 flex-1 flex items-center">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-32 pb-16 sm:py-28 md:py-44 lg:py-52">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-20 md:py-28 lg:py-36">
 
       <div class="text-center max-w-4xl mx-auto">
 

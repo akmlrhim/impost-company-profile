@@ -1,107 +1,104 @@
 @php
-  $studyCases = \App\Models\StudyCase::select('slug', 'name', 'cover_path', 'category', 'result')->latest()->get();
+  $studyCases = \App\Models\StudyCase::select('slug', 'name', 'cover_path', 'category', 'result')
+      ->latest()
+      ->take(6)
+      ->get();
 @endphp
 
 <section class="py-16 sm:py-20 lg:py-24 bg-impost-fifth overflow-hidden" id="study-cases">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    {{-- Header + nav arrows --}}
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-10 sm:mb-14">
-      <div>
-        <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Hasil Nyata</p>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
-          Bukan Janji<br><span class="text-impost-primary">Kosong.</span>
-        </h2>
-      </div>
-
-      @if ($studyCases->isNotEmpty())
-        <div class="flex gap-2 items-center">
-          <button type="button" aria-label="Previous"
-            class="studycase-prev inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/[0.06] text-white border border-white/10 hover:bg-white/10 hover:border-impost-primary/40 transition-all duration-150 cursor-pointer">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button type="button" aria-label="Next"
-            class="studycase-next inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/[0.06] text-white border border-white/10 hover:bg-white/10 hover:border-impost-primary/40 transition-all duration-150 cursor-pointer">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-      @endif
+    {{-- Header + nav --}}
+    <div class="mb-10 sm:mb-14 text-center md:text-left">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
+        Bukan Janji<br><span class="text-impost-primary">Kosong.</span>
+      </h2>
+      <p class="text-base font-medium text-white mt-3 max-w-lg leading-relaxed mx-auto md:mx-0">
+        Lihat bagaimana bisnis nyata bertumbuh bersama Impost Media dengan strategi yang terukur.
+      </p>
     </div>
 
     @if ($studyCases->isNotEmpty())
+
       {{-- Skeleton --}}
-      <div id="studycases-carousel-skeleton" class="flex gap-4 overflow-hidden animate-pulse mb-6">
+      <div id="studycases-skeleton" class="grid grid-cols-1 lg:grid-cols-3 gap-px bg-white/[0.08] animate-pulse">
         @for ($i = 0; $i < 3; $i++)
-          <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0">
-            <div class="h-[300px] sm:h-[340px] rounded-[1.5rem] bg-white/[0.04] border border-white/[0.08]"></div>
+          <div class="bg-impost-fifth p-4 sm:p-5">
+            <div class="aspect-video bg-white/[0.04] mb-4"></div>
+            <div class="h-3.5 bg-white/[0.04] rounded w-3/4 mb-2"></div>
+            <div class="h-3 bg-white/[0.04] rounded w-full mb-1.5"></div>
+            <div class="h-3 bg-white/[0.04] rounded w-5/6"></div>
           </div>
         @endfor
       </div>
 
       {{-- Slider --}}
-      <div id="studycases-carousel-content"
-        class="studycase-slider relative w-full overflow-hidden opacity-0 transition-opacity duration-500">
-        <div class="studycase-track flex gap-4">
-          @foreach ($studyCases as $case)
-            <div class="studycase-slide flex-shrink-0 w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]">
-              <a href="{{ route('detail-study-case', $case->slug) }}"
-                class="group flex flex-col h-full bg-white/[0.04] border border-white/[0.08] rounded-2xl hover:border-impost-primary/30 p-4 sm:p-5 transition-all duration-300 hover:-translate-y-1">
+      <div id="studycases-content" class="opacity-0 transition-opacity duration-500">
+        <div class="studycase-slider overflow-hidden lg:overflow-visible bg-white/[0.02] rounded-md">
+          <div class="studycase-track flex lg:flex-wrap">
+            @foreach ($studyCases as $case)
+              <div class="studycase-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3">
+                <a href="{{ route('detail-study-case', $case->slug) }}" class="block p-4 sm:p-5">
 
-                {{-- Cover --}}
-                <div class="relative w-full aspect-video mb-4 overflow-hidden rounded-xl bg-black/20 flex-shrink-0">
-                  @if ($case->cover_path)
-                    <img src="{{ asset('storage/' . $case->cover_path) }}" alt="{{ $case->name }}"
-                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy">
-                  @else
-                    <div class="w-full h-full flex items-center justify-center">
-                      <span class="text-xs font-medium text-white/20">No Preview</span>
-                    </div>
+                  {{-- Thumbnail --}}
+                  <div class="relative aspect-video overflow-hidden bg-black/30 mb-4">
+
+                    @if ($case->cover_path)
+                      <img src="{{ asset('storage/' . $case->cover_path) }}" alt="{{ $case->name }}"
+                        class="w-full h-full object-cover" loading="lazy">
+                    @else
+                      <div class="w-full h-full bg-white/[0.04] flex items-center justify-center">
+                        <svg class="w-10 h-10 text-white/10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                    @endif
+
+                    {{-- Gradient overlay --}}
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/70"></div>
+
+                    {{-- Category badge --}}
+                    @if ($case->category)
+                      <div class="absolute top-3 left-3">
+                        <span
+                          class="text-[9px] font-black uppercase tracking-wider bg-impost-primary text-[#040404] px-2.5 py-1 rounded-full leading-none">
+                          {{ $case->category }}
+                        </span>
+                      </div>
+                    @endif
+
+                  </div>
+
+                  {{-- Case name + result --}}
+                  <h3 class="font-bold text-white text-sm leading-snug mb-1.5">{{ $case->name }}</h3>
+                  @if ($case->result)
+                    <p class="text-xs text-white/55 leading-relaxed line-clamp-3">{{ strip_tags($case->result) }}</p>
                   @endif
-                </div>
 
-                {{-- Content --}}
-                <div class="flex flex-col flex-1">
-                  <div class="mb-3">
-                    <span
-                      class="inline-flex items-center gap-1 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#d4ac3c] text-[#040404]">{{ $case->category ?? 'CASE STUDY' }}</span>
-                  </div>
-                  <h3
-                    class="font-bold text-white group-hover:text-impost-primary text-sm mb-2 leading-snug transition-colors">
-                    {{ $case->name }}
-                  </h3>
-                  <p class="text-sm font-medium leading-relaxed text-white line-clamp-3 flex-1">
-                    {{ strip_tags($case->result) }}
-                  </p>
-                  <div
-                    class="mt-4 pt-3 border-t border-white/6 flex items-center text-sm font-bold leading-relaxed text-white group-hover:text-impost-primary transition-colors">
-                    Lihat Detail
-                    <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                      stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-            </div>
-          @endforeach
+                </a>
+              </div>
+            @endforeach
+          </div>
         </div>
-
       </div>
 
-      <div class="mt-5 flex justify-center">
-        <a href="{{ route('study-case') }}"
-          class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#d4ac3c] text-[#040404] hover:bg-[#d09738] transition-colors duration-150 cursor-pointer whitespace-nowrap">
-          Lihat Semua
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      {{-- Slider nav (below content, mobile & tablet only) --}}
+      <div class="flex gap-2 items-center justify-center mt-6 lg:hidden">
+        <button type="button" aria-label="Previous"
+          class="studycase-prev inline-flex items-center justify-center w-10 h-10 bg-white/[0.06] text-white border border-white/10 hover:bg-white/10 hover:border-impost-primary/40 transition-all duration-150 cursor-pointer rounded-full">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
-        </a>
+        </button>
+        <button type="button" aria-label="Next"
+          class="studycase-next inline-flex items-center justify-center w-10 h-10 bg-white/[0.06] text-white border border-white/10 hover:bg-white/10 hover:border-impost-primary/40 transition-all duration-150 cursor-pointer rounded-full">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
+
     @else
       <div class="flex items-center justify-center py-20 border border-white/6 rounded-[2rem] bg-white/2">
         <x-empty-card item="Study Case" />
@@ -118,27 +115,29 @@
       const slides = document.querySelectorAll('.studycase-slide');
       const prevBtn = document.querySelector('.studycase-prev');
       const nextBtn = document.querySelector('.studycase-next');
-      const skeleton = document.getElementById('studycases-carousel-skeleton');
-      const content = document.getElementById('studycases-carousel-content');
+      const skeleton = document.getElementById('studycases-skeleton');
+      const content = document.getElementById('studycases-content');
       if (!track || !slides.length) return;
 
-      let current = 0,
-        perPage = 1;
+      let current = 0;
 
-      function getPerPage() {
+      function perPage() {
         const w = window.innerWidth;
         return w >= 1024 ? 3 : w >= 768 ? 2 : 1;
       }
 
       function maxIdx() {
-        return Math.max(0, slides.length - perPage);
+        return Math.max(0, slides.length - perPage());
       }
 
       function move() {
-        const slideW = slides[0].offsetWidth;
-        const gap = 16; /* gap-4 */
-        track.style.transition = 'transform .5s cubic-bezier(.23,1,.32,1)';
-        track.style.transform = `translateX(-${current * (slideW + gap)}px)`;
+        if (window.innerWidth >= 1024) {
+          track.style.transform = 'none';
+          return;
+        }
+        const w = slides[0].offsetWidth;
+        track.style.transition = 'transform .45s cubic-bezier(.23,1,.32,1)';
+        track.style.transform = `translateX(-${current * w}px)`;
       }
 
       if (prevBtn) prevBtn.addEventListener('click', () => {
@@ -154,10 +153,34 @@
         }
       });
 
+      let touchStartX = 0;
+      track.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+      }, {
+        passive: true
+      });
+      track.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0 && current < maxIdx()) {
+            current++;
+            move();
+          }
+          if (diff < 0 && current > 0) {
+            current--;
+            move();
+          }
+        }
+      });
+
       window.addEventListener('resize', () => {
-        perPage = getPerPage();
-        current = Math.min(current, maxIdx());
-        move();
+        if (window.innerWidth >= 1024) {
+          current = 0;
+          track.style.transform = 'none';
+        } else {
+          current = Math.min(current, maxIdx());
+          move();
+        }
       }, {
         passive: true
       });
@@ -190,7 +213,6 @@
         });
         setTimeout(reveal, 1500);
       }
-      perPage = getPerPage();
     })();
   </script>
 @endpush

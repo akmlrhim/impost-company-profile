@@ -42,13 +42,12 @@
     <div class="grid lg:grid-cols-[1fr_1.6fr] gap-12 lg:gap-16 items-center">
 
       {{-- Left: heading --}}
-      <div>
-        <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-4">Akar Masalah</p>
+      <div class="text-center lg:text-left">
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-5">
           Mengapa Omzet<br>
           <span class="text-red-400">Sulit Bertumbuh?</span>
         </h2>
-        <p class="text-base font-normal leading-relaxed text-white mb-8">
+        <p class="text-base font-normal leading-relaxed text-white mb-8 max-w-sm mx-auto lg:mx-0">
           Banyak bisnis terjebak di masalah yang sama tanpa pernah menyentuh akar persoalannya.
         </p>
       </div>

@@ -2,14 +2,13 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {{-- Section header --}}
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 sm:mb-16">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 sm:mb-14 text-center md:text-left">
       <div>
-        <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Apa yang Kami Kerjakan</p>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
           Layanan <span class="text-impost-primary">Kami</span>
         </h2>
       </div>
-      <p class="text-base font-medium leading-relaxed text-white max-w-sm md:text-right">
+      <p class="text-base font-normal leading-relaxed text-white max-w-sm md:text-right mx-auto md:mx-0">
         End-to-end digital solutions berfokus pada peningkatan omset, visibilitas, dan efisiensi.
       </p>
     </div>
@@ -19,139 +18,138 @@
         <x-empty-card item="Layanan" />
       </div>
     @else
-      {{-- Mobile: single-item swipe slider --}}
-      <div class="block sm:hidden" x-data="mobileSlider()" x-init="init()"
-        @touchstart.passive="dragStart($event)" @touchmove.passive="dragMove($event)" @touchend="dragEnd($event)">
+      @php $serviceList = $services->values(); @endphp
 
-        <div class="overflow-hidden select-none">
-          <div class="flex"
-            :style="`transform:translateX(-${currentIndex*100}%);transition:${isDragging?'none':'transform 480ms cubic-bezier(0.23,1,0.32,1)'}`">
-            @foreach ($services as $service)
-              <div class="min-w-full px-1"><x-service-card :service="$service" /></div>
-            @endforeach
+      <div x-data="{
+          active: 0,
+          total: {{ $serviceList->count() }},
+          timer: null,
+          progress: false,
+          delay: 4500,
+          init() { this.startAuto(); },
+          go(idx) {
+              this.active = idx;
+              this.startAuto();
+          },
+          startAuto() {
+              clearInterval(this.timer);
+              this.progress = false;
+              this.$nextTick(() => { this.progress = true; });
+              this.timer = setInterval(() => {
+                  this.active = (this.active + 1) % this.total;
+                  this.progress = false;
+                  this.$nextTick(() => { this.progress = true; });
+              }, this.delay);
+          }
+      }" x-init="init()">
+
+        {{-- Large image panel --}}
+        <div
+          class="relative w-full rounded-2xl overflow-hidden mb-8 sm:mb-10
+                    aspect-[16/9] sm:aspect-[16/7] lg:aspect-[16/6]
+                    border border-white/[0.08] bg-black/30">
+
+          @foreach ($serviceList as $i => $service)
+            <div x-show="active === {{ $i }}"
+              x-transition:enter="transition-opacity duration-500 ease-in-out" x-transition:enter-start="opacity-0"
+              x-transition:enter-end="opacity-100" x-transition:leave="transition-opacity duration-300 ease-in-out"
+              x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute inset-0"
+              style="display:none">
+              @if ($service->cover_path)
+                <img src="{{ asset('storage/' . $service->cover_path) }}" alt="{{ $service->service_name }}"
+                  class="w-full h-full object-cover" loading="{{ $i === 0 ? 'eager' : 'lazy' }}">
+              @else
+                <div class="w-full h-full flex items-center justify-center bg-white/[0.03]">
+                  <svg class="w-16 h-16 text-white/10" fill="none" stroke="currentColor" stroke-width="1"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                  </svg>
+                </div>
+              @endif
+
+              {{-- Gradient overlay bottom --}}
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none">
+              </div>
+
+              {{-- Category badge --}}
+              @if ($service->category === 'Utama')
+                <div class="absolute top-4 left-4 z-10">
+                  <span
+                    class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-impost-primary text-[#040404]">Utama</span>
+                </div>
+              @elseif ($service->category === 'Tambahan')
+                <div class="absolute top-4 left-4 z-10">
+                  <span
+                    class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider border border-white/30 text-white backdrop-blur-sm">Tambahan</span>
+                </div>
+              @endif
+
+              {{-- Service name overlay on image --}}
+              <div class="absolute bottom-5 left-5 right-5 z-10 sm:hidden">
+                <h3 class="font-bold text-white text-lg leading-tight drop-shadow-lg">{{ $service->service_name }}</h3>
+              </div>
+            </div>
+          @endforeach
+
+          {{-- Progress bar --}}
+          <div class="hidden sm:block absolute bottom-0 left-0 right-0 z-30 h-[3px] bg-white/10">
+            <div :style="progress ? `transition:width ${delay}ms linear; width:100%` : 'width:0%; transition:none'"
+              class="h-full bg-impost-primary"></div>
           </div>
+
         </div>
 
-        {{-- Dot indicators --}}
-        <div class="flex justify-center gap-1.5 mt-4">
-          @foreach ($services as $i => $service)
-            <button @click="currentIndex={{ $i }};stopAutoplay()" type="button"
-              class="rounded-full transition-all duration-300"
-              :class="currentIndex === {{ $i }} ? 'w-5 h-1.5 bg-impost-primary' : 'w-1.5 h-1.5 bg-white/20'">
+        {{-- Service tabs grid --}}
+        <div class="grid grid-cols-2 sm:grid-cols-3 hidden sm:grid">
+          @foreach ($serviceList as $i => $service)
+            <button type="button" @click="go({{ $i }})"
+              class="group relative text-left px-6 py-5 transition-colors duration-200 cursor-pointer bg-[#040404]">
+
+              <h3 :class="active === {{ $i }} ? 'text-white' : 'text-white/30 group-hover:text-white/55'"
+                class="font-bold text-sm sm:text-base leading-snug mb-2 transition-colors duration-200">
+                {{ $service->service_name }}
+              </h3>
+
+              <p :class="active === {{ $i }} ? 'text-white/55' : 'text-white/18 group-hover:text-white/35'"
+                class="text-xs sm:text-sm font-medium leading-relaxed transition-colors duration-200 line-clamp-3">
+                {{ $service->description }}
+              </p>
             </button>
           @endforeach
         </div>
-      </div>
 
-      {{-- Desktop: paginated 3-column grid --}}
-      <div x-data="{
-          page: 0,
-          pages: {{ ceil($services->count() / 6) }},
-          transitioning: false,
-          next() {
-              if (this.page < this.pages - 1 && !this.transitioning) {
-                  this.transitioning = true;
-                  this.page++;
-                  setTimeout(() => this.transitioning = false, 400);
-              }
-          },
-          prev() {
-              if (this.page > 0 && !this.transitioning) {
-                  this.transitioning = true;
-                  this.page--;
-                  setTimeout(() => this.transitioning = false, 400);
-              }
-          }
-      }" class="hidden sm:block">
-
-        <div class="overflow-hidden">
-          <div class="flex transition-transform duration-400 ease-in-out"
-            :style="'transform:translateX(-' + (page * 100) + '%)'">
-            @foreach ($services->chunk(6) as $chunk)
-              <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 px-0.5">
-                @foreach ($chunk as $service)
-                  <x-service-card :service="$service" />
-                @endforeach
-              </div>
+        {{-- Mobile: vertical list with blur effect --}}
+        <div class="sm:hidden mt-5 relative">
+          <div>
+            @foreach ($serviceList as $i => $service)
+              <button type="button" @click="go({{ $i }})"
+                class="bg-[#040404]"
+                :style="active < {{ $i }} ?
+                    'filter:blur(' + Math.min(({{ $i }} - active) * 2, 5) + 'px);opacity:' + Math.max(0.12,
+                        0.55 - ({{ $i }} - active) * 0.18) :
+                    ''"
+                class="w-full text-left px-4 py-4 transition-all duration-300 flex items-center gap-3">
+                <div class="min-w-0">
+                  <h3 :class="active === {{ $i }} ? 'text-white' : 'text-white/45'"
+                    class="font-bold text-sm leading-snug mb-1 transition-colors duration-200">
+                    {{ $service->service_name }}</h3>
+                  <p :class="active === {{ $i }} ? 'text-white/55' : 'text-white/20'"
+                    class="text-xs leading-relaxed line-clamp-2 transition-colors duration-200">
+                    {{ $service->description }}</p>
+                </div>
+              </button>
             @endforeach
           </div>
-        </div>
 
-        {{-- Pagination arrows --}}
-        @if (ceil($services->count() / 6) > 1)
-          <div class="flex items-center justify-center gap-4 mt-10">
-            <button @click="prev" :disabled="page === 0"
-              :class="page === 0 ? 'opacity-25 cursor-not-allowed' : 'hover:border-white/30'"
-              class="inline-flex items-center justify-center w-12 h-12 rounded-full
-                bg-white/[0.06] text-white border border-white/10 hover:bg-white/10
-                transition-all duration-150 cursor-pointer">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                <path d="m15 18-6-6 6-6" />
-              </svg>
-            </button>
-            <span class="text-sm font-medium text-white/50">
-              <span x-text="page+1"></span> / {{ ceil($services->count() / 6) }}
-            </span>
-            <button @click="next" :disabled="page === pages - 1"
-              :class="page === pages - 1 ? 'opacity-25 cursor-not-allowed' : 'hover:border-white/30'"
-              class="inline-flex items-center justify-center w-12 h-12 rounded-full
-                bg-white/[0.06] text-white border border-white/10 hover:bg-white/10
-                transition-all duration-150 cursor-pointer">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </button>
-          </div>
-        @endif
+          {{-- Gradient fade hint at bottom --}}
+          <div class="absolute bottom-0 left-0 right-0 h-20 pointer-events-none rounded-b-xl"
+            style="background:linear-gradient(to bottom, transparent, rgba(10,10,10,0.85))"></div>
+        </div>
 
       </div>
 
     @endif
   </div>
 </section>
-
-<script>
-  function mobileSlider() {
-    return {
-      currentIndex: 0,
-      total: {{ $services->count() }},
-      isDragging: false,
-      startX: 0,
-      threshold: 50,
-      autoplayTimer: null,
-      autoplayDelay: 3500,
-      init() {
-        this.startAutoplay();
-      },
-      startAutoplay() {
-        this.stopAutoplay();
-        this.autoplayTimer = setInterval(() => {
-          this.currentIndex = this.currentIndex >= this.total - 1 ? 0 : this.currentIndex + 1;
-        }, this.autoplayDelay);
-      },
-      stopAutoplay() {
-        if (this.autoplayTimer) {
-          clearInterval(this.autoplayTimer);
-          this.autoplayTimer = null;
-        }
-      },
-      dragStart(e) {
-        this.isDragging = true;
-        this.startX = e.touches ? e.touches[0].clientX : e.clientX;
-        this.stopAutoplay();
-      },
-      dragMove() {},
-      dragEnd(e) {
-        if (!this.isDragging) return;
-        this.isDragging = false;
-        const endX = e?.changedTouches ? e.changedTouches[0].clientX : (e?.clientX ?? this.startX);
-        const diff = this.startX - endX;
-        if (Math.abs(diff) > this.threshold) {
-          this.currentIndex = diff > 0 ? Math.min(this.currentIndex + 1, this.total - 1) : Math.max(this.currentIndex -
-            1, 0);
-        }
-        this.startAutoplay();
-      }
-    };
-  }
-</script>

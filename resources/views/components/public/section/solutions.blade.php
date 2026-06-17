@@ -70,13 +70,12 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {{-- Heading --}}
-    <div class="mb-10 sm:mb-14">
-      <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Yang Kami Selesaikan</p>
+    <div class="mb-10 sm:mb-14 text-center sm:text-left">
       <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
         Apa yang Sebenarnya<br>
         Kami <span class="text-impost-primary">Selesaikan?</span>
       </h2>
-      <p class="text-sm sm:text-base leading-relaxed text-white max-w-2xl">
+      <p class="text-sm sm:text-base leading-relaxed text-white max-w-2xl mx-auto sm:mx-0">
         Kami menolak menjadi sekadar vendor "jasa digital marketing". Kami hadir memberikan
         kepastian data, pertumbuhan omzet, dan profit nyata.
       </p>

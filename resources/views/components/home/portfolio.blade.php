@@ -3,241 +3,356 @@
 @php $firstCategoryId = $portfolioCategories[0]->id ?? null; @endphp
 
 <section class="py-16 sm:py-20 lg:py-24 im-section-alt overflow-hidden" id="portfolios">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    {{-- Header --}}
-    <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-      <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Hasil Kerja Nyata</p>
+  {{-- Header --}}
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
         Port<span class="text-impost-primary">folio</span>
       </h2>
       <p class="text-base font-medium leading-relaxed text-white">
-        Bukan sekadar janji, <span class="text-white font-semibold">bukti nyata</span> dari strategi terukur dan eksekusi presisi.
+        Bukan sekadar janji <span class="text-impost-primary font-semibold">bukti nyata</span> dari strategi terukur
+        dan eksekusi presisi.
       </p>
     </div>
+  </div>
 
-    @if (!empty($portfolios) && count($portfolios) > 0)
+  @if (!empty($portfolios) && count($portfolios) > 0)
 
-      {{-- Category pills - desktop --}}
+    {{-- Fan spread --}}
+    <div class="relative w-full overflow-hidden h-[380px] sm:h-[440px] lg:h-[520px]">
+
+      {{-- Skeleton --}}
+      <div id="portfolio-skeleton"
+        class="absolute inset-0 flex items-center justify-center gap-3 transition-opacity duration-500 pointer-events-none">
+        @foreach ([-2, -1, 0, 1, 2] as $sk)
+          @php
+            $skAbs = abs($sk);
+            $skOp = 1 - $skAbs * 0.22;
+            $skRot = $sk * -18;
+            $skTx = $sk * 130;
+            $skSc = 1 - $skAbs * 0.1;
+          @endphp
+          <div
+            class="absolute top-1/2 left-1/2 flex-shrink-0 rounded-3xl bg-white/[0.04] border border-white/[0.06] animate-pulse"
+            style="width:200px;aspect-ratio:9/16;transform:translateX(calc(-50% + {{ $skTx }}px)) translateY(-50%) rotateY({{ $skRot }}deg) scale({{ $skSc }});opacity:{{ $skOp }};">
+          </div>
+        @endforeach
+      </div>
+
+      {{-- Fan --}}
+      <div id="portfolio-fan" class="absolute inset-0 flex items-center justify-center" style="perspective:1400px;">
+        <div id="portfolio-fan-track" class="relative w-full h-full" style="transform-style:preserve-3d;"></div>
+      </div>
+
+      {{-- Empty state --}}
+      <div id="portfolioEmptyMessage" class="hidden absolute inset-0 flex items-center justify-center text-center">
+        <div>
+          <p class="text-lg font-bold text-white mb-1">Belum Ada Portfolio</p>
+          <p class="text-sm font-medium text-white/50">Kategori ini belum memiliki portofolio.</p>
+        </div>
+      </div>
+
+    </div>
+
+    {{-- Category tabs + CTA --}}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
       @if (!empty($portfolioCategories) && count($portfolioCategories))
-        <div class="hidden md:flex flex-wrap justify-center gap-2 mb-10">
-          @foreach ($portfolioCategories as $index => $category)
+        <div class="flex justify-center mt-10 sm:mt-12 border-b border-white/[0.07] overflow-x-auto">
+          @foreach ($portfolioCategories as $index => $cat)
             <button type="button"
-              class="portfolio-category-pill inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full cursor-pointer text-xs px-4 py-2 border border-white/12 transition-all duration-200
-                {{ $index === 0 ? 'bg-impost-primary text-black border-impost-primary' : 'bg-transparent text-white hover:text-white hover:border-white/30' }}"
-              data-portfolio-category="{{ $category->id }}">
-              {{ $category->name ?? ($category->title ?? 'Kategori') }}
+              class="portfolio-category-tab relative flex-shrink-0 px-5 sm:px-7 py-3 text-sm font-normal
+                transition-colors duration-200 cursor-pointer
+                {{ $index === 0 ? 'text-white' : 'text-white/40 hover:text-white/70' }}"
+              data-portfolio-category="{{ $cat->id }}">
+              {{ $cat->name ?? ($cat->title ?? 'Kategori') }}
+              @if ($index === 0)
+                <span
+                  class="portfolio-tab-indicator absolute bottom-0 left-0 right-0 h-0.5 bg-impost-primary rounded-full"></span>
+              @endif
             </button>
           @endforeach
         </div>
-
-        {{-- Mobile select --}}
-        <div class="block md:hidden mb-8">
-          <select id="portfolioMobileSelect"
-            class="w-full bg-impost-fifth text-white border border-white/12 rounded-full py-3 px-5 focus:outline-none focus:border-impost-primary transition-all text-sm font-medium">
-            @foreach ($portfolioCategories as $category)
-              <option value="{{ $category->id }}" class="bg-impost-fifth text-white">
-                {{ $category->name ?? ($category->title ?? 'Kategori') }}
-              </option>
-            @endforeach
-          </select>
-        </div>
       @endif
-
-      {{-- 3D Carousel --}}
-      <div class="relative w-full h-[340px] sm:h-[400px] md:h-[480px] lg:h-[560px] mb-8 md:mb-12 py-4 md:py-8"
-        style="perspective: 2000px;">
-
-        <button class="carousel-nav-prev absolute top-1/2 -translate-y-1/2 left-1 sm:left-3 md:left-6 z-40
-          w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center cursor-pointer
-          transition-all duration-200 bg-white/[0.04] border border-white/[0.08] hover:border-impost-primary/50 hover:bg-impost-primary/10 text-white hover:text-impost-primary"
-          aria-label="Previous">
-          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path d="m15 18-6-6 6-6"/>
-          </svg>
-        </button>
-
-        <div id="portfolio-carousel-skeleton"
-          class="absolute inset-0 z-30 flex items-center justify-center transition-opacity duration-500">
-          <div class="w-[200px] sm:w-[240px] md:w-[280px] lg:w-[320px] aspect-[4/5] rounded-[2rem] bg-white/[0.04] border border-white/[0.08] animate-pulse"></div>
-        </div>
-
-        <div class="relative w-full h-full" id="portfolioCarouselContainer"
-          style="transform-style:preserve-3d;transition:transform .7s cubic-bezier(.23,1,.32,1),opacity .5s ease;opacity:0;"></div>
-
-        <div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10"
-          id="portfolioEmptyMessage">
-          <h3 class="text-2xl font-bold leading-tight text-impost-primary font-bold mb-2">Belum Ada Portfolio</h3>
-          <p class="text-sm font-medium leading-relaxed text-white">Kategori ini belum memiliki portfolio tersedia.</p>
-        </div>
-
-        <button class="carousel-nav-next absolute top-1/2 -translate-y-1/2 right-1 sm:right-3 md:right-6 z-20
-          w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center cursor-pointer
-          transition-all duration-200 bg-white/[0.04] border border-white/[0.08] hover:border-impost-primary/50 hover:bg-impost-primary/10 text-white hover:text-impost-primary"
-          aria-label="Next">
-          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path d="m9 18 6-6-6-6"/>
-          </svg>
-        </button>
-      </div>
-
-      {{-- CTA --}}
-      <div class="text-center">
-        <a href="{{ route('portfolio') }}" class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#d4ac3c] text-[#040404] hover:bg-[#d09738] transition-colors duration-150 cursor-pointer whitespace-nowrap">
-          Lihat Semua Portfolio
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-          </svg>
-        </a>
-      </div>
-
-    @else
-      <div class="flex items-center justify-center py-20 border border-white/6 rounded-[2rem] bg-white/2">
+    </div>
+  @else
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-center py-20 border border-white/[0.06] rounded-[2rem] bg-white/[0.02]">
         <x-empty-card item="Portfolio" />
       </div>
-    @endif
+    </div>
+  @endif
 
-  </div>
 </section>
 
 <script>
   (function() {
     'use strict';
+
     const originalPortfolios = @json($portfolios);
-    const firstCategoryId    = @json($firstCategoryId);
+    const firstCategoryId = @json($firstCategoryId);
     if (!originalPortfolios?.length) return;
 
-    const container   = document.getElementById('portfolioCarouselContainer');
-    const emptyMsg    = document.getElementById('portfolioEmptyMessage');
-    const prevBtn     = document.querySelector('.carousel-nav-prev');
-    const nextBtn     = document.querySelector('.carousel-nav-next');
-    const mobileSelect = document.getElementById('portfolioMobileSelect');
+    const track = document.getElementById('portfolio-fan-track');
+    const emptyMsg = document.getElementById('portfolioEmptyMessage');
+    const skeleton = document.getElementById('portfolio-skeleton');
+    const fan = document.getElementById('portfolio-fan');
 
-    let portfoliosData = [], visibleCards = [], currentIndex = 0;
-    let autoRotateTimer = null, rafId = null, isAnimating = false, resizeTimeout = null;
-    const CARD_VISIBLE_RANGE = 3, AUTO_ROTATE_DELAY = 1800;
-    const transformCache = new Map();
-    let params = { totalCards:0, angleStep:0, radius:0, windowWidth: window.innerWidth };
+    let portfoliosData = [],
+      cards = [],
+      currentIndex = 0;
+    let autoTimer = null,
+      resizeTO = null;
+    const AUTO_DELAY = 2400;
 
-    function getRadius() {
-      const w = params.windowWidth;
-      return w <= 480 ? 80 : w <= 768 ? 380 : 580;
+    /* --- responsive params --- */
+    function cardWidth() {
+      const w = window.innerWidth;
+      return w >= 1280 ? 236 : w >= 768 ? 200 : 168;
     }
-    function calcParams() {
+
+    function spread() {
+      const w = window.innerWidth;
+      return w >= 1280 ? 188 : w >= 768 ? 152 : 115;
+    }
+
+    function visRange() {
+      return window.innerWidth >= 768 ? 3 : 2;
+    }
+
+    function rotateDeg() {
+      return window.innerWidth >= 768 ? 22 : 17;
+    }
+
+    /* --- fan transform --- */
+    function fanStyle(offset) {
+      const abs = Math.abs(offset);
+      if (abs > visRange()) return null;
+      return {
+        tx: offset * spread(),
+        ry: offset * -rotateDeg(),
+        sc: Math.pow(0.86, abs),
+        op: abs === 0 ? 1 : abs === 1 ? 0.6 : abs === 2 ? 0.4 : 0.22,
+        zi: 100 - abs * 10,
+        br: abs === 0 ? 1.05 : Math.max(0.45, 0.75 - abs * 0.12),
+      };
+    }
+
+    /* --- apply transforms --- */
+    function applyStyles() {
       const total = portfoliosData.length;
       if (!total) return;
-      params = { totalCards:total, angleStep: Math.max(28, 360/total), radius: getRadius() + Math.max(0,(total-5)*20), windowWidth: window.innerWidth };
-      transformCache.clear();
+      cards.forEach((card, i) => {
+        let off = i - currentIndex;
+        if (off > total / 2) off -= total;
+        if (off < -total / 2) off += total;
+        const s = fanStyle(off);
+        if (!s) {
+          card.style.opacity = '0';
+          card.style.pointerEvents = 'none';
+          return;
+        }
+        card.style.transform =
+          `translateX(calc(-50% + ${s.tx}px)) translateY(-50%) rotateY(${s.ry}deg) scale(${s.sc})`;
+        card.style.opacity = s.op;
+        card.style.zIndex = s.zi;
+        card.style.filter = `brightness(${s.br})`;
+        card.style.pointerEvents = off === 0 ? 'none' : 'auto';
+        card.style.cursor = off !== 0 ? 'pointer' : 'default';
+      });
     }
-    function getTransform(offset) {
-      const key = `${offset}_${params.radius}_${params.angleStep}`;
-      if (transformCache.has(key)) return transformCache.get(key);
-      const rad = (params.angleStep * offset * Math.PI) / 180;
-      const x   = Math.sin(rad) * params.radius;
-      const z   = Math.cos(rad) * params.radius - params.radius;
-      const absOff = Math.abs(offset);
-      const result = {
-        style: `translate(-50%,-50%) translate3d(${x}px,0,${z}px) rotateY(${-(params.angleStep*offset)}deg)`,
-        isVisible: absOff <= CARD_VISIBLE_RANGE,
-        isActive:  offset === 0,
-        opacity:   absOff <= CARD_VISIBLE_RANGE ? (offset===0 ? 1 : 0.4) : 0
-      };
-      transformCache.set(key, result);
-      return result;
-    }
+
+    /* --- card factory --- */
     function createCard(portfolio, index) {
       const card = document.createElement('div');
-      card.className = 'portfolio-card absolute left-1/2 top-1/2 w-[200px] sm:w-[240px] md:w-[280px] lg:w-[320px] transition-all duration-600 opacity-0';
-      card.style.cssText = 'transform-style:preserve-3d;backface-visibility:hidden;will-change:transform,opacity;pointer-events:none;';
+      card.className = 'absolute top-1/2 left-1/2';
+      card.style.cssText = [
+        `width:${cardWidth()}px`,
+        'transition:transform .65s cubic-bezier(.23,1,.32,1),opacity .5s ease,filter .5s ease',
+        'will-change:transform,opacity',
+        'backface-visibility:hidden',
+      ].join(';');
       card.dataset.index = index;
-      const src = portfolio.media_path ? `{{ asset('storage/') }}/${portfolio.media_path}` : 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&h=600&fit=crop';
-      card.innerHTML = `<div class="relative overflow-hidden rounded-[2rem]"><img src="${src}" alt="${portfolio.title||''}" class="w-full h-auto object-contain block" loading="lazy" decoding="async"></div>`;
+
+      const src = portfolio.media_path ? `{{ asset('storage/') }}/${portfolio.media_path}` : '';
+      card.innerHTML = `
+      <div class="relative w-full overflow-hidden rounded-3xl border border-white/[0.1] bg-white/[0.04] shadow-[0_32px_64px_rgba(0,0,0,0.5)]" style="aspect-ratio:9/16;">
+        ${src ? `<img src="${src}" alt="${portfolio.title || ''}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">` : ''}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        ${portfolio.title ? `<div class="absolute bottom-0 left-0 right-0 p-4 pb-5">
+          <p class="text-white font-bold text-sm leading-snug line-clamp-2">${portfolio.title}</p>
+        </div>` : ''}
+      </div>`;
+
       card.addEventListener('click', () => {
-        if (isAnimating) return;
         const idx = parseInt(card.dataset.index);
-        if (idx !== currentIndex) { currentIndex=idx; updateCarousel(); restartAutoRotate(); }
-      }, { passive:true });
+        if (idx !== currentIndex) {
+          currentIndex = idx;
+          applyStyles();
+          restartAuto();
+        }
+      }, {
+        passive: true
+      });
+
       return card;
     }
-    function updateCarousel() {
-      if (isAnimating && rafId) cancelAnimationFrame(rafId);
-      isAnimating = true;
-      rafId = requestAnimationFrame(() => {
-        visibleCards.forEach((card, index) => {
-          let offset = index - currentIndex;
-          if (offset >  params.totalCards/2) offset -= params.totalCards;
-          if (offset < -params.totalCards/2) offset += params.totalCards;
-          const t = getTransform(offset);
-          card.style.transform    = t.style;
-          card.style.opacity      = t.opacity;
-          card.style.pointerEvents = t.isVisible ? 'auto' : 'none';
-          if (t.isActive) { card.style.filter='brightness(1.1)'; card.classList.add('z-10'); card.classList.remove('cursor-pointer'); }
-          else            { card.style.filter='brightness(0.55)'; card.classList.remove('z-10'); card.classList.add('cursor-pointer'); }
-        });
-        isAnimating = false;
-      });
-    }
-    function navigate(dir) {
-      if (isAnimating) return;
-      currentIndex = (currentIndex + dir + params.totalCards) % params.totalCards;
-      updateCarousel(); restartAutoRotate();
-    }
-    function startAutoRotate() {
-      if (!portfoliosData.length || autoRotateTimer) return;
-      autoRotateTimer = setInterval(() => { currentIndex=(currentIndex+1)%params.totalCards; updateCarousel(); }, AUTO_ROTATE_DELAY);
-    }
-    function stopAutoRotate()    { clearInterval(autoRotateTimer); autoRotateTimer=null; }
-    function restartAutoRotate() { stopAutoRotate(); startAutoRotate(); }
+
+    /* --- render all cards for current set --- */
     function renderCards() {
-      container.innerHTML = ''; visibleCards = []; transformCache.clear();
+      track.innerHTML = '';
+      cards = [];
       const isEmpty = !portfoliosData.length;
       emptyMsg?.classList.toggle('hidden', !isEmpty);
-      prevBtn?.classList.toggle('hidden', isEmpty);
-      nextBtn?.classList.toggle('hidden', isEmpty);
-      if (isEmpty) { stopAutoRotate(); return; }
+      if (isEmpty) {
+        stopAuto();
+        return;
+      }
+
       const frag = document.createDocumentFragment();
-      portfoliosData.forEach((p,i) => { const c=createCard(p,i); visibleCards.push(c); frag.appendChild(c); });
-      container.appendChild(frag);
-      calcParams();
-      requestAnimationFrame(updateCarousel);
-      const skeleton = document.getElementById('portfolio-carousel-skeleton');
-      if (skeleton && skeleton.style.display !== 'none') {
-        const imgs = container.querySelectorAll('img'); let loaded=0;
-        function reveal() { skeleton.style.opacity='0'; setTimeout(()=>skeleton.style.display='none',500); container.style.opacity='1'; }
-        if (!imgs.length) { reveal(); }
-        else { imgs.forEach(img => { if(img.complete){loaded++;if(loaded>=imgs.length)reveal();} else { img.addEventListener('load',()=>{loaded++;if(loaded>=imgs.length)reveal();},{once:true}); img.addEventListener('error',()=>{loaded++;if(loaded>=imgs.length)reveal();},{once:true}); } }); setTimeout(reveal,1500); }
+      portfoliosData.forEach((p, i) => {
+        const c = createCard(p, i);
+        cards.push(c);
+        frag.appendChild(c);
+      });
+      track.appendChild(frag);
+
+      requestAnimationFrame(applyStyles);
+
+      /* hide skeleton once first images load */
+      if (skeleton) {
+        const imgs = track.querySelectorAll('img');
+        let loaded = 0;
+        const reveal = () => {
+          skeleton.style.opacity = '0';
+          setTimeout(() => skeleton.style.display = 'none', 400);
+        };
+        if (!imgs.length) {
+          reveal();
+          return;
+        }
+        imgs.forEach(img => {
+          if (img.complete) {
+            if (++loaded >= imgs.length) reveal();
+          } else {
+            img.addEventListener('load', () => {
+              if (++loaded >= imgs.length) reveal();
+            }, {
+              once: true
+            });
+            img.addEventListener('error', () => {
+              if (++loaded >= imgs.length) reveal();
+            }, {
+              once: true
+            });
+          }
+        });
+        setTimeout(reveal, 1500);
       }
     }
-    function setActivePill(categoryId) {
-      document.querySelectorAll('[data-portfolio-category]').forEach(pill => {
-        const active = pill.dataset.portfolioCategory === String(categoryId);
-        pill.classList.toggle('bg-impost-primary',active); pill.classList.toggle('text-black',active);
-        pill.classList.toggle('border-impost-primary',active);
-        pill.classList.toggle('bg-transparent',!active); pill.classList.toggle('text-white',!active);
-        pill.classList.toggle('border-white/12',!active);
+
+    /* --- navigation --- */
+    function navigate(dir) {
+      if (!portfoliosData.length) return;
+      currentIndex = (currentIndex + dir + portfoliosData.length) % portfoliosData.length;
+      applyStyles();
+      restartAuto();
+    }
+
+    /* --- auto rotate --- */
+    function startAuto() {
+      if (!autoTimer && portfoliosData.length) autoTimer = setInterval(() => navigate(1), AUTO_DELAY);
+    }
+
+    function stopAuto() {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+
+    function restartAuto() {
+      stopAuto();
+      startAuto();
+    }
+
+    /* --- tabs --- */
+    function setActiveTab(categoryId) {
+      document.querySelectorAll('.portfolio-category-tab').forEach(tab => {
+        const active = tab.dataset.portfolioCategory === String(categoryId);
+        tab.classList.toggle('text-white', active);
+        tab.classList.toggle('text-white/40', !active);
+        let ind = tab.querySelector('.portfolio-tab-indicator');
+        if (active && !ind) {
+          ind = document.createElement('span');
+          ind.className =
+            'portfolio-tab-indicator absolute bottom-0 left-0 right-0 h-0.5 bg-impost-primary rounded-full';
+          tab.appendChild(ind);
+        } else if (!active && ind) {
+          ind.remove();
+        }
       });
     }
+
     function filterByCategory(categoryId) {
       const id = Number(categoryId);
-      portfoliosData = originalPortfolios.filter(p => Number(p.category_id)===id || Number(p.category?.id)===id);
-      currentIndex = 0; renderCards(); restartAutoRotate(); setActivePill(categoryId);
-      if (mobileSelect) mobileSelect.value = categoryId;
+      portfoliosData = originalPortfolios.filter(p =>
+        Number(p.category_id) === id || Number(p.category?.id) === id
+      );
+      currentIndex = 0;
+      renderCards();
+      restartAuto();
+      setActiveTab(categoryId);
     }
+
+    /* --- init --- */
     function init() {
-      firstCategoryId ? filterByCategory(firstCategoryId) : (portfoliosData=[...originalPortfolios], renderCards(), startAutoRotate());
-      document.addEventListener('click', e => { const pill=e.target.closest('[data-portfolio-category]'); if(pill&&!isAnimating) filterByCategory(parseInt(pill.dataset.portfolioCategory)); });
-      prevBtn?.addEventListener('click', ()=>navigate(-1));
-      nextBtn?.addEventListener('click', ()=>navigate(1));
-      mobileSelect?.addEventListener('change', e=>filterByCategory(parseInt(e.target.value)));
-      if (params.windowWidth > 768) {
-        container.addEventListener('mouseenter', stopAutoRotate, {passive:true});
-        container.addEventListener('mouseleave', startAutoRotate, {passive:true});
-      }
-      window.addEventListener('resize', ()=>{
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(()=>{ const nw=window.innerWidth; if(Math.abs(nw-params.windowWidth)>50){params.windowWidth=nw;calcParams();updateCarousel();} },200);
-      }, {passive:true});
+      firstCategoryId
+        ?
+        filterByCategory(firstCategoryId) :
+        (portfoliosData = [...originalPortfolios], renderCards(), startAuto());
+
+      /* tab clicks */
+      document.addEventListener('click', e => {
+        const tab = e.target.closest('[data-portfolio-category]');
+        if (tab) filterByCategory(parseInt(tab.dataset.portfolioCategory));
+      });
+
+      /* swipe */
+      let tx0 = 0;
+      fan?.addEventListener('touchstart', e => {
+        tx0 = e.touches[0].clientX;
+      }, {
+        passive: true
+      });
+      fan?.addEventListener('touchend', e => {
+        const diff = tx0 - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 45) navigate(diff > 0 ? 1 : -1);
+      }, {
+        passive: true
+      });
+
+      /* pause on hover */
+      fan?.addEventListener('mouseenter', stopAuto, {
+        passive: true
+      });
+      fan?.addEventListener('mouseleave', startAuto, {
+        passive: true
+      });
+
+      /* resize → recalc */
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTO);
+        resizeTO = setTimeout(() => {
+          cards.forEach(c => c.style.width = `${cardWidth()}px`);
+          applyStyles();
+        }, 200);
+      }, {
+        passive: true
+      });
     }
-    'requestIdleCallback' in window ? requestIdleCallback(init,{timeout:1000}) : setTimeout(init,0);
+
+    'requestIdleCallback' in window ? requestIdleCallback(init, {
+      timeout: 800
+    }) : setTimeout(init, 0);
   })();
 </script>

@@ -67,33 +67,6 @@ class AdminPanelProvider extends PanelProvider
                         .fi-user-menu { display: none !important; }
                     </style>
                 ')
-            )
-            ->renderHook(
-                PanelsRenderHook::BODY_END,
-                fn (): HtmlString => new HtmlString(
-                    '<script src="https://www.google.com/recaptcha/api.js?render=' . e(config('services.recaptcha.site_key')) . '" async defer></script>
-                    <script>
-                    (function () {
-                        var siteKey = "' . e(config('services.recaptcha.site_key')) . '";
-                        function init() {
-                            if (typeof grecaptcha === "undefined") { setTimeout(init, 200); return; }
-                            grecaptcha.ready(function () {
-                                function generate() {
-                                    grecaptcha.execute(siteKey, { action: "login" }).then(function (token) {
-                                        if (typeof Livewire !== "undefined") {
-                                            Livewire.dispatch("recaptcha-verified", { token: token });
-                                        }
-                                        setTimeout(generate, 90000);
-                                    });
-                                }
-                                generate();
-                            });
-                        }
-                        init();
-                    })();
-                    </script>'
-                ),
-                scopes: \App\Filament\Pages\Login::class,
             );
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.public')
+﻿@extends('layouts.public')
 
 @section('title', 'Legalitas Perusahaan | Impost Media')
 @section('meta_description',
@@ -40,10 +40,10 @@
           </ol>
         </nav>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <h1 class="text-xl md:text-5xl font-bold text-white leading-tight">
           Legalitas Perusahaan
         </h1>
-        <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
+        <p class="text-white text-xs md:text-base leading-relaxed max-w-xl">
           Integritas dan transparansi adalah fondasi kami. Berikut adalah data legalitas resmi CV. Impost Media Indonesia
           yang terdaftar di sistem pemerintahan Republik Indonesia.
         </p>
@@ -60,8 +60,8 @@
 
       <div class="mb-8 sm:mb-10 md:mb-12 max-w-7xl mx-auto">
 
-        <div class="bg-[#111] rounded-lg sm:rounded-xl overflow-hidden mb-8 sm:mb-12">
-          <div class="px-4 sm:px-6 md:px-8 py-4 sm:py-6 bg-[#161616] border-b border-white/5">
+        <div class="bg-impost-dark-850 rounded-lg sm:rounded-xl overflow-hidden mb-8 sm:mb-12">
+          <div class="px-4 sm:px-6 md:px-8 py-4 sm:py-6 bg-impost-dark-700 border-b border-white/5">
             <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-white uppercase">CV. IMPOST MEDIA INDONESIA</h2>
             <p class="text-gray-400 text-xs md:text-sm mt-1">Badan Usaha Resmi Terdaftar</p>
           </div>
@@ -94,7 +94,7 @@
               <div class="md:col-span-2 pt-4 sm:pt-6 border-t border-white/5">
                 <h3 class="text-impost-primary text-[10px] md:text-xs font-bold uppercase mb-1 sm:mb-2">Alamat Terdaftar
                 </h3>
-                <p class="text-gray-300 text-xs md:text-sm lg:text-base leading-relaxed font-medium">
+                <p class="text-gray-300 text-xs md:text-base leading-relaxed font-medium">
                   Jalan Sei Wain No.01 RT. 036, Kel. Karang Joang,
                   Kec. Balikpapan Utara, Kota Balikpapan,
                   Kalimantan Timur 76127
@@ -112,62 +112,62 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
 
-            <div class="bg-[#111] p-4 sm:p-5 md:p-6 rounded-lg">
+            <div class="bg-impost-dark-850 p-4 sm:p-5 md:p-6 rounded-lg">
               <span
-                class="text-impost-primary font-mono text-xs font-bold bg-[#1a1a1a] px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">74130</span>
+                class="text-impost-primary font-mono text-xs font-bold bg-impost-dark-650 px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">74130</span>
               <h4 class="text-white font-medium text-sm md:text-base lg:text-lg mb-1 sm:mb-2 leading-tight">Desain
                 Komunikasi Visual</h4>
-              <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
+              <p class="text-gray-400 text-xs md:text-base leading-relaxed">
                 Aktivitas desain grafis, identitas visual, dan komunikasi digital.
               </p>
             </div>
 
-            <div class="bg-[#111] p-4 sm:p-5 md:p-6 rounded-lg">
+            <div class="bg-impost-dark-850 p-4 sm:p-5 md:p-6 rounded-lg">
               <span
-                class="text-impost-primary font-mono text-xs font-bold bg-[#1a1a1a] px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">82302</span>
+                class="text-impost-primary font-mono text-xs font-bold bg-impost-dark-650 px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">82302</span>
               <h4 class="text-white font-medium text-sm md:text-base lg:text-lg mb-1 sm:mb-2 leading-tight">Event
                 Organizer (Special Event)</h4>
-              <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
+              <p class="text-gray-400 text-xs md:text-base leading-relaxed">
                 Penyelenggaraan event khusus, festival, dan acara korporat.
               </p>
             </div>
 
-            <div class="bg-[#111] p-4 sm:p-5 md:p-6 rounded-lg">
+            <div class="bg-impost-dark-850 p-4 sm:p-5 md:p-6 rounded-lg">
               <span
-                class="text-impost-primary font-mono text-xs font-bold bg-[#1a1a1a] px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">74149</span>
+                class="text-impost-primary font-mono text-xs font-bold bg-impost-dark-650 px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">74149</span>
               <h4 class="text-white font-medium text-sm md:text-base lg:text-lg mb-1 sm:mb-2 leading-tight">Aktivitas
                 Desain Konten Kreatif</h4>
-              <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
+              <p class="text-gray-400 text-xs md:text-base leading-relaxed">
                 Perencanaan dan pembuatan konten kreatif digital dan multimedia.
               </p>
             </div>
 
-            <div class="bg-[#111] p-4 sm:p-5 md:p-6 rounded-lg">
+            <div class="bg-impost-dark-850 p-4 sm:p-5 md:p-6 rounded-lg">
               <span
-                class="text-impost-primary font-mono text-xs font-bold bg-[#1a1a1a] px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">74142</span>
+                class="text-impost-primary font-mono text-xs font-bold bg-impost-dark-650 px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">74142</span>
               <h4 class="text-white font-medium text-sm md:text-base lg:text-lg mb-1 sm:mb-2 leading-tight">Aktivitas
                 Desain Konten Game</h4>
-              <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
+              <p class="text-gray-400 text-xs md:text-base leading-relaxed">
                 Perancangan elemen visual, logika, dan aset permainan digital.
               </p>
             </div>
 
-            <div class="bg-[#111] p-4 sm:p-5 md:p-6 rounded-lg">
+            <div class="bg-impost-dark-850 p-4 sm:p-5 md:p-6 rounded-lg">
               <span
-                class="text-impost-primary font-mono text-xs font-bold bg-[#1a1a1a] px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">46511</span>
+                class="text-impost-primary font-mono text-xs font-bold bg-impost-dark-650 px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">46511</span>
               <h4 class="text-white font-medium text-sm md:text-base lg:text-lg mb-1 sm:mb-2 leading-tight">Perdagangan
                 Besar Komputer</h4>
-              <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
+              <p class="text-gray-400 text-xs md:text-base leading-relaxed">
                 Distribus perangkat keras komputer dan perlengkapannya.
               </p>
             </div>
 
-            <div class="bg-[#111] p-4 sm:p-5 md:p-6 rounded-lg">
+            <div class="bg-impost-dark-850 p-4 sm:p-5 md:p-6 rounded-lg">
               <span
-                class="text-impost-primary font-mono text-xs font-bold bg-[#1a1a1a] px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">56210</span>
+                class="text-impost-primary font-mono text-xs font-bold bg-impost-dark-650 px-2 py-0.5 sm:py-1 rounded mb-2 sm:mb-3 inline-block">56210</span>
               <h4 class="text-white font-medium text-sm md:text-base lg:text-lg mb-1 sm:mb-2 leading-tight">Jasa Boga
                 Event (Catering)</h4>
-              <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
+              <p class="text-gray-400 text-xs md:text-base leading-relaxed">
                 Penyediaan layanan konsumsi untuk event tertentu.
               </p>
             </div>

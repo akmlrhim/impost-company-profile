@@ -2,7 +2,7 @@
 
 @section('title', 'Kontak Kami | Impost Media')
 @section('meta_description',
-  'Hubungi Impost Media untuk konsultasi gratis seputar digital marketing, performance ads,
+  'Hubungi Impost Media untuk konsultasi sekarang seputar digital marketing, performance ads,
   dan social media management. Kami siap membantu bisnis Anda berkembang.')
 
 @section('content')
@@ -40,11 +40,11 @@
           </ol>
         </nav>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <h1 class="text-xl md:text-5xl font-bold text-white leading-tight">
           Kontak Kami
         </h1>
-        <p class="text-white text-sm md:text-base leading-relaxed max-w-xl">
-          Hubungi kami untuk informasi lebih lanjut atau konsultasi gratis.
+        <p class="text-white text-xs md:text-base leading-relaxed max-w-xl">
+          Hubungi kami untuk informasi lebih lanjut atau konsultasi sekarang.
         </p>
       </div>
 
@@ -72,8 +72,8 @@
                 </svg>
               </div>
               <div class="min-w-0">
-                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">WhatsApp</h3>
-                <p class="text-zinc-400 font-medium text-sm md:text-base group-hover:text-white transition-colors">
+                <h3 class="text-base font-semibold text-white mb-0.5">WhatsApp</h3>
+                <p class="text-white font-medium text-xs sm:text-sm group-hover:text-white transition-colors">
                   {{ config('contact.whatsapp.customer.display') }}</p>
               </div>
             </div>
@@ -90,9 +90,8 @@
                 </svg>
               </div>
               <div class="min-w-0">
-                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">Email</h3>
-                <p
-                  class="text-zinc-400 text-sm md:text-base font-medium truncate group-hover:text-white transition-colors">
+                <h3 class="text-base font-semibold text-white mb-0.5">Email</h3>
+                <p class="text-white text-xs sm:text-sm font-medium truncate group-hover:text-white transition-colors">
                   {{ config('contact.email') }}</p>
               </div>
             </div>
@@ -109,9 +108,9 @@
                 </svg>
               </div>
               <div class="min-w-0">
-                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">
+                <h3 class="text-base font-semibold text-white mb-0.5">
                   {{ config('contact.socials.instagram.label') }}</h3>
-                <p class="text-zinc-400 font-medium text-sm md:text-base group-hover:text-white transition-colors">
+                <p class="text-white font-medium text-xs sm:text-sm group-hover:text-white transition-colors">
                   {{ config('contact.socials.instagram.handle') }}</p>
               </div>
             </div>
@@ -128,9 +127,9 @@
                 </svg>
               </div>
               <div class="min-w-0">
-                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">
+                <h3 class="text-base font-semibold text-white mb-0.5">
                   {{ config('contact.socials.tiktok.label') }}</h3>
-                <p class="text-zinc-400 font-medium text-sm md:text-base group-hover:text-white transition-colors">
+                <p class="text-white font-medium text-xs sm:text-sm group-hover:text-white transition-colors">
                   {{ config('contact.socials.tiktok.handle') }}</p>
               </div>
             </div>
@@ -147,9 +146,9 @@
                 </svg>
               </div>
               <div class="min-w-0">
-                <h3 class="text-base lg:text-lg font-semibold text-white mb-0.5">
+                <h3 class="text-base font-semibold text-white mb-0.5">
                   {{ config('contact.socials.linkedin.label') }}</h3>
-                <p class="text-zinc-400 font-medium text-sm md:text-base group-hover:text-white transition-colors">
+                <p class="text-white font-medium text-xs sm:text-sm group-hover:text-white transition-colors">
                   {{ config('contact.socials.linkedin.handle') }}</p>
               </div>
             </div>

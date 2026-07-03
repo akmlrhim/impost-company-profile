@@ -3,11 +3,11 @@
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
 
     <div class="text-center relative z-10 mb-16">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+      <h1 class="text-xl md:text-5xl font-bold text-white mb-6 leading-tight">
         Bukan Cuma Soal <span class="text-impost-primary italic">Tampilan!</span>
       </h1>
 
-      <p class="text-base md:text-lg text-white mb-8 leading-relaxed max-w-2xl mx-auto">
+      <p class="text-xs md:text-base text-white mb-8 leading-relaxed max-w-2xl mx-auto">
         Kami bantu bisnis kamu punya website & landing page yang <span class="text-white font-semibold">dipercaya calon
           klien</span> dan mendorong mereka <span
           class="text-impost-primary font-bold border-b border-impost-primary/50">klik WhatsApp</span>.
@@ -21,7 +21,7 @@
         </p>
       </div>
 
-      <p class="text-base font-medium text-white">
+      <p class="text-xs md:text-base font-medium text-white">
         Website yang kerja buat bisnis, <span class="text-red-500 line-through decoration-red-500">bukan cuma
           pajangan.</span>
       </p>
@@ -29,7 +29,7 @@
 
     <div class="text-center mb-10">
       <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">Pernah Ngerasa Gini?</h2>
-      <p class="text-sm md:text-base text-white">Bisnis kamu sebenarnya sudah jalan. Tapi secara online, rasanya
+      <p class="text-xs md:text-base text-white">Bisnis kamu sebenarnya sudah jalan. Tapi secara online, rasanya
         belum "hidup".</p>
     </div>
 
@@ -47,7 +47,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Hantu di Google</h3>
-        <p class="text-white text-xs md:text-sm leading-relaxed">Usaha sudah ada, tapi nggak muncul pas dicari. Yang
+        <p class="text-white text-xs md:text-base leading-relaxed">Usaha sudah ada, tapi nggak muncul pas dicari. Yang
           keluar malah kompetitor.</p>
       </div>
 
@@ -66,7 +66,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Kalah Saing Visual</h3>
-        <p class="text-white text-xs md:text-sm leading-relaxed">Bisnis kelihatan kurang profesional dan meyakinkan
+        <p class="text-white text-xs md:text-base leading-relaxed">Bisnis kelihatan kurang profesional dan meyakinkan
           dibanding kompetitor sebelah.</p>
       </div>
 
@@ -83,7 +83,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Sepi Chat & Leads</h3>
-        <p class="text-white text-xs md:text-sm leading-relaxed">Sudah punya website, tapi sunyi senyap. Jarang ada
+        <p class="text-white text-xs md:text-base leading-relaxed">Sudah punya website, tapi sunyi senyap. Jarang ada
           yang chat atau tanya-tanya.</p>
       </div>
     </div>
@@ -101,7 +101,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2">Cuma Numpang Lewat</h3>
-        <p class="text-white text-xs md:text-sm leading-relaxed">Pengunjung datang, lihat sebentar, tapi nggak klik
+        <p class="text-white text-xs md:text-base leading-relaxed">Pengunjung datang, lihat sebentar, tapi nggak klik
           tombol WhatsApp lalu pergi.</p>
       </div>
 
@@ -118,7 +118,7 @@
         </div>
         <div>
           <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1">Bingung Nulis Konten?</h3>
-          <p class="text-white text-xs md:text-sm leading-relaxed">Takut bahasanya salah, kaku, dan malah bikin calon
+          <p class="text-white text-xs md:text-base leading-relaxed">Takut bahasanya salah, kaku, dan malah bikin calon
             pembeli nggak yakin sama produk kamu.</p>
         </div>
       </div>
@@ -135,7 +135,7 @@
         </h2>
         <div class="inline-block mt-1 md:mt-2">
           <p
-            class="text-red-400 font-medium text-xs md:text-lg bg-red-500/10 px-4 py-2 rounded-lg border border-red-500/20">
+            class="text-red-400 font-medium text-xs md:text-base bg-red-500/10 px-4 py-2 rounded-lg border border-red-500/20"
             Sudah keluar biaya, tapi nggak bantu closing
           </p>
         </div>
@@ -159,7 +159,7 @@
                 <path d="m21 21-4.3-4.3" />
               </svg>
             </div>
-            <p class="text-gray-300 text-sm md:text-base leading-snug">Orang cari bisnismu → <span
+            <p class="text-gray-300 text-xs md:text-base leading-snug">Orang cari bisnismu → <span
                 class="text-white font-semibold">nama kamu muncul</span> & kredibel</p>
           </div>
 
@@ -172,7 +172,7 @@
                 <circle cx="12" cy="12" r="3" />
               </svg>
             </div>
-            <p class="text-gray-300 text-sm md:text-base leading-snug">Sekali buka website → <span
+            <p class="text-gray-300 text-xs md:text-base leading-snug">Sekali buka website → <span
                 class="text-white font-semibold">langsung paham</span> kamu jual apa</p>
           </div>
 
@@ -185,7 +185,7 @@
                   d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
             </div>
-            <p class="text-gray-300 text-sm md:text-base leading-snug">Alur jelas → tanpa mikir panjang, <span
+            <p class="text-gray-300 text-xs md:text-base leading-snug">Alur jelas → tanpa mikir panjang, <span
                 class="text-white font-semibold">langsung klik WhatsApp</span></p>
           </div>
 
@@ -203,7 +203,7 @@
                 <path d="M10 18h4" />
               </svg>
             </div>
-            <p class="text-gray-300 text-sm md:text-base leading-snug">Bisnis kelihatan <span
+            <p class="text-gray-300 text-xs md:text-base leading-snug">Bisnis kelihatan <span
                 class="text-white font-semibold">lebih profesional</span>, walau kamu masih UMKM</p>
           </div>
 
@@ -215,7 +215,7 @@
                 <path d="M12 20v-6M6 20V10M18 20V4" />
               </svg>
             </div>
-            <p class="text-gray-300 text-sm md:text-base leading-snug">Website bisa dipakai untuk <span
+            <p class="text-gray-300 text-xs md:text-base leading-snug">Website bisa dipakai untuk <span
                 class="text-white font-semibold">iklan, pitching, partner, dan closing</span></p>
           </div>
 
@@ -223,7 +223,7 @@
       </div>
 
       <div class="text-center mt-8 md:mt-12 px-2">
-        <p class="text-sm md:text-xl text-white font-medium leading-relaxed">
+        <p class="text-xs md:text-base text-white font-medium leading-relaxed">
           Website kamu bukan cuma cantik, tapi punya tugas jelas: <br class="hidden md:block" />
           <span class="text-impost-primary font-bold border-b border-impost-primary/50 pb-1">bantu closing & bangun
             kepercayaan.</span>

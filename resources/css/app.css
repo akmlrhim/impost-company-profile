@@ -15,16 +15,26 @@
 
 @theme {
   --font-sans:
-    "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-header: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, monospace;
 
   --color-impost-primary: #d4ac3c;
+  --color-impost-primary-dark: #b89533;
   --color-impost-secondary: #d09738;
   --color-impost-third: #95774f;
   --color-impost-fourth: #503924;
   --color-impost-fifth: #040404;
+
+  --color-impost-dark-950: #0a0a0a;
+  --color-impost-dark-900: #0f0f0f;
+  --color-impost-dark-850: #111111;
+  --color-impost-dark-800: #121212;
+  --color-impost-dark-750: #151515;
+  --color-impost-dark-700: #161616;
+  --color-impost-dark-650: #1a1a1a;
+  --color-impost-dark-600: #222222;
 }
 
 *,

@@ -1,4 +1,4 @@
-@extends('layouts.public')
+﻿@extends('layouts.public')
 
 @section('title', 'Tentang Kami | Impost Media')
 @section('meta_description',
@@ -53,10 +53,10 @@
           </ol>
         </nav>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <h1 class="text-xl md:text-5xl font-bold text-white leading-tight">
           Tentang Kami
         </h1>
-        <p class="text-white text-sm md:text-base leading-relaxed max-w-xl">
+        <p class="text-white text-xs md:text-base leading-relaxed max-w-xl">
           Kenali perjalanan, visi, dan misi kami yang menjadi fondasi layanan digital marketing,
           event organizer, serta pengadaan barang dan jasa yang kami hadirkan untuk bisnis Indonesia.
         </p>
@@ -87,7 +87,7 @@
       </div>
 
       <div class="max-w-5xl mx-auto text-justify">
-        <p class="text-white text-sm lg:text-base leading-loose">
+        <p class="text-white text-xs md:text-base leading-loose">
           Setiap bisnis punya cerita dan perjalanannya masing-masing. Kami di CV Impost Media Indonesia, atau yang
           lebih
           akrab disapa Impost Media, percaya bahwa langkah pertama yang paling penting untuk membangun sebuah
@@ -95,7 +95,7 @@
           bukanlah langsung berbicara, melainkan mendengarkan.
         </p>
 
-        <p class="mt-4 sm:mt-5 md:mt-6 text-white text-sm lg:text-base leading-loose">
+        <p class="mt-4 sm:mt-5 md:mt-6 text-white text-xs md:text-base leading-loose">
           Berpusat di Banjarbaru, Kalimantan Selatan, kami hadir sebagai All-in-One Integrated Digital Marketing
           Agency
           sekaligus perusahaan multiservice. Kami mendampingi Anda untuk merapikan makna bisnis dengan mencari
@@ -105,7 +105,7 @@
           berinteraksi dengan Anda.
         </p>
 
-        <p class="mt-4 sm:mt-5 md:mt-6 text-white text-sm lg:text-base leading-loose">
+        <p class="mt-4 sm:mt-5 md:mt-6 text-white text-xs md:text-base leading-loose">
           Dari pemahaman mendalam itulah, kami mulai merangkai cerita. Kami sangat mengedepankan pemasaran
           berbasis konten
           dan storytelling untuk membangun narasi inti yang konsisten di semua ruang, mulai dari website, media
@@ -115,7 +115,7 @@
           membangun identitas merek yang kuat, dan meningkatkan visibilitas Anda secara natural.
         </p>
 
-        <p class="mt-4 sm:mt-5 md:mt-6 text-white text-sm lg:text-base leading-loose">
+        <p class="mt-4 sm:mt-5 md:mt-6 text-white text-xs md:text-base leading-loose">
           Semangat kami berakar pada satu keyakinan fundamental: Insight to Impact. Perjalanan kami yang berawal
           dari
           dunia kreasi konten mengajarkan satu pelajaran penting, bahwa cerita yang indah harus mampu membawa
@@ -126,14 +126,14 @@
           berorientasi pada konversi, dan memberikan hasil yang nyata.
         </p>
 
-        <p class="mt-4 sm:mt-5 md:mt-6 text-white text-sm lg:text-base leading-loose">
+        <p class="mt-4 sm:mt-5 md:mt-6 text-white text-xs md:text-base leading-loose">
           Kami mendedikasikan diri untuk menjadi rekan kerja yang mengedepankan transparansi dan akuntabilitas.
           Sebagai
           bukti komitmen terhadap pertumbuhan omzet Anda, kami bahkan memberikan jaminan uang kembali (money-back
           guarantee) pada layanan kampanye kami.
         </p>
 
-        <p class="mt-4 sm:mt-5 md:mt-6 text-white text-sm lg:text-base leading-loose">
+        <p class="mt-4 sm:mt-5 md:mt-6 text-white text-xs md:text-base leading-loose">
           Lebih dari sekadar pemasaran digital, Impost Media juga siap mendukung berbagai kebutuhan bisnis Anda
           melalui
           layanan event organizer, hiburan profesional, hingga pengadaan barang dan jasa. Pada akhirnya, ini
@@ -148,13 +148,13 @@
     </div>
 
     {{-- BRAND HISTORY  --}}
-    <section class="relative w-full min-h-screen flex flex-col pt-24 pb-12 bg-[#0a0a0a] overflow-hidden">
+    <section class="relative w-full min-h-screen flex flex-col pt-24 pb-12 bg-impost-dark-950 overflow-hidden">
 
       <div class="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat"
         style="background-image: url('{{ asset('img/pages/brand_history.webp') }}');">
       </div>
 
-      <div class="absolute inset-0 z-10 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/90 to-[#0a0a0a]/60"></div>
+      <div class="absolute inset-0 z-10 bg-gradient-to-r from-impost-dark-950 via-impost-dark-950/90 to-impost-dark-950/60"></div>
 
       <div class="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col h-full flex-grow">
 
@@ -163,7 +163,7 @@
           <h2 class="text-3xl sm:text-4xl lg:text-5xl text-white font-bold leading-tight">
             Brand History
           </h2>
-          <p class="mt-4 text-white text-sm lg:text-base max-w-2xl leading-relaxed">
+          <p class="mt-4 text-white text-xs md:text-base max-w-2xl leading-relaxed">
             Sebuah perjalanan dari menetapkan arah hingga menciptakan dampak nyata.
           </p>
         </div>
@@ -184,7 +184,7 @@
                 <span class="text-[11px] sm:text-sm font-medium text-impost-primary transition-colors duration-300">One
                   Direction</span>
                 <div
-                  class="indicator-dot w-4 h-4 rounded-full bg-impost-primary ring-4 ring-[#0a0a0a] transition-all duration-300 shadow-[0_0_12px_rgba(var(--impost-primary-rgb),0.8)]">
+                  class="indicator-dot w-4 h-4 rounded-full bg-impost-primary ring-4 ring-impost-dark-950 transition-all duration-300 shadow-[0_0_12px_rgba(var(--impost-primary-rgb),0.8)]">
                 </div>
               </button>
 
@@ -194,7 +194,7 @@
                   class="text-[11px] sm:text-sm font-medium text-white/40 transition-colors duration-300 group-hover:text-white">Built
                   as a System</span>
                 <div
-                  class="indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-[#0a0a0a] transition-all duration-300 group-hover:bg-white/50">
+                  class="indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-impost-dark-950 transition-all duration-300 group-hover:bg-white/50">
                 </div>
               </button>
 
@@ -203,7 +203,7 @@
                 <span
                   class="text-[11px] sm:text-sm font-medium text-white/40 transition-colors duration-300 group-hover:text-white">Consistent</span>
                 <div
-                  class="indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-[#0a0a0a] transition-all duration-300 group-hover:bg-white/50">
+                  class="indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-impost-dark-950 transition-all duration-300 group-hover:bg-white/50">
                 </div>
               </button>
 
@@ -212,7 +212,7 @@
                 <span
                   class="text-[11px] sm:text-sm font-medium text-white/40 transition-colors duration-300 group-hover:text-white">Data-Driven</span>
                 <div
-                  class="indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-[#0a0a0a] transition-all duration-300 group-hover:bg-white/50">
+                  class="indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-impost-dark-950 transition-all duration-300 group-hover:bg-white/50">
                 </div>
               </button>
 
@@ -222,7 +222,7 @@
                   class="text-[11px] sm:text-sm font-medium text-white/40 transition-colors duration-300 group-hover:text-white">Expert
                   Partner</span>
                 <div
-                  class="indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-[#0a0a0a] transition-all duration-300 group-hover:bg-white/50">
+                  class="indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-impost-dark-950 transition-all duration-300 group-hover:bg-white/50">
                 </div>
               </button>
 
@@ -232,7 +232,7 @@
                   class="text-[11px] sm:text-sm font-medium text-white/40 transition-colors duration-300 group-hover:text-white">Insight
                   to Impact</span>
                 <div
-                  class="indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-[#0a0a0a] transition-all duration-300 group-hover:bg-white/50">
+                  class="indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-impost-dark-950 transition-all duration-300 group-hover:bg-white/50">
                 </div>
               </button>
 
@@ -245,7 +245,7 @@
           <div id="tab-1"
             class="tab-content relative transition-all duration-500 opacity-100 translate-y-0 pointer-events-auto">
             <h3 class="text-base lg:text-lg font-bold text-white mb-5">One Direction</h3>
-            <p class="text-white text-sm lg:text-base leading-relaxed text-justify">
+            <p class="text-white text-xs md:text-base leading-relaxed text-justify">
               Impost Media lahir dari satu arah yang jelas. Bukan untuk sekadar hadir di ruang digital, tetapi
               untuk membantu mengarahkan pertumbuhan bisnis dengan tujuan yang terstruktur dan terukur.
               Di tengah dunia digital marketing yang sering bergerak reaktif, kami memilih satu kompas di
@@ -260,7 +260,7 @@
           <div id="tab-2"
             class="tab-content absolute top-0 left-0 w-full transition-all duration-500 opacity-0 translate-y-4 pointer-events-none">
             <h3 class="text-base lg:text-lg font-bold text-white mb-5">Built as a System</h3>
-            <p class="text-white text-sm lg:text-base leading-relaxed text-justify">
+            <p class="text-white text-xs md:text-base leading-relaxed text-justify">
               Impost Media tidak dibangun sebagai individu. Ia dibangun sebagai sebuah sistem.
               Sistem yang menjadi sebuah alat untuk menghubungkan riset, hasil analisis, strategi, eksekusi,
               distribusi, dan evaluasi dalam satu alur kerja yang rapi dan terstruktur. Setiap perjalanannya
@@ -275,7 +275,7 @@
           <div id="tab-3"
             class="tab-content absolute top-0 left-0 w-full transition-all duration-500 opacity-0 translate-y-4 pointer-events-none">
             <h3 class="text-base lg:text-lg font-bold text-white mb-5">Consistent Positioning</h3>
-            <p class="text-white text-sm lg:text-base leading-relaxed text-justify">
+            <p class="text-white text-xs md:text-base leading-relaxed text-justify">
               Kami percaya, brand yang kuat tidak dibangun dari konten yang ramai, tetapi dari posisi yang
               konsisten.
               Impost Media mengembangkan positioning framework yang menjaga brand tetap berada pada
@@ -289,7 +289,7 @@
           <div id="tab-4"
             class="tab-content absolute top-0 left-0 w-full transition-all duration-500 opacity-0 translate-y-4 pointer-events-none">
             <h3 class="text-base lg:text-lg font-bold text-white mb-5">Data-Driven Approach</h3>
-            <p class="text-white text-sm lg:text-base leading-relaxed text-justify">
+            <p class="text-white text-xs md:text-base leading-relaxed text-justify">
               Setiap keputusan yang kami ambil berangkat dari data, bukan asumsi semata atupun intuisi sesaat.
               Kami menggunakan data untuk membaca perilaku market, mengukur performa, dan
               menyempurnakannya menjadi strategi secara berkelanjutan. Pendekatan seperti ini membuktikan
@@ -303,7 +303,7 @@
           <div id="tab-5"
             class="tab-content absolute top-0 left-0 w-full transition-all duration-500 opacity-0 translate-y-4 pointer-events-none">
             <h3 class="text-base lg:text-lg font-bold text-white mb-5">Your Expert Partner</h3>
-            <p class="text-white text-sm lg:text-base leading-relaxed text-justify">
+            <p class="text-white text-xs md:text-base leading-relaxed text-justify">
               Kami bukan sekadar pembuat konten. Kami hadir sebagai partner ahli.
               Tim Impost Media memiliki praktisi berpengalaman yang memahami bisnis, bukan hanya sekadar
               pengisi channel. Kami bekerja fleksibel, adaptif, dan kolaboratif dengan menyesuaikan strategi
@@ -318,7 +318,7 @@
             <div class="flex items-center gap-4 mb-5">
               <h3 class="text-base lg:text-lg font-bold text-white">Insight to Impact</h3>
             </div>
-            <p class="text-white text-sm lg:text-base leading-relaxed text-justify">
+            <p class="text-white text-xs md:text-base leading-relaxed text-justify">
               Pada akhirnya, semua bermuara pada dampak.
               Insight kami olah menjadi strategi. Strategi diterjemahkan menjadi aksi. Dan aksi kami ukur
               melalui pertumbuhan bisnis yang nyata.
@@ -342,7 +342,7 @@
         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
           Menjadi Mitra Multiservice <span class="text-impost-primary">Terpercaya</span>
         </h2>
-        <p class="text-white text-sm lg:text-base leading-relaxed">
+        <p class="text-white text-xs md:text-base leading-relaxed">
           Menjadi mitra multiservice terpercaya di Indonesia melalui layanan bisnis, event, dan pengadaan yang
           profesional serta berorientasi pada hasil.
         </p>
@@ -353,7 +353,7 @@
         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">
           Tiga Pilar <span class="text-impost-primary">Komitmen Kami</span>
         </h2>
-        <ol class="space-y-3 text-sm lg:text-base text-white leading-relaxed list-decimal list-outside pl-4">
+        <ol class="space-y-3 text-xs md:text-base text-white leading-relaxed list-decimal list-outside pl-4">
           <li>Memberikan layanan digital marketing berbasis data yang membantu brand tumbuh, dikenal luas, dan
             meningkatkan konversi secara nyata.</li>
           <li>Menyediakan solusi event organizer, hiburan profesional, hingga music performance & production untuk
@@ -392,13 +392,13 @@
         btn.querySelector('span').className =
           "text-[11px] sm:text-sm font-medium text-white/40 transition-colors duration-300 group-hover:text-white";
         btn.querySelector('.indicator-dot').className =
-          "indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-[#0a0a0a] transition-all duration-300 group-hover:bg-white/50";
+          "indicator-dot w-4 h-4 rounded-full bg-white/20 ring-4 ring-impost-dark-950 transition-all duration-300 group-hover:bg-white/50";
       });
 
       btnElement.querySelector('span').className =
         "text-[11px] sm:text-sm font-medium text-impost-primary transition-colors duration-300";
       btnElement.querySelector('.indicator-dot').className =
-        "indicator-dot w-4 h-4 rounded-full bg-impost-primary ring-4 ring-[#0a0a0a] transition-all duration-300 shadow-[0_0_12px_rgba(var(--impost-primary-rgb),0.8)]";
+        "indicator-dot w-4 h-4 rounded-full bg-impost-primary ring-4 ring-impost-dark-950 transition-all duration-300 shadow-[0_0_12px_rgba(var(--impost-primary-rgb),0.8)]";
 
       const btnLeft = btnElement.offsetLeft;
       const btnWidth = btnElement.offsetWidth;

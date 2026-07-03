@@ -1,4 +1,4 @@
-@props(['service'])
+﻿@props(['service'])
 
 <article class="group relative h-72 sm:h-80 rounded-[2rem] overflow-hidden cursor-pointer
   border border-white/8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]
@@ -27,7 +27,7 @@
   {{-- Category badge --}}
   @if ($service->category === 'Utama')
     <div class="absolute top-4 right-4 z-20">
-      <span class="inline-flex items-center gap-1 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#d4ac3c] text-[#040404]">Utama</span>
+      <span class="inline-flex items-center gap-1 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-impost-primary text-impost-fifth">Utama</span>
     </div>
   @elseif ($service->category === 'Tambahan')
     <div class="absolute top-4 right-4 z-20">
@@ -48,7 +48,7 @@
 
       {{-- Description revealed on hover --}}
       <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
-        <p class="text-sm font-medium leading-relaxed text-white leading-relaxed overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75">
+        <p class="text-xs md:text-base font-medium leading-relaxed text-white overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75">
           {{ $service->description }}
         </p>
       </div>

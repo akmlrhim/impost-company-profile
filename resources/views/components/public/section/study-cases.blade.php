@@ -1,4 +1,4 @@
-@php
+﻿@php
   $studyCases = \App\Models\StudyCase::select('slug', 'name', 'cover_path', 'category', 'result')
       ->latest()
       ->take(6)
@@ -9,11 +9,11 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {{-- Header + nav --}}
-    <div class="mb-10 sm:mb-14 text-center md:text-left">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
-        Bukan Janji<br><span class="text-impost-primary">Kosong.</span>
+    <div class="mb-10 sm:mb-14 text-center">
+      <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight text-impost-primary">
+        Bukan Janji Kosong
       </h2>
-      <p class="text-base font-medium text-white mt-3 max-w-lg leading-relaxed mx-auto md:mx-0">
+      <p class="text-xs md:text-base font-medium text-white mt-3 max-w-lg leading-relaxed mx-auto">
         Lihat bagaimana bisnis nyata bertumbuh bersama Impost Media dengan strategi yang terukur.
       </p>
     </div>
@@ -62,7 +62,7 @@
                     @if ($case->category)
                       <div class="absolute top-3 left-3">
                         <span
-                          class="text-[9px] font-black uppercase tracking-wider bg-impost-primary text-[#040404] px-2.5 py-1 rounded-full leading-none">
+                          class="text-[9px] font-black uppercase tracking-wider bg-impost-primary text-impost-fifth px-2.5 py-1 rounded-full leading-none">
                           {{ $case->category }}
                         </span>
                       </div>
@@ -73,7 +73,7 @@
                   {{-- Case name + result --}}
                   <h3 class="font-bold text-white text-sm leading-snug mb-1.5">{{ $case->name }}</h3>
                   @if ($case->result)
-                    <p class="text-xs text-white/55 leading-relaxed line-clamp-3">{{ strip_tags($case->result) }}</p>
+                    <p class="text-xs md:text-base text-white/55 leading-relaxed line-clamp-3">{{ strip_tags($case->result) }}</p>
                   @endif
 
                 </a>
@@ -98,7 +98,6 @@
           </svg>
         </button>
       </div>
-
     @else
       <div class="flex items-center justify-center py-20 border border-white/6 rounded-[2rem] bg-white/2">
         <x-empty-card item="Study Case" />

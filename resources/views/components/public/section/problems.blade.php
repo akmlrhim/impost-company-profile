@@ -43,11 +43,11 @@
 
       {{-- Left: heading --}}
       <div class="text-center lg:text-left">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-5">
+        <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight text-white mb-5">
           Mengapa Omzet<br>
           <span class="text-red-400">Sulit Bertumbuh?</span>
         </h2>
-        <p class="text-base font-normal leading-relaxed text-white mb-8 max-w-sm mx-auto lg:mx-0">
+        <p class="text-xs md:text-base font-normal leading-relaxed text-white mb-8 max-w-sm mx-auto lg:mx-0">
           Banyak bisnis terjebak di masalah yang sama tanpa pernah menyentuh akar persoalannya.
         </p>
       </div>
@@ -68,7 +68,7 @@
             </div>
 
             <h3 class="text-md font-bold text-white mb-1.5">{{ $item['title'] }}</h3>
-            <p class="text-sm font-normal leading-relaxed text-white">{{ $item['desc'] }}</p>
+            <p class="text-xs md:text-base font-normal leading-relaxed text-white">{{ $item['desc'] }}</p>
 
           </div>
         @endforeach

@@ -1,4 +1,4 @@
-@extends('layouts.public')
+﻿@extends('layouts.public')
 
 @section('title', 'Karir | Impost Media')
 @section('meta_description',
@@ -38,8 +38,8 @@
           </ol>
         </nav>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">Karir</h1>
-        <p class="text-white text-sm md:text-base leading-relaxed max-w-xl">
+        <h1 class="text-xl md:text-5xl font-bold text-white leading-tight">Karir</h1>
+        <p class="text-white text-xs md:text-base leading-relaxed max-w-xl">
           Temukan peran yang tepat untuk mengembangkan potensi Anda. Kami mencari talenta terbaik untuk tumbuh bersama.
         </p>
       </div>
@@ -190,7 +190,7 @@
             <div x-show="typeOpen" x-cloak x-transition:enter="transition ease-out duration-100"
               x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
               class="absolute left-0 top-full mt-1.5 w-full sm:w-44 z-50
-                bg-[#111] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                bg-impost-dark-850 border border-white/10 rounded-xl overflow-hidden shadow-2xl">
               <button type="button" @click="setType('', 'Semua Tipe')"
                 class="w-full text-left px-4 py-2.5 text-sm text-white/60 hover:bg-white/[0.07] hover:text-white transition-colors"
                 :class="type === '' ? 'text-impost-primary bg-white/[0.04]' : ''">
@@ -223,7 +223,7 @@
             <div x-show="arrangementOpen" x-cloak x-transition:enter="transition ease-out duration-100"
               x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
               class="absolute left-0 top-full mt-1.5 w-full sm:w-48 z-50
-                bg-[#111] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                bg-impost-dark-850 border border-white/10 rounded-xl overflow-hidden shadow-2xl">
               <button type="button" @click="setArrangement('', 'Semua Sistem')"
                 class="w-full text-left px-4 py-2.5 text-sm text-white/60 hover:bg-white/[0.07] hover:text-white transition-colors"
                 :class="arrangement === '' ? 'text-impost-primary bg-white/[0.04]' : ''">

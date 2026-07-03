@@ -12,12 +12,12 @@
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full">
 
-    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 lg:mb-6 leading-tight tracking-tight text-white">
+    <h1 class="text-xl md:text-5xl font-bold mb-4 lg:mb-6 leading-tight tracking-tight text-white">
       Bikin Website Profesional <br class="hidden lg:block">
       <span class="text-impost-primary">Kelihatan Serius</span> & Gampang Closing
     </h1>
 
-    <p class="mt-4 lg:mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+    <p class="mt-4 lg:mt-6 text-xs md:text-base text-gray-300 max-w-2xl mx-auto leading-relaxed">
       Kami bantu bisnis kamu punya website & landing page yang dipercaya calon klien dan didesain khusus untuk mendorong
       mereka klik tombol WhatsApp.
     </p>

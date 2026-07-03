@@ -1,4 +1,4 @@
-@extends('layouts.public')
+﻿@extends('layouts.public')
 
 @section('title', $studyCase->name . ' | Impost Media')
 @section('meta_description', 'Studi kasus ' . $studyCase->name . ',lihat bagaimana Impost Media memberikan solusi ' .
@@ -13,8 +13,7 @@
         '@context' => 'https://schema.org',
         '@type' => 'Article',
         'headline' => $studyCase->name,
-        'description' =>
-            'Studi kasus ' . $studyCase->name . ',solusi ' . $studyCase->category . ' dari Impost Media.',
+        'description' => 'Studi kasus ' . $studyCase->name . ',solusi ' . $studyCase->category . ' dari Impost Media.',
         'image' => $studyCase->cover_path ? asset('storage/' . $studyCase->cover_path) : asset('img/og_image.png'),
         'author' => [
             '@type' => 'Organization',
@@ -87,7 +86,7 @@
           </ol>
         </nav>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <h1 class="text-xl md:text-5xl font-bold text-white leading-tight">
           {{ $studyCase->name }}
         </h1>
 
@@ -109,7 +108,7 @@
       <div class="max-w-7xl mx-auto">
 
         <section
-          class="relative w-full h-auto mb-12 sm:mb-20 group cursor-pointer overflow-hidden flex justify-center bg-[#111] rounded-2xl border border-white/5"
+          class="relative w-full h-auto mb-12 sm:mb-20 group cursor-pointer overflow-hidden flex justify-center bg-impost-dark-850 rounded-2xl border border-white/5"
           x-data="{ showLightbox: false }" @click="showLightbox = true; document.body.style.overflow = 'hidden'">
 
           <img src="{{ asset('storage/' . $studyCase->cover_path) }}" alt="{{ $studyCase->name }}"
@@ -215,20 +214,19 @@
 
   <section class="py-16 sm:py-20 border-t border-white/[0.07]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Siap Bertumbuh?</p>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
         Ingin Bisnis Anda Tumbuh <span class="text-impost-primary">Seperti Mereka?</span>
       </h2>
-      <p class="text-base font-medium text-white max-w-xl mx-auto mb-8">
+      <p class="text-xs md:text-base font-medium text-white max-w-xl mx-auto mb-8">
         Anda sudah melihat buktinya. Sekarang giliran Anda untuk mendapatkan solusi digital yang berdampak nyata.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
         <a href="{{ route('vsl-form') }}"
           class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5
-            bg-impost-primary text-[#040404] hover:bg-impost-secondary transition-colors duration-150 whitespace-nowrap">
-          Konsultasi Gratis
+            bg-impost-primary text-impost-fifth hover:bg-impost-secondary transition-colors duration-150 whitespace-nowrap">
+          Konsultasi Sekarang
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </a>
         <a href="{{ route('contact') }}"

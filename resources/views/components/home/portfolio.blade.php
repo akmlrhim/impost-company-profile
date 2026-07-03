@@ -10,7 +10,7 @@
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
         Port<span class="text-impost-primary">folio</span>
       </h2>
-      <p class="text-base font-medium leading-relaxed text-white">
+      <p class="text-xs md:text-base font-medium leading-relaxed text-white">
         Bukan sekadar janji <span class="text-impost-primary font-semibold">bukti nyata</span> dari strategi terukur
         dan eksekusi presisi.
       </p>
@@ -20,7 +20,7 @@
   @if (!empty($portfolios) && count($portfolios) > 0)
 
     {{-- Fan spread --}}
-    <div class="relative w-full overflow-hidden h-[380px] sm:h-[440px] lg:h-[520px]">
+    <div class="relative w-full overflow-hidden h-95 sm:h-110 lg:h-130">
 
       {{-- Skeleton --}}
       <div id="portfolio-skeleton"
@@ -34,7 +34,7 @@
             $skSc = 1 - $skAbs * 0.1;
           @endphp
           <div
-            class="absolute top-1/2 left-1/2 flex-shrink-0 rounded-3xl bg-white/[0.04] border border-white/[0.06] animate-pulse"
+            class="absolute top-1/2 left-1/2 shrink-0 rounded-3xl bg-white/4 border border-white/6 animate-pulse"
             style="width:200px;aspect-ratio:9/16;transform:translateX(calc(-50% + {{ $skTx }}px)) translateY(-50%) rotateY({{ $skRot }}deg) scale({{ $skSc }});opacity:{{ $skOp }};">
           </div>
         @endforeach
@@ -62,7 +62,7 @@
         <div class="flex justify-center mt-10 sm:mt-12 border-b border-white/[0.07] overflow-x-auto">
           @foreach ($portfolioCategories as $index => $cat)
             <button type="button"
-              class="portfolio-category-tab relative flex-shrink-0 px-5 sm:px-7 py-3 text-sm font-normal
+              class="portfolio-category-tab relative shrink-0 px-5 sm:px-7 py-3 text-sm font-normal
                 transition-colors duration-200 cursor-pointer
                 {{ $index === 0 ? 'text-white' : 'text-white/40 hover:text-white/70' }}"
               data-portfolio-category="{{ $cat->id }}">
@@ -78,7 +78,7 @@
     </div>
   @else
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-center py-20 border border-white/[0.06] rounded-[2rem] bg-white/[0.02]">
+      <div class="flex items-center justify-center py-20 border border-white/6 rounded-4xl bg-white/2">
         <x-empty-card item="Portfolio" />
       </div>
     </div>

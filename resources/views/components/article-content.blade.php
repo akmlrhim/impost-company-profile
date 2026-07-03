@@ -3,11 +3,11 @@
     class="prose max-w-none text-justify
 
     prose-headings:font-bold prose-headings:text-white
-    prose-h1:text-lg sm:prose-h1:text-2xl lg:prose-h1:text-3xl prose-h1:mt-6 prose-h1:mb-3
+    prose-h1:text-xl md:prose-h1:text-5xl prose-h1:mt-6 prose-h1:mb-3
     prose-h2:text-base sm:prose-h2:text-xl lg:prose-h2:text-2xl prose-h2:mt-6 prose-h2:mb-3
     prose-h3:text-sm sm:prose-h3:text-lg lg:prose-h3:text-xl prose-h3:mt-5 prose-h3:mb-2
 
-    prose-p:text-white prose-p:text-xs md:prose-p:text-base lg:prose-p:text-lg
+    prose-p:text-white prose-p:text-xs md:prose-p:text-base
     prose-p:leading-relaxed
     prose-p:my-0
     prose-p:empty:hidden
@@ -18,7 +18,7 @@
 
     prose-ul:list-disc prose-ul:ml-6 prose-ul:mb-3
     prose-ol:list-decimal prose-ol:ml-6 prose-ol:mb-3
-    prose-li:text-white prose-li:text-xs md:prose-li:text-base lg:prose-li:text-lg prose-li:mb-1
+    prose-li:text-white prose-li:text-xs md:prose-li:text-base prose-li:mb-1
 
     prose-a:text-primary-400 prose-a:no-underline hover:prose-a:underline
     prose-strong:text-white prose-strong:font-semibold

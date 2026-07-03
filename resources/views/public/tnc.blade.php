@@ -40,10 +40,10 @@
           </ol>
         </nav>
 
-        <h1 class="font-bold text-white leading-tight" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem) !important;">
+        <h1 class="text-xl md:text-5xl font-bold text-white leading-tight">
           Syarat & Ketentuan
         </h1>
-        <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
+        <p class="text-white text-xs md:text-base leading-relaxed max-w-xl">
           Dokumen resmi yang mengatur hubungan layanan antara <span class="text-white font-medium">CV. Impost Media
             Indonesia</span> dengan klien. Berlaku untuk seluruh paket dan layanan.
         </p>
@@ -60,7 +60,7 @@
 
         <div id="s1">
           <div class="text-sm font-semibold text-white mb-3">1. Definisi &amp; Ruang Lingkup</div>
-          <div class="space-y-3 text-sm text-white leading-relaxed">
+          <div class="space-y-3 text-xs md:text-base text-white leading-relaxed">
             <p>Syarat dan Ketentuan ini mengatur hubungan antara <span class="text-white font-medium">CV. Impost Media
                 Indonesia</span> ("Impost Media", "kami") dengan pihak klien yang menggunakan layanan digital marketing,
               branding, dan pengembangan digital kami.</p>
@@ -74,7 +74,7 @@
 
         <div id="s2">
           <div class="text-sm font-semibold text-white mb-3">2. Paket &amp; Layanan</div>
-          <div class="text-sm text-white leading-relaxed">
+          <div class="text-xs md:text-base text-white leading-relaxed">
             <p class="mb-3">Impost Media menyediakan layanan berikut. Detail paket dan harga tercantum dalam Surat
               Penawaran resmi:</p>
             <ul class="space-y-2">
@@ -125,7 +125,7 @@
 
         <div id="s3">
           <div class="text-sm font-semibold text-white mb-3">3. Kontrak &amp; Durasi</div>
-          <div class="text-sm text-white leading-relaxed">
+          <div class="text-xs md:text-base text-white leading-relaxed">
             <p class="mb-3">Durasi minimum kontrak berbeda tergantung jenis layanan:</p>
             <ul class="space-y-2 mb-4">
               <li class="flex items-start gap-2.5"><span
@@ -151,7 +151,7 @@
 
         <div id="s4">
           <div class="text-sm font-semibold text-white mb-3">4. Harga &amp; Pembayaran</div>
-          <div class="text-sm text-white leading-relaxed">
+          <div class="text-xs md:text-base text-white leading-relaxed">
             <p class="mb-3">Harga tercantum dalam Surat Penawaran resmi dan dapat berubah sewaktu-waktu. Seluruh harga
               belum termasuk PPN 12%.</p>
             <ul class="space-y-2">
@@ -173,7 +173,7 @@
 
         <div id="s5">
           <div class="text-sm font-semibold text-white mb-3">5. Biaya Iklan (Ad Budget)</div>
-          <div class="text-sm text-white leading-relaxed">
+          <div class="text-xs md:text-base text-white leading-relaxed">
             <p class="mb-3">Semua paket Performance Marketing hanya mencakup biaya layanan pengelolaan. Biaya iklan
               sepenuhnya ditanggung dan dibayarkan langsung oleh klien kepada platform terkait.</p>
             <ul class="space-y-2 mb-3">
@@ -194,7 +194,7 @@
 
         <div id="s6">
           <div class="text-sm font-semibold text-white mb-3">6. Garansi &amp; Jaminan Hasil</div>
-          <div class="text-sm text-white leading-relaxed">
+          <div class="text-xs md:text-base text-white leading-relaxed">
             <p class="mb-3">Impost Media memberikan jaminan hasil pada kondisi-kondisi berikut:</p>
             <ul class="space-y-2 mb-4">
               <li class="flex items-start gap-2.5"><span
@@ -218,7 +218,7 @@
 
         <div id="s7">
           <div class="text-sm font-semibold text-white mb-3">7. Kewajiban Klien</div>
-          <div class="text-sm text-white leading-relaxed">
+          <div class="text-xs md:text-base text-white leading-relaxed">
             <p class="mb-3">Kelancaran layanan bergantung pada keterlibatan aktif klien. Klien wajib:</p>
             <ul class="space-y-2">
               <li class="flex items-start gap-2.5"><span
@@ -242,7 +242,7 @@
 
         <div id="s8">
           <div class="text-sm font-semibold text-white mb-3">8. Revisi &amp; Persetujuan Konten</div>
-          <div class="text-sm text-white leading-relaxed">
+          <div class="text-xs md:text-base text-white leading-relaxed">
             <p class="mb-3">Jumlah revisi mengikuti ketentuan paket yang dipilih. Revisi di luar batas dikenakan biaya
               tambahan.</p>
             <ul class="space-y-2">
@@ -261,7 +261,7 @@
 
         <div id="s9">
           <div class="text-sm font-semibold text-white mb-3">9. Hak Kekayaan Intelektual</div>
-          <div class="text-sm text-white leading-relaxed">
+          <div class="text-xs md:text-base text-white leading-relaxed">
             <p class="mb-3">Seluruh hasil kerja menjadi hak milik klien setelah seluruh kewajiban pembayaran
               diselesaikan.</p>
             <ul class="space-y-2">
@@ -281,7 +281,7 @@
 
         <div id="s10">
           <div class="text-sm font-semibold text-white mb-3">10. Kerahasiaan &amp; Data</div>
-          <div class="space-y-3 text-sm text-white leading-relaxed">
+          <div class="space-y-3 text-xs md:text-base text-white leading-relaxed">
             <p>Impost Media berkomitmen menjaga kerahasiaan informasi bisnis klien, termasuk data omset, strategi, dan
               materi kampanye. Informasi tersebut tidak akan diungkapkan kepada pihak ketiga tanpa persetujuan tertulis
               klien, kecuali diwajibkan oleh hukum.</p>
@@ -294,7 +294,7 @@
 
         <div id="s11">
           <div class="text-sm font-semibold text-white mb-3">11. Batasan Tanggung Jawab</div>
-          <div class="text-sm text-white leading-relaxed">
+          <div class="text-xs md:text-base text-white leading-relaxed">
             <p class="mb-3">Impost Media tidak memberikan jaminan atas hasil di luar KPI yang telah disepakati. Hasil
               aktual dapat dipengaruhi kondisi pasar, kompetitor, dan perubahan algoritma platform.</p>
             <ul class="space-y-2">
@@ -313,7 +313,7 @@
 
         <div id="s12">
           <div class="text-sm font-semibold text-white mb-3">12. Penghentian Layanan</div>
-          <div class="text-sm text-white leading-relaxed">
+          <div class="text-xs md:text-base text-white leading-relaxed">
             <p class="mb-3">Klien dapat mengajukan penghentian layanan dengan pemberitahuan tertulis minimal 30 hari
               sebelumnya. Penghentian sebelum masa minimum tidak membebaskan kewajiban pembayaran sisa periode.</p>
             <p class="mb-2 text-white text-xs uppercase tracking-wide">Impost Media berhak menghentikan layanan apabila:
@@ -339,7 +339,7 @@
 
         <div id="s13">
           <div class="text-sm font-semibold text-white mb-3">13. Penyelesaian Sengketa</div>
-          <div class="space-y-3 text-sm text-white leading-relaxed">
+          <div class="space-y-3 text-xs md:text-base text-white leading-relaxed">
             <p>Syarat dan Ketentuan ini tunduk pada hukum yang berlaku di Republik Indonesia. Segala sengketa diselesaikan
               melalui musyawarah mufakat dalam waktu 30 hari sejak sengketa disampaikan secara tertulis.</p>
             <p>Apabila musyawarah tidak mencapai kesepakatan, penyelesaian dilakukan melalui lembaga mediasi atau
@@ -351,7 +351,7 @@
 
       {{-- Footer --}}
       <div class="border-t border-white/5 mt-12 pt-7">
-        <p class="text-xs text-white leading-relaxed">
+        <p class="text-xs md:text-base text-white leading-relaxed">
           CV. Impost Media Indonesia - Studio: Jl. Kawamara, Landasan Ulin Tengah, Banjarbaru, Kalimantan Selatan.
           Head Office: Jl. Sungai Wain Km 15, Balikpapan.<br>
           <a href="mailto:adm.impostmedia@gmail.com"

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\ArticleCategory;
 use App\Models\Client;
 use App\Models\JobVacancy;
 use App\Models\Lead;
@@ -115,34 +114,60 @@ class HomeController extends Controller
 	{
 		$title = 'Artikel';
 		$meta_description = 'Jelajahi artikel seputar strategi digital marketing, data, dan pertumbuhan bisnis dari Impost Media.';
-		$category = ArticleCategory::select('id', 'name', 'slug')->get();
 		$articles = Article::select(
 			'id',
 			'title',
 			'slug',
 			'content',
-			'category_id',
 			'cover_path',
 			'created_at'
 		)
-			->with('category')
 			->where('status', 'published')
-			->when($request->category, function ($q) use ($request) {
-				$q->whereHas('category', function ($c) use ($request) {
-					$c->where('slug', $request->category);
-				});
+			->when($request->filled('search'), function ($q) use ($request) {
+				$q->where('title', 'like', '%' . $request->search . '%');
+			})
+			->when($request->filled('month'), function ($q) use ($request) {
+				$q->whereMonth('created_at', $request->month);
+			})
+			->when($request->filled('year'), function ($q) use ($request) {
+				$q->whereYear('created_at', $request->year);
 			})
 			->latest()
-			->paginate(9)
+			->paginate(6)
 			->onEachSide(1)
 			->withQueryString();
+
+		$years = Article::where('status', 'published')
+			->selectRaw('DISTINCT YEAR(created_at) as year')
+			->orderByDesc('year')
+			->pluck('year');
+
+		$months = [
+			1 => 'Januari',
+			2 => 'Februari',
+			3 => 'Maret',
+			4 => 'April',
+			5 => 'Mei',
+			6 => 'Juni',
+			7 => 'Juli',
+			8 => 'Agustus',
+			9 => 'September',
+			10 => 'Oktober',
+			11 => 'November',
+			12 => 'Desember',
+		];
 
 		return view('public.articles.index', [
 			'title' => $title,
 			'meta_description' => $meta_description,
 			'articles' => $articles,
-			'category' => $category,
-			'activeCategory' => $request->category
+			'years' => $years,
+			'months' => $months,
+			'filters' => [
+				'search' => $request->search,
+				'month' => $request->month,
+				'year' => $request->year,
+			],
 		]);
 	}
 
@@ -188,7 +213,7 @@ class HomeController extends Controller
 	public function contact()
 	{
 		$title = 'Hubungi Kami';
-		$meta_description = 'Siap untuk meningkatkan bisnis Anda? Hubungi Impost Media sekarang untuk konsultasi gratis.';
+		$meta_description = 'Siap untuk meningkatkan bisnis Anda? Hubungi Impost Media sekarang untuk konsultasi sekarang.';
 		return view('public.contact', compact('title', 'meta_description'));
 	}
 

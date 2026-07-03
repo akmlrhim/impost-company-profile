@@ -5,7 +5,7 @@
       <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 md:mb-4">
         Kenapa <span class="text-impost-primary">Impost Media?</span>
       </h2>
-      <p class="text-white max-w-2xl mx-auto text-sm md:text-base">
+      <p class="text-white max-w-2xl mx-auto text-xs md:text-base">
         Kami tidak hanya membuat website yang "bagus", tapi website yang bekerja untuk bisnis Anda.
       </p>
     </div>
@@ -24,7 +24,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-impost-primary mb-1 md:mb-2">Fokus Fungsi</h3>
-        <p class="text-white text-xs md:text-sm leading-relaxed">Bukan sekadar desain cantik, tapi fitur penunjang
+        <p class="text-white text-xs md:text-base leading-relaxed">Bukan sekadar desain cantik, tapi fitur penunjang
           penjualan.</p>
       </div>
 
@@ -40,7 +40,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-impost-primary mb-1 md:mb-2">Struktur Jelas</h3>
-        <p class="text-white text-xs md:text-sm leading-relaxed">Navigasi yang mudah dipahami user, anti bingung.</p>
+        <p class="text-white text-xs md:text-base leading-relaxed">Navigasi yang mudah dipahami user, anti bingung.</p>
       </div>
 
       <div
@@ -54,7 +54,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-impost-primary mb-1 md:mb-2">Berpengalaman</h3>
-        <p class="text-white text-xs md:text-sm leading-relaxed">Portofolio luas mulai dari UMKM hingga level Corporate.
+        <p class="text-white text-xs md:text-base leading-relaxed">Portofolio luas mulai dari UMKM hingga level Corporate.
         </p>
       </div>
 
@@ -68,7 +68,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-impost-primary mb-1 md:mb-2">Transparan</h3>
-        <p class="text-white text-xs md:text-sm leading-relaxed">Alur kerja rapi, komunikatif, dan tidak ada biaya
+        <p class="text-white text-xs md:text-base leading-relaxed">Alur kerja rapi, komunikatif, dan tidak ada biaya
           tersembunyi.</p>
       </div>
 

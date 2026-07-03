@@ -14,11 +14,11 @@
 
     {{-- Header --}}
     <div class="text-center mb-10 sm:mb-14">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
+      <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight text-white mb-4">
         Kami Tidak Mencari Klien,<br>Kami Mencari
         <span class="text-impost-primary"> Partner</span>
       </h2>
-      <p class="text-base font-normal leading-relaxed text-white max-w-xl mx-auto">
+      <p class="text-xs md:text-base font-normal leading-relaxed text-white max-w-xl mx-auto">
         Sinergi terbaik lahir dari visi yang sama. Mari cari tahu apakah kita cocok bekerja sama.
       </p>
     </div>
@@ -74,7 +74,7 @@
 
           {{-- Trait text --}}
           <div class="px-4 sm:px-6 py-3.5 sm:py-4 flex items-center">
-            <span class="text-xs sm:text-sm font-medium text-white/70 leading-snug">{{ $row['text'] }}</span>
+            <span class="text-xs sm:text-sm font-medium text-white leading-snug">{{ $row['text'] }}</span>
           </div>
 
           {{-- Partner Ideal cell --}}
@@ -101,23 +101,6 @@
         </div>
       @endforeach
 
-      {{-- CTA row --}}
-      <div
-        class="grid grid-cols-[1fr_72px_72px] sm:grid-cols-[1fr_120px_120px] bg-white/[0.02] border-t border-white/[0.06]">
-        <div class="px-4 sm:px-6 py-4 flex items-center">
-          <p class="text-[11px] sm:text-xs text-white/35 leading-relaxed">Kami hanya bekerja dengan klien yang
-            berkomitmen pada pertumbuhan jangka panjang.</p>
-        </div>
-        <div
-          class="flex items-center justify-center py-4 border-l border-white/[0.05] bg-emerald-500/[0.02] px-1 sm:px-3">
-          <a href="{{ route('vsl-form') }}"
-            class="inline-flex items-center justify-center text-[9px] sm:text-xs font-bold rounded-full px-2.5 sm:px-4 py-2 bg-impost-primary text-[#040404] hover:bg-impost-secondary transition-colors duration-150 text-center leading-tight">
-            <span class="hidden sm:inline">Daftar Gratis</span>
-            <span class="sm:hidden">Daftar</span>
-          </a>
-        </div>
-        <div class="border-l border-white/[0.05] bg-red-500/[0.02]"></div>
-      </div>
 
     </div>
 

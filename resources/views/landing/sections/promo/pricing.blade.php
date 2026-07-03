@@ -1,9 +1,9 @@
-<section class="py-12 md:py-20 px-4 sm:px-6 lg:px-8" id="pricing">
+﻿<section class="py-12 md:py-20 px-4 sm:px-6 lg:px-8" id="pricing">
   <div class="max-w-6xl mx-auto">
 
     <div class="text-center mb-8 md:mb-16">
       <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 md:mb-4">Mari Berhitung...</h2>
-      <p class="text-gray-400 text-sm md:text-base">Bandingkan biaya jika Anda merekrut tim sendiri vs menggunakan Impost
+      <p class="text-gray-400 text-xs md:text-base">Bandingkan biaya jika Anda merekrut tim sendiri vs menggunakan Impost
         Media.</p>
     </div>
 
@@ -54,7 +54,7 @@
       </div>
 
       <div
-        class="bg-gradient-to-br from-impost-primary to-[#b89533] p-5 md:p-10 rounded-3xl shadow-[0_0_30px_rgba(212,172,60,0.15)] relative flex flex-col transform md:-translate-y-4 md:scale-105 z-10">
+        class="bg-gradient-to-br from-impost-primary to-impost-primary-dark p-5 md:p-10 rounded-3xl shadow-[0_0_30px_rgba(212,172,60,0.15)] relative flex flex-col transform md:-translate-y-4 md:scale-105 z-10">
         <div
           class="absolute top-0 right-0 bg-neutral-900 text-impost-primary text-[10px] md:text-xs font-bold px-3 py-1.5 md:px-4 md:py-2 rounded-bl-xl tracking-widest">
           SOLUSI CERDAS
@@ -62,7 +62,7 @@
 
         <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-900 mb-1 md:mb-2 mt-2 md:mt-0">Pakai Impost Media</h3>
         <p
-          class="text-neutral-800 text-xs md:text-sm font-medium mb-5 md:mb-8 border-b border-neutral-900/10 pb-3 md:pb-4">
+          class="text-neutral-800 text-xs md:text-base font-medium mb-5 md:mb-8 border-b border-neutral-900/10 pb-3 md:pb-4"
           Lebih hemat, terarah, dan cepat menghasilkan.
         </p>
 

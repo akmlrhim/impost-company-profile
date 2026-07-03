@@ -1,4 +1,4 @@
-@extends('layouts.public')
+﻿@extends('layouts.public')
 
 @section('title', 'Study Case | Impost Media')
 @section('meta_description',
@@ -40,10 +40,10 @@
           </ol>
         </nav>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <h1 class="text-xl md:text-5xl font-bold text-white leading-tight">
           Study Case
         </h1>
-        <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
+        <p class="text-white text-xs md:text-base leading-relaxed max-w-xl">
           Bukti autentik dari strategi yang terukur untuk pertumbuhan bisnis Anda.
         </p>
       </div>
@@ -65,7 +65,7 @@
             <div id="studycase-skeleton"
               class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 py-6 mb-8 animate-pulse">
               @for ($i = 0; $i < 6; $i++)
-                <div class="w-full bg-[#121212] rounded-2xl aspect-[4/3] border border-white/10"></div>
+                <div class="w-full bg-impost-dark-800 rounded-2xl aspect-[4/3] border border-white/10"></div>
               @endfor
             </div>
 
@@ -78,7 +78,7 @@
                   class="group block h-full transition-all duration-500">
 
                   <div
-                    class="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-[#121212] transition-all duration-500 hover:border-impost-primary/50 hover:shadow-[0_0_30px_rgba(var(--impost-primary),0.15)] hover:-translate-y-2">
+                    class="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-impost-dark-800 transition-all duration-500 hover:border-impost-primary/50 hover:shadow-[0_0_30px_rgba(var(--impost-primary),0.15)] hover:-translate-y-2">
 
                     <div class="relative aspect-[4/3] overflow-hidden">
 
@@ -87,7 +87,7 @@
                           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                       @else
                         <div
-                          class="w-full h-full bg-[#1a1a1a] flex items-center justify-center group-hover:bg-[#222] transition-colors">
+                          class="w-full h-full bg-impost-dark-650 flex items-center justify-center group-hover:bg-impost-dark-600 transition-colors">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                             class="w-12 h-12 sm:w-16 sm:h-16 text-white/10 group-hover:text-impost-primary/50 transition-colors">
@@ -135,18 +135,17 @@
 
   <section class="py-16 sm:py-20 border-t border-white/[0.07]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Siap Bertumbuh?</p>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
         Ingin Bisnis Anda Tumbuh <span class="text-impost-primary">Seperti Mereka?</span>
       </h2>
-      <p class="text-base font-medium text-white max-w-xl mx-auto mb-8">
+      <p class="text-xs md:text-base font-medium text-white max-w-xl mx-auto mb-8">
         Anda sudah melihat buktinya. Sekarang giliran Anda untuk mendapatkan solusi digital yang berdampak nyata.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
         <a href="{{ route('vsl-form') }}"
           class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5
-            bg-impost-primary text-[#040404] hover:bg-impost-secondary transition-colors duration-150 whitespace-nowrap">
-          Konsultasi Gratis
+            bg-impost-primary text-impost-fifth hover:bg-impost-secondary transition-colors duration-150 whitespace-nowrap">
+          Konsultasi Sekarang
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
           </svg>

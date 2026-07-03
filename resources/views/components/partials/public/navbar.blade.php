@@ -1,4 +1,4 @@
-<nav x-data="{
+﻿<nav x-data="{
     mobileMenuOpen: false,
     activeDropdown: null,
     scrolled: false,
@@ -138,7 +138,7 @@
           </div>
 
           <a href="{{ route('vsl-form') }}"
-            class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#d4ac3c] text-[#040404] hover:bg-[#d09738] transition-colors duration-150 cursor-pointer whitespace-nowrap ml-2"
+            class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-5 py-2.5 bg-impost-primary text-impost-fifth hover:bg-impost-secondary transition-colors duration-150 cursor-pointer whitespace-nowrap ml-2"
             aria-label="Mulai konsultasi">
             Mulai Sekarang
           </a>
@@ -213,7 +213,7 @@
 
         <div class="pt-3">
           <a href="{{ route('vsl-form') }}"
-            class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#d4ac3c] text-[#040404] hover:bg-[#d09738] transition-colors duration-150 cursor-pointer whitespace-nowrap w-full">Mulai
+            class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-impost-primary text-impost-fifth hover:bg-impost-secondary transition-colors duration-150 cursor-pointer whitespace-nowrap w-full">Mulai
             Sekarang</a>
         </div>
       </div>

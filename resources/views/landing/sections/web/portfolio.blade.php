@@ -7,7 +7,7 @@
         Ratusan bisnis sudah kami bantu membangun <br class="hidden md:block">
         <span class="text-impost-primary border-b-2 border-impost-primary/30 pb-1">pondasi digitalnya.</span>
       </h2>
-      <p class="text-gray-300 text-sm md:text-lg mb-8 md:mb-10 max-w-2xl mx-auto">
+      <p class="text-gray-300 text-xs md:text-base mb-8 md:mb-10 max-w-2xl mx-auto">
         Dari bisnis baru mulai, sampai brand yang ingin terlihat serius dan siap scale.
       </p>
 

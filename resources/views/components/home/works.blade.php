@@ -1,36 +1,36 @@
-@php
+﻿@php
   $steps = [
       [
-          'num' => '01',
+          'num' => '1',
           'title' => 'Onboarding & Meeting',
           'desc' =>
               'Diskusi mendalam tentang detail proyek, kondisi ideal yang ingin dicapai, serta masalah yang dihadapi bisnis Anda.',
       ],
       [
-          'num' => '02',
+          'num' => '2',
           'title' => 'Analisis & Penawaran',
           'desc' => 'Tim melakukan analisis mendalam untuk menyusun Project Brief dan skema harga yang tepat sasaran.',
       ],
       [
-          'num' => '03',
+          'num' => '3',
           'title' => 'Deal & Invoicing',
           'desc' =>
               'Negosiasi hingga sepakat (Harga & KPI), tanda tangan kontrak, dan pembayaran awal sebagai tanda komitmen.',
       ],
       [
-          'num' => '04',
+          'num' => '4',
           'title' => 'Finalisasi Brief',
           'desc' =>
               'Tim menyempurnakan strategi internal, lalu dikembalikan untuk Anda tinjau. Masa review maksimal 2 minggu.',
       ],
       [
-          'num' => '05',
+          'num' => '5',
           'title' => 'Produksi & Eksekusi',
           'desc' =>
               'Mulai produksi konten dan menjalankan proyek, termasuk fase testing & optimasi untuk hasil terbaik.',
       ],
       [
-          'num' => '06',
+          'num' => '6',
           'title' => 'Reporting & Evaluasi',
           'desc' =>
               'Laporan data & KPI dikirim setiap akhir bulan. Anda memegang kontrol penuh atas kelanjutan kontrak.',
@@ -43,10 +43,10 @@
 
     {{-- Header --}}
     <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-white mb-4">
         Alur <span class="text-impost-primary">Layanan</span>
       </h2>
-      <p class="text-base font-medium leading-relaxed text-white/70">
+      <p class="text-xs sm:text-sm font-medium leading-relaxed text-white">
         Dari konsultasi hingga evaluasi hasil, setiap langkah dirancang transparan dan terukur.
       </p>
     </div>
@@ -58,11 +58,11 @@
 
           {{-- Track: Number + Line --}}
           <div class="flex flex-col items-center flex-shrink-0 w-12 sm:w-16">
-            <span class="text-3xl sm:text-4xl font-black leading-none tracking-tighter text-impost-primary">
+            <span class="text-2xl sm:text-3xl tabular-nums font-black leading-none tracking-tighter text-impost-primary">
               {{ $step['num'] }}
             </span>
             @unless ($loop->last)
-              <div class="w-0.5 flex-1 mt-3 min-h-[3rem] bg-impost-primary/30"></div>
+              <div class="w-0.5 flex-1 mt-3 min-h-[3rem] bg-impost-primary/5"></div>
             @endunless
           </div>
 
@@ -72,8 +72,8 @@
 
               {{-- Text --}}
               <div class="pt-0.5">
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-2.5 leading-snug">{{ $step['title'] }}</h3>
-                <p class="text-sm sm:text-base font-normal text-white leading-relaxed">{{ $step['desc'] }}</p>
+                <h3 class="text-xl sm:text-lg font-bold text-white mb-2.5 leading-snug">{{ $step['title'] }}</h3>
+                <p class="text-xs md:text-base font-normal text-white leading-relaxed">{{ $step['desc'] }}</p>
               </div>
 
               {{-- Illustration card (desktop only) --}}
@@ -103,7 +103,7 @@
                         <div class="flex items-end gap-2 flex-row-reverse">
                           <div class="w-6 h-6 rounded-full flex-shrink-0 bg-impost-primary/40"></div>
                           <div
-                            class="rounded-2xl rounded-br-sm px-3 py-2 text-xs text-[#040404] font-semibold max-w-[80%] bg-impost-primary">
+                            class="rounded-2xl rounded-br-sm px-3 py-2 text-xs text-impost-fifth font-semibold max-w-[80%] bg-impost-primary">
                             Tentu! Kami siap diskusikan kebutuhan Anda. 🗓️
                           </div>
                         </div>
@@ -113,7 +113,7 @@
                           </div>
                           <div
                             class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 bg-impost-primary">
-                            <svg class="w-3.5 h-3.5 text-[#040404]" fill="none" stroke="currentColor"
+                            <svg class="w-3.5 h-3.5 text-impost-fifth" fill="none" stroke="currentColor"
                               viewBox="0 0 24 24" stroke-width="2.5">
                               <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />

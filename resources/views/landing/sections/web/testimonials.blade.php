@@ -6,7 +6,7 @@
         Dari Website Biasa Jadi
         <span class="text-impost-primary block md:inline">Alat Closing Bisnis</span>
       </h2>
-      <p class="text-white text-sm md:text-lg mb-2">Ratusan orang dan industri sudah merasakan dampaknya!</p>
+      <p class="text-white text-xs md:text-base mb-2">Ratusan orang dan industri sudah merasakan dampaknya!</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -30,7 +30,7 @@
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
         </div>
-        <p class="text-gray-300 italic mb-4 md:mb-6 text-sm md:text-base text-justify flex-1">
+        <p class="text-gray-300 italic mb-4 md:mb-6 text-xs md:text-base text-justify flex-1">
           “Setelah pakai landing page dari Impost Media, website kami jauh lebih meyakinkan. WhatsApp mulai sering
           masuk dari orang yang memang niat beli, bukan sekadar tanya-tanya.”
         </p>
@@ -64,7 +64,7 @@
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
         </div>
-        <p class="text-gray-300 italic mb-4 md:mb-6 text-sm md:text-base text-justify flex-1">
+        <p class="text-gray-300 italic mb-4 md:mb-6 text-xs md:text-base text-justify flex-1">
           “Awalnya takut ribet dan mahal. Ternyata prosesnya rapi, komunikasinya enak, dan hasilnya sesuai kebutuhan
           bisnis saya. Sekarang kirim link website ke calon partner jadi lebih pede.”
         </p>
@@ -98,7 +98,7 @@
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
         </div>
-        <p class="text-gray-300 italic mb-4 md:mb-6 text-sm md:text-base text-justify flex-1">
+        <p class="text-gray-300 italic mb-4 md:mb-6 text-xs md:text-base text-justify flex-1">
           “Website-nya profesional tapi tetap personal. Bantu banget buat positioning saya di mata klien. Closing jadi
           lebih cepat.”
         </p>
@@ -118,7 +118,7 @@
     <div class="text-center mt-10 md:mt-16 px-2">
       <div
         class="inline-block bg-impost-primary/10 border border-impost-primary/20 px-4 py-3 md:px-6 md:py-3 rounded-lg">
-        <p class="text-white text-sm md:text-lg font-medium">
+        <p class="text-white text-xs md:text-base font-medium">
           Kalau mereka bisa merasakan dampaknya, <span class="text-impost-primary font-bold block sm:inline">website
             kamu juga bisa!</span>
         </p>

@@ -1,4 +1,4 @@
-@extends('layouts.public')
+﻿@extends('layouts.public')
 
 @section('title', 'Company Profile & Portfolio | Impost Media')
 @section('meta_description',
@@ -40,10 +40,10 @@
           </ol>
         </nav>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <h1 class="text-xl md:text-5xl font-bold text-white leading-tight">
           Dokumen
         </h1>
-        <p class="text-white text-sm md:text-base leading-relaxed max-w-xl text-justify">
+        <p class="text-white text-xs md:text-base leading-relaxed max-w-xl text-justify">
           Eksplorasi visi, misi, dan karya terbaik IMPOST MEDIA melalui dokumen interaktif di bawah ini.
         </p>
       </div>
@@ -55,8 +55,8 @@
       <div class="mb-8 sm:mb-10 md:mb-12 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
 
-          <div class="bg-[#111] rounded-xl overflow-hidden flex flex-col h-full border border-white/5">
-            <div class="px-5 py-3.5 bg-[#161616] border-b border-white/5">
+          <div class="bg-impost-dark-850 rounded-xl overflow-hidden flex flex-col h-full border border-white/5">
+            <div class="px-5 py-3.5 bg-impost-dark-700 border-b border-white/5">
               <h3 class="text-xs md:text-sm lg:text-base font-bold text-impost-primary tracking-wide">Company Profile</h3>
             </div>
 
@@ -67,7 +67,7 @@
             </div>
 
             <div class="p-5 flex-1 flex flex-col justify-between">
-              <p class="text-white text-sm md:text-base mb-4 leading-relaxed">
+              <p class="text-white text-xs md:text-base mb-4 leading-relaxed">
                 Pelajari identitas perusahaan, struktur tim, serta layanan profesional yang kami tawarkan secara mendalam.
               </p>
               <a href="https://heyzine.com/flip-book/70b2ce8250.html" target="_blank"
@@ -77,8 +77,8 @@
             </div>
           </div>
 
-          <div class="bg-[#111] rounded-xl overflow-hidden flex flex-col h-full border border-white/5">
-            <div class="px-5 py-3.5 bg-[#161616] border-b border-white/5">
+          <div class="bg-impost-dark-850 rounded-xl overflow-hidden flex flex-col h-full border border-white/5">
+            <div class="px-5 py-3.5 bg-impost-dark-700 border-b border-white/5">
               <h3 class="text-xs md:text-sm lg:text-base font-bold text-impost-primary tracking-wide">Portfolio</h3>
             </div>
 
@@ -89,7 +89,7 @@
             </div>
 
             <div class="p-5 flex-1 flex flex-col justify-between">
-              <p class="text-white text-sm md:text-base mb-4 leading-relaxed">
+              <p class="text-white text-xs md:text-base mb-4 leading-relaxed">
                 Lihat koleksi proyek terbaik yang telah kami selesaikan dan bagaimana kami membantu klien berkembang.
               </p>
               <a href="https://heyzine.com/flip-book/caea1a35c5.html" target="_blank"

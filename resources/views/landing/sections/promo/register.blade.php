@@ -13,7 +13,7 @@
       <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
         Hanya <span class="text-impost-primary">4 Klien</span> Setiap Bulan
       </h2>
-      <p class="text-gray-400 text-xs md:text-sm mt-2 md:mt-3">
+      <p class="text-gray-400 text-xs md:text-base mt-2 md:mt-3">
         Kami membatasi slot agar tim bisa fokus memberikan hasil maksimal. Siapa cepat, dia dapat.
       </p>
     </div>
@@ -74,7 +74,7 @@
     </form>
 
     <div class="mt-5 md:mt-6 text-center border-t border-white/5 pt-5 md:pt-6">
-      <p class="text-xs md:text-sm font-medium text-white mb-0.5 md:mb-1">
+      <p class="text-xs md:text-base font-medium text-white mb-0.5 md:mb-1">
         Jangan Tunda Lagi!
       </p>
       <p class="text-[10px] md:text-xs text-red-500 uppercase font-bold tracking-wide">
@@ -95,7 +95,7 @@
 
     if (isValid) {
       btnSubmit.disabled = false;
-      btnSubmit.innerText = "Konsultasi Gratis Sekarang";
+      btnSubmit.innerText = "Konsultasi Sekarang";
       btnSubmit.className =
         "w-full bg-impost-primary text-neutral-900 font-bold py-2 md:py-3 rounded-xl hover:bg-yellow-400 transition-all text-md md:text-base shadow-lg transform active:scale-95 cursor-pointer";
     } else {
@@ -114,7 +114,7 @@
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const originalBtnText = "Konsultasi Gratis Sekarang";
+    const originalBtnText = "Konsultasi Sekarang";
     const nama = document.getElementById('nama_lengkap').value;
     const bisnis = document.getElementById('nama_bisnis').value;
     const email = document.getElementById('email').value;
@@ -157,7 +157,7 @@
           .then(response => response.json())
           .then(data => {
             const message =
-              `Mohon langsung kirimkan chat ini tanda edit.\n\nHai kak, saya tertarik konsultasi gratis *jasa digital marketing* impost media *start from 3 juta*. Saya sudah mengisi form dengan data sebagai berikut:\n\nNama Lengkap : ${nama}\nNama Bisnis : ${bisnis}\nNo. WhatsApp : ${whatsapp}\nOmzet Perbulan : ${omzet}\n\nMohon info langkah selanjutnya untuk bisa lanjut ke tahap konsultasi atau pembahasan strategi.`;
+              `Mohon langsung kirimkan chat ini tanda edit.\n\nHai kak, saya tertarik konsultasi sekarang *jasa digital marketing* impost media *start from 3 juta*. Saya sudah mengisi form dengan data sebagai berikut:\n\nNama Lengkap : ${nama}\nNama Bisnis : ${bisnis}\nNo. WhatsApp : ${whatsapp}\nOmzet Perbulan : ${omzet}\n\nMohon info langkah selanjutnya untuk bisa lanjut ke tahap konsultasi atau pembahasan strategi.`;
 
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/${NOMOR_ADMIN}?text=${encodedMessage}`);

@@ -1,4 +1,4 @@
-@php
+﻿@php
   $features = [
       [
           'icon' =>
@@ -88,10 +88,10 @@
 
     {{-- Header --}}
     <div class="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
+      <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight text-white mb-4">
         Kenapa Harus <br><span class="text-impost-primary">Impost Media?</span>
       </h2>
-      <p class="text-base font-medium leading-relaxed text-white max-w-xl mx-auto">
+      <p class="text-xs md:text-base font-medium leading-relaxed text-white max-w-xl mx-auto">
         Kami bukan sekadar vendor jasa. Kami partner pertumbuhan bisnis Anda jangka panjang.
       </p>
     </div>
@@ -129,7 +129,7 @@
                 fill="none">{!! $conn['svg'] !!}</svg>
             </div>
             <div
-              class="flex items-center justify-center shrink-0 bg-[#d4ac3c]/10 border border-[#d4ac3c]/20 rounded-xl text-[#d4ac3c] w-10 h-10 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+              class="flex items-center justify-center shrink-0 bg-impost-primary/10 border border-impost-primary/20 rounded-xl text-impost-primary w-10 h-10 group-hover:scale-110 transition-transform duration-300">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
               </svg>
@@ -137,7 +137,7 @@
             <div>
               <h4 class="font-bold text-white text-sm mb-1 group-hover:text-impost-primary transition-colors">
                 {{ $item['title'] }}</h4>
-              <p class="text-sm font-normal text-white leading-relaxed">{{ $item['desc'] }}</p>
+              <p class="text-xs md:text-base font-normal text-white leading-relaxed">{{ $item['desc'] }}</p>
             </div>
           </div>
         </div>
@@ -156,14 +156,14 @@
           <div
             class="flex items-start gap-3 p-4 sm:p-5 bg-white/[0.04] border border-white/[0.08] rounded-2xl hover:border-white/[0.15] transition-colors duration-200">
             <div
-              class="flex items-center justify-center shrink-0 bg-[#d4ac3c]/10 border border-[#d4ac3c]/20 rounded-xl text-[#d4ac3c] w-10 h-10 flex-shrink-0">
+              class="flex items-center justify-center shrink-0 bg-impost-primary/10 border border-impost-primary/20 rounded-xl text-impost-primary w-10 h-10">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
               </svg>
             </div>
             <div>
               <h4 class="font-bold text-white text-md mb-1">{{ $item['title'] }}</h4>
-              <p class="text-sm font-normal text-white leading-relaxed">{{ $item['desc'] }}</p>
+              <p class="text-xs md:text-base font-normal text-white leading-relaxed">{{ $item['desc'] }}</p>
             </div>
           </div>
         @endforeach

@@ -1,4 +1,4 @@
-@php
+﻿@php
   $painPoints = [
     ['icon'=>'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z','text'=>'Kehabisan uang karena terlalu banyak untuk iklan.'],
     ['icon'=>'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z','text'=>'Konten jalan tapi branding terlihat "brand murah".'],
@@ -18,7 +18,7 @@
         yang Jual Konten<br>
         atau <span class="text-impost-primary">Iklan</span>
       </h2>
-      <p class="text-base font-medium leading-relaxed text-white max-w-lg">
+      <p class="text-xs md:text-base font-medium leading-relaxed text-white max-w-lg">
         Kami Pionir &amp; Market Leader Digital Marketing di Kalimantan
       </p>
     </div>
@@ -55,14 +55,14 @@
     </div>
 
     {{-- Verdict + gold CTA strip --}}
-    <div class="bg-[#d4ac3c] rounded-2xl text-[#040404] p-7 md:p-9 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
+    <div class="bg-impost-primary rounded-2xl text-impost-fifth p-7 md:p-9 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
       <div class="flex-1 min-w-0">
         <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-snug text-black mb-2">Kami benahi funnel marketingnya.</h3>
-        <p class="text-sm font-medium leading-relaxed text-black leading-relaxed max-w-xl">
+        <p class="text-xs md:text-base font-medium leading-relaxed text-black max-w-xl">
           Membangun sistem pemasaran yang berkelanjutan, bukan sekadar posting konten atau pasang iklan.
         </p>
       </div>
-      <a href="{{ route('vsl-form') }}" class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-[#040404] text-white border border-white/20 hover:border-white/45 transition-colors duration-150 cursor-pointer whitespace-nowrap flex-shrink-0 self-start sm:self-center">
+      <a href="{{ route('vsl-form') }}" class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5 bg-impost-fifth text-white border border-white/20 hover:border-white/45 transition-colors duration-150 cursor-pointer whitespace-nowrap flex-shrink-0 self-start sm:self-center">
         Lihat Caranya
       </a>
     </div>

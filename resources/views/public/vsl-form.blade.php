@@ -1,19 +1,19 @@
-@extends('layouts.public')
+﻿@extends('layouts.public')
 
-@section('title', 'Konsultasi Gratis | Impost Media')
+@section('title', 'Konsultasi Sekarang | Impost Media')
 @section('meta_description',
   'Mulai perjalanan digital marketing bisnis Anda bersama Impost Media. Isi form konsultasi
-  gratis dan dapatkan strategi terbaik untuk pertumbuhan bisnis Anda.')
+  sekarang dan dapatkan strategi terbaik untuk pertumbuhan bisnis Anda.')
 
 @section('content')
   <main class="relative overflow-hidden pt-20 pb-6 antialiased sm:pt-28 sm:pb-12 md:pt-32">
     <div class="relative z-10 mx-auto max-w-7xl px-4 font-sans">
 
       <div class="mb-6 text-center sm:mb-8">
-        <h1 class="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-impost-primary sm:mb-3">
+        <h1 class="mb-2 text-xl md:text-5xl font-bold leading-tight text-impost-primary sm:mb-3">
           Mari Kita Mulai
         </h1>
-        <p class="mx-auto max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-white">
+        <p class="mx-auto max-w-xl text-xs md:text-base leading-relaxed text-white">
           Isi data berikut untuk melanjutkan. Privasi data Anda terjamin aman bersama kami.
         </p>
       </div>
@@ -207,7 +207,7 @@
 
           <div class="pt-4">
             <button type="submit" :disabled="loading"
-              class="w-full rounded-full bg-impost-primary py-3.5 text-sm font-bold text-[#040404] shadow-lg transition-all duration-200 hover:bg-impost-secondary active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50">
+              class="w-full rounded-full bg-impost-primary py-3.5 text-sm font-bold text-impost-fifth shadow-lg transition-all duration-200 hover:bg-impost-secondary active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50">
               <span x-text="loading ? 'Memproses...' : 'Kirim Data Sekarang'"></span>
             </button>
           </div>

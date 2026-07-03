@@ -9,7 +9,7 @@
         <div
           class="flex-shrink-0 px-4 sm:px-6 lg:px-8 py-5 sm:py-0 sm:flex sm:items-center
           sm:border-r border-white/[0.07] sm:w-56 lg:w-64 xl:w-72">
-          <p class="text-sm font-bold text-white leading-snug">
+          <p class="text-sm font-bold text-white leading-snug text-center sm:text-left">
             Dipercaya oleh <span class="text-impost-primary">200+</span> bisnis<br class="hidden sm:block">
             di Kalimantan Selatan
           </p>
@@ -43,9 +43,9 @@
                 <div class="flex items-center gap-10 sm:gap-14 px-8 shrink-0">
                   @foreach ($clients as $client)
                     <img src="{{ asset('storage/' . $client->client_logo) }}" alt="{{ $client->filename }}"
-                      class="h-9 sm:h-11 w-auto max-w-[120px] object-contain rounded-full
+                      class="h-9 sm:h-11 w-auto max-w-35 object-contain
                         opacity-80 hover:opacity-100
-                        transition-opacity duration-300 flex-shrink-0"
+                        transition-opacity duration-300 shrink-0"
                       loading="lazy" decoding="async">
                   @endforeach
                 </div>

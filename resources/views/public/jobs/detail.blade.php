@@ -1,4 +1,4 @@
-@extends('layouts.public')
+﻿@extends('layouts.public')
 
 @section('title', $job->title . ' | Impost Media')
 @section('meta_description',
@@ -76,7 +76,7 @@
           </div>
 
           {{-- Title --}}
-          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">{{ $job->title }}</h1>
+          <h1 class="text-xl md:text-5xl font-bold text-white leading-tight mb-4">{{ $job->title }}</h1>
 
           {{-- Meta row --}}
           <div class="flex items-center gap-4 text-sm text-white/40">
@@ -111,8 +111,8 @@
                 </div>
 
                 <div class="prose prose-invert max-w-none
-                  prose-p:text-white prose-p:leading-relaxed prose-p:text-sm sm:prose-p:text-base
-                  prose-ul:text-white prose-ul:text-sm sm:prose-ul:text-base
+                  prose-p:text-white prose-p:leading-relaxed prose-p:text-xs md:prose-p:text-base
+                  prose-ul:text-white prose-ul:text-xs md:prose-ul:text-base
                   prose-li:text-white prose-li:leading-relaxed prose-li:my-1
                   prose-li:marker:text-impost-primary
                   prose-strong:text-white prose-strong:font-bold
@@ -129,14 +129,14 @@
         @endif
 
         {{-- Mobile apply CTA --}}
-        <div class="mt-12 lg:hidden bg-[#d4ac3c] rounded-2xl p-6">
+        <div class="mt-12 lg:hidden bg-impost-primary rounded-2xl p-6">
           <h3 class="font-bold text-black mb-4">Tertarik bergabung?</h3>
-          <p class="text-sm text-black/70 mb-5 leading-relaxed">
+          <p class="text-xs md:text-base text-black/70 mb-5 leading-relaxed">
             Kirim CV dan portofolio terbaikmu ke email di bawah ini.
           </p>
           <a href="mailto:{{ $job->apply_email }}?subject={{ urlencode($job->apply_subject) }}"
             class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full
-              bg-black text-white text-sm font-bold hover:bg-[#111] transition-colors">
+              bg-black text-white text-sm font-bold hover:bg-impost-dark-850 transition-colors">
             Lamar Sekarang
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
@@ -223,9 +223,9 @@
           </div>
 
           {{-- Apply card --}}
-          <div class="bg-[#d4ac3c] rounded-2xl p-6">
+          <div class="bg-impost-primary rounded-2xl p-6">
             <h3 class="font-bold text-black mb-1">Tertarik bergabung?</h3>
-            <p class="text-xs text-black/60 leading-relaxed mb-5">
+            <p class="text-xs md:text-base text-black/60 leading-relaxed mb-5">
               Kirim CV dan portofolio terbaikmu ke email berikut.
             </p>
 
@@ -247,7 +247,7 @@
 
             <a href="mailto:{{ $job->apply_email }}?subject={{ urlencode($job->apply_subject) }}"
               class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full
-                bg-black text-white text-sm font-bold hover:bg-[#111] transition-colors">
+                bg-black text-white text-sm font-bold hover:bg-impost-dark-850 transition-colors">
               Lamar Sekarang
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>

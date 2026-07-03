@@ -15,7 +15,7 @@
         </div>
         <div>
           <h3 class="text-white font-bold text-base md:text-lg mb-1">Iklan Sepi Chat</h3>
-          <p class="text-gray-400 text-xs md:text-sm">Sudah keluar budget iklan, tapi yang masuk cuma "tanya harga" lalu
+          <p class="text-gray-400 text-xs md:text-base">Sudah keluar budget iklan, tapi yang masuk cuma "tanya harga" lalu
             kabur.</p>
         </div>
       </div>
@@ -28,7 +28,7 @@
         </div>
         <div>
           <h3 class="text-white font-bold text-base md:text-lg mb-1">Omzet Stagnan</h3>
-          <p class="text-gray-400 text-xs md:text-sm">Bisnis jalan di tempat, bingung caranya scale-up agar omzet
+          <p class="text-gray-400 text-xs md:text-base">Bisnis jalan di tempat, bingung caranya scale-up agar omzet
             meledak.</p>
         </div>
       </div>
@@ -41,7 +41,7 @@
         </div>
         <div>
           <h3 class="text-white font-bold text-base md:text-lg mb-1">Gaptek Strategi</h3>
-          <p class="text-gray-400 text-xs md:text-sm">Ingin main di FB & IG Ads tapi pusing teknisnya, akhirnya cuma
+          <p class="text-gray-400 text-xs md:text-base">Ingin main di FB & IG Ads tapi pusing teknisnya, akhirnya cuma
             boncos.</p>
         </div>
       </div>
@@ -54,7 +54,7 @@
         </div>
         <div>
           <h3 class="text-white font-bold text-base md:text-lg mb-1">Lelah Trial & Error</h3>
-          <p class="text-gray-400 text-xs md:text-sm">Buang-buang waktu dan uang mencoba cara yang tidak pasti berhasil.
+          <p class="text-gray-400 text-xs md:text-base">Buang-buang waktu dan uang mencoba cara yang tidak pasti berhasil.
           </p>
         </div>
       </div>
@@ -62,7 +62,7 @@
     </div>
 
     <div class="mt-8 md:mt-12 text-center bg-impost-primary/10 border border-impost-primary/20 rounded-xl p-4 md:p-6">
-      <p class="text-base md:text-xl font-medium text-white">
+      <p class="text-xs md:text-base font-medium text-white">
         Jika <span class="text-impost-primary font-bold underline">IYA</span>, maka Anda berada di halaman yang tepat.
         <br class="hidden md:block">
         Ini bukan kebetulan, Anda dipertemukan dengan <strong>Impost Media</strong>.

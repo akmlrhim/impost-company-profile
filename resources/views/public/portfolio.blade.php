@@ -1,4 +1,4 @@
-@extends('layouts.public')
+﻿@extends('layouts.public')
 
 @section('title', 'Portfolio | Impost Media')
 @section('meta_description',
@@ -40,10 +40,10 @@
           </ol>
         </nav>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <h1 class="text-xl md:text-5xl font-bold text-white leading-tight">
           Portfolio
         </h1>
-        <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
+        <p class="text-white text-xs md:text-base leading-relaxed max-w-xl">
           Bukan sekadar janji manis, melainkan bukti nyata yang lahir dari strategi terukur dan eksekusi presisi.
         </p>
       </div>
@@ -52,33 +52,25 @@
 
   <div class="antialiased bg-impost-fifth">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-14">
-      <div class="mb-8 sm:mb-10 md:mb-12 max-w-7xl mx-auto">
+      <div class="mb-8 sm:mb-10 md:mb-12 max-w-7xl mx-auto" id="portfolio-wrapper">
 
         @if ($portfolios->isNotEmpty() || !empty($activeCategory))
-          <div class="mb-10 px-4">
-            <div class="md:hidden w-full max-w-sm mx-auto relative">
-              <select onchange="window.location.href=this.value"
-                class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-xl py-3 px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-xs sm:text-sm font-medium shadow-lg">
-                <option value="{{ route('portfolio') }}" {{ empty($activeCategory) ? 'selected' : '' }}>Semua Kategori
-                </option>
-                @foreach ($category as $cat)
-                  <option value="{{ route('portfolio', ['category' => $cat->slug]) }}"
-                    {{ ($activeCategory ?? '') === $cat->slug ? 'selected' : '' }}>
-                    {{ $cat->name }}
-                  </option>
-                @endforeach
-              </select>
-            </div>
-
-            <div class="hidden md:flex flex-wrap justify-center gap-2">
+          <div class="mb-10">
+            <div class="flex justify-center border-b border-white/[0.07] overflow-x-auto">
               <a href="{{ route('portfolio') }}"
-                class="px-4 py-2 rounded-full text-sm font-bold border transition {{ empty($activeCategory) ? 'bg-impost-primary text-impost-fifth border-impost-primary' : 'border-impost-fourth text-white hover:bg-impost-fourth/40' }}">
+                class="relative shrink-0 px-5 sm:px-7 py-3 text-sm font-normal transition-colors duration-200 whitespace-nowrap {{ empty($activeCategory) ? 'text-white' : 'text-white/40 hover:text-white/70' }}">
                 Semua
+                @if (empty($activeCategory))
+                  <span class="absolute bottom-0 left-0 right-0 h-0.5 bg-impost-primary rounded-full"></span>
+                @endif
               </a>
               @foreach ($category as $cat)
                 <a href="{{ route('portfolio', ['category' => $cat->slug]) }}"
-                  class="px-4 py-2 rounded-full text-sm font-bold border transition {{ ($activeCategory ?? '') === $cat->slug ? 'bg-impost-primary text-impost-fifth border-impost-primary' : 'border-impost-fourth text-white hover:bg-impost-fourth/40' }}">
+                  class="relative shrink-0 px-5 sm:px-7 py-3 text-sm font-normal transition-colors duration-200 whitespace-nowrap {{ ($activeCategory ?? '') === $cat->slug ? 'text-white' : 'text-white/40 hover:text-white/70' }}">
                   {{ $cat->name }}
+                  @if (($activeCategory ?? '') === $cat->slug)
+                    <span class="absolute bottom-0 left-0 right-0 h-0.5 bg-impost-primary rounded-full"></span>
+                  @endif
                 </a>
               @endforeach
             </div>
@@ -95,7 +87,7 @@
             <div id="portfolio-skeleton"
               class="columns-2 sm:columns-3 lg:columns-4 gap-3 md:gap-4 mb-10 md:mb-12 space-y-3 md:space-y-4 animate-pulse">
               @for ($i = 0; $i < 8; $i++)
-                <div class="w-full bg-[#151515] rounded-2xl aspect-[3/4] border border-impost-fourth mb-3 md:mb-4"></div>
+                <div class="w-full bg-impost-dark-750 rounded-2xl aspect-[3/4] border border-impost-fourth mb-3 md:mb-4"></div>
               @endfor
             </div>
 
@@ -103,11 +95,11 @@
               class="columns-2 sm:columns-3 lg:columns-4 gap-3 md:gap-4 mb-10 md:mb-12 space-y-3 md:space-y-4 opacity-0 transition-opacity duration-500">
               @foreach ($portfolios as $portfolio)
                 <article
-                  class="group relative rounded-2xl overflow-hidden border border-impost-fourth bg-[#0f0f0f] shadow-md cursor-pointer break-inside-avoid mb-3 md:mb-4"
+                  class="group relative rounded-2xl overflow-hidden border border-impost-fourth bg-impost-dark-900 shadow-md cursor-pointer break-inside-avoid mb-3 md:mb-4"
                   data-media="{{ asset('storage/' . $portfolio->media_path) }}"
                   data-type="{{ $portfolio->media_type ?? 'image' }}" @click="openMedia({{ $loop->index }})">
 
-                  <div class="relative w-full overflow-hidden bg-[#151515]">
+                  <div class="relative w-full overflow-hidden bg-impost-dark-750">
                     @if ($portfolio->media_path)
                       @if ($portfolio->media_type === 'video')
                         <div class="relative">
@@ -144,7 +136,7 @@
             <x-custom-pagination :items="$portfolios" />
 
             <template x-teleport="body">
-              <div x-show="isOpen" x-cloak @click.self="closeMedia()" @keydown.escape.window="closeMedia()"
+              <div id="portfolio-lightbox" x-show="isOpen" x-cloak @click.self="closeMedia()" @keydown.escape.window="closeMedia()"
                 @keydown.arrow-right.window="nextMedia()" @keydown.arrow-left.window="previousMedia()"
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
                 x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200"
@@ -207,17 +199,16 @@
 
     <section class="mt-16 sm:mt-20 py-16 sm:py-20 border-t border-white/[0.07]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-xs font-bold text-impost-primary uppercase tracking-[0.15em] mb-3">Siap Bertumbuh?</p>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
           Punya Ide untuk <span class="text-impost-primary">Bisnis Anda?</span>
         </h2>
-        <p class="text-base font-medium text-white max-w-xl mx-auto mb-8">
+        <p class="text-xs md:text-base font-medium text-white max-w-xl mx-auto mb-8">
           Lihat bagaimana kami menyelesaikan masalah klien, atau langsung konsultasikan kebutuhan bisnis Anda.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
           <a href="{{ route('study-case') }}"
             class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5
-              bg-impost-primary text-[#040404] hover:bg-impost-secondary transition-colors duration-150 whitespace-nowrap">
+              bg-impost-primary text-impost-fifth hover:bg-impost-secondary transition-colors duration-150 whitespace-nowrap">
             Lihat Studi Kasus
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
@@ -308,5 +299,63 @@
         }
       }));
     });
+
+    (function() {
+      'use strict';
+
+      const wrapper = document.getElementById('portfolio-wrapper');
+      if (!wrapper) return;
+
+      async function loadPortfolio(url, push) {
+        wrapper.style.transition = 'opacity .2s ease';
+        wrapper.style.opacity = '0.4';
+        wrapper.style.pointerEvents = 'none';
+
+        try {
+          const res = await fetch(url, {
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest'
+            }
+          });
+          if (!res.ok) throw new Error('Request failed');
+
+          const html = await res.text();
+          const newDoc = new DOMParser().parseFromString(html, 'text/html');
+          const newWrapper = newDoc.getElementById('portfolio-wrapper');
+          if (!newWrapper) throw new Error('Wrapper missing');
+
+          document.getElementById('portfolio-lightbox')?.remove();
+          wrapper.innerHTML = newWrapper.innerHTML;
+
+          if (push) history.pushState({
+            portfolioUrl: url
+          }, '', url);
+
+          const newTitle = newDoc.querySelector('title');
+          if (newTitle) document.title = newTitle.textContent;
+        } catch (e) {
+          window.location.href = url;
+          return;
+        } finally {
+          wrapper.style.opacity = '1';
+          wrapper.style.pointerEvents = '';
+        }
+      }
+
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('#portfolio-wrapper a[href]');
+        if (!link) return;
+
+        const url = new URL(link.href, window.location.href);
+        if (url.origin !== window.location.origin) return;
+
+        e.preventDefault();
+        loadPortfolio(link.href, true);
+      });
+
+      window.addEventListener('popstate', () => {
+        loadPortfolio(window.location.href, false);
+      });
+    })();
   </script>
 @endpush

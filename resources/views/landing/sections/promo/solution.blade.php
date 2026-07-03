@@ -11,7 +11,7 @@
       Tapi <span class="text-impost-primary">Chat & Penjualan.</span>
     </h2>
 
-    <p class="text-gray-300 text-sm md:text-lg max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-2">
+    <p class="text-gray-300 text-xs md:text-base max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-2">
       Kami hadir untuk membantu bisnis Anda MELEDAK secara digital. Kami bukan hanya agensi yang membuat postingan
       cantik, kami merancang strategi agar HP Admin Anda berisik notifikasi orderan.
     </p>
@@ -30,7 +30,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 md:mb-2">Meta Ads</h3>
-        <p class="text-xs md:text-sm text-gray-400 leading-relaxed">Targeting presisi di Facebook & Instagram untuk
+        <p class="text-xs md:text-base text-gray-400 leading-relaxed">Targeting presisi di Facebook & Instagram untuk
           mendatangkan traffic berkualitas.</p>
       </div>
 
@@ -46,7 +46,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 md:mb-2">Web & LP</h3>
-        <p class="text-xs md:text-sm text-gray-400 leading-relaxed">Wadah penampung traffic yang didesain khusus untuk
+        <p class="text-xs md:text-base text-gray-400 leading-relaxed">Wadah penampung traffic yang didesain khusus untuk
           konversi penjualan.</p>
       </div>
 
@@ -61,7 +61,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 md:mb-2">Branding</h3>
-        <p class="text-xs md:text-sm text-gray-400 leading-relaxed">Membangun citra bisnis yang profesional dan
+        <p class="text-xs md:text-base text-gray-400 leading-relaxed">Membangun citra bisnis yang profesional dan
           dipercaya oleh customer.</p>
       </div>
 

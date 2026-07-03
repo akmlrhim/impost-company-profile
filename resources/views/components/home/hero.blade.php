@@ -1,4 +1,4 @@
-<section id="home" class="relative flex flex-col overflow-hidden pt-14 md:pt-28 min-h-[calc(100svh-0px)] sm:min-h-screen">
+﻿<section id="home" class="relative flex flex-col overflow-hidden pt-14 min-h-[calc(100svh-0px)] sm:min-h-screen">
 
   {{-- Background image --}}
   <div class="absolute inset-0 z-0">
@@ -16,12 +16,12 @@
 
       <div class="text-center max-w-4xl mx-auto">
 
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-bold leading-[1.1] text-white mb-6">
+        <h1 class="text-2xl sm:text-3xl lg:text-6xl font-bold leading-[1.1] text-white mb-6">
           Naikkan Omzet Bisnis Anda<br>
           <span class="text-impost-primary">2–3× dalam 90 Hari</span>
         </h1>
 
-        <p class="text-base sm:text-lg font-medium leading-relaxed text-white max-w-2xl mx-auto mb-8">
+        <p class="text-xs md:text-base font-medium leading-relaxed text-white max-w-2xl mx-auto mb-8">
           Bukan sekadar konten atau iklan, melainkan sistem pertumbuhan terukur yang bisa diaudit dan
           dipertanggungjawabkan secara data.
         </p>
@@ -30,8 +30,8 @@
         <div class="flex flex-col sm:flex-row gap-3 justify-center mb-6">
           <a href="{{ route('vsl-form') }}"
             class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-8 py-3.5
-              bg-impost-primary text-[#040404] hover:bg-impost-secondary transition-colors duration-150 whitespace-nowrap">
-            Konsultasi Gratis
+              bg-impost-primary text-impost-fifth hover:bg-impost-secondary transition-colors duration-150 whitespace-nowrap">
+            Konsultasi Sekarang
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

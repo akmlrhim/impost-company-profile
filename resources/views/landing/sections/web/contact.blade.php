@@ -9,14 +9,14 @@
         Siap Punya Website yang <span class="text-impost-primary">Niat & Profesional?</span>
       </h2>
 
-      <p class="text-sm md:text-base text-gray-300 mb-6 md:mb-8 leading-relaxed">
+      <p class="text-xs md:text-base text-gray-300 mb-6 md:mb-8 leading-relaxed">
         Isi form singkat ini. Tim kami akan segera menghubungi kamu untuk konsultasi strategi digital
         bisnis kamu.
       </p>
 
       <div class="bg-neutral-900/50 p-4 md:p-6 rounded-xl border-l-4 border-impost-primary mb-6 text-left shadow-lg">
         <div class="flex gap-4">
-          <div class="text-impost-primary flex-shrink-0 mt-1">
+          <div class="text-impost-primary shrink-0 mt-1">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path
@@ -27,7 +27,7 @@
           </div>
           <div>
             <h4 class="font-bold text-impost-primary text-sm md:text-base">Mindset Bisnis</h4>
-            <p class="text-gray-300 text-xs md:text-sm mt-1 leading-relaxed">
+            <p class="text-gray-300 text-xs md:text-base mt-1 leading-relaxed">
               Website bukan biaya, tapi <strong>aset bisnis jangka panjang</strong>. Kalau mau bisnis naik level,
               mulai dari pondasi digital yang benar.
             </p>
@@ -98,7 +98,7 @@
 
     if (isValid) {
       btnSubmit.disabled = false;
-      btnSubmit.innerText = "Konsultasi Gratis Sekarang";
+      btnSubmit.innerText = "Konsultasi Sekarang";
       btnSubmit.className =
         "leads-web-btn w-full bg-impost-primary text-impost-fifth font-bold py-3 rounded-md cursor-pointer hover:bg-yellow-500 transition-all duration-300 flex items-center justify-center gap-2 mt-2 group text-sm shadow-lg transform active:scale-95";
     } else {
@@ -117,7 +117,7 @@
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const originalBtnText = "Konsultasi Gratis Sekarang";
+    const originalBtnText = "Konsultasi Sekarang";
     const nama = document.getElementById('nama').value;
     const bisnis = document.getElementById('bisnis').value;
     const whatsapp = document.getElementById('whatsapp').value;
@@ -159,7 +159,7 @@
           .then(response => response.json())
           .then(data => {
             const message =
-              `Mohon langsung kirimkan chat ini tanda edit.\n\nHai kak, saya tertarik konsultasi gratis *jasa website* impost media. Saya sudah mengisi form dengan data sebagai berikut:\n\nNama Lengkap : ${nama}\nNama Bisnis : ${bisnis}\nNo. WhatsApp : ${whatsapp}\nKebutuhan Website (Landing Page / Company Profile) : ${kebutuhan}\n\nMohon info langkah selanjutnya.`;
+              `Mohon langsung kirimkan chat ini tanda edit.\n\nHai kak, saya tertarik konsultasi sekarang *jasa website* impost media. Saya sudah mengisi form dengan data sebagai berikut:\n\nNama Lengkap : ${nama}\nNama Bisnis : ${bisnis}\nNo. WhatsApp : ${whatsapp}\nKebutuhan Website (Landing Page / Company Profile) : ${kebutuhan}\n\nMohon info langkah selanjutnya.`;
 
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/${NOMOR_ADMIN}?text=${encodedMessage}`);

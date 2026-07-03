@@ -1,4 +1,4 @@
-@extends('layouts.public')
+﻿@extends('layouts.public')
 
 @section('title', 'Artikel | Impost Media')
 @section('meta_description',
@@ -40,10 +40,10 @@
           </ol>
         </nav>
 
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+        <h1 class="text-xl md:text-5xl font-bold text-white leading-tight">
           Artikel
         </h1>
-        <p class="text-white text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
+        <p class="text-white text-xs md:text-base leading-relaxed max-w-xl">
           Jelajahi koleksi artikel kami tentang berbagai topik menarik seputar strategi, data, dan pertumbuhan bisnis.
         </p>
       </div>
@@ -55,193 +55,242 @@
 
   <div class="antialiased bg-impost-fifth">
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-14" id="articles-wrapper">
 
       {{-- Filter --}}
-      <div class="mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto">
+      <div class="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h2 class="text-lg sm:text-xl font-bold text-white">Filter</h2>
 
-        {{-- Mobile Dropdown --}}
-        <div class="md:hidden w-full relative">
-          <select onchange="window.location.href=this.value"
-            class="w-full appearance-none bg-[#121212] text-white border border-white/10 rounded-lg sm:rounded-xl py-2.5 px-4 pr-10 focus:outline-none focus:border-impost-primary focus:ring-1 focus:ring-impost-primary transition-all cursor-pointer text-xs md:text-sm font-medium shadow-lg">
-            <option value="{{ route('article.all') }}" {{ empty($activeCategory) ? 'selected' : '' }}>
-              Semua Kategori
-            </option>
-            @foreach ($category as $cat)
-              <option value="{{ route('article.all', ['category' => $cat->slug]) }}"
-                {{ ($activeCategory ?? '') === $cat->slug ? 'selected' : '' }}>
-                {{ $cat->name }}
-              </option>
-            @endforeach
-          </select>
-          <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        <form id="articles-filter-form" action="{{ route('article.all') }}" method="GET"
+          class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+          <div class="relative w-full sm:w-72">
+            <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
             </svg>
+            <input type="text" name="search" value="{{ $filters['search'] ?? '' }}"
+              placeholder="Masukkan kata kunci.."
+              class="w-full bg-impost-dark-800 border border-white/10 rounded-sm py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-impost-primary transition-colors">
           </div>
-        </div>
 
-        {{-- Desktop Pills --}}
-        <div class="hidden md:flex flex-wrap justify-center gap-2.5">
-          <a href="{{ route('article.all') }}"
-            class="px-4 py-2 rounded-full text-[10px] md:text-xs font-bold border transition-all duration-300
-            {{ empty($activeCategory)
-                ? 'bg-impost-primary text-black border-impost-primary shadow-[0_0_15px_rgba(var(--impost-primary),0.4)]'
-                : 'border-white/10 text-white hover:border-impost-primary/50 hover:text-white bg-white/5 hover:bg-white/10' }}">
-            Semua
-          </a>
-          @foreach ($category as $cat)
-            <a href="{{ route('article.all', ['category' => $cat->slug]) }}"
-              class="px-4 py-2 rounded-full text-[10px] md:text-xs font-bold border transition-all duration-300
-              {{ ($activeCategory ?? '') === $cat->slug
-                  ? 'bg-impost-primary text-black border-impost-primary shadow-[0_0_15px_rgba(var(--impost-primary),0.4)]'
-                  : 'border-white/10 text-white hover:border-impost-primary/50 hover:text-white bg-white/5 hover:bg-white/10' }}">
-              {{ $cat->name }}
-            </a>
-          @endforeach
-        </div>
+          <div class="relative w-full sm:w-40">
+            <select name="month"
+              class="w-full appearance-none bg-impost-dark-800 border border-white/10 rounded-sm py-2.5 pl-4 pr-9 text-sm text-white focus:outline-none focus:border-impost-primary transition-colors">
+              <option value="">Bulan</option>
+              @foreach ($months as $num => $name)
+                <option value="{{ $num }}"
+                  {{ (string) ($filters['month'] ?? '') === (string) $num ? 'selected' : '' }}>
+                  {{ $name }}
+                </option>
+              @endforeach
+            </select>
+
+          </div>
+
+          <div class="relative w-full sm:w-32">
+            <select name="year"
+              class="w-full appearance-none bg-impost-dark-800 border border-white/10 rounded-sm py-2.5 pl-4 pr-9 text-sm text-white focus:outline-none focus:border-impost-primary transition-colors">
+              <option value="">Tahun</option>
+              @foreach ($years as $year)
+                <option value="{{ $year }}"
+                  {{ (string) ($filters['year'] ?? '') === (string) $year ? 'selected' : '' }}>
+                  {{ $year }}
+                </option>
+              @endforeach
+            </select>
+
+          </div>
+        </form>
       </div>
 
       {{-- Articles Grid --}}
       <section class="w-full" id="articles-container">
         @if ($articles->isEmpty())
-          <div
-            class="w-full flex items-center justify-center py-10 sm:py-14 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
+          <div class="w-full flex items-center justify-center py-10 sm:py-14 mt-6 sm:mt-10">
             <x-empty-card item="Artikel" />
           </div>
         @else
           {{-- Skeleton --}}
           <div id="articles-skeleton"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 animate-pulse">
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 animate-pulse">
             @for ($i = 0; $i < 6; $i++)
-              <div class="w-full bg-[#121212] rounded-xl sm:rounded-2xl h-[280px] sm:h-[320px] border border-white/5">
+              <div>
+                <div class="w-full aspect-[16/10] rounded-lg bg-impost-dark-800 border border-white/5"></div>
+                <div class="h-4 w-3/4 bg-impost-dark-800 rounded mt-4"></div>
+                <div class="h-3 w-1/3 bg-impost-dark-800 rounded mt-2"></div>
               </div>
             @endfor
           </div>
 
           {{-- Content --}}
           <div id="articles-content"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 opacity-0 transition-opacity duration-500">
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 opacity-0 transition-opacity duration-500">
             @foreach ($articles as $article)
-              <article
-                class="group rounded-xl sm:rounded-2xl bg-[#121212] border border-white/5 shadow-sm overflow-hidden hover:border-impost-primary/30 transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
-
-                <div class="relative h-36 sm:h-44 md:h-48 overflow-hidden">
+              <a href="{{ route('article.detail', $article->slug) }}" class="group block">
+                <div class="relative rounded-lg overflow-hidden aspect-[16/10] bg-impost-dark-800 border border-white/5">
                   @if ($article->cover_path)
                     <img src="{{ asset('storage/' . $article->cover_path) }}" alt="{{ $article->title }}"
-                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy">
                   @else
-                    <div class="w-full h-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center">
-                      <svg class="w-10 h-10 sm:w-14 sm:h-14 text-white/10" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
+                    <div
+                      class="w-full h-full bg-gradient-to-br from-impost-dark-700 to-impost-dark-900 flex items-center justify-center">
+                      <svg class="w-10 h-10 text-white/10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                           d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
                         </path>
                       </svg>
                     </div>
                   @endif
-
-                  @if ($article->category)
-                    <span
-                      class="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 inline-flex items-center rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-impost-primary text-[8px] sm:text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1">
-                      {{ $article->category->name }}
-                    </span>
-                  @endif
-
-                  <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent opacity-60">
-                  </div>
                 </div>
 
-                <div class="p-4 sm:p-5 flex flex-col flex-1 border-t border-white/5">
-
-                  <div
-                    class="flex items-center gap-2 sm:gap-2.5 text-[10px] md:text-xs font-medium text-white/70 mb-2 sm:mb-3">
-                    <div class="flex items-center gap-1 sm:gap-1.5">
-                      <svg class="w-2.5 h-2.5 md:w-3 md:h-3 text-impost-primary" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                        </path>
-                      </svg>
-                      <span>{{ $article->created_at->translatedFormat('d M Y') }}</span>
-                    </div>
-                    <span class="w-1 h-1 rounded-full bg-gray-600"></span>
-                    <span>{{ $article->created_at->diffForHumans() }}</span>
-                  </div>
-
+                <div class="mt-4">
                   <h3
-                    class="text-base md:text-lg lg:text-xl font-bold text-white mb-2 line-clamp-2 leading-snug group-hover:text-impost-primary transition-colors">
-                    <a href="{{ route('article.detail', $article->slug) }}">
-                      {{ $article->title }}
-                    </a>
+                    class="text-base sm:text-lg font-bold text-white line-clamp-2 leading-snug group-hover:text-impost-primary transition-colors mb-2">
+                    {{ $article->title }}
                   </h3>
-
-                  <p
-                    class="text-xs md:text-sm lg:text-base text-white line-clamp-3 mb-4 sm:mb-5 flex-1 leading-relaxed">
-                    {{ Str::limit(strip_tags($article->content), 100) }}
-                  </p>
-
-                  <a href="{{ route('article.detail', $article->slug) }}"
-                    class="mt-auto inline-flex items-center text-xs md:text-sm lg:text-base font-bold text-impost-primary hover:text-white transition-colors group/link">
-                    <span class="uppercase tracking-wider text-[10px] md:text-xs lg:text-sm">Baca Selengkapnya</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="lucide lucide-chevron-right-icon lucide-chevron-right w-3 h-3 md:w-3.5 md:h-3.5 ml-1.5">
-                      <path d="m9 18 6-6-6-6" />
+                  <div class="flex items-center gap-1.5 text-xs text-white/40">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                      </path>
                     </svg>
-                  </a>
+                    <span>{{ $article->created_at->translatedFormat('d M Y') }}</span>
+                  </div>
                 </div>
-              </article>
+              </a>
             @endforeach
           </div>
 
           {{-- Pagination --}}
-          <div class="mt-6 sm:mt-8">
+          <div class="mt-6 sm:mt-8" id="articles-pagination">
             <x-custom-pagination :items="$articles" />
           </div>
-
-          <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              const skeleton = document.getElementById('articles-skeleton');
-              const content = document.getElementById('articles-content');
-              if (!skeleton || !content) return;
-
-              const imgs = content.querySelectorAll('img');
-              let loaded = 0;
-
-              function reveal() {
-                skeleton.style.display = 'none';
-                content.style.opacity = '1';
-              }
-
-              if (!imgs.length) {
-                reveal();
-                return;
-              }
-
-              function onLoad() {
-                if (++loaded >= imgs.length) reveal();
-              }
-
-              imgs.forEach(img => {
-                if (img.complete) {
-                  onLoad();
-                } else {
-                  img.addEventListener('load', onLoad, {
-                    once: true
-                  });
-                  img.addEventListener('error', onLoad, {
-                    once: true
-                  });
-                }
-              });
-
-              setTimeout(reveal, 1500);
-            });
-          </script>
         @endif
       </section>
     </div>
   </div>
 @endsection
+
+@push('scripts')
+  <script>
+    (function() {
+      'use strict';
+
+      function revealArticles() {
+        const skeleton = document.getElementById('articles-skeleton');
+        const content = document.getElementById('articles-content');
+        if (!skeleton || !content) return;
+
+        const imgs = content.querySelectorAll('img');
+        let loaded = 0;
+
+        const reveal = () => {
+          skeleton.style.display = 'none';
+          content.style.opacity = '1';
+        };
+
+        if (!imgs.length) return reveal();
+
+        const onLoad = () => {
+          if (++loaded >= imgs.length) reveal();
+        };
+
+        imgs.forEach(img => {
+          if (img.complete) onLoad();
+          else {
+            img.addEventListener('load', onLoad, {
+              once: true
+            });
+            img.addEventListener('error', onLoad, {
+              once: true
+            });
+          }
+        });
+
+        setTimeout(reveal, 1500);
+      }
+
+      revealArticles();
+
+      const wrapper = document.getElementById('articles-wrapper');
+      if (!wrapper) return;
+
+      async function loadArticles(url, push) {
+        wrapper.style.transition = 'opacity .2s ease';
+        wrapper.style.opacity = '0.4';
+        wrapper.style.pointerEvents = 'none';
+
+        try {
+          const res = await fetch(url, {
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest'
+            }
+          });
+          if (!res.ok) throw new Error('Request failed');
+
+          const html = await res.text();
+          const newDoc = new DOMParser().parseFromString(html, 'text/html');
+          const newWrapper = newDoc.getElementById('articles-wrapper');
+          if (!newWrapper) throw new Error('Wrapper missing');
+
+          wrapper.innerHTML = newWrapper.innerHTML;
+
+          if (push) history.pushState({
+            articlesUrl: url
+          }, '', url);
+
+          const newTitle = newDoc.querySelector('title');
+          if (newTitle) document.title = newTitle.textContent;
+
+          revealArticles();
+        } catch (e) {
+          window.location.href = url;
+          return;
+        } finally {
+          wrapper.style.opacity = '1';
+          wrapper.style.pointerEvents = '';
+        }
+      }
+
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('#articles-pagination a[href]');
+        if (!link) return;
+
+        const url = new URL(link.href, window.location.href);
+        if (url.origin !== window.location.origin) return;
+
+        e.preventDefault();
+        loadArticles(link.href, true);
+      });
+
+      document.addEventListener('submit', (e) => {
+        const form = e.target.closest('#articles-filter-form');
+        if (!form) return;
+
+        e.preventDefault();
+
+        const params = new URLSearchParams(new FormData(form));
+        [...params.keys()].forEach((key) => {
+          if (!params.get(key)) params.delete(key);
+        });
+
+        const query = params.toString();
+        loadArticles(form.action + (query ? '?' + query : ''), true);
+      });
+
+      document.addEventListener('change', (e) => {
+        const select = e.target.closest(
+          '#articles-filter-form select[name="month"], #articles-filter-form select[name="year"]');
+        if (!select) return;
+
+        select.form.requestSubmit();
+      });
+
+      window.addEventListener('popstate', () => {
+        loadArticles(window.location.href, false);
+      });
+    })();
+  </script>
+@endpush

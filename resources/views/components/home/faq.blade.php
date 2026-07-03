@@ -51,33 +51,29 @@
 
       {{-- Left: sticky header --}}
       <div class="lg:sticky lg:top-28 text-center lg:text-left">
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-5">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-white mb-5">
           Pertanyaan <br><span class="text-impost-primary">yang Sering Ditanyakan</span>
         </h2>
-        <p class="text-base font-medium leading-relaxed text-white mb-8 max-w-sm mx-auto lg:mx-0">
+        <p class="text-xs md:text-base font-medium leading-relaxed text-white mb-8 max-w-sm mx-auto lg:mx-0">
           Tidak menemukan jawaban yang Anda cari? Tim kami siap membantu.
         </p>
-        <a href="{{ route('contact') }}"
-          class="inline-flex items-center justify-center gap-2 text-sm font-bold rounded-full px-7 py-3 text-white border-2 border-white/25 hover:border-white/60 transition-colors duration-150 cursor-pointer whitespace-nowrap mx-auto lg:mx-0">
-          Hubungi Kami
-        </a>
       </div>
 
       {{-- Right: accordion --}}
-      <div class="divide-y divide-white/[0.08] border-t border-white/[0.08]">
+      <div class="divide-y divide-white/8 border-t border-white/8">
         @foreach ($faqs as $i => $faq)
           <div class="faq-item group">
             <button onclick="toggleFAQ(this)"
               class="flex items-center justify-between w-full py-5 sm:py-6 text-left focus:outline-none">
               <span class="text-sm font-bold text-white pr-6 leading-snug">{{ $faq['q'] }}</span>
               <svg
-                class="w-5 h-5 flex-shrink-0 text-white/40 group-hover:text-impost-primary transition-all duration-250 chevron-icon"
+                class="w-5 h-5 shrink-0 text-white/40 group-hover:text-impost-primary transition-all duration-250 chevron-icon"
                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
             <div class="faq-content max-h-0 overflow-hidden transition-all duration-400 ease-in-out opacity-0">
-              <div class="pb-5 sm:pb-6 text-sm font-medium leading-relaxed text-white">
+              <div class="pb-5 sm:pb-6 text-xs md:text-base font-medium leading-relaxed text-white">
                 {!! $faq['a'] !!}
               </div>
             </div>

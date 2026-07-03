@@ -12,10 +12,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
     rel="stylesheet">
 
-  <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('img/favicon.png') }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon.png') }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon.png') }}">
+  <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicon/favicon-96x96.png') }}">
+  <link rel="icon" type="image/svg+xml" href="{{ asset('favicon/favicon.svg') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+  <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">
 
   @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
     @vite(['resources/css/app.css', 'resources/js/app.js'])

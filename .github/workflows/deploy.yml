@@ -31,17 +31,6 @@ jobs:
           npm install
           npm run build
 
-      - name: Copy build ke server via SCP
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 65002
-          source: "public/build"
-          target: "/home/u465920647/domains/impostmedia.com/public_html/public"
-          strip_components: 1
-
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -106,3 +95,14 @@ jobs:
             trap - EXIT
             $PHP artisan up
             echo "Deploy sukses: $(date)"
+
+      - name: Copy build ke server via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 65002
+          source: "public/build"
+          target: "/home/u465920647/domains/impostmedia.com/public_html/public"
+          strip_components: 1

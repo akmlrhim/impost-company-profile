@@ -43,7 +43,7 @@
                 <div class="flex items-center gap-10 sm:gap-14 px-8 shrink-0">
                   @foreach ($clients as $client)
                     <img src="{{ asset('storage/' . $client->client_logo) }}" alt="{{ $client->filename }}"
-                      class="h-9 w-9 sm:h-11 sm:w-11 object-contain rounded-full bg-white/10 p-1.5
+                      class="h-9 w-9 sm:h-11 sm:w-11 object-cover rounded-full
                         opacity-80 hover:opacity-100
                         transition-opacity duration-300 shrink-0"
                       loading="lazy" decoding="async">

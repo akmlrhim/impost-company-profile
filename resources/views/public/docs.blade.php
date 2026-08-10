@@ -1,4 +1,4 @@
-﻿@extends('layouts.public')
+@extends('layouts.public')
 
 @section('title', 'Company Profile & Portfolio | Impost Media')
 @section('meta_description',

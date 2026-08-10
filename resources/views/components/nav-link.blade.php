@@ -1,4 +1,4 @@
-﻿@props(['active' => false])
+@props(['active' => false])
 
 <a class="{{ $active
     ? 'bg-impost-primary/[0.12] text-impost-primary'

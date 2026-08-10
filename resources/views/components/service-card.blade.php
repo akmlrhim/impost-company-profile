@@ -1,4 +1,4 @@
-﻿@props(['service'])
+@props(['service'])
 
 <article class="group relative h-72 sm:h-80 rounded-[2rem] overflow-hidden cursor-pointer
   border border-white/8 shadow-[0_8px_32px_rgba(0,0,0,0.4)]

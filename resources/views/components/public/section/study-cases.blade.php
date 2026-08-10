@@ -1,4 +1,4 @@
-﻿@php
+@php
   $studyCases = \App\Models\StudyCase::select('slug', 'name', 'cover_path', 'category', 'result')
       ->latest()
       ->take(6)

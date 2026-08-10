@@ -1,4 +1,4 @@
-﻿@extends('layouts.public')
+@extends('layouts.public')
 
 @section('title', 'Study Case | Impost Media')
 @section('meta_description',
@@ -17,7 +17,7 @@
     <div
       class="relative z-20 h-full flex flex-col justify-end max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6 sm:pb-8 md:pb-14">
 
-      <div class="max-w-2xl flex flex-col gap-3 sm:gap-4">
+      <div class="max-w-2xl flex flex-col gap-2 sm:gap-3">
 
         <nav class="flex mb-1" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -29,7 +29,7 @@
             </li>
             <li aria-current="page">
               <div class="flex items-center">
-                <svg class="rtl:rotate-180 w-3 h-3 text-white/40 mx-1" aria-hidden="true"
+                <svg class="rtl:rotate-180 w-2.5 h-2.5 sm:w-3 sm:h-3 text-white/40 mx-1" aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="m1 9 4-4-4-4" />
@@ -47,89 +47,116 @@
           Bukti autentik dari strategi yang terukur untuk pertumbuhan bisnis Anda.
         </p>
       </div>
+
     </div>
+
   </section>
 
+
   <div class="antialiased bg-impost-fifth">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-14">
-      <div class="mb-8 sm:mb-10 md:mb-12 max-w-7xl mx-auto">
 
-        <div class="w-full relative" id="studycase-container">
-          @if ($studyCase->isEmpty())
-            <div
-              class="w-full flex items-center justify-center py-12 sm:py-16 border border-white/10 rounded-3xl bg-black/20 mt-6 sm:mt-10">
-              <x-empty-card item="Study Case" />
-            </div>
-          @else
-            {{-- Skeleton --}}
-            <div id="studycase-skeleton"
-              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 py-6 mb-8 animate-pulse">
-              @for ($i = 0; $i < 6; $i++)
-                <div class="w-full bg-impost-dark-800 rounded-2xl aspect-[4/3] border border-white/10"></div>
-              @endfor
-            </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-14" id="studycase-wrapper">
 
-            {{-- Content --}}
-            <div id="studycase-content"
-              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 py-6 mb-8 opacity-0 transition-opacity duration-500">
+      {{-- Filter --}}
+      <div class="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h2 class="text-lg sm:text-xl font-bold text-white">Filter</h2>
 
-              @foreach ($studyCase as $s)
-                <a href="{{ route('detail-study-case', $s->slug) }}"
-                  class="group block h-full transition-all duration-500">
+        <form id="studycase-filter-form" action="{{ route('study-case') }}" method="GET"
+          class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+          <div class="relative w-full sm:w-72">
+            <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 pointer-events-none"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+            </svg>
+            <input type="text" name="search" value="{{ $filters['search'] ?? '' }}"
+              placeholder="Masukkan kata kunci.."
+              class="w-full bg-impost-dark-800 border border-white/10 rounded-sm py-2.5 pl-10 pr-4 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-impost-primary transition-colors">
+          </div>
 
-                  <div
-                    class="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-impost-dark-800 transition-all duration-500 hover:border-impost-primary/50 hover:shadow-[0_0_30px_rgba(var(--impost-primary),0.15)] hover:-translate-y-2">
-
-                    <div class="relative aspect-[4/3] overflow-hidden">
-
-                      @if ($s->cover_path)
-                        <img src="{{ asset('storage/' . $s->cover_path) }}" alt="{{ $s->name }}"
-                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                      @else
-                        <div
-                          class="w-full h-full bg-impost-dark-650 flex items-center justify-center group-hover:bg-impost-dark-600 transition-colors">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                            class="w-12 h-12 sm:w-16 sm:h-16 text-white/10 group-hover:text-impost-primary/50 transition-colors">
-                            <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                            <rect width="20" height="14" x="2" y="6" rx="2" />
-                          </svg>
-                        </div>
-                      @endif
-
-                      <div
-                        class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300">
-                      </div>
-
-                    </div>
-
-                    <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20">
-                      <h3
-                        class="text-white text-base md:text-lg lg:text-xl font-bold leading-tight mb-1.5 sm:mb-2 group-hover:text-impost-primary transition-colors duration-300 line-clamp-2">
-                        {{ $s->name }}
-                      </h3>
-
-                      <div class="flex items-center gap-2 mb-1 sm:mb-3">
-                        <p
-                          class="text-[10px] md:text-xs font-bold text-white uppercase tracking-wide group-hover:text-white transition-colors">
-                          {{ $s->category }}
-                        </p>
-                      </div>
-
-                    </div>
-
-                  </div>
-                </a>
+          <div class="relative w-full sm:w-48">
+            <select name="category"
+              class="w-full appearance-none bg-impost-dark-800 border border-white/10 rounded-sm py-2.5 pl-4 pr-9 text-sm text-white focus:outline-none focus:border-impost-primary transition-colors">
+              <option value="">Semua Kategori</option>
+              @foreach ($categories as $category)
+                <option value="{{ $category }}"
+                  {{ ($filters['category'] ?? '') === $category ? 'selected' : '' }}>
+                  {{ $category }}
+                </option>
               @endforeach
-            </div>
-
-            <div class="mt-8">
-              <x-custom-pagination :items="$studyCase" />
-            </div>
-
-          @endif
-        </div>
+            </select>
+            <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/40 pointer-events-none"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </form>
       </div>
+
+      {{-- Study Case Grid --}}
+      <section class="w-full" id="studycase-container">
+        @if ($studyCase->isEmpty())
+          <div class="w-full flex items-center justify-center py-10 sm:py-14 mt-6 sm:mt-10">
+            <x-empty-card item="Study Case" />
+          </div>
+        @else
+          {{-- Skeleton --}}
+          <div id="studycase-skeleton"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 animate-pulse">
+            @for ($i = 0; $i < 6; $i++)
+              <div>
+                <div class="w-full aspect-[16/10] rounded-lg bg-impost-dark-800 border border-white/5"></div>
+                <div class="h-4 w-3/4 bg-impost-dark-800 rounded mt-4"></div>
+                <div class="h-3 w-1/3 bg-impost-dark-800 rounded mt-2"></div>
+              </div>
+            @endfor
+          </div>
+
+          {{-- Content --}}
+          <div id="studycase-content"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 opacity-0 transition-opacity duration-500 motion-reduce:transition-none">
+            @foreach ($studyCase as $s)
+              <a href="{{ route('detail-study-case', $s->slug) }}" class="group block">
+                <div class="relative rounded-lg overflow-hidden aspect-[16/10] bg-impost-dark-800 border border-white/5">
+                  @if ($s->cover_path)
+                    <img src="{{ asset('storage/' . $s->cover_path) }}" alt="Study case {{ $s->name }}"
+                      class="w-full h-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-105"
+                      loading="lazy">
+                  @else
+                    <div
+                      class="w-full h-full bg-gradient-to-br from-impost-dark-700 to-impost-dark-900 flex items-center justify-center">
+                      <svg class="w-10 h-10 text-white/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                        <rect width="20" height="14" x="2" y="6" rx="2" />
+                      </svg>
+                    </div>
+                  @endif
+                </div>
+
+                <div class="mt-4">
+                  <h3
+                    class="text-base sm:text-lg font-bold text-white line-clamp-2 leading-snug group-hover:text-impost-primary transition-colors mb-2">
+                    {{ $s->name }}
+                  </h3>
+                  <div class="flex items-center gap-1.5 text-xs text-white/50">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                    </svg>
+                    <span>{{ $s->category }}</span>
+                  </div>
+                </div>
+              </a>
+            @endforeach
+          </div>
+
+          {{-- Pagination --}}
+          <div class="mt-6 sm:mt-8" id="studycase-pagination">
+            <x-custom-pagination :items="$studyCase" />
+          </div>
+        @endif
+      </section>
     </div>
   </div>
 
@@ -162,51 +189,126 @@
 
 @push('scripts')
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const studyCaseLinks = document.querySelectorAll('a[href*="study-case/"]');
-      studyCaseLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          sessionStorage.setItem('studyCaseSource', 'full');
-        });
-      });
-    });
-
     (function() {
-      const skeleton = document.getElementById('studycase-skeleton');
-      const content = document.getElementById('studycase-content');
-      if (!skeleton || !content) return;
+      'use strict';
 
-      const imgs = content.querySelectorAll('img');
-      let loaded = 0;
-
-      function reveal() {
-        skeleton.style.display = 'none';
-        content.style.opacity = '1';
-      }
-
-      if (!imgs.length) {
-        reveal();
-        return;
-      }
-
-      function onLoad() {
-        if (++loaded >= imgs.length) reveal();
-      }
-
-      imgs.forEach(img => {
-        if (img.complete) {
-          onLoad();
-        } else {
-          img.addEventListener('load', onLoad, {
-            once: true
-          });
-          img.addEventListener('error', onLoad, {
-            once: true
-          });
-        }
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href*="studycase/"]');
+        if (link) sessionStorage.setItem('studyCaseSource', 'full');
       });
 
-      setTimeout(reveal, 1500);
+      function revealStudyCases() {
+        const skeleton = document.getElementById('studycase-skeleton');
+        const content = document.getElementById('studycase-content');
+        if (!skeleton || !content) return;
+
+        const imgs = content.querySelectorAll('img');
+        let loaded = 0;
+
+        const reveal = () => {
+          skeleton.style.display = 'none';
+          content.style.opacity = '1';
+        };
+
+        if (!imgs.length) return reveal();
+
+        const onLoad = () => {
+          if (++loaded >= imgs.length) reveal();
+        };
+
+        imgs.forEach(img => {
+          if (img.complete) onLoad();
+          else {
+            img.addEventListener('load', onLoad, {
+              once: true
+            });
+            img.addEventListener('error', onLoad, {
+              once: true
+            });
+          }
+        });
+
+        setTimeout(reveal, 1500);
+      }
+
+      revealStudyCases();
+
+      const wrapper = document.getElementById('studycase-wrapper');
+      if (!wrapper) return;
+
+      async function loadStudyCases(url, push) {
+        wrapper.style.transition = 'opacity .2s ease';
+        wrapper.style.opacity = '0.4';
+        wrapper.style.pointerEvents = 'none';
+
+        try {
+          const res = await fetch(url, {
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest'
+            }
+          });
+          if (!res.ok) throw new Error('Request failed');
+
+          const html = await res.text();
+          const newDoc = new DOMParser().parseFromString(html, 'text/html');
+          const newWrapper = newDoc.getElementById('studycase-wrapper');
+          if (!newWrapper) throw new Error('Wrapper missing');
+
+          wrapper.innerHTML = newWrapper.innerHTML;
+
+          if (push) history.pushState({
+            studyCaseUrl: url
+          }, '', url);
+
+          const newTitle = newDoc.querySelector('title');
+          if (newTitle) document.title = newTitle.textContent;
+
+          revealStudyCases();
+        } catch (e) {
+          window.location.href = url;
+          return;
+        } finally {
+          wrapper.style.opacity = '1';
+          wrapper.style.pointerEvents = '';
+        }
+      }
+
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('#studycase-pagination a[href]');
+        if (!link) return;
+
+        const url = new URL(link.href, window.location.href);
+        if (url.origin !== window.location.origin) return;
+
+        e.preventDefault();
+        loadStudyCases(link.href, true);
+      });
+
+      document.addEventListener('submit', (e) => {
+        const form = e.target.closest('#studycase-filter-form');
+        if (!form) return;
+
+        e.preventDefault();
+
+        const params = new URLSearchParams(new FormData(form));
+        [...params.keys()].forEach((key) => {
+          if (!params.get(key)) params.delete(key);
+        });
+
+        const query = params.toString();
+        loadStudyCases(form.action + (query ? '?' + query : ''), true);
+      });
+
+      document.addEventListener('change', (e) => {
+        const select = e.target.closest('#studycase-filter-form select[name="category"]');
+        if (!select) return;
+
+        select.form.requestSubmit();
+      });
+
+      window.addEventListener('popstate', () => {
+        loadStudyCases(window.location.href, false);
+      });
     })();
   </script>
 @endpush

@@ -1,4 +1,4 @@
-﻿<section class="py-16 sm:py-20 lg:py-28 im-section-alt" id="vsl">
+<section class="py-16 sm:py-20 lg:py-28 im-section-alt" id="vsl">
   <div class="max-w-5xl mx-auto px-4 sm:px-6">
 
     {{-- Header --}}

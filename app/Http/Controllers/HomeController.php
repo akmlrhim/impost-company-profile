@@ -171,7 +171,7 @@ class HomeController extends Controller
 		]);
 	}
 
-	public function studyCase()
+	public function studyCase(Request $request)
 	{
 		$title = 'Study Case';
 		$meta_description = 'Lihat studi kasus nyata klien Impost Media — bagaimana kami membantu bisnis tumbuh melalui strategi digital marketing yang terukur.';
@@ -183,9 +183,33 @@ class HomeController extends Controller
 			'result',
 			'cover_path',
 			'category'
-		)->latest()->paginate(12);
+		)
+			->when($request->filled('search'), function ($q) use ($request) {
+				$q->where('name', 'like', '%' . $request->search . '%');
+			})
+			->when($request->filled('category'), function ($q) use ($request) {
+				$q->where('category', $request->category);
+			})
+			->latest()
+			->paginate(12)
+			->onEachSide(1)
+			->withQueryString();
 
-		return view('public.study-cases.index', compact('title', 'meta_description', 'studyCase'));
+		$categories = StudyCase::whereNotNull('category')
+			->distinct()
+			->orderBy('category')
+			->pluck('category');
+
+		return view('public.study-cases.index', [
+			'title' => $title,
+			'meta_description' => $meta_description,
+			'studyCase' => $studyCase,
+			'categories' => $categories,
+			'filters' => [
+				'search' => $request->search,
+				'category' => $request->category,
+			],
+		]);
 	}
 
 	public function studyCaseDetail(string $slug)

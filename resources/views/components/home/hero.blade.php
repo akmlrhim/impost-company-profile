@@ -1,4 +1,4 @@
-﻿<section id="home" class="relative flex flex-col overflow-hidden pt-14 min-h-[calc(100svh-0px)] sm:min-h-screen">
+<section id="home" class="relative flex flex-col overflow-hidden pt-14 min-h-[calc(100svh-0px)] sm:min-h-screen">
 
   {{-- Background image --}}
   <div class="absolute inset-0 z-0">

@@ -1,4 +1,4 @@
-﻿@extends('layouts.public')
+@extends('layouts.public')
 
 @section('title', 'Tentang Kami | Impost Media')
 @section('meta_description',

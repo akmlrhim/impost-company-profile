@@ -1,4 +1,4 @@
-﻿@extends('layouts.public')
+@extends('layouts.public')
 
 @section('title', $studyCase->name . ' | Impost Media')
 @section('meta_description', 'Studi kasus ' . $studyCase->name . ',lihat bagaimana Impost Media memberikan solusi ' .

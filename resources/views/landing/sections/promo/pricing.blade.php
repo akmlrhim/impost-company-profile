@@ -1,4 +1,4 @@
-﻿<section class="py-12 md:py-20 px-4 sm:px-6 lg:px-8" id="pricing">
+<section class="py-12 md:py-20 px-4 sm:px-6 lg:px-8" id="pricing">
   <div class="max-w-6xl mx-auto">
 
     <div class="text-center mb-8 md:mb-16">

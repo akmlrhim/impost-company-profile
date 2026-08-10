@@ -1,4 +1,4 @@
-﻿<nav x-data="{
+<nav x-data="{
     mobileMenuOpen: false,
     activeDropdown: null,
     scrolled: false,

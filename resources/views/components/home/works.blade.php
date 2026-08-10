@@ -1,4 +1,4 @@
-﻿@php
+@php
   $steps = [
       [
           'num' => '1',

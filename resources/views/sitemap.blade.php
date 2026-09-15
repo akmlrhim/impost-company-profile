@@ -22,12 +22,7 @@
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>{{ route('portfolio') }}</loc>
-    <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  {{-- Portfolio temporarily hidden --}}
 
   <url>
     <loc>{{ route('study-case') }}</loc>
@@ -48,13 +43,6 @@
     <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>{{ route('legal') }}</loc>
-    <lastmod>{{ $now->tz('UTC')->toAtomString() }}</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
   </url>
 
   <url>

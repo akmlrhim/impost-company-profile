@@ -174,7 +174,7 @@
         'itemListElement' => [
             ['@type' => 'SiteNavigationElement', 'position' => 1, 'name' => 'Home', 'url' => url('/')],
             ['@type' => 'SiteNavigationElement', 'position' => 2, 'name' => 'Tentang Kami', 'url' => route('about')],
-            ['@type' => 'SiteNavigationElement', 'position' => 3, 'name' => 'Portfolio', 'url' => route('portfolio')],
+            // Portfolio temporarily hidden
             ['@type' => 'SiteNavigationElement', 'position' => 4, 'name' => 'Study Case', 'url' => route('study-case')],
             ['@type' => 'SiteNavigationElement', 'position' => 5, 'name' => 'Artikel', 'url' => route('article.all')],
             ['@type' => 'SiteNavigationElement', 'position' => 6, 'name' => 'Karir', 'url' => route('careers')],

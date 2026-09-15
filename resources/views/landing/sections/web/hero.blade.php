@@ -35,10 +35,7 @@
         </svg>
       </a>
 
-      <a href="#portfolio"
-        class="w-full sm:w-auto border border-gray-500 text-gray-200 font-medium text-base px-8 py-3.5 rounded-lg hover:border-impost-primary hover:text-impost-primary hover:bg-white/5 transition-all duration-300">
-        Lihat Portfolio
-      </a>
+      {{-- Portfolio link temporarily hidden --}}
 
     </div>
 

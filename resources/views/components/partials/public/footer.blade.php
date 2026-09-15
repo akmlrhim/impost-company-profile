@@ -80,9 +80,9 @@
         <div>
           <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-5">Perusahaan</h4>
           <ul class="space-y-1">
-            @foreach ([['label' => 'Tentang Kami', 'route' => 'about'], ['label' => 'Kontak', 'route' => 'contact'], ['label' => 'Legal & Privacy', 'route' => 'legal'], ['label' => 'Syarat & Ketentuan', 'route' => 'tnc']] as $item)
+            @foreach ([['label' => 'Tentang Kami', 'route' => 'about'], ['label' => 'Kontak', 'route' => 'contact'], ['label' => 'Kebijakan Privasi', 'url' => 'https://legal.impostmedia.com/id/kebijakan-privasi', 'external' => true], ['label' => 'Syarat & Ketentuan', 'url' => 'https://legal.impostmedia.com/id/syarat-ketentuan', 'external' => true]] as $item)
               <li>
-                <a href="{{ route($item['route']) }}"
+                <a href="{{ $item['url'] ?? route($item['route']) }}" @if (!empty($item['external'])) target="_blank" rel="noopener noreferrer" @endif
                   class="text-xs text-white hover:text-white transition-colors duration-200">
                   {{ $item['label'] }}
                 </a>

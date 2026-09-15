@@ -22,3 +22,12 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# AI / agent config
+/.claude
+/.agents
+/.opencode
+/AGENTS.md
+/boost.json
+/graphify-out
+/opencode.json

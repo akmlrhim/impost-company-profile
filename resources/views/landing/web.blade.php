@@ -8,8 +8,8 @@
     {{-- Problem Section --}}
     @include('landing.sections.web.problem')
 
-    {{-- Portfolio  --}}
-    @include('landing.sections.web.portfolio')
+    {{-- Portfolio temporarily hidden --}}
+    {{-- @include('landing.sections.web.portfolio') --}}
 
     {{-- Testimonials --}}
     @include('landing.sections.web.testimonials')

@@ -77,28 +77,7 @@
             </div>
           </div>
 
-          <div class="bg-impost-dark-850 rounded-xl overflow-hidden flex flex-col h-full border border-white/5">
-            <div class="px-5 py-3.5 bg-impost-dark-700 border-b border-white/5">
-              <h3 class="text-xs md:text-sm lg:text-base font-bold text-impost-primary tracking-wide">Portfolio</h3>
-            </div>
-
-            <div class="relative w-full aspect-[16/9] bg-black">
-              <iframe allowfullscreen="allowfullscreen" scrolling="no" class="absolute inset-0 w-full h-full border-0"
-                src="https://heyzine.com/flip-book/caea1a35c5.html">
-              </iframe>
-            </div>
-
-            <div class="p-5 flex-1 flex flex-col justify-between">
-              <p class="text-white text-xs md:text-base mb-4 leading-relaxed">
-                Lihat koleksi proyek terbaik yang telah kami selesaikan dan bagaimana kami membantu klien berkembang.
-              </p>
-              <a href="https://heyzine.com/flip-book/caea1a35c5.html" target="_blank"
-                class="block w-full text-center py-2 text-sm md:text-base font-bold text-black bg-impost-primary rounded hover:bg-opacity-90 transition-opacity">
-                Buka Layar Penuh
-              </a>
-            </div>
-          </div>
-
+          {{-- Portfolio temporarily hidden --}}
         </div>
       </div>
     </div>

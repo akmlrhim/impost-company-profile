@@ -23,15 +23,14 @@ function makeLead(): Lead
     ]);
 }
 
-it('renders the dashboard with a logout control and the widgets', function () {
+it('renders the dashboard without a sidebar logout control and shows the widgets', function () {
     $user = User::factory()->create(['name' => 'Admin Impost']);
 
     $this->actingAs($user)
         ->get('/admin')
         ->assertOk()
         ->assertSee('Halo, Admin Impost')
-        ->assertSee('fi-sidebar-logout', escape: false)
-        ->assertSee(route('filament.admin.auth.logout'), escape: false)
+        ->assertDontSee('fi-sidebar-logout', escape: false)
         ->assertSee('app.filament.widgets.stats-overview', escape: false)
         ->assertSee('app.filament.widgets.leads-chart', escape: false)
         ->assertSee('app.filament.widgets.latest-leads', escape: false);

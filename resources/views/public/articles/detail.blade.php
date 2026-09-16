@@ -42,6 +42,7 @@
           ],
           'datePublished' => $article->created_at->toIso8601String(),
           'dateModified' => $article->updated_at->toIso8601String(),
+          'articleSection' => $article->category?->name,
           'mainEntityOfPage' => [
               '@type' => 'WebPage',
               '@id' => url()->current(),
@@ -55,7 +56,7 @@
     @if ($article->status == 'draft')
       <meta name="robots" content="noindex, nofollow">
     @else
-      <meta name="robots" content="index, follow">
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     @endif
   @endpush
 

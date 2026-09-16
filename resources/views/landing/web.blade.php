@@ -1,4 +1,13 @@
 @extends('layouts.public')
+
+@section('title', 'Jasa Pembuatan Website Profesional | Impost Media')
+@section('meta_description',
+  'Jasa pembuatan website profesional untuk bisnis Anda bersama Impost Media Digital Marketing Agency di Banjarbaru.')
+
+@push('head')
+  <meta name="robots" content="noindex, nofollow">
+@endpush
+
 @section('content')
   <div class="antialiased selection:bg-impost-primary selection:text-impost-fifth">
 

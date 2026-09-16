@@ -5,6 +5,10 @@
   'Mulai perjalanan digital marketing bisnis Anda bersama Impost Media. Isi form konsultasi
   sekarang dan dapatkan strategi terbaik untuk pertumbuhan bisnis Anda.')
 
+@push('head')
+  <meta name="robots" content="noindex, nofollow">
+@endpush
+
 @section('content')
   <main class="relative overflow-hidden pt-20 pb-6 antialiased sm:pt-28 sm:pb-12 md:pt-32">
     <div class="relative z-10 mx-auto max-w-7xl px-4 font-sans">

@@ -1,5 +1,13 @@
 @extends('layouts.public')
 
+@section('title', 'OPT-IN | Impost Media')
+@section('meta_description',
+  'Tonton video dan isi form opt-in Impost Media untuk mendapatkan informasi digital marketing eksklusif.')
+
+@push('head')
+  <meta name="robots" content="noindex, nofollow">
+@endpush
+
 @section('content')
   <div class="pt-20 md:pt-16">
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AiController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandingController;
@@ -9,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 
 // sitemap
 Route::get('sitemap.xml', [SitemapController::class, 'index']);
+
+// machine-readable index for AI / LLM crawlers
+Route::get('llms.txt', [AiController::class, 'llmsTxt']);
 
 Route::middleware('throttle:30,1')->group(function () {
 

@@ -6,6 +6,7 @@
 
 @section('og_type', 'article')
 @section('og_image', $studyCase->cover_path ? asset('storage/' . $studyCase->cover_path) : asset('img/og_image.png'))
+@section('twitter_image', $studyCase->cover_path ? asset('storage/' . $studyCase->cover_path) : asset('img/og_image.png'))
 
 @push('json-ld')
   @php

@@ -16,7 +16,7 @@ Route::middleware('throttle:30,1')->group(function () {
     Route::get('about', [HomeController::class, 'about'])->name('about');
     Route::get('contact', [HomeController::class, 'contact'])->name('contact');
 
-    Route::get('portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
+    // Route::get('portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
 
     Route::get('opt-in', [HomeController::class, 'optIn'])->name('opt-in');
     Route::get('vsl', [HomeController::class, 'vslForm'])->name('vsl-form');

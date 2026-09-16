@@ -9,7 +9,7 @@
   ];
 @endphp
 
-<section class="py-16 sm:py-20 lg:py-24 im-section-alt">
+<section class="py-16 sm:py-20 lg:py-24">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {{-- Header --}}
@@ -24,16 +24,14 @@
     </div>
 
     {{-- Comparison table --}}
-    <div class="rounded-2xl border border-white/[0.08] overflow-hidden">
+    <div class="rounded-sm border border-white/[0.03] overflow-hidden">
 
       {{-- Column headers --}}
-      <div
-        class="grid grid-cols-[1fr_72px_72px] sm:grid-cols-[1fr_120px_120px] border-b border-white/[0.08] bg-white/[0.03]">
+      <div class="grid grid-cols-[1fr_72px_72px] sm:grid-cols-[1fr_120px_120px] border-b border-white/[0.08]">
 
         {{-- Left header --}}
         <div class="px-4 sm:px-6 py-4 sm:py-5 flex flex-col justify-center">
-          <p class="text-[10px] font-bold text-impost-primary uppercase tracking-[0.12em] mb-1 hidden sm:block">Kriteria
-            Kolaborasi</p>
+
           <p class="text-xs sm:text-sm font-semibold text-white leading-snug">Apakah kita cocok<br class="sm:hidden">
             bekerja sama?</p>
         </div>
@@ -48,8 +46,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <span
-            class="text-[9px] sm:text-[11px] font-bold text-emerald-400 text-center leading-tight">Partner<br>Ideal</span>
+          <span class="text-[9px] sm:text-[11px] font-bold text-emerald-400 text-center leading-tight">Ya</span>
         </div>
 
         {{-- Belum Cocok --}}
@@ -62,8 +59,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>
-          <span
-            class="text-[9px] sm:text-[11px] font-bold text-red-400/70 text-center leading-tight">Belum<br>Cocok</span>
+          <span class="text-[9px] sm:text-[11px] font-bold text-red-400/70 text-center leading-tight">Tidak</span>
         </div>
       </div>
 

@@ -15,11 +15,11 @@ class PortfolioCategoryResource extends Resource
 {
 	protected static ?string $model = PortfolioCategory::class;
 
-	protected static ?string $navigationIcon = 'heroicon-o-folder';
+	// protected static ?string $navigationIcon = 'heroicon-o-folder';
 
-	protected static ?string $navigationGroup = 'Konten';
+	// protected static ?string $navigationGroup = 'Konten';
 
-	protected static ?int $navigationSort = 4;
+	// protected static ?int $navigationSort = 4;
 
 	protected static ?string $label = 'Kategori Portfolio';
 

@@ -15,11 +15,11 @@ class EmployeeResource extends Resource
 {
     protected static ?string $model = Employee::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-users';
+    // protected static ?string $navigationIcon = 'heroicon-o-users';
 
-    protected static ?string $navigationGroup = 'Manajemen';
+    // protected static ?string $navigationGroup = 'Manajemen';
 
-    protected static ?int $navigationSort = 1;
+    // protected static ?int $navigationSort = 1;
 
     protected static ?string $label = 'Karyawan';
 

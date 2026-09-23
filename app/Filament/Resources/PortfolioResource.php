@@ -16,11 +16,11 @@ class PortfolioResource extends Resource
 {
     protected static ?string $model = Portfolio::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-photo';
+    // protected static ?string $navigationIcon = 'heroicon-o-photo';
 
-    protected static ?string $navigationGroup = 'Konten';
+    // protected static ?string $navigationGroup = 'Konten';
 
-    protected static ?int $navigationSort = 3;
+    // protected static ?int $navigationSort = 3;
 
     protected static ?string $label = 'Portfolio';
 

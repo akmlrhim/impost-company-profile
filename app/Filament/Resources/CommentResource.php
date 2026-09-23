@@ -15,11 +15,11 @@ class CommentResource extends Resource
 {
     protected static ?string $model = Comment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';
+    // protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';
 
-    protected static ?string $navigationGroup = 'Konten';
+    // protected static ?string $navigationGroup = 'Konten';
 
-    protected static ?int $navigationSort = 8;
+    // protected static ?int $navigationSort = 8;
 
     protected static ?string $label = 'Komentar';
 

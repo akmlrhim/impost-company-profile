@@ -14,6 +14,8 @@ class LeadsChart extends ChartWidget
 
     protected static ?string $maxHeight = '260px';
 
+    protected int | string | array $columnSpan = 'full';
+
     protected function getData(): array
     {
         $start = Carbon::now()->startOfMonth()->subMonths(5);

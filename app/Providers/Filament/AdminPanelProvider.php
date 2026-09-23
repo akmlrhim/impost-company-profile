@@ -28,8 +28,9 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->font('Plus Jakarta Sans')
             ->login(\App\Filament\Pages\Login::class)
-            ->brandName('Impostmedia')
+            ->brandName('Impost Media')
             ->colors([
                 'primary' => Color::Blue,
             ])

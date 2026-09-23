@@ -30,9 +30,7 @@
             @yield('code')
           </h1>
 
-          <div class="h-px w-24 bg-impost-primary mx-auto my-4 opacity-50"></div>
-
-          <h2 class="text-xl md:text-2xl font-bold uppercase tracking-widest text-gray-200">
+          <h2 class="text-base md:text-lg font-bold uppercase tracking-widest text-gray-200">
             @yield('message')
           </h2>
         </div>

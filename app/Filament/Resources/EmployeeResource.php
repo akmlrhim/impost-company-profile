@@ -23,7 +23,7 @@ class EmployeeResource extends Resource
 
     protected static ?string $label = 'Karyawan';
 
-    protected static function shouldRegisterNavigation(): bool
+    public static function shouldRegisterNavigation(): bool
     {
         return false;
     }

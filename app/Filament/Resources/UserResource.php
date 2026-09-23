@@ -23,7 +23,7 @@ class UserResource extends Resource
 
     protected static ?string $label = 'Pengguna';
 
-    protected static function shouldRegisterNavigation(): bool
+    public static function shouldRegisterNavigation(): bool
     {
         return false;
     }

@@ -23,7 +23,7 @@ class PortfolioCategoryResource extends Resource
 
 	protected static ?string $label = 'Kategori Portfolio';
 
-	protected static function shouldRegisterNavigation(): bool
+	public static function shouldRegisterNavigation(): bool
 	{
 		return false;
 	}

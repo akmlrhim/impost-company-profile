@@ -23,6 +23,11 @@ class EmployeeResource extends Resource
 
     protected static ?string $label = 'Karyawan';
 
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
+
     protected static ?string $pluralLabel = 'Karyawan';
 
     public static function form(Form $form): Form

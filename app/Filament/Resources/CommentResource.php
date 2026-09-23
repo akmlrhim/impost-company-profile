@@ -23,6 +23,11 @@ class CommentResource extends Resource
 
     protected static ?string $label = 'Komentar';
 
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
+
     protected static ?string $pluralLabel = 'Komentar';
 
     public static function form(Form $form): Form

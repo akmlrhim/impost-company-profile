@@ -23,6 +23,11 @@ class PortfolioCategoryResource extends Resource
 
 	protected static ?string $label = 'Kategori Portfolio';
 
+	protected static function shouldRegisterNavigation(): bool
+	{
+		return false;
+	}
+
 	protected static ?string $pluralLabel = 'Kategori Portfolio';
 
 	public static function form(Form $form): Form

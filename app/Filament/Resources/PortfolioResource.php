@@ -24,6 +24,11 @@ class PortfolioResource extends Resource
 
     protected static ?string $label = 'Portfolio';
 
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
+
     protected static ?string $pluralLabel = 'Portfolio';
 
     public static function form(Form $form): Form

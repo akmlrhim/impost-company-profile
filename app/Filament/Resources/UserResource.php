@@ -23,6 +23,11 @@ class UserResource extends Resource
 
     protected static ?string $label = 'Pengguna';
 
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
+
     protected static ?string $pluralLabel = 'Pengguna';
 
     public static function form(Form $form): Form

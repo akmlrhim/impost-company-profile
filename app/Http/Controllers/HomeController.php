@@ -63,8 +63,11 @@ class HomeController extends Controller
 
     public function article(Article $article)
     {
+        abort_if($article->status !== 'published', 404);
+
         $title = 'Artikel';
-        $latestArticle = $article->where('id', '!=', $article->id)
+        $latestArticle = Article::where('id', '!=', $article->id)
+            ->where('status', 'published')
             ->latest()
             ->take(4)
             ->get();

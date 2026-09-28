@@ -16,11 +16,11 @@
     prose-br:content-['']
     prose-br:my-2
 
-    prose-ul:list-disc prose-ul:list-inside prose-ul:pl-0 prose-ul:mb-3
-    prose-ol:list-decimal prose-ol:list-inside prose-ol:pl-0 prose-ol:mb-3
-    prose-li:text-white prose-li:text-sm md:prose-li:text-lg prose-li:mb-1
+    prose-ul:list-disc prose-ul:list-outside prose-ul:pl-5 prose-ul:mb-3
+    prose-ol:list-decimal prose-ol:list-outside prose-ol:pl-5 prose-ol:mb-3
+    prose-li:text-white prose-li:text-sm md:prose-li:text-lg prose-li:mb-1 prose-li:marker:text-white/60 prose-li:break-words
 
-    prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
+    prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-a:break-all
     prose-strong:text-white prose-strong:font-semibold
     prose-em:text-white
 

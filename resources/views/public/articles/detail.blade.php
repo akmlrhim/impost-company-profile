@@ -3,6 +3,12 @@
 @section('title', ($article->meta_title ?? $article->title) . ' | Impost Media')
 @section('meta_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ??
   $article->content), 155))
+@section('meta_keywords', implode(', ', array_filter([
+  $article->category?->name,
+  'digital marketing banjarmasin',
+  'digital marketing banjarbaru',
+  'impost media',
+])))
 
 @section('og_title', $article->meta_title ?? $article->title)
 @section('og_description', $article->meta_description ?? Str::limit(strip_tags($article->excerpt ?? $article->content),
@@ -43,6 +49,12 @@
           'datePublished' => $article->created_at->toIso8601String(),
           'dateModified' => $article->updated_at->toIso8601String(),
           'articleSection' => $article->category?->name,
+          'keywords' => implode(', ', array_filter([
+              $article->category?->name,
+              'digital marketing',
+              'impost media',
+          ])),
+          'wordCount' => str_word_count(strip_tags($article->content)),
           'mainEntityOfPage' => [
               '@type' => 'WebPage',
               '@id' => url()->current(),
@@ -57,6 +69,10 @@
       <meta name="robots" content="noindex, nofollow">
     @else
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+      <meta property="article:published_time" content="{{ $article->created_at->toIso8601String() }}">
+      <meta property="article:modified_time" content="{{ $article->updated_at->toIso8601String() }}">
+      <meta property="article:section" content="{{ $article->category?->name ?? 'Digital Marketing' }}">
+      <meta property="article:author" content="{{ $article->written_by ?? 'Impost Media Team' }}">
     @endif
   @endpush
 

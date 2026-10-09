@@ -15,9 +15,9 @@
 
 @theme {
   --font-sans:
-    "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif,
+    "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-header: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-header: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, monospace;
 
   --color-impost-primary: #d4ac3c;
@@ -49,7 +49,7 @@ html {
 }
 
 body {
-  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   font-optical-sizing: auto;
   background-color: #040404;
   color: #ffffff;
@@ -63,7 +63,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   font-feature-settings: "ss01", "ss02";
   font-weight: 700;
 }

@@ -8,7 +8,7 @@ Design system documentation for Impost Media project.
 - **Component Library**: Flowbite v4
 - **Interactivity**: Alpine.js v3
 - **Typography**: @tailwindcss/typography, flowbite-typography
-- **Font**: Plus Jakarta Sans (Google Fonts)
+- **Font**: Inter (Google Fonts)
 
 ## Color Palette
 
@@ -52,8 +52,8 @@ Background variations for depth and layering:
 ### Font Family
 
 ```css
---font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
---font-header: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+--font-header: "Inter", ui-sans-serif, system-ui, sans-serif;
 --font-mono: ui-monospace, monospace;
 ```
 

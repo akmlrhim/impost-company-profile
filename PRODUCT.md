@@ -14,7 +14,7 @@ Situs company profile + marketing Impost Media (agensi digital marketing all-in-
 
 ## Brand Personality
 
-Premium, terukur, percaya diri. Dark theme near-black (#040404) dengan aksen emas (#d4ac3c) sebagai warna tindakan/penekanan; Plus Jakarta Sans di seluruh permukaan; tombol pill; fotografi sebagai bukti kerja nyata.
+Premium, terukur, percaya diri. Dark theme near-black (#040404) dengan aksen emas (#d4ac3c) sebagai warna tindakan/penekanan; Inter di seluruh permukaan; tombol pill; fotografi sebagai bukti kerja nyata.
 
 ## Anti-references
 

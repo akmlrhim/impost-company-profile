@@ -17,8 +17,7 @@
       <div class="text-center max-w-4xl mx-auto">
 
         <h1 class="text-2xl sm:text-3xl lg:text-6xl font-bold leading-[1.1] text-white mb-6">
-          Naikkan Omzet Bisnis Anda<br>
-          <span class="text-impost-primary">2–3× dalam 90 Hari</span>
+          <span class="text-impost-primary">Your Digital Marketing Expert</span>
         </h1>
 
         <p class="text-xs md:text-base font-medium leading-relaxed text-white max-w-2xl mx-auto mb-8">

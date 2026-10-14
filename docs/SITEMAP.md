@@ -28,7 +28,7 @@
 
 ## 2. Routing
 
-Route publik di `routes/web.php`, dilindungi prefix bebas tapi konsisten. Contoh bentuk akhir:
+Route publik tetap didefinisikan di `routes/web.php` (Laravel tetap sumber kebenaran URL), tapi controller me-render halaman Vue via `Inertia::render()`. Contoh bentuk akhir:
 
 ```php
 Route::controller(HomeController::class)->group(function () {
@@ -41,12 +41,25 @@ Route::get('/services/{service:slug}', [ServiceController::class, 'show'])->name
 // Pola sama untuk portfolio, study-cases, articles, careers.
 ```
 
+Contoh controller:
+
+```php
+public function index()
+{
+    return Inertia::render('Services/Index', [
+        'services' => Service::query()->orderBy('sort')->get(),
+    ]);
+}
+```
+
 Catatan:
 
 - Semua route `show` pakai route key binding `slug` (semua model sudah `getRouteKeyName() = 'slug'`).
-- Nama route wajib — semua link pakai `route()`, bukan URL hardcode.
-- `LeadsController@store` via POST `/contact`, pakai Form Request + rate limiting.
+- Nama route wajib — semua link di komponen Vue pakai `route()` dari Ziggy, bukan URL hardcode.
+- `LeadsController@store` via POST `/contact`, pakai Form Request + rate limiting; submit dari Vue via `useForm`/`router.post` Inertia.
+- Middleware `HandleInertiaRequests` terdaftar di `bootstrap/app.php` untuk group `web`.
 - Route `/admin` dipindahkan ke bawah prefix/group sendiri, `/` tidak lagi redirect ke `/admin`.
+- Halaman halaman = page Vue dengan nama path: `Services/Index` → `resources/js/Pages/Services/Index.vue`.
 
 ## 3. Pemetaan Model → Halaman/Section
 
@@ -65,45 +78,59 @@ Catatan:
 | `JobPosting` | `/careers` | Hanya lowongan aktif |
 | `Comment` | — | Ditunda, lihat PRD 4.2 |
 
-## 4. Struktur View Blade
+## 4. Struktur Frontend (Inertia + Vue 3)
 
 ```
-resources/views/
-├── components/           → komponen dari DESIGN.md §4
-│   ├── hero-slider.blade.php
-│   ├── service-card.blade.php
-│   ├── portfolio-grid.blade.php
-│   ├── portfolio-card.blade.php
-│   ├── study-card.blade.php
-│   ├── article-card.blade.php
-│   ├── team-card.blade.php
-│   ├── client-logo-grid.blade.php
-│   ├── testimonial-slider.blade.php
-│   ├── cta-band.blade.php
-│   ├── lead-form.blade.php
-│   ├── site-header.blade.php
-│   └── site-footer.blade.php
-├── layouts/
-│   └── site.blade.php     → layout publik (header, footer, @vite)
-├── home.blade.php
-├── services/
-│   ├── index.blade.php
-│   └── show.blade.php
-├── portfolio/
-│   ├── index.blade.php
-│   └── show.blade.php
-├── study-cases/
-│   ├── index.blade.php
-│   └── show.blade.php
-├── articles/
-│   ├── index.blade.php
-│   └── show.blade.php
-├── about.blade.php
-├── careers/
-│   ├── index.blade.php
-│   └── show.blade.php
-└── contact.blade.php
+resources/
+├── js/
+│   ├── app.js                    → createInertiaApp + Ziggy
+│   ├── Components/               → komponen dari DESIGN.md §4
+│   │   ├── HeroSlider.vue
+│   │   ├── ServiceCard.vue
+│   │   ├── PortfolioGrid.vue
+│   │   ├── PortfolioCard.vue
+│   │   ├── StudyCard.vue
+│   │   ├── ArticleCard.vue
+│   │   ├── TeamCard.vue
+│   │   ├── ClientLogoGrid.vue
+│   │   ├── TestimonialSlider.vue
+│   │   ├── CtaBand.vue
+│   │   ├── LeadForm.vue
+│   │   ├── SiteHeader.vue
+│   │   └── SiteFooter.vue
+│   ├── Layouts/
+│   │   └── SiteLayout.vue        → layout publik (header, footer, <slot/>)
+│   └── Pages/
+│       ├── Home.vue
+│       ├── Services/
+│       │   ├── Index.vue
+│       │   └── Show.vue
+│       ├── Portfolio/
+│       │   ├── Index.vue
+│       │   └── Show.vue
+│       ├── StudyCases/
+│       │   ├── Index.vue
+│       │   └── Show.vue
+│       ├── Articles/
+│       │   ├── Index.vue
+│       │   └── Show.vue
+│       ├── About.vue
+│       ├── Careers/
+│       │   ├── Index.vue
+│       │   └── Show.vue
+│       └── Contact.vue
+├── css/
+│   └── app.css                   → Tailwind 4 (@import "tailwindcss" + @theme tokens)
+└── views/
+    └── app.blade.php              → satu-satunya Blade: shell HTML + @vite + @inertia
 ```
+
+Konvensi page Vue:
+
+- `<script setup>` Composition API.
+- Data dari server via `defineProps`; link via `route()` (Ziggy); meta via `<Head>` dari `@inertiajs/vue3`.
+- Nama page = path controller `Inertia::render('Services/Index')` → `Pages/Services/Index.vue`.
+- Error views (404 dll.) tetap Blade `resources/views/errors/` — halaman error Laravel tidak lewat Inertia.
 
 ## 5. Navigasi Header
 
@@ -111,8 +138,9 @@ resources/views/
 [Logo Impost]   Services | Portfolio | Study Cases | Artikel | Tentang | Karier   [WA] [Hubungi Kami]
 ```
 
-- Mobile: hamburger (Alpine.js) → drawer dari kanan/kiri.
+- Mobile: hamburger (state reaktif Vue) → drawer dari kanan/kiri.
 - CTA "Hubungi Kami" selalu tampil di semua breakpoint.
+- Navigasi pakai `<Link>` dari `@inertiajs/vue3` dengan `href` dari `route()` Ziggy — SPA navigation tanpa reload.
 
 ## 6. Footer
 
@@ -127,6 +155,6 @@ Pola footer ADGI:
 ## 7. URL & SEO
 
 - Slug unik, lowercase, hyphen.
-- Setiap halaman punya meta title + description (helper atau package SEO bila disetujui).
-- `/sitemap.xml` mencakup semua index + detail.
+- Setiap halaman set meta title + description via komponen `<Head>` Inertia (helper `useSEO` bila perlu).
+- `/sitemap.xml` mencakup semua index + detail (tetap dibangun di sisi Laravel).
 - 404 pakai view error kustom (sudah ada `resources/views/errors/404.blade.php`).

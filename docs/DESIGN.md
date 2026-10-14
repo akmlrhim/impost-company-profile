@@ -74,7 +74,7 @@ Aturan penggunaan:
 | Caption | `text-sm text-ink-soft` | Meta, label |
 
 - Pilih 2 font saja: display (grotesque tebal, mis. varian variabel font modern) + body yang nyaman baca panjang.
-- Muat via `next/font`-style self-hosting (`@fontsource` atau file lokal di `public/fonts`) — jangan Google Fonts CDN demi privasi & performa.
+- Muat self-hosted (`@fontsource/*` via npm atau file lokal di `resources/fonts` + `@font-face`) — jangan Google Fonts CDN demi privasi & performa.
 
 ### 3.3 Spacing & Radius
 
@@ -92,23 +92,23 @@ Aturan penggunaan:
 
 ## 4. Komponen Inti
 
-Semua komponen Blade partial di `resources/views/components/`:
+Semua komponen Vue SFC di `resources/js/Components/`, pakai `<script setup>` + TypeScript bila tim setuju (minimal JS murni + `defineProps` bertipe):
 
 | Komponen | Catatan desain |
 |---|---|
-| `<x-hero-slider>` | Full-bleed, `srcset` desktop/mobile, autoplay pelan, pause on hover |
-| `<x-service-card>` | Cover, judul, deskripsi singkat, CTA ke detail |
-| `<x-portfolio-grid>` | Grid masonry/2:2:3, dukung `media_type` video |
-| `<x-portfolio-card>` | Hover: zoom pelan + overlay judul |
-| `<x-study-card>` | Cover + badge "Result" angka highlight |
-| `<x-article-card>` | Cover, kategori, tanggal, judul, excerpt |
-| `<x-team-card>` | Foto potret rasio 3:4, nama + jabatan di bawah (pola ADGI) |
-| `<x-client-logo-grid>` | Grayscale, berwarna saat hover, wrap di semua ukuran |
-| `<x-testimonial-slider>` | Quote + nama + perusahaan |
-| `<x-cta-band>` | Band warna brand + CTA ganda (form & WhatsApp) |
-| `<x-lead-form>` | Validasi inline, state sukses/error jelas |
-| `<x-site-header>` | Sticky, logo kiri, nav tengah/kanan, CTA WhatsApp tombol |
-| `<x-site-footer>` | Multi kolom: brand, kontak, tautan, alamat, sosial |
+| `HeroSlider.vue` | Full-bleed, `srcset` desktop/mobile, autoplay pelan, pause on hover |
+| `ServiceCard.vue` | Cover, judul, deskripsi singkat, CTA ke detail |
+| `PortfolioGrid.vue` | Grid masonry/2:2:3, dukung `media_type` video |
+| `PortfolioCard.vue` | Hover: zoom pelan + overlay judul |
+| `StudyCard.vue` | Cover + badge "Result" angka highlight |
+| `ArticleCard.vue` | Cover, kategori, tanggal, judul, excerpt |
+| `TeamCard.vue` | Foto potret rasio 3:4, nama + jabatan di bawah (pola ADGI) |
+| `ClientLogoGrid.vue` | Grayscale, berwarna saat hover, wrap di semua ukuran |
+| `TestimonialSlider.vue` | Quote + nama + perusahaan |
+| `CtaBand.vue` | Band warna brand + CTA ganda (form & WhatsApp) |
+| `LeadForm.vue` | Submit via Inertia `useForm`/POST, state sukses/error jelas |
+| `SiteHeader.vue` | Sticky, logo kiri, nav tengah/kanan, CTA WhatsApp tombol |
+| `SiteFooter.vue` | Multi kolom: brand, kontak, tautan, alamat, sosial |
 
 ## 5. Layout per Halaman
 

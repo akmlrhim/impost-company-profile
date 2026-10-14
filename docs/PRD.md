@@ -147,18 +147,27 @@ ADGI dipilih sebagai referensi karena pola situsnya cocok untuk organisasi/agenc
 - **Performa:** LCP < 2,5s mobile. Gambar via `intervention/image` untuk resize/WebP. Lazy load semua gambar below-fold.
 - **Responsif:** Mobile-first; ADGI bahkan menyediakan aset slider terpisah untuk mobile — kita gunakan `srcset`/art direction.
 - **Aksesibilitas:** WCAG 2.2 AA. Kontras teks, alt text, navigasi keyboard, fokus terlihat.
-- **SEO:** Meta title/description per halaman, canonical, Open Graph image, `sitemap.xml`, structured data (Organization, Article).
+- **SEO:** Meta title/description per halaman (Inertia Head), canonical, Open Graph image, `sitemap.xml`, structured data (Organization, Article). Catatan CSR: tanpa SSR, meta di-inject via `<Head>` Inertia; bila SEO artikel jadi prioritas, naikkan SSR ke Fase 2.
 - **Keamanan:** Form pakai rate limiting + Purifier untuk konten artikel. Jangan tampilkan email mentah tanpa proteksi spam.
 - **Browser:** 2 versi terakhir Chrome, Firefox, Edge, Safari.
 
 ## 7. Batasan Teknis
 
-- Stack tetap: Laravel 12 + Blade + Alpine.js 3 + Tailwind CSS 4 + Vite.
-- Tidak menambah dependency baru tanpa persetujuan.
-- Gunakan model Eloquent yang sudah ada; tambah relasi/eager loading untuk hindari N+1.
+- Stack baru: Laravel 12 (PHP 8.3) + Inertia 3 + Vue 3 (Composition API, `<script setup>`) + Tailwind CSS 4 + Vite + Ziggy.
+- Frontend full SPA via Inertia: controller return `Inertia::render()`, halaman = Vue SFC di `resources/js/Pages/`. Detail rencana teknis: [MIGRATION.md](MIGRATION.md).
+- SSR Inertia ditunda (opsional Fase 3) — CSR dulu untuk sederhanakan; struktur Inertia memudahkan nyalakan SSR belakangan.
+- Ziggy wajib: semua link di komponen Vue pakai `route('name')`, tidak ada URL hardcode.
+- Gunakan model Eloquent yang sudah ada; props Inertia via Form Request / data terkontrol, eager loading untuk hindari N+1.
 - Halaman publik di area `/` (guest), admin tetap di `/admin`.
+- Perubahan dependency baru (inertia, vue, ziggy, @vitejs/plugin-vue) disetujui dalam perubahan stack ini — di luar itu tetap butuh persetujuan.
 
 ## 8. Roadmap
+
+### Fase 0 — Migrasi Stack (prasyarat)
+
+1. Pasang Inertia 3 + Vue 3 + Ziggy, buat middleware `HandleInertiaRequests`, shell `app.blade.php`, Vite config plugin Vue.
+2. Layout global Vue: `SiteLayout` (header, footer), navigasi, konfirmasi helloworld page ter-render.
+3. Lihat [MIGRATION.md](MIGRATION.md) untuk detail langkah.
 
 ### Fase 1 — Fondasi (MVP)
 

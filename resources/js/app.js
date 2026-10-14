@@ -1,21 +1,27 @@
-import "./bootstrap";
-import "flowbite";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import "../css/app.css";
 
-import Alpine from "alpinejs";
-window.Alpine = Alpine;
-Alpine.start();
+import { createInertiaApp, Head, Link } from "@inertiajs/vue3";
+import { ZiggyVue } from "ziggy-js";
+import { createApp, h } from "vue";
 
-window.addEventListener("load", () => {
-  AOS.init({
-    duration: 600,
-    easing: "ease-out-cubic",
-    once: true,
-    mirror: false,
-    offset: 0,
-    disable: "mobile",
-  });
+createInertiaApp({
+    title: (title) => (title ? `${title} — Impost Media` : "Impost Media"),
 
-  AOS.refreshHard();
+    resolve: (name) => {
+        const pages = import.meta.glob("./Pages/**/*.vue", { eager: true });
+        return pages[`./Pages/${name}.vue`];
+    },
+
+    setup({ el, App, props, plugin }) {
+        createApp({ render: () => h(App, props) })
+            .use(plugin)
+            .use(ZiggyVue)
+            .component("Head", Head)
+            .component("Link", Link)
+            .mount(el);
+    },
+
+    progress: {
+        color: "#d4ac3c",
+    },
 });

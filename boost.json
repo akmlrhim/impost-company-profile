@@ -1,0 +1,23 @@
+{
+    "agents": [
+        "claude_code",
+        "codex",
+        "opencode"
+    ],
+    "cloud": true,
+    "editors": [
+        "claude_code",
+        "codex",
+        "opencode",
+        "vscode"
+    ],
+    "guidelines": [],
+    "mcp": true,
+    "skills": [
+        "infer-conventions",
+        "deploying-to-cloud",
+        "laravel-best-practices",
+        "testing-best-practices",
+        "tailwindcss-development"
+    ]
+}

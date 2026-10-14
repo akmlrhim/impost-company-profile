@@ -21,3 +21,20 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# AI agent / assistant files
+AGENTS.md
+AGENT.md
+agents.md
+agent.md
+/.ai/
+/.agents/
+/.opencode/
+opencode.json
+.opencode.json
+/.cursor/
+/.cursorrules
+/.claude/
+/.claudeignore
+/.github/copilot-instructions.md
+/.github/copilot-instructions.d/

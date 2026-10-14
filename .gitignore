@@ -27,6 +27,7 @@ AGENTS.md
 AGENT.md
 agents.md
 agent.md
+CLAUDE.md
 /.ai/
 /.agents/
 /.opencode/
@@ -38,3 +39,6 @@ opencode.json
 /.claudeignore
 /.github/copilot-instructions.md
 /.github/copilot-instructions.d/
+
+# Generated / cache
+/graphify-out/

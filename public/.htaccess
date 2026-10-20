@@ -40,7 +40,14 @@
 </IfModule>
 
 <IfModule mod_headers.c>
-    <FilesMatch "\.(css|js|png|jpg|jpeg|webp|svg)$">
+    # Aset ber-hash (Vite) aman di-cache lama
+    <FilesMatch "\.(css|js|png|jpg|jpeg|webp|svg|woff2?|ttf|eot)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # Favicon & webmanifest: sering berubah saat rebranding -> jangan di-cache lama.
+    # max-age pendek + must-revalidate agar browser selalu cek versi terbaru.
+    <FilesMatch "(favicon\.(ico|svg)|apple-touch-icon\.png|site\.webmanifest|web-app-manifest-.*\.png)$">
+        Header set Cache-Control "public, max-age=86400, must-revalidate"
     </FilesMatch>
 </IfModule>

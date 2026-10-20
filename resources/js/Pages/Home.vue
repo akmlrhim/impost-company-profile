@@ -1,82 +1,145 @@
 <script setup>
-import SiteLayout from "@/Layouts/SiteLayout.vue";
+import { computed, ref } from "vue";
+import { motion, useInView } from "motion-v";
+import AboutIntro from "@/Components/Landing/AboutIntro.vue";
+import ClientCard from "@/Components/Landing/ClientCard.vue";
+import CtaCard from "@/Components/Landing/CtaCard.vue";
+import HomeLayout from "@/Layouts/HomeLayout.vue";
+import Hero from "@/Components/Landing/Hero.vue";
+import LatestNews from "@/Components/Landing/LatestNews.vue";
+import SectionRow from "@/Components/Landing/SectionRow.vue";
+import ServiceTile from "@/Components/Landing/ServiceTile.vue";
+import StaggerGroup from "@/Components/Motion/StaggerGroup.vue";
+import { fadeUp, staggerContainer, VIEWPORT } from "@/motion/presets";
 
-defineProps({
-    services: {
-        type: Array,
-        default: () => [],
-    },
-
-    portfolios: {
-        type: Array,
-        default: () => [],
-    },
+const props = defineProps({
+    services: { type: Array, default: () => [] },
+    clients: { type: Array, default: () => [] },
+    articles: { type: Array, default: () => [] },
 });
+
+/**
+ * Section Layanan mengikuti referensi Danantara ("Lingkup Kerja"):
+ * label di atas, pernyataan besar, lalu baris kartu gambar.
+ */
+const layananRoot = ref(null);
+const layananInView = useInView(layananRoot, VIEWPORT);
+const layananContainer = staggerContainer(0.1);
+
+const serviceCards = computed(() =>
+    props.services.map((service) => ({
+        slug: service.slug,
+        title: service.service_name,
+        description: service.description,
+        image: service.cover_path
+            ? {
+                  src: /^(https?:)?\//.test(service.cover_path)
+                      ? service.cover_path
+                      : `/storage/${service.cover_path}`,
+                  alt: service.service_name,
+              }
+            : null,
+    })),
+);
+
+/**
+ * Mode hero mengikuti data yang tersedia (lihat docs/UI_SLICING.md §3.2).
+ * Selama aset belum ada, komponen Hero menampilkan latar `impost-fifth` + pola grid.
+ *
+ * Contoh saat aset siap:
+ *   <Hero
+ *     :image="{ desktop: '/images/hero-desktop.webp', mobile: '/images/hero-mobile.webp', alt: '...' }"
+ *   />
+ */
+const heroImage = null;
+const heroVideo = null;
+const heroSlides = [];
+
+const clientLogos = computed(() =>
+    props.clients.map((client) => ({
+        src: /^(https?:)?\//.test(client.client_logo) ? client.client_logo : `/storage/${client.client_logo}`,
+        alt: client.filename || "Logo klien",
+    })),
+);
+
+const newsArticles = computed(() =>
+    props.articles.map((article) => ({
+        slug: article.slug,
+        title: article.title,
+        excerpt: article.excerpt,
+        author: article.written_by,
+        date: article.created_at,
+        cover: article.cover_path ? { src: article.cover_path, alt: article.title } : null,
+    })),
+);
 </script>
 
 <template>
-    <Head title="Beranda" />
+    <HomeLayout title="Beranda">
+        <!-- [2] Hero -->
+        <Hero :image="heroImage" :video="heroVideo" :slides="heroSlides" />
 
-    <SiteLayout>
-        <!-- Hero -->
-        <section class="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-            <p class="text-sm uppercase tracking-[0.3em] text-impost-primary">Creative Agency &amp; Media Company</p>
-            <h1 class="mt-6 max-w-4xl font-header text-4xl leading-tight sm:text-6xl">
-                Karya yang <span class="text-impost-primary">berbicara</span>, brand yang <span class="text-impost-primary">diingat</span>.
-            </h1>
-            <p class="mt-6 max-w-2xl text-white/60">
-                Impost Media membantu bisnis tampil kuat lewat desain, konten, dan strategi media yang terukur.
-            </p>
-            <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-                <Link href="/contact" class="rounded-full bg-impost-primary px-8 py-3 text-sm font-semibold text-impost-fifth transition hover:bg-impost-secondary">
-                    Diskusikan Proyek
-                </Link>
-                <Link href="/portfolio" class="rounded-full border border-white/20 px-8 py-3 text-sm font-semibold text-white transition hover:border-impost-primary hover:text-impost-primary">
-                    Lihat Karya
-                </Link>
-            </div>
-        </section>
+            <!-- [3] Tentang Kami -->
+            <AboutIntro />
 
-        <!-- Services -->
-        <section v-if="services.length" class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-            <h2 class="font-header text-3xl sm:text-4xl">Layanan Kami</h2>
-            <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                <article
-                    v-for="service in services"
-                    :key="service.slug"
-                    class="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:border-impost-primary"
+            <!-- [4] Layanan -->
+            <motion.section
+                ref="layananRoot"
+                class="mx-auto max-w-[1440px] px-6 py-14 sm:px-10 lg:py-20"
+                :variants="layananContainer"
+                initial="hidden"
+                :animate="layananInView ? 'visible' : 'hidden'"
+            >
+                <motion.p :variants="fadeUp" class="text-xs font-bold uppercase text-impost-third lg:text-sm">
+                    Layanan
+                </motion.p>
+
+                <motion.h2
+                    :variants="fadeUp"
+                    class="mt-6 max-w-[1000px] text-2xl font-normal leading-snug text-impost-fifth sm:text-3xl lg:text-4xl"
                 >
-                    <h3 class="font-semibold">{{ service.service_name }}</h3>
-                    <p class="mt-3 line-clamp-3 text-sm text-white/60">{{ service.description }}</p>
-                </article>
-            </div>
-        </section>
+                    Melalui pendekatan terintegrasi, Impost Media memastikan kebutuhan digital marketing, event, dan
+                    pengadaan Anda tertangani secara selaras, efektif, dan berdampak nyata bagi pertumbuhan bisnis.
+                </motion.h2>
 
-        <!-- Portfolio -->
-        <section v-if="portfolios.length" class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-            <h2 class="font-header text-3xl sm:text-4xl">Karya Unggulan</h2>
-            <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <Link
-                    v-for="portfolio in portfolios"
-                    :key="portfolio.slug"
-                    :href="`/portfolio/${portfolio.slug}`"
-                    class="group overflow-hidden rounded-2xl border border-white/10"
+                <StaggerGroup
+                    v-if="services.length"
+                    class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+                    :stagger="0.08"
                 >
-                    <div class="aspect-video bg-white/5">
-                        <img
-                            v-if="portfolio.media_path"
-                            :src="`/storage/${portfolio.media_path}`"
-                            :alt="portfolio.title"
-                            class="size-full object-cover transition duration-300 group-hover:scale-105"
-                            loading="lazy"
-                        >
-                    </div>
-                    <div class="p-5">
-                        <p class="text-xs uppercase tracking-widest text-impost-primary">{{ portfolio.category?.name }}</p>
-                        <h3 class="mt-2 font-semibold">{{ portfolio.title }}</h3>
-                    </div>
-                </Link>
-            </div>
-        </section>
-    </SiteLayout>
+                    <ServiceTile
+                        v-for="service in serviceCards"
+                        :key="service.slug"
+                        :title="service.title"
+                        :description="service.description"
+                        :image="service.image"
+                    />
+                </StaggerGroup>
+
+                <p v-else class="mt-10 text-sm italic text-impost-third lg:text-base">
+                    [Daftar layanan akan tampil di sini.]
+                </p>
+            </motion.section>
+
+            <!-- [5] Berita Terbaru -->
+            <LatestNews :articles="newsArticles" />
+
+            <!-- [6] Klien: tanpa judul section -->
+            <SectionRow>
+                <StaggerGroup class="grid gap-3 lg:grid-cols-[240px_1fr]">
+                    <CtaCard
+                        title="Mulai Proyek Anda"
+                        description="Ceritakan kebutuhan brand Anda. Tim kami akan menyusun pendekatan yang paling tepat."
+                        cta-label="Hubungi Kami"
+                        :cta-href="route('contact.index')"
+                    />
+
+                    <ClientCard
+                        title="Dipercaya Oleh"
+                        description="Brand dari berbagai industri telah mempercayakan pertumbuhan mereka kepada kami."
+                        :logos="clientLogos"
+                    />
+                </StaggerGroup>
+            </SectionRow>
+    </HomeLayout>
 </template>

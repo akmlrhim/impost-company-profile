@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -26,13 +26,13 @@
         </div>
 
         <div class="space-y-2">
-          <h1 class="text-6xl md:text-8xl font-black tracking-tighter text-impost-primary">
+          <h1 class="text-6xl md:text-8xl font-black text-impost-primary">
             @yield('code')
           </h1>
 
           <div class="h-px w-24 bg-impost-primary mx-auto my-4 opacity-50"></div>
 
-          <h2 class="text-xl md:text-2xl font-bold uppercase tracking-widest text-gray-200">
+          <h2 class="text-xl md:text-2xl font-bold uppercase text-white">
             @yield('message')
           </h2>
         </div>

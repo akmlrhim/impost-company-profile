@@ -8,11 +8,22 @@ use Illuminate\Database\Seeder;
 
 class ArticleCategorySeeder extends Seeder
 {
-	/**
-	 * Run the database seeds.
-	 */
-	public function run(): void
-	{
-		ArticleCategory::factory()->count(10)->create();
-	}
+    use WithoutModelEvents;
+
+    /**
+     * Kategori artikel resmi proyek.
+     */
+    public function run(): void
+    {
+        $categories = [
+            ['name' => 'Digital Marketing', 'slug' => 'digital-marketing'],
+            ['name' => 'Event & Entertainment', 'slug' => 'event-entertainment'],
+            ['name' => 'Pengadaan', 'slug' => 'pengadaan'],
+            ['name' => 'Branding', 'slug' => 'branding'],
+        ];
+
+        foreach ($categories as $category) {
+            ArticleCategory::create($category);
+        }
+    }
 }

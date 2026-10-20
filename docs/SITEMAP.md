@@ -1,8 +1,8 @@
 # Sitemap & Arsitektur Informasi — Impost Media
 
-| | |
-|---|---|
-| Versi | 1.0 |
+|         |            |
+| ------- | ---------- |
+| Versi   | 1.0        |
 | Tanggal | 2026-10-14 |
 
 ---
@@ -63,20 +63,20 @@ Catatan:
 
 ## 3. Pemetaan Model → Halaman/Section
 
-| Model | Dipakai di | Catatan query |
-|---|---|---|
-| `Service` | `/services`, homepage | Urut `sort`, eager tidak perlu (belum ada relasi) |
-| `Portfolio` | `/portfolio`, homepage | `category` harus eager load, filter via `category_id` |
-| `PortfolioCategory` | Filter portfolio | — |
-| `StudyCase` | `/study-cases`, homepage | — |
-| `Article` | `/articles`, homepage | Eager `category`, paginasi, `latest()` |
-| `ArticleCategory` | Filter artikel | — |
-| `Team` | `/about`, homepage | Grid foto + nama + jabatan |
-| `Client` | Homepage band logo | Semua aktif, grayscale |
-| `Testimonial` | Homepage | Carousel |
-| `Leads` | `/contact` store | Tulis-saja untuk publik |
-| `JobPosting` | `/careers` | Hanya lowongan aktif |
-| `Comment` | — | Ditunda, lihat PRD 4.2 |
+| Model               | Dipakai di               | Catatan query                                         |
+| ------------------- | ------------------------ | ----------------------------------------------------- |
+| `Service`           | `/services`, homepage    | Urut `sort`, eager tidak perlu (belum ada relasi)     |
+| `Portfolio`         | `/portfolio`, homepage   | `category` harus eager load, filter via `category_id` |
+| `PortfolioCategory` | Filter portfolio         | —                                                     |
+| `StudyCase`         | `/study-cases`, homepage | —                                                     |
+| `Article`           | `/articles`, homepage    | Eager `category`, paginasi, `latest()`                |
+| `ArticleCategory`   | Filter artikel           | —                                                     |
+| `Team`              | `/about`, homepage       | Grid foto + nama + jabatan                            |
+| `Client`            | Homepage band logo       | Semua aktif, grayscale                                |
+| `Testimonial`       | Homepage                 | Carousel                                              |
+| `Leads`             | `/contact` store         | Tulis-saja untuk publik                               |
+| `JobPosting`        | `/careers`               | Hanya lowongan aktif                                  |
+| `Comment`           | —                        | Ditunda, lihat PRD 4.2                                |
 
 ## 4. Struktur Frontend (Inertia + Vue 3)
 

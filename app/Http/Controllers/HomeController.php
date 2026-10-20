@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Portfolio;
+use App\Models\Article;
+use App\Models\Client;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -14,17 +15,21 @@ class HomeController extends Controller
     {
         $services = Service::query()
             ->orderBy('sort')
-            ->get(['service_name', 'slug', 'description']);
+            ->get(['service_name', 'slug', 'description', 'cover_path']);
 
-        $portfolios = Portfolio::query()
-            ->with('category:id,name')
+        $clients = Client::query()
+            ->get(['filename', 'client_logo']);
+
+        $articles = Article::query()
+            ->where('status', 'published')
             ->latest()
-            ->limit(6)
-            ->get(['slug', 'title', 'media_path', 'category_id']);
+            ->take(7)
+            ->get(['title', 'slug', 'excerpt', 'cover_path', 'written_by', 'created_at']);
 
         return Inertia::render('Home', [
             'services' => $services,
-            'portfolios' => $portfolios,
+            'clients' => $clients,
+            'articles' => $articles,
         ]);
     }
 }

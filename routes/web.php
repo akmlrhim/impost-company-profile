@@ -13,7 +13,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 Route::controller(ServiceController::class)->prefix('services')->name('services.')->group(function () {
-    Route::get('/', 'index')->name('index');
     Route::get('/{service:slug}', 'show')->name('show');
 });
 

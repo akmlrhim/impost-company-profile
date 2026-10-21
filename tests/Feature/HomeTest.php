@@ -8,7 +8,8 @@ it('renders the homepage via inertia', function () {
     $response->assertInertia(function (AssertableJson $page) {
         return $page->component('Home')
             ->has('services')
-            ->has('clients');
+            ->has('clients')
+            ->has('testimonials');
     });
 });
 

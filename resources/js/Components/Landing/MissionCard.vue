@@ -66,7 +66,7 @@ const badgeClass = computed(() =>
 const textClass = computed(() =>
     props.variant === "dark"
         ? "mt-5 text-base leading-relaxed text-white lg:text-lg"
-        : "mt-4 text-sm leading-relaxed text-impost-fifth lg:text-base",
+        : "mt-4 text-sm leading-relaxed text-ink lg:text-base",
 );
 
 /** Diteruskan ke `<motion.article>`; urutan diatur oleh `StaggerGroup` induk. */

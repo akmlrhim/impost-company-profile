@@ -62,13 +62,6 @@ async function copyLink() {
     }
 }
 
-/** Estimasi waktu baca: jumlah kata dibagi 200 kata per menit. */
-const readingTime = computed(() => {
-    const words = (props.article.content || "").trim().split(/\s+/).filter(Boolean).length;
-
-    return Math.max(1, Math.round(words / 200));
-});
-
 /**
  * Konten artikel berupa teks polos. Blok dipisah baris kosong,
  * dengan penanda ringan: "## " jadi sub-judul, "- " jadi daftar,
@@ -140,15 +133,15 @@ const authorInitials = computed(() =>
             <article class="min-w-0">
                 <!-- Breadcrumb -->
                 <nav class="flex flex-wrap items-center gap-2 text-sm text-impost-third" aria-label="Breadcrumb">
-                    <Link :href="route('home')" class="transition-colors hover:text-impost-fifth">Beranda</Link>
+                    <Link :href="route('home')" class="transition-colors hover:text-ink">Beranda</Link>
                     <svg class="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7" />
                     </svg>
-                    <Link :href="route('articles.index')" class="transition-colors hover:text-impost-fifth">Artikel</Link>
+                    <Link :href="route('articles.index')" class="transition-colors hover:text-ink">Artikel</Link>
                     <svg class="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7" />
                     </svg>
-                    <span class="font-bold text-impost-fifth">{{ article.category?.name }}</span>
+                    <span class="font-bold text-ink">{{ article.category?.name }}</span>
                 </nav>
 
                 <!-- Judul -->
@@ -158,9 +151,9 @@ const authorInitials = computed(() =>
 
                 <!-- Baris meta: penulis, kategori, waktu baca, tanggal, suka -->
                 <div class="mt-6 flex flex-wrap items-center gap-3">
-                    <span class="inline-flex items-center gap-2 rounded-full border border-impost-fifth/10 px-3 py-1.5 text-sm">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-sm">
                         <span
-                            class="flex size-6 items-center justify-center rounded-full bg-impost-primary/25 text-[10px] font-bold text-impost-fifth"
+                            class="flex size-6 items-center justify-center rounded-full bg-impost-primary/25 text-[10px] font-bold text-ink"
                             aria-hidden="true"
                         >
                             {{ authorInitials }}
@@ -168,18 +161,11 @@ const authorInitials = computed(() =>
                         {{ article.written_by }}
                     </span>
 
-                    <span class="inline-flex items-center rounded-full border border-impost-fifth/10 px-3 py-1.5 text-sm text-impost-fifth">
+                    <span class="inline-flex items-center rounded-full border border-line px-3 py-1.5 text-sm text-ink">
                         {{ article.category?.name }}
                     </span>
 
-                    <span class="inline-flex items-center gap-1.5 rounded-full border border-impost-fifth/10 px-3 py-1.5 text-sm text-impost-fifth">
-                        <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2m6-2a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z" />
-                        </svg>
-                        {{ readingTime }} menit baca
-                    </span>
-
-                    <span class="inline-flex items-center gap-1.5 rounded-full border border-impost-fifth/10 px-3 py-1.5 text-sm text-impost-fifth">
+                    <span class="inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-sm text-ink">
                         <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Z" />
                         </svg>
@@ -188,7 +174,7 @@ const authorInitials = computed(() =>
                 </div>
 
                 <!-- Gambar sampul -->
-                <figure class="mt-8 overflow-hidden rounded-3xl bg-impost-fifth/5">
+                <figure class="mt-8 overflow-hidden rounded-3xl bg-ink/5">
                     <img
                         v-if="coverSrc(article)"
                         :src="coverSrc(article)"
@@ -211,7 +197,7 @@ const authorInitials = computed(() =>
                             <li
                                 v-for="item in block.items"
                                 :key="item"
-                                class="flex gap-3 leading-relaxed text-impost-fifth"
+                                class="flex gap-3 leading-relaxed text-ink"
                             >
                                 <span class="mt-2.5 size-1.5 shrink-0 rounded-full bg-impost-primary" aria-hidden="true" />
                                 <span>{{ item }}</span>
@@ -220,12 +206,12 @@ const authorInitials = computed(() =>
 
                         <blockquote
                             v-else-if="block.type === 'quote'"
-                            class="mt-10 border-l-2 border-impost-primary pl-6 text-xl leading-relaxed text-impost-fifth"
+                            class="mt-10 border-l-2 border-impost-primary pl-6 text-xl leading-relaxed text-ink"
                         >
                             {{ block.text }}
                         </blockquote>
 
-                        <p v-else class="mt-6 leading-relaxed text-impost-fifth">
+                        <p v-else class="mt-6 leading-relaxed text-ink">
                             {{ block.text }}
                         </p>
                     </template>
@@ -242,7 +228,7 @@ const authorInitials = computed(() =>
                             :href="instagram"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex size-10 items-center justify-center rounded-full border border-impost-fifth/10 transition-colors hover:border-impost-primary hover:text-impost-primary"
+                            class="inline-flex size-10 items-center justify-center rounded-full border border-line transition-colors hover:border-impost-primary hover:text-impost-primary"
                             aria-label="Instagram Impost Media"
                         >
                             <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -257,7 +243,7 @@ const authorInitials = computed(() =>
                             :href="link.href"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex size-10 items-center justify-center rounded-full border border-impost-fifth/10 transition-colors hover:border-impost-primary hover:text-impost-primary"
+                            class="inline-flex size-10 items-center justify-center rounded-full border border-line transition-colors hover:border-impost-primary hover:text-impost-primary"
                             :aria-label="`Bagikan ke ${link.name}`"
                         >
                             <svg class="size-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -266,7 +252,7 @@ const authorInitials = computed(() =>
                         </a>
                         <button
                             type="button"
-                            class="inline-flex size-10 items-center justify-center rounded-full border border-impost-fifth/10 transition-colors hover:border-impost-primary hover:text-impost-primary"
+                            class="inline-flex size-10 items-center justify-center rounded-full border border-line transition-colors hover:border-impost-primary hover:text-impost-primary"
                             :aria-label="copied ? 'Tautan tersalin' : 'Salin tautan artikel'"
                             @click="copyLink"
                         >
@@ -296,7 +282,7 @@ const authorInitials = computed(() =>
                     </div>
                 </section>
 
-                <hr v-if="categories.length" class="my-6 border-impost-fifth/10">
+                <hr v-if="categories.length" class="my-6 border-line">
 
                 <!-- Kategori -->
                 <section v-if="categories.length">
@@ -306,14 +292,14 @@ const authorInitials = computed(() =>
                             v-for="category in categories"
                             :key="category.slug"
                             class="inline-flex items-center rounded-full border px-3 py-1 text-xs transition-colors"
-                            :class="category.slug === article.category?.slug ? 'border-impost-primary text-impost-primary' : 'border-impost-fifth/15 text-impost-fifth hover:border-impost-primary hover:text-impost-primary'"
+                            :class="category.slug === article.category?.slug ? 'border-impost-primary text-impost-primary' : 'border-line text-ink hover:border-impost-primary hover:text-impost-primary'"
                         >
                             {{ category.name }}
                         </span>
                     </div>
                 </section>
 
-                <hr v-if="related.length" class="my-6 border-impost-fifth/10">
+                <hr v-if="related.length" class="my-6 border-line">
 
                 <!-- Artikel terkait -->
                 <section v-if="related.length">
@@ -321,7 +307,7 @@ const authorInitials = computed(() =>
                         <h2 class="text-sm font-bold">Artikel Terkait</h2>
                         <Link
                             :href="route('articles.index')"
-                            class="text-xs font-bold text-impost-fifth/60 transition-colors hover:text-impost-primary"
+                            class="text-xs font-bold text-ink/60 transition-colors hover:text-impost-primary"
                         >
                             Lihat Semua
                         </Link>
@@ -333,7 +319,7 @@ const authorInitials = computed(() =>
                             :href="route('articles.show', item.slug)"
                             class="group flex gap-3"
                         >
-                            <div class="w-24 shrink-0 overflow-hidden rounded-xl bg-impost-fifth/5">
+                            <div class="w-24 shrink-0 overflow-hidden rounded-xl bg-ink/5">
                                 <img
                                     v-if="coverSrc(item)"
                                     :src="coverSrc(item)"
@@ -343,7 +329,7 @@ const authorInitials = computed(() =>
                                 >
                             </div>
                             <div class="min-w-0">
-                                <p class="inline-flex items-center gap-1.5 text-xs text-impost-fifth">
+                                <p class="inline-flex items-center gap-1.5 text-xs text-ink">
                                     <svg class="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Z" />
                                     </svg>

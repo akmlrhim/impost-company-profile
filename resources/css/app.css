@@ -11,7 +11,38 @@
 /* Jangan pindai hasil build sendiri (menyebabkan kelas lama "hidup" kembali) */
 @source not '../../public/build';
 
-@custom-variant dark (&:where(.light, .light *));
+@custom-variant light (&:where(.light, .light *));
+
+/*
+ * Tema: default gelap. Kelas `light` pada <html> (dipasang useTheme +
+ * skrip inline di app.blade.php) menukar token di bawah. Kelas utilitas
+ * semantik: bg-paper, text-ink, border-line, ring-line, bg-field.
+ */
+:root {
+  color-scheme: dark;
+  --paper: #040404;
+  --ink: #ffffff;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.32);
+  --field: rgba(255, 255, 255, 0.06);
+}
+
+html.light {
+  color-scheme: light;
+  --paper: #ffffff;
+  --ink: #040404;
+  --line: rgba(4, 4, 4, 0.12);
+  --line-strong: rgba(4, 4, 4, 0.32);
+  --field: #ffffff;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-field: var(--field);
+}
 
 @theme {
   --font-sans:
@@ -32,7 +63,7 @@
 }
 
 body {
-  background: #040404;
+  background: var(--paper);
 }
 
 .font-header {

@@ -23,6 +23,17 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link rel="stylesheet" href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap">
 
+        {{-- Tema: default gelap; kelas `light` dipasang sebelum paint agar tidak flash. --}}
+        <script>
+            (function () {
+                try {
+                    if (localStorage.getItem("impost-theme") === "light") {
+                        document.documentElement.classList.add("light");
+                    }
+                } catch (e) {}
+            })();
+        </script>
+
         @routes
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @inertiaHead

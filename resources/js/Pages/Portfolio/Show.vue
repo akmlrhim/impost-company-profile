@@ -22,7 +22,7 @@ defineProps({
             />
             <h1 class="mt-4 text-4xl font-bold leading-tight sm:text-5xl">{{ portfolio.title }}</h1>
 
-            <div class="mt-10 aspect-video overflow-hidden rounded-3xl bg-impost-fifth/5">
+            <div class="mt-10 aspect-video overflow-hidden rounded-3xl bg-ink/5">
                 <img
                     v-if="portfolio.media_path"
                     :src="`/storage/${portfolio.media_path}`"
@@ -35,7 +35,7 @@ defineProps({
                 <Link href="/contact" class="rounded-full bg-impost-primary px-8 py-3 text-sm font-bold text-impost-fifth transition-colors hover:bg-impost-secondary">
                     Tertarik kerja sama?
                 </Link>
-                <Link :href="route('portfolio.index')" class="rounded-full border border-impost-fifth/20 px-8 py-3 text-sm font-bold text-impost-fifth transition-colors hover:border-impost-primary hover:text-impost-primary">
+                <Link :href="route('portfolio.index')" class="rounded-full border border-line px-8 py-3 text-sm font-bold text-ink transition-colors hover:border-impost-primary hover:text-impost-primary">
                     Kembali ke portfolio
                 </Link>
             </div>

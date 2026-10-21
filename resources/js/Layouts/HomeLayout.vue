@@ -10,7 +10,7 @@ defineProps({
 <template>
     <Head :title="title" />
 
-    <div class="min-h-screen scroll-smooth bg-white text-impost-fifth">
+    <div class="min-h-screen scroll-smooth bg-paper font-sans text-ink transition-colors duration-300">
         <Header />
 
         <main :class="route().current('home') ? '' : 'pt-[86px]'">

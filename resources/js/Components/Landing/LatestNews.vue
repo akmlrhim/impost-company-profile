@@ -1,17 +1,16 @@
 ﻿<script setup>
 import { computed, ref } from "vue";
 import { motion, useInView } from "motion-v";
-import { fadeUp, staggerContainer, VIEWPORT } from "@/motion/presets";
+import { useAutoSlider } from "@/composables/useAutoSlider";
+import { fadeIn, fadeUp, VIEWPORT } from "@/motion/presets";
 
 /**
- * Section "Berita Terbaru" di halaman Beranda.
+ * Section "Artikel Terbaru" di halaman Beranda.
  *
- * Mengikuti konsep layout editorial (referensi Fox News "Latest Updates"):
- * judul section di tengah bergaris bawah, lalu 4 kolom berisi
- * artikel teks, artikel unggulan bergambar besar, artikel bergambar,
- * dan artikel teks kecil. Warna mengikuti token proyek (impost-*).
- *
- * Setiap artikel dibungkus Link menuju halaman detail (articles.show).
+ * Slider layar penuh (full-bleed): setiap slide memakai cover artikel
+ * asli sebagai latar penuh dengan gradasi gelap, judul tebal, excerpt,
+ * dan tombol "Baca Selengkapnya". Navigasi panah + slide otomatis
+ * (pause saat kursor di atas slider).
  */
 const props = defineProps({
     /** [{ slug, title, excerpt, author, date, cover }] */
@@ -21,35 +20,9 @@ const props = defineProps({
 const root = ref(null);
 const inView = useInView(root, VIEWPORT);
 
-const container = staggerContainer(0.1);
-
-/** Artikel terbaru jadi unggulan di kolom tengah. */
-const featured = computed(() => props.articles[0] ?? null);
-const textColumn = computed(() => props.articles.slice(1, 3));
-const imageColumn = computed(() => props.articles.slice(3, 5));
-const smallColumn = computed(() => props.articles.slice(5, 7));
-
-function formatDate(value) {
-    if (!value) {
-        return "";
-    }
-
-    return new Date(value).toLocaleDateString("id-ID", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    });
-}
-
-/** Inisial penulis untuk avatar lingkaran. */
-function initials(name) {
-    return (name || "?")
-        .split(" ")
-        .filter(Boolean)
-        .slice(0, 2)
-        .map((word) => word[0].toUpperCase())
-        .join("");
-}
+const count = computed(() => props.articles.length);
+const { active, hovered, goTo } = useAutoSlider(count);
+const activeArticle = computed(() => props.articles[active.value] ?? null);
 
 /** Sumber gambar: URL absolut atau path storage, null bila tidak ada cover. */
 function coverSrc(article) {
@@ -62,153 +35,118 @@ function coverSrc(article) {
 </script>
 
 <template>
-    <motion.section
+    <section
         ref="root"
-        class="mx-auto max-w-[1440px] px-6 py-14 sm:px-10 lg:py-20"
-        :variants="container"
-        initial="hidden"
-        :animate="inView ? 'visible' : 'hidden'"
+        class="relative w-full overflow-hidden bg-impost-fifth"
+        aria-label="Artikel terbaru"
     >
-        <motion.h2
+        <motion.div
+            v-if="!articles.length"
             :variants="fadeUp"
-            class="mx-auto w-fit border-b-2 border-impost-fifth pb-1 text-center text-2xl font-bold tracking-tight text-impost-fifth sm:text-3xl"
+            initial="hidden"
+            :animate="inView ? 'visible' : 'hidden'"
+            class="mx-auto max-w-[1440px] px-6 py-14 sm:px-10 lg:py-20"
         >
-            Berita Terbaru
-        </motion.h2>
-
-        <p v-if="!articles.length" class="mt-10 text-sm italic text-impost-third lg:text-base">
-            [Daftar berita akan tampil di sini setelah artikel dipublikasikan.]
-        </p>
+            <p class="text-sm italic text-white/60 lg:text-base">
+                [Daftar artikel akan tampil di sini setelah artikel dipublikasikan.]
+            </p>
+        </motion.div>
 
         <div
             v-else
-            class="mt-10 grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-[1fr_1.5fr_1fr_1fr] lg:divide-x lg:divide-impost-fifth/10"
+            class="relative min-h-[460px] sm:min-h-[540px] lg:min-h-[620px]"
+            @mouseenter="hovered = true"
+            @mouseleave="hovered = false"
         >
-            <!-- Kolom 1: dua artikel teks -->
-            <motion.div v-if="textColumn.length" :variants="fadeUp" class="space-y-10 lg:pr-2">
-                <Link
-                    v-for="article in textColumn"
-                    :key="article.slug"
-                    :href="route('articles.show', article.slug)"
-                    class="group block"
-                >
-                    <p class="text-xs font-bold uppercase text-impost-third">{{ formatDate(article.date) }}</p>
-                    <h3 class="mt-2 text-xl font-bold leading-snug text-impost-fifth transition group-hover:text-impost-third lg:text-2xl">
-                        {{ article.title }}
-                    </h3>
-                    <p v-if="article.excerpt" class="mt-3 text-sm leading-relaxed text-impost-fifth">
-                        {{ article.excerpt }}
-                    </p>
-                    <div class="mt-4 flex items-center gap-3">
-                        <span
-                            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-impost-primary/30 text-xs font-bold text-impost-fifth"
-                            aria-hidden="true"
-                        >
-                            {{ initials(article.author) }}
-                        </span>
-                        <div>
-                            <p class="text-sm font-bold leading-tight text-impost-fifth">{{ article.author }}</p>
-                            <p class="text-xs text-impost-third">Penulis</p>
-                        </div>
-                    </div>
-                </Link>
-            </motion.div>
-
-            <!-- Kolom 2: artikel unggulan bergambar besar -->
-            <Link
-                v-if="featured"
-                :href="route('articles.show', featured.slug)"
-                class="group block md:col-span-2 lg:col-span-1 lg:px-8"
+            <!-- Latar cover artikel aktif -->
+            <motion.div
+                :key="`bg-${active}`"
+                :variants="fadeIn"
+                initial="hidden"
+                animate="visible"
+                class="absolute inset-0"
+                aria-hidden="true"
             >
-                <motion.article :variants="fadeUp">
-                <div class="relative h-64 w-full overflow-hidden rounded-2xl lg:h-72">
-                    <img
-                        v-if="coverSrc(featured)"
-                        :src="coverSrc(featured)"
-                        :alt="featured.title"
-                        loading="lazy"
-                        class="absolute inset-0 size-full object-cover transition duration-300 group-hover:scale-105"
-                    >
-                    <div v-else class="absolute inset-0 bg-impost-primary/20" aria-hidden="true" />
-                </div>
-
-                <h3 class="mt-5 text-2xl font-bold leading-snug text-impost-fifth transition group-hover:text-impost-third lg:text-3xl">
-                    {{ featured.title }}
-                </h3>
-                <p v-if="featured.excerpt" class="mt-3 text-sm leading-relaxed text-impost-fifth lg:text-base">
-                    {{ featured.excerpt }}
-                </p>
-
-                <div class="mt-4 flex items-center gap-3">
-                    <span
-                        class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-impost-primary/30 text-xs font-bold text-impost-fifth"
-                        aria-hidden="true"
-                    >
-                        {{ initials(featured.author) }}
-                    </span>
-                    <div>
-                        <p class="text-sm font-bold leading-tight text-impost-fifth">{{ featured.author }}</p>
-                        <p class="text-xs text-impost-third">Penulis</p>
-                    </div>
-                </div>
-                </motion.article>
-            </Link>
-
-            <!-- Kolom 3: dua artikel bergambar -->
-            <motion.div v-if="imageColumn.length" :variants="fadeUp" class="space-y-10 lg:px-8">
-                <Link
-                    v-for="article in imageColumn"
-                    :key="article.slug"
-                    :href="route('articles.show', article.slug)"
-                    class="group block"
+                <img
+                    v-if="coverSrc(activeArticle)"
+                    :src="coverSrc(activeArticle)"
+                    :alt="activeArticle.title"
+                    class="absolute inset-0 size-full object-cover"
                 >
-                    <div class="relative h-40 w-full overflow-hidden rounded-2xl">
-                        <img
-                            v-if="coverSrc(article)"
-                            :src="coverSrc(article)"
-                            :alt="article.title"
-                            loading="lazy"
-                            class="absolute inset-0 size-full object-cover transition duration-300 group-hover:scale-105"
-                        >
-                        <div v-else class="absolute inset-0 bg-impost-primary/20" aria-hidden="true" />
-                    </div>
-                    <h3 class="mt-4 text-lg font-bold leading-snug text-impost-fifth transition group-hover:text-impost-third lg:text-xl">
-                        {{ article.title }}
-                    </h3>
-                    <p class="mt-2 text-xs uppercase tracking-wide text-impost-third">
-                        {{ article.author }}
-                    </p>
-                </Link>
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-impost-fifth via-impost-fifth/60 to-impost-fifth/25"
+                />
             </motion.div>
 
-            <!-- Kolom 4: dua artikel teks kecil -->
-            <motion.div v-if="smallColumn.length" :variants="fadeUp" class="space-y-10 lg:pl-8">
-                <Link
-                    v-for="article in smallColumn"
-                    :key="article.slug"
-                    :href="route('articles.show', article.slug)"
-                    class="group block"
+            <!-- Konten slide -->
+            <div
+                class="relative mx-auto flex min-h-[460px] max-w-[1440px] flex-col justify-end px-6 py-12 sm:min-h-[540px] sm:px-10 lg:min-h-[620px] lg:py-16"
+            >
+                <motion.div
+                    :key="`content-${active}`"
+                    :variants="fadeUp"
+                    initial="hidden"
+                    animate="visible"
+                    class="max-w-[720px]"
                 >
-                    <h3 class="text-lg font-bold leading-snug text-impost-fifth transition group-hover:text-impost-third lg:text-xl">
-                        {{ article.title }}
-                    </h3>
-                    <p v-if="article.excerpt" class="mt-2 text-sm leading-relaxed text-impost-fifth">
-                        {{ article.excerpt }}
+                    <p class="text-xs font-bold uppercase tracking-wide text-impost-primary lg:text-sm">
+                        Artikel Terbaru
                     </p>
-                    <div class="mt-4 flex items-center gap-3">
-                        <span
-                            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-impost-primary/30 text-xs font-bold text-impost-fifth"
+
+                    <h2 class="mt-4 text-2xl font-bold leading-snug text-white sm:text-3xl lg:text-4xl">
+                        {{ activeArticle.title }}
+                    </h2>
+
+                    <p
+                        v-if="activeArticle.excerpt"
+                        class="mt-3 text-sm leading-relaxed text-white/80 line-clamp-3 lg:text-base"
+                    >
+                        {{ activeArticle.excerpt }}
+                    </p>
+
+                    <Link
+                        :href="route('articles.show', activeArticle.slug)"
+                        class="mt-6 inline-flex items-center gap-2 rounded-full bg-impost-primary px-6 py-3 text-xs font-bold uppercase tracking-wide text-impost-fifth transition-colors hover:bg-impost-secondary"
+                    >
+                        Baca Selengkapnya
+                        <svg
+                            class="size-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
                             aria-hidden="true"
                         >
-                            {{ initials(article.author) }}
-                        </span>
-                        <div>
-                            <p class="text-sm font-bold leading-tight text-impost-fifth">{{ article.author }}</p>
-                            <p class="text-xs text-impost-third">Penulis</p>
-                        </div>
-                    </div>
-                </Link>
-            </motion.div>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m0 0l-6-6m6 6l-6 6" />
+                        </svg>
+                    </Link>
+                </motion.div>
+            </div>
+
+            <!-- Navigasi -->
+            <button
+                v-if="count > 1"
+                type="button"
+                class="absolute left-4 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-white/30 bg-impost-fifth/40 text-white backdrop-blur transition-colors hover:border-impost-primary hover:bg-impost-primary hover:text-impost-fifth sm:left-6"
+                aria-label="Artikel sebelumnya"
+                @click="goTo(-1)"
+            >
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+
+            <button
+                v-if="count > 1"
+                type="button"
+                class="absolute right-4 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-white/30 bg-impost-fifth/40 text-white backdrop-blur transition-colors hover:border-impost-primary hover:bg-impost-primary hover:text-impost-fifth sm:right-6"
+                aria-label="Artikel berikutnya"
+                @click="goTo(1)"
+            >
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
         </div>
-    </motion.section>
+    </section>
 </template>

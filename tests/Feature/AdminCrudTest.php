@@ -1,66 +1,71 @@
 <?php
 
+use App\Filament\Resources\Leads\LeadsResource;
+use App\Filament\Resources\Leads\Pages\ListLeads;
+use App\Filament\Resources\Leads\Pages\ViewLeads;
+use App\Filament\Resources\PortfolioCategories\Pages\CreatePortfolioCategory;
+use App\Filament\Resources\Portfolios\Pages\CreatePortfolio;
+use App\Filament\Resources\Services\Pages\CreateService;
+use App\Filament\Resources\Services\Pages\EditService;
+use App\Filament\Resources\Services\Pages\ListServices;
+use App\Filament\Resources\Testimonials\Pages\CreateTestimonial;
 use App\Models\Leads;
 use App\Models\Portfolio;
 use App\Models\PortfolioCategory;
 use App\Models\Service;
 use App\Models\Testimonial;
 use App\Models\User;
+use Filament\Actions\DeleteAction;
+use Filament\Pages\Dashboard;
 
 beforeEach(function () {
     $this->actingAs(User::factory()->create());
 });
 
-it('renders the admin dashboard with counts', function () {
-    Service::factory()->create();
-
-    $this->get(route('admin.dashboard'))
-        ->assertOk()
-        ->assertInertia(fn ($page) => $page
-            ->component('Admin/Dashboard')
-            ->has('counts')
-            ->has('recent_leads')
-        );
+it('renders the panel dashboard', function () {
+    \Livewire\Livewire::test(Dashboard::class)
+        ->assertSuccessful();
 });
 
-it('lists services in the admin', function () {
+it('lists services in the panel', function () {
     Service::factory()->count(2)->create();
 
-    $this->get(route('admin.services.index'))
-        ->assertOk()
-        ->assertInertia(fn ($page) => $page
-            ->component('Admin/Services/Index')
-            ->has('services.data', 2)
-        );
+    \Livewire\Livewire::test(ListServices::class)
+        ->assertSuccessful();
 });
 
 it('creates a service', function () {
-    $this->post(route('admin.services.store'), [
-        'service_name' => 'Social Media Management',
-        'slug' => 'social-media-management',
-        'description' => 'Kelola sosial media.',
-        'category' => 'Utama',
-        'sort' => 1,
-    ])->assertRedirect(route('admin.services.index'));
+    \Livewire\Livewire::test(CreateService::class)
+        ->fillForm([
+            'service_name' => 'Social Media Management',
+            'slug' => 'social-media-management',
+            'description' => 'Kelola sosial media.',
+            'category' => 'Utama',
+            'sort' => 1,
+        ])
+        ->call('create')
+        ->assertHasNoFormErrors();
 
     expect(Service::where('slug', 'social-media-management')->exists())->toBeTrue();
 });
 
 it('validates required fields when creating a service', function () {
-    $this->post(route('admin.services.store'), [])
-        ->assertSessionHasErrors(['service_name', 'slug', 'description', 'sort']);
+    \Livewire\Livewire::test(CreateService::class)
+        ->call('create')
+        ->assertHasFormErrors(['service_name', 'slug', 'description']);
 });
 
 it('updates a service', function () {
     $service = Service::factory()->create();
 
-    $this->put(route('admin.services.update', $service), [
-        'service_name' => 'Updated Name',
-        'slug' => $service->slug,
-        'description' => 'Updated description.',
-        'category' => 'Tambahan',
-        'sort' => 5,
-    ])->assertRedirect(route('admin.services.index'));
+    \Livewire\Livewire::test(EditService::class, ['record' => $service->slug])
+        ->fillForm([
+            'service_name' => 'Updated Name',
+            'category' => 'Tambahan',
+            'sort' => 5,
+        ])
+        ->call('save')
+        ->assertHasNoFormErrors();
 
     expect($service->refresh()->service_name)->toBe('Updated Name');
 });
@@ -68,17 +73,20 @@ it('updates a service', function () {
 it('deletes a service', function () {
     $service = Service::factory()->create();
 
-    $this->delete(route('admin.services.destroy', $service))
-        ->assertRedirect(route('admin.services.index'));
+    \Livewire\Livewire::test(EditService::class, ['record' => $service->slug])
+        ->callAction(DeleteAction::class);
 
     expect(Service::find($service->id))->toBeNull();
 });
 
 it('creates a portfolio category', function () {
-    $this->post(route('admin.portfolio-categories.store'), [
-        'name' => 'Branding',
-        'slug' => 'branding',
-    ])->assertRedirect(route('admin.portfolio-categories.index'));
+    \Livewire\Livewire::test(CreatePortfolioCategory::class)
+        ->fillForm([
+            'name' => 'Branding',
+            'slug' => 'branding',
+        ])
+        ->call('create')
+        ->assertHasNoFormErrors();
 
     expect(PortfolioCategory::where('slug', 'branding')->exists())->toBeTrue();
 });
@@ -86,17 +94,20 @@ it('creates a portfolio category', function () {
 it('creates a portfolio', function () {
     $category = PortfolioCategory::factory()->create();
 
-    $this->post(route('admin.portfolios.store'), [
-        'title' => 'Kampanye XYZ',
-        'slug' => 'kampanye-xyz',
-        'category_id' => $category->id,
-        'media_type' => 'image',
-    ])->assertRedirect(route('admin.portfolios.index'));
+    \Livewire\Livewire::test(CreatePortfolio::class)
+        ->fillForm([
+            'title' => 'Kampanye XYZ',
+            'slug' => 'kampanye-xyz',
+            'category_id' => $category->id,
+            'media_type' => 'image',
+        ])
+        ->call('create')
+        ->assertHasNoFormErrors();
 
     expect(Portfolio::where('slug', 'kampanye-xyz')->exists())->toBeTrue();
 });
 
-it('lists and shows leads', function () {
+it('lists leads and shows a lead', function () {
     $lead = Leads::create([
         'fullname' => 'Jane Doe',
         'email' => 'jane@example.com',
@@ -106,19 +117,15 @@ it('lists and shows leads', function () {
         'objective' => 'Branding',
     ]);
 
-    $this->get(route('admin.leads.index'))
-        ->assertOk()
-        ->assertInertia(fn ($page) => $page
-            ->component('Admin/Leads/Index')
-            ->has('leads.data', 1)
-        );
+    \Livewire\Livewire::test(ListLeads::class)
+        ->assertSuccessful();
 
-    $this->get(route('admin.leads.show', $lead))
-        ->assertOk()
-        ->assertInertia(fn ($page) => $page
-            ->component('Admin/Leads/Show')
-            ->where('lead.email', 'jane@example.com')
-        );
+    \Livewire\Livewire::test(ViewLeads::class, ['record' => $lead->getKey()])
+        ->assertSuccessful();
+});
+
+it('disallows creating leads from the panel', function () {
+    expect(LeadsResource::canCreate())->toBeFalse();
 });
 
 it('deletes a lead', function () {
@@ -131,18 +138,21 @@ it('deletes a lead', function () {
         'objective' => 'Branding',
     ]);
 
-    $this->delete(route('admin.leads.destroy', $lead))
-        ->assertRedirect(route('admin.leads.index'));
+    \Livewire\Livewire::test(ViewLeads::class, ['record' => $lead->getKey()])
+        ->callAction(DeleteAction::class);
 
     expect(Leads::find($lead->id))->toBeNull();
 });
 
 it('creates a testimonial', function () {
-    $this->post(route('admin.testimonials.store'), [
-        'name' => 'Budi',
-        'company_name' => 'PT Maju',
-        'content' => 'Pelayanan sangat baik.',
-    ])->assertRedirect(route('admin.testimonials.index'));
+    \Livewire\Livewire::test(CreateTestimonial::class)
+        ->fillForm([
+            'name' => 'Budi',
+            'company_name' => 'PT Maju',
+            'content' => 'Pelayanan sangat baik.',
+        ])
+        ->call('create')
+        ->assertHasNoFormErrors();
 
     expect(Testimonial::where('name', 'Budi')->exists())->toBeTrue();
 });

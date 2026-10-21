@@ -33,7 +33,7 @@ const container = staggerContainer(0.12);
         <div class="mt-6 grid gap-y-8 lg:grid-cols-[1.8fr_1fr] lg:gap-x-20">
             <motion.h1
                 :variants="fadeUp"
-                class="text-2xl font-light leading-snug text-impost-fifth sm:text-3xl lg:text-4xl"
+                class="text-2xl font-light leading-snug text-ink sm:text-3xl lg:text-4xl"
             >
                 <strong class="font-bold">Impost Media</strong> adalah All-in-One Integrated Digital Marketing Agency
                 sekaligus perusahaan multiservice yang membantu bisnis Indonesia bertumbuh dengan arah yang jelas,
@@ -41,14 +41,14 @@ const container = staggerContainer(0.12);
             </motion.h1>
 
             <motion.div :variants="fadeUp" class="lg:pt-2">
-                <p class="text-base leading-relaxed text-impost-fifth lg:text-lg">
+                <p class="text-base leading-relaxed text-ink lg:text-lg">
                     Berpusat di Banjarbaru, Kalimantan Selatan, kami mendampingi bisnis untuk merapikan makna,
                     membangun identitas merek yang kuat, dan meningkatkan visibilitas secara natural.
                 </p>
 
                 <Link
                     :href="route('about')"
-                    class="group mt-6 inline-flex items-center gap-2 text-base font-light text-impost-fifth transition-colors hover:text-impost-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-impost-primary focus-visible:ring-offset-2 lg:text-lg"
+                    class="group mt-6 inline-flex items-center gap-2 text-base font-light text-ink transition-colors hover:text-impost-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-impost-primary focus-visible:ring-offset-2 lg:text-lg"
                 >
                     Pelajari Lebih Lanjut
                     <span

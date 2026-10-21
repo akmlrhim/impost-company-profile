@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    /** @use HasFactory<\Database\Factories\TeamFactory> */
+    /** @use HasFactory<\Database\Factories\EmployeeFactory> */
     use HasFactory;
 
     protected $fillable = [

@@ -9,12 +9,14 @@ import Hero from "@/Components/Landing/Hero.vue";
 import LatestNews from "@/Components/Landing/LatestNews.vue";
 import SectionRow from "@/Components/Landing/SectionRow.vue";
 import ServiceTile from "@/Components/Landing/ServiceTile.vue";
+import TestimonialSection from "@/Components/Landing/TestimonialSection.vue";
 import StaggerGroup from "@/Components/Motion/StaggerGroup.vue";
 import { fadeUp, staggerContainer, VIEWPORT } from "@/motion/presets";
 
 const props = defineProps({
     services: { type: Array, default: () => [] },
     clients: { type: Array, default: () => [] },
+    testimonials: { type: Array, default: () => [] },
     articles: { type: Array, default: () => [] },
 });
 
@@ -51,7 +53,11 @@ const serviceCards = computed(() =>
  *     :image="{ desktop: '/images/hero-desktop.webp', mobile: '/images/hero-mobile.webp', alt: '...' }"
  *   />
  */
-const heroImage = null;
+const heroImage = {
+    desktop: "/img/hero.webp",
+    mobile: "/img/hero.webp",
+    alt: "Kolase potret tim Impost Media",
+};
 const heroVideo = null;
 const heroSlides = [];
 
@@ -59,6 +65,27 @@ const clientLogos = computed(() =>
     props.clients.map((client) => ({
         src: /^(https?:)?\//.test(client.client_logo) ? client.client_logo : `/storage/${client.client_logo}`,
         alt: client.filename || "Logo klien",
+    })),
+);
+
+/**
+ * Testimonial fleksibel (teks / foto / video) untuk slider di bawah
+ * section Layanan. `media_path` dari storage publik diawali `/storage/`.
+ */
+const testimonialItems = computed(() =>
+    props.testimonials.map((testimonial) => ({
+        type: testimonial.type ?? "text",
+        name: testimonial.name,
+        company: testimonial.company_name ?? "",
+        quote: testimonial.content,
+        media: testimonial.media_path
+            ? {
+                  src: /^(https?:)?\//.test(testimonial.media_path)
+                      ? testimonial.media_path
+                      : `/storage/${testimonial.media_path}`,
+                  mime: testimonial.media_type ?? "",
+              }
+            : null,
     })),
 );
 
@@ -96,7 +123,7 @@ const newsArticles = computed(() =>
 
                 <motion.h2
                     :variants="fadeUp"
-                    class="mt-6 max-w-[1000px] text-2xl font-normal leading-snug text-impost-fifth sm:text-3xl lg:text-4xl"
+                    class="mt-6 max-w-[1000px] text-2xl font-normal leading-snug text-ink sm:text-3xl lg:text-4xl"
                 >
                     Melalui pendekatan terintegrasi, Impost Media memastikan kebutuhan digital marketing, event, dan
                     pengadaan Anda tertangani secara selaras, efektif, dan berdampak nyata bagi pertumbuhan bisnis.
@@ -120,6 +147,9 @@ const newsArticles = computed(() =>
                     [Daftar layanan akan tampil di sini.]
                 </p>
             </motion.section>
+
+            <!-- [4b] Testimonial: slider teks / foto / video -->
+            <TestimonialSection v-if="testimonialItems.length" :items="testimonialItems" />
 
             <!-- [5] Berita Terbaru -->
             <LatestNews :articles="newsArticles" />

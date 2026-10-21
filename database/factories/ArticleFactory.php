@@ -11,27 +11,26 @@ use Illuminate\Support\Str;
  */
 class ArticleFactory extends Factory
 {
-	/**
-	 * Define the model's default state.
-	 *
-	 * @return array<string, mixed>
-	 */
-	public function definition(): array
-	{
-		$title = fake()->sentence(6, true);
-		$categoryId = ArticleCategory::inRandomOrder()->first()->id ?? null;
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        $title = fake()->sentence(6, true);
 
-		return [
-			'title' => $title,
-			'slug' => Str::slug($title),
-			'category_id' => $categoryId,
-			'content' => '<p>' . fake()->paragraphs(5, true) . '</p>',
-			'cover_path' => null,
-			'excerpt' => fake()->sentence(12, true),
-			'meta_title' => fake()->sentence(6, true),
-			'meta_description' => fake()->sentence(20, true),
-			'status' => 'published',
-			'written_by' => fake()->name()
-		];
-	}
+        return [
+            'title' => $title,
+            'slug' => Str::slug($title),
+            'category_id' => ArticleCategory::query()->inRandomOrder()->value('id') ?? ArticleCategory::factory(),
+            'content' => '<p>'.fake()->paragraphs(5, true).'</p>',
+            'cover_path' => null,
+            'excerpt' => fake()->sentence(12, true),
+            'meta_title' => fake()->sentence(6, true),
+            'meta_description' => fake()->sentence(20, true),
+            'status' => 'published',
+            'written_by' => fake()->name(),
+        ];
+    }
 }

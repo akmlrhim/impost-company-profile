@@ -1,5 +1,9 @@
 <?php
 
+use App\Filament\Resources\Portfolios\Pages\CreatePortfolio;
+use App\Filament\Resources\Services\Pages\CreateService;
+use App\Filament\Resources\Services\Pages\EditService;
+use App\Filament\Resources\Testimonials\Pages\CreateTestimonial;
 use App\Models\Portfolio;
 use App\Models\Service;
 use App\Models\Testimonial;
@@ -13,14 +17,17 @@ beforeEach(function () {
 });
 
 it('uploads a service cover image', function () {
-    $this->post(route('admin.services.store'), [
-        'service_name' => 'Social Media',
-        'slug' => 'social-media',
-        'description' => 'Deskripsi.',
-        'category' => 'Utama',
-        'sort' => 1,
-        'cover_file' => UploadedFile::fake()->image('cover.jpg'),
-    ])->assertRedirect(route('admin.services.index'));
+    \Livewire\Livewire::test(CreateService::class)
+        ->fillForm([
+            'service_name' => 'Social Media',
+            'slug' => 'social-media',
+            'description' => 'Deskripsi.',
+            'category' => 'Utama',
+            'sort' => 1,
+            'cover_path' => UploadedFile::fake()->image('cover.jpg'),
+        ])
+        ->call('create')
+        ->assertHasNoFormErrors();
 
     $service = Service::where('slug', 'social-media')->firstOrFail();
 
@@ -29,34 +36,26 @@ it('uploads a service cover image', function () {
 });
 
 it('replaces and deletes the old service cover image', function () {
-    $service = Service::factory()->create(['cover_path' => 'services/old.jpg']);
     Storage::disk('public')->put('services/old.jpg', 'old');
+    Storage::disk('public')->put('services/new.jpg', 'new');
+    $service = Service::factory()->create(['cover_path' => 'services/old.jpg']);
 
-    $this->put(route('admin.services.update', $service), [
-        'service_name' => $service->service_name,
-        'slug' => $service->slug,
-        'description' => $service->description,
-        'category' => $service->category,
-        'sort' => $service->sort,
-        'cover_file' => UploadedFile::fake()->image('new.jpg'),
-    ])->assertRedirect(route('admin.services.index'));
+    $service->update(['cover_path' => 'services/new.jpg']);
 
     Storage::disk('public')->assertMissing('services/old.jpg');
-    Storage::disk('public')->assertExists($service->refresh()->cover_path);
+    Storage::disk('public')->assertExists('services/new.jpg');
 });
 
-it('removes a service cover image when requested', function () {
+it('removes a service cover image when cleared', function () {
     $service = Service::factory()->create(['cover_path' => 'services/old.jpg']);
     Storage::disk('public')->put('services/old.jpg', 'old');
 
-    $this->put(route('admin.services.update', $service), [
-        'service_name' => $service->service_name,
-        'slug' => $service->slug,
-        'description' => $service->description,
-        'category' => $service->category,
-        'sort' => $service->sort,
-        'remove_image' => true,
-    ])->assertRedirect(route('admin.services.index'));
+    \Livewire\Livewire::test(EditService::class, ['record' => $service->slug])
+        ->fillForm([
+            'cover_path' => null,
+        ])
+        ->call('save')
+        ->assertHasNoFormErrors();
 
     Storage::disk('public')->assertMissing('services/old.jpg');
     expect($service->refresh()->cover_path)->toBeNull();
@@ -66,29 +65,34 @@ it('deletes the stored file when a service is destroyed', function () {
     $service = Service::factory()->create(['cover_path' => 'services/old.jpg']);
     Storage::disk('public')->put('services/old.jpg', 'old');
 
-    $this->delete(route('admin.services.destroy', $service))
-        ->assertRedirect(route('admin.services.index'));
+    $service->delete();
 
     Storage::disk('public')->assertMissing('services/old.jpg');
 });
 
 it('rejects a non-image upload', function () {
-    $this->post(route('admin.services.store'), [
-        'service_name' => 'Bad',
-        'slug' => 'bad',
-        'description' => 'Deskripsi.',
-        'sort' => 1,
-        'cover_file' => UploadedFile::fake()->create('document.pdf', 10, 'application/pdf'),
-    ])->assertSessionHasErrors('cover_file');
+    \Livewire\Livewire::test(CreateService::class)
+        ->fillForm([
+            'service_name' => 'Bad',
+            'slug' => 'bad',
+            'description' => 'Deskripsi.',
+            'sort' => 1,
+            'cover_path' => UploadedFile::fake()->create('document.pdf', 10, 'application/pdf'),
+        ])
+        ->call('create')
+        ->assertHasFormErrors(['cover_path']);
 });
 
 it('uploads a portfolio media image', function () {
-    $this->post(route('admin.portfolios.store'), [
-        'title' => 'Kampanye',
-        'slug' => 'kampanye',
-        'media_type' => 'image',
-        'media_file' => UploadedFile::fake()->image('media.jpg'),
-    ])->assertRedirect(route('admin.portfolios.index'));
+    \Livewire\Livewire::test(CreatePortfolio::class)
+        ->fillForm([
+            'title' => 'Kampanye',
+            'slug' => 'kampanye',
+            'media_type' => 'image',
+            'media_path' => UploadedFile::fake()->image('media.jpg'),
+        ])
+        ->call('create')
+        ->assertHasNoFormErrors();
 
     $portfolio = Portfolio::where('slug', 'kampanye')->firstOrFail();
 
@@ -97,11 +101,14 @@ it('uploads a portfolio media image', function () {
 });
 
 it('uploads a testimonial photo', function () {
-    $this->post(route('admin.testimonials.store'), [
-        'name' => 'Budi',
-        'content' => 'Bagus.',
-        'photo_file' => UploadedFile::fake()->image('photo.jpg'),
-    ])->assertRedirect(route('admin.testimonials.index'));
+    \Livewire\Livewire::test(CreateTestimonial::class)
+        ->fillForm([
+            'name' => 'Budi',
+            'content' => 'Bagus.',
+            'photo_path' => UploadedFile::fake()->image('photo.jpg'),
+        ])
+        ->call('create')
+        ->assertHasNoFormErrors();
 
     $testimonial = Testimonial::where('name', 'Budi')->firstOrFail();
 

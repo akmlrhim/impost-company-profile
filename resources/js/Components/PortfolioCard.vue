@@ -10,9 +10,9 @@ defineProps({
 <template>
     <Link
         :href="route('portfolio.show', portfolio.slug)"
-        class="group overflow-hidden rounded-2xl border border-impost-fifth/10"
+        class="group overflow-hidden rounded-2xl border border-line"
     >
-        <div class="aspect-video bg-impost-fifth/5">
+        <div class="aspect-video bg-ink/5">
             <img
                 v-if="portfolio.media_path"
                 :src="`/storage/${portfolio.media_path}`"

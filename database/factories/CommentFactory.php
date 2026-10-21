@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Article;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'article_id' => Article::factory(),
+            'email' => fake()->safeEmail(),
+            'fullname' => fake()->name(),
+            'comment' => fake()->sentence(10),
+            'status' => 'pending',
         ];
     }
 }

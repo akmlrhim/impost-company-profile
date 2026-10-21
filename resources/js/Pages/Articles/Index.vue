@@ -54,7 +54,7 @@ function categoryHref(slug) {
                 </h1>
 
                 <form
-                    class="flex w-full max-w-md items-center gap-2 rounded-full border border-impost-fifth/15 p-1.5 pl-5 focus-within:border-impost-fifth/40"
+                    class="flex w-full max-w-md items-center gap-2 rounded-full border border-line p-1.5 pl-5 focus-within:border-line-strong"
                     role="search"
                     @submit.prevent="submitSearch"
                 >
@@ -64,11 +64,11 @@ function categoryHref(slug) {
                         name="search"
                         placeholder="Cari artikel..."
                         aria-label="Cari artikel"
-                        class="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-impost-fifth/50"
+                        class="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-ink/50"
                     >
                     <button
                         type="submit"
-                        class="rounded-full bg-impost-fifth px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-impost-fifth/90 disabled:opacity-50"
+                        class="rounded-full bg-ink px-5 py-2.5 text-sm font-bold text-paper transition-colors hover:bg-ink/90 disabled:opacity-50"
                         :disabled="form.processing"
                     >
                         Cari
@@ -77,11 +77,11 @@ function categoryHref(slug) {
             </div>
 
             <!-- Tab kategori -->
-            <nav class="mt-10 flex gap-6 overflow-x-auto border-b border-impost-fifth/10" aria-label="Filter kategori artikel">
+            <nav class="mt-10 flex gap-6 overflow-x-auto border-b border-line" aria-label="Filter kategori artikel">
                 <Link
                     :href="categoryHref(null)"
                     preserve-scroll
-                    :class="['-mb-px whitespace-nowrap border-b-2 pb-3 text-sm transition-colors', isActive(null) ? 'border-impost-fifth font-bold text-impost-fifth' : 'border-transparent text-impost-fifth/60 hover:text-impost-fifth']"
+                    :class="['-mb-px whitespace-nowrap border-b-2 pb-3 text-sm transition-colors', isActive(null) ? 'border-ink font-bold text-ink' : 'border-transparent text-ink/60 hover:text-ink']"
                 >
                     Semua
                 </Link>
@@ -90,7 +90,7 @@ function categoryHref(slug) {
                     :key="category.slug"
                     :href="categoryHref(category.slug)"
                     preserve-scroll
-                    :class="['-mb-px whitespace-nowrap border-b-2 pb-3 text-sm transition-colors', isActive(category.slug) ? 'border-impost-fifth font-bold text-impost-fifth' : 'border-transparent text-impost-fifth/60 hover:text-impost-fifth']"
+                    :class="['-mb-px whitespace-nowrap border-b-2 pb-3 text-sm transition-colors', isActive(category.slug) ? 'border-ink font-bold text-ink' : 'border-transparent text-ink/60 hover:text-ink']"
                 >
                     {{ category.name }}
                 </Link>
@@ -102,14 +102,14 @@ function categoryHref(slug) {
             </div>
 
             <!-- Kosong -->
-            <div v-else class="mt-16 rounded-3xl border border-dashed border-impost-fifth/15 py-16 text-center">
+            <div v-else class="mt-16 rounded-3xl border border-dashed border-line py-16 text-center">
                 <p class="font-bold">Tidak ada artikel yang ditemukan.</p>
-                <p class="mt-2 text-sm text-impost-fifth">
+                <p class="mt-2 text-sm text-ink">
                     Coba kata kunci lain atau pilih kategori berbeda.
                 </p>
                 <Link
                     :href="route('articles.index')"
-                    class="mt-6 inline-flex rounded-full border border-impost-fifth/15 px-5 py-2 text-sm font-bold transition-colors hover:border-impost-primary hover:text-impost-primary"
+                    class="mt-6 inline-flex rounded-full border border-line px-5 py-2 text-sm font-bold transition-colors hover:border-impost-primary hover:text-impost-primary"
                 >
                     Hapus filter
                 </Link>
@@ -123,7 +123,7 @@ function categoryHref(slug) {
                         :key="index"
                         :href="link.url ?? '#'"
                         preserve-scroll
-                        :class="['px-3 py-1 text-sm font-bold rounded-full border transition-colors', link.active ? 'border-impost-primary text-impost-primary' : 'border-impost-fifth/15 text-impost-fifth hover:text-impost-fifth']"
+                        :class="['px-3 py-1 text-sm font-bold rounded-full border transition-colors', link.active ? 'border-impost-primary text-impost-primary' : 'border-line text-ink']"
                     >
                         <span v-html="link.label" />
                     </Link>

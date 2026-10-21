@@ -69,11 +69,11 @@ const activeStep = ref(0);
     <!-- Lead -->
     <Reveal as="section" class="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 lg:px-8">
       <nav class="flex flex-wrap items-center gap-2 text-sm text-impost-third" aria-label="Breadcrumb">
-        <Link :href="route('home')" class="transition-colors hover:text-impost-fifth">Beranda</Link>
+        <Link :href="route('home')" class="transition-colors hover:text-ink">Beranda</Link>
         <svg class="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7" />
         </svg>
-        <span class="font-bold text-impost-fifth">Tentang</span>
+        <span class="font-bold text-ink">Tentang</span>
       </nav>
 
       <h1 class="mt-10 max-w-4xl text-2xl font-bold leading-snug sm:text-3xl lg:text-4xl">
@@ -85,7 +85,7 @@ const activeStep = ref(0);
     <!-- Video Profil -->
     <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
       <Reveal>
-        <div class="relative aspect-video overflow-hidden rounded-3xl border border-impost-fifth/10 bg-black">
+        <div class="relative aspect-video overflow-hidden rounded-3xl border border-line bg-black">
           <button v-if="!isVideoPlaying" type="button" class="group absolute inset-0 flex items-center justify-center"
             aria-label="Putar video profil Impost Media" @click="isVideoPlaying = true">
             <span
@@ -109,7 +109,7 @@ const activeStep = ref(0);
       <Reveal class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24" :delay="0.05">
         <div class="min-w-0 space-y-5">
           <p v-for="(paragraph, index) in sekilas" :key="index"
-            class="max-w-4xl text-sm leading-relaxed text-impost-fifth lg:text-base">
+            class="max-w-4xl text-sm leading-relaxed text-ink lg:text-base">
             {{ paragraph }}
           </p>
         </div>
@@ -208,36 +208,36 @@ const activeStep = ref(0);
     </section>
 
     <!-- Makna Logo -->
-    <section class="bg-white">
+    <section class="bg-paper">
       <Reveal class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <h2 class="text-sm font-bold uppercase text-impost-primary lg:text-base">Makna Logo</h2>
 
         <img src="/img/logo_ori.png" alt="Logo Impost Media" loading="lazy"
-          class="mx-auto mt-10 block w-full max-w-sm rounded-3xl">
+          class="mx-auto mt-10 block w-full max-w-sm rounded-3xl bg-white p-4">
 
-        <p class="mx-auto mt-10 max-w-4xl text-center text-sm leading-relaxed text-impost-fifth lg:text-base">
+        <p class="mx-auto mt-10 max-w-4xl text-center text-sm leading-relaxed text-ink lg:text-base">
           Siluet lensa kamera, melambangkan kenaikan, dan fokus tajam pada segmentasi yang terukur. Lensa kamera
           diikuti oleh garis melengkung yang dinamis, merepresentasikan aliran, gerakan, dan kreativitas yang adaptif.
         </p>
 
         <div class="mx-auto mt-10 grid max-w-4xl gap-8 text-center sm:grid-cols-3">
           <div>
-            <h3 class="text-base font-bold text-impost-fifth">Text</h3>
-            <p class="mt-2 text-sm leading-relaxed text-impost-fifth">
+            <h3 class="text-base font-bold text-ink">Text</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink">
               Representasi visual yang modern dan minimalis, melambangkan fokus presisi strategis dan analisis data
               yang tajam dalam produksi media kreatif.
             </p>
           </div>
           <div>
-            <h3 class="text-base font-bold text-impost-fifth">Kamera</h3>
-            <p class="mt-2 text-sm leading-relaxed text-impost-fifth">
+            <h3 class="text-base font-bold text-ink">Kamera</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink">
               Representasi energi dan pergerakan yang dinamis, berproses, meningkat, dan perubahan yang aktif secara
               kreatif.
             </p>
           </div>
           <div>
-            <h3 class="text-base font-bold text-impost-fifth">Swirl/Spiral</h3>
-            <p class="mt-2 text-sm leading-relaxed text-impost-fifth">
+            <h3 class="text-base font-bold text-ink">Swirl/Spiral</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink">
               Identitas kepemilikan yang tegas, kuat, dan terstruktur secara jelas.
             </p>
           </div>
@@ -246,11 +246,11 @@ const activeStep = ref(0);
     </section>
 
     <!-- Struktur Organisasi -->
-    <section class="bg-white">
+    <section class="bg-paper">
       <Reveal class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
         <h2 class="text-sm font-bold uppercase text-impost-primary lg:text-base">Struktur Organisasi</h2>
         <img src="/img/struktur_organisasi.png" alt="Struktur organisasi Impost Media" loading="lazy"
-          class="mx-auto mt-10 block w-full max-w-5xl rounded-3xl">
+          class="mx-auto mt-10 block w-full max-w-5xl rounded-3xl bg-white p-4">
       </Reveal>
     </section>
   </HomeLayout>

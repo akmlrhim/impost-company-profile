@@ -2,55 +2,28 @@
 
 use App\Models\User;
 
-it('redirects guests from the admin dashboard to the admin login', function () {
-    $this->get(route('admin.dashboard'))
-        ->assertRedirect(route('admin.login'));
+it('redirects guests from the panel to the login page', function () {
+    $this->get('/admin')
+        ->assertRedirect(route('filament.admin.auth.login'));
 });
 
-it('renders the admin login page for guests', function () {
-    $this->get(route('admin.login'))
-        ->assertOk()
-        ->assertInertia(fn ($page) => $page->component('Admin/Auth/Login'));
+it('renders the panel login page', function () {
+    $this->get(route('filament.admin.auth.login'))
+        ->assertOk();
 });
 
-it('authenticates an admin user', function () {
-    $user = User::factory()->create([
-        'password' => 'password',
-    ]);
+it('allows an authenticated user into the panel', function () {
+    $this->actingAs(User::factory()->create());
 
-    $this->post(route('admin.login'), [
-        'email' => $user->email,
-        'password' => 'password',
-    ])->assertRedirect(route('admin.dashboard'));
-
-    $this->assertAuthenticatedAs($user);
+    $this->get('/admin')
+        ->assertOk();
 });
 
-it('rejects invalid admin credentials', function () {
-    $user = User::factory()->create();
+it('logs a user out of the panel', function () {
+    $this->actingAs(User::factory()->create());
 
-    $this->post(route('admin.login'), [
-        'email' => $user->email,
-        'password' => 'wrong-password',
-    ])->assertSessionHasErrors('email');
-
-    $this->assertGuest();
-});
-
-it('redirects authenticated users away from the login page', function () {
-    $user = User::factory()->create();
-
-    $this->actingAs($user)
-        ->get(route('admin.login'))
-        ->assertRedirect(route('admin.dashboard'));
-});
-
-it('logs out an authenticated admin user', function () {
-    $user = User::factory()->create();
-
-    $this->actingAs($user)
-        ->post(route('admin.logout'))
-        ->assertRedirect(route('admin.login'));
+    $this->post(route('filament.admin.auth.logout'))
+        ->assertRedirect();
 
     $this->assertGuest();
 });

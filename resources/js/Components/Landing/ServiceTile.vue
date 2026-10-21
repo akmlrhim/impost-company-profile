@@ -1,13 +1,14 @@
 ﻿<script setup>
-import { computed } from "vue";
 import { motion } from "motion-v";
-import { fadeUp, useReducedMotion } from "@/motion/presets";
+import { fadeUp } from "@/motion/presets";
 
 /**
  * Kartu Layanan Beranda (referensi Danantara "Lingkup Kerja").
  *
- * State normal: krem, judul + deskripsi + gambar bergradasi.
- * State hover: kartu gelap (`impost-fifth`) dan teks putih.
+ * State normal: kartu naik setengah nada dari latar halaman (ink/5).
+ * State hover: overlay hitam (impost-fifth) langsung menutupi seluruh
+ * kartu, teks berubah putih. Tanpa panah, tanpa animasi terangkat.
+ * Tampilan mengikuti tema aktif (gelap default / terang) lewat token ink & line.
  */
 const props = defineProps({
     title: { type: String, required: true },
@@ -18,37 +19,35 @@ const props = defineProps({
 
 /** Urutan animasi diatur oleh `StaggerGroup` induk. */
 const itemVariants = fadeUp;
-
-/**
- * Lift saat hover dinonaktifkan manual saat reduce-motion, karena
- * `MotionConfig reducedMotion="user"` tidak mencakup gesture `whileHover`.
- */
-const reducedMotion = useReducedMotion();
-const hoverLift = computed(() => (reducedMotion.value ? undefined : { y: -4 }));
 </script>
 
 <template>
     <motion.article
         :variants="itemVariants"
-        :while-hover="hoverLift"
-        class="group flex flex-col overflow-hidden rounded-2xl bg-white transition-colors duration-200 hover:bg-impost-fifth"
+        class="group relative flex flex-col overflow-hidden rounded-2xl bg-ink/5"
     >
-        <div class="flex flex-1 flex-col p-5">
+        <!-- Overlay hover: emas di tema gelap, hitam di tema terang. Tanpa animasi. -->
+        <div
+            class="absolute inset-0 z-10 bg-impost-primary opacity-0 group-hover:opacity-100 light:bg-impost-fifth"
+            aria-hidden="true"
+        />
+
+        <div class="relative z-20 flex flex-1 flex-col p-5">
             <h3
-                class="text-lg font-medium leading-snug text-impost-fourth transition-colors duration-200 group-hover:text-white lg:text-xl"
+                class="text-lg font-medium leading-snug text-ink transition-colors duration-200 group-hover:text-impost-fifth light:group-hover:text-white lg:text-xl"
             >
                 {{ title }}
             </h3>
 
             <p
                 v-if="description"
-                class="mt-3 text-sm leading-relaxed text-impost-fifth transition-colors duration-200 group-hover:text-white"
+                class="mt-3 text-sm leading-relaxed text-ink/80 transition-colors duration-200 group-hover:text-impost-fifth/90 light:group-hover:text-white"
             >
                 {{ description }}
             </p>
         </div>
 
-        <div class="relative mt-auto h-52 w-full lg:h-60">
+        <div class="relative z-0 mt-auto h-52 w-full lg:h-60">
             <img
                 v-if="image"
                 :src="image.src"

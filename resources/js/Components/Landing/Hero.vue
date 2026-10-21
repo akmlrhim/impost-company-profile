@@ -129,7 +129,7 @@ watch(canAutoplay, (value) => (value ? startAutoplay() : stopAutoplay()));
 <template>
     <section
         ref="rootEl"
-        class="relative h-[360px] w-full overflow-hidden bg-impost-fifth sm:h-[480px]"
+        class="relative min-h-screen w-full overflow-hidden bg-impost-fifth"
         aria-label="Sorotan utama"
         @mouseenter="interactionPaused = true"
         @mouseleave="interactionPaused = false"
@@ -137,12 +137,12 @@ watch(canAutoplay, (value) => (value ? startAutoplay() : stopAutoplay()));
         @focusout="interactionPaused = false"
     >
         <!-- Mode image -->
-        <picture v-if="mode === 'image' && image">
+        <picture v-if="mode === 'image' && image" class="absolute inset-0">
             <source v-if="image.mobile" media="(max-width: 767px)" :srcset="image.mobile" >
             <motion.img
                 :src="image.desktop"
                 :alt="image.alt"
-                class="h-full w-full object-cover"
+                class="size-full object-cover"
                 fetchpriority="high"
                 :variants="fadeIn"
                 initial="hidden"
@@ -174,7 +174,7 @@ watch(canAutoplay, (value) => (value ? startAutoplay() : stopAutoplay()));
             <video
                 v-show="showVideo"
                 ref="videoEl"
-                class="h-full w-full object-cover"
+                class="absolute inset-0 size-full object-cover"
                 autoplay
                 muted
                 loop
@@ -191,7 +191,7 @@ watch(canAutoplay, (value) => (value ? startAutoplay() : stopAutoplay()));
                 v-if="!showVideo"
                 :src="video.poster"
                 :alt="video.alt ?? ''"
-                class="h-full w-full object-cover"
+                class="absolute inset-0 size-full object-cover"
                 :variants="fadeIn"
                 initial="hidden"
                 animate="visible"

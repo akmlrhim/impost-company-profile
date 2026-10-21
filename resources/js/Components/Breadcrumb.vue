@@ -30,11 +30,11 @@ defineProps({
             <Link
                 v-if="item.href"
                 :href="item.href"
-                class="transition-colors hover:text-impost-fifth"
+                class="transition-colors hover:text-ink"
             >
                 {{ item.label }}
             </Link>
-            <span v-else :class="index === items.length - 1 ? 'font-bold text-impost-fifth' : ''">
+            <span v-else :class="index === items.length - 1 ? 'font-bold text-ink' : ''">
                 {{ item.label }}
             </span>
         </template>
